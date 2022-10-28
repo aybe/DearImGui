@@ -15,6 +15,8 @@ internal static class Program
             ConsoleDriver.Run(new MyLibrary { Enhanced = false });
         }
 
+        Console.Clear();
+
         using (var writer = new StreamWriter(File.Create(@"NEW\output.txt")))
         using (new AggregateConsoleOut(writer))
         {
