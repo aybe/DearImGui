@@ -12,13 +12,20 @@ namespace imgui.cppsharp.generator;
 
 internal sealed class MyLibrary : ILibrary
 {
+    public bool? Enhanced { get; init; }
+
     #region ILibrary Members
 
     public void Setup(Driver driver)
     {
         var options = driver.Options;
 
-        options.OutputDir = @"..\..\..\..\imgui.cppsharp";
+        options.OutputDir = Enhanced.HasValue
+            ? Enhanced.Value
+                ? "NEW"
+                : "OLD"
+            : @"..\..\..\..\imgui.cppsharp";
+
         options.GeneratorKind = GeneratorKind.CSharp;
         options.GenerateFinalizers = true;
         options.GenerateDebugOutput = true;
