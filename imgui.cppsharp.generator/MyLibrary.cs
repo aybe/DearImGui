@@ -50,6 +50,10 @@ internal sealed class MyLibrary : ILibrary
         if (Enhanced is true)
         {
             Experimental.RemovePasses(driver);
+
+            // does nothing
+            // Experimental.RemoveIndirection(ctx, "const ImVec2");
+            // Experimental.RemoveIndirection(ctx, "const ImVec4");
         }
 
         SetValueTypes(ctx);
@@ -95,6 +99,10 @@ internal sealed class MyLibrary : ILibrary
 
         // ctx.IgnoreClassWithName("ImVec2");
         // ctx.IgnoreClassWithName("ImVec4");
+
+
+        // removing ImVector introduces way more errors than keeping it
+        // ctx.IgnoreClassWithName("ImVector");
 
 
         // TODO implement these members manually
