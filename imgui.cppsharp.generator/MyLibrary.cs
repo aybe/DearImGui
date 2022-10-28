@@ -54,16 +54,19 @@ internal sealed class MyLibrary : ILibrary
             // does nothing
             // Experimental.RemoveIndirection(ctx, "const ImVec2");
             // Experimental.RemoveIndirection(ctx, "const ImVec4");
+
+            SetValueTypes(ctx);
+
+            FlattenNamespace(ctx);
         }
-
-        SetValueTypes(ctx);
-
-        FlattenNamespace(ctx);
     }
 
     public void Postprocess(Driver driver, ASTContext ctx)
     {
-        IgnoreMembers(ctx);
+        if (Enhanced is true)
+        {
+            IgnoreMembers(ctx);
+        }
     }
 
     #endregion
