@@ -2,5 +2,5 @@
 
 internal static class Constants
 {
-    public const string Namespace = "imgui.NET";
+    public const string Namespace = "ImGuiNET";
 }
