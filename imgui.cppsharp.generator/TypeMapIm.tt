@@ -1,0 +1,58 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ output extension=".g.cs" #>
+using CppSharp.Types;
+using JetBrains.Annotations;
+
+namespace imgui.cppsharp.generator;
+
+<#
+	var names = new[]
+	{
+		"ImDrawFlags",
+		"ImGuiButtonFlags",
+		"ImGuiColorEditFlags",
+		"ImGuiComboFlags",
+		"ImGuiDragDropFlags",
+		"ImGuiFocusedFlags",
+		"ImGuiHoveredFlags",
+		"ImGuiInputTextFlags",
+		"ImGuiPopupFlags",
+		"ImGuiSelectableFlags",
+		"ImGuiSliderFlags",
+		"ImGuiTabBarFlags",
+		"ImGuiTabItemFlags",
+		"ImGuiTableColumnFlags",
+		"ImGuiTableFlags",
+		"ImGuiTreeNodeFlags",
+		"ImGuiWindowFlags"
+// TODO "ImDrawListFlags",
+// TODO "ImFontAtlasFlags",
+// TODO "ImGuiBackendFlags",
+// TODO "ImGuiCol",
+// TODO "ImGuiCond",
+// TODO "ImGuiConfigFlags",
+// TODO "ImGuiDataType",
+// TODO "ImGuiDir",
+// TODO "ImGuiKey",
+// TODO "ImGuiModFlags",
+// TODO "ImGuiMouseButton",
+// TODO "ImGuiMouseCursor",
+// TODO "ImGuiNavInput",
+// TODO "ImGuiSortDirection",
+// TODO "ImGuiStyleVar",
+// TODO "ImGuiTableBgTarget",
+// TODO "ImGuiTableRowFlags",
+// TODO "ImGuiViewportFlags",
+	};
+
+
+	foreach (var name in names)
+	{
+#>
+[UsedImplicitly] [TypeMap("<#= name #>")]
+internal sealed class TypeMap<#= name #> : TypeMapIm { }
+
+<#
+	}
+#>
