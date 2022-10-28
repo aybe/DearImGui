@@ -3,7 +3,7 @@ using CppSharp.AST;
 using CppSharp.Types;
 using Type = CppSharp.AST.Type;
 
-namespace imgui.cppsharp.generator;
+namespace ImGuiNET.Generator;
 
 internal abstract class TypeMapIm : TypeMap
 {

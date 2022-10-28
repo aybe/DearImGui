@@ -1,6 +1,6 @@
 ﻿using CppSharp;
 
-namespace imgui.cppsharp.generator;
+namespace ImGuiNET.Generator;
 
 internal static class Program
 {

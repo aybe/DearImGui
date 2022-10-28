@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\imgui.cppsharp.generator\bin\Debug\net6.0\NEW\imgui.cs" Link="imgui.cs" />
-    <Compile Include="..\imgui.cppsharp.generator\bin\Debug\net6.0\NEW\Std.cs" Link="Std.cs" />
+    <Compile Include="..\ImGuiNET.Generator\bin\Debug\net6.0\NEW\imgui.cs" Link="imgui.cs" />
+    <Compile Include="..\ImGuiNET.Generator\bin\Debug\net6.0\NEW\Std.cs" Link="Std.cs" />
   </ItemGroup>
 
   <ItemGroup>

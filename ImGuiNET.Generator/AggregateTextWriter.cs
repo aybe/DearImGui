@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace imgui.cppsharp.generator;
+namespace ImGuiNET.Generator;
 
 public sealed class AggregateTextWriter : TextWriter
 {

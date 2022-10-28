@@ -1,4 +1,4 @@
-﻿namespace imgui.cppsharp.generator;
+﻿namespace ImGuiNET.Generator;
 
 public sealed class AggregateConsoleOut : IDisposable
 {

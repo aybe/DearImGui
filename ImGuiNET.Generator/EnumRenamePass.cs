@@ -1,7 +1,7 @@
 ﻿using CppSharp.AST;
 using CppSharp.Passes;
 
-namespace imgui.cppsharp.generator;
+namespace ImGuiNET.Generator;
 
 internal sealed class EnumRenamePass : RenamePass
 {

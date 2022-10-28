@@ -2,7 +2,7 @@
 using CppSharp.Generators;
 using CppSharp.Passes;
 
-namespace imgui.cppsharp.generator.Passes;
+namespace ImGuiNET.Generator.Passes;
 
 internal sealed class FixInternalStructsVisibility : GeneratorOutputPass
 {
