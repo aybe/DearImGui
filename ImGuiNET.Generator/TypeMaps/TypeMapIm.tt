@@ -4,7 +4,7 @@
 using CppSharp.Types;
 using JetBrains.Annotations;
 
-namespace ImGuiNET.Generator;
+namespace ImGuiNET.Generator.TypeMaps;
 
 <#
 	var names = new[]

@@ -2,7 +2,7 @@
 using CppSharp.Generators;
 using CppSharp.Passes;
 
-namespace ImGuiNET.Generator;
+namespace ImGuiNET.Generator.Passes;
 
 internal sealed class MyRenameOutputPass : GeneratorOutputPass
 {

@@ -1,4 +1,5 @@
 ﻿using CppSharp;
+using ImGuiNET.Generator.Logging;
 
 namespace ImGuiNET.Generator;
 

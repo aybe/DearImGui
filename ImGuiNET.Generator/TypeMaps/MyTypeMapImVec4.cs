@@ -5,15 +5,15 @@ using CppSharp.Types;
 using JetBrains.Annotations;
 using Type = CppSharp.AST.Type;
 
-namespace ImGuiNET.Generator;
+namespace ImGuiNET.Generator.TypeMaps;
 
 [UsedImplicitly]
-//[TypeMap("ImVec2", GeneratorKind.CSharp)] // TODO not working completely
-internal sealed class MyTypeMapImVec2 : TypeMap
+//[TypeMap("ImVec4", GeneratorKind.CSharp)] // TODO not working completely
+internal sealed class MyTypeMapImVec4 : TypeMap
 {
     public override Type CSharpSignatureType(TypePrinterContext ctx)
     {
-        return new CILType(typeof(Vector2));
+        return new CILType(typeof(Vector4));
     }
 
     public override void CSharpMarshalToNative(CSharpMarshalContext ctx)
@@ -32,7 +32,7 @@ internal sealed class MyTypeMapImVec2 : TypeMap
     {
         if (ctx.ReturnVarName == "___ret")
         {
-            ctx.Return.Write("new global::System.Numerics.Vector2(___ret.x, ___ret.y)");
+            ctx.Return.Write("new global::System.Numerics.Vector4(___ret.x, ___ret.y, ___ret.z, ___ret.w)");
         }
         else
         {
