@@ -1,9 +1,11 @@
-﻿namespace imgui.cppsharp.generator;
+﻿using CppSharp;
 
-internal class Program
+namespace imgui.cppsharp.generator;
+
+internal static class Program
 {
-    static void Main(string[] args)
+    private static void Main()
     {
-        Console.WriteLine("Hello, World!");
+        ConsoleDriver.Run(new MyLibrary());
     }
 }
