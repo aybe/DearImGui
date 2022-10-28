@@ -42,11 +42,19 @@ internal sealed class MyLibrary : ILibrary
 
     public void SetupPasses(Driver driver)
     {
+        driver.AddTranslationUnitPass(new EnumRenamePass());
+
+        if (Enhanced is true)
+        {
+        }
+
         driver.Generator.OnUnitGenerated += OnUnitGenerated;
     }
 
     public void Preprocess(Driver driver, ASTContext ctx)
     {
+        Experimental.RemoveEnumerations(ctx);
+
         if (Enhanced is true)
         {
             return;

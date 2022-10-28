@@ -65,6 +65,46 @@ internal static class Experimental
         p.ExplicitlyIgnore();
     }
 
+    public static void RemoveEnumerations(ASTContext ctx)
+    {
+        foreach (var enumeration in ctx.TranslationUnits.SelectMany(s => s.Declarations).OfType<Enumeration>())
+        {
+            if (enumeration.Name.EndsWith("Private_", StringComparison.Ordinal))
+            {
+                enumeration.ExplicitlyIgnore();
+                continue;
+            }
+
+            foreach (var item in enumeration.Items)
+            {
+                if (item.Name.EndsWith("_BEGIN", StringComparison.Ordinal))
+                {
+                    item.ExplicitlyIgnore();
+                }
+
+                if (item.Name.EndsWith("_END", StringComparison.Ordinal))
+                {
+                    item.ExplicitlyIgnore();
+                }
+
+                if (item.Name.EndsWith("_COUNT", StringComparison.Ordinal))
+                {
+                    item.ExplicitlyIgnore();
+                }
+
+                if (item.Name.EndsWith("_SIZE", StringComparison.Ordinal))
+                {
+                    item.ExplicitlyIgnore();
+                }
+
+                if (item.Name.EndsWith("_OFFSET", StringComparison.Ordinal))
+                {
+                    item.ExplicitlyIgnore();
+                }
+            }
+        }
+    }
+
     public static void RemovePasses(Driver driver, [CallerMemberName] string memberName = null!)
     {
         // WARNING
