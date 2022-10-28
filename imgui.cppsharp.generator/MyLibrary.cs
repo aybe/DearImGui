@@ -47,6 +47,11 @@ internal sealed class MyLibrary : ILibrary
 
     public void Preprocess(Driver driver, ASTContext ctx)
     {
+        if (Enhanced is true)
+        {
+            Experimental.RemovePasses(driver);
+        }
+
         SetValueTypes(ctx);
 
         FlattenNamespace(ctx);
