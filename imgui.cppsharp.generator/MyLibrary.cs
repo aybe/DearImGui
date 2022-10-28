@@ -49,6 +49,7 @@ internal sealed class MyLibrary : ILibrary
     {
         if (Enhanced is true)
         {
+            return;
             Experimental.RemovePasses(driver);
 
             // does nothing
@@ -65,6 +66,7 @@ internal sealed class MyLibrary : ILibrary
     {
         if (Enhanced is true)
         {
+            return;
             Experimental.IgnoreMembers(ctx);
         }
     }
