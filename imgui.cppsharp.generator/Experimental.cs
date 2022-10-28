@@ -1,12 +1,70 @@
 ﻿using System.Runtime.CompilerServices;
 using CppSharp;
 using CppSharp.AST;
+using CppSharp.Generators;
 using CppSharp.Passes;
 
 namespace imgui.cppsharp.generator;
 
 internal static class Experimental
 {
+    public static void FlattenNamespace(ASTContext ctx)
+    {
+        // TODO rename imgui class to ImGui
+
+        foreach (var unit in ctx.TranslationUnits)
+        {
+            if (unit.FileName != "imgui.h")
+                continue;
+
+            var ns = unit.Declarations.OfType<Namespace>().Single();
+
+            var declarations = ns.Declarations.ToArray();
+
+            ns.Declarations.Clear();
+
+            unit.Declarations.AddRange(declarations);
+        }
+    }
+
+    public static void IgnoreMembers(ASTContext ctx)
+    {
+        // TODO if using type map, these shall not be ignored else a bunch of errors will appear
+
+        // ctx.IgnoreClassWithName("ImVec2");
+        // ctx.IgnoreClassWithName("ImVec4");
+
+
+        // removing ImVector introduces way more errors than keeping it
+        // ctx.IgnoreClassWithName("ImVector");
+
+
+        // TODO implement these members manually
+
+        IgnoreMethod(ctx, "ImFontAtlas", "GetMouseCursorTexData"); // BUG struct is not nullable
+
+        IgnoreProperty(ctx, "ImVec2", "Item"); // BUG indexer setter
+        IgnoreProperty(ctx, "ImGuiStyle", "Colors"); // BUG indexer getter and setter
+        IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos"); // BUG indexer getter and setter
+        IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines"); // BUG indexer getter and setter
+    }
+
+    private static void IgnoreMethod(ASTContext ctx, string className, string methodName)
+    {
+        var c = ctx.FindCompleteClass(className);
+        var m = c.Methods.Single(s => s.Name == methodName);
+
+        m.ExplicitlyIgnore();
+    }
+
+    private static void IgnoreProperty(ASTContext ctx, string className, string propertyName)
+    {
+        var c = ctx.FindCompleteClass(className);
+        var p = c.Properties.Single(s => s.Name == propertyName);
+
+        p.ExplicitlyIgnore();
+    }
+
     public static void RemovePasses(Driver driver, [CallerMemberName] string memberName = null!)
     {
         // WARNING
@@ -35,5 +93,24 @@ internal static class Experimental
         {
             parameter.IsIndirect = false;
         }
+    }
+
+    public static void SetValueTypes(ASTContext ctx)
+    {
+        ctx.SetClassAsValueType("ImVec2");
+        ctx.SetClassAsValueType("ImVec4");
+    }
+
+    public static void UpdateHeader(CodeGenerator generator)
+    {
+        var header = generator.FindBlock(BlockKind.Header);
+
+        header.Text.WriteLine(
+            "#pragma warning disable CS0109 // The member 'member' does not hide an inherited member. The new keyword is not required");
+
+        var usings = generator.FindBlock(BlockKind.Usings);
+
+        usings.Text.WriteLine(
+            "using System.Runtime.CompilerServices;");
     }
 }
