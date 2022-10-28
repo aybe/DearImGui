@@ -1,6 +1,7 @@
 ﻿using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
+using imgui.cppsharp.generator.Passes;
 
 // ReSharper disable IdentifierTypo
 // ReSharper disable RedundantIfElseBlock
@@ -49,6 +50,8 @@ internal sealed class MyLibrary : ILibrary
                 new KeyValuePair<string, string>("class imgui", "class ImGui")
             )
         );
+
+        driver.AddGeneratorOutputPass(new FixInternalStructsVisibility());
 
         if (Enhanced is true)
         {
