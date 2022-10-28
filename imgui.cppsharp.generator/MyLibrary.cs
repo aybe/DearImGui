@@ -55,6 +55,8 @@ internal sealed class MyLibrary : ILibrary
     {
         Experimental.RemoveEnumerations(ctx);
 
+        Experimental.FlattenNamespace(ctx);
+
         if (Enhanced is true)
         {
             return;
@@ -65,8 +67,6 @@ internal sealed class MyLibrary : ILibrary
             // Experimental.RemoveIndirection(ctx, "const ImVec4");
 
             Experimental.SetValueTypes(ctx);
-
-            Experimental.FlattenNamespace(ctx);
         }
     }
 
