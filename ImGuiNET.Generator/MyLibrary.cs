@@ -45,13 +45,7 @@ internal sealed class MyLibrary : ILibrary
     {
         driver.AddTranslationUnitPass(new CleanupEnumerations());
 
-        driver.AddGeneratorOutputPass(
-            new MyRenameOutputPass(
-                new KeyValuePair<string, string>("class imgui", "class ImGui")
-            )
-        );
-
-        driver.AddGeneratorOutputPass(new FixStructs());
+        driver.AddGeneratorOutputPass(new CleanupTypes());
 
         if (Enhanced is true)
         {

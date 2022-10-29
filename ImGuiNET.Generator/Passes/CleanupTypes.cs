@@ -4,7 +4,7 @@ using CppSharp.Passes;
 
 namespace ImGuiNET.Generator.Passes;
 
-internal sealed class FixStructs : GeneratorOutputPass
+internal sealed class CleanupTypes : GeneratorOutputPass
 {
     public override void VisitGeneratorOutput(GeneratorOutput output)
     {
@@ -12,11 +12,16 @@ internal sealed class FixStructs : GeneratorOutputPass
 
         foreach (var block in blocks)
         {
+            var builder = block.Text.StringBuilder;
+
+            builder.Replace("class imgui", "class ImGui");
+
             // BUG still internal ImDrawListSharedData.__Internal
             // BUG still internal ImFontBuilderIO.__Internal
             // BUG still internal ImGuiContext.__Internal
             // BUG still internal ImVector.__Internal
-            block.Text.StringBuilder.Replace("public partial struct __Internal", "internal partial struct __Internal");
+
+            builder.Replace("public partial struct __Internal", "internal partial struct __Internal");
         }
     }
 }
