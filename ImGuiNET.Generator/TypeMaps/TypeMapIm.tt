@@ -13,6 +13,7 @@ namespace ImGuiNET.Generator.TypeMaps;
 		"ImGuiBackendFlags",
 		"ImGuiButtonFlags",
 		"ImGuiColorEditFlags",
+		"ImGuiCol",
 		"ImGuiComboFlags",
 		"ImGuiConfigFlags",
 		"ImGuiDataType",
@@ -36,7 +37,6 @@ namespace ImGuiNET.Generator.TypeMaps;
 		"ImGuiWindowFlags"
 // TODO "ImDrawListFlags",
 // TODO "ImFontAtlasFlags",
-// TODO "ImGuiCol",
 // TODO "ImGuiCond",
 // TODO "ImGuiMouseButton",
 // TODO "ImGuiMouseCursor",
