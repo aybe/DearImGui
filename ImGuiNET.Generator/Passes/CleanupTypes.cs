@@ -16,12 +16,11 @@ internal sealed class CleanupTypes : GeneratorOutputPass
 
             builder.Replace("class imgui", "class ImGui");
 
-            // BUG still internal ImDrawListSharedData.__Internal
-            // BUG still internal ImFontBuilderIO.__Internal
-            // BUG still internal ImGuiContext.__Internal
-            // BUG still internal ImVector.__Internal
-
             builder.Replace("public partial struct __Internal", "internal partial struct __Internal");
+
+            builder.Replace("public unsafe partial struct __Internal", "internal unsafe partial struct __Internal");
+
+            // BUG still some public partial struct __Internal
         }
     }
 }
