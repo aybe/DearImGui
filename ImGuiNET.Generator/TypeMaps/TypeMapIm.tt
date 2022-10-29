@@ -22,6 +22,7 @@ namespace ImGuiNET.Generator.TypeMaps;
 		"ImGuiDir",
 		"ImGuiDragDropFlags",
 		"ImGuiFocusedFlags",
+		"ImFontAtlasFlags",
 		"ImGuiHoveredFlags",
 		"ImGuiInputTextFlags",
 		"ImGuiKey",
@@ -40,7 +41,6 @@ namespace ImGuiNET.Generator.TypeMaps;
 		"ImGuiTableRowFlags",
 		"ImGuiTreeNodeFlags",
 		"ImGuiWindowFlags"
-// TODO "ImFontAtlasFlags",
 // TODO "ImGuiViewportFlags",
 	};
 
