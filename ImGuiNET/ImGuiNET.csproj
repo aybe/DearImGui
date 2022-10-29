@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CppSharp" Version="1.0.33.49587" />
     <PackageReference Include="CppSharp.Runtime" Version="1.0.33.49587" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
   </ItemGroup>
