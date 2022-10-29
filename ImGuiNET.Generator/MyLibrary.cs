@@ -43,7 +43,7 @@ internal sealed class MyLibrary : ILibrary
 
     public void SetupPasses(Driver driver)
     {
-        driver.AddTranslationUnitPass(new EnumRenamePass());
+        driver.AddTranslationUnitPass(new CleanupEnumerations());
 
         driver.AddGeneratorOutputPass(
             new MyRenameOutputPass(

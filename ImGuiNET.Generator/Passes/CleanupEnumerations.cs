@@ -3,7 +3,7 @@ using CppSharp.Passes;
 
 namespace ImGuiNET.Generator.Passes;
 
-internal sealed class EnumRenamePass : RenamePass
+internal sealed class CleanupEnumerations : RenamePass
 {
     public override bool Rename(Declaration decl, out string newName)
     {
