@@ -75,6 +75,11 @@ internal static class Program
             "ImGui"
         );
 
+        builder.Replace(
+            "\"ImGui\"",
+            "\"imgui\""
+        );
+
         // hide structs that should have been internal
 
         builder.Replace(
