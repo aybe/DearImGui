@@ -69,8 +69,6 @@ internal sealed class MyLibrary : ILibrary
 
         if (Enhanced is true)
         {
-            return;
-
             // does nothing
             // Experimental.RemoveIndirection(ctx, "const ImVec2");
             // Experimental.RemoveIndirection(ctx, "const ImVec4");
@@ -83,16 +81,14 @@ internal sealed class MyLibrary : ILibrary
         Experimental.IgnoreProperty(ctx, "ImGuiStyle", "Colors"); // BUG indexer getter and setter
         Experimental.IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos"); // BUG indexer getter and setter
         Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines"); // BUG indexer getter and setter
-        
+
         Experimental.IgnoreProperty(ctx, "ImVector", "Item"); // BUG indexer getter and setter
         Experimental.IgnoreProperty(ctx, "ImVector", "Data"); // BUG indexer getter and setter
-        
+
         Experimental.IgnoreMethod(ctx, "ImFontAtlas", "GetMouseCursorTexData"); // BUG struct is not nullable
 
         if (Enhanced is true)
         {
-            return;
-            Experimental.IgnoreMembers(ctx);
         }
     }
 

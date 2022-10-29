@@ -27,28 +27,6 @@ internal static class Experimental
         }
     }
 
-    public static void IgnoreMembers(ASTContext ctx)
-    {
-        // TODO if using type map, these shall not be ignored else a bunch of errors will appear
-
-        // ctx.IgnoreClassWithName("ImVec2");
-        // ctx.IgnoreClassWithName("ImVec4");
-
-
-        // removing ImVector introduces way more errors than keeping it
-        // ctx.IgnoreClassWithName("ImVector");
-
-
-        // TODO implement these members manually
-
-        IgnoreMethod(ctx, "ImFontAtlas", "GetMouseCursorTexData"); // BUG struct is not nullable
-
-        IgnoreProperty(ctx, "ImVec2", "Item"); // BUG indexer setter
-        IgnoreProperty(ctx, "ImGuiStyle", "Colors"); // BUG indexer getter and setter
-        IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos"); // BUG indexer getter and setter
-        IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines"); // BUG indexer getter and setter
-    }
-
     public static void IgnoreMethod(ASTContext ctx, string className, string methodName)
     {
         var c = ctx.FindCompleteClass(className);
@@ -68,7 +46,7 @@ internal static class Experimental
     public static void RemoveEnumerations(ASTContext ctx)
     {
         ctx.FindCompleteEnum("ImGuiModFlags_").ExplicitlyIgnore();
-        
+
         ctx.FindCompleteEnum("ImGuiNavInput_").ExplicitlyIgnore();
 
         foreach (var enumeration in ctx.TranslationUnits.SelectMany(s => s.Declarations).OfType<Enumeration>())
