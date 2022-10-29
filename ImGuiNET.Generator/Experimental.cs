@@ -57,7 +57,7 @@ internal static class Experimental
         m.ExplicitlyIgnore();
     }
 
-    private static void IgnoreProperty(ASTContext ctx, string className, string propertyName)
+    public static void IgnoreProperty(ASTContext ctx, string className, string propertyName)
     {
         var c = ctx.FindCompleteClass(className);
         var p = c.Properties.Single(s => s.Name == propertyName);

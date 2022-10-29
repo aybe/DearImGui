@@ -78,6 +78,9 @@ internal sealed class MyLibrary : ILibrary
 
     public void Postprocess(Driver driver, ASTContext ctx)
     {
+        Experimental.IgnoreProperty(ctx, "ImVector", "Item"); // BUG indexer getter and setter
+        Experimental.IgnoreProperty(ctx, "ImVector", "Data"); // BUG indexer getter and setter
+
         if (Enhanced is true)
         {
             return;
