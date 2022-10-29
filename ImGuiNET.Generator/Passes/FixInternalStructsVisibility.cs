@@ -12,6 +12,10 @@ internal sealed class FixInternalStructsVisibility : GeneratorOutputPass
 
         foreach (var block in blocks)
         {
+            // BUG still internal ImDrawListSharedData.__Internal
+            // BUG still internal ImFontBuilderIO.__Internal
+            // BUG still internal ImGuiContext.__Internal
+            // BUG still internal ImVector.__Internal
             block.Text.StringBuilder.Replace("public partial struct __Internal", "internal partial struct __Internal");
         }
     }
