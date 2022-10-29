@@ -62,6 +62,8 @@ internal sealed class MyLibrary : ILibrary
 
         Experimental.RemovePasses(driver);
 
+        ctx.IgnoreFunctionWithName("IM_DELETE");
+
         if (Enhanced is true)
         {
             return;
