@@ -25,6 +25,7 @@ namespace ImGuiNET.Generator.TypeMaps;
 		"ImGuiTabItemFlags",
 		"ImGuiTableColumnFlags",
 		"ImGuiTableFlags",
+		"ImGuiTableRowFlags",
 		"ImGuiTreeNodeFlags",
 		"ImGuiWindowFlags"
 // TODO "ImDrawListFlags",
@@ -42,7 +43,6 @@ namespace ImGuiNET.Generator.TypeMaps;
 // TODO "ImGuiSortDirection",
 // TODO "ImGuiStyleVar",
 // TODO "ImGuiTableBgTarget",
-// TODO "ImGuiTableRowFlags",
 // TODO "ImGuiViewportFlags",
 	};
 
