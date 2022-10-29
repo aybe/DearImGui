@@ -99,6 +99,23 @@ internal static class Program
             "internal static partial class ImVector"
         );
 
+        // merge symbols with class to remove __Symbols namespace
+
+        builder.Replace(
+            "}\r\nnamespace ImGuiNET.__Symbols\r\n{\r\n    internal class ImGui",
+            "    public unsafe partial class ImGui"
+        );
+
+        builder.Replace(
+            "public static IntPtr _EmptyString_ImGuiTextBuffer__2PADA",
+            "internal static IntPtr _EmptyString_ImGuiTextBuffer__2PADA"
+        );
+
+        builder.Replace(
+            ".__Symbols",
+            string.Empty
+        );
+
         return builder.ToString();
     }
 }
