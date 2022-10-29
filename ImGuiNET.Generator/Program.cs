@@ -5,23 +5,44 @@ namespace ImGuiNET.Generator;
 
 internal static class Program
 {
-    private static void Main()
+    private static void Main(string[] args)
     {
-        Directory.CreateDirectory("OLD");
-        Directory.CreateDirectory("NEW");
-
-        using (var writer = new StreamWriter(File.Create(@"OLD\output.txt")))
-        using (new AggregateConsoleOut(writer))
+        if (args.Length is 0)
         {
-            ConsoleDriver.Run(new MyLibrary { Enhanced = false });
+            Console.WriteLine("No arguments given, available arguments:");
+            Console.WriteLine("\t-old: generate old version");
+            Console.WriteLine("\t-new: generate new version");
+            return;
         }
 
-        Console.Clear();
+        Console.WriteLine("Code generation started.");
 
-        using (var writer = new StreamWriter(File.Create(@"NEW\output.txt")))
-        using (new AggregateConsoleOut(writer))
+        if (args.Contains("-old", StringComparer.OrdinalIgnoreCase))
         {
-            ConsoleDriver.Run(new MyLibrary { Enhanced = true });
+            Console.WriteLine("Generating old version.");
+
+            Directory.CreateDirectory("OLD");
+
+            using (var writer = new StreamWriter(File.Create(@"OLD\output.txt")))
+            using (new AggregateConsoleOut(writer))
+            {
+                ConsoleDriver.Run(new MyLibrary { Enhanced = false });
+            }
         }
+
+        if (args.Contains("-new", StringComparer.OrdinalIgnoreCase))
+        {
+            Console.WriteLine("Generating new version.");
+
+            Directory.CreateDirectory("NEW");
+
+            using (var writer = new StreamWriter(File.Create(@"NEW\output.txt")))
+            using (new AggregateConsoleOut(writer))
+            {
+                ConsoleDriver.Run(new MyLibrary { Enhanced = true });
+            }
+        }
+
+        Console.WriteLine("Code generation finished.");
     }
 }
