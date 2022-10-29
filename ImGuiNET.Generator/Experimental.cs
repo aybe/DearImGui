@@ -67,6 +67,8 @@ internal static class Experimental
 
     public static void RemoveEnumerations(ASTContext ctx)
     {
+        ctx.FindCompleteEnum("ImGuiModFlags_").ExplicitlyIgnore();
+
         foreach (var enumeration in ctx.TranslationUnits.SelectMany(s => s.Declarations).OfType<Enumeration>())
         {
             if (enumeration.Name.EndsWith("Private_", StringComparison.Ordinal))
