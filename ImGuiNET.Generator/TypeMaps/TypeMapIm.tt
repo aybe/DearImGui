@@ -23,6 +23,7 @@ namespace ImGuiNET.Generator.TypeMaps;
 		"ImGuiHoveredFlags",
 		"ImGuiInputTextFlags",
 		"ImGuiKey",
+		"ImGuiMouseButton",
 		"ImGuiPopupFlags",
 		"ImGuiSelectableFlags",
 		"ImGuiSortDirection",
@@ -39,7 +40,6 @@ namespace ImGuiNET.Generator.TypeMaps;
 // TODO "ImDrawListFlags",
 // TODO "ImFontAtlasFlags",
 // TODO "ImGuiCond",
-// TODO "ImGuiMouseButton",
 // TODO "ImGuiMouseCursor",
 // TODO "ImGuiViewportFlags",
 	};
