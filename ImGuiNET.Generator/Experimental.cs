@@ -87,15 +87,7 @@ internal static class Experimental
         }
     }
 
-    public static void RemovePasses(Driver driver, [CallerMemberName] string memberName = null!)
-    {
-        // WARNING
-        // while this restores bunch of ignored methods, it changes tons of cctor to ctor too
-
-        RemovePass<CheckIgnoredDeclsPass>(driver, memberName);
-    }
-
-    private static void RemovePass<T>(Driver driver, string memberName) where T : TranslationUnitPass
+    public static void RemovePass<T>(Driver driver, [CallerMemberName] string memberName = null!) where T : TranslationUnitPass
     {
         var count = driver.Context.TranslationUnitPasses.Passes.RemoveAll(s => s is T);
 

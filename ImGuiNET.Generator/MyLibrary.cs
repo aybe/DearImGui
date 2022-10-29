@@ -1,6 +1,7 @@
 ﻿using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
+using CppSharp.Passes;
 using ImGuiNET.Generator.Passes;
 
 // ReSharper disable IdentifierTypo
@@ -60,7 +61,7 @@ internal sealed class MyLibrary : ILibrary
 
         Experimental.FlattenNamespace(ctx);
 
-        Experimental.RemovePasses(driver);
+        Experimental.RemovePass<CheckIgnoredDeclsPass>(driver);
 
         ctx.SetClassAsValueType("ImVec2");
         ctx.SetClassAsValueType("ImVec4");
