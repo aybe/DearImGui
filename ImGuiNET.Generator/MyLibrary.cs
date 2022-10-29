@@ -62,8 +62,8 @@ internal sealed class MyLibrary : ILibrary
 
         if (Enhanced is true)
         {
-            return;
             Experimental.RemovePasses(driver);
+            return;
 
             // does nothing
             // Experimental.RemoveIndirection(ctx, "const ImVec2");
