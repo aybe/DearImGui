@@ -92,6 +92,13 @@ internal static class Program
             "internal unsafe partial struct __Internal"
         );
 
+        // hide ImVector namespace as internal class as it cannot be moved onto ImVector<T> because of CS7042
+
+        builder.Replace(
+            "namespace ImVector",
+            "internal static partial class ImVector"
+        );
+
         return builder.ToString();
     }
 }
