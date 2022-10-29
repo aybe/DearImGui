@@ -27,6 +27,7 @@ namespace ImGuiNET.Generator.TypeMaps;
 		"ImGuiSelectableFlags",
 		"ImGuiSortDirection",
 		"ImGuiSliderFlags",
+		"ImGuiStyleVar",
 		"ImGuiTabBarFlags",
 		"ImGuiTabItemFlags",
 		"ImGuiTableBgTarget",
@@ -40,7 +41,6 @@ namespace ImGuiNET.Generator.TypeMaps;
 // TODO "ImGuiCond",
 // TODO "ImGuiMouseButton",
 // TODO "ImGuiMouseCursor",
-// TODO "ImGuiStyleVar",
 // TODO "ImGuiViewportFlags",
 	};
 
