@@ -40,10 +40,9 @@ namespace ImGuiNET.Generator.TypeMaps;
 		"ImGuiTableFlags",
 		"ImGuiTableRowFlags",
 		"ImGuiTreeNodeFlags",
+		"ImGuiViewportFlags",
 		"ImGuiWindowFlags"
-// TODO "ImGuiViewportFlags",
 	};
-
 
 	foreach (var name in names)
 	{
