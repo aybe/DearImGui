@@ -62,6 +62,9 @@ internal sealed class MyLibrary : ILibrary
 
         Experimental.RemovePasses(driver);
 
+        ctx.SetClassAsValueType("ImVec2");
+        ctx.SetClassAsValueType("ImVec4");
+
         ctx.IgnoreFunctionWithName("IM_DELETE");
 
         if (Enhanced is true)
@@ -71,8 +74,6 @@ internal sealed class MyLibrary : ILibrary
             // does nothing
             // Experimental.RemoveIndirection(ctx, "const ImVec2");
             // Experimental.RemoveIndirection(ctx, "const ImVec4");
-
-            Experimental.SetValueTypes(ctx);
         }
     }
 

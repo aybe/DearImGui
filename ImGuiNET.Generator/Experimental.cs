@@ -139,12 +139,6 @@ internal static class Experimental
         }
     }
 
-    public static void SetValueTypes(ASTContext ctx)
-    {
-        ctx.SetClassAsValueType("ImVec2");
-        ctx.SetClassAsValueType("ImVec4");
-    }
-
     public static void UpdateHeader(CodeGenerator generator)
     {
         var header = generator.FindBlock(BlockKind.Header);
