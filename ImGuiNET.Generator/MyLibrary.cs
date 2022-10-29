@@ -87,12 +87,54 @@ internal sealed class MyLibrary : ILibrary
 
         Experimental.IgnoreMethod(ctx, "ImFontAtlas", "GetMouseCursorTexData"); // BUG struct is not nullable
 
+        PostprocessDelegates(ctx);
+
         if (Enhanced is true)
         {
         }
     }
 
     #endregion
+
+    private static void PostprocessDelegates(ASTContext ctx)
+    {
+        // rename delegates to more appropriate names
+
+        var tu = GetImGuiTranslationUnit(ctx);
+
+        var ns = tu.FindNamespace("Delegates");
+
+        ns.FindTypedef("Func___IntPtr___IntPtr")
+            .Name = "ImGetClipboardTextHandler";
+
+        ns.FindTypedef("Action___IntPtr_string8")
+            .Name = "ImSetClipboardTextHandler";
+
+        ns.FindTypedef("Action___IntPtr___IntPtr")
+            .Name = "ImSetPlatformImeDataHandler";
+
+        ns.FindTypedef("Func_bool___IntPtr_int_sbytePtrPtr")
+            .Name = "ImItemsGetterHandler";
+
+        ns.FindTypedef("Func_float___IntPtr_int")
+            .Name = "ImValuesGetterHandler";
+
+        // move delegates to upper namespace
+
+        foreach (var declaration in ns.Declarations)
+        {
+            declaration.Namespace = tu;
+        }
+
+        tu.Declarations.AddRange(ns.Declarations);
+
+        ns.Declarations.Clear();
+    }
+
+    private static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
+    {
+        return ctx.TranslationUnits.Single(s => s.FileName == "imgui.h");
+    }
 
     private static void OnUnitGenerated(GeneratorOutput output)
     {
