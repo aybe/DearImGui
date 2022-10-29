@@ -49,7 +49,7 @@ internal static class Experimental
         IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines"); // BUG indexer getter and setter
     }
 
-    private static void IgnoreMethod(ASTContext ctx, string className, string methodName)
+    public static void IgnoreMethod(ASTContext ctx, string className, string methodName)
     {
         var c = ctx.FindCompleteClass(className);
         var m = c.Methods.Single(s => s.Name == methodName);

@@ -79,8 +79,15 @@ internal sealed class MyLibrary : ILibrary
 
     public void Postprocess(Driver driver, ASTContext ctx)
     {
+        Experimental.IgnoreProperty(ctx, "ImVec2", "Item"); // BUG indexer setter
+        Experimental.IgnoreProperty(ctx, "ImGuiStyle", "Colors"); // BUG indexer getter and setter
+        Experimental.IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos"); // BUG indexer getter and setter
+        Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines"); // BUG indexer getter and setter
+        
         Experimental.IgnoreProperty(ctx, "ImVector", "Item"); // BUG indexer getter and setter
         Experimental.IgnoreProperty(ctx, "ImVector", "Data"); // BUG indexer getter and setter
+        
+        Experimental.IgnoreMethod(ctx, "ImFontAtlas", "GetMouseCursorTexData"); // BUG struct is not nullable
 
         if (Enhanced is true)
         {
