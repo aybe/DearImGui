@@ -60,9 +60,10 @@ internal sealed class MyLibrary : ILibrary
 
         Experimental.FlattenNamespace(ctx);
 
+        Experimental.RemovePasses(driver);
+
         if (Enhanced is true)
         {
-            Experimental.RemovePasses(driver);
             return;
 
             // does nothing
