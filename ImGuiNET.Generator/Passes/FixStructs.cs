@@ -4,7 +4,7 @@ using CppSharp.Passes;
 
 namespace ImGuiNET.Generator.Passes;
 
-internal sealed class FixInternalStructsVisibility : GeneratorOutputPass
+internal sealed class FixStructs : GeneratorOutputPass
 {
     public override void VisitGeneratorOutput(GeneratorOutput output)
     {

@@ -51,7 +51,7 @@ internal sealed class MyLibrary : ILibrary
             )
         );
 
-        driver.AddGeneratorOutputPass(new FixInternalStructsVisibility());
+        driver.AddGeneratorOutputPass(new FixStructs());
 
         if (Enhanced is true)
         {
