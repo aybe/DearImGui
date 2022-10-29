@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImGuiNET", "ImGuiNET\ImGuiN
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImGuiNET.Generator", "ImGuiNET.Generator\ImGuiNET.Generator.csproj", "{023B1F68-D654-4501-A99A-C499EBAAC295}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImGuiNET.Test", "ImGuiNET.Test\ImGuiNET.Test.csproj", "{0D17DAB9-49D8-4CFC-9814-24DBBF309BDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{023B1F68-D654-4501-A99A-C499EBAAC295}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{023B1F68-D654-4501-A99A-C499EBAAC295}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{023B1F68-D654-4501-A99A-C499EBAAC295}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D17DAB9-49D8-4CFC-9814-24DBBF309BDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D17DAB9-49D8-4CFC-9814-24DBBF309BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D17DAB9-49D8-4CFC-9814-24DBBF309BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D17DAB9-49D8-4CFC-9814-24DBBF309BDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
