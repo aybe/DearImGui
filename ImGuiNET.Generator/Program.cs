@@ -1,5 +1,8 @@
-﻿using CppSharp;
+﻿using System.Text;
+using CppSharp;
 using ImGuiNET.Generator.Logging;
+
+// ReSharper disable StringLiteralTypo
 
 namespace ImGuiNET.Generator;
 
@@ -12,6 +15,7 @@ internal static class Program
             Console.WriteLine("No arguments given, available arguments:");
             Console.WriteLine("\t-old: generate old version");
             Console.WriteLine("\t-new: generate new version");
+            Console.WriteLine("\t-cln: cleaning new version");
             return;
         }
 
@@ -43,6 +47,46 @@ internal static class Program
             }
         }
 
+        if (args.Contains("-cln", StringComparer.OrdinalIgnoreCase))
+        {
+            var path = Path.Combine(Environment.CurrentDirectory, "NEW", "imgui.cs");
+
+            if (!File.Exists(path))
+                return;
+
+            // GeneratorOutputPass misses some structs for whatever reason so let's do it all here
+
+            var text = File.ReadAllText(path);
+
+            var cleanup = Cleanup(text);
+
+            File.WriteAllText(path, cleanup);
+        }
+
         Console.WriteLine("Code generation finished.");
+    }
+
+    private static string Cleanup(string text)
+    {
+        var builder = new StringBuilder(text);
+
+        builder.Replace(
+            "imgui",
+            "ImGui"
+        );
+
+        // hide structs that should have been internal
+
+        builder.Replace(
+            "public partial struct __Internal",
+            "internal partial struct __Internal"
+        );
+
+        builder.Replace(
+            "public unsafe partial struct __Internal",
+            "internal unsafe partial struct __Internal"
+        );
+
+        return builder.ToString();
     }
 }

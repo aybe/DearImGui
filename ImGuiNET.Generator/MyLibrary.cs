@@ -46,8 +46,6 @@ internal sealed class MyLibrary : ILibrary
     {
         driver.AddTranslationUnitPass(new CleanupEnumerations());
 
-        driver.AddGeneratorOutputPass(new CleanupTypes());
-
         if (Enhanced is true)
         {
         }
