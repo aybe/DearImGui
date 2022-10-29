@@ -68,6 +68,8 @@ internal static class Experimental
     public static void RemoveEnumerations(ASTContext ctx)
     {
         ctx.FindCompleteEnum("ImGuiModFlags_").ExplicitlyIgnore();
+        
+        ctx.FindCompleteEnum("ImGuiNavInput_").ExplicitlyIgnore();
 
         foreach (var enumeration in ctx.TranslationUnits.SelectMany(s => s.Declarations).OfType<Enumeration>())
         {

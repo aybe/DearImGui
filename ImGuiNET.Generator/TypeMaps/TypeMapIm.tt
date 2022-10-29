@@ -40,7 +40,6 @@ namespace ImGuiNET.Generator.TypeMaps;
 // TODO "ImGuiConfigFlags",
 // TODO "ImGuiMouseButton",
 // TODO "ImGuiMouseCursor",
-// TODO "ImGuiNavInput",
 // TODO "ImGuiStyleVar",
 // TODO "ImGuiViewportFlags",
 	};
