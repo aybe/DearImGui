@@ -10,6 +10,7 @@ namespace ImGuiNET.Generator.TypeMaps;
 	var names = new[]
 	{
 		"ImDrawFlags",
+		"ImDrawListFlags",
 		"ImGuiBackendFlags",
 		"ImGuiButtonFlags",
 		"ImGuiColorEditFlags",
@@ -39,7 +40,6 @@ namespace ImGuiNET.Generator.TypeMaps;
 		"ImGuiTableRowFlags",
 		"ImGuiTreeNodeFlags",
 		"ImGuiWindowFlags"
-// TODO "ImDrawListFlags",
 // TODO "ImFontAtlasFlags",
 // TODO "ImGuiViewportFlags",
 	};
