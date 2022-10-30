@@ -71,6 +71,7 @@ internal sealed class MyLibrary : ILibrary
             ctx.IgnoreClassWithName("ImColor");
             ctx.IgnoreClassWithName("ImVec2");
             ctx.IgnoreClassWithName("ImVec4");
+            ctx.IgnoreClassWithName("ImVector");
         }
     }
 
@@ -81,11 +82,8 @@ internal sealed class MyLibrary : ILibrary
         Experimental.IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos");
         Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines");
 
-        // stuff that is yet to be done
-        Experimental.IgnoreProperty(ctx, "ImVector", "Item"); // BUG indexer getter and setter
-        Experimental.IgnoreProperty(ctx, "ImVector", "Data"); // BUG indexer getter and setter
-
         PostprocessDelegates(ctx);
+        PostprocessProperties(ctx);
 
         if (Enhanced is true)
         {
@@ -98,6 +96,27 @@ internal sealed class MyLibrary : ILibrary
     }
 
     #endregion
+
+    private static void PostprocessProperties(ASTContext ctx)
+    {
+        var unit = GetImGuiTranslationUnit(ctx);
+
+        foreach (var c in unit.Classes)
+        {
+            foreach (var p in c.Properties)
+            {
+                if (p.QualifiedType.Type is not TemplateSpecializationType type)
+                    continue;
+
+                if (type.Template.Name is not "ImVector")
+                    continue;
+
+                ctx.SetPropertyAsReadOnly(c.Name, p.Name);
+
+                Console.WriteLine($"ImVector<T> property set as read-only: {c.Name}.{p.Name}");
+            }
+        }
+    }
 
     private static void PostprocessDelegates(ASTContext ctx)
     {
