@@ -54,20 +54,18 @@ internal static class Program
             if (!File.Exists(path))
                 return;
 
-            // GeneratorOutputPass misses some structs for whatever reason so let's do it all here
-
-            var text = File.ReadAllText(path);
-
-            var cleanup = Cleanup(text);
-
-            File.WriteAllText(path, cleanup);
+            Cleanup(path);
         }
 
         Console.WriteLine("Code generation finished.");
     }
 
-    private static string Cleanup(string text)
+    private static void Cleanup(string path)
     {
+        // GeneratorOutputPass misses some structs for whatever reason so let's do it all here
+
+        var text = File.ReadAllText(path);
+
         var builder = new StringBuilder(text);
 
         builder.Replace(
@@ -123,6 +121,6 @@ internal static class Program
             string.Empty
         );
 
-        return builder.ToString();
+        File.WriteAllText(path, builder.ToString());
     }
 }
