@@ -30,7 +30,9 @@ internal sealed class MyLibrary : ILibrary
 
         options.GeneratorKind = GeneratorKind.CSharp;
         options.GenerateFinalizers = true;
+#if DEBUG
         options.GenerateDebugOutput = true;
+#endif
         options.MarshalCharAsManagedChar = true;
         options.Verbose = true;
 
