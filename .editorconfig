@@ -3,3 +3,6 @@
 
 # ReSharper properties
 resharper_csharp_max_line_length=180
+
+# IDE0079: Remove unnecessary suppression
+dotnet_diagnostic.IDE0079.severity = none
