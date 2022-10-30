@@ -10,7 +10,7 @@ namespace ImGuiNET.Generator.TypeMaps;
 
 [UsedImplicitly]
 [TypeMap("ImVector", GeneratorKind.CSharp)]
-internal sealed class MyTypeMapImVector : TypeMapBase
+internal sealed class TypeMapImVector : TypeMapBase
 {
     public override Type CSharpSignatureType(TypePrinterContext ctx)
     {
