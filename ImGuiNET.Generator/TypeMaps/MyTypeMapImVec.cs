@@ -9,18 +9,18 @@ internal abstract class MyTypeMapImVec : TypeMap
 {
     protected abstract Type TargetType { get; }
 
-    public override bool DoesMarshalling => base.DoesMarshalling;
+    public sealed override bool DoesMarshalling => base.DoesMarshalling;
 
-    public override bool IsIgnored => base.IsIgnored;
+    public sealed override bool IsIgnored => base.IsIgnored;
 
-    public override bool IsValueType => true;
+    public sealed override bool IsValueType => true;
 
-    public override CppSharp.AST.Type CSharpSignatureType(TypePrinterContext ctx)
+    public sealed override CppSharp.AST.Type CSharpSignatureType(TypePrinterContext ctx)
     {
         return new CILType(TargetType);
     }
 
-    public override void CSharpMarshalToNative(CSharpMarshalContext ctx)
+    public sealed override void CSharpMarshalToNative(CSharpMarshalContext ctx)
     {
         if (ctx.Function == null)
         {
@@ -71,7 +71,7 @@ internal abstract class MyTypeMapImVec : TypeMap
         }
     }
 
-    public override void CSharpMarshalToManaged(CSharpMarshalContext ctx)
+    public sealed override void CSharpMarshalToManaged(CSharpMarshalContext ctx)
     {
         var ctxReturnVarName = ctx.ReturnVarName;
         if (ctxReturnVarName == null)

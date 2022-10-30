@@ -69,6 +69,7 @@ internal sealed class MyLibrary : ILibrary
         if (Enhanced is true)
         {
             ctx.IgnoreClassWithName("ImVec2");
+            ctx.IgnoreClassWithName("ImVec4");
 
             // does nothing
             // Experimental.RemoveIndirection(ctx, "const ImVec2");

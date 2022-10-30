@@ -104,6 +104,12 @@ internal static class Program
             "internal unsafe partial struct ImVec2"
         );
 
+
+        builder.Replace(
+            "public unsafe partial struct ImVec4",
+            "internal unsafe partial struct ImVec4"
+        );
+
         // hide ImVector namespace as internal class as it cannot be moved onto ImVector<T> because of CS7042
 
         builder.Replace(
