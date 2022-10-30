@@ -110,6 +110,18 @@ internal static class Program
             "internal unsafe partial struct ImVec4"
         );
 
+        // pass vectors directly, doesn't mean that we can ditch type maps that did the heavy lifting
+
+        builder.Replace(
+            "new global::ImGuiNET.ImVec2.__Internal()",
+            "new global::System.Numerics.Vector2()"
+        );
+
+        builder.Replace(
+            "new global::ImGuiNET.ImVec4.__Internal()",
+            "new global::System.Numerics.Vector4()"
+        );
+
         // hide ImVector namespace as internal class as it cannot be moved onto ImVector<T> because of CS7042
 
         builder.Replace(
