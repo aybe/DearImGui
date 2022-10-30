@@ -7,6 +7,8 @@ using JetBrains.Annotations;
 namespace ImGuiNET.Generator.TypeMaps;
 
 <#
+	const string prefix = "TypeMapEnum";
+
 	var names = new[]
 	{
 		"ImDrawFlags",
@@ -48,7 +50,7 @@ namespace ImGuiNET.Generator.TypeMaps;
 	{
 #>
 [UsedImplicitly] [TypeMap("<#= name #>")]
-internal sealed class TypeMap<#= name #> : TypeMapIm { }
+internal sealed class <#= prefix #><#= name #> : <#= prefix #> { }
 
 <#
 	}

@@ -24,9 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="TypeMaps\TypeMapIm.tt">
+    <None Update="TypeMaps\TypeMapEnum.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TypeMapIm.g.cs</LastGenOutput>
+      <LastGenOutput>TypeMapEnum.g.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
@@ -35,10 +35,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="TypeMaps\TypeMapIm.g.cs">
+    <Compile Update="TypeMaps\TypeMapEnum.g.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>TypeMapIm.tt</DependentUpon>
+      <DependentUpon>TypeMapEnum.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

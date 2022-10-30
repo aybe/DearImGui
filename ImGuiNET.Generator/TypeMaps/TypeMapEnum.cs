@@ -5,7 +5,7 @@ using Type = CppSharp.AST.Type;
 
 namespace ImGuiNET.Generator.TypeMaps;
 
-internal abstract class TypeMapIm : TypeMap
+internal abstract class TypeMapEnum : TypeMap
 {
     public override Type CSharpSignatureType(TypePrinterContext ctx)
     {
