@@ -68,6 +68,7 @@ internal sealed class MyLibrary : ILibrary
 
         if (Enhanced is true)
         {
+            ctx.IgnoreClassWithName("ImColor");
             ctx.IgnoreClassWithName("ImVec2");
             ctx.IgnoreClassWithName("ImVec4");
 
