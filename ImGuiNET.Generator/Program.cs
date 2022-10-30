@@ -49,12 +49,9 @@ internal static class Program
 
         if (args.Contains("-cln", StringComparer.OrdinalIgnoreCase))
         {
-            var path = Path.Combine(Environment.CurrentDirectory, "NEW", "imgui.cs");
+            Cleanup(Path.Combine(Environment.CurrentDirectory, "NEW", "imgui.cs"));
 
-            if (File.Exists(path))
-            {
-                Cleanup(path);
-            }
+            Cleanup(Path.Combine(Environment.CurrentDirectory, "OLD", "imgui.cs"));
         }
 
         Console.WriteLine("Code generation finished.");
@@ -62,6 +59,9 @@ internal static class Program
 
     private static void Cleanup(string path)
     {
+        if (!File.Exists(path))
+            return;
+
         // GeneratorOutputPass misses some structs for whatever reason so let's do it all here
 
         var text = File.ReadAllText(path);
