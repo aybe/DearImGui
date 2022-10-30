@@ -1,12 +1,10 @@
-﻿#define DEBUG_TYPE_MAP
-using CppSharp.AST;
+﻿using CppSharp.AST;
 using CppSharp.Generators.CSharp;
-using CppSharp.Types;
 using Type = System.Type;
 
 namespace ImGuiNET.Generator.TypeMaps;
 
-internal abstract class MyTypeMapImVec : TypeMap
+internal abstract class MyTypeMapImVec : TypeMapBase
 {
     protected abstract Type TargetType { get; }
 
@@ -27,25 +25,18 @@ internal abstract class MyTypeMapImVec : TypeMap
         {
             if (ctx.ReturnVarName == null)
             {
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToManaged func null, return var name null */");
-#endif
+                // NOP
             }
             else
             {
                 ctx.Return.Write(ctx.ReturnVarName);
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToManaged func null, return var name NOT null */");
-#endif
             }
         }
         else
         {
             if (ctx.ReturnVarName == null)
             {
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToManaged func NOT null, return var name null */");
-#endif
+                // NOP
             }
             else
             {
@@ -57,12 +48,10 @@ internal abstract class MyTypeMapImVec : TypeMap
                 {
                     ctx.Return.Write(ctx.ReturnVarName);
                 }
-
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToManaged func NOT null, return var name NOT null */");
-#endif
             }
         }
+
+        base.CSharpMarshalToManaged(ctx);
     }
 
     public sealed override void CSharpMarshalToNative(CSharpMarshalContext ctx)
@@ -71,16 +60,11 @@ internal abstract class MyTypeMapImVec : TypeMap
         {
             if (ctx.ReturnVarName == null)
             {
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToNative func null, return var name null */");
-#endif
+                // NOP
             }
             else
             {
                 ctx.Return.Write(ctx.Parameter.Name);
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToNative func null, return var name NOT null */");
-#endif
             }
         }
         else
@@ -95,18 +79,13 @@ internal abstract class MyTypeMapImVec : TypeMap
                 {
                     ctx.Return.Write($"{ctx.Parameter.Name}");
                 }
-
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToNative func NOT null, return var name null */");
-#endif
             }
             else
             {
                 ctx.Return.Write(ctx.ReturnVarName);
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToNative func NOT null, return var name NOT null */");
-#endif
             }
         }
+
+        base.CSharpMarshalToNative(ctx);
     }
 }
