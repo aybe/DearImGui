@@ -158,6 +158,13 @@ internal static class Program
             string.Empty
         );
 
+        // type map does not appear to be thoroughly applied, fix
+
+        builder.Replace(
+            "__element is null ? new global::System.Numerics.Vector2() : *(global::System.Numerics.Vector2*) __element.__Instance",
+            "__element"
+        );
+
         File.WriteAllText(path, builder.ToString());
     }
 }

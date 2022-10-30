@@ -85,8 +85,6 @@ internal sealed class MyLibrary : ILibrary
         Experimental.IgnoreProperty(ctx, "ImVector", "Item"); // BUG indexer getter and setter
         Experimental.IgnoreProperty(ctx, "ImVector", "Data"); // BUG indexer getter and setter
 
-        Experimental.IgnoreMethod(ctx, "ImFontAtlas", "GetMouseCursorTexData"); // BUG struct is not nullable
-
         PostprocessDelegates(ctx);
 
         if (Enhanced is true)
