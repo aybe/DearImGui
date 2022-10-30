@@ -76,7 +76,10 @@ internal sealed class MyLibrary : ILibrary
 
     public void Postprocess(Driver driver, ASTContext ctx)
     {
-        Experimental.IgnoreProperty(ctx, "ImGuiStyle", "Colors"); // BUG indexer getter and setter
+        // stuff that is written manually
+        Experimental.IgnoreProperty(ctx, "ImGuiStyle", "Colors");
+
+        // stuff that is yet to be done
         Experimental.IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos"); // BUG indexer getter and setter
         Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines"); // BUG indexer getter and setter
 

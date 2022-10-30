@@ -37,9 +37,13 @@ internal static class Program
             var styleColorName = ImGui.GetStyleColorName(ImGuiCol.Border);
             
             var style = ImGui.GetStyle();
-            
-            ImGui.StyleColorsDark(style); // TODO style.Colors
-            
+
+            var colors = style.Colors;
+
+            ImGui.StyleColorsLight(style);
+
+            style.Colors = colors;
+
             var colorConvertFloat4ToU32 = ImGui.ColorConvertFloat4ToU32(Vector4.One * 0.5f);
 
             io.DisplaySize = new Vector2(100, 100);
