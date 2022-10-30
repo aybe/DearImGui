@@ -33,6 +33,15 @@ internal static class Program
 
         using (var io = ImGui.GetIO())
         {
+            var styleColorVec4 = ImGui.GetStyleColorVec4(ImGuiCol.Border);
+            var styleColorName = ImGui.GetStyleColorName(ImGuiCol.Border);
+            
+            var style = ImGui.GetStyle();
+            
+            ImGui.StyleColorsDark(style); // TODO style.Colors
+            
+            var colorConvertFloat4ToU32 = ImGui.ColorConvertFloat4ToU32(Vector4.One * 0.5f);
+
             io.DisplaySize = new Vector2(100, 100);
 
             ImGui.NewFrame();
