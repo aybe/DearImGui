@@ -63,8 +63,11 @@ internal sealed class MyLibrary : ILibrary
 
         Experimental.RemovePass<CheckIgnoredDeclsPass>(driver);
 
+        // though vectors are ignored below, making them as value types is necessary!
+
         ctx.SetClassAsValueType("ImVec2");
         ctx.SetClassAsValueType("ImVec4");
+
         ctx.IgnoreClassWithName("ImColor");
         ctx.IgnoreClassWithName("ImVec2");
         ctx.IgnoreClassWithName("ImVec4");
