@@ -94,21 +94,6 @@ internal static class Experimental
         Console.WriteLine($"### Removed {count} {typeof(T)} in {memberName}");
     }
 
-    public static void RemoveIndirection(ASTContext ctx, string value)
-    {
-        var parameters =
-            from unit in ctx.TranslationUnits
-            from func in unit.Functions
-            from para in func.Parameters
-            where para.DebugText.Contains(value)
-            select para;
-
-        foreach (var parameter in parameters)
-        {
-            parameter.IsIndirect = false;
-        }
-    }
-
     public static void UpdateHeader(CodeGenerator generator)
     {
         var header = generator.FindBlock(BlockKind.Header);
