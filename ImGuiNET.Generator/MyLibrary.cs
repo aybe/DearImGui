@@ -65,15 +65,15 @@ internal sealed class MyLibrary : ILibrary
 
         ctx.SetClassAsValueType("ImVec2");
         ctx.SetClassAsValueType("ImVec4");
+        ctx.IgnoreClassWithName("ImColor");
+        ctx.IgnoreClassWithName("ImVec2");
+        ctx.IgnoreClassWithName("ImVec4");
+        ctx.IgnoreClassWithName("ImVector");
 
         ctx.IgnoreFunctionWithName("IM_DELETE");
 
         if (Enhanced is true)
         {
-            ctx.IgnoreClassWithName("ImColor");
-            ctx.IgnoreClassWithName("ImVec2");
-            ctx.IgnoreClassWithName("ImVec4");
-            ctx.IgnoreClassWithName("ImVector");
         }
     }
 
