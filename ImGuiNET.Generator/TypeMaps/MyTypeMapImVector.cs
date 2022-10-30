@@ -1,7 +1,4 @@
-﻿#define DEBUG_TYPE_MAP
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Generators.CSharp;
@@ -13,7 +10,7 @@ namespace ImGuiNET.Generator.TypeMaps;
 
 [UsedImplicitly]
 [TypeMap("ImVector", GeneratorKind.CSharp)]
-internal sealed class MyTypeMapImVector : TypeMap
+internal sealed class MyTypeMapImVector : TypeMapBase
 {
     public override Type CSharpSignatureType(TypePrinterContext ctx)
     {
@@ -24,18 +21,6 @@ internal sealed class MyTypeMapImVector : TypeMap
         var type = new CustomType($"global::ImGuiNET.ImVector<{args}>");
 
         return type;
-    }
-
-    [Conditional("DEBUG_TYPE_MAP")]
-    private void WriteDebugInformation(MarshalContext ctx, [CallerMemberName] string memberName = null!)
-    {
-        var text = $"{nameof(memberName)}: {GetType().Name}.{memberName}, " +
-                   $"{nameof(ctx.Function)}: {ctx.Function != null}, " +
-                   $"{nameof(ctx.ReturnVarName)}: {ctx.ReturnVarName != null}";
-
-        var line = Environment.NewLine;
-
-        ctx.Return.Write($"{line}/* {text} */{line}");
     }
 
     public override void CSharpMarshalToManaged(CSharpMarshalContext ctx)
@@ -74,7 +59,7 @@ internal sealed class MyTypeMapImVector : TypeMap
             }
         }
 
-        WriteDebugInformation(ctx);
+        base.CSharpMarshalToManaged(ctx);
     }
 
     public override void CSharpMarshalToNative(CSharpMarshalContext ctx)
@@ -109,6 +94,6 @@ internal sealed class MyTypeMapImVector : TypeMap
             }
         }
 
-        WriteDebugInformation(ctx);
+        base.CSharpMarshalToNative(ctx);
     }
 }
