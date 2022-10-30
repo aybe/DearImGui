@@ -122,6 +122,18 @@ internal static class Program
             "new global::System.Numerics.Vector4()"
         );
 
+        // they're now unused in sources, let's add a little guard though
+
+        builder.Replace(
+            "internal unsafe partial struct ImVec2",
+            "[global::System.Obsolete(null, true)] internal unsafe partial struct ImVec2"
+        );
+
+        builder.Replace(
+            "internal unsafe partial struct ImVec4",
+            "[global::System.Obsolete(null, true)] internal unsafe partial struct ImVec4"
+        );
+
         // hide ImVector namespace as internal class as it cannot be moved onto ImVector<T> because of CS7042
 
         builder.Replace(
