@@ -21,6 +21,50 @@ internal abstract class MyTypeMapImVec : TypeMap
         return new CILType(TargetType);
     }
 
+    public sealed override void CSharpMarshalToManaged(CSharpMarshalContext ctx)
+    {
+        if (ctx.Function == null)
+        {
+            if (ctx.ReturnVarName == null)
+            {
+#if DEBUG_TYPE_MAP
+                ctx.Return.Write("/* CSharpMarshalToManaged func null, return var name null */");
+#endif
+            }
+            else
+            {
+                ctx.Return.Write(ctx.ReturnVarName);
+#if DEBUG_TYPE_MAP
+                ctx.Return.Write("/* CSharpMarshalToManaged func null, return var name NOT null */");
+#endif
+            }
+        }
+        else
+        {
+            if (ctx.ReturnVarName == null)
+            {
+#if DEBUG_TYPE_MAP
+                ctx.Return.Write("/* CSharpMarshalToManaged func NOT null, return var name null */");
+#endif
+            }
+            else
+            {
+                if (ctx.ReturnType.Type is PointerType)
+                {
+                    ctx.Return.Write($"Unsafe.Read<global::{TargetType.FullName}>({ctx.ReturnVarName}.ToPointer())");
+                }
+                else
+                {
+                    ctx.Return.Write(ctx.ReturnVarName);
+                }
+
+#if DEBUG_TYPE_MAP
+                ctx.Return.Write("/* CSharpMarshalToManaged func NOT null, return var name NOT null */");
+#endif
+            }
+        }
+    }
+
     public sealed override void CSharpMarshalToNative(CSharpMarshalContext ctx)
     {
         if (ctx.Function == null)
@@ -61,50 +105,6 @@ internal abstract class MyTypeMapImVec : TypeMap
                 ctx.Return.Write(ctx.ReturnVarName);
 #if DEBUG_TYPE_MAP
                 ctx.Return.Write("/* CSharpMarshalToNative func NOT null, return var name NOT null */");
-#endif
-            }
-        }
-    }
-
-    public sealed override void CSharpMarshalToManaged(CSharpMarshalContext ctx)
-    {
-        if (ctx.Function == null)
-        {
-            if (ctx.ReturnVarName == null)
-            {
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToManaged func null, return var name null */");
-#endif
-            }
-            else
-            {
-                ctx.Return.Write(ctx.ReturnVarName);
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToManaged func null, return var name NOT null */");
-#endif
-            }
-        }
-        else
-        {
-            if (ctx.ReturnVarName == null)
-            {
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToManaged func NOT null, return var name null */");
-#endif
-            }
-            else
-            {
-                if (ctx.ReturnType.Type is PointerType)
-                {
-                    ctx.Return.Write($"Unsafe.Read<global::{TargetType.FullName}>({ctx.ReturnVarName}.ToPointer())");
-                }
-                else
-                {
-                    ctx.Return.Write(ctx.ReturnVarName);
-                }
-
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/* CSharpMarshalToManaged func NOT null, return var name NOT null */");
 #endif
             }
         }
