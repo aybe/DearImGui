@@ -7,7 +7,7 @@ namespace ImGuiNET.Generator.TypeMaps;
 
 [UsedImplicitly]
 [TypeMap("ImVec2", GeneratorKind.CSharp)]
-internal sealed class MyTypeMapImVec2 : MyTypeMapImVec
+internal sealed class TypeMapImVec2 : TypeMapImVec
 {
     protected override Type TargetType { get; } = typeof(Vector2);
 }

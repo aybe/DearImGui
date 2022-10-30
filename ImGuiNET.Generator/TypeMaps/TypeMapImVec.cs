@@ -4,7 +4,7 @@ using Type = System.Type;
 
 namespace ImGuiNET.Generator.TypeMaps;
 
-internal abstract class MyTypeMapImVec : TypeMapBase
+internal abstract class TypeMapImVec : TypeMapBase
 {
     protected abstract Type TargetType { get; }
 
