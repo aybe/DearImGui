@@ -68,6 +68,8 @@ internal sealed class MyLibrary : ILibrary
 
         if (Enhanced is true)
         {
+            ctx.IgnoreClassWithName("ImVec2");
+
             // does nothing
             // Experimental.RemoveIndirection(ctx, "const ImVec2");
             // Experimental.RemoveIndirection(ctx, "const ImVec4");
@@ -76,7 +78,7 @@ internal sealed class MyLibrary : ILibrary
 
     public void Postprocess(Driver driver, ASTContext ctx)
     {
-        Experimental.IgnoreProperty(ctx, "ImVec2", "Item"); // BUG indexer setter
+        //Experimental.IgnoreProperty(ctx, "ImVec2", "Item"); // BUG indexer setter
         Experimental.IgnoreProperty(ctx, "ImGuiStyle", "Colors"); // BUG indexer getter and setter
         Experimental.IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos"); // BUG indexer getter and setter
         Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines"); // BUG indexer getter and setter
@@ -90,6 +92,11 @@ internal sealed class MyLibrary : ILibrary
 
         if (Enhanced is true)
         {
+            var unit = GetImGuiTranslationUnit(ctx);
+
+            var @class = unit.FindClass("ImVectorExtensions");
+
+            @class.ExplicitlyIgnore();
         }
     }
 

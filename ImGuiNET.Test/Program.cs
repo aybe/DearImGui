@@ -1,6 +1,7 @@
 ﻿// ReSharper disable StringLiteralTypo
 
 using System.Diagnostics;
+using System.Numerics;
 
 namespace ImGuiNET.Test;
 
@@ -32,7 +33,7 @@ internal static class Program
 
         using (var io = ImGui.GetIO())
         {
-            io.DisplaySize = new ImVec2(100, 100);
+            io.DisplaySize = new Vector2(100, 100);
 
             ImGui.NewFrame();
 

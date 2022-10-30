@@ -1,12 +1,19 @@
-﻿using JetBrains.Annotations;
+﻿using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace ImGuiNET;
 
 [UsedImplicitly]
-public partial struct ImVec2
+[SuppressMessage("ReSharper", "ArrangeTypeModifiers")]
+partial struct ImVec2 // TODO this should be now made internal
 {
-    public override string ToString()
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+    internal partial struct __Internal
     {
-        return $"{nameof(X)}: {X}, {nameof(Y)}: {Y}";
+        public override string ToString()
+        {
+            return $"{nameof(x)}: {x}, {nameof(y)}: {y}";
+        }
     }
 }

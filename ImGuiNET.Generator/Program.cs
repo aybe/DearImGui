@@ -97,6 +97,13 @@ internal static class Program
             "internal unsafe partial struct __Internal"
         );
 
+        // hide replaced vectors, their internal stuff is still used
+
+        builder.Replace(
+            "public unsafe partial struct ImVec2",
+            "internal unsafe partial struct ImVec2"
+        );
+
         // hide ImVector namespace as internal class as it cannot be moved onto ImVector<T> because of CS7042
 
         builder.Replace(
