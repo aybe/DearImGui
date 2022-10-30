@@ -51,10 +51,10 @@ internal static class Program
         {
             var path = Path.Combine(Environment.CurrentDirectory, "NEW", "imgui.cs");
 
-            if (!File.Exists(path))
-                return;
-
-            Cleanup(path);
+            if (File.Exists(path))
+            {
+                Cleanup(path);
+            }
         }
 
         Console.WriteLine("Code generation finished.");
