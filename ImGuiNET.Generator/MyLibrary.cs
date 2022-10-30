@@ -79,10 +79,9 @@ internal sealed class MyLibrary : ILibrary
         // stuff that is written manually
         Experimental.IgnoreProperty(ctx, "ImGuiStyle", "Colors");
         Experimental.IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos");
+        Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines");
 
         // stuff that is yet to be done
-        Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines"); // BUG indexer getter and setter
-
         Experimental.IgnoreProperty(ctx, "ImVector", "Item"); // BUG indexer getter and setter
         Experimental.IgnoreProperty(ctx, "ImVector", "Data"); // BUG indexer getter and setter
 
