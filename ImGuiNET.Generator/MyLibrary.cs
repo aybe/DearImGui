@@ -87,20 +87,26 @@ internal sealed class MyLibrary : ILibrary
         Experimental.IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos");
         Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines");
 
+        IgnoreClass(ctx, "ImVectorExtensions");
+
         PostprocessDelegates(ctx);
         PostprocessProperties(ctx);
 
         if (Enhanced is true)
         {
-            var unit = GetImGuiTranslationUnit(ctx);
-
-            var @class = unit.FindClass("ImVectorExtensions");
-
-            @class.ExplicitlyIgnore();
         }
     }
 
     #endregion
+
+    private static void IgnoreClass(ASTContext ctx, string className)
+    {
+        var unit = GetImGuiTranslationUnit(ctx);
+
+        var @class = unit.FindClass(className);
+
+        @class.ExplicitlyIgnore();
+    }
 
     private static void PostprocessProperties(ASTContext ctx)
     {
