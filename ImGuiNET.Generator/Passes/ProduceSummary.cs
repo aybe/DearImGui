@@ -1,4 +1,5 @@
-﻿using CppSharp.AST;
+﻿using System.Text.RegularExpressions;
+using CppSharp.AST;
 using CppSharp.Passes;
 
 namespace ImGuiNET.Generator.Passes;
@@ -89,7 +90,9 @@ internal sealed class ProduceSummary : TranslationUnitPass
             .Replace(">", "&gt;")
             .Replace("'", "&apos;")
             .Replace("\"", "&quot;");
-        
+
+        text = Regex.Replace(text, @"(\s)\s+", @"$1"); // compress spaces
+
         text = $" {text} "; // for fonts with ligatures
 
         decl.Comment = new RawComment { BriefText = text };
