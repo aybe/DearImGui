@@ -1,12 +1,12 @@
 ﻿namespace ImGuiNET.OpenTK;
 
-public readonly struct ImGuiFont
+public readonly struct ImGuiFontConfig
 {
     public string Path { get; }
 
     public float Size { get; }
 
-    public ImGuiFont(string path, float size)
+    public ImGuiFontConfig(string path, float size)
     {
         if (!File.Exists(path))
         {

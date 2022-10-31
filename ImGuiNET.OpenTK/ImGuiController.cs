@@ -182,7 +182,7 @@ public sealed class ImGuiController : Disposable
 
     private int VertexBufferSize = 10000;
 
-    public ImGuiController(GameWindow window, ImGuiFont? font = null)
+    public ImGuiController(GameWindow window, ImGuiFontConfig? fontConfig = null)
     {
         Window = window;
 
@@ -194,7 +194,7 @@ public sealed class ImGuiController : Disposable
 
             InitializeKeyboard(io);
 
-            InitializeFont(io, font);
+            InitializeFont(io, fontConfig);
 
             InitializeStyle();
         }
@@ -323,9 +323,9 @@ public sealed class ImGuiController : Disposable
         }
     }
 
-    private void InitializeFont(ImGuiIOPtr io, ImGuiFont? font)
+    private void InitializeFont(ImGuiIOPtr io, ImGuiFontConfig? fontConfig)
     {
-        if (font.HasValue)
+        if (fontConfig.HasValue)
         {
             var scale = 1.0f;
 
@@ -339,9 +339,9 @@ public sealed class ImGuiController : Disposable
                 }
             }
 
-            var size = font.Value.Size * scale * scale; // so it looks the same as in Notepad
+            var size = fontConfig.Value.Size * scale * scale; // so it looks the same as in Notepad
 
-            io.Fonts.AddFontFromFileTTF(font.Value.Path, size);
+            io.Fonts.AddFontFromFileTTF(fontConfig.Value.Path, size);
         }
         else
         {
