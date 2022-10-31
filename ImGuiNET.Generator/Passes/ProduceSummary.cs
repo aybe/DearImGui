@@ -21,7 +21,9 @@ internal sealed class ProduceSummary : TranslationUnitPass
 
     public override bool VisitEnumItemDecl(Enumeration.Item item)
     {
-        TrySetComment(item, -1);
+        const string note = "(NOTE: summary auto-generated from source)";
+
+        TrySetComment(item, -1, s => s.Declaration.Name == "None" ? "None" : $"{s.Declaration.Name} {note}");
         return base.VisitEnumItemDecl(item);
     }
 
