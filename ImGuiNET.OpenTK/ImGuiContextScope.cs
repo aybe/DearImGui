@@ -2,17 +2,17 @@
 
 internal readonly struct ImGuiContextScope : IDisposable
 {
-    private readonly IntPtr Context;
+    private readonly ImGuiContext Context;
 
-    public ImGuiContextScope(IntPtr context)
+    public ImGuiContextScope(ImGuiContext context)
     {
-        Context = ImGuiNET.ImGui.GetCurrentContext();
+        Context = ImGui.GetCurrentContext();
 
-        ImGuiNET.ImGui.SetCurrentContext(context);
+        ImGui.SetCurrentContext(context);
     }
 
     public void Dispose()
     {
-        ImGuiNET.ImGui.SetCurrentContext(Context);
+        ImGui.SetCurrentContext(Context);
     }
 }
