@@ -165,6 +165,13 @@ internal static class Program
             "__element"
         );
 
+        // use our own symbol resolver
+
+        builder.Replace(
+            "CppSharp.SymbolResolver",
+            "ImGuiNET.SymbolResolver"
+        );
+
         File.WriteAllText(path, builder.ToString());
     }
 }
