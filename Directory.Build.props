@@ -1,0 +1,5 @@
+<Project>
+	<PropertyGroup>
+		<DefaultItemExcludes>$(DefaultItemExcludes);**/*.gitkeep</DefaultItemExcludes>
+	</PropertyGroup>
+</Project>
