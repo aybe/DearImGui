@@ -2,7 +2,7 @@
 
 namespace ImGuiNET;
 
-[UsedImplicitly]
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public partial class ImFont
 {
     public override string ToString()

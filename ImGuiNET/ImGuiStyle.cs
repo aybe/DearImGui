@@ -1,7 +1,9 @@
 ﻿using System.Numerics;
+using JetBrains.Annotations;
 
 namespace ImGuiNET;
 
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImGuiStyle
 {
     public Vector4[] Colors

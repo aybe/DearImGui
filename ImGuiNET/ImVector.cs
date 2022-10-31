@@ -4,6 +4,7 @@ using JetBrains.Annotations;
 
 namespace ImGuiNET;
 
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public readonly struct ImVector<T>
 {
     private readonly __Internal Internal;

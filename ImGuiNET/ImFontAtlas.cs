@@ -1,7 +1,9 @@
 ﻿using System.Numerics;
+using JetBrains.Annotations;
 
 namespace ImGuiNET;
 
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImFontAtlas
 {
     public unsafe Vector4[] TexUvLines

@@ -1,9 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using JetBrains.Annotations;
 
 namespace ImGuiNET;
 
 [SuppressMessage("ReSharper", "InconsistentNaming")]
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImGuiIO
 {
     public Vector2[] MouseClickedPos
