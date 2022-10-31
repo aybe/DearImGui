@@ -63,6 +63,8 @@ internal sealed class MyLibrary : ILibrary
         Experimental.FlattenNamespace(ctx);
 
         Experimental.RemovePass<CheckIgnoredDeclsPass>(driver);
+        
+        Experimental.RemovePass<CleanCommentsPass>(driver); // useless, throws when adding our comments to functions
 
         // though vectors are ignored below, making them as value types is necessary!
 
