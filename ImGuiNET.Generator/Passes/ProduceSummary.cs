@@ -93,6 +93,8 @@ internal sealed class ProduceSummary : TranslationUnitPass
 
         text = Regex.Replace(text, @"(\s)\s+", @"$1"); // compress spaces
 
+        text = Regex.Replace(text, @"(//\s+|(\.)\s+)", @"$2<br/>"); // insert new lines
+
         text = $" {text} "; // for fonts with ligatures
 
         decl.Comment = new RawComment { BriefText = text };
