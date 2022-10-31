@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 using CppSharp;
 using ImGuiNET.Generator.Logging;
 
@@ -179,6 +180,15 @@ internal static class Program
             "/// <summary>"
         );
 
-        File.WriteAllText(path, builder.ToString());
+        var str = builder.ToString();
+
+        str = Regex.Replace(
+            str,
+            @"^(\s+)(public void Dispose\(\))",
+            @"$1/// <inheritdoc />$1$2",
+            RegexOptions.Multiline
+        );
+
+        File.WriteAllText(path, str);
     }
 }
