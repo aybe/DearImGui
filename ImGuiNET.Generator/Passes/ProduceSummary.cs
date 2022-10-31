@@ -76,6 +76,7 @@ internal sealed class ProduceSummary : TranslationUnitPass
 
         text = text.Trim(' ', '.');
         text = $"{text}.";
+        text = $"{char.ToUpperInvariant(text[0])}{text[1..]}";
         text = text
             .Replace("<", "&lt;")
             .Replace(">", "&gt;")
