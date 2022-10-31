@@ -27,6 +27,12 @@ internal sealed class ProduceSummary : TranslationUnitPass
         return base.VisitEnumItemDecl(item);
     }
 
+    public override bool VisitFieldDecl(Field field)
+    {
+        TrySetComment(field, -1);
+        return base.VisitFieldDecl(field);
+    }
+
     private void TrySetComment<T>(T decl, int lineOffset, Func<Summary<T>, string?>? func = null) where T : Declaration
     {
         var line1 = decl.LineNumberStart;
