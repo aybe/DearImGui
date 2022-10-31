@@ -172,6 +172,13 @@ internal static class Program
             "ImGuiNET.SymbolResolver"
         );
 
+        // XML comments are somehow wrong, fix that
+
+        builder.Replace(
+            "// <summary>",
+            "/// <summary>"
+        );
+
         File.WriteAllText(path, builder.ToString());
     }
 }
