@@ -75,6 +75,12 @@ internal sealed class ProduceSummary : TranslationUnitPass
         var temp = text[(indexOf + mark.Length)..];
         temp = temp.Trim(' ', '.');
         temp = $"{temp}.";
+        temp = temp
+            .Replace("<", "&lt;")
+            .Replace(">", "&gt;")
+            .Replace("&", "&amp;")
+            .Replace("'", "&apos;")
+            .Replace("\"", "&quot;");
 
         comment = new RawComment { BriefText = temp };
         return true;
