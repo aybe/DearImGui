@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿// #define GLFW_MOUSE_CURSOR_WINDOWS
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
@@ -558,6 +559,7 @@ public sealed class ImGuiController : Disposable
     [SupportedOSPlatform("windows")]
     private void UpdateMouseCursorWindows()
     {
+#if GLFW_MOUSE_CURSOR_WINDOWS
         // we have to forcibly update cursor else it will only appear briefly because of GLFW
 
         // until this is properly supported, it's the best since it supports animated cursors
@@ -601,6 +603,7 @@ public sealed class ImGuiController : Disposable
         };
 
         User32.SetCursor(User32.LoadCursor(HINSTANCE.NULL, resource));
+#endif
     }
 
     public void Render()
