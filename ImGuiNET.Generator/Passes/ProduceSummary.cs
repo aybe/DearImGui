@@ -89,6 +89,8 @@ internal sealed class ProduceSummary : TranslationUnitPass
             .Replace(">", "&gt;")
             .Replace("'", "&apos;")
             .Replace("\"", "&quot;");
+        
+        text = $" {text} "; // for fonts with ligatures
 
         decl.Comment = new RawComment { BriefText = text };
     }
