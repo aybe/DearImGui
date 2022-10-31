@@ -19,6 +19,12 @@ internal sealed class ProduceSummary : TranslationUnitPass
         return base.VisitEnumDecl(@enum);
     }
 
+    public override bool VisitEnumItemDecl(Enumeration.Item item)
+    {
+        TrySetComment(item, -1);
+        return base.VisitEnumItemDecl(item);
+    }
+
     private void TrySetComment(Declaration decl, int lineOffset)
     {
         var line1 = decl.LineNumberStart;
