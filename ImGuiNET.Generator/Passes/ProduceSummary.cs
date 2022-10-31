@@ -25,7 +25,7 @@ internal sealed class ProduceSummary : TranslationUnitPass
         return base.VisitEnumItemDecl(item);
     }
 
-    private void TrySetComment(Declaration decl, int lineOffset)
+    private void TrySetComment<T>(T decl, int lineOffset, Func<Summary<T>, string?>? func = null) where T : Declaration
     {
         var line1 = decl.LineNumberStart;
         var line2 = decl.LineNumberEnd;
@@ -53,36 +53,61 @@ internal sealed class ProduceSummary : TranslationUnitPass
 
         var line = lines[index];
 
-        if (!TryGetComment(line, out var comment))
+        if (!TryGetComment(line, out var result))
+        {
+            result = func?.Invoke(new Summary<T>(decl, lines));
+        }
+
+        if (result == null)
         {
             Console.WriteLine($"Couldn't find comment for {decl.Name} @ {line1}-{line2}.");
             return;
         }
 
-        decl.Comment = comment;
-    }
+        var text = result;
 
-    private static bool TryGetComment(string text, out RawComment comment)
-    {
-        const string mark = "//";
-
-        comment = default!;
-
-        var indexOf = text.IndexOf(mark, StringComparison.Ordinal);
-        if (indexOf is -1)
-            return false;
-
-        var temp = text[(indexOf + mark.Length)..];
-        temp = temp.Trim(' ', '.');
-        temp = $"{temp}.";
-        temp = temp
+        text = text.Trim(' ', '.');
+        text = $"{text}.";
+        text = text
             .Replace("<", "&lt;")
             .Replace(">", "&gt;")
             .Replace("&", "&amp;")
             .Replace("'", "&apos;")
             .Replace("\"", "&quot;");
 
-        comment = new RawComment { BriefText = temp };
+        decl.Comment = new RawComment { BriefText = text };
+    }
+
+    private static bool TryGetComment(string text, out string result)
+    {
+        const string mark = "//";
+
+        result = default!;
+
+        var indexOf = text.IndexOf(mark, StringComparison.Ordinal);
+        if (indexOf is -1)
+            return false;
+
+        var temp = text[(indexOf + mark.Length)..];
+
+        result = temp;
         return true;
     }
+
+    #region Nested type: Summary
+
+    private readonly struct Summary<T> where T : Declaration
+    {
+        public T Declaration { get; }
+
+        public string[] Sources { get; }
+
+        public Summary(T declaration, string[] sources)
+        {
+            Declaration = declaration;
+            Sources = sources;
+        }
+    }
+
+    #endregion
 }
