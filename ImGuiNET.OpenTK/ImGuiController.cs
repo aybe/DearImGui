@@ -160,7 +160,7 @@ public sealed class ImGuiController : Disposable
 
     private readonly IntPtr Context = ImGuiNET.ImGui.CreateContext();
     
-    private readonly IntPtr ContextPlot = ImPlot.CreateContext();
+    //private readonly IntPtr ContextPlot = ImPlot.CreateContext();
 
     private int IndexBuffer;
 
@@ -232,7 +232,7 @@ public sealed class ImGuiController : Disposable
 
         ImGuiNET.ImGui.DestroyContext(Context);
 
-        ImPlot.DestroyContext(ContextPlot);
+        //ImPlot.DestroyContext(ContextPlot);
         
         GL.DeleteVertexArray(VertexArray);
 
@@ -516,8 +516,8 @@ public sealed class ImGuiController : Disposable
     {
         using (new ImGuiContextScope(Context))
         {
-            ImPlot.SetCurrentContext(ContextPlot); // TODO
-            ImPlot.SetImGuiContext(Context);
+            //ImPlot.SetCurrentContext(ContextPlot); // TODO
+            //ImPlot.SetImGuiContext(Context);
            
             var io = IO;
 
