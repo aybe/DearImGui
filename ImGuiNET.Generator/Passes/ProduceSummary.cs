@@ -84,9 +84,9 @@ internal sealed class ProduceSummary : TranslationUnitPass
         text = $"{text}.";
         text = $"{char.ToUpperInvariant(text[0])}{text[1..]}";
         text = text
+            .Replace("&", "&amp;")
             .Replace("<", "&lt;")
             .Replace(">", "&gt;")
-            .Replace("&", "&amp;")
             .Replace("'", "&apos;")
             .Replace("\"", "&quot;");
 
