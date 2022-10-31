@@ -196,6 +196,13 @@ internal static class Program
             RegexOptions.Multiline
         );
 
+        str = Regex.Replace(
+            str,
+            @"^(\s+)(public\s+)(\w+)(\(.*\))",
+            "$1/// <summary>Initializes a new instance of <see cref=\"$3\"/>.</summary>\r\n$1$2$3$4",
+            RegexOptions.Multiline
+        );
+
         File.WriteAllText(path, str);
     }
 }
