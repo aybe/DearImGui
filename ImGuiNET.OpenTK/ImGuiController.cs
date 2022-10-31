@@ -159,7 +159,7 @@ public sealed class ImGuiController : Disposable
         { Keys.F12, ImGuiKey.F12 }
     };
 
-    private readonly IntPtr Context = ImGuiNET.ImGui.CreateContext();
+    private readonly ImGuiContext Context;
     
     //private readonly IntPtr ContextPlot = ImPlot.CreateContext();
 
@@ -214,6 +214,9 @@ public sealed class ImGuiController : Disposable
                 }
             }
         }
+
+        Context = ImGui.GetCurrentContext();
+
         using (new ImGuiContextScope(Context))
         {
             var io = IO;
