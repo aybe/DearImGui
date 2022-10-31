@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="OpenTK" Version="4.7.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ImGuiNET\ImGuiNET.csproj" />
+	</ItemGroup>
+
+</Project>
