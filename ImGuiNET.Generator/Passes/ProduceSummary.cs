@@ -13,6 +13,12 @@ internal sealed class ProduceSummary : TranslationUnitPass
         return base.VisitMethodDecl(method);
     }
 
+    public override bool VisitFunctionDecl(Function function)
+    {
+        TrySetComment(function, -1);
+        return base.VisitFunctionDecl(function);
+    }
+
     public override bool VisitEnumDecl(Enumeration @enum)
     {
         TrySetComment(@enum, -2);
