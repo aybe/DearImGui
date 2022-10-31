@@ -1,5 +1,6 @@
 ﻿// #define GLFW_MOUSE_CURSOR_WINDOWS
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
@@ -186,6 +187,33 @@ public sealed class ImGuiController : Disposable
     {
         Window = window;
 
+        ImGui.SetCurrentContext(ImGui.CreateContext(null));
+
+        if (fontConfig != null)
+        {
+            using (var io = ImGui.GetIO())
+            {
+                unsafe
+                {
+                    var ranges = io.Fonts.GlyphRangesDefault;
+
+                    var atlas = new ImFontAtlas();
+
+                    using (var font = atlas.AddFontFromFileTTF(fontConfig.Value.Path, fontConfig.Value.Size, null, ref *ranges))
+                    {
+                        var build = atlas.Build();
+
+                        Debug.Assert(build);
+                    }
+
+                    ImGui.DestroyContext(ImGui.GetCurrentContext());
+
+                    var context = ImGui.CreateContext(atlas);
+
+                    ImGui.SetCurrentContext(context);
+                }
+            }
+        }
         using (new ImGuiContextScope(Context))
         {
             var io = IO;
