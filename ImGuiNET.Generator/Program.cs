@@ -189,6 +189,13 @@ internal static class Program
             RegexOptions.Multiline
         );
 
+        str = Regex.Replace(
+            str,
+            @"^(\s+)(~\w+\(\))",
+            @"$1/// <inheritdoc />$1$2",
+            RegexOptions.Multiline
+        );
+
         File.WriteAllText(path, str);
     }
 }
