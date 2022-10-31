@@ -13,6 +13,12 @@ internal sealed class ProduceSummary : TranslationUnitPass
         return base.VisitMethodDecl(method);
     }
 
+    public override bool VisitEnumDecl(Enumeration @enum)
+    {
+        TrySetComment(@enum, -2);
+        return base.VisitEnumDecl(@enum);
+    }
+
     private void TrySetComment(Declaration decl, int lineOffset)
     {
         var line1 = decl.LineNumberStart;
