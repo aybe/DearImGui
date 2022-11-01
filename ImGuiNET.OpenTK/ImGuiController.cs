@@ -10,6 +10,7 @@ using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 using Vector2 = System.Numerics.Vector2;
+// ReSharper disable InconsistentNaming
 
 namespace ImGuiNET.OpenTK;
 
@@ -704,8 +705,8 @@ public sealed class ImGuiController : Disposable
 
         for (var i = 0; i < data.CmdListsCount; i++)
         {
-            var list = data.CmdListsRange[i];
-
+            var list = data.CmdLists; //var list = data.CmdListsRange[i]; // BUG not drawing everything
+            
             var vtxBufferSize = list.VtxBuffer.Size * Unsafe.SizeOf<ImDrawVert>();
             var idxBufferSize = list.IdxBuffer.Size * sizeof(ushort);
 
@@ -738,7 +739,7 @@ public sealed class ImGuiController : Disposable
 
                 GL.Scissor((int)clipMin.X, (int)(scaleY - clipMax.Y), (int)(clipMax.X - clipMin.X), (int)(clipMax.Y - clipMin.Y));
 
-                GL.BindTextureUnit(0, (int)cmd.GetTexID());
+                GL.BindTextureUnit(0, (int)cmd.TexID);
 
                 var length = (int)cmd.ElemCount;
                 var offset = cmd.IdxOffset * sizeof(ushort);

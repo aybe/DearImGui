@@ -32,6 +32,12 @@ public readonly struct ImVector<T>
         }
     }
 
+    public int Size => Internal.Size;
+
+    public int Capacity => Internal.Capacity;
+
+    public IntPtr Data => Internal.Data;
+
     #region Nested type: __Internal
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]
