@@ -189,31 +189,32 @@ public sealed class ImGuiController : Disposable
 
         ImGui.SetCurrentContext(ImGui.CreateContext(null));
 
-        if (fontConfig != null)
-        {
-            using (var io = ImGui.GetIO())
-            {
-                unsafe
-                {
-                    var ranges = io.Fonts.GlyphRangesDefault;
+        //TODO delete
+        //if (fontConfig != null)
+        //{
+        //    using (var io = ImGui.GetIO())
+        //    {
+        //        unsafe
+        //        {
+        //            var ranges = io.Fonts.GlyphRangesDefault;
 
-                    var atlas = new ImFontAtlas();
+        //            var atlas = new ImFontAtlas();
 
-                    using (var font = atlas.AddFontFromFileTTF(fontConfig.Value.Path, fontConfig.Value.Size, null, ref *ranges))
-                    {
-                        var build = atlas.Build();
+        //            using (var font = atlas.AddFontFromFileTTF(fontConfig.Value.Path, fontConfig.Value.Size, null, ref *ranges))
+        //            {
+        //                var build = atlas.Build();
 
-                        Debug.Assert(build);
-                    }
+        //                Debug.Assert(build);
+        //            }
 
-                    ImGui.DestroyContext(ImGui.GetCurrentContext());
+        //            ImGui.DestroyContext(ImGui.GetCurrentContext());
 
-                    var context = ImGui.CreateContext(atlas);
+        //            var context = ImGui.CreateContext(atlas);
 
-                    ImGui.SetCurrentContext(context);
-                }
-            }
-        }
+        //            ImGui.SetCurrentContext(context);
+        //        }
+        //    }
+        //}
 
         Context = ImGui.GetCurrentContext();
 
@@ -245,7 +246,7 @@ public sealed class ImGuiController : Disposable
         Window.TextInput      += OnWindowTextInput;
     }
 
-    private ImGuiIOPtr IO => ImGuiNET.ImGui.GetIO();
+    private ImGuiIO IO => ImGuiNET.ImGui.GetIO();
 
     private GameWindow Window { get; }
 
@@ -334,7 +335,7 @@ public sealed class ImGuiController : Disposable
         throw new InvalidOperationException($"Failed to create shader:\n{log}");
     }
 
-    private void InitializeFlags(ImGuiIOPtr io)
+    private void InitializeFlags(ImGuiIO io)
     {
         if (Window.APIVersion >= new Version(3, 2))
         {
@@ -346,7 +347,7 @@ public sealed class ImGuiController : Disposable
         io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
     }
 
-    private void InitializeKeyboard(ImGuiIOPtr io)
+    private void InitializeKeyboard(ImGuiIO io)
     {
         foreach (var (key1, key2) in KeyMap)
         {
@@ -354,7 +355,7 @@ public sealed class ImGuiController : Disposable
         }
     }
 
-    private void InitializeFont(ImGuiIOPtr io, ImGuiFontConfig? fontConfig)
+    private unsafe void InitializeFont(ImGuiIO io, ImGuiFontConfig? fontConfig)
     {
         if (fontConfig.HasValue)
         {
@@ -372,14 +373,21 @@ public sealed class ImGuiController : Disposable
 
             var size = fontConfig.Value.Size * scale * scale; // so it looks the same as in Notepad
 
-            io.Fonts.AddFontFromFileTTF(fontConfig.Value.Path, size);
+            var ranges = io.Fonts.GlyphRangesDefault;
+
+            io.Fonts.AddFontFromFileTTF(fontConfig.Value.Path, size, null, ref *ranges);
         }
         else
         {
-            io.Fonts.AddFontDefault();
+            io.Fonts.AddFontDefault(null);
         }
 
-        io.Fonts.GetTexDataAsRGBA32(out IntPtr pixels, out var pw, out var ph);
+        var pp = default(byte**);
+        var pw = default(int);
+        var ph = default(int);
+        var ps = default(int);
+
+        io.Fonts.GetTexDataAsRGBA32(pp, ref pw, ref ph, ref ps);
 
         GL.CreateTextures(TextureTarget.Texture2D, 1, out Texture);
         const string labelTEX = "ImGui Texture";
@@ -395,7 +403,7 @@ public sealed class ImGuiController : Disposable
 
         GL.TextureStorage2D(Texture, levels, SizedInternalFormat.Rgba8, pw, ph);
 
-        GL.TextureSubImage2D(Texture, 0, 0, 0, pw, ph, PixelFormat.Bgra, PixelType.UnsignedByte, pixels);
+        GL.TextureSubImage2D(Texture, 0, 0, 0, pw, ph, PixelFormat.Bgra, PixelType.UnsignedByte, new IntPtr(pp));
 
         GL.GenerateTextureMipmap(Texture);
 
@@ -406,7 +414,9 @@ public sealed class ImGuiController : Disposable
 
     private unsafe void InitializeStyle()
     {
-        ImGuiNET.ImGui.StyleColorsDark();
+        var style = ImGui.GetStyle();
+
+        ImGui.StyleColorsDark(style);
 
         GLFW.GetWindowContentScale(Window.WindowPtr, out var xScale, out var yScale);
 
@@ -416,8 +426,6 @@ public sealed class ImGuiController : Disposable
         {
             scale = xScale;
         }
-
-        var style = ImGuiNET.ImGui.GetStyle();
 
         style.ScaleAllSizes(scale);
     }
@@ -449,9 +457,9 @@ public sealed class ImGuiController : Disposable
         GL.EnableVertexArrayAttrib(VertexArray, 1);
         GL.EnableVertexArrayAttrib(VertexArray, 2);
 
-        var offset1 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.pos)).ToInt32();
-        var offset2 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.uv)).ToInt32();
-        var offset3 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.col)).ToInt32();
+        var offset1 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Pos)).ToInt32();
+        var offset2 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Uv)).ToInt32();
+        var offset3 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Col)).ToInt32();
 
         GL.VertexArrayAttribFormat(VertexArray, 0, 2, VertexAttribType.Float, false, offset1);
         GL.VertexArrayAttribFormat(VertexArray, 1, 2, VertexAttribType.Float, false, offset2);
@@ -517,7 +525,7 @@ public sealed class ImGuiController : Disposable
 
         var button = (int)e.Button;
 
-        if (button is >= 0 and < (int)ImGuiMouseButton.COUNT)
+        if (button is >= 0 and < 3)
         {
             IO.AddMouseButtonEvent(button, e.IsPressed);
         }
