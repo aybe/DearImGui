@@ -16,6 +16,7 @@ public readonly struct ImVector<T> : IReadOnlyList<T>
     }
 
     /// <inheritdoc />
+    [SuppressMessage("ReSharper", "InvertIf")]
     public T this[int index]
     {
         get
@@ -25,12 +26,21 @@ public readonly struct ImVector<T> : IReadOnlyList<T>
                 throw new ArgumentOutOfRangeException(nameof(index), index, null);
             }
 
+            var type = typeof(T);
             var size = Unsafe.SizeOf<T>();
+            var data = Data + size * index;
 
-            if (typeof(T) == typeof(ImDrawCmd))
+            if (type == typeof(ImDrawCmd))
             {
-                var source = ImDrawCmd.__GetOrCreateInstance(Data + size * index);
+                var source = ImDrawCmd.__GetOrCreateInstance(data);
                 var result = Unsafe.As<ImDrawCmd, T>(ref source);
+                return result;
+            }
+
+            if (type == typeof(ImDrawVert))
+            {
+                var source = ImDrawVert.__GetOrCreateInstance(data);
+                var result = Unsafe.As<ImDrawVert, T>(ref source);
                 return result;
             }
 
