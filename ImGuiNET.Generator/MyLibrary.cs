@@ -89,6 +89,7 @@ internal sealed class MyLibrary : ILibrary
         Experimental.IgnoreProperty(ctx, "ImGuiStyle", "Colors");
         Experimental.IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos");
         Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines");
+        Experimental.IgnoreProperty(ctx, "ImDrawData", "CmdLists");
 
         IgnoreClass(ctx, "ImVectorExtensions");
 
