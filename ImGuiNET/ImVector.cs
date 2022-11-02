@@ -4,7 +4,6 @@ using JetBrains.Annotations;
 
 namespace ImGuiNET;
 
-[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public readonly struct ImVector<T>
 {
     private readonly __Internal Internal;
@@ -14,21 +13,25 @@ public readonly struct ImVector<T>
         Internal = @internal;
     }
 
-    public ref T this[int index]
+    public T this[int index]
     {
         get
         {
-            unsafe
+            if (index < 0 || index >= Size)
             {
-                if (index < 0 || index >= Internal.Size)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(index), index, null);
-                }
-
-                var zero = (byte*)Internal.Data.ToPointer();
-                var size = Unsafe.SizeOf<T>();
-                return ref Unsafe.AsRef<T>(zero + size * index);
+                throw new ArgumentOutOfRangeException(nameof(index), index, null);
             }
+
+            var size = Unsafe.SizeOf<T>();
+
+            if (typeof(T) == typeof(ImDrawCmd))
+            {
+                var source = ImDrawCmd.__GetOrCreateInstance(Data + size * index);
+                var result = Unsafe.As<ImDrawCmd, T>(ref source);
+                return result;
+            }
+
+            throw new NotImplementedException();
         }
     }
 
