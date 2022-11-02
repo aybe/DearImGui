@@ -15,7 +15,7 @@ internal sealed class TypeMapImVector : TypeMapBase
     public override Type CSharpSignatureType(TypePrinterContext ctx)
     {
         if ((ctx.Kind, ctx.MarshalKind) is (TypePrinterContextKind.Native, MarshalKind.NativeField))
-            return new CustomType("__IntPtr");
+            return new CustomType("global::ImGuiNET.ImVector.__Internal"); // auto-generated
 
         var args = ((TemplateSpecializationType)ctx.Type).Arguments[0].Type.Type;
         var type = new CustomType($"global::ImGuiNET.ImVector<{args}>");
@@ -36,7 +36,7 @@ internal sealed class TypeMapImVector : TypeMapBase
                 var args = ((TemplateSpecializationType)ctx.ReturnType.Type).Arguments[0];
                 var type = $"global::ImGuiNET.ImVector<{args}>";
                 var data = Regex.Replace(ctx.ReturnVarName, @"^new __IntPtr\(&(.*)\)$", @"$1");
-                var text = $"new {type}(Unsafe.Read<{type}.__Internal>(&{data}))";
+                var text = $"new {type}(Unsafe.As<ImVector.__Internal, {type}.__Internal>(ref {data}))";
                 ctx.Return.Write(text);
             }
         }
