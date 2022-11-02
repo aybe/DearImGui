@@ -36,7 +36,7 @@ internal sealed class TypeMapImVector : TypeMapBase
                 var args = ((TemplateSpecializationType)ctx.ReturnType.Type).Arguments[0];
                 var type = $"global::ImGuiNET.ImVector<{args}>";
                 var data = Regex.Replace(ctx.ReturnVarName, @"^new __IntPtr\(&(.*)\)$", @"$1");
-                var text = $"new {type}(Unsafe.Read<{type}.__Internal>({data}.ToPointer()))";
+                var text = $"new {type}(Unsafe.Read<{type}.__Internal>(&{data}))";
                 ctx.Return.Write(text);
             }
         }
