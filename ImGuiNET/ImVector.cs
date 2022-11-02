@@ -1,10 +1,11 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 
 namespace ImGuiNET;
 
-public readonly struct ImVector<T>
+public readonly struct ImVector<T> : IReadOnlyList<T>
 {
     private readonly __Internal Internal;
 
@@ -13,6 +14,7 @@ public readonly struct ImVector<T>
         Internal = @internal;
     }
 
+    /// <inheritdoc />
     public T this[int index]
     {
         get
@@ -56,4 +58,23 @@ public readonly struct ImVector<T>
     }
 
     #endregion
+
+    /// <inheritdoc />
+    public IEnumerator<T> GetEnumerator()
+// BUG The debugger is unable to evaluate this expression
+    {
+        for (var i = 0; i < Count; i++)
+        {
+            var item = this[i];
+            yield return item;
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    /// <inheritdoc />
+    public int Count => Internal.Size;
 }
