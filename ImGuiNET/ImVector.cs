@@ -9,6 +9,7 @@ public readonly struct ImVector<T> : IReadOnlyList<T>
 {
     private readonly __Internal Internal;
 
+    [UsedImplicitly] // seen as unused by R# when analysis is disabled
     internal ImVector(__Internal @internal)
     {
         Internal = @internal;
