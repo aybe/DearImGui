@@ -17,7 +17,11 @@ internal class TypeMapBase : TypeMap
 
         var line = Environment.NewLine;
 
-        ctx.Return.Write($"{line}/* {text} */{line}");
+        var tabs = string.Empty.PadLeft((int)ctx.Return.CurrentIndentation * 4);
+
+        var data = $"{line}{tabs}/* {text} */{line}{tabs}";
+
+        ctx.Return.Write(data);
     }
 
     public override void CSharpMarshalToManaged(CSharpMarshalContext ctx)
