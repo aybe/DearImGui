@@ -5,7 +5,7 @@ using OpenTK.Windowing.Desktop;
 
 namespace ImGuiNET.Test.OpenTK;
 
-internal sealed class MyGameWindow : GameWindow
+internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 {
     public MyGameWindow(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings)
         : base(gameWindowSettings, nativeWindowSettings)
