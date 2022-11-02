@@ -103,7 +103,9 @@ internal static class Experimental
 
         var usings = generator.FindBlock(BlockKind.Usings);
 
-        usings.Text.WriteLine(
-            "using System.Runtime.CompilerServices;");
+        usings.Text.WriteLine("using System.Collections.Concurrent;");
+        usings.Text.WriteLine("using System.Numerics;");
+        usings.Text.WriteLine("using System.Runtime.CompilerServices;");
+        usings.Text.WriteLine("using System.Text;");
     }
 }

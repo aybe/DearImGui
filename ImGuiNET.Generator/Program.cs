@@ -173,6 +173,60 @@ internal static class Program
             "ImGuiNET.SymbolResolver"
         );
 
+        // simplify namespaces
+
+        builder.Replace(
+            "global::System.Collections.Concurrent.",
+            string.Empty
+        );
+
+        builder.Replace(
+            "global::System.Numerics.",
+            string.Empty
+        );
+
+        builder.Replace(
+            "global::System.Text.",
+            string.Empty
+        );
+
+        builder.Replace(
+            "global::System.",
+            string.Empty
+        );
+
+        builder.Replace(
+            "global::ImGuiNET.",
+            string.Empty
+        );
+
+        builder.Replace(
+            "ImGuiNET.",
+            string.Empty
+        );
+
+        var newLine = Environment.NewLine;
+
+        builder.Replace(
+            $"using __CallingConvention = Runtime.InteropServices.CallingConvention;{newLine}",
+            string.Empty
+        );
+
+        builder.Replace(
+            $"using __IntPtr = IntPtr;{newLine}",
+            string.Empty
+        );
+
+        builder.Replace(
+            "__CallingConvention",
+            "CallingConvention"
+        );
+
+        builder.Replace(
+            "__IntPtr",
+            "IntPtr"
+        );
+
         // XML comments are somehow wrong, fix that
 
         builder.Replace(
@@ -181,6 +235,8 @@ internal static class Program
         );
 
         var str = builder.ToString();
+
+        // add some inherit doc
 
         str = Regex.Replace(
             str,
