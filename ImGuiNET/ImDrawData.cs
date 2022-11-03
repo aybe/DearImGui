@@ -17,4 +17,10 @@ partial class ImDrawData
             return lists;
         }
     }
+
+    /// <inheritdoc />
+    public override string ToString()
+    {
+        return $"{nameof(Valid)}: {Valid}, {nameof(TotalIdxCount)}: {TotalIdxCount}, {nameof(TotalVtxCount)}: {TotalVtxCount}, {nameof(CmdListsCount)}: {CmdListsCount}";
+    }
 }
