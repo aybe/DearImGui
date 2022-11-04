@@ -96,6 +96,17 @@ internal sealed class MyLibrary : ILibrary
         Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines");
         Experimental.IgnoreProperty(ctx, "ImDrawData", "CmdLists");
 
+        // ignore these internals for now
+        Experimental.IgnoreProperty(ctx, "ImDrawList", "VtxCurrentIdx");
+        Experimental.IgnoreProperty(ctx, "ImDrawList", "VtxWritePtr");
+        Experimental.IgnoreProperty(ctx, "ImDrawList", "IdxWritePtr");
+        Experimental.IgnoreProperty(ctx, "ImDrawList", "ClipRectStack");
+        Experimental.IgnoreProperty(ctx, "ImDrawList", "TextureIdStack");
+        Experimental.IgnoreProperty(ctx, "ImDrawList", "Path");
+        Experimental.IgnoreProperty(ctx, "ImDrawList", "CmdHeader");
+        Experimental.IgnoreProperty(ctx, "ImDrawList", "Splitter");
+        Experimental.IgnoreProperty(ctx, "ImDrawList", "FringeScale");
+        
         IgnoreClass(ctx, "ImVectorExtensions");
 
         PostprocessDelegates(ctx);
