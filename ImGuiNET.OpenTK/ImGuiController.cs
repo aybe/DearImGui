@@ -1,6 +1,6 @@
 ﻿// #define GLFW_MOUSE_CURSOR_WINDOWS
-using System.ComponentModel;
-using System.Diagnostics;
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
@@ -10,6 +10,7 @@ using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 using Vector2 = System.Numerics.Vector2;
+
 // ReSharper disable InconsistentNaming
 
 namespace ImGuiNET.OpenTK;
@@ -161,7 +162,7 @@ public sealed class ImGuiController : Disposable
     };
 
     private readonly ImGuiContext Context;
-    
+
     //private readonly IntPtr ContextPlot = ImPlot.CreateContext();
 
     private int IndexBuffer;
@@ -190,33 +191,6 @@ public sealed class ImGuiController : Disposable
 
         ImGui.SetCurrentContext(ImGui.CreateContext(null));
 
-        //TODO delete
-        //if (fontConfig != null)
-        //{
-        //    using (var io = ImGui.GetIO())
-        //    {
-        //        unsafe
-        //        {
-        //            var ranges = io.Fonts.GlyphRangesDefault;
-
-        //            var atlas = new ImFontAtlas();
-
-        //            using (var font = atlas.AddFontFromFileTTF(fontConfig.Value.Path, fontConfig.Value.Size, null, ref *ranges))
-        //            {
-        //                var build = atlas.Build();
-
-        //                Debug.Assert(build);
-        //            }
-
-        //            ImGui.DestroyContext(ImGui.GetCurrentContext());
-
-        //            var context = ImGui.CreateContext(atlas);
-
-        //            ImGui.SetCurrentContext(context);
-        //        }
-        //    }
-        //}
-
         Context = ImGui.GetCurrentContext();
 
         using (new ImGuiContextScope(Context))
@@ -225,7 +199,7 @@ public sealed class ImGuiController : Disposable
 
             InitializeFlags(io);
 
-            InitializeKeyboard(io);
+            //InitializeKeyboard(io);
 
             InitializeFont(io, fontConfig);
 
@@ -237,36 +211,36 @@ public sealed class ImGuiController : Disposable
         InitializeShader();
 
         Window.FocusedChanged += OnWindowFocusChanged;
-        Window.KeyDown        += OnWindowKeyPressDown;
-        Window.KeyUp          += OnWindowKeyPressUp;
-        Window.MouseEnter     += OnWindowMouseEnter;
-        Window.MouseMove      += OnWindowMouseMove;
-        Window.MouseDown      += OnWindowMouseButtonDown;
-        Window.MouseUp        += OnWindowMouseButtonUp;
-        Window.MouseWheel     += OnWindowMouseWheel;
-        Window.TextInput      += OnWindowTextInput;
+        Window.KeyDown += OnWindowKeyPressDown;
+        Window.KeyUp += OnWindowKeyPressUp;
+        Window.MouseEnter += OnWindowMouseEnter;
+        Window.MouseMove += OnWindowMouseMove;
+        Window.MouseDown += OnWindowMouseButtonDown;
+        Window.MouseUp += OnWindowMouseButtonUp;
+        Window.MouseWheel += OnWindowMouseWheel;
+        Window.TextInput += OnWindowTextInput;
     }
 
-    private ImGuiIO IO => ImGuiNET.ImGui.GetIO();
+    private ImGuiIO IO => ImGui.GetIO();
 
     private GameWindow Window { get; }
 
     protected override void DisposeManaged()
     {
         Window.FocusedChanged -= OnWindowFocusChanged;
-        Window.KeyDown        -= OnWindowKeyPressDown;
-        Window.KeyUp          -= OnWindowKeyPressUp;
-        Window.MouseEnter     -= OnWindowMouseEnter;
-        Window.MouseMove      -= OnWindowMouseMove;
-        Window.MouseDown      -= OnWindowMouseButtonDown;
-        Window.MouseUp        -= OnWindowMouseButtonUp;
-        Window.MouseWheel     -= OnWindowMouseWheel;
-        Window.TextInput      -= OnWindowTextInput;
+        Window.KeyDown -= OnWindowKeyPressDown;
+        Window.KeyUp -= OnWindowKeyPressUp;
+        Window.MouseEnter -= OnWindowMouseEnter;
+        Window.MouseMove -= OnWindowMouseMove;
+        Window.MouseDown -= OnWindowMouseButtonDown;
+        Window.MouseUp -= OnWindowMouseButtonUp;
+        Window.MouseWheel -= OnWindowMouseWheel;
+        Window.TextInput -= OnWindowTextInput;
 
-        ImGuiNET.ImGui.DestroyContext(Context);
+        ImGui.DestroyContext(Context);
 
         //ImPlot.DestroyContext(ContextPlot);
-        
+
         GL.DeleteVertexArray(VertexArray);
 
         GL.DeleteBuffer(VertexBuffer);
@@ -343,9 +317,9 @@ public sealed class ImGuiController : Disposable
             io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset;
         }
 
-        io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors;
+        //io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors; // todo
 
-        io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
+        //io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
     }
 
     private void InitializeKeyboard(ImGuiIO io)
@@ -362,14 +336,11 @@ public sealed class ImGuiController : Disposable
         {
             var scale = 1.0f;
 
-            unsafe
-            {
-                GLFW.GetWindowContentScale(Window.WindowPtr, out var xScale, out var yScale);
+            GLFW.GetWindowContentScale(Window.WindowPtr, out var xScale, out var yScale);
 
-                if (Math.Abs(xScale - yScale) < 0.001f)
-                {
-                    scale = xScale;
-                }
+            if (Math.Abs(xScale - yScale) < 0.001f)
+            {
+                scale = xScale;
             }
 
             var size = fontConfig.Value.Size * scale * scale; // so it looks the same as in Notepad
@@ -383,12 +354,14 @@ public sealed class ImGuiController : Disposable
             io.Fonts.AddFontDefault(null);
         }
 
-        var pp = default(byte**);
+        var pp = new IntPtr();
         var pw = default(int);
         var ph = default(int);
         var ps = default(int);
 
-        io.Fonts.GetTexDataAsRGBA32(pp, ref pw, ref ph, ref ps);
+        var pointer = Unsafe.AsPointer(ref pp);
+
+        io.Fonts.GetTexDataAsRGBA32((byte**)pointer, ref pw, ref ph, ref ps);
 
         GL.CreateTextures(TextureTarget.Texture2D, 1, out Texture);
         const string labelTEX = "ImGui Texture";
@@ -404,11 +377,12 @@ public sealed class ImGuiController : Disposable
 
         GL.TextureStorage2D(Texture, levels, SizedInternalFormat.Rgba8, pw, ph);
 
-        GL.TextureSubImage2D(Texture, 0, 0, 0, pw, ph, PixelFormat.Bgra, PixelType.UnsignedByte, new IntPtr(pp));
+        GL.TextureSubImage2D(Texture, 0, 0, 0, pw, ph, PixelFormat.Bgra, PixelType.UnsignedByte, pp);
 
         GL.GenerateTextureMipmap(Texture);
 
-        io.Fonts.SetTexID((IntPtr)Texture);
+        io.Fonts.TexID = (IntPtr)Texture;
+        // io.Fonts.SetTexID((IntPtr)Texture); // BUG TODO hide
 
         io.Fonts.ClearTexData();
     }
@@ -438,13 +412,15 @@ public sealed class ImGuiController : Disposable
         const string labelVAO = "ImGui VAO";
 
         var sizeOfIBO = Marshal.SizeOf<short>();
-        var sizeOfVBO = Marshal.SizeOf<ImDrawVert>();
+        var sizeOfVBO = Marshal.SizeOf<ImDrawVert.__Internal>();
 
         GL.CreateBuffers(1, out VertexBuffer);
+        //GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBuffer);
         GL.ObjectLabel(ObjectLabelIdentifier.Buffer, VertexBuffer, labelVBO.Length, labelVBO);
         GL.NamedBufferData(VertexBuffer, VertexBufferSize * sizeOfVBO, IntPtr.Zero, BufferUsageHint.StreamDraw);
 
         GL.CreateBuffers(1, out IndexBuffer);
+        //GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndexBuffer);
         GL.ObjectLabel(ObjectLabelIdentifier.Buffer, IndexBuffer, labelIBO.Length, labelIBO);
         GL.NamedBufferData(IndexBuffer, IndexBufferSize * sizeOfIBO, IntPtr.Zero, BufferUsageHint.StreamDraw);
 
@@ -458,9 +434,9 @@ public sealed class ImGuiController : Disposable
         GL.EnableVertexArrayAttrib(VertexArray, 1);
         GL.EnableVertexArrayAttrib(VertexArray, 2);
 
-        var offset1 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Pos)).ToInt32();
-        var offset2 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Uv)).ToInt32();
-        var offset3 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Col)).ToInt32();
+        var offset1 = Marshal.OffsetOf<ImDrawVert.__Internal>(nameof(ImDrawVert.__Internal.pos)).ToInt32();
+        var offset2 = Marshal.OffsetOf<ImDrawVert.__Internal>(nameof(ImDrawVert.__Internal.uv)).ToInt32();
+        var offset3 = Marshal.OffsetOf<ImDrawVert.__Internal>(nameof(ImDrawVert.__Internal.col)).ToInt32();
 
         GL.VertexArrayAttribFormat(VertexArray, 0, 2, VertexAttribType.Float, false, offset1);
         GL.VertexArrayAttribFormat(VertexArray, 1, 2, VertexAttribType.Float, false, offset2);
@@ -473,9 +449,9 @@ public sealed class ImGuiController : Disposable
 
     private void InitializeShader()
     {
-        Shader           = CreateProgram("ImGui shader", ShaderSourceVS, ShaderSourceFS);
+        Shader = CreateProgram("ImGui shader", ShaderSourceVS, ShaderSourceFS);
         ShaderProjection = GL.GetUniformLocation(Shader, "Projection");
-        ShaderTexture    = GL.GetUniformLocation(Shader, "Texture");
+        ShaderTexture = GL.GetUniformLocation(Shader, "Texture");
     }
 
     private void OnWindowFocusChanged(FocusedChangedEventArgs e)
@@ -558,18 +534,19 @@ public sealed class ImGuiController : Disposable
         {
             //ImPlot.SetCurrentContext(ContextPlot); // TODO
             //ImPlot.SetImGuiContext(Context);
-           
-            var io = IO;
 
-            var size = Window.ClientSize;
+            using (var io = ImGui.GetIO())
+            {
+                var size = Window.ClientSize;
 
-            io.DisplaySize = new Vector2(size.X, size.Y);
+                io.DisplaySize = new Vector2(size.X, size.Y);
 
-            io.DeltaTime = deltaTime;
+                io.DeltaTime = deltaTime;
+            }
 
             UpdateMouseCursor();
 
-            ImGuiNET.ImGui.NewFrame();
+            ImGui.NewFrame();
 
             NewFrame = true;
         }
@@ -578,9 +555,9 @@ public sealed class ImGuiController : Disposable
     private void UpdateModifiers(KeyModifiers modifiers)
     {
         var control = modifiers.HasFlags(KeyModifiers.Control);
-        var shift   = modifiers.HasFlags(KeyModifiers.Shift);
-        var alt     = modifiers.HasFlags(KeyModifiers.Alt);
-        var super   = modifiers.HasFlags(KeyModifiers.Super);
+        var shift = modifiers.HasFlags(KeyModifiers.Shift);
+        var alt = modifiers.HasFlags(KeyModifiers.Alt);
+        var super = modifiers.HasFlags(KeyModifiers.Super);
 
         IO.AddKeyEvent(ImGuiKey.ModCtrl, control);
         IO.AddKeyEvent(ImGuiKey.ModShift, shift);
@@ -653,16 +630,17 @@ public sealed class ImGuiController : Disposable
             return;
         }
 
-        ImGuiNET.ImGui.Render();
+        ImGui.EndFrame();
+        ImGui.Render();
 
         RenderFrame();
 
         NewFrame = false;
     }
 
-    private void RenderFrame()
+    private unsafe void RenderFrame()
     {
-        var data = ImGuiNET.ImGui.GetDrawData();
+        var data = ImGui.GetDrawData();
 
         if (data.CmdListsCount == 0)
         {
@@ -690,7 +668,7 @@ public sealed class ImGuiController : Disposable
         GL.Disable(EnableCap.PrimitiveRestart);
         GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 
-        var io = IO;
+        using var io = ImGui.GetIO();
 
         var projection = Matrix4.CreateOrthographicOffCenter(0.0f, io.DisplaySize.X, io.DisplaySize.Y, 0.0f, -1.0f, 1.0f);
 
@@ -700,15 +678,20 @@ public sealed class ImGuiController : Disposable
         GL.BindSampler(0, 0);
         GL.BindVertexArray(VertexArray);
 
-        var clipOff   = data.DisplayPos;
+        var clipOff = data.DisplayPos;
         var clipScale = data.FramebufferScale;
+
+        var offsets = GetOffsets<ImDrawVert>();
 
         for (var i = 0; i < data.CmdListsCount; i++)
         {
-            var list = data.CmdLists; //var list = data.CmdListsRange[i]; // BUG not drawing everything
-            
-            var vtxBufferSize = list.VtxBuffer.Size * Unsafe.SizeOf<ImDrawVert>();
-            var idxBufferSize = list.IdxBuffer.Size * sizeof(ushort);
+            var list = data.CmdLists[i];
+
+            var vtxBuffer = list.VtxBuffer;
+            var idxBuffer = list.IdxBuffer;
+
+            var vtxBufferSize = vtxBuffer.Size * sizeof(ImDrawVert.__Internal);
+            var idxBufferSize = idxBuffer.Size * sizeof(ushort);
 
             if (VertexBufferSize < vtxBufferSize)
             {
@@ -722,12 +705,14 @@ public sealed class ImGuiController : Disposable
                 GL.NamedBufferData(IndexBuffer, IndexBufferSize, IntPtr.Zero, BufferUsageHint.StreamDraw);
             }
 
-            GL.NamedBufferSubData(VertexBuffer, IntPtr.Zero, vtxBufferSize, list.VtxBuffer.Data);
-            GL.NamedBufferSubData(IndexBuffer, IntPtr.Zero, idxBufferSize, list.IdxBuffer.Data);
+            GL.NamedBufferSubData(VertexBuffer, IntPtr.Zero, vtxBufferSize, vtxBuffer.Data);
+            GL.NamedBufferSubData(IndexBuffer, IntPtr.Zero, idxBufferSize, idxBuffer.Data);
 
-            for (var j = 0; j < list.CmdBuffer.Size; j++)
+            var cmdBuffer = list.CmdBuffer;
+
+            for (var j = 0; j < cmdBuffer.Size; j++)
             {
-                var cmd = list.CmdBuffer[j];
+                var cmd = cmdBuffer[j];
 
                 var clipMin = new Vector2((cmd.ClipRect.X - clipOff.X) * clipScale.X, (cmd.ClipRect.Y - clipOff.Y) * clipScale.Y);
                 var clipMax = new Vector2((cmd.ClipRect.Z - clipOff.X) * clipScale.X, (cmd.ClipRect.W - clipOff.Y) * clipScale.Y);
@@ -737,9 +722,16 @@ public sealed class ImGuiController : Disposable
                     continue;
                 }
 
+                if (cmd.UserCallback != null)
+                {
+                    throw new NotImplementedException(); // BUG System.ExecutionEngineException if above continue statement // TODO see header
+                }
+
                 GL.Scissor((int)clipMin.X, (int)(scaleY - clipMax.Y), (int)(clipMax.X - clipMin.X), (int)(clipMax.Y - clipMin.Y));
 
-                GL.BindTextureUnit(0, (int)cmd.TexID);
+                var texId = cmd.GetTexID();
+
+                GL.BindTextureUnit(0, (int)texId);
 
                 var length = (int)cmd.ElemCount;
                 var offset = cmd.IdxOffset * sizeof(ushort);
@@ -754,5 +746,25 @@ public sealed class ImGuiController : Disposable
                 }
             }
         }
+    }
+
+    private static string GetOffsets<T>()
+    {
+        var type = typeof(T);
+
+        var fields = type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+        var dictionary = new SortedDictionary<IntPtr, string>();
+
+        foreach (var field in fields)
+        {
+            var fieldName = field.Name;
+            var offsetOf = Marshal.OffsetOf<T>(fieldName);
+            dictionary.Add(offsetOf, fieldName);
+        }
+
+        var join = string.Join(Environment.NewLine, dictionary);
+
+        return join;
     }
 }
