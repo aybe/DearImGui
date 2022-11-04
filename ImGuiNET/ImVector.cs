@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 
 namespace ImGuiNET;
 
-public readonly struct ImVector<T> : IReadOnlyList<T>
+public readonly struct ImVector<T> : IEnumerable<T>
 {
     private readonly __Internal Internal;
 
@@ -15,9 +15,8 @@ public readonly struct ImVector<T> : IReadOnlyList<T>
         Internal = @internal;
     }
 
-    /// <inheritdoc />
     [SuppressMessage("ReSharper", "InvertIf")]
-    public T this[int index]
+    public unsafe T this[int index]
     {
         get
         {
@@ -30,6 +29,11 @@ public readonly struct ImVector<T> : IReadOnlyList<T>
             var size = Unsafe.SizeOf<T>();
             var data = Data + size * index;
 
+            if (type.IsValueType)
+            {
+                return Unsafe.AsRef<T>(data.ToPointer()); // works for structs only
+            }
+
             if (type == typeof(ImDrawCmd))
             {
                 var source = ImDrawCmd.__GetOrCreateInstance(data);
@@ -37,14 +41,7 @@ public readonly struct ImVector<T> : IReadOnlyList<T>
                 return result;
             }
 
-            if (type == typeof(ImDrawVert))
-            {
-                var source = ImDrawVert.__GetOrCreateInstance(data);
-                var result = Unsafe.As<ImDrawVert, T>(ref source);
-                return result;
-            }
-
-            throw new NotImplementedException();
+            throw new NotImplementedException(type.ToString());
         }
     }
 
@@ -74,7 +71,7 @@ public readonly struct ImVector<T> : IReadOnlyList<T>
     public IEnumerator<T> GetEnumerator()
 // BUG The debugger is unable to evaluate this expression
     {
-        for (var i = 0; i < Count; i++)
+        for (var i = 0; i < Size; i++)
         {
             var item = this[i];
             yield return item;
@@ -87,7 +84,6 @@ public readonly struct ImVector<T> : IReadOnlyList<T>
     }
 
     /// <inheritdoc />
-    public int Count => Internal.Size;
     public override string ToString()
     {
         return $"{nameof(Size)}: {Size}, {nameof(Capacity)}: {Capacity}, {nameof(Data)}: 0x{Data.ToString(IntPtr.Size == 4 ? "X8" : "X16")}";
