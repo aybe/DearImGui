@@ -88,4 +88,8 @@ public readonly struct ImVector<T> : IReadOnlyList<T>
 
     /// <inheritdoc />
     public int Count => Internal.Size;
+    public override string ToString()
+    {
+        return $"{nameof(Size)}: {Size}, {nameof(Capacity)}: {Capacity}, {nameof(Data)}: 0x{Data.ToString(IntPtr.Size == 4 ? "X8" : "X16")}";
+    }
 }
