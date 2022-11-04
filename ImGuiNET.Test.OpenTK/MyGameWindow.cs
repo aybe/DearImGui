@@ -3,6 +3,7 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
+using Vector2 = System.Numerics.Vector2;
 
 namespace ImGuiNET.Test.OpenTK;
 
@@ -39,9 +40,21 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
     {
         GL.ClearColor(Color4.FromHsv(new Vector4((float)(ElapsedTime % 10.0f / 10.0f), 1.0f, 0.25f, 1.0f)));
         GL.Clear(ClearBufferMask.ColorBufferBit);
+
         var b = true;
-        ImGui.ShowDemoWindow(ref b);
+
+        if (ImGui.Begin("Window1", ref b, ImGuiWindowFlags.None))
+        {
+            if (ImGui.Button("Button1", new Vector2(100, 100)))
+            {
+                Console.WriteLine(DateTime.Now.Ticks.ToString());
+            }
+        }
+
+        ImGui.End();
+
         Controller.Render();
+
         SwapBuffers();
     }
 
