@@ -1,4 +1,5 @@
-﻿using OpenTK.Windowing.Desktop;
+﻿using OpenTK.Mathematics;
+using OpenTK.Windowing.Desktop;
 
 namespace ImGuiNET.Test.OpenTK;
 
@@ -6,7 +7,13 @@ internal static class Program
 {
     private static void Main(string[] args)
     {
-        using var window = new MyGameWindow(GameWindowSettings.Default, NativeWindowSettings.Default);
+        var nws = new NativeWindowSettings
+        {
+            Location = new Vector2i(500, 500),
+            Size = new Vector2i(1000, 1000)
+        };
+
+        using var window = new MyGameWindow(GameWindowSettings.Default, nws);
 
         window.Run();
     }
