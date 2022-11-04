@@ -10,7 +10,11 @@ internal sealed class ProduceSummary : TranslationUnitPass
 
     public override bool VisitMethodDecl(Method method)
     {
-        TrySetComment(method, -1);
+        if (!TrySetComment(method, -1))
+        {
+            TrySetComment(method, -2); // TODO should search backwards until first mark instead
+        }
+
         return base.VisitMethodDecl(method);
     }
 
@@ -40,7 +44,7 @@ internal sealed class ProduceSummary : TranslationUnitPass
         return base.VisitFieldDecl(field);
     }
 
-    private void TrySetComment<T>(T decl, int lineOffset, Func<Summary<T>, string?>? func = null) where T : Declaration
+    private bool TrySetComment<T>(T decl, int lineOffset, Func<Summary<T>, string?>? func = null) where T : Declaration
     {
         var line1 = decl.LineNumberStart;
         var line2 = decl.LineNumberEnd;
@@ -76,7 +80,7 @@ internal sealed class ProduceSummary : TranslationUnitPass
         if (result == null)
         {
             Console.WriteLine($"Couldn't find comment for {decl.Name} @ {line1}-{line2}.");
-            return;
+            return false;
         }
 
         var text = result;
@@ -96,6 +100,8 @@ internal sealed class ProduceSummary : TranslationUnitPass
         text = Regex.Replace(text, @"(//\s+|(\.)\s+)", @"$2<br/>"); // insert new lines
 
         decl.Comment = new RawComment { BriefText = text };
+
+        return true;
     }
 
     private static bool TryGetComment(string text, out string result)
