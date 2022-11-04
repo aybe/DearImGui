@@ -412,7 +412,7 @@ public sealed class ImGuiController : Disposable
         const string labelVAO = "ImGui VAO";
 
         var sizeOfIBO = Marshal.SizeOf<short>();
-        var sizeOfVBO = Marshal.SizeOf<ImDrawVert.__Internal>();
+        var sizeOfVBO = Marshal.SizeOf<ImDrawVert>();
 
         GL.CreateBuffers(1, out VertexBuffer);
         //GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBuffer);
@@ -434,9 +434,9 @@ public sealed class ImGuiController : Disposable
         GL.EnableVertexArrayAttrib(VertexArray, 1);
         GL.EnableVertexArrayAttrib(VertexArray, 2);
 
-        var offset1 = Marshal.OffsetOf<ImDrawVert.__Internal>(nameof(ImDrawVert.__Internal.pos)).ToInt32();
-        var offset2 = Marshal.OffsetOf<ImDrawVert.__Internal>(nameof(ImDrawVert.__Internal.uv)).ToInt32();
-        var offset3 = Marshal.OffsetOf<ImDrawVert.__Internal>(nameof(ImDrawVert.__Internal.col)).ToInt32();
+        var offset1 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Pos)).ToInt32();
+        var offset2 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Uv)).ToInt32();
+        var offset3 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Col)).ToInt32();
 
         GL.VertexArrayAttribFormat(VertexArray, 0, 2, VertexAttribType.Float, false, offset1);
         GL.VertexArrayAttribFormat(VertexArray, 1, 2, VertexAttribType.Float, false, offset2);
@@ -690,7 +690,7 @@ public sealed class ImGuiController : Disposable
             var vtxBuffer = list.VtxBuffer;
             var idxBuffer = list.IdxBuffer;
 
-            var vtxBufferSize = vtxBuffer.Size * sizeof(ImDrawVert.__Internal);
+            var vtxBufferSize = vtxBuffer.Size * sizeof(ImDrawVert);
             var idxBufferSize = idxBuffer.Size * sizeof(ushort);
 
             if (VertexBufferSize < vtxBufferSize)

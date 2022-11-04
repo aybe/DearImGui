@@ -63,17 +63,23 @@ internal sealed class MyLibrary : ILibrary
         Experimental.FlattenNamespace(ctx);
 
         Experimental.RemovePass<CheckIgnoredDeclsPass>(driver);
-        
+
         Experimental.RemovePass<CleanCommentsPass>(driver); // useless, throws when adding our comments to functions
 
-        // though vectors are ignored below, making them as value types is necessary!
+        {
+            // whenever we ignore a type to implement it manually, we still have to set value type where appropriate
 
-        ctx.SetClassAsValueType("ImVec2");
-        ctx.SetClassAsValueType("ImVec4");
+            ctx.SetClassAsValueType("ImDrawVert");
+            ctx.IgnoreClassWithName("ImDrawVert");
+
+            ctx.SetClassAsValueType("ImVec2");
+            ctx.IgnoreClassWithName("ImVec2");
+
+            ctx.SetClassAsValueType("ImVec4");
+            ctx.IgnoreClassWithName("ImVec4");
+        }
 
         ctx.IgnoreClassWithName("ImColor");
-        ctx.IgnoreClassWithName("ImVec2");
-        ctx.IgnoreClassWithName("ImVec4");
         ctx.IgnoreClassWithName("ImVector");
 
         // ignore these because there's no entry point because they're inline
