@@ -12,6 +12,6 @@ partial class ImDrawCmd
     /// <inheritdoc />
     public override string ToString()
     {
-        return $"{nameof(ElemCount)}: {ElemCount}, {nameof(VtxOffset)}: {VtxOffset}, {nameof(IdxOffset)}: {IdxOffset}, {nameof(TextureId)}: {TextureId}";
+        return $"{nameof(ClipRect)}: {ClipRect}, {nameof(ElemCount)}: {ElemCount}, {nameof(VtxOffset)}: {VtxOffset}, {nameof(IdxOffset)}: {IdxOffset}, {nameof(TextureId)}: {TextureId}";
     }
 }
