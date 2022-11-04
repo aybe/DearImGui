@@ -402,4 +402,4 @@ imgui.cppsharp/*.cpp
 imgui.cppsharp/*.cs
 *.bak
 *.g.cs
-ImGuiNET.Generator/Properties/launchSettings.json
+launchSettings.json

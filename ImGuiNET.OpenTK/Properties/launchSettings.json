@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "ImGuiNET.OpenTK": {
-      "commandName": "Project",
-      "nativeDebugging": true
-    }
-  }
-}
