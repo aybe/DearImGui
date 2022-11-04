@@ -37,7 +37,7 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
     protected override void OnRenderFrame(FrameEventArgs args)
     {
-        GL.ClearColor(Color4.FromHsv(new Vector4((float)(ElapsedTime % 10.0f / 10.0f), 1.0f, 1.0f, 1.0f)));
+        GL.ClearColor(Color4.FromHsv(new Vector4((float)(ElapsedTime % 10.0f / 10.0f), 1.0f, 0.25f, 1.0f)));
         GL.Clear(ClearBufferMask.ColorBufferBit);
         var b = true;
         ImGui.ShowDemoWindow(ref b);
