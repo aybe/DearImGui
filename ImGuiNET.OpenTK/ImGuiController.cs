@@ -198,9 +198,9 @@ public sealed class ImGuiController : Disposable
 
         using (new ImGuiContextScope(Context))
         {
-            InitializeFlags(IO);
+            InitializeFlags();
 
-            InitializeFont(IO, fontConfig);
+            InitializeFont(fontConfig);
 
             InitializeStyle();
         }
@@ -231,6 +231,8 @@ public sealed class ImGuiController : Disposable
         Window.MouseUp -= OnWindowMouseButtonUp;
         Window.MouseWheel -= OnWindowMouseWheel;
         Window.TextInput -= OnWindowTextInput;
+
+        IO.Dispose();
 
         ImGui.DestroyContext(Context);
 
@@ -303,19 +305,19 @@ public sealed class ImGuiController : Disposable
         throw new InvalidOperationException($"Failed to create shader:\n{log}");
     }
 
-    private void InitializeFlags(ImGuiIO io)
+    private void InitializeFlags()
     {
         if (Window.APIVersion >= new Version(3, 2))
         {
-            io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset;
+            IO.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset;
         }
 
-        //io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors; // todo
+        //IO.BackendFlags |= ImGuiBackendFlags.HasMouseCursors; // todo
 
-        //io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
+        //IO.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
     }
 
-    private unsafe void InitializeFont(ImGuiIO io, ImGuiFontConfig? fontConfig)
+    private unsafe void InitializeFont(ImGuiFontConfig? fontConfig)
     {
         if (fontConfig.HasValue)
         {
@@ -330,13 +332,13 @@ public sealed class ImGuiController : Disposable
 
             var size = fontConfig.Value.Size * scale * scale; // makes it like as Notepad
 
-            var ranges = io.Fonts.GlyphRangesDefault;
+            var ranges = IO.Fonts.GlyphRangesDefault;
 
-            io.Fonts.AddFontFromFileTTF(fontConfig.Value.Path, size, null, ref *ranges);
+            IO.Fonts.AddFontFromFileTTF(fontConfig.Value.Path, size, null, ref *ranges);
         }
         else
         {
-            io.Fonts.AddFontDefault(null);
+            IO.Fonts.AddFontDefault(null);
         }
 
         var pp = new IntPtr();
@@ -346,7 +348,7 @@ public sealed class ImGuiController : Disposable
 
         var pointer = Unsafe.AsPointer(ref pp);
 
-        io.Fonts.GetTexDataAsRGBA32((byte**)pointer, ref pw, ref ph, ref ps);
+        IO.Fonts.GetTexDataAsRGBA32((byte**)pointer, ref pw, ref ph, ref ps);
 
         const string labelTEX = "ImGui Texture";
         GL.CreateTextures(TextureTarget.Texture2D, 1, out Texture);
@@ -366,9 +368,9 @@ public sealed class ImGuiController : Disposable
 
         GL.GenerateTextureMipmap(Texture);
 
-        io.Fonts.TexID = (IntPtr)Texture;
+        IO.Fonts.TexID = (IntPtr)Texture;
 
-        io.Fonts.ClearTexData();
+        IO.Fonts.ClearTexData();
     }
 
     private unsafe void InitializeStyle()
@@ -514,14 +516,11 @@ public sealed class ImGuiController : Disposable
     {
         using (new ImGuiContextScope(Context))
         {
-            using (var io = ImGui.GetIO())
-            {
-                var size = Window.ClientSize;
+            var size = Window.ClientSize;
 
-                io.DisplaySize = new Vector2(size.X, size.Y);
+            IO.DisplaySize = new Vector2(size.X, size.Y);
 
-                io.DeltaTime = deltaTime;
-            }
+            IO.DeltaTime = deltaTime;
 
             UpdateMouseCursor();
 
