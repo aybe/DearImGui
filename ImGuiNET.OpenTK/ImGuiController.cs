@@ -1,6 +1,5 @@
 ﻿// #define GLFW_MOUSE_CURSOR_WINDOWS
 
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
@@ -163,7 +162,9 @@ public sealed class ImGuiController : Disposable
 
     private readonly ImGuiContext Context;
 
-    //private readonly IntPtr ContextPlot = ImPlot.CreateContext();
+    private readonly ImGuiIO IO;
+
+    private readonly GameWindow Window;
 
     private int IndexBuffer;
 
@@ -191,15 +192,15 @@ public sealed class ImGuiController : Disposable
 
         ImGui.SetCurrentContext(ImGui.CreateContext(null));
 
+        IO = ImGui.GetIO(); // needs context
+
         Context = ImGui.GetCurrentContext();
 
         using (new ImGuiContextScope(Context))
         {
-            var io = IO;
+            InitializeFlags(IO);
 
-            InitializeFlags(io);
-
-            InitializeFont(io, fontConfig);
+            InitializeFont(IO, fontConfig);
 
             InitializeStyle();
         }
@@ -219,10 +220,6 @@ public sealed class ImGuiController : Disposable
         Window.TextInput += OnWindowTextInput;
     }
 
-    private ImGuiIO IO => ImGui.GetIO();
-
-    private GameWindow Window { get; }
-
     protected override void DisposeManaged()
     {
         Window.FocusedChanged -= OnWindowFocusChanged;
@@ -236,8 +233,6 @@ public sealed class ImGuiController : Disposable
         Window.TextInput -= OnWindowTextInput;
 
         ImGui.DestroyContext(Context);
-
-        //ImPlot.DestroyContext(ContextPlot);
 
         GL.DeleteVertexArray(VertexArray);
 
@@ -333,7 +328,7 @@ public sealed class ImGuiController : Disposable
                 scale = xScale;
             }
 
-            var size = fontConfig.Value.Size * scale * scale; // so it looks the same as in Notepad
+            var size = fontConfig.Value.Size * scale * scale; // makes it like as Notepad
 
             var ranges = io.Fonts.GlyphRangesDefault;
 
@@ -353,8 +348,8 @@ public sealed class ImGuiController : Disposable
 
         io.Fonts.GetTexDataAsRGBA32((byte**)pointer, ref pw, ref ph, ref ps);
 
-        GL.CreateTextures(TextureTarget.Texture2D, 1, out Texture);
         const string labelTEX = "ImGui Texture";
+        GL.CreateTextures(TextureTarget.Texture2D, 1, out Texture);
         GL.ObjectLabel(ObjectLabelIdentifier.Texture, Texture, labelTEX.Length, labelTEX);
 
         var levels = (int)Math.Floor(Math.Log(Math.Max(pw, ph), 2));
@@ -372,7 +367,6 @@ public sealed class ImGuiController : Disposable
         GL.GenerateTextureMipmap(Texture);
 
         io.Fonts.TexID = (IntPtr)Texture;
-        // io.Fonts.SetTexID((IntPtr)Texture); // BUG TODO hide
 
         io.Fonts.ClearTexData();
     }
@@ -520,9 +514,6 @@ public sealed class ImGuiController : Disposable
     {
         using (new ImGuiContextScope(Context))
         {
-            //ImPlot.SetCurrentContext(ContextPlot); // TODO
-            //ImPlot.SetImGuiContext(Context);
-
             using (var io = ImGui.GetIO())
             {
                 var size = Window.ClientSize;
@@ -613,7 +604,7 @@ public sealed class ImGuiController : Disposable
 
     public void Render()
     {
-        if (!NewFrame)
+        if (NewFrame is false)
         {
             return;
         }
@@ -643,6 +634,8 @@ public sealed class ImGuiController : Disposable
             return;
         }
 
+        var projection = Matrix4.CreateOrthographicOffCenter(0.0f, IO.DisplaySize.X, IO.DisplaySize.Y, 0.0f, -1.0f, 1.0f);
+
         using var scope = new OpenGLStateScope();
 
         GL.Enable(EnableCap.Blend);
@@ -655,21 +648,11 @@ public sealed class ImGuiController : Disposable
         GL.Enable(EnableCap.ScissorTest);
         GL.Disable(EnableCap.PrimitiveRestart);
         GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
-
-        using var io = ImGui.GetIO();
-
-        var projection = Matrix4.CreateOrthographicOffCenter(0.0f, io.DisplaySize.X, io.DisplaySize.Y, 0.0f, -1.0f, 1.0f);
-
         GL.UseProgram(Shader);
         GL.Uniform1(ShaderTexture, 0);
         GL.UniformMatrix4(ShaderProjection, false, ref projection);
         GL.BindSampler(0, 0);
         GL.BindVertexArray(VertexArray);
-
-        var clipOff = data.DisplayPos;
-        var clipScale = data.FramebufferScale;
-
-        var offsets = GetOffsets<ImDrawVert>();
 
         for (var i = 0; i < data.CmdListsCount; i++)
         {
@@ -696,14 +679,12 @@ public sealed class ImGuiController : Disposable
             GL.NamedBufferSubData(VertexBuffer, IntPtr.Zero, vtxBufferSize, vtxBuffer.Data);
             GL.NamedBufferSubData(IndexBuffer, IntPtr.Zero, idxBufferSize, idxBuffer.Data);
 
-            var cmdBuffer = list.CmdBuffer;
-
-            for (var j = 0; j < cmdBuffer.Size; j++)
+            foreach (var cmd in (ImVector<ImDrawCmd>)list.CmdBuffer)
             {
-                var cmd = cmdBuffer[j];
-
-                var clipMin = new Vector2((cmd.ClipRect.X - clipOff.X) * clipScale.X, (cmd.ClipRect.Y - clipOff.Y) * clipScale.Y);
-                var clipMax = new Vector2((cmd.ClipRect.Z - clipOff.X) * clipScale.X, (cmd.ClipRect.W - clipOff.Y) * clipScale.Y);
+                var clipOff = data.DisplayPos;
+                var clipScl = data.FramebufferScale;
+                var clipMin = new Vector2((cmd.ClipRect.X - clipOff.X) * clipScl.X, (cmd.ClipRect.Y - clipOff.Y) * clipScl.Y);
+                var clipMax = new Vector2((cmd.ClipRect.Z - clipOff.X) * clipScl.X, (cmd.ClipRect.W - clipOff.Y) * clipScl.Y);
 
                 if (clipMax.X <= clipMin.X || clipMax.Y <= clipMin.Y)
                 {
@@ -712,19 +693,17 @@ public sealed class ImGuiController : Disposable
 
                 if (cmd.UserCallback != null)
                 {
-                    throw new NotImplementedException(); // BUG System.ExecutionEngineException if above continue statement // TODO see header
+                    throw new NotImplementedException(); // TODO see imgui.h
                 }
 
                 GL.Scissor((int)clipMin.X, (int)(scaleY - clipMax.Y), (int)(clipMax.X - clipMin.X), (int)(clipMax.Y - clipMin.Y));
 
-                var texId = cmd.GetTexID();
-
-                GL.BindTextureUnit(0, (int)texId);
+                GL.BindTextureUnit(0, cmd.GetTexID().ToInt32());
 
                 var length = (int)cmd.ElemCount;
                 var offset = cmd.IdxOffset * sizeof(ushort);
 
-                if (io.BackendFlags.HasFlags(ImGuiBackendFlags.RendererHasVtxOffset))
+                if (IO.BackendFlags.HasFlags(ImGuiBackendFlags.RendererHasVtxOffset))
                 {
                     GL.DrawElementsBaseVertex(PrimitiveType.Triangles, length, DrawElementsType.UnsignedShort, (IntPtr)offset, unchecked((int)cmd.VtxOffset));
                 }
@@ -734,25 +713,5 @@ public sealed class ImGuiController : Disposable
                 }
             }
         }
-    }
-
-    private static string GetOffsets<T>()
-    {
-        var type = typeof(T);
-
-        var fields = type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
-        var dictionary = new SortedDictionary<IntPtr, string>();
-
-        foreach (var field in fields)
-        {
-            var fieldName = field.Name;
-            var offsetOf = Marshal.OffsetOf<T>(fieldName);
-            dictionary.Add(offsetOf, fieldName);
-        }
-
-        var join = string.Join(Environment.NewLine, dictionary);
-
-        return join;
     }
 }
