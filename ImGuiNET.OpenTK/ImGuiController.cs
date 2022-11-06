@@ -199,8 +199,6 @@ public sealed class ImGuiController : Disposable
 
             InitializeFlags(io);
 
-            //InitializeKeyboard(io);
-
             InitializeFont(io, fontConfig);
 
             InitializeStyle();
@@ -320,14 +318,6 @@ public sealed class ImGuiController : Disposable
         //io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors; // todo
 
         //io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
-    }
-
-    private void InitializeKeyboard(ImGuiIO io)
-    {
-        foreach (var (key1, key2) in KeyMap)
-        {
-            //io.KeyMap[(int)key2] = (int)key1;
-        }
     }
 
     private unsafe void InitializeFont(ImGuiIO io, ImGuiFontConfig? fontConfig)
