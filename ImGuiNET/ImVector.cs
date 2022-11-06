@@ -36,7 +36,7 @@ public readonly struct ImVector<T> : IEnumerable<T>
 
             if (type == typeof(ImDrawCmd))
             {
-                var source = ImDrawCmd.__GetOrCreateInstance(data);
+                var source = ImDrawCmd.__GetOrCreateInstance(Data + sizeof(ImDrawCmd.__Internal) * index);
                 var result = Unsafe.As<ImDrawCmd, T>(ref source);
                 return result;
             }
