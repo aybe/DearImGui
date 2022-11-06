@@ -405,12 +405,10 @@ public sealed class ImGuiController : Disposable
         var sizeOfVBO = Marshal.SizeOf<ImDrawVert>();
 
         GL.CreateBuffers(1, out VertexBuffer);
-        //GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBuffer);
         GL.ObjectLabel(ObjectLabelIdentifier.Buffer, VertexBuffer, labelVBO.Length, labelVBO);
         GL.NamedBufferData(VertexBuffer, VertexBufferSize * sizeOfVBO, IntPtr.Zero, BufferUsageHint.StreamDraw);
 
         GL.CreateBuffers(1, out IndexBuffer);
-        //GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndexBuffer);
         GL.ObjectLabel(ObjectLabelIdentifier.Buffer, IndexBuffer, labelIBO.Length, labelIBO);
         GL.NamedBufferData(IndexBuffer, IndexBufferSize * sizeOfIBO, IntPtr.Zero, BufferUsageHint.StreamDraw);
 
