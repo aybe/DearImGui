@@ -1,5 +1,7 @@
-﻿// #define GLFW_MOUSE_CURSOR_WINDOWS
-
+﻿using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
@@ -8,6 +10,9 @@ using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
+using Vanara.PInvoke;
+using Image = OpenTK.Windowing.GraphicsLibraryFramework.Image;
+using PixelFormat = OpenTK.Graphics.OpenGL.PixelFormat;
 using Vector2 = System.Numerics.Vector2;
 
 // ReSharper disable InconsistentNaming
@@ -164,6 +169,8 @@ public sealed class ImGuiController : Disposable
 
     private readonly ImGuiIO IO;
 
+    private readonly Dictionary<ImGuiMouseCursor, IntPtr> MouseCursors;
+
     private readonly GameWindow Window;
 
     private int IndexBuffer;
@@ -208,6 +215,8 @@ public sealed class ImGuiController : Disposable
         InitializeBuffers();
 
         InitializeShader();
+
+        MouseCursors = CreateMouseCursors();
 
         Window.FocusedChanged += OnWindowFocusChanged;
         Window.KeyDown += OnWindowKeyPressDown;
@@ -312,7 +321,7 @@ public sealed class ImGuiController : Disposable
             IO.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset;
         }
 
-        //IO.BackendFlags |= ImGuiBackendFlags.HasMouseCursors; // todo
+        IO.BackendFlags |= ImGuiBackendFlags.HasMouseCursors;
 
         //IO.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
     }
@@ -545,60 +554,107 @@ public sealed class ImGuiController : Disposable
 
     private void UpdateMouseCursor()
     {
-        if (OperatingSystem.IsWindows())
-        {
-            UpdateMouseCursorWindows();
-        }
-    }
-
-    [SupportedOSPlatform("windows")]
-    private void UpdateMouseCursorWindows()
-    {
-#if GLFW_MOUSE_CURSOR_WINDOWS
-        // we have to forcibly update cursor else it will only appear briefly because of GLFW
-
-        // until this is properly supported, it's the best since it supports animated cursors
-
-        var bounds = Window.Bounds;
-
-        if (!bounds.ContainsExclusive((Vector2i)(bounds.Min + Window.MouseState.Position)))
-        {
-            return; // but let system update cursor when mouse is outside, i.e. when resizing
-        }
-
-        var io = IO;
-
-        if ((io.ConfigFlags & ImGuiConfigFlags.NoMouseCursorChange) != ImGuiConfigFlags.None)
+        if ((IO.ConfigFlags & ImGuiConfigFlags.NoMouseCursorChange) != ImGuiConfigFlags.None)
         {
             return;
         }
 
-        var cursor = ImGuiNET.ImGui.GetMouseCursor();
+        var bounds = Window.Bounds;
 
-        if (io.MouseDrawCursor)
+        if (bounds.ContainsExclusive(bounds.Min + (Vector2i)Window.MouseState.Position) is false)
+        {
+            return; // but let system update cursor when mouse is outside, i.e. when resizing
+        }
+
+        var cursor = ImGui.GetMouseCursor();
+
+        if (IO.MouseDrawCursor)
         {
             cursor = ImGuiMouseCursor.None;
         }
 
-        // ReSharper disable once SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
-
-        var resource = cursor switch
+        unsafe
         {
-            ImGuiMouseCursor.None       => ResourceId.NULL,
-            ImGuiMouseCursor.Arrow      => User32.IDC_ARROW,
-            ImGuiMouseCursor.TextInput  => User32.IDC_IBEAM,
-            ImGuiMouseCursor.ResizeAll  => User32.IDC_SIZEALL,
-            ImGuiMouseCursor.ResizeNS   => User32.IDC_SIZENS,
-            ImGuiMouseCursor.ResizeEW   => User32.IDC_SIZEWE,
-            ImGuiMouseCursor.ResizeNESW => User32.IDC_SIZENESW,
-            ImGuiMouseCursor.ResizeNWSE => User32.IDC_SIZENWSE,
-            ImGuiMouseCursor.Hand       => User32.IDC_HAND,
-            ImGuiMouseCursor.NotAllowed => User32.IDC_NO,
-            _                           => throw new InvalidEnumArgumentException(null, (int)cursor, typeof(ImGuiMouseCursor))
+            GLFW.SetCursor(Window.WindowPtr, (Cursor*)MouseCursors[cursor].ToPointer());
+        }
+    }
+
+    private static Dictionary<ImGuiMouseCursor, IntPtr> CreateMouseCursors()
+    {
+        var dictionary = new Dictionary<ImGuiMouseCursor, IntPtr>();
+
+        var cursors = new[]
+        {
+            ImGuiMouseCursor.Arrow,
+            ImGuiMouseCursor.Hand,
+            ImGuiMouseCursor.NotAllowed,
+            ImGuiMouseCursor.ResizeAll,
+            ImGuiMouseCursor.ResizeEW,
+            ImGuiMouseCursor.ResizeNESW,
+            ImGuiMouseCursor.ResizeNS,
+            ImGuiMouseCursor.ResizeNWSE,
+            ImGuiMouseCursor.TextInput
         };
 
-        User32.SetCursor(User32.LoadCursor(HINSTANCE.NULL, resource));
-#endif
+        foreach (var cursor in cursors)
+        {
+            if (OperatingSystem.IsWindows())
+            {
+                unsafe
+                {
+                    var handle = CreateMouseCursorWindows(cursor);
+
+                    dictionary.Add(cursor, new IntPtr(handle));
+                }
+            }
+        }
+
+        return dictionary;
+    }
+
+    [SupportedOSPlatform("windows")]
+    private static unsafe Cursor* CreateMouseCursorWindows(ImGuiMouseCursor mouseCursor)
+    {
+        // ReSharper disable once SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
+
+        var resourceId = mouseCursor switch
+        {
+            ImGuiMouseCursor.Arrow => User32.IDC_ARROW,
+            ImGuiMouseCursor.TextInput => User32.IDC_IBEAM,
+            ImGuiMouseCursor.ResizeAll => User32.IDC_SIZEALL,
+            ImGuiMouseCursor.ResizeNS => User32.IDC_SIZENS,
+            ImGuiMouseCursor.ResizeEW => User32.IDC_SIZEWE,
+            ImGuiMouseCursor.ResizeNESW => User32.IDC_SIZENESW,
+            ImGuiMouseCursor.ResizeNWSE => User32.IDC_SIZENWSE,
+            ImGuiMouseCursor.Hand => User32.IDC_HAND,
+            ImGuiMouseCursor.NotAllowed => User32.IDC_NO,
+            _ => throw new InvalidEnumArgumentException(null, (int)mouseCursor, typeof(ImGuiMouseCursor))
+        };
+
+        using (var hCursor = User32.LoadCursor(HINSTANCE.NULL, resourceId))
+        using (var hIcon = new User32.SafeHICON(hCursor.DangerousGetHandle()))
+        {
+            var iconInfo = new User32.ICONINFO();
+
+            if (!User32.GetIconInfo(hIcon.DangerousGetHandle(), iconInfo))
+                Win32Error.ThrowLastError();
+
+            Debug.Assert(iconInfo.fIcon is false, "iconInfo.fIcon is false");
+
+            using (var icon = Icon.FromHandle(hIcon.DangerousGetHandle()))
+            using (var bitmap = icon.ToBitmap())
+            {
+                var data = bitmap.LockBits(new Rectangle(Point.Empty, bitmap.Size), ImageLockMode.ReadOnly, bitmap.PixelFormat);
+
+                var image = new Image(bitmap.Width, bitmap.Height, (byte*)data.Scan0.ToPointer());
+
+                var cursor = GLFW.CreateCursor(image, iconInfo.xHotspot, iconInfo.yHotspot);
+
+                bitmap.UnlockBits(data);
+
+                return cursor;
+            }
+        }
     }
 
     public void Render()
