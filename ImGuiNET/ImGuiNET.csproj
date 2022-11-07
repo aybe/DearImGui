@@ -33,16 +33,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\.bin\x64\Debug\imgui.dll" Link="runtimes\win-x64\native\imgui.dll">
+    <Content Include="$(SolutionDir)build\x64\Debug\imgui.dll" Link="runtimes\win-x64\native\imgui.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\.bin\x64\Debug\imgui.pdb" Link="runtimes\win-x64\native\imgui.pdb">
+    <Content Include="$(SolutionDir)build\x64\Debug\imgui.pdb" Link="runtimes\win-x64\native\imgui.pdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\.bin\x86\Debug\imgui.dll" Link="runtimes\win-x86\native\imgui.dll">
+    <Content Include="$(SolutionDir)build\x86\Debug\imgui.dll" Link="runtimes\win-x86\native\imgui.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\.bin\x86\Debug\imgui.pdb" Link="runtimes\win-x86\native\imgui.pdb">
+    <Content Include="$(SolutionDir)build\x86\Debug\imgui.pdb" Link="runtimes\win-x86\native\imgui.pdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
