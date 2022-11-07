@@ -619,16 +619,16 @@ public sealed class ImGuiController : Disposable
 
         var resourceId = mouseCursor switch
         {
-            ImGuiMouseCursor.Arrow => User32.IDC_ARROW,
-            ImGuiMouseCursor.TextInput => User32.IDC_IBEAM,
-            ImGuiMouseCursor.ResizeAll => User32.IDC_SIZEALL,
-            ImGuiMouseCursor.ResizeNS => User32.IDC_SIZENS,
-            ImGuiMouseCursor.ResizeEW => User32.IDC_SIZEWE,
+            ImGuiMouseCursor.Arrow      => User32.IDC_ARROW,
+            ImGuiMouseCursor.TextInput  => User32.IDC_IBEAM,
+            ImGuiMouseCursor.ResizeAll  => User32.IDC_SIZEALL,
+            ImGuiMouseCursor.ResizeNS   => User32.IDC_SIZENS,
+            ImGuiMouseCursor.ResizeEW   => User32.IDC_SIZEWE,
             ImGuiMouseCursor.ResizeNESW => User32.IDC_SIZENESW,
             ImGuiMouseCursor.ResizeNWSE => User32.IDC_SIZENWSE,
-            ImGuiMouseCursor.Hand => User32.IDC_HAND,
+            ImGuiMouseCursor.Hand       => User32.IDC_HAND,
             ImGuiMouseCursor.NotAllowed => User32.IDC_NO,
-            _ => throw new InvalidEnumArgumentException(null, (int)mouseCursor, typeof(ImGuiMouseCursor))
+            _                           => throw new InvalidEnumArgumentException(null, (int)mouseCursor, typeof(ImGuiMouseCursor))
         };
 
         using (var hCursor = User32.LoadCursor(HINSTANCE.NULL, resourceId))

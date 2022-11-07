@@ -2,7 +2,8 @@
 [*]
 
 # ReSharper properties
-resharper_csharp_max_line_length=180
+resharper_csharp_max_line_length = 180
+resharper_int_align_switch_expressions = true
 
 # IDE0079: Remove unnecessary suppression
-dotnet_diagnostic.IDE0079.severity = none
+dotnet_diagnostic.ide0079.severity = none
