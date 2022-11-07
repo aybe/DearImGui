@@ -323,7 +323,7 @@ public sealed class ImGuiController : Disposable
 
         IO.BackendFlags |= ImGuiBackendFlags.HasMouseCursors;
 
-        //IO.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
+        IO.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
     }
 
     private unsafe void InitializeFont(ImGuiFontConfig? fontConfig)
