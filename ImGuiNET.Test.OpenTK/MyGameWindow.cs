@@ -3,7 +3,6 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
-using Vector2 = System.Numerics.Vector2;
 
 namespace ImGuiNET.Test.OpenTK;
 
@@ -43,15 +42,7 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
         var b = true;
 
-        if (ImGui.Begin("Window1", ref b, ImGuiWindowFlags.None))
-        {
-            if (ImGui.Button("Button1", new Vector2(100, 100)))
-            {
-                Console.WriteLine(DateTime.Now.Ticks.ToString());
-            }
-        }
-
-        ImGui.End();
+        ImGui.ShowDemoWindow(ref b);
 
         Controller.Render();
 
