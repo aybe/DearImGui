@@ -1,0 +1,2 @@
+#define IMGUI_API __declspec(dllexport)
+#define IMGUI_API __declspec(dllimport)
