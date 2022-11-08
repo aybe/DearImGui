@@ -26,7 +26,7 @@ internal sealed class MyLibrary : ILibrary
             ? Enhanced.Value
                 ? "NEW"
                 : "OLD"
-            : @"..\..\..\..\ImGuiNET";
+            : @"..\..\..\..\imgui.NET";
 
         options.GeneratorKind = GeneratorKind.CSharp;
         options.GenerateFinalizers = true;
