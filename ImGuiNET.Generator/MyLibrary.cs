@@ -39,8 +39,9 @@ internal sealed class MyLibrary : ILibrary
         var module = options.AddModule("imgui");
 
         module.OutputNamespace = Constants.Namespace;
-        module.Headers.Add("imconfig.h");
         module.IncludeDirs.Add(@"..\..\..\..\imgui\imgui");
+        module.Defines.Add("IMGUI_DISABLE_OBSOLETE_FUNCTIONS");
+        module.Defines.Add("IMGUI_DISABLE_OBSOLETE_KEYIO");
         module.Headers.Add("imgui.h");
     }
 
