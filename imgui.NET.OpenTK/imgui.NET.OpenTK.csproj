@@ -14,7 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\ImGuiNET\ImGuiNET.csproj" />
+		<ProjectReference Include="..\imgui.NET\imgui.NET.csproj" />
 	</ItemGroup>
 
 </Project>
