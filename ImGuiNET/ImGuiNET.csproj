@@ -9,6 +9,21 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <AssemblyVersion>1.88.0.0</AssemblyVersion>
+    <FileVersion>$(AssemblyVersion)</FileVersion>
+    <Version>$(AssemblyVersion)</Version>
+    <Title>imgui for .NET</Title>
+    <Authors>aybe</Authors>
+    <Company>aybe</Company>
+    <Description>imgui for .NET</Description>
+    <Copyright>aybe</Copyright>
+    <PackageProjectUrl>https://github.com/aybe/ImGuiNET</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/aybe/ImGuiNET</RepositoryUrl>
+    <PackageTags>imgui imgui.NET</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <NoWarn>1701;1702;1591;1587</NoWarn>
   </PropertyGroup>
 
@@ -23,22 +38,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="runtimes\win-x64\native\" />
-    <Folder Include="runtimes\win-x86\native\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="$(SolutionDir)build\x64\Debug\imgui.dll" Link="runtimes\win-x64\native\imgui.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="$(SolutionDir)build\x64\Debug\imgui.dll">
+      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
     </Content>
-    <Content Include="$(SolutionDir)build\x64\Debug\imgui.pdb" Link="runtimes\win-x64\native\imgui.pdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="$(SolutionDir)build\x64\Debug\imgui.pdb">
+      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
     </Content>
-    <Content Include="$(SolutionDir)build\x86\Debug\imgui.dll" Link="runtimes\win-x86\native\imgui.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="$(SolutionDir)build\x86\Debug\imgui.dll">
+      <PackagePath>runtimes/win-x86/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
     </Content>
-    <Content Include="$(SolutionDir)build\x86\Debug\imgui.pdb" Link="runtimes\win-x86\native\imgui.pdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="$(SolutionDir)build\x86\Debug\imgui.pdb">
+      <PackagePath>runtimes/win-x86/native</PackagePath>
+      <Pack>True</Pack>
+      <Visible>False</Visible>
     </Content>
   </ItemGroup>
 
