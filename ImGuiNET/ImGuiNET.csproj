@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Generated\" />
     <Folder Include="runtimes\win-x64\native\" />
     <Folder Include="runtimes\win-x86\native\" />
   </ItemGroup>
