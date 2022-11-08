@@ -39,8 +39,8 @@ internal sealed class MyLibrary : ILibrary
         var module = options.AddModule("imgui");
 
         module.OutputNamespace = Constants.Namespace;
-        module.IncludeDirs.Add(@"..\..\..\..\imgui");
         module.Headers.Add("imconfig.h");
+        module.IncludeDirs.Add(@"..\..\..\..\imgui\imgui");
         module.Headers.Add("imgui.h");
     }
 
