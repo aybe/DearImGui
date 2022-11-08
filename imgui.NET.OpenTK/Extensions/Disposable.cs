@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace imgui.NET.OpenTK;
+namespace imgui.NET.OpenTK.Extensions;
 
 [PublicAPI]
 public abstract class Disposable : IDisposable
