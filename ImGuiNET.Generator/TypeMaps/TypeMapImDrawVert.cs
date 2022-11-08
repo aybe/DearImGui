@@ -14,6 +14,6 @@ internal sealed class TypeMapImDrawVert : TypeMapBase
 {
     public override Type CSharpSignatureType(TypePrinterContext ctx)
     {
-        return new CustomType("global::ImGuiNET.ImDrawVert");
+        return new CustomType($"global::{Constants.Namespace}.ImDrawVert");
     }
 }

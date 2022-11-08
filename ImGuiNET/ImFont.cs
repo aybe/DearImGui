@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace ImGuiNET;
+namespace imgui.NET;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImFont

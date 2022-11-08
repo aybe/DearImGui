@@ -2,7 +2,7 @@
 using System.Numerics;
 using JetBrains.Annotations;
 
-namespace ImGuiNET;
+namespace imgui.NET;
 
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]

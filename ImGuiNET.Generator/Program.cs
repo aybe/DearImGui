@@ -69,14 +69,23 @@ internal static class Program
 
         var builder = new StringBuilder(text);
 
+        const string @namespace = Constants.Namespace;
+
+        // rename imgui class and fix references to it
+
         builder.Replace(
-            "imgui",
-            "ImGui"
+            "class imgui",
+            "class ImGui"
         );
 
         builder.Replace(
-            "\"ImGui\"",
-            "\"imgui\""
+            "imgui()",
+            "ImGui()"
+        );
+
+        builder.Replace(
+            "imgui._",
+            "ImGui._"
         );
 
         // hide pointers that should have been internal
@@ -114,12 +123,12 @@ internal static class Program
         // pass vectors directly, doesn't mean that we can ditch type maps that did the heavy lifting
 
         builder.Replace(
-            "new global::ImGuiNET.ImVec2.__Internal()",
+            $"new global::{@namespace}.ImVec2.__Internal()",
             "new global::System.Numerics.Vector2()"
         );
 
         builder.Replace(
-            "new global::ImGuiNET.ImVec4.__Internal()",
+            $"new global::{@namespace}.ImVec4.__Internal()",
             "new global::System.Numerics.Vector4()"
         );
 
@@ -145,7 +154,7 @@ internal static class Program
         // merge symbols with class to remove __Symbols namespace
 
         builder.Replace(
-            "}\r\nnamespace ImGuiNET.__Symbols\r\n{\r\n    internal class ImGui",
+            $"}}\r\nnamespace {@namespace}.__Symbols\r\n{{\r\n    internal class ImGui",
             "    public unsafe partial class ImGui"
         );
 
@@ -170,7 +179,7 @@ internal static class Program
 
         builder.Replace(
             "CppSharp.SymbolResolver",
-            "ImGuiNET.SymbolResolver"
+            $"{@namespace}.SymbolResolver"
         );
 
         // simplify namespaces
@@ -196,12 +205,12 @@ internal static class Program
         );
 
         builder.Replace(
-            "global::ImGuiNET.",
+            $"global::{@namespace}.",
             string.Empty
         );
 
         builder.Replace(
-            "ImGuiNET.",
+            $"{@namespace}.",
             string.Empty
         );
 

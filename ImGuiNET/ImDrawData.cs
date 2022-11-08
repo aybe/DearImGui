@@ -1,4 +1,4 @@
-﻿namespace ImGuiNET;
+﻿namespace imgui.NET;
 
 partial class ImDrawData
 {

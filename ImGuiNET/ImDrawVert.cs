@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 
 // ReSharper disable IdentifierTypo
 
-namespace ImGuiNET;
+namespace imgui.NET;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public struct ImDrawVert

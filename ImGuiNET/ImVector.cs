@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 
-namespace ImGuiNET;
+namespace imgui.NET;
 
 public readonly struct ImVector<T> : IEnumerable<T>
 {

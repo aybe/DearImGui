@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using JetBrains.Annotations;
 
-namespace ImGuiNET;
+namespace imgui.NET;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImGuiStyle
