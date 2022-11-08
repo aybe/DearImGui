@@ -38,25 +38,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="$(SolutionDir)build\x64\Debug\imgui.dll" Link="runtimes\win-x64\native\imgui.dll">
+		<Content Include="$(SolutionDir)build\x64\$(Configuration)\imgui.dll" Link="runtimes\win-x64\native\imgui.dll">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<Visible>True</Visible>
 			<PackagePath>runtimes/win-x64/native</PackagePath>
 			<Pack>True</Pack>
 		</Content>
-		<Content Include="$(SolutionDir)build\x64\Debug\imgui.pdb" Link="runtimes\win-x64\native\imgui.pdb">
+		<Content Include="$(SolutionDir)build\x64\$(Configuration)\imgui.pdb" Link="runtimes\win-x64\native\imgui.pdb">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<Visible>True</Visible>
 			<PackagePath>runtimes/win-x64/native</PackagePath>
 			<Pack>True</Pack>
 		</Content>
-		<Content Include="$(SolutionDir)build\x86\Debug\imgui.dll" Link="runtimes\win-x86\native\imgui.dll">
+		<Content Include="$(SolutionDir)build\x86\$(Configuration)\imgui.dll" Link="runtimes\win-x86\native\imgui.dll">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<Visible>True</Visible>
 			<PackagePath>runtimes/win-x86/native</PackagePath>
 			<Pack>True</Pack>
 		</Content>
-		<Content Include="$(SolutionDir)build\x86\Debug\imgui.pdb" Link="runtimes\win-x86\native\imgui.pdb">
+		<Content Include="$(SolutionDir)build\x86\$(Configuration)\imgui.pdb" Link="runtimes\win-x86\native\imgui.pdb">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<Visible>True</Visible>
 			<PackagePath>runtimes/win-x86/native</PackagePath>
