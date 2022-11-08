@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImGuiNET.Test.OpenTK", "ImGuiNET.Test.OpenTK\ImGuiNET.Test.OpenTK.csproj", "{102C660B-CFF3-499B-9F3D-CBE714EBBB85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "imgui.NET.OpenTK.Test", "imgui.NET.OpenTK.Test\imgui.NET.OpenTK.Test.csproj", "{102C660B-CFF3-499B-9F3D-CBE714EBBB85}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "imgui.NET.OpenTK", "imgui.NET.OpenTK\imgui.NET.OpenTK.csproj", "{C5A74D6B-2D9B-49B4-BE7D-F76D58ED93B9}"
 EndProject
