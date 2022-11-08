@@ -2,7 +2,7 @@
 using CppSharp.Generators.CSharp;
 using Type = System.Type;
 
-namespace ImGuiNET.Generator.TypeMaps;
+namespace imgui.NET.Generator.TypeMaps;
 
 internal abstract class TypeMapImVec : TypeMapBase
 {

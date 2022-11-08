@@ -1,11 +1,11 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 using CppSharp;
-using ImGuiNET.Generator.Logging;
+using imgui.NET.Generator.Logging;
 
 // ReSharper disable StringLiteralTypo
 
-namespace ImGuiNET.Generator;
+namespace imgui.NET.Generator;
 
 internal static class Program
 {

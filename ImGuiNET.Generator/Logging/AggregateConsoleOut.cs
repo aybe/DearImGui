@@ -1,4 +1,4 @@
-﻿namespace ImGuiNET.Generator.Logging;
+﻿namespace imgui.NET.Generator.Logging;
 
 public sealed class AggregateConsoleOut : IDisposable
 {

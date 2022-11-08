@@ -4,7 +4,7 @@ using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Passes;
 
-namespace ImGuiNET.Generator;
+namespace imgui.NET.Generator;
 
 internal static class Experimental
 {

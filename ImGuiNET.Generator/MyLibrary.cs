@@ -2,7 +2,7 @@
 using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Passes;
-using ImGuiNET.Generator.Passes;
+using imgui.NET.Generator.Passes;
 
 // ReSharper disable IdentifierTypo
 // ReSharper disable RedundantIfElseBlock
@@ -10,7 +10,7 @@ using ImGuiNET.Generator.Passes;
 // ReSharper disable InvertIf
 // ReSharper disable StringLiteralTypo
 
-namespace ImGuiNET.Generator;
+namespace imgui.NET.Generator;
 
 internal sealed class MyLibrary : ILibrary
 {

@@ -6,7 +6,7 @@ using CppSharp.Types;
 using JetBrains.Annotations;
 using Type = CppSharp.AST.Type;
 
-namespace ImGuiNET.Generator.TypeMaps;
+namespace imgui.NET.Generator.TypeMaps;
 
 [UsedImplicitly]
 [TypeMap("ImVector", GeneratorKind.CSharp)]

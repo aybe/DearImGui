@@ -3,7 +3,7 @@ using CppSharp.Generators;
 using CppSharp.Types;
 using JetBrains.Annotations;
 
-namespace ImGuiNET.Generator.TypeMaps;
+namespace imgui.NET.Generator.TypeMaps;
 
 [UsedImplicitly]
 [TypeMap("ImVec2", GeneratorKind.CSharp)]

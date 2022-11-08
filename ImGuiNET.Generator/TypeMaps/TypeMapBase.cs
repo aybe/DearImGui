@@ -4,7 +4,7 @@ using CppSharp.Generators;
 using CppSharp.Generators.CSharp;
 using CppSharp.Types;
 
-namespace ImGuiNET.Generator.TypeMaps;
+namespace imgui.NET.Generator.TypeMaps;
 
 internal class TypeMapBase : TypeMap
 {

@@ -3,7 +3,7 @@ using CppSharp.AST;
 using CppSharp.Types;
 using Type = CppSharp.AST.Type;
 
-namespace ImGuiNET.Generator.TypeMaps;
+namespace imgui.NET.Generator.TypeMaps;
 
 internal abstract class TypeMapEnum : TypeMap
 {

@@ -2,7 +2,7 @@
 using CppSharp.AST;
 using CppSharp.Passes;
 
-namespace ImGuiNET.Generator.Passes;
+namespace imgui.NET.Generator.Passes;
 
 internal sealed class ProduceSummary : TranslationUnitPass
 {
