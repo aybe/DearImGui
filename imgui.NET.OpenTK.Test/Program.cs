@@ -1,7 +1,7 @@
 ﻿using OpenTK.Mathematics;
 using OpenTK.Windowing.Desktop;
 
-namespace imgui.NET.Test.OpenTK;
+namespace imgui.NET.OpenTK.Test;
 
 internal static class Program
 {
