@@ -1,6 +1,6 @@
 ﻿using OpenTK.Windowing.GraphicsLibraryFramework;
 
-namespace ImGuiNET.Test.OpenTK;
+namespace imgui.NET.Test.OpenTK;
 
 public static class KeyboardStateExtensions
 {

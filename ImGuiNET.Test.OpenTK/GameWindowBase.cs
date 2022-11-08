@@ -5,7 +5,7 @@ using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
-namespace ImGuiNET.Test.OpenTK;
+namespace imgui.NET.Test.OpenTK;
 
 public abstract class GameWindowBase : GameWindow
 {

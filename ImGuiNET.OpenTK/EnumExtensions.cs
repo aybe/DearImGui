@@ -1,4 +1,4 @@
-﻿namespace ImGuiNET.OpenTK;
+﻿namespace imgui.NET.OpenTK;
 
 public static class EnumExtensions
 {

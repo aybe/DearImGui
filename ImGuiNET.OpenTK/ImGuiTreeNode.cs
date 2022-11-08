@@ -1,4 +1,4 @@
-﻿namespace ImGuiNET.OpenTK;
+﻿namespace imgui.NET.OpenTK;
 
 public readonly struct ImGuiTreeNode : IDisposable
 {
@@ -6,14 +6,14 @@ public readonly struct ImGuiTreeNode : IDisposable
 
     public ImGuiTreeNode(string label, ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags.SpanAvailWidth | ImGuiTreeNodeFlags.FramePadding)
     {
-        Expanded = ImGuiNET.ImGui.TreeNodeEx(label, flags);
+        Expanded = imgui.NET.ImGui.TreeNodeEx(label, flags);
     }
 
     public void Dispose()
     {
         if (Expanded)
         {
-            ImGuiNET.ImGui.TreePop();
+            imgui.NET.ImGui.TreePop();
         }
     }
 }

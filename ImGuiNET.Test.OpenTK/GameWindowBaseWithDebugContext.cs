@@ -5,7 +5,7 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 
-namespace ImGuiNET.Test.OpenTK;
+namespace imgui.NET.Test.OpenTK;
 
 /// <summary>
 ///     A game window that uses OpenGL 4.5 with an enabled debug context.

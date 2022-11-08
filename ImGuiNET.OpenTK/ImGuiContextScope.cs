@@ -1,4 +1,4 @@
-﻿namespace ImGuiNET.OpenTK;
+﻿namespace imgui.NET.OpenTK;
 
 internal readonly struct ImGuiContextScope : IDisposable
 {

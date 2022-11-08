@@ -17,7 +17,7 @@ using Vector2 = System.Numerics.Vector2;
 
 // ReSharper disable InconsistentNaming
 
-namespace ImGuiNET.OpenTK;
+namespace imgui.NET.OpenTK;
 
 public sealed class ImGuiController : Disposable
 {

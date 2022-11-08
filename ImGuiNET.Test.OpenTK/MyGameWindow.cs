@@ -1,10 +1,10 @@
-﻿using ImGuiNET.OpenTK;
+﻿using imgui.NET.OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 
-namespace ImGuiNET.Test.OpenTK;
+namespace imgui.NET.Test.OpenTK;
 
 internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 {

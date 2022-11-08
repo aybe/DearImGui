@@ -1,7 +1,7 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 
-namespace ImGuiNET.OpenTK;
+namespace imgui.NET.OpenTK;
 
 public readonly struct OpenGLStateScope : IDisposable
 {
