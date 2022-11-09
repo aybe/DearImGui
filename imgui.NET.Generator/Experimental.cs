@@ -105,5 +105,12 @@ internal static class Experimental
         usings.Text.WriteLine("using System.Numerics;");
         usings.Text.WriteLine("using System.Runtime.CompilerServices;");
         usings.Text.WriteLine("using System.Text;");
+
+        var comments = generator.FindBlocks(BlockKind.BlockComment);
+
+        foreach (var comment in comments)
+        {
+            comment.Text.StringBuilder.Replace("&lt;br/&gt;", "<br/>");
+        }
     }
 }
