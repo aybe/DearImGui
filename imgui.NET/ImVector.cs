@@ -69,7 +69,6 @@ public readonly struct ImVector<T> : IEnumerable<T>
 
     /// <inheritdoc />
     public IEnumerator<T> GetEnumerator()
-// BUG The debugger is unable to evaluate this expression
     {
         for (var i = 0; i < Size; i++)
         {
