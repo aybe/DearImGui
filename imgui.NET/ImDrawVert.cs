@@ -17,6 +17,6 @@ public struct ImDrawVert
     /// <inheritdoc />
     public override string ToString()
     {
-        return $"{nameof(Pos)}: {Pos:F5}, {nameof(Uv)}: {Uv:F5}, {nameof(Col)}: 0x{Col:X8}";
+        return $"{nameof(Pos)}: {Pos}, {nameof(Uv)}: {Uv}, {nameof(Col)}: 0x{Col:X8}";
     }
 }
