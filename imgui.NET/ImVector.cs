@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 
 namespace imgui.NET;
 
@@ -9,7 +8,6 @@ public readonly struct ImVector<T> : IEnumerable<T>
 {
     private readonly __Internal Internal;
 
-    [UsedImplicitly] // seen as unused by R# when analysis is disabled
     internal ImVector(__Internal @internal)
     {
         Internal = @internal;
@@ -55,7 +53,6 @@ public readonly struct ImVector<T> : IEnumerable<T>
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [UsedImplicitly]
     internal struct __Internal
     {
 #pragma warning disable CS0649
