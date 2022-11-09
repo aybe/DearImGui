@@ -29,4 +29,9 @@ partial class ImFontAtlas
     {
         return Fonts.Size > 0 && TexReady;
     }
+
+    public void SetTexID(IntPtr id)
+    {
+        TexID = id;
+    }
 }
