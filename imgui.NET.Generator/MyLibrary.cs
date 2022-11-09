@@ -83,7 +83,6 @@ internal sealed class MyLibrary : ILibrary
         ctx.IgnoreClassWithName("ImColor");
         ctx.IgnoreClassWithName("ImVector");
 
-        // ignore these because there's no entry point because they're inline
         ctx.IgnoreClassMethodWithName("ImDrawCmd", "GetTexID");
         ctx.IgnoreConversionToProperty("ImDrawList::GetClipRectMin"); // TODO
         ctx.IgnoreConversionToProperty("ImDrawList::GetClipRectMax"); // TODO
