@@ -1,4 +1,5 @@
-﻿using CppSharp;
+﻿using System.Runtime.CompilerServices;
+using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Passes;
@@ -59,13 +60,13 @@ internal sealed class MyLibrary : ILibrary
 
     public void Preprocess(Driver driver, ASTContext ctx)
     {
-        Experimental.RemoveEnumerations(ctx);
+        RemoveEnumerations(ctx);
 
-        Experimental.FlattenNamespace(ctx);
+        FlattenNamespace(ctx);
 
-        Experimental.RemovePass<CheckIgnoredDeclsPass>(driver);
+        RemovePass<CheckIgnoredDeclsPass>(driver);
 
-        Experimental.RemovePass<CleanCommentsPass>(driver); // useless, throws when adding our comments to functions
+        RemovePass<CleanCommentsPass>(driver); // useless, throws when adding our comments to functions
 
         {
             // whenever we ignore a type to implement it manually, we still have to set value type where appropriate
@@ -96,22 +97,22 @@ internal sealed class MyLibrary : ILibrary
 
     public void Postprocess(Driver driver, ASTContext ctx)
     {
-        Experimental.Ignore(ctx, "ImDrawData",         "CmdLists",        IgnoreType.Property); // manual
-        Experimental.Ignore(ctx, "ImDrawList",         "ClipRectStack",   IgnoreType.Property); // intern
-        Experimental.Ignore(ctx, "ImDrawList",         "CmdHeader",       IgnoreType.Property); // intern
-        Experimental.Ignore(ctx, "ImDrawList",         "FringeScale",     IgnoreType.Property); // intern
-        Experimental.Ignore(ctx, "ImDrawList",         "IdxWritePtr",     IgnoreType.Property); // intern
-        Experimental.Ignore(ctx, "ImDrawList",         "Path",            IgnoreType.Property); // intern
-        Experimental.Ignore(ctx, "ImDrawList",         "Splitter",        IgnoreType.Property); // intern
-        Experimental.Ignore(ctx, "ImDrawList",         "TextureIdStack",  IgnoreType.Property); // intern
-        Experimental.Ignore(ctx, "ImDrawList",         "VtxCurrentIdx",   IgnoreType.Property); // intern
-        Experimental.Ignore(ctx, "ImDrawList",         "VtxWritePtr",     IgnoreType.Property); // intern
-        Experimental.Ignore(ctx, "ImFontAtlas",        "IsBuilt",         IgnoreType.Property); // manual
-        Experimental.Ignore(ctx, "ImFontAtlas",        "SetTexID",        IgnoreType.Method);   // manual
-        Experimental.Ignore(ctx, "ImFontAtlas",        "TexUvLines",      IgnoreType.Property); // manual
-        Experimental.Ignore(ctx, "ImGuiIO",            "MouseClickedPos", IgnoreType.Property); // manual
-        Experimental.Ignore(ctx, "ImGuiStyle",         "Colors",          IgnoreType.Property); // manual
-        Experimental.Ignore(ctx, "ImVectorExtensions", null,              IgnoreType.Class);    // unused
+        Ignore(ctx, "ImDrawData",         "CmdLists",        IgnoreType.Property); // manual
+        Ignore(ctx, "ImDrawList",         "ClipRectStack",   IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "CmdHeader",       IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "FringeScale",     IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "IdxWritePtr",     IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "Path",            IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "Splitter",        IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "TextureIdStack",  IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "VtxCurrentIdx",   IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "VtxWritePtr",     IgnoreType.Property); // intern
+        Ignore(ctx, "ImFontAtlas",        "IsBuilt",         IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontAtlas",        "SetTexID",        IgnoreType.Method);   // manual
+        Ignore(ctx, "ImFontAtlas",        "TexUvLines",      IgnoreType.Property); // manual
+        Ignore(ctx, "ImGuiIO",            "MouseClickedPos", IgnoreType.Property); // manual
+        Ignore(ctx, "ImGuiStyle",         "Colors",          IgnoreType.Property); // manual
+        Ignore(ctx, "ImVectorExtensions", null,              IgnoreType.Class);    // unused
 
         PostprocessDelegates(ctx);
         PostprocessProperties(ctx);
@@ -204,7 +205,112 @@ internal sealed class MyLibrary : ILibrary
     {
         foreach (var generator in output.Outputs)
         {
-            Experimental.UpdateHeader(generator);
+            UpdateHeader(generator);
+        }
+    }
+
+    public static void FlattenNamespace(ASTContext ctx)
+    {
+        foreach (var unit in ctx.TranslationUnits)
+        {
+            if (unit.FileName != "imgui.h")
+                continue;
+
+            var ns = unit.Declarations.OfType<Namespace>().Single();
+
+            var declarations = ns.Declarations.ToArray();
+
+            ns.Declarations.Clear();
+
+            unit.Declarations.AddRange(declarations);
+        }
+    }
+
+    public static void Ignore(ASTContext ctx, string className, string? memberName, IgnoreType ignoreType)
+    {
+        var c = ctx.FindCompleteClass(className);
+
+        DeclarationBase b = ignoreType switch
+        {
+            IgnoreType.Class    => c,
+            IgnoreType.Method   => c.Methods.Single(s => s.Name == memberName),
+            IgnoreType.Property => c.Properties.Single(s => s.Name == memberName),
+            _                   => throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null)
+        };
+
+        b.ExplicitlyIgnore();
+    }
+
+    public static void RemoveEnumerations(ASTContext ctx)
+    {
+        ctx.FindCompleteEnum("ImGuiModFlags_").ExplicitlyIgnore();
+
+        ctx.FindCompleteEnum("ImGuiNavInput_").ExplicitlyIgnore();
+
+        foreach (var enumeration in ctx.TranslationUnits.SelectMany(s => s.Declarations).OfType<Enumeration>())
+        {
+            if (enumeration.Name.EndsWith("Private_", StringComparison.Ordinal))
+            {
+                enumeration.ExplicitlyIgnore();
+                continue;
+            }
+
+            foreach (var item in enumeration.Items)
+            {
+                if (item.Name.EndsWith("_BEGIN", StringComparison.Ordinal))
+                {
+                    item.ExplicitlyIgnore();
+                }
+
+                if (item.Name.EndsWith("_END", StringComparison.Ordinal))
+                {
+                    item.ExplicitlyIgnore();
+                }
+
+                if (item.Name.EndsWith("_COUNT", StringComparison.Ordinal))
+                {
+                    item.ExplicitlyIgnore();
+                }
+
+                if (item.Name.EndsWith("_SIZE", StringComparison.Ordinal))
+                {
+                    item.ExplicitlyIgnore();
+                }
+
+                if (item.Name.EndsWith("_OFFSET", StringComparison.Ordinal))
+                {
+                    item.ExplicitlyIgnore();
+                }
+            }
+        }
+    }
+
+    public static void RemovePass<T>(Driver driver, [CallerMemberName] string memberName = null!) where T : TranslationUnitPass
+    {
+        var count = driver.Context.TranslationUnitPasses.Passes.RemoveAll(s => s is T);
+
+        Console.WriteLine($"### Removed {count} {typeof(T)} in {memberName}");
+    }
+
+    public static void UpdateHeader(CodeGenerator generator)
+    {
+        var header = generator.FindBlock(BlockKind.Header);
+
+        header.Text.WriteLine(
+            "#pragma warning disable CS0109 // The member 'member' does not hide an inherited member. The new keyword is not required");
+
+        var usings = generator.FindBlock(BlockKind.Usings);
+
+        usings.Text.WriteLine("using System.Collections.Concurrent;");
+        usings.Text.WriteLine("using System.Numerics;");
+        usings.Text.WriteLine("using System.Runtime.CompilerServices;");
+        usings.Text.WriteLine("using System.Text;");
+
+        var comments = generator.FindBlocks(BlockKind.BlockComment);
+
+        foreach (var comment in comments)
+        {
+            comment.Text.StringBuilder.Replace("&lt;br/&gt;", "<br/>");
         }
     }
 }
