@@ -119,6 +119,22 @@ internal sealed class MyLibrary : ILibrary
         PostprocessDelegates(ctx);
         PostprocessProperties(ctx);
 
+        ctx.SetEnumAsFlags("ImDrawFlags");
+        ctx.SetEnumAsFlags("ImGuiButtonFlags");
+        ctx.SetEnumAsFlags("ImGuiColorEditFlags");
+        ctx.SetEnumAsFlags("ImGuiComboFlags");
+        ctx.SetEnumAsFlags("ImGuiDragDropFlags");
+        ctx.SetEnumAsFlags("ImGuiFocusedFlags");
+        ctx.SetEnumAsFlags("ImGuiHoveredFlags");
+        ctx.SetEnumAsFlags("ImGuiPopupFlags");
+        ctx.SetEnumAsFlags("ImGuiSliderFlags");
+        ctx.SetEnumAsFlags("ImGuiTabBarFlags");
+        ctx.SetEnumAsFlags("ImGuiTableColumnFlags");
+        ctx.SetEnumAsFlags("ImGuiTableFlags");
+        ctx.SetEnumAsFlags("ImGuiTableRowFlags");
+        ctx.SetEnumAsFlags("ImGuiTreeNodeFlags");
+        ctx.SetEnumAsFlags("ImGuiWindowFlags");
+
         if (Enhanced is true)
         {
         }
