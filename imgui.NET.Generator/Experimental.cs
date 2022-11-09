@@ -10,8 +10,6 @@ internal static class Experimental
 {
     public static void FlattenNamespace(ASTContext ctx)
     {
-        // TODO rename imgui class to ImGui
-
         foreach (var unit in ctx.TranslationUnits)
         {
             if (unit.FileName != "imgui.h")
