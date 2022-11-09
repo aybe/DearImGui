@@ -9,8 +9,7 @@ internal static class Program
     {
         var nws = new NativeWindowSettings
         {
-            Location = new Vector2i(500, 500),
-            Size = new Vector2i(1000, 1000)
+            Size = new Vector2i(1920, 1080)
         };
 
         using var window = new MyGameWindow(GameWindowSettings.Default, nws);
