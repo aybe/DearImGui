@@ -96,26 +96,22 @@ internal sealed class MyLibrary : ILibrary
 
     public void Postprocess(Driver driver, ASTContext ctx)
     {
-        // stuff that is written manually
-        Experimental.IgnoreProperty(ctx, "ImGuiStyle", "Colors");
-        Experimental.IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos");
-        Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines");
-        Experimental.IgnoreProperty(ctx, "ImFontAtlas", "IsBuilt");
-        Experimental.IgnoreMethod(ctx, "ImFontAtlas", "SetTexID");
-        Experimental.IgnoreProperty(ctx, "ImDrawData", "CmdLists");
-
-        // ignore these internals for now
-        Experimental.IgnoreProperty(ctx, "ImDrawList", "VtxCurrentIdx");
-        Experimental.IgnoreProperty(ctx, "ImDrawList", "VtxWritePtr");
-        Experimental.IgnoreProperty(ctx, "ImDrawList", "IdxWritePtr");
-        Experimental.IgnoreProperty(ctx, "ImDrawList", "ClipRectStack");
-        Experimental.IgnoreProperty(ctx, "ImDrawList", "TextureIdStack");
-        Experimental.IgnoreProperty(ctx, "ImDrawList", "Path");
-        Experimental.IgnoreProperty(ctx, "ImDrawList", "CmdHeader");
-        Experimental.IgnoreProperty(ctx, "ImDrawList", "Splitter");
-        Experimental.IgnoreProperty(ctx, "ImDrawList", "FringeScale");
-        
-        IgnoreClass(ctx, "ImVectorExtensions");
+        Experimental.Ignore(ctx, "ImDrawData",         "CmdLists",        IgnoreType.Property); // manual
+        Experimental.Ignore(ctx, "ImDrawList",         "ClipRectStack",   IgnoreType.Property); // intern
+        Experimental.Ignore(ctx, "ImDrawList",         "CmdHeader",       IgnoreType.Property); // intern
+        Experimental.Ignore(ctx, "ImDrawList",         "FringeScale",     IgnoreType.Property); // intern
+        Experimental.Ignore(ctx, "ImDrawList",         "IdxWritePtr",     IgnoreType.Property); // intern
+        Experimental.Ignore(ctx, "ImDrawList",         "Path",            IgnoreType.Property); // intern
+        Experimental.Ignore(ctx, "ImDrawList",         "Splitter",        IgnoreType.Property); // intern
+        Experimental.Ignore(ctx, "ImDrawList",         "TextureIdStack",  IgnoreType.Property); // intern
+        Experimental.Ignore(ctx, "ImDrawList",         "VtxCurrentIdx",   IgnoreType.Property); // intern
+        Experimental.Ignore(ctx, "ImDrawList",         "VtxWritePtr",     IgnoreType.Property); // intern
+        Experimental.Ignore(ctx, "ImFontAtlas",        "IsBuilt",         IgnoreType.Property); // manual
+        Experimental.Ignore(ctx, "ImFontAtlas",        "SetTexID",        IgnoreType.Method);   // manual
+        Experimental.Ignore(ctx, "ImFontAtlas",        "TexUvLines",      IgnoreType.Property); // manual
+        Experimental.Ignore(ctx, "ImGuiIO",            "MouseClickedPos", IgnoreType.Property); // manual
+        Experimental.Ignore(ctx, "ImGuiStyle",         "Colors",          IgnoreType.Property); // manual
+        Experimental.Ignore(ctx, "ImVectorExtensions", null,              IgnoreType.Class);    // unused
 
         PostprocessDelegates(ctx);
         PostprocessProperties(ctx);
@@ -142,15 +138,6 @@ internal sealed class MyLibrary : ILibrary
     }
 
     #endregion
-
-    private static void IgnoreClass(ASTContext ctx, string className)
-    {
-        var unit = GetImGuiTranslationUnit(ctx);
-
-        var @class = unit.FindClass(className);
-
-        @class.ExplicitlyIgnore();
-    }
 
     private static void PostprocessProperties(ASTContext ctx)
     {

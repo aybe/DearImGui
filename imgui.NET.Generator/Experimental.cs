@@ -25,20 +25,19 @@ internal static class Experimental
         }
     }
 
-    public static void IgnoreMethod(ASTContext ctx, string className, string methodName)
+    public static void Ignore(ASTContext ctx, string className, string? memberName, IgnoreType ignoreType)
     {
         var c = ctx.FindCompleteClass(className);
-        var m = c.Methods.Single(s => s.Name == methodName);
 
-        m.ExplicitlyIgnore();
-    }
+        DeclarationBase b = ignoreType switch
+        {
+            IgnoreType.Class    => c,
+            IgnoreType.Method   => c.Methods.Single(s => s.Name == memberName),
+            IgnoreType.Property => c.Properties.Single(s => s.Name == memberName),
+            _                   => throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null)
+        };
 
-    public static void IgnoreProperty(ASTContext ctx, string className, string propertyName)
-    {
-        var c = ctx.FindCompleteClass(className);
-        var p = c.Properties.Single(s => s.Name == propertyName);
-
-        p.ExplicitlyIgnore();
+        b.ExplicitlyIgnore();
     }
 
     public static void RemoveEnumerations(ASTContext ctx)
