@@ -24,4 +24,9 @@ partial class ImFontAtlas
             Marshalling.Copy(((__Internal*)__Instance)->TexUvLines, ref value);
         }
     }
+
+    public bool IsBuilt()
+    {
+        return Fonts.Size > 0 && TexReady;
+    }
 }

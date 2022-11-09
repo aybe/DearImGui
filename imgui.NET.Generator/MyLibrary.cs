@@ -101,6 +101,7 @@ internal sealed class MyLibrary : ILibrary
         Experimental.IgnoreProperty(ctx, "ImGuiStyle", "Colors");
         Experimental.IgnoreProperty(ctx, "ImGuiIO", "MouseClickedPos");
         Experimental.IgnoreProperty(ctx, "ImFontAtlas", "TexUvLines");
+        Experimental.IgnoreProperty(ctx, "ImFontAtlas", "IsBuilt");
         Experimental.IgnoreProperty(ctx, "ImDrawData", "CmdLists");
 
         // ignore these internals for now
