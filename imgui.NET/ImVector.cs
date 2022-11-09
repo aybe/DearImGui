@@ -29,13 +29,62 @@ public readonly struct ImVector<T> : IEnumerable<T>
 
             if (type.IsValueType)
             {
-                return Unsafe.AsRef<T>(data.ToPointer()); // works for structs only
+                return Unsafe.AsRef<T>(data.ToPointer());
             }
 
             if (type == typeof(ImDrawCmd))
             {
                 var source = ImDrawCmd.__GetOrCreateInstance(Data + sizeof(ImDrawCmd.__Internal) * index);
                 var result = Unsafe.As<ImDrawCmd, T>(ref source);
+                return result;
+            }
+
+            if (type == typeof(ImDrawChannel))
+            {
+                var source = ImDrawChannel.__GetOrCreateInstance(Data + sizeof(ImDrawChannel.__Internal) * index);
+                var result = Unsafe.As<ImDrawChannel, T>(ref source);
+                return result;
+            }
+
+            if (type == typeof(ImFont))
+            {
+                var source = ImFont.__GetOrCreateInstance(Data + sizeof(ImFont.__Internal) * index);
+                var result = Unsafe.As<ImFont, T>(ref source);
+                return result;
+            }
+
+            if (type == typeof(ImFontAtlasCustomRect))
+            {
+                var source = ImFontAtlasCustomRect.__GetOrCreateInstance(Data + sizeof(ImFontAtlasCustomRect.__Internal) * index);
+                var result = Unsafe.As<ImFontAtlasCustomRect, T>(ref source);
+                return result;
+            }
+
+            if (type == typeof(ImFontConfig))
+            {
+                var source = ImFontConfig.__GetOrCreateInstance(Data + sizeof(ImFontConfig.__Internal) * index);
+                var result = Unsafe.As<ImFontConfig, T>(ref source);
+                return result;
+            }
+
+            if (type == typeof(ImFontGlyph))
+            {
+                var source = ImFontGlyph.__GetOrCreateInstance(Data + sizeof(ImFontGlyph.__Internal) * index);
+                var result = Unsafe.As<ImFontGlyph, T>(ref source);
+                return result;
+            }
+
+            if (type == typeof(ImGuiStorage.ImGuiStoragePair))
+            {
+                var source = ImGuiStorage.ImGuiStoragePair.__GetOrCreateInstance(Data + sizeof(ImGuiStorage.ImGuiStoragePair.__Internal) * index);
+                var result = Unsafe.As<ImGuiStorage.ImGuiStoragePair, T>(ref source);
+                return result;
+            }
+
+            if (type == typeof(ImGuiTextFilter.ImGuiTextRange))
+            {
+                var source = ImGuiTextFilter.ImGuiTextRange.__GetOrCreateInstance(Data + sizeof(ImGuiTextFilter.ImGuiTextRange.__Internal) * index);
+                var result = Unsafe.As<ImGuiTextFilter.ImGuiTextRange, T>(ref source);
                 return result;
             }
 
