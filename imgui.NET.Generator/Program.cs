@@ -261,10 +261,12 @@ internal static class Program
             RegexOptions.Multiline
         );
 
+        // hide some protected members to remove more CS1591
+
         str = Regex.Replace(
             str,
-            @"^(\s+)(public\s+)(\w+)(\(.*\))",
-            "$1/// <summary>Initializes a new instance of <see cref=\"$3\"/>.</summary>\r\n$1$2$3$4",
+            @"(internal\s+)*protected",
+            "private protected",
             RegexOptions.Multiline
         );
 
