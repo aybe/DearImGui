@@ -2,7 +2,7 @@
 
 namespace imgui.NET;
 
-public static class Marshalling
+internal static class Marshalling
 {
     public static unsafe void Copy<T>(ref T[] destination, in void* source) where T : struct
     {
