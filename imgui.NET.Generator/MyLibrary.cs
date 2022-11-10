@@ -199,17 +199,18 @@ internal sealed class MyLibrary : ILibrary
 
     private static void PreprocessIgnores(ASTContext ctx)
     {
-        Ignore(ctx, "ImColor",    null,             IgnoreType.Class);    // unused
-        Ignore(ctx, "ImDrawCmd",  "GetTexID",       IgnoreType.Method);   // manual
-        Ignore(ctx, "ImDrawList", "GetClipRectMax", IgnoreType.Method);   // manual
-        Ignore(ctx, "ImDrawList", "GetClipRectMin", IgnoreType.Method);   // manual
-        Ignore(ctx, "ImDrawVert", null,             IgnoreType.Class);    // manual
-        Ignore(ctx, "ImFont",     "GetDebugName",   IgnoreType.Method);   // manual
-        Ignore(ctx, "ImFont",     "IsLoaded",       IgnoreType.Method);   // manual
-        Ignore(ctx, "ImVec2",     null,             IgnoreType.Class);    // manual
-        Ignore(ctx, "ImVec4",     null,             IgnoreType.Class);    // manual
-        Ignore(ctx, "ImVector",   null,             IgnoreType.Class);    // manual
-        Ignore(ctx, null,         "IM_DELETE",      IgnoreType.Function); // unused
+        Ignore(ctx, "ImColor",     null,             IgnoreType.Class);    // unused
+        Ignore(ctx, "ImDrawCmd",   "GetTexID",       IgnoreType.Method);   // manual
+        Ignore(ctx, "ImDrawList",  "GetClipRectMax", IgnoreType.Method);   // manual
+        Ignore(ctx, "ImDrawList",  "GetClipRectMin", IgnoreType.Method);   // manual
+        Ignore(ctx, "ImDrawVert",  null,             IgnoreType.Class);    // manual
+        Ignore(ctx, "ImFont",      "GetDebugName",   IgnoreType.Method);   // manual
+        Ignore(ctx, "ImFont",      "IsLoaded",       IgnoreType.Method);   // manual
+        Ignore(ctx, "ImFontAtlas", "SetTexID",       IgnoreType.Method);   // manual
+        Ignore(ctx, "ImVec2",      null,             IgnoreType.Class);    // manual
+        Ignore(ctx, "ImVec4",      null,             IgnoreType.Class);    // manual
+        Ignore(ctx, "ImVector",    null,             IgnoreType.Class);    // manual
+        Ignore(ctx, null,          "IM_DELETE",      IgnoreType.Function); // unused
     }
 
     #endregion
@@ -234,7 +235,6 @@ internal sealed class MyLibrary : ILibrary
         Ignore(ctx, "ImDrawList",         "VtxCurrentIdx",   IgnoreType.Property); // intern
         Ignore(ctx, "ImDrawList",         "VtxWritePtr",     IgnoreType.Property); // intern
         Ignore(ctx, "ImFontAtlas",        "IsBuilt",         IgnoreType.Property); // manual
-        Ignore(ctx, "ImFontAtlas",        "SetTexID",        IgnoreType.Method);   // manual
         Ignore(ctx, "ImFontAtlas",        "TexUvLines",      IgnoreType.Property); // manual
         Ignore(ctx, "ImFontConfig",       "Name",            IgnoreType.Property); // manual
         Ignore(ctx, "ImGuiIO",            "MouseClickedPos", IgnoreType.Property); // manual
