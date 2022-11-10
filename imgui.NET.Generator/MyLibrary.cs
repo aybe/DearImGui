@@ -55,7 +55,7 @@ internal sealed class MyLibrary : ILibrary
         {
         }
 
-        driver.Generator.OnUnitGenerated += OnUnitGenerated;
+        driver.Generator.OnUnitGenerated += UnitGenerated;
     }
 
     public void Preprocess(Driver driver, ASTContext ctx)
@@ -64,24 +64,24 @@ internal sealed class MyLibrary : ILibrary
 
         FlattenNamespace(ctx);
 
+        // actually, we do want these, else we'll get pretty much nothing generated
         RemovePass<CheckIgnoredDeclsPass>(driver);
 
-        RemovePass<CleanCommentsPass>(driver); // useless, throws when adding our comments to functions
+        // this is useless in our case, it also throws when adding our own comments
+        RemovePass<CleanCommentsPass>(driver);
 
-        // though ignored and implemented manually, we still need to set these as value types
+        // though ignored and manually implemented, we must set these as value types
         ctx.SetClassAsValueType("ImDrawVert");
         ctx.SetClassAsValueType("ImVec2");
         ctx.SetClassAsValueType("ImVec4");
 
-        Ignore(ctx, "ImColor",    null, IgnoreType.Class); // unused
-        Ignore(ctx, "ImDrawVert", null, IgnoreType.Class); // manual
-        Ignore(ctx, "ImVec2",     null, IgnoreType.Class); // manual
-        Ignore(ctx, "ImVec4",     null, IgnoreType.Class); // manual
-        Ignore(ctx, "ImVector",   null, IgnoreType.Class); // manual
-        
-        ctx.IgnoreClassMethodWithName("ImDrawCmd", "GetTexID");
-        ctx.IgnoreConversionToProperty("ImDrawList::GetClipRectMin"); // TODO
-        ctx.IgnoreConversionToProperty("ImDrawList::GetClipRectMax"); // TODO
+        Ignore(ctx, "ImColor",    null,       IgnoreType.Class);  // unused
+        Ignore(ctx, "ImDrawCmd",  "GetTexID", IgnoreType.Method); // manual
+        Ignore(ctx, "ImDrawVert", null,       IgnoreType.Class);  // manual
+        Ignore(ctx, "ImVec2",     null,       IgnoreType.Class);  // manual
+        Ignore(ctx, "ImVec4",     null,       IgnoreType.Class);  // manual
+        Ignore(ctx, "ImVector",   null,       IgnoreType.Class);  // manual
+
 
         ctx.IgnoreFunctionWithName("IM_DELETE");
 
@@ -92,41 +92,10 @@ internal sealed class MyLibrary : ILibrary
 
     public void Postprocess(Driver driver, ASTContext ctx)
     {
-        Ignore(ctx, "ImDrawData",         "CmdLists",        IgnoreType.Property); // manual
-        Ignore(ctx, "ImDrawList",         "ClipRectStack",   IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",         "CmdHeader",       IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",         "FringeScale",     IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",         "IdxWritePtr",     IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",         "Path",            IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",         "Splitter",        IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",         "TextureIdStack",  IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",         "VtxCurrentIdx",   IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",         "VtxWritePtr",     IgnoreType.Property); // intern
-        Ignore(ctx, "ImFontAtlas",        "IsBuilt",         IgnoreType.Property); // manual
-        Ignore(ctx, "ImFontAtlas",        "SetTexID",        IgnoreType.Method);   // manual
-        Ignore(ctx, "ImFontAtlas",        "TexUvLines",      IgnoreType.Property); // manual
-        Ignore(ctx, "ImGuiIO",            "MouseClickedPos", IgnoreType.Property); // manual
-        Ignore(ctx, "ImGuiStyle",         "Colors",          IgnoreType.Property); // manual
-        Ignore(ctx, "ImVectorExtensions", null,              IgnoreType.Class);    // unused
-
+        PostprocessIgnores(ctx);
         PostprocessDelegates(ctx);
+        PostprocessEnumerations(ctx);
         PostprocessProperties(ctx);
-
-        ctx.SetEnumAsFlags("ImDrawFlags");
-        ctx.SetEnumAsFlags("ImGuiButtonFlags");
-        ctx.SetEnumAsFlags("ImGuiColorEditFlags");
-        ctx.SetEnumAsFlags("ImGuiComboFlags");
-        ctx.SetEnumAsFlags("ImGuiDragDropFlags");
-        ctx.SetEnumAsFlags("ImGuiFocusedFlags");
-        ctx.SetEnumAsFlags("ImGuiHoveredFlags");
-        ctx.SetEnumAsFlags("ImGuiPopupFlags");
-        ctx.SetEnumAsFlags("ImGuiSliderFlags");
-        ctx.SetEnumAsFlags("ImGuiTabBarFlags");
-        ctx.SetEnumAsFlags("ImGuiTableColumnFlags");
-        ctx.SetEnumAsFlags("ImGuiTableFlags");
-        ctx.SetEnumAsFlags("ImGuiTableRowFlags");
-        ctx.SetEnumAsFlags("ImGuiTreeNodeFlags");
-        ctx.SetEnumAsFlags("ImGuiWindowFlags");
 
         if (Enhanced is true)
         {
@@ -135,29 +104,47 @@ internal sealed class MyLibrary : ILibrary
 
     #endregion
 
+    #region Shared
+
+    private static void Ignore(ASTContext ctx, string className, string? memberName, IgnoreType ignoreType)
+    {
+        var c = ctx.FindCompleteClass(className);
+
+        DeclarationBase b = ignoreType switch
+        {
+            IgnoreType.Class    => c,
+            IgnoreType.Method   => c.Methods.Single(s => s.Name == memberName),
+            IgnoreType.Property => c.Properties.Single(s => s.Name == memberName),
+            _                   => throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null)
+        };
+
+        b.ExplicitlyIgnore();
+    }
+
+    #endregion
+
     #region Preprocess
 
     private static void FlattenNamespace(ASTContext ctx)
     {
-        foreach (var unit in ctx.TranslationUnits)
-        {
-            if (unit.FileName != "imgui.h")
-                continue;
+        // consolidate all of that stuff onto a unique namespace
 
-            var ns = unit.Declarations.OfType<Namespace>().Single();
+        var unit = GetImGuiTranslationUnit(ctx);
 
-            var declarations = ns.Declarations.ToArray();
+        var ns = unit.Declarations.OfType<Namespace>().Single();
 
-            ns.Declarations.Clear();
+        var declarations = ns.Declarations.ToArray();
 
-            unit.Declarations.AddRange(declarations);
-        }
+        ns.Declarations.Clear();
+
+        unit.Declarations.AddRange(declarations);
     }
 
     private static void RemoveEnumerations(ASTContext ctx)
     {
-        ctx.FindCompleteEnum("ImGuiModFlags_").ExplicitlyIgnore();
+        // hide some enumerations that aren't useful in our case
 
+        ctx.FindCompleteEnum("ImGuiModFlags_").ExplicitlyIgnore();
         ctx.FindCompleteEnum("ImGuiNavInput_").ExplicitlyIgnore();
 
         foreach (var enumeration in ctx.TranslationUnits.SelectMany(s => s.Declarations).OfType<Enumeration>())
@@ -202,7 +189,7 @@ internal sealed class MyLibrary : ILibrary
     {
         var count = driver.Context.TranslationUnitPasses.Passes.RemoveAll(s => s is T);
 
-        Console.WriteLine($"### Removed {count} {typeof(T)} in {memberName}");
+        Console.WriteLine($"### Removed {count} passes of type {typeof(T)} in {memberName}");
     }
 
     #endregion
@@ -212,6 +199,26 @@ internal sealed class MyLibrary : ILibrary
     private static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
     {
         return ctx.TranslationUnits.Single(s => s.FileName == "imgui.h");
+    }
+
+    private static void PostprocessIgnores(ASTContext ctx)
+    {
+        Ignore(ctx, "ImDrawData",         "CmdLists",        IgnoreType.Property); // manual
+        Ignore(ctx, "ImDrawList",         "ClipRectStack",   IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "CmdHeader",       IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "FringeScale",     IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "IdxWritePtr",     IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "Path",            IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "Splitter",        IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "TextureIdStack",  IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "VtxCurrentIdx",   IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",         "VtxWritePtr",     IgnoreType.Property); // intern
+        Ignore(ctx, "ImFontAtlas",        "IsBuilt",         IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontAtlas",        "SetTexID",        IgnoreType.Method);   // manual
+        Ignore(ctx, "ImFontAtlas",        "TexUvLines",      IgnoreType.Property); // manual
+        Ignore(ctx, "ImGuiIO",            "MouseClickedPos", IgnoreType.Property); // manual
+        Ignore(ctx, "ImGuiStyle",         "Colors",          IgnoreType.Property); // manual
+        Ignore(ctx, "ImVectorExtensions", null,              IgnoreType.Class);    // unused
     }
 
     private static void PostprocessDelegates(ASTContext ctx)
@@ -237,7 +244,7 @@ internal sealed class MyLibrary : ILibrary
         ns.FindTypedef("Func_float___IntPtr_int")
             .Name = "ImValuesGetterHandler";
 
-        // move delegates to upper namespace
+        // merge these delegates with upper namespace
 
         foreach (var declaration in ns.Declarations)
         {
@@ -249,8 +256,30 @@ internal sealed class MyLibrary : ILibrary
         ns.Declarations.Clear();
     }
 
+    private static void PostprocessEnumerations(ASTContext ctx)
+    {
+        // for some reason, these are missed by the generator, fix that
+        ctx.SetEnumAsFlags("ImDrawFlags");
+        ctx.SetEnumAsFlags("ImGuiButtonFlags");
+        ctx.SetEnumAsFlags("ImGuiColorEditFlags");
+        ctx.SetEnumAsFlags("ImGuiComboFlags");
+        ctx.SetEnumAsFlags("ImGuiDragDropFlags");
+        ctx.SetEnumAsFlags("ImGuiFocusedFlags");
+        ctx.SetEnumAsFlags("ImGuiHoveredFlags");
+        ctx.SetEnumAsFlags("ImGuiPopupFlags");
+        ctx.SetEnumAsFlags("ImGuiSliderFlags");
+        ctx.SetEnumAsFlags("ImGuiTabBarFlags");
+        ctx.SetEnumAsFlags("ImGuiTableColumnFlags");
+        ctx.SetEnumAsFlags("ImGuiTableFlags");
+        ctx.SetEnumAsFlags("ImGuiTableRowFlags");
+        ctx.SetEnumAsFlags("ImGuiTreeNodeFlags");
+        ctx.SetEnumAsFlags("ImGuiWindowFlags");
+    }
+
     private static void PostprocessProperties(ASTContext ctx)
     {
+        // vector properties are not meant to be assignable, make them read-only
+
         var unit = GetImGuiTranslationUnit(ctx);
 
         foreach (var c in unit.Classes)
@@ -270,15 +299,15 @@ internal sealed class MyLibrary : ILibrary
         }
     }
 
-    private static void OnUnitGenerated(GeneratorOutput output)
+    private static void UnitGenerated(GeneratorOutput output)
     {
         foreach (var generator in output.Outputs)
         {
-            UpdateHeader(generator);
+            UpdateGeneratedContent(generator);
         }
     }
 
-    private static void UpdateHeader(CodeGenerator generator)
+    private static void UpdateGeneratedContent(CodeGenerator generator)
     {
         var header = generator.FindBlock(BlockKind.Header);
 
@@ -298,25 +327,6 @@ internal sealed class MyLibrary : ILibrary
         {
             comment.Text.StringBuilder.Replace("&lt;br/&gt;", "<br/>");
         }
-    }
-
-    #endregion
-
-    #region Shared
-
-    private static void Ignore(ASTContext ctx, string className, string? memberName, IgnoreType ignoreType)
-    {
-        var c = ctx.FindCompleteClass(className);
-
-        DeclarationBase b = ignoreType switch
-        {
-            IgnoreType.Class    => c,
-            IgnoreType.Method   => c.Methods.Single(s => s.Name == memberName),
-            IgnoreType.Property => c.Properties.Single(s => s.Name == memberName),
-            _                   => throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null)
-        };
-
-        b.ExplicitlyIgnore();
     }
 
     #endregion
