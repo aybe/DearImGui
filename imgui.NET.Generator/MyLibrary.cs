@@ -275,22 +275,22 @@ internal sealed class MyLibrary : ILibrary
 
     private static void PostprocessEnumerations(ASTContext ctx)
     {
-        // for some reason, these are missed by the generator, fix that
-        ctx.SetEnumAsFlags("ImDrawFlags");
-        ctx.SetEnumAsFlags("ImGuiButtonFlags");
-        ctx.SetEnumAsFlags("ImGuiColorEditFlags");
-        ctx.SetEnumAsFlags("ImGuiComboFlags");
-        ctx.SetEnumAsFlags("ImGuiDragDropFlags");
-        ctx.SetEnumAsFlags("ImGuiFocusedFlags");
-        ctx.SetEnumAsFlags("ImGuiHoveredFlags");
-        ctx.SetEnumAsFlags("ImGuiPopupFlags");
-        ctx.SetEnumAsFlags("ImGuiSliderFlags");
-        ctx.SetEnumAsFlags("ImGuiTabBarFlags");
-        ctx.SetEnumAsFlags("ImGuiTableColumnFlags");
-        ctx.SetEnumAsFlags("ImGuiTableFlags");
-        ctx.SetEnumAsFlags("ImGuiTableRowFlags");
-        ctx.SetEnumAsFlags("ImGuiTreeNodeFlags");
-        ctx.SetEnumAsFlags("ImGuiWindowFlags");
+        // for some reason, these flags are missed by the generator, fix that
+
+        var unit = GetImGuiTranslationUnit(ctx);
+
+        foreach (var enumeration in unit.Enums)
+        {
+            if (enumeration.Name.Contains("Flags"))
+            {
+                if (enumeration.IsFlags is true)
+                    continue;
+
+                enumeration.SetFlags();
+
+                Console.WriteLine($"Set enumeration as flags: {enumeration.Name}");
+            }
+        }
     }
 
     private static void PostprocessProperties(ASTContext ctx)
