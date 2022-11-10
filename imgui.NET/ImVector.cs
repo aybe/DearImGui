@@ -49,7 +49,7 @@ public readonly struct ImVector<T> : IReadOnlyList<T>
 
             if (type == typeof(ImFont))
             {
-                var source = ImFont.__GetOrCreateInstance(Data + sizeof(ImFont.__Internal) * index);
+                var source = ImFont.__GetOrCreateInstance(Unsafe.Read<IntPtr>((Data + sizeof(ImFont.__Internal) * index).ToPointer()));
                 var result = Unsafe.As<ImFont, T>(ref source);
                 return result;
             }
