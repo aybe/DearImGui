@@ -108,23 +108,23 @@ internal sealed class MyLibrary : ILibrary
 
     private static void Ignore(ASTContext ctx, string? className, string? memberName, IgnoreType ignoreType)
     {
-        if (ignoreType is IgnoreType.Function)
+        switch (ignoreType)
         {
-            ctx.IgnoreFunctionWithName(memberName);
-            return;
+            case IgnoreType.Class:
+                ctx.IgnoreClassWithName(className);
+                return;
+            case IgnoreType.Function:
+                ctx.IgnoreFunctionWithName(memberName);
+                return;
+            case IgnoreType.Method:
+                ctx.IgnoreClassMethodWithName(className, memberName);
+                return;
+            case IgnoreType.Property:
+                ctx.FindCompleteClass(className).Properties.Single(s => s.Name == memberName).ExplicitlyIgnore();
+                return;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null);
         }
-        
-        var c = ctx.FindCompleteClass(className);
-
-        DeclarationBase b = ignoreType switch
-        {
-            IgnoreType.Class    => c,
-            IgnoreType.Method   => c.Methods.Single(s => s.Name == memberName),
-            IgnoreType.Property => c.Properties.Single(s => s.Name == memberName),
-            _                   => throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null)
-        };
-
-        b.ExplicitlyIgnore();
     }
 
     #endregion
