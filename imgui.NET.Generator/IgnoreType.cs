@@ -3,6 +3,7 @@
 internal enum IgnoreType
 {
     Class,
+    Function,
     Method,
     Property
 }
