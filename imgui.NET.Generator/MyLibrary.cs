@@ -135,76 +135,9 @@ internal sealed class MyLibrary : ILibrary
 
     #endregion
 
-    private static void PostprocessProperties(ASTContext ctx)
-    {
-        var unit = GetImGuiTranslationUnit(ctx);
+    #region Preprocess
 
-        foreach (var c in unit.Classes)
-        {
-            foreach (var p in c.Properties)
-            {
-                if (p.QualifiedType.Type is not TemplateSpecializationType type)
-                    continue;
-
-                if (type.Template.Name is not "ImVector")
-                    continue;
-
-                ctx.SetPropertyAsReadOnly(c.Name, p.Name);
-
-                Console.WriteLine($"ImVector<T> property set as read-only: {c.Name}.{p.Name}");
-            }
-        }
-    }
-
-    private static void PostprocessDelegates(ASTContext ctx)
-    {
-        // rename delegates to more appropriate names
-
-        var tu = GetImGuiTranslationUnit(ctx);
-
-        var ns = tu.FindNamespace("Delegates");
-
-        ns.FindTypedef("Func___IntPtr___IntPtr")
-            .Name = "ImGetClipboardTextHandler";
-
-        ns.FindTypedef("Action___IntPtr_string8")
-            .Name = "ImSetClipboardTextHandler";
-
-        ns.FindTypedef("Action___IntPtr___IntPtr")
-            .Name = "ImSetPlatformImeDataHandler";
-
-        ns.FindTypedef("Func_bool___IntPtr_int_sbytePtrPtr")
-            .Name = "ImItemsGetterHandler";
-
-        ns.FindTypedef("Func_float___IntPtr_int")
-            .Name = "ImValuesGetterHandler";
-
-        // move delegates to upper namespace
-
-        foreach (var declaration in ns.Declarations)
-        {
-            declaration.Namespace = tu;
-        }
-
-        tu.Declarations.AddRange(ns.Declarations);
-
-        ns.Declarations.Clear();
-    }
-
-    private static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
-    {
-        return ctx.TranslationUnits.Single(s => s.FileName == "imgui.h");
-    }
-
-    private static void OnUnitGenerated(GeneratorOutput output)
-    {
-        foreach (var generator in output.Outputs)
-        {
-            UpdateHeader(generator);
-        }
-    }
-
-    public static void FlattenNamespace(ASTContext ctx)
+    private static void FlattenNamespace(ASTContext ctx)
     {
         foreach (var unit in ctx.TranslationUnits)
         {
@@ -221,22 +154,7 @@ internal sealed class MyLibrary : ILibrary
         }
     }
 
-    public static void Ignore(ASTContext ctx, string className, string? memberName, IgnoreType ignoreType)
-    {
-        var c = ctx.FindCompleteClass(className);
-
-        DeclarationBase b = ignoreType switch
-        {
-            IgnoreType.Class    => c,
-            IgnoreType.Method   => c.Methods.Single(s => s.Name == memberName),
-            IgnoreType.Property => c.Properties.Single(s => s.Name == memberName),
-            _                   => throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null)
-        };
-
-        b.ExplicitlyIgnore();
-    }
-
-    public static void RemoveEnumerations(ASTContext ctx)
+    private static void RemoveEnumerations(ASTContext ctx)
     {
         ctx.FindCompleteEnum("ImGuiModFlags_").ExplicitlyIgnore();
 
@@ -280,14 +198,87 @@ internal sealed class MyLibrary : ILibrary
         }
     }
 
-    public static void RemovePass<T>(Driver driver, [CallerMemberName] string memberName = null!) where T : TranslationUnitPass
+    private static void RemovePass<T>(Driver driver, [CallerMemberName] string memberName = null!) where T : TranslationUnitPass
     {
         var count = driver.Context.TranslationUnitPasses.Passes.RemoveAll(s => s is T);
 
         Console.WriteLine($"### Removed {count} {typeof(T)} in {memberName}");
     }
 
-    public static void UpdateHeader(CodeGenerator generator)
+    #endregion
+
+    #region Postprocess
+
+    private static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
+    {
+        return ctx.TranslationUnits.Single(s => s.FileName == "imgui.h");
+    }
+
+    private static void PostprocessDelegates(ASTContext ctx)
+    {
+        // rename delegates to more appropriate names
+
+        var tu = GetImGuiTranslationUnit(ctx);
+
+        var ns = tu.FindNamespace("Delegates");
+
+        ns.FindTypedef("Func___IntPtr___IntPtr")
+            .Name = "ImGetClipboardTextHandler";
+
+        ns.FindTypedef("Action___IntPtr_string8")
+            .Name = "ImSetClipboardTextHandler";
+
+        ns.FindTypedef("Action___IntPtr___IntPtr")
+            .Name = "ImSetPlatformImeDataHandler";
+
+        ns.FindTypedef("Func_bool___IntPtr_int_sbytePtrPtr")
+            .Name = "ImItemsGetterHandler";
+
+        ns.FindTypedef("Func_float___IntPtr_int")
+            .Name = "ImValuesGetterHandler";
+
+        // move delegates to upper namespace
+
+        foreach (var declaration in ns.Declarations)
+        {
+            declaration.Namespace = tu;
+        }
+
+        tu.Declarations.AddRange(ns.Declarations);
+
+        ns.Declarations.Clear();
+    }
+
+    private static void PostprocessProperties(ASTContext ctx)
+    {
+        var unit = GetImGuiTranslationUnit(ctx);
+
+        foreach (var c in unit.Classes)
+        {
+            foreach (var p in c.Properties)
+            {
+                if (p.QualifiedType.Type is not TemplateSpecializationType type)
+                    continue;
+
+                if (type.Template.Name is not "ImVector")
+                    continue;
+
+                ctx.SetPropertyAsReadOnly(c.Name, p.Name);
+
+                Console.WriteLine($"ImVector<T> property set as read-only: {c.Name}.{p.Name}");
+            }
+        }
+    }
+
+    private static void OnUnitGenerated(GeneratorOutput output)
+    {
+        foreach (var generator in output.Outputs)
+        {
+            UpdateHeader(generator);
+        }
+    }
+
+    private static void UpdateHeader(CodeGenerator generator)
     {
         var header = generator.FindBlock(BlockKind.Header);
 
@@ -308,4 +299,25 @@ internal sealed class MyLibrary : ILibrary
             comment.Text.StringBuilder.Replace("&lt;br/&gt;", "<br/>");
         }
     }
+
+    #endregion
+
+    #region Shared
+
+    private static void Ignore(ASTContext ctx, string className, string? memberName, IgnoreType ignoreType)
+    {
+        var c = ctx.FindCompleteClass(className);
+
+        DeclarationBase b = ignoreType switch
+        {
+            IgnoreType.Class    => c,
+            IgnoreType.Method   => c.Methods.Single(s => s.Name == memberName),
+            IgnoreType.Property => c.Properties.Single(s => s.Name == memberName),
+            _                   => throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null)
+        };
+
+        b.ExplicitlyIgnore();
+    }
+
+    #endregion
 }
