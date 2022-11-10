@@ -68,22 +68,17 @@ internal sealed class MyLibrary : ILibrary
 
         RemovePass<CleanCommentsPass>(driver); // useless, throws when adding our comments to functions
 
-        {
-            // whenever we ignore a type to implement it manually, we still have to set value type where appropriate
+        // though ignored and implemented manually, we still need to set these as value types
+        ctx.SetClassAsValueType("ImDrawVert");
+        ctx.SetClassAsValueType("ImVec2");
+        ctx.SetClassAsValueType("ImVec4");
 
-            ctx.SetClassAsValueType("ImDrawVert");
-            ctx.IgnoreClassWithName("ImDrawVert");
-
-            ctx.SetClassAsValueType("ImVec2");
-            ctx.IgnoreClassWithName("ImVec2");
-
-            ctx.SetClassAsValueType("ImVec4");
-            ctx.IgnoreClassWithName("ImVec4");
-        }
-
-        ctx.IgnoreClassWithName("ImColor");
-        ctx.IgnoreClassWithName("ImVector");
-
+        Ignore(ctx, "ImColor",    null, IgnoreType.Class); // unused
+        Ignore(ctx, "ImDrawVert", null, IgnoreType.Class); // manual
+        Ignore(ctx, "ImVec2",     null, IgnoreType.Class); // manual
+        Ignore(ctx, "ImVec4",     null, IgnoreType.Class); // manual
+        Ignore(ctx, "ImVector",   null, IgnoreType.Class); // manual
+        
         ctx.IgnoreClassMethodWithName("ImDrawCmd", "GetTexID");
         ctx.IgnoreConversionToProperty("ImDrawList::GetClipRectMin"); // TODO
         ctx.IgnoreConversionToProperty("ImDrawList::GetClipRectMax"); // TODO
