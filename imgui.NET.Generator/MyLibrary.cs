@@ -60,30 +60,11 @@ internal sealed class MyLibrary : ILibrary
 
     public void Preprocess(Driver driver, ASTContext ctx)
     {
-        RemoveEnumerations(ctx);
-
-        FlattenNamespace(ctx);
-
-        // actually, we do want these, else we'll get pretty much nothing generated
-        RemovePass<CheckIgnoredDeclsPass>(driver);
-
-        // this is useless in our case, it also throws when adding our own comments
-        RemovePass<CleanCommentsPass>(driver);
-
-        // though ignored and manually implemented, we must set these as value types
-        ctx.SetClassAsValueType("ImDrawVert");
-        ctx.SetClassAsValueType("ImVec2");
-        ctx.SetClassAsValueType("ImVec4");
-
-        Ignore(ctx, "ImColor",    null,             IgnoreType.Class);    // unused
-        Ignore(ctx, "ImDrawCmd",  "GetTexID",       IgnoreType.Method);   // manual
-        Ignore(ctx, "ImDrawList", "GetClipRectMax", IgnoreType.Method);   // manual
-        Ignore(ctx, "ImDrawList", "GetClipRectMin", IgnoreType.Method);   // manual
-        Ignore(ctx, "ImDrawVert", null,             IgnoreType.Class);    // manual
-        Ignore(ctx, "ImVec2",     null,             IgnoreType.Class);    // manual
-        Ignore(ctx, "ImVec4",     null,             IgnoreType.Class);    // manual
-        Ignore(ctx, "ImVector",   null,             IgnoreType.Class);    // manual
-        Ignore(ctx, null,         "IM_DELETE",      IgnoreType.Function); // unused
+        PreprocessPasses(driver);
+        PreprocessEnumerations(ctx);
+        PreprocessNamespace(ctx);
+        PreprocessValueTypes(ctx);
+        PreprocessIgnores(ctx);
 
         if (Enhanced is true)
         {
@@ -127,26 +108,27 @@ internal sealed class MyLibrary : ILibrary
         }
     }
 
+    private static void RemovePass<T>(Driver driver, [CallerMemberName] string memberName = null!) where T : TranslationUnitPass
+    {
+        var count = driver.Context.TranslationUnitPasses.Passes.RemoveAll(s => s is T);
+
+        Console.WriteLine($"### Removed {count} passes of type {typeof(T)} in {memberName}");
+    }
+
     #endregion
 
     #region Preprocess
 
-    private static void FlattenNamespace(ASTContext ctx)
+    private static void PreprocessPasses(Driver driver)
     {
-        // consolidate all of that stuff onto a unique namespace
+        // actually, we do want these, else we'll get pretty much nothing generated
+        RemovePass<CheckIgnoredDeclsPass>(driver);
 
-        var unit = GetImGuiTranslationUnit(ctx);
-
-        var ns = unit.Declarations.OfType<Namespace>().Single();
-
-        var declarations = ns.Declarations.ToArray();
-
-        ns.Declarations.Clear();
-
-        unit.Declarations.AddRange(declarations);
+        // this is useless in our case, it also throws when adding our own comments
+        RemovePass<CleanCommentsPass>(driver);
     }
 
-    private static void RemoveEnumerations(ASTContext ctx)
+    private static void PreprocessEnumerations(ASTContext ctx)
     {
         // hide some enumerations that aren't useful in our case
 
@@ -191,11 +173,40 @@ internal sealed class MyLibrary : ILibrary
         }
     }
 
-    private static void RemovePass<T>(Driver driver, [CallerMemberName] string memberName = null!) where T : TranslationUnitPass
+    private static void PreprocessNamespace(ASTContext ctx)
     {
-        var count = driver.Context.TranslationUnitPasses.Passes.RemoveAll(s => s is T);
+        // consolidate all of that stuff onto a unique namespace
 
-        Console.WriteLine($"### Removed {count} passes of type {typeof(T)} in {memberName}");
+        var unit = GetImGuiTranslationUnit(ctx);
+
+        var ns = unit.Declarations.OfType<Namespace>().Single();
+
+        var declarations = ns.Declarations.ToArray();
+
+        ns.Declarations.Clear();
+
+        unit.Declarations.AddRange(declarations);
+    }
+
+    private static void PreprocessValueTypes(ASTContext ctx)
+    {
+        // though ignored and manually implemented, we must set these as value types
+        ctx.SetClassAsValueType("ImDrawVert");
+        ctx.SetClassAsValueType("ImVec2");
+        ctx.SetClassAsValueType("ImVec4");
+    }
+
+    private static void PreprocessIgnores(ASTContext ctx)
+    {
+        Ignore(ctx, "ImColor",    null,             IgnoreType.Class);    // unused
+        Ignore(ctx, "ImDrawCmd",  "GetTexID",       IgnoreType.Method);   // manual
+        Ignore(ctx, "ImDrawList", "GetClipRectMax", IgnoreType.Method);   // manual
+        Ignore(ctx, "ImDrawList", "GetClipRectMin", IgnoreType.Method);   // manual
+        Ignore(ctx, "ImDrawVert", null,             IgnoreType.Class);    // manual
+        Ignore(ctx, "ImVec2",     null,             IgnoreType.Class);    // manual
+        Ignore(ctx, "ImVec4",     null,             IgnoreType.Class);    // manual
+        Ignore(ctx, "ImVector",   null,             IgnoreType.Class);    // manual
+        Ignore(ctx, null,         "IM_DELETE",      IgnoreType.Function); // unused
     }
 
     #endregion
