@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.CompilerServices;
@@ -11,10 +10,11 @@ using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
-using Vanara.PInvoke;
+using PInvoke;
 using Image = OpenTK.Windowing.GraphicsLibraryFramework.Image;
 using PixelFormat = OpenTK.Graphics.OpenGL.PixelFormat;
 using Vector2 = System.Numerics.Vector2;
+using Win32Exception = PInvoke.Win32Exception;
 
 // ReSharper disable InconsistentNaming
 
@@ -620,41 +620,36 @@ public sealed class ImGuiController : Disposable
 
         var resourceId = mouseCursor switch
         {
-            ImGuiMouseCursor.Arrow      => User32.IDC_ARROW,
-            ImGuiMouseCursor.TextInput  => User32.IDC_IBEAM,
-            ImGuiMouseCursor.ResizeAll  => User32.IDC_SIZEALL,
-            ImGuiMouseCursor.ResizeNS   => User32.IDC_SIZENS,
-            ImGuiMouseCursor.ResizeEW   => User32.IDC_SIZEWE,
-            ImGuiMouseCursor.ResizeNESW => User32.IDC_SIZENESW,
-            ImGuiMouseCursor.ResizeNWSE => User32.IDC_SIZENWSE,
-            ImGuiMouseCursor.Hand       => User32.IDC_HAND,
-            ImGuiMouseCursor.NotAllowed => User32.IDC_NO,
+            ImGuiMouseCursor.Arrow      => User32.Cursors.IDC_ARROW,
+            ImGuiMouseCursor.TextInput  => User32.Cursors.IDC_IBEAM,
+            ImGuiMouseCursor.ResizeAll  => User32.Cursors.IDC_SIZEALL,
+            ImGuiMouseCursor.ResizeNS   => User32.Cursors.IDC_SIZENS,
+            ImGuiMouseCursor.ResizeEW   => User32.Cursors.IDC_SIZEWE,
+            ImGuiMouseCursor.ResizeNESW => User32.Cursors.IDC_SIZENESW,
+            ImGuiMouseCursor.ResizeNWSE => User32.Cursors.IDC_SIZENWSE,
+            ImGuiMouseCursor.Hand       => User32.Cursors.IDC_HAND,
+            ImGuiMouseCursor.NotAllowed => User32.Cursors.IDC_NO,
             _                           => throw new InvalidEnumArgumentException(null, (int)mouseCursor, typeof(ImGuiMouseCursor))
         };
 
-        using (var hCursor = User32.LoadCursor(HINSTANCE.NULL, resourceId))
-        using (var hIcon = new User32.SafeHICON(hCursor.DangerousGetHandle()))
+        using (var hCursor = User32.LoadCursor(IntPtr.Zero, Kernel32.MAKEINTRESOURCE((int)resourceId)))
+        using (var hIcon = Icon.FromHandle(hCursor.DangerousGetHandle()))
+        using (var bitmap = hIcon.ToBitmap())
         {
-            var iconInfo = new User32.ICONINFO();
-
-            if (!User32.GetIconInfo(hIcon.DangerousGetHandle(), iconInfo))
-                Win32Error.ThrowLastError();
-
-            Debug.Assert(iconInfo.fIcon is false, "iconInfo.fIcon is false");
-
-            using (var icon = Icon.FromHandle(hIcon.DangerousGetHandle()))
-            using (var bitmap = icon.ToBitmap())
+            if (!User32.GetIconInfo(hIcon.Handle, out var iconInfo))
             {
-                var data = bitmap.LockBits(new Rectangle(Point.Empty, bitmap.Size), ImageLockMode.ReadOnly, bitmap.PixelFormat);
-
-                var image = new Image(bitmap.Width, bitmap.Height, (byte*)data.Scan0.ToPointer());
-
-                var cursor = GLFW.CreateCursor(image, iconInfo.xHotspot, iconInfo.yHotspot);
-
-                bitmap.UnlockBits(data);
-
-                return cursor;
+                throw new Win32Exception();
             }
+
+            var data = bitmap.LockBits(new Rectangle(Point.Empty, bitmap.Size), ImageLockMode.ReadOnly, bitmap.PixelFormat);
+
+            var image = new Image(bitmap.Width, bitmap.Height, (byte*)data.Scan0.ToPointer());
+
+            var cursor = GLFW.CreateCursor(image, iconInfo.xHotspot, iconInfo.yHotspot);
+
+            bitmap.UnlockBits(data);
+
+            return cursor;
         }
     }
 
