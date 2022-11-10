@@ -236,6 +236,7 @@ internal sealed class MyLibrary : ILibrary
         Ignore(ctx, "ImFontAtlas",        "IsBuilt",         IgnoreType.Property); // manual
         Ignore(ctx, "ImFontAtlas",        "SetTexID",        IgnoreType.Method);   // manual
         Ignore(ctx, "ImFontAtlas",        "TexUvLines",      IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontConfig",       "Name",            IgnoreType.Property); // manual
         Ignore(ctx, "ImGuiIO",            "MouseClickedPos", IgnoreType.Property); // manual
         Ignore(ctx, "ImGuiStyle",         "Colors",          IgnoreType.Property); // manual
         Ignore(ctx, "ImVectorExtensions", null,              IgnoreType.Class);    // unused

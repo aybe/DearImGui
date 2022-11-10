@@ -36,4 +36,11 @@ internal static class Marshalling
 
         return vector;
     }
+
+    public static unsafe string String(sbyte* value)
+    {
+        var @string = new string(value).TrimEnd('\0');
+
+        return @string;
+    }
 }
