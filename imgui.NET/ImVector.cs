@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace imgui.NET;
 
-public readonly struct ImVector<T> : IEnumerable<T>
+public readonly struct ImVector<T> : IEnumerable<T>, IReadOnlyList<T>
 {
     private readonly __Internal Internal;
 
@@ -133,4 +133,7 @@ public readonly struct ImVector<T> : IEnumerable<T>
     {
         return $"{nameof(Size)}: {Size}, {nameof(Capacity)}: {Capacity}, {nameof(Data)}: 0x{Data.ToString(IntPtr.Size == 4 ? "X8" : "X16")}";
     }
+
+    /// <inheritdoc />
+    public int Count => Size;
 }
