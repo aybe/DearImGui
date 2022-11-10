@@ -112,7 +112,8 @@ internal sealed class MyLibrary : ILibrary
     {
         var count = driver.Context.TranslationUnitPasses.Passes.RemoveAll(s => s is T);
 
-        Console.WriteLine($"### Removed {count} passes of type {typeof(T)} in {memberName}");
+        using (new ConsoleColorScope(null, ConsoleColor.Yellow))
+            Console.WriteLine($"Removed {count} passes of type {typeof(T)} in {memberName}");
     }
 
     #endregion
@@ -266,6 +267,9 @@ internal sealed class MyLibrary : ILibrary
         foreach (var declaration in ns.Declarations)
         {
             declaration.Namespace = tu;
+
+            using (new ConsoleColorScope(null, ConsoleColor.Yellow))
+                Console.WriteLine($"Set declaration {declaration} namespace to {tu}");
         }
 
         tu.Declarations.AddRange(ns.Declarations);
@@ -288,7 +292,8 @@ internal sealed class MyLibrary : ILibrary
 
                 enumeration.SetFlags();
 
-                Console.WriteLine($"Set enumeration as flags: {enumeration.Name}");
+                using (new ConsoleColorScope(null, ConsoleColor.Yellow))
+                    Console.WriteLine($"Set enumeration as flags: {enumeration.Name}");
             }
         }
     }
@@ -311,7 +316,8 @@ internal sealed class MyLibrary : ILibrary
 
                 ctx.SetPropertyAsReadOnly(c.Name, p.Name);
 
-                Console.WriteLine($"ImVector<T> property set as read-only: {c.Name}.{p.Name}");
+                using (new ConsoleColorScope(null, ConsoleColor.Yellow))
+                    Console.WriteLine($"Set ImVector<T> property as read-only: {c.Name}.{p.Name}");
             }
         }
     }
