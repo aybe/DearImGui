@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace imgui.NET;
 
-public readonly struct ImVector<T> : IEnumerable<T>, IReadOnlyList<T>
+public readonly struct ImVector<T> : IReadOnlyList<T>
 {
     private readonly __Internal Internal;
 
