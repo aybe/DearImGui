@@ -13,6 +13,7 @@ public readonly struct ImVector<T> : IReadOnlyList<T>
         Internal = @internal;
     }
 
+    /// <inheritdoc />
     [SuppressMessage("ReSharper", "InvertIf")]
     public unsafe T this[int index]
     {
