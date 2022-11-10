@@ -5,7 +5,7 @@ namespace imgui.NET;
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImFont
 {
-    public string DebugName => ConfigData != null ? new string(ConfigData.Name).TrimEnd('\0') : "<unknown>";
+    public string DebugName => ConfigData?.Name ?? "<unknown>";
 
     public bool IsLoaded => ContainerAtlas != null;
 
