@@ -641,7 +641,18 @@ public sealed class ImGuiController : Disposable
                 throw new Win32Exception();
             }
 
-            var data = bitmap.LockBits(new Rectangle(Point.Empty, bitmap.Size), ImageLockMode.ReadOnly, bitmap.PixelFormat);
+            var data = bitmap.LockBits(new Rectangle(Point.Empty, bitmap.Size), ImageLockMode.ReadWrite, bitmap.PixelFormat);
+
+            for (var y = 0; y < bitmap.Height; y++)
+            {
+                for (var x = 0; x < bitmap.Width; x++)
+                {
+                    var source = (data.Scan0 + (y * data.Stride + x * 4)).ToPointer();
+                    var color1 = Color.FromArgb(Unsafe.Read<int>(source));
+                    var color2 = Color.FromArgb(color1.A, color1.B, color1.G, color1.R);
+                    Unsafe.Write(source, color2.ToArgb());
+                }
+            }
 
             var image = new Image(bitmap.Width, bitmap.Height, (byte*)data.Scan0.ToPointer());
 
