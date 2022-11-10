@@ -27,4 +27,13 @@ public static class Marshalling
 
         Unsafe.CopyBlock(destination, handle.Pointer, (uint)length);
     }
+
+    internal static ImVector<T> Vector<T>(ref ImVector.__Internal source)
+    {
+        var @internal = Unsafe.As<ImVector.__Internal, ImVector<T>.__Internal>(ref source);
+
+        var vector = new ImVector<T>(@internal);
+
+        return vector;
+    }
 }

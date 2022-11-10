@@ -75,13 +75,14 @@ internal sealed class MyLibrary : ILibrary
         ctx.SetClassAsValueType("ImVec2");
         ctx.SetClassAsValueType("ImVec4");
 
-        Ignore(ctx, "ImColor",    null,       IgnoreType.Class);  // unused
-        Ignore(ctx, "ImDrawCmd",  "GetTexID", IgnoreType.Method); // manual
-        Ignore(ctx, "ImDrawVert", null,       IgnoreType.Class);  // manual
-        Ignore(ctx, "ImVec2",     null,       IgnoreType.Class);  // manual
-        Ignore(ctx, "ImVec4",     null,       IgnoreType.Class);  // manual
-        Ignore(ctx, "ImVector",   null,       IgnoreType.Class);  // manual
-
+        Ignore(ctx, "ImColor",    null,             IgnoreType.Class);  // unused
+        Ignore(ctx, "ImDrawCmd",  "GetTexID",       IgnoreType.Method); // manual
+        Ignore(ctx, "ImDrawList", "GetClipRectMin", IgnoreType.Method); // manual
+        Ignore(ctx, "ImDrawList", "GetClipRectMax", IgnoreType.Method); // manual
+        Ignore(ctx, "ImDrawVert", null,             IgnoreType.Class);  // manual
+        Ignore(ctx, "ImVec2",     null,             IgnoreType.Class);  // manual
+        Ignore(ctx, "ImVec4",     null,             IgnoreType.Class);  // manual
+        Ignore(ctx, "ImVector",   null,             IgnoreType.Class);  // manual
 
         ctx.IgnoreFunctionWithName("IM_DELETE");
 
