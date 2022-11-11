@@ -1,0 +1,2 @@
+#define IMPLOT_API __declspec(dllexport)
+#define IMPLOT_API __declspec(dllimport)
