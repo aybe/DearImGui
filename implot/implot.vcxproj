@@ -159,6 +159,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="implot\implot.h" />
     <ClInclude Include="implot\implot_internal.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\imgui\imgui\imgui.cpp" />
@@ -170,6 +171,9 @@
     <ClCompile Include="implot\implot.cpp" />
     <ClCompile Include="implot\implot_demo.cpp" />
     <ClCompile Include="implot\implot_items.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="implot.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
