@@ -22,6 +22,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "implot", "implot\implot.vcx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "implot.NET.Generator", "implot.NET.Generator\implot.NET.Generator.csproj", "{DE2079B1-EDFD-4BE3-A247-3DBDE1F23B0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "implot.NET", "implot.NET\implot.NET.csproj", "{109B13EE-AE21-4C23-B81C-304F2BEE08F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +118,18 @@ Global
 		{DE2079B1-EDFD-4BE3-A247-3DBDE1F23B0C}.Release|x64.Build.0 = Release|Any CPU
 		{DE2079B1-EDFD-4BE3-A247-3DBDE1F23B0C}.Release|x86.ActiveCfg = Release|Any CPU
 		{DE2079B1-EDFD-4BE3-A247-3DBDE1F23B0C}.Release|x86.Build.0 = Release|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Debug|x64.Build.0 = Debug|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Debug|x86.Build.0 = Debug|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Release|x64.ActiveCfg = Release|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Release|x64.Build.0 = Release|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Release|x86.ActiveCfg = Release|Any CPU
+		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
