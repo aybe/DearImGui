@@ -4,6 +4,8 @@ using CppSharp.AST;
 using CppSharp.Generators.CSharp;
 using Type = System.Type;
 
+// ReSharper disable RedundantIfElseBlock
+
 namespace im.NET.Generator.TypeMaps;
 
 internal abstract class TypeMapImVec : TypeMapBase
@@ -93,14 +95,40 @@ internal abstract class TypeMapImVec : TypeMapBase
         {
             if (ctx.ReturnVarName == null)
             {
-                if (ctx.Parameter.IsConst || ctx.Parameter.HasDefaultValue is false)
+                var asIntPtr = $"new IntPtr(Unsafe.AsPointer(ref {ctx.Parameter.Name}))";
+
+                if (ctx.Parameter.IsConst)
                 {
-                    ctx.Return.Write($"new IntPtr(Unsafe.AsPointer(ref {ctx.Parameter.Name}))");
+                    if (ctx.Parameter.HasDefaultValue)
+                    {
+                        ctx.Return.Write(asIntPtr);
+                    }
+                    else
+                    {
+                        ctx.Return.Write(asIntPtr);
+                    }
                 }
                 else
                 {
-                    ctx.Return.Write($"{ctx.Parameter.Name}");
+                    if (ctx.Parameter.HasDefaultValue)
+                    {
+                        ctx.Return.Write(asIntPtr);
+                    }
+                    else
+                    {
+                        throw new NotImplementedException();
+                    }
                 }
+
+                //TODO re-implement older code for imgui
+                //if (ctx.Parameter.IsConst || ctx.Parameter.HasDefaultValue is false)
+                //{
+                //    ctx.Return.Write($"new IntPtr(Unsafe.AsPointer(ref {ctx.Parameter.Name}))");
+                //}
+                //else
+                //{
+                //    ctx.Return.Write($"{ctx.Parameter.Name}");
+                //}
             }
             else
             {
