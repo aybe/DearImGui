@@ -10,15 +10,13 @@ namespace implot.NET.Generator;
 
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
 // generator.GenerateNativeConstructorsByValue(); // todo try this
-internal sealed class ImPlotLibrary : ILibrary
+internal sealed class ImPlotLibrary : LibraryBase
 {
     public GeneratorType GeneratorType { get; init; }
 
     public ImmutableSortedSet<string> Namespaces { get; init; } = null!;
 
-    #region ILibrary Members
-
-    public void Setup(Driver driver)
+    public override void Setup(Driver driver)
     {
         var options = driver.Options;
 
@@ -40,23 +38,21 @@ internal sealed class ImPlotLibrary : ILibrary
         module.Headers.Add("implot.h");
     }
 
-    public void SetupPasses(Driver driver)
+    public override void SetupPasses(Driver driver)
     {
         driver.AddTranslationUnitPass(new ImGuiEnumPass { GeneratorType = GeneratorType });
 
         driver.Generator.OnUnitGenerated += OnUnitGenerated;
     }
 
-    public void Preprocess(Driver driver, ASTContext ctx)
+    public override void Preprocess(Driver driver, ASTContext ctx)
     {
         PreprocessNamespaces(ctx);
     }
 
-    public void Postprocess(Driver driver, ASTContext ctx)
+    public override void Postprocess(Driver driver, ASTContext ctx)
     {
     }
-
-    #endregion
 
     private static void PreprocessNamespaces(ASTContext ctx)
     {

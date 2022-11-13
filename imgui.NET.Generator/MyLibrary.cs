@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using CppSharp;
+﻿using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Passes;
@@ -14,13 +13,11 @@ using imgui.NET.Generator.Passes;
 
 namespace imgui.NET.Generator;
 
-internal sealed class MyLibrary : ILibrary
+internal sealed class MyLibrary : LibraryBase
 {
     public bool? Enhanced { get; init; }
 
-    #region ILibrary Members
-
-    public void Setup(Driver driver)
+    public override void Setup(Driver driver)
     {
         var options = driver.Options;
 
@@ -47,7 +44,7 @@ internal sealed class MyLibrary : ILibrary
         module.Headers.Add("imgui.h");
     }
 
-    public void SetupPasses(Driver driver)
+    public override void SetupPasses(Driver driver)
     {
         driver.AddTranslationUnitPass(new CleanupEnumerations());
         driver.AddTranslationUnitPass(new ProduceSummary());
@@ -59,7 +56,7 @@ internal sealed class MyLibrary : ILibrary
         driver.Generator.OnUnitGenerated += UnitGenerated;
     }
 
-    public void Preprocess(Driver driver, ASTContext ctx)
+    public override void Preprocess(Driver driver, ASTContext ctx)
     {
         PreprocessPasses(driver);
         PreprocessEnumerations(ctx);
@@ -72,7 +69,7 @@ internal sealed class MyLibrary : ILibrary
         }
     }
 
-    public void Postprocess(Driver driver, ASTContext ctx)
+    public override void Postprocess(Driver driver, ASTContext ctx)
     {
         PostprocessIgnores(ctx);
         PostprocessDelegates(ctx);
@@ -83,41 +80,6 @@ internal sealed class MyLibrary : ILibrary
         {
         }
     }
-
-    #endregion
-
-    #region Shared
-
-    private static void Ignore(ASTContext ctx, string? className, string? memberName, IgnoreType ignoreType)
-    {
-        switch (ignoreType)
-        {
-            case IgnoreType.Class:
-                ctx.IgnoreClassWithName(className);
-                return;
-            case IgnoreType.Function:
-                ctx.IgnoreFunctionWithName(memberName);
-                return;
-            case IgnoreType.Method:
-                ctx.IgnoreClassMethodWithName(className, memberName);
-                return;
-            case IgnoreType.Property:
-                ctx.FindCompleteClass(className).Properties.Single(s => s.Name == memberName).ExplicitlyIgnore();
-                return;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null);
-        }
-    }
-
-    private static void RemovePass<T>(Driver driver, [CallerMemberName] string memberName = null!) where T : TranslationUnitPass
-    {
-        var count = driver.Context.TranslationUnitPasses.Passes.RemoveAll(s => s is T);
-
-        using (new ConsoleColorScope(null, ConsoleColor.Yellow))
-            Console.WriteLine($"Removed {count} passes of type {typeof(T)} in {memberName}");
-    }
-
-    #endregion
 
     #region Preprocess
 
@@ -219,11 +181,6 @@ internal sealed class MyLibrary : ILibrary
     #endregion
 
     #region Postprocess
-
-    private static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
-    {
-        return ctx.TranslationUnits.Single(s => s.FileName == "imgui.h");
-    }
 
     private static void PostprocessIgnores(ASTContext ctx)
     {
