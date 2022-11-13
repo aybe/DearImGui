@@ -20,9 +20,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgui", "imgui\imgui.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "implot", "implot\implot.vcxproj", "{DE0704DC-03C2-4413-BA2E-024604C1E58A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "implot.NET.Generator", "implot.NET.Generator\implot.NET.Generator.csproj", "{DE2079B1-EDFD-4BE3-A247-3DBDE1F23B0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "implot.NET.Generator", "implot.NET.Generator\implot.NET.Generator.csproj", "{DE2079B1-EDFD-4BE3-A247-3DBDE1F23B0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "implot.NET", "implot.NET\implot.NET.csproj", "{109B13EE-AE21-4C23-B81C-304F2BEE08F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "implot.NET", "implot.NET\implot.NET.csproj", "{109B13EE-AE21-4C23-B81C-304F2BEE08F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "im.NET.Generator", "im.NET.Generator\im.NET.Generator.csproj", "{AE23614A-D27C-4FFA-800A-456B674D9D43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -130,6 +132,18 @@ Global
 		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Release|x64.Build.0 = Release|Any CPU
 		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Release|x86.ActiveCfg = Release|Any CPU
 		{109B13EE-AE21-4C23-B81C-304F2BEE08F6}.Release|x86.Build.0 = Release|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Debug|x64.Build.0 = Debug|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Debug|x86.Build.0 = Debug|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Release|x64.ActiveCfg = Release|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Release|x64.Build.0 = Release|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE23614A-D27C-4FFA-800A-456B674D9D43}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
