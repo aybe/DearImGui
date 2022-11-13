@@ -27,23 +27,4 @@
     <ProjectReference Include="..\im.NET.Generator\im.NET.Generator.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="TypeMaps\TypeMapEnum.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TypeMapEnum.g.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="TypeMaps\TypeMapEnum.g.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>TypeMapEnum.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
 </Project>
