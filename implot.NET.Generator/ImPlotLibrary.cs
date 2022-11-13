@@ -9,7 +9,6 @@ using im.NET.Generator;
 namespace implot.NET.Generator;
 
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
-// generator.GenerateNativeConstructorsByValue(); // todo try this
 internal sealed class ImPlotLibrary : LibraryBase
 {
     public GeneratorType GeneratorType { get; init; }
