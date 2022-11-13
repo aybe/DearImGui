@@ -1,10 +1,9 @@
 ﻿using System.Reflection;
 using CppSharp.AST;
 using CppSharp.Types;
-using im.NET.Generator;
 using Type = CppSharp.AST.Type;
 
-namespace imgui.NET.Generator.TypeMaps;
+namespace im.NET.Generator.TypeMaps;
 
 internal abstract class TypeMapEnum : TypeMap
 {

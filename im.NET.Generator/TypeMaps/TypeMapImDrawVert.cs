@@ -1,13 +1,12 @@
 ﻿using CppSharp.AST;
 using CppSharp.Types;
-using im.NET.Generator;
 using JetBrains.Annotations;
 using Type = CppSharp.AST.Type;
 
 // ReSharper disable StringLiteralTypo
 // ReSharper disable IdentifierTypo
 
-namespace imgui.NET.Generator.TypeMaps;
+namespace im.NET.Generator.TypeMaps;
 
 [TypeMap("ImDrawVert")]
 [UsedImplicitly]
