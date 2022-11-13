@@ -4,6 +4,7 @@ using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Generators.CSharp;
+using im.NET.Generator;
 
 namespace implot.NET.Generator;
 
@@ -31,7 +32,7 @@ internal sealed class ImPlotLibrary : ILibrary
 
         var module = options.AddModule("implot");
 
-        module.OutputNamespace = Constants.Namespace;
+        module.OutputNamespace = Constants.ImPlotNamespace;
         module.IncludeDirs.Add(@"..\..\..\..\imgui\imgui");
         module.IncludeDirs.Add(@"..\..\..\..\implot\implot");
         module.Defines.Add("IMGUI_DISABLE_OBSOLETE_FUNCTIONS");

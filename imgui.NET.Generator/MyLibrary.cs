@@ -3,6 +3,7 @@ using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Passes;
+using im.NET.Generator;
 using imgui.NET.Generator.Passes;
 
 // ReSharper disable IdentifierTypo
@@ -39,7 +40,7 @@ internal sealed class MyLibrary : ILibrary
 
         var module = options.AddModule("imgui");
 
-        module.OutputNamespace = Constants.Namespace;
+        module.OutputNamespace = Constants.ImGuiNamespace;
         module.IncludeDirs.Add(@"..\..\..\..\imgui\imgui");
         module.Defines.Add("IMGUI_DISABLE_OBSOLETE_FUNCTIONS");
         module.Defines.Add("IMGUI_DISABLE_OBSOLETE_KEYIO");

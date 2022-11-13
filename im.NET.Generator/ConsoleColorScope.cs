@@ -1,6 +1,6 @@
-﻿namespace implot.NET.Generator;
+﻿namespace im.NET.Generator;
 
-public readonly struct ConsoleColorScope : IDisposable // TODO as library
+public readonly struct ConsoleColorScope : IDisposable
 {
     private readonly ConsoleColor BackgroundColor;
     private readonly ConsoleColor ForegroundColor;

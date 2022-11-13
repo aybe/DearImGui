@@ -1,4 +1,4 @@
-﻿namespace implot.NET.Generator;
+﻿namespace im.NET.Generator;
 
 public enum GeneratorType
 {

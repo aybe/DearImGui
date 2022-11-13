@@ -15,4 +15,8 @@
 		<PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\im.NET.Generator\im.NET.Generator.csproj" />
+	</ItemGroup>
+
 </Project>

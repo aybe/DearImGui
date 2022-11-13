@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 using CppSharp;
+using im.NET.Generator;
 using imgui.NET.Generator.Logging;
 
 // ReSharper disable StringLiteralTypo
@@ -69,7 +70,7 @@ internal static class Program
 
         var builder = new StringBuilder(text);
 
-        const string @namespace = Constants.Namespace;
+        const string @namespace = Constants.ImGuiNamespace;
 
         // rename imgui class and fix references to it
 

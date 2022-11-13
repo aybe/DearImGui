@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using CppSharp;
+using im.NET.Generator;
 using implot.NET.Generator;
 
 if (Debugger.IsAttached) // cleanup garbage

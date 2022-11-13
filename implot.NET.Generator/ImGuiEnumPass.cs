@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using CppSharp.AST;
 using CppSharp.Passes;
+using im.NET.Generator;
 
 namespace implot.NET.Generator;
 

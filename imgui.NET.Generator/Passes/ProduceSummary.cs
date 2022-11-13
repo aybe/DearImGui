@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using CppSharp.AST;
 using CppSharp.Passes;
+using im.NET.Generator;
 
 namespace imgui.NET.Generator.Passes;
 
@@ -98,7 +99,7 @@ internal sealed class ProduceSummary : TranslationUnitPass
 
         var stack = new Stack<string>();
 
-        stack.Push($@"{Constants.GitHubHeaderUrl}#L{start}");
+        stack.Push($@"{Constants.ImGuiHeaderUrl}#L{start}");
 
         TryFindComment(declaration, stack, getter);
 
@@ -121,7 +122,7 @@ internal sealed class ProduceSummary : TranslationUnitPass
 
         value = Regex.Replace(value, @"\s{2,}", @", ");
 
-        if (value.StartsWith(Constants.GitHubHeaderUrl) is false)
+        if (value.StartsWith(Constants.ImGuiHeaderUrl) is false)
         {
             value = $"{char.ToUpperInvariant(value[0])}{value[1..]}";
         }
