@@ -17,6 +17,7 @@ var namespaces = new SortedSet<string>
         "implot.NET",
         "System",
         "System.Collections.Concurrent",
+        "System.Numerics",
         "System.Runtime.InteropServices",
         "System.Security",
         "System.Text"
