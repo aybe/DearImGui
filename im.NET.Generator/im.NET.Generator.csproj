@@ -1,41 +1,41 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>$(DefineConstants);DEBUG_TYPE_MAP</DefineConstants>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DefineConstants>$(DefineConstants);DEBUG_TYPE_MAP</DefineConstants>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>$(DefineConstants)</DefineConstants>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DefineConstants>$(DefineConstants)</DefineConstants>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CppSharp" Version="1.0.33.49587" />
-    <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CppSharp" Version="1.0.33.49587" />
+		<PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="TypeMaps\TypeMapEnum.g.cs">
-      <DependentUpon>TypeMapEnum.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="TypeMaps\TypeMapEnum.g.cs">
+			<DependentUpon>TypeMapEnum.tt</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="TypeMaps\TypeMapEnum.tt">
-      <LastGenOutput>TypeMapEnum.g.cs</LastGenOutput>
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="TypeMaps\TypeMapEnum.tt">
+			<LastGenOutput>TypeMapEnum.g.cs</LastGenOutput>
+			<Generator>TextTemplatingFileGenerator</Generator>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-  </ItemGroup>
+	<ItemGroup>
+		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
 
 </Project>
