@@ -18,6 +18,7 @@ var namespaces = new SortedSet<string>
         "System",
         "System.Collections.Concurrent",
         "System.Numerics",
+        "System.Runtime.CompilerServices",
         "System.Runtime.InteropServices",
         "System.Security",
         "System.Text"
