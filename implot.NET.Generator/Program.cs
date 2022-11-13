@@ -60,6 +60,8 @@ RepairUsingAliases(ref text, aliases);
 
 File.WriteAllText(path, text);
 
+Console.WriteLine("Generation finished.");
+
 static void RepairUsingAliases(ref string input, ImmutableSortedSet<Type> aliases)
 {
     foreach (var item in aliases)
