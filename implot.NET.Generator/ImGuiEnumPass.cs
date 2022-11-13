@@ -10,7 +10,7 @@ namespace implot.NET.Generator;
 [SuppressMessage("ReSharper", "InvertIf")]
 internal sealed class ImGuiEnumPass : TranslationUnitPass
 {
-    private const string Indent = "    ";
+    private const string Indent = "    "; // Microsoft Visual Studio Debug Console sucks
 
     private static IEnumerable<string> IgnoredSuffixes { get; } =
         new ReadOnlyCollection<string>(
@@ -39,6 +39,8 @@ internal sealed class ImGuiEnumPass : TranslationUnitPass
 
     private bool IgnoreIfNotImGui(Declaration declaration, bool log)
     {
+        // when we're not generating for imgui, we want to ignore stuff from imgui
+        
         if (GeneratorType is GeneratorType.ImGui)
         {
             return false;
@@ -53,7 +55,7 @@ internal sealed class ImGuiEnumPass : TranslationUnitPass
         {
             using (GetConsoleColorScope())
             {
-                Console.WriteLine($"{declaration.TranslationUnit}\t{declaration}");
+                Console.WriteLine($"{Indent}Ignoring imgui declaration: {declaration}");
             }
         }
 
@@ -89,6 +91,8 @@ internal sealed class ImGuiEnumPass : TranslationUnitPass
             return true;
         }
 
+        // ignore enumerations whose name contains 'Obsolete'
+        
         if (enumeration.Name.Contains("Obsolete"))
         {
             enumeration.ExplicitlyIgnore();
@@ -114,6 +118,8 @@ internal sealed class ImGuiEnumPass : TranslationUnitPass
             throw new InvalidOperationException(); // should never be reached
         }
 
+        // ignore enumerations items with some suffixes, these are only relevant for C++
+        
         var suffix = IgnoredSuffixes.FirstOrDefault(s => item.Name.EndsWith(s, StringComparison.Ordinal));
 
         if (suffix != null)
@@ -131,9 +137,13 @@ internal sealed class ImGuiEnumPass : TranslationUnitPass
             return true;
         }
 
+        // remove enumeration from enumeration item name, e.g. ImGuiCond_Always -> Always
+        
         if (item.Name.Contains(item.Namespace.Name))
         {
             item.Name = item.Name.Replace(item.Namespace.Name, string.Empty);
+
+            // prefix enumeration name with a 'D' when it starts with a digit, e.g. ImGuiKey_1 -> D1
 
             if (char.IsDigit(item.Name[0]))
             {
@@ -157,21 +167,5 @@ internal sealed class ImGuiEnumPass : TranslationUnitPass
     private static ConsoleColorScope GetConsoleColorScope(ConsoleColor? backgroundColor = ConsoleColor.Red, ConsoleColor? foregroundColor = ConsoleColor.White)
     {
         return new ConsoleColorScope(backgroundColor, foregroundColor);
-    }
-
-    private void CheckImGui(Enumeration.Item item)
-    {
-        if (GeneratorType is GeneratorType.ImGui)
-            return;
-
-        if (IsImGuiTranslationUnit(item))
-        {
-            throw new InvalidOperationException($"ImGui declaration was unexpected: {item}");
-        }
-    }
-
-    private static bool IsImGuiTranslationUnit(Declaration declaration)
-    {
-        return declaration.TranslationUnit.FileName is "imgui.h";
     }
 }
