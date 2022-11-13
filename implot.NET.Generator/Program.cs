@@ -1,62 +1,90 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Immutable;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using CppSharp;
-using CppSharp.AST;
-using CppSharp.Generators;
+using implot.NET.Generator;
 
-ConsoleDriver.Run(new ImPlotLibrary { Enhanced = null });
-
-internal static class Constants
+if (Debugger.IsAttached) // cleanup garbage
 {
-    public const string Namespace = "implot.NET";
+    Console.BackgroundColor = ConsoleColor.Black;
+    Console.ForegroundColor = ConsoleColor.Gray;
+    Console.Clear();
 }
 
-[SuppressMessage("ReSharper", "StringLiteralTypo")]
-internal sealed class ImPlotLibrary : ILibrary
+var namespaces = new SortedSet<string>
+    {
+        "implot.NET",
+        "System",
+        "System.Collections.Concurrent",
+        "System.Runtime.InteropServices",
+        "System.Security",
+        "System.Text"
+    }
+    .ToImmutableSortedSet();
+
+var classes = new SortedSet<KeyValuePair<string, string>>
+    {
+        new("implot", "ImPlot")
+    }
+    .ToImmutableSortedSet();
+
+var aliases = new SortedSet<Type>(TypeComparer.Instance)
+    {
+        typeof(CallingConvention),
+        typeof(IntPtr)
+    }
+    .ToImmutableSortedSet(TypeComparer.Instance);
+
+var library = new ImPlotLibrary
 {
-    public bool? Enhanced { get; init; }
+    GeneratorType = GeneratorType.ImPlot,
+    Namespaces = namespaces
+};
 
-    #region ILibrary Members
+ConsoleDriver.Run(library);
 
-    public void Setup(Driver driver)
+var path = Path.Combine(Environment.CurrentDirectory, "implot.cs");
+
+var text = File.ReadAllText(path);
+
+RenameClasses(ref text, classes);
+
+ShortenQualifiers(ref text, namespaces);
+
+RepairUsingAliases(ref text, aliases);
+
+File.WriteAllText(path, text);
+
+static void RepairUsingAliases(ref string input, ImmutableSortedSet<Type> aliases)
+{
+    foreach (var item in aliases)
     {
-        var options = driver.Options;
-
-        options.OutputDir = Enhanced.HasValue
-            ? Enhanced.Value
-                ? "NEW"
-                : "OLD"
-            : @"..\..\..\..\implot.NET";
-
-        options.GeneratorKind = GeneratorKind.CSharp;
-        options.GenerateFinalizers = true;
-#if DEBUG
-        options.GenerateDebugOutput = true;
-#endif
-        options.MarshalCharAsManagedChar = true;
-        options.Verbose = true;
-
-        var module = options.AddModule("implot");
-
-        module.OutputNamespace = Constants.Namespace;
-        module.IncludeDirs.Add(@"..\..\..\..\imgui\imgui");
-        module.IncludeDirs.Add(@"..\..\..\..\implot\implot");
-        module.Defines.Add("IMGUI_DISABLE_OBSOLETE_FUNCTIONS");
-        module.Defines.Add("IMGUI_DISABLE_OBSOLETE_KEYIO");
-        module.Headers.Add("implot.h");
+        input = input.Replace($"__{item.Name}", item.Name);
     }
+}
 
-
-    public void SetupPasses(Driver driver)
+static void RenameClasses(ref string input, ImmutableSortedSet<KeyValuePair<string, string>> classes)
+{
+    foreach (var item in classes)
     {
+        input = input.Replace($"class {item.Key}", $"class {item.Value}");
     }
+}
 
-    public void Preprocess(Driver driver, ASTContext ctx)
+static void ShortenQualifiers(ref string input, ImmutableSortedSet<string> namespaces)
+{
+    foreach (var item in namespaces.Reverse())
     {
+        input = input.Replace($"global::{item}.", string.Empty);
     }
+}
 
-    public void Postprocess(Driver driver, ASTContext ctx)
+internal sealed class TypeComparer : Comparer<Type>
+{
+    public static TypeComparer Instance { get; } = new();
+
+    public override int Compare(Type? x, Type? y)
     {
+        return string.Compare(x?.Name, y?.Name, StringComparison.Ordinal);
     }
-
-    #endregion
 }

@@ -2,6 +2,9 @@
 [*]
 
 # ReSharper properties
+resharper_blank_lines_around_single_line_auto_property = 1
+resharper_blank_lines_before_block_statements = 1
+resharper_braces_for_ifelse = required
 resharper_csharp_int_align_comments = true
 resharper_csharp_max_line_length = 180
 resharper_int_align_invocations = true

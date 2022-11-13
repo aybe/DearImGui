@@ -11,4 +11,13 @@
 		<ProjectReference Include="..\imgui.NET\imgui.NET.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="CppSharp.Runtime" Version="1.0.33.49587" />
+		<PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="..\implot.NET.Generator\bin\$(Configuration)\net6.0\implot.cs" Link="implot.g.cs" />
+	</ItemGroup>
+
 </Project>
