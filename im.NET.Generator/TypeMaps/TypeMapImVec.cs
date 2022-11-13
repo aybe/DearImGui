@@ -1,4 +1,6 @@
-﻿using CppSharp.AST;
+﻿using System.Numerics;
+using System.Text.RegularExpressions;
+using CppSharp.AST;
 using CppSharp.Generators.CSharp;
 using Type = System.Type;
 
@@ -29,7 +31,27 @@ internal abstract class TypeMapImVec : TypeMapBase
             }
             else
             {
-                ctx.Return.Write(ctx.ReturnVarName);
+                if (TargetType == typeof(Vector2)) // for implot
+                {
+                    if (ctx.ReturnType.Type is TagType)
+                    {
+                        if (ctx.ContextKind is TypePrinterContextKind.Managed)
+                        {
+                            if (ctx.MarshalKind is MarshalKind.NativeField)
+                            {
+                                if (ctx.ScopeKind is TypePrintScopeKind.GlobalQualified)
+                                {
+                                    var match = Regex.Match(ctx.ReturnVarName, @"(?<=^new\s__IntPtr\(&).*(?=\)$)");
+                                    ctx.Return.Write(match.Value);
+                                }
+                            }
+                        }
+                    }
+                }
+                else // TODO check that imgui still works
+                {
+                    ctx.Return.Write(ctx.ReturnVarName);
+                }
             }
         }
         else

@@ -52,6 +52,8 @@ var text = File.ReadAllText(path);
 
 RenameClasses(ref text, classes);
 
+RenameVectors(ref text);
+
 ShortenQualifiers(ref text, namespaces);
 
 RepairUsingAliases(ref text, aliases);
@@ -72,6 +74,19 @@ static void RenameClasses(ref string input, ImmutableSortedSet<KeyValuePair<stri
     {
         input = input.Replace($"class {item.Key}", $"class {item.Value}");
     }
+}
+
+static void RenameVectors(ref string input)
+{
+    input = input.Replace(
+        "new global::implot.NET.ImVec2.__Internal()",
+        "new global::System.Numerics.Vector2()"
+    );
+    
+    input = input.Replace(
+        "new global::implot.NET.ImVec4.__Internal()",
+        "new global::System.Numerics.Vector4()"
+    );
 }
 
 static void ShortenQualifiers(ref string input, ImmutableSortedSet<string> namespaces)
