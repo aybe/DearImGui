@@ -38,6 +38,7 @@ internal sealed class ImGuiEnumPass : TranslationUnitPass
 
     public bool LogIgnoredImGuiFunction { get; set; }
 
+    public bool LogIgnoredImGuiTypedefDecl { get; set; } = true;
 
     private bool IgnoreIfNotImGui(Declaration declaration, bool log, [CallerMemberName] string memberName = null!)
     {
@@ -84,6 +85,16 @@ internal sealed class ImGuiEnumPass : TranslationUnitPass
         }
 
         return base.VisitFunctionDecl(function);
+    }
+
+    public override bool VisitTypedefDecl(TypedefDecl typedef)
+    {
+        if (IgnoreIfNotImGui(typedef, LogIgnoredImGuiTypedefDecl))
+        {
+            return true;
+        }
+
+        return base.VisitTypedefDecl(typedef);
     }
 
     public override bool VisitEnumDecl(Enumeration enumeration)
