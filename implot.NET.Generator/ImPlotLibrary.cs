@@ -49,6 +49,11 @@ internal sealed class ImPlotLibrary : LibraryBase
     {
         RemovePass<CheckIgnoredDeclsPass>(driver);
         PreprocessNamespaces(ctx);
+        
+        ctx.SetClassAsValueType("ImPlotInputMap");
+        ctx.SetClassAsValueType("ImPlotPoint");
+        ctx.SetClassAsValueType("ImPlotRange");
+        ctx.SetClassAsValueType("ImPlotRect");
     }
 
     public override void Postprocess(Driver driver, ASTContext ctx)
