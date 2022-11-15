@@ -58,6 +58,7 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     public override void Postprocess(Driver driver, ASTContext ctx)
     {
+        Ignore(ctx, "ImPlotPoint", "Item",   IgnoreType.Property); // manual
         Ignore(ctx, "ImPlotStyle", "Colors", IgnoreType.Property); // manual
     }
 
