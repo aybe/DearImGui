@@ -4,6 +4,7 @@ using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Generators.CSharp;
+using CppSharp.Passes;
 using im.NET.Generator;
 
 namespace implot.NET.Generator;
@@ -46,6 +47,7 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     public override void Preprocess(Driver driver, ASTContext ctx)
     {
+        RemovePass<CheckIgnoredDeclsPass>(driver);
         PreprocessNamespaces(ctx);
     }
 
