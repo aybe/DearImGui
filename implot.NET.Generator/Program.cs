@@ -1,6 +1,7 @@
 ﻿using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using CppSharp;
 using im.NET.Generator;
 using implot.NET.Generator;
@@ -58,6 +59,8 @@ ShortenQualifiers(ref text, namespaces);
 
 RepairUsingAliases(ref text, aliases);
 
+RepairGenericMethods(ref text);
+
 File.WriteAllText(path, text);
 
 Console.WriteLine("Generation finished.");
@@ -97,6 +100,26 @@ static void ShortenQualifiers(ref string input, ImmutableSortedSet<string> names
     {
         input = input.Replace($"global::{item}.", string.Empty);
     }
+}
+
+static void RepairGenericMethods(ref string input)
+{
+    // add generic type parameter with unmanaged constraint
+
+    // TODO see if that can't be done upstream anyhow
+    input = Regex.Replace(input,
+        @"^(\s+public\s+static\s+\w+\s+\w+)(\(.*T\s+\w+.*\))",
+        @"$1<T>$2 where T : unmanaged",
+        RegexOptions.Multiline
+    );
+
+    // set generic type parameters as arrays
+
+    input = Regex.Replace(input,
+        @"(,\s+T)(\s+\w+)(?=.*where\s+T\s+:\s+unmanaged\s*$)",
+        @"$1[]$2",
+        RegexOptions.Multiline
+    );
 }
 
 internal sealed class TypeComparer : Comparer<Type>

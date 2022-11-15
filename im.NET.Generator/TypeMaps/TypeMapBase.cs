@@ -6,7 +6,7 @@ using CppSharp.Types;
 
 namespace im.NET.Generator.TypeMaps;
 
-internal class TypeMapBase : TypeMap
+public class TypeMapBase : TypeMap
 {
     [Conditional("DEBUG_TYPE_MAP")]
     private void WriteDebugInformation(MarshalContext ctx, [CallerMemberName] string memberName = null!)
