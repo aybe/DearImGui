@@ -11,10 +11,6 @@ namespace implot.NET.Generator;
 [SuppressMessage("ReSharper", "InvertIf")]
 internal sealed class ImGuiEnumPass : ImBasePass
 {
-    public ImGuiEnumPass(GeneratorType generatorType) : base(generatorType)
-    {
-    }
-
     [PublicAPI]
     public bool LogIgnoredEnumeration { get; set; } = true;
 

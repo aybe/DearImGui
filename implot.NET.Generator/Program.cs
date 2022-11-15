@@ -42,7 +42,6 @@ var aliases = new SortedSet<Type>(TypeComparer.Instance)
 
 var library = new ImPlotLibrary
 {
-    GeneratorType = GeneratorType.ImPlot,
     Namespaces = namespaces
 };
 

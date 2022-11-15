@@ -13,8 +13,6 @@ namespace implot.NET.Generator;
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
 internal sealed class ImPlotLibrary : LibraryBase
 {
-    public GeneratorType GeneratorType { get; init; }
-
     public ImmutableSortedSet<string> Namespaces { get; init; } = null!;
 
     public override void Setup(Driver driver)
@@ -41,8 +39,8 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     public override void SetupPasses(Driver driver)
     {
-        driver.AddTranslationUnitPass(new ImGuiIgnorePass(GeneratorType));
-        driver.AddTranslationUnitPass(new ImGuiEnumPass(GeneratorType));
+        driver.AddTranslationUnitPass(new ImGuiIgnorePass());
+        driver.AddTranslationUnitPass(new ImGuiEnumPass());
 
         driver.Generator.OnUnitGenerated += OnUnitGenerated;
     }

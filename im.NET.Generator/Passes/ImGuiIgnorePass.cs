@@ -6,10 +6,6 @@ namespace im.NET.Generator.Passes;
 
 public sealed class ImGuiIgnorePass : ImBasePass
 {
-    public ImGuiIgnorePass(GeneratorType generatorType) : base(generatorType)
-    {
-    }
-
     [PublicAPI]
     public bool LogIgnoredImGuiClass { get; set; } = true;
 
@@ -28,11 +24,6 @@ public sealed class ImGuiIgnorePass : ImBasePass
     private bool IgnoreIfNotImGui(Declaration declaration, bool log, [CallerMemberName] string memberName = null!)
     {
         // when we're not generating for imgui, we want to ignore stuff from imgui
-
-        if (GeneratorType is GeneratorType.ImGui)
-        {
-            return false;
-        }
 
         if (declaration.TranslationUnit.FileName is not "imgui.h")
         {
