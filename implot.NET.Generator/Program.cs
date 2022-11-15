@@ -15,6 +15,7 @@ if (Debugger.IsAttached) // cleanup garbage
 
 var namespaces = new SortedSet<string>
     {
+        "imgui.NET",
         "implot.NET",
         "System",
         "System.Collections.Concurrent",
