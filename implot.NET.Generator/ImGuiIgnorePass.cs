@@ -1,10 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 using CppSharp.AST;
 using im.NET.Generator;
+using im.NET.Generator.Passes;
 
 namespace implot.NET.Generator;
 
-internal class ImGuiIgnorePass : ImPlotBasePass
+internal class ImGuiIgnorePass : ImBasePass
 {
     public ImGuiIgnorePass(GeneratorType generatorType) : base(generatorType)
     {

@@ -2,12 +2,13 @@
 using System.Diagnostics.CodeAnalysis;
 using CppSharp.AST;
 using im.NET.Generator;
+using im.NET.Generator.Passes;
 
 namespace implot.NET.Generator;
 
 [SuppressMessage("ReSharper", "RedundantIfElseBlock")]
 [SuppressMessage("ReSharper", "InvertIf")]
-internal sealed class ImGuiEnumPass : ImPlotBasePass
+internal sealed class ImGuiEnumPass : ImBasePass
 {
     public ImGuiEnumPass(GeneratorType generatorType) : base(generatorType)
     {

@@ -1,13 +1,12 @@
 ﻿using CppSharp.Passes;
-using im.NET.Generator;
 
-namespace implot.NET.Generator;
+namespace im.NET.Generator.Passes;
 
-internal abstract class ImPlotBasePass : TranslationUnitPass
+public abstract class ImBasePass : TranslationUnitPass
 {
     protected const string Indent = "    "; // Microsoft Visual Studio Debug Console sucks
 
-    protected ImPlotBasePass(GeneratorType generatorType)
+    protected ImBasePass(GeneratorType generatorType)
     {
         GeneratorType = generatorType;
     }
