@@ -1,15 +1,13 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using CppSharp.AST;
-using im.NET.Generator;
-using im.NET.Generator.Passes;
 using JetBrains.Annotations;
 
-namespace implot.NET.Generator;
+namespace im.NET.Generator.Passes;
 
 [SuppressMessage("ReSharper", "RedundantIfElseBlock")]
 [SuppressMessage("ReSharper", "InvertIf")]
-internal sealed class ImGuiEnumPass : ImBasePass
+public sealed class ImEnumPass : ImBasePass
 {
     [PublicAPI]
     public bool LogIgnoredEnumeration { get; set; } = true;
