@@ -6,11 +6,6 @@ namespace implot.NET.Generator;
 
 internal class ImGuiIgnorePass : ImPlotBasePass
 {
-    public bool LogIgnoredEnumeration { get; set; }
-
-    public bool LogIgnoredEnumerationItem { get; set; }
-
-    public bool LogRenamedEnumerationItem { get; set; }
     public ImGuiIgnorePass(GeneratorType generatorType) : base(generatorType)
     {
     }
@@ -58,6 +53,26 @@ internal class ImGuiIgnorePass : ImPlotBasePass
         }
 
         return base.VisitClassDecl(@class);
+    }
+
+    public override bool VisitEnumDecl(Enumeration enumeration)
+    {
+        if (IgnoreIfNotImGui(enumeration, LogIgnoredImGuiEnumeration))
+        {
+            return true;
+        }
+
+        return base.VisitEnumDecl(enumeration);
+    }
+
+    public override bool VisitEnumItemDecl(Enumeration.Item item)
+    {
+        if (IgnoreIfNotImGui(item, false))
+        {
+            throw new InvalidOperationException(); // should never be reached
+        }
+
+        return base.VisitEnumItemDecl(item);
     }
 
     public override bool VisitFunctionDecl(Function function)

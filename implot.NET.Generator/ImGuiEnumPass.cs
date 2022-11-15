@@ -7,11 +7,17 @@ namespace implot.NET.Generator;
 
 [SuppressMessage("ReSharper", "RedundantIfElseBlock")]
 [SuppressMessage("ReSharper", "InvertIf")]
-internal sealed class ImGuiEnumPass : ImGuiIgnorePass
+internal sealed class ImGuiEnumPass : ImPlotBasePass
 {
     public ImGuiEnumPass(GeneratorType generatorType) : base(generatorType)
     {
     }
+
+    public bool LogIgnoredEnumeration { get; set; }
+
+    public bool LogIgnoredEnumerationItem { get; set; }
+
+    public bool LogRenamedEnumerationItem { get; set; }
 
     private static IEnumerable<string> IgnoredSuffixes { get; } =
         new ReadOnlyCollection<string>(
@@ -26,11 +32,6 @@ internal sealed class ImGuiEnumPass : ImGuiIgnorePass
 
     public override bool VisitEnumDecl(Enumeration enumeration)
     {
-        if (IgnoreIfNotImGui(enumeration, LogIgnoredImGuiEnumeration))
-        {
-            return true;
-        }
-
         // ignore enumerations whose name contains 'Obsolete'
         
         if (enumeration.Name.Contains("Obsolete"))
@@ -53,11 +54,6 @@ internal sealed class ImGuiEnumPass : ImGuiIgnorePass
 
     public override bool VisitEnumItemDecl(Enumeration.Item item)
     {
-        if (IgnoreIfNotImGui(item, false))
-        {
-            throw new InvalidOperationException(); // should never be reached
-        }
-
         // ignore enumerations items with some suffixes, these are only relevant for C++
         
         var suffix = IgnoredSuffixes.FirstOrDefault(s => item.Name.EndsWith(s, StringComparison.Ordinal));
