@@ -3,7 +3,7 @@ using CppSharp.AST;
 
 namespace im.NET.Generator.Passes;
 
-public class ImGuiIgnorePass : ImBasePass
+public sealed class ImGuiIgnorePass : ImBasePass
 {
     public ImGuiIgnorePass(GeneratorType generatorType) : base(generatorType)
     {
@@ -17,7 +17,7 @@ public class ImGuiIgnorePass : ImBasePass
 
     public bool LogIgnoredImGuiTypedefDecl { get; set; } = true;
 
-    protected bool IgnoreIfNotImGui(Declaration declaration, bool log, [CallerMemberName] string memberName = null!)
+    private bool IgnoreIfNotImGui(Declaration declaration, bool log, [CallerMemberName] string memberName = null!)
     {
         // when we're not generating for imgui, we want to ignore stuff from imgui
 
