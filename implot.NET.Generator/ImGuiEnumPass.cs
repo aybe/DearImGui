@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using CppSharp.AST;
 using CppSharp.Passes;
 using im.NET.Generator;
@@ -37,7 +38,8 @@ internal sealed class ImGuiEnumPass : TranslationUnitPass
 
     public bool LogIgnoredImGuiFunction { get; set; }
 
-    private bool IgnoreIfNotImGui(Declaration declaration, bool log)
+
+    private bool IgnoreIfNotImGui(Declaration declaration, bool log, [CallerMemberName] string memberName = null!)
     {
         // when we're not generating for imgui, we want to ignore stuff from imgui
         
@@ -55,7 +57,7 @@ internal sealed class ImGuiEnumPass : TranslationUnitPass
         {
             using (GetConsoleColorScope())
             {
-                Console.WriteLine($"{Indent}Ignoring imgui declaration: {declaration}");
+                Console.WriteLine($"{Indent}Ignoring imgui declaration from {memberName}: {declaration}");
             }
         }
 
