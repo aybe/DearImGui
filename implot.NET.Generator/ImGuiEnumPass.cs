@@ -33,7 +33,7 @@ internal sealed class ImGuiEnumPass : ImPlotBasePass
     public override bool VisitEnumDecl(Enumeration enumeration)
     {
         // ignore enumerations whose name contains 'Obsolete'
-        
+
         if (enumeration.Name.Contains("Obsolete"))
         {
             enumeration.ExplicitlyIgnore();
@@ -55,7 +55,7 @@ internal sealed class ImGuiEnumPass : ImPlotBasePass
     public override bool VisitEnumItemDecl(Enumeration.Item item)
     {
         // ignore enumerations items with some suffixes, these are only relevant for C++
-        
+
         var suffix = IgnoredSuffixes.FirstOrDefault(s => item.Name.EndsWith(s, StringComparison.Ordinal));
 
         if (suffix != null)
@@ -74,7 +74,7 @@ internal sealed class ImGuiEnumPass : ImPlotBasePass
         }
 
         // remove enumeration from enumeration item name, e.g. ImGuiCond_Always -> Always
-        
+
         if (item.Name.Contains(item.Namespace.Name))
         {
             item.Name = item.Name.Replace(item.Namespace.Name, string.Empty);

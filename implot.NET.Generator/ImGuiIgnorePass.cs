@@ -21,7 +21,7 @@ internal class ImGuiIgnorePass : ImPlotBasePass
     protected bool IgnoreIfNotImGui(Declaration declaration, bool log, [CallerMemberName] string memberName = null!)
     {
         // when we're not generating for imgui, we want to ignore stuff from imgui
-        
+
         if (GeneratorType is GeneratorType.ImGui)
         {
             return false;
