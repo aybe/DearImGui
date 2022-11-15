@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using CppSharp.AST;
+using JetBrains.Annotations;
 
 namespace im.NET.Generator.Passes;
 
@@ -9,12 +10,19 @@ public sealed class ImGuiIgnorePass : ImBasePass
     {
     }
 
-    public bool LogIgnoredImGuiClass { get; set; }
+    [PublicAPI]
+    public bool LogIgnoredImGuiClass { get; set; } = true;
 
-    public bool LogIgnoredImGuiEnumeration { get; set; }
+    [PublicAPI]
+    public bool LogIgnoredImGuiEnumeration { get; set; } = true;
 
-    public bool LogIgnoredImGuiFunction { get; set; }
+    [PublicAPI]
+    public bool LogIgnoredImGuiEnumerationItem { get; set; } = true;
 
+    [PublicAPI]
+    public bool LogIgnoredImGuiFunction { get; set; } = true;
+
+    [PublicAPI]
     public bool LogIgnoredImGuiTypedefDecl { get; set; } = true;
 
     private bool IgnoreIfNotImGui(Declaration declaration, bool log, [CallerMemberName] string memberName = null!)
@@ -66,7 +74,7 @@ public sealed class ImGuiIgnorePass : ImBasePass
 
     public override bool VisitEnumItemDecl(Enumeration.Item item)
     {
-        if (IgnoreIfNotImGui(item, false))
+        if (IgnoreIfNotImGui(item, LogIgnoredImGuiEnumerationItem))
         {
             throw new InvalidOperationException(); // should never be reached
         }

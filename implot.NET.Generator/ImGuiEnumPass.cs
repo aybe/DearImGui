@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using CppSharp.AST;
 using im.NET.Generator;
 using im.NET.Generator.Passes;
+using JetBrains.Annotations;
 
 namespace implot.NET.Generator;
 
@@ -14,11 +15,14 @@ internal sealed class ImGuiEnumPass : ImBasePass
     {
     }
 
-    public bool LogIgnoredEnumeration { get; set; }
+    [PublicAPI]
+    public bool LogIgnoredEnumeration { get; set; } = true;
 
-    public bool LogIgnoredEnumerationItem { get; set; }
+    [PublicAPI]
+    public bool LogIgnoredEnumerationItem { get; set; } = true;
 
-    public bool LogRenamedEnumerationItem { get; set; }
+    [PublicAPI]
+    public bool LogRenamedEnumerationItem { get; set; } = true;
 
     private static IEnumerable<string> IgnoredSuffixes { get; } =
         new ReadOnlyCollection<string>(
