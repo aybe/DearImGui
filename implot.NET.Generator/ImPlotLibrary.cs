@@ -6,6 +6,7 @@ using CppSharp.Generators;
 using CppSharp.Generators.CSharp;
 using CppSharp.Passes;
 using im.NET.Generator;
+using im.NET.Generator.Passes;
 
 namespace implot.NET.Generator;
 
