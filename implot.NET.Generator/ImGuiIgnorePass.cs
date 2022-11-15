@@ -1,21 +1,19 @@
 ﻿using System.Runtime.CompilerServices;
 using CppSharp.AST;
-using CppSharp.Passes;
 using im.NET.Generator;
 
 namespace implot.NET.Generator;
 
-internal class ImGuiIgnorePass : TranslationUnitPass
+internal class ImGuiIgnorePass : ImPlotBasePass
 {
-    protected const string Indent = "    "; // Microsoft Visual Studio Debug Console sucks
-
-    public GeneratorType GeneratorType { get; set; }
-
     public bool LogIgnoredEnumeration { get; set; }
 
     public bool LogIgnoredEnumerationItem { get; set; }
 
     public bool LogRenamedEnumerationItem { get; set; }
+    public ImGuiIgnorePass(GeneratorType generatorType) : base(generatorType)
+    {
+    }
 
     public bool LogIgnoredImGuiClass { get; set; }
 
@@ -41,9 +39,9 @@ internal class ImGuiIgnorePass : TranslationUnitPass
 
         if (log)
         {
-            using (ImGuiEnumPass.GetConsoleColorScope())
+            using (GetConsoleColorScope())
             {
-                Console.WriteLine($"{ImGuiEnumPass.Indent}Ignoring imgui declaration from {memberName}: {declaration}");
+                Console.WriteLine($"{Indent}Ignoring imgui declaration from {memberName}: {declaration}");
             }
         }
 
@@ -80,10 +78,5 @@ internal class ImGuiIgnorePass : TranslationUnitPass
         }
 
         return base.VisitTypedefDecl(typedef);
-    }
-
-    protected static ConsoleColorScope GetConsoleColorScope(ConsoleColor? backgroundColor = ConsoleColor.Red, ConsoleColor? foregroundColor = ConsoleColor.White)
-    {
-        return new ConsoleColorScope(backgroundColor, foregroundColor);
     }
 }

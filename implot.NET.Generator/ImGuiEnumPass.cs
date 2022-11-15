@@ -9,6 +9,10 @@ namespace implot.NET.Generator;
 [SuppressMessage("ReSharper", "InvertIf")]
 internal sealed class ImGuiEnumPass : ImGuiIgnorePass
 {
+    public ImGuiEnumPass(GeneratorType generatorType) : base(generatorType)
+    {
+    }
+
     private static IEnumerable<string> IgnoredSuffixes { get; } =
         new ReadOnlyCollection<string>(
             new[]

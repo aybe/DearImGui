@@ -40,8 +40,8 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     public override void SetupPasses(Driver driver)
     {
-        driver.AddTranslationUnitPass(new ImGuiIgnorePass { GeneratorType = GeneratorType });
-        driver.AddTranslationUnitPass(new ImGuiEnumPass { GeneratorType = GeneratorType });
+        driver.AddTranslationUnitPass(new ImGuiIgnorePass(GeneratorType));
+        driver.AddTranslationUnitPass(new ImGuiEnumPass(GeneratorType));
 
         driver.Generator.OnUnitGenerated += OnUnitGenerated;
     }
