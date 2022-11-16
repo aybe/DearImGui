@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
+using im.NET.Generator;
 
 namespace implot.NET.Generator;
 
@@ -37,12 +38,12 @@ internal static class Program
             }
             .ToImmutableSortedSet();
 
-        var aliases = new SortedSet<Type>(TypeComparer.Instance)
+        var aliases = new SortedSet<Type>(TypeNameComparer.Instance)
             {
                 typeof(CallingConvention),
                 typeof(IntPtr)
             }
-            .ToImmutableSortedSet(TypeComparer.Instance);
+            .ToImmutableSortedSet(TypeNameComparer.Instance);
 
         var library = new ImPlotLibrary
         {
@@ -152,15 +153,5 @@ internal static class Program
                 RegexOptions.Multiline
             );
         }
-    }
-}
-
-internal sealed class TypeComparer : Comparer<Type>
-{
-    public static TypeComparer Instance { get; } = new();
-
-    public override int Compare(Type? x, Type? y)
-    {
-        return string.Compare(x?.Name, y?.Name, StringComparison.Ordinal);
     }
 }
