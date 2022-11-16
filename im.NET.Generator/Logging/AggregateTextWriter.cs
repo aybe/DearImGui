@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace imgui.NET.Generator.Logging;
+namespace im.NET.Generator.Logging;
 
 public sealed class AggregateTextWriter : TextWriter
 {

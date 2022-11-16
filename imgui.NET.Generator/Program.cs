@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using CppSharp;
 using im.NET.Generator;
-using imgui.NET.Generator.Logging;
+using im.NET.Generator.Logging;
 
 // ReSharper disable StringLiteralTypo
 
