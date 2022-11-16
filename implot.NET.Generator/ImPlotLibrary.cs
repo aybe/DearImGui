@@ -60,6 +60,8 @@ internal sealed class ImPlotLibrary : LibraryBase
     {
         Ignore(ctx, "ImPlotPoint", "Item",   IgnoreType.Property); // manual
         Ignore(ctx, "ImPlotStyle", "Colors", IgnoreType.Property); // manual
+
+        ctx.SetNameOfEnumWithName("ImAxis", "ImPlotAxis");
     }
 
     private static void PreprocessNamespaces(ASTContext ctx)
