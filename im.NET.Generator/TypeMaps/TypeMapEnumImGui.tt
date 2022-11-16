@@ -1,0 +1,4 @@
+<#@ include file="TypeMapEnum.tt" once="true" #>
+<#
+	Test(Host.ResolvePath("TypeMapEnumImGui.txt"), "imgui.NET");
+#>

@@ -11,6 +11,7 @@ resharper_csharp_max_line_length = 180
 resharper_int_align_invocations = true
 resharper_int_align_switch_expressions = true
 resharper_place_accessorholder_attribute_on_same_line = false
+resharper_xml_max_line_length = 180
 
 # IDE0079: Remove unnecessary suppression
 dotnet_diagnostic.ide0079.severity = none

@@ -1,27 +1,32 @@
 ﻿<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ output extension=".g.cs" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
+<#@ output extension=".g.cs" #>
 using CppSharp.Types;
 using JetBrains.Annotations;
+
 namespace im.NET.Generator.TypeMaps;
-
-<#
-	var names = File.ReadAllLines(Host.ResolvePath("TypeMapEnum.txt"));
-
-	foreach (var name in names)
+<#+
+	public void Test(string path, string @namespace)
 	{
-		if (Regex.IsMatch(name, @"^\s*(?:\/\/|$)"))
+		var types = File.ReadAllLines(path);
+
+		foreach (var type in types)
 		{
-			continue; // empty line or comment
-		}
+			if (Regex.IsMatch(type, @"^\s*(?:\/\/|$)"))
+			{
+				continue; // empty line or comment
+			}
 
-		const string prefix = "TypeMapEnum";
+			const string prefix = "TypeMapEnum";
 #>
-[UsedImplicitly] [TypeMap("<#= name #>")]
-internal sealed class <#= prefix #><#= name #> : <#= prefix #> { }
+[UsedImplicitly]
+[TypeMap("<#= type #>")]
+[TypeMapEnumNamespace("<#=@namespace#>")]
+internal sealed class <#= prefix #><#= type #> : <#= prefix #> { }
 
-<#
+<#+
+		}
 	}
 #>

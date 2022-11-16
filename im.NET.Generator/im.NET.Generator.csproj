@@ -20,22 +20,46 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="TypeMaps\TypeMapEnum.g.cs">
-			<DependentUpon>TypeMapEnum.tt</DependentUpon>
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-		</Compile>
-	</ItemGroup>
-
-	<ItemGroup>
 		<None Update="TypeMaps\TypeMapEnum.tt">
-			<LastGenOutput>TypeMapEnum.g.cs</LastGenOutput>
 			<Generator>TextTemplatingFileGenerator</Generator>
+			<LastGenOutput>TypeMapEnum.g.cs</LastGenOutput>
+		</None>
+		<None Update="TypeMaps\TypeMapEnumImGui.tt">
+			<Generator>TextTemplatingFileGenerator</Generator>
+			<LastGenOutput>TypeMapEnumImGui.g.cs</LastGenOutput>
+		</None>
+		<None Update="TypeMaps\TypeMapEnumImPlot.tt">
+			<Generator>TextTemplatingFileGenerator</Generator>
+			<LastGenOutput>TypeMapEnumImPlot.g.cs</LastGenOutput>
 		</None>
 	</ItemGroup>
 
 	<ItemGroup>
 		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="TypeMaps\TypeMapEnum.g.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>TypeMapEnum.tt</DependentUpon>
+	  </Compile>
+	  <Compile Update="TypeMaps\TypeMapEnumImGui.g.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>TypeMapEnumImGui.tt</DependentUpon>
+	  </Compile>
+	  <Compile Update="TypeMaps\TypeMapEnumImPlot.g.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>TypeMapEnumImPlot.tt</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<PropertyGroup>
+		<TransformOnBuild>true</TransformOnBuild>
+	</PropertyGroup>
+
+	<Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TextTemplating\Microsoft.TextTemplating.targets" />
 
 </Project>
