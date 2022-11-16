@@ -13,7 +13,7 @@ using imgui.NET.Generator.Passes;
 
 namespace imgui.NET.Generator;
 
-internal sealed class MyLibrary : LibraryBase
+internal sealed class ImGuiLibrary : LibraryBase
 {
     public bool? Enhanced { get; init; }
 

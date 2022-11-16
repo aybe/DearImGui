@@ -32,7 +32,7 @@ internal static class Program
             using (var writer = new StreamWriter(File.Create(@"OLD\output.txt")))
             using (new AggregateConsoleOut(writer))
             {
-                ConsoleDriver.Run(new MyLibrary { Enhanced = false });
+                ConsoleDriver.Run(new ImGuiLibrary { Enhanced = false });
             }
         }
 
@@ -45,7 +45,7 @@ internal static class Program
             using (var writer = new StreamWriter(File.Create(@"NEW\output.txt")))
             using (new AggregateConsoleOut(writer))
             {
-                ConsoleDriver.Run(new MyLibrary { Enhanced = true });
+                ConsoleDriver.Run(new ImGuiLibrary { Enhanced = true });
             }
         }
 
