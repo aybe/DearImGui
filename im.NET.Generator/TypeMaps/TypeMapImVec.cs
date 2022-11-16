@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 using CppSharp.AST;
 using CppSharp.Generators.CSharp;
@@ -8,6 +8,7 @@ using Type = System.Type;
 
 namespace im.NET.Generator.TypeMaps;
 
+[SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
 internal abstract class TypeMapImVec : TypeMapBase
 {
     protected abstract Type TargetType { get; }
@@ -33,26 +34,15 @@ internal abstract class TypeMapImVec : TypeMapBase
             }
             else
             {
-                if (TargetType == typeof(Vector2)) // for implot
+                var match = Regex.Match(ctx.ReturnVarName, @"(?<=^new\s__IntPtr\(&).*(?=\)$)");
+
+                if (string.IsNullOrEmpty(match.Value))
                 {
-                    if (ctx.ReturnType.Type is TagType)
-                    {
-                        if (ctx.ContextKind is TypePrinterContextKind.Managed)
-                        {
-                            if (ctx.MarshalKind is MarshalKind.NativeField)
-                            {
-                                if (ctx.ScopeKind is TypePrintScopeKind.GlobalQualified)
-                                {
-                                    var match = Regex.Match(ctx.ReturnVarName, @"(?<=^new\s__IntPtr\(&).*(?=\)$)");
-                                    ctx.Return.Write(match.Value);
-                                }
-                            }
-                        }
-                    }
+                    ctx.Return.Write(ctx.ReturnVarName); // imgui
                 }
-                else // TODO check that imgui still works
+                else
                 {
-                    ctx.Return.Write(ctx.ReturnVarName);
+                    ctx.Return.Write(match.Value); // implot
                 }
             }
         }
@@ -112,23 +102,23 @@ internal abstract class TypeMapImVec : TypeMapBase
                 {
                     if (ctx.Parameter.HasDefaultValue)
                     {
-                        ctx.Return.Write(asIntPtr);
+                        switch (ctx.Parameter.Type)
+                        {
+                            case TagType:
+                                ctx.Return.Write(ctx.Parameter.Name); // imgui
+                                break;
+                            case PointerType:
+                                ctx.Return.Write(asIntPtr); // implot
+                                break;
+                            default:
+                                throw new NotImplementedException();
+                        }
                     }
                     else
                     {
-                        throw new NotImplementedException();
+                        ctx.Return.Write(asIntPtr);
                     }
                 }
-
-                //TODO re-implement older code for imgui
-                //if (ctx.Parameter.IsConst || ctx.Parameter.HasDefaultValue is false)
-                //{
-                //    ctx.Return.Write($"new IntPtr(Unsafe.AsPointer(ref {ctx.Parameter.Name}))");
-                //}
-                //else
-                //{
-                //    ctx.Return.Write($"{ctx.Parameter.Name}");
-                //}
             }
             else
             {
