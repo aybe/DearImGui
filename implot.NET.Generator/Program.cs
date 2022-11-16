@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
-using im.NET.Generator;
 using implot.NET.Generator;
 
 if (Debugger.IsAttached) // cleanup garbage
@@ -45,9 +44,13 @@ var library = new ImPlotLibrary
     Namespaces = namespaces
 };
 
-ConsoleDriver.Run(library);
+const string module = "implot";
 
-var path = Path.Combine(Environment.CurrentDirectory, "implot.cs");
+var path = Path.Combine(Environment.CurrentDirectory, Path.ChangeExtension(module, "cs"));
+
+var copy = File.Exists(path) ? File.ReadAllText(path) : string.Empty;
+
+ConsoleDriver.Run(library);
 
 var text = File.ReadAllText(path);
 
@@ -62,6 +65,29 @@ RepairUsingAliases(ref text, aliases);
 RepairGenericMethods(ref text);
 
 File.WriteAllText(path, text);
+
+if (copy != string.Empty && copy != text)
+{
+    // create a backup history so we can diff them
+    // imgui-backup.cs -> imgui-backup-date.cs
+    // imgui.cs -> imgui-backup.cs
+
+    var backupDirectory = Path.GetDirectoryName(path) ?? string.Empty;
+    var backupExtension = Path.GetExtension(path);
+    var backupPath = Path.Combine(backupDirectory, Path.ChangeExtension($"{module}-backup", backupExtension));
+
+    if (File.Exists(backupPath))
+    {
+        var backupTime = File.GetLastWriteTimeUtc(backupPath);
+        var backupName = backupTime.ToString("O").Replace(':', '-').Replace('.', '-');
+        var backupFile = Path.GetFileNameWithoutExtension(backupPath);
+        var backupDest = Path.Combine(backupDirectory, Path.ChangeExtension($"{backupFile}-{backupName}", backupExtension));
+
+        File.Copy(backupPath, backupDest, true);
+    }
+
+    File.WriteAllText(backupPath, copy);
+}
 
 Console.WriteLine("Generation finished.");
 
@@ -87,7 +113,7 @@ static void RenameVectors(ref string input)
         "new global::implot.NET.ImVec2.__Internal()",
         "new global::System.Numerics.Vector2()"
     );
-    
+
     input = input.Replace(
         "new global::implot.NET.ImVec4.__Internal()",
         "new global::System.Numerics.Vector4()"
