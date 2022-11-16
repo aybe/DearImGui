@@ -17,7 +17,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Include="..\implot.NET.Generator\bin\$(Configuration)\net6.0\implot.cs" Link="implot.g.cs" />
+		<Compile Include="..\implot.NET.Generator\bin\$(Configuration)\net6.0\implot.cs" Link="ImPlot.g.cs" />
 	</ItemGroup>
 
 </Project>
