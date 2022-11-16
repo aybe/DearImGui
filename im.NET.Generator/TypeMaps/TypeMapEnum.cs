@@ -10,12 +10,22 @@ internal abstract class TypeMapEnum : TypeMap
     public override Type CSharpSignatureType(TypePrinterContext ctx)
     {
         var type = GetType();
-        
-        var attribute1 = type.GetCustomAttribute<TypeMapAttribute>() ?? throw new InvalidOperationException();
-        var attribute2 = type.GetCustomAttribute<TypeMapEnumNamespaceAttribute>() ?? throw new InvalidOperationException();
 
-        var customType = new CustomType($"global::{attribute2.Namespace}.{attribute1.Type}");
+        var name =
+            type
+                .GetCustomAttributes<TypeMapAttribute>(true)
+                .FirstOrDefault(s => Context.ASTContext.FindEnum(s.Type).Any())?.Type
+            ?? throw new InvalidOperationException("Couldn't find enumeration.");
 
-        return customType;
+        var ns =
+            type
+                .GetCustomAttribute<TypeMapEnumNamespaceAttribute>()
+            ?? throw new InvalidOperationException();
+
+        var tn = $"global::{ns.Namespace}.{name}";
+
+        var ct = new CustomType(tn);
+
+        return ct;
     }
 }
