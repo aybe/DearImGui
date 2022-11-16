@@ -1,52 +1,23 @@
-﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ output extension=".g.cs" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
 using CppSharp.Types;
 using JetBrains.Annotations;
 namespace im.NET.Generator.TypeMaps;
 
 <#
-	const string prefix = "TypeMapEnum";
-
-	var names = new[]
-	{
-		"ImDrawFlags",
-		"ImDrawListFlags",
-		"ImGuiBackendFlags",
-		"ImGuiButtonFlags",
-		"ImGuiColorEditFlags",
-		"ImGuiCol",
-		"ImGuiComboFlags",
-		"ImGuiCond",
-		"ImGuiConfigFlags",
-		"ImGuiDataType",
-		"ImGuiDir",
-		"ImGuiDragDropFlags",
-		"ImGuiFocusedFlags",
-		"ImFontAtlasFlags",
-		"ImGuiHoveredFlags",
-		"ImGuiInputTextFlags",
-		"ImGuiKey",
-		"ImGuiMouseButton",
-		"ImGuiMouseCursor",
-		"ImGuiPopupFlags",
-		"ImGuiSelectableFlags",
-		"ImGuiSortDirection",
-		"ImGuiSliderFlags",
-		"ImGuiStyleVar",
-		"ImGuiTabBarFlags",
-		"ImGuiTabItemFlags",
-		"ImGuiTableBgTarget",
-		"ImGuiTableColumnFlags",
-		"ImGuiTableFlags",
-		"ImGuiTableRowFlags",
-		"ImGuiTreeNodeFlags",
-		"ImGuiViewportFlags",
-		"ImGuiWindowFlags"
-	};
+	var names = File.ReadAllLines(Host.ResolvePath("TypeMapEnum.txt"));
 
 	foreach (var name in names)
 	{
+		if (Regex.IsMatch(name, @"^\s*(?:\/\/|$)"))
+		{
+			continue; // empty line or comment
+		}
+
+		const string prefix = "TypeMapEnum";
 #>
 [UsedImplicitly] [TypeMap("<#= name #>")]
 internal sealed class <#= prefix #><#= name #> : <#= prefix #> { }
