@@ -1,4 +1,4 @@
-﻿namespace im.NET.Generator;
+﻿namespace im.NET.Generator.Logging;
 
 public readonly struct ConsoleColorScope : IDisposable
 {

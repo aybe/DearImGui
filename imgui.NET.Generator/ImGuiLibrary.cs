@@ -3,6 +3,7 @@ using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Passes;
 using im.NET.Generator;
+using im.NET.Generator.Logging;
 using imgui.NET.Generator.Passes;
 
 // ReSharper disable IdentifierTypo

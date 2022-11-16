@@ -2,6 +2,7 @@
 using CppSharp;
 using CppSharp.AST;
 using CppSharp.Passes;
+using im.NET.Generator.Logging;
 
 namespace im.NET.Generator;
 
