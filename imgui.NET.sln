@@ -24,9 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "implot.NET.Generator", "imp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "implot.NET", "implot.NET\implot.NET.csproj", "{109B13EE-AE21-4C23-B81C-304F2BEE08F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "im.NET.Generator", "im.NET.Generator\im.NET.Generator.csproj", "{AE23614A-D27C-4FFA-800A-456B674D9D43}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generators", "Generators", "{D21B9CFC-038A-47D1-8832-3565B2C4304B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "im.NET.Generator", "im.NET.Generator\im.NET.Generator.csproj", "{AE23614A-D27C-4FFA-800A-456B674D9D43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -149,11 +147,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{023B1F68-D654-4501-A99A-C499EBAAC295} = {D21B9CFC-038A-47D1-8832-3565B2C4304B}
-		{DE2079B1-EDFD-4BE3-A247-3DBDE1F23B0C} = {D21B9CFC-038A-47D1-8832-3565B2C4304B}
-		{AE23614A-D27C-4FFA-800A-456B674D9D43} = {D21B9CFC-038A-47D1-8832-3565B2C4304B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66B8D62F-5B87-4E36-8BFD-B551F98C9AC6}
