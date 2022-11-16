@@ -53,4 +53,21 @@ public abstract class LibraryBase : ILibrary
         using (new ConsoleColorScope(null, ConsoleColor.Yellow))
             Console.WriteLine($"Removed {count} passes of type {typeof(T)} in {memberName}");
     }
+
+    protected static void SetEnumerationsFlags(TranslationUnit unit)
+    {
+        foreach (var enumeration in unit.Enums)
+        {
+            if (enumeration.Name.Contains("Flags"))
+            {
+                if (enumeration.IsFlags is true)
+                    continue;
+
+                enumeration.SetFlags();
+
+                using (new ConsoleColorScope(null, ConsoleColor.Yellow))
+                    Console.WriteLine($"Set enumeration as flags: {enumeration.Name}");
+            }
+        }
+    }
 }

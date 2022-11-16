@@ -209,23 +209,7 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     private static void PostprocessEnumerations(ASTContext ctx)
     {
-        // for some reason, these flags are missed by the generator, fix that
-
-        var unit = GetImGuiTranslationUnit(ctx);
-
-        foreach (var enumeration in unit.Enums)
-        {
-            if (enumeration.Name.Contains("Flags"))
-            {
-                if (enumeration.IsFlags is true)
-                    continue;
-
-                enumeration.SetFlags();
-
-                using (new ConsoleColorScope(null, ConsoleColor.Yellow))
-                    Console.WriteLine($"Set enumeration as flags: {enumeration.Name}");
-            }
-        }
+        SetEnumerationsFlags(GetImGuiTranslationUnit(ctx));
     }
 
     private static void PostprocessProperties(ASTContext ctx)

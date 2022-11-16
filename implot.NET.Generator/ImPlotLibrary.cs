@@ -62,13 +62,20 @@ internal sealed class ImPlotLibrary : LibraryBase
         Ignore(ctx, "ImPlotStyle", "Colors", IgnoreType.Property); // manual
 
         ctx.SetNameOfEnumWithName("ImAxis", "ImPlotAxis");
+
+        SetEnumerationsFlags(GetImPlotTranslationUnit(ctx));
+    }
+
+    private static TranslationUnit GetImPlotTranslationUnit(ASTContext ctx)
+    {
+        return ctx.TranslationUnits.Single(s => s.FileName is "implot.h");
     }
 
     private static void PreprocessNamespaces(ASTContext ctx)
     {
         // move imports class to outer scope, i.e. remove superfluous namespace
 
-        var unit = ctx.TranslationUnits.Single(s => s.FileName is "implot.h");
+        var unit = GetImPlotTranslationUnit(ctx);
 
         var ns = unit.Namespaces.Single(s => s.Name is "ImPlot");
 
