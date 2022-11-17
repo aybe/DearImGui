@@ -43,6 +43,30 @@ public abstract class GeneratorBase
 
     protected abstract void Process(ref string text);
 
+    protected void ProcessAliases(ref string input)
+    {
+        foreach (var item in Aliases)
+        {
+            input = input.Replace($"__{item.Name}", item.Name);
+        }
+    }
+
+    protected void ProcessClasses(ref string input)
+    {
+        foreach (var item in Classes)
+        {
+            input = input.Replace($"class {item.Key}", $"class {item.Value}");
+        }
+    }
+
+    protected void ProcessNamespaces(ref string input)
+    {
+        foreach (var item in Namespaces.Reverse())
+        {
+            input = input.Replace($"global::{item}.", string.Empty);
+        }
+    }
+
     private void Write(string text)
     {
         File.WriteAllText(ModulePath, text);

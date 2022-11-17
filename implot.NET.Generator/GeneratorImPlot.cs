@@ -45,31 +45,15 @@ internal sealed class GeneratorImPlot : GeneratorBase
 
     protected override void Process(ref string text)
     {
-        ProcessClasses(ref text, Classes);
+        ProcessClasses(ref text);
 
         ProcessVectors(ref text);
 
-        ProcessQualifiers(ref text, Namespaces);
+        ProcessNamespaces(ref text);
 
-        ProcessAliases(ref text, Aliases);
+        ProcessAliases(ref text);
 
         ProcessGenericMethods(ref text);
-    }
-
-    private static void ProcessAliases(ref string input, ImmutableSortedSet<Type> aliases)
-    {
-        foreach (var item in aliases)
-        {
-            input = input.Replace($"__{item.Name}", item.Name);
-        }
-    }
-
-    private static void ProcessClasses(ref string input, ImmutableSortedSet<KeyValuePair<string, string>> classes)
-    {
-        foreach (var item in classes)
-        {
-            input = input.Replace($"class {item.Key}", $"class {item.Value}");
-        }
     }
 
     private static void ProcessGenericMethods(ref string input)
@@ -89,14 +73,6 @@ internal sealed class GeneratorImPlot : GeneratorBase
             @"$1[]$2",
             RegexOptions.Multiline
         );
-    }
-
-    private static void ProcessQualifiers(ref string input, ImmutableSortedSet<string> namespaces)
-    {
-        foreach (var item in namespaces.Reverse())
-        {
-            input = input.Replace($"global::{item}.", string.Empty);
-        }
     }
 
     private static void ProcessVectors(ref string input)
