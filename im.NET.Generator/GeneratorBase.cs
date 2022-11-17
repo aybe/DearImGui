@@ -1,4 +1,6 @@
 ﻿using System.Collections.Immutable;
+using System.Diagnostics;
+using CppSharp;
 
 namespace im.NET.Generator;
 
@@ -31,6 +33,22 @@ public abstract class GeneratorBase
     private string ModulePath { get; }
 
     private string ModuleText { get; }
+
+    public static void Run(ILibrary library, GeneratorBase generator)
+    {
+        if (Debugger.IsAttached) // cleanup garbage
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Clear();
+        }
+
+        ConsoleDriver.Run(library);
+
+        generator.Process();
+
+        Console.WriteLine("Generation finished.");
+    }
 
     public void Process()
     {
