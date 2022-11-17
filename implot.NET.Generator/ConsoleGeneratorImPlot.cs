@@ -29,12 +29,7 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             }
             .ToImmutableSortedSet();
 
-        Aliases = new SortedSet<Type>(TypeNameComparer.Instance)
-            {
-                typeof(CallingConvention),
-                typeof(IntPtr)
-            }
-            .ToImmutableSortedSet(TypeNameComparer.Instance);
+        Aliases = GetDefaultAliases();
     }
 
     public override ImmutableSortedSet<string> Namespaces { get; }

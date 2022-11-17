@@ -16,8 +16,8 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
                 new("imgui", "ImGui")
             }
             .ToImmutableSortedSet();
-        
-        Aliases = ImmutableSortedSet<Type>.Empty;                         // TODO
+
+        Aliases = GetDefaultAliases();
     }
 
     public override ImmutableSortedSet<string> Namespaces { get; }
@@ -149,28 +149,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
         builder.Replace(
             $"{@namespace}.",
             string.Empty
-        );
-
-        var newLine = Environment.NewLine;
-
-        builder.Replace(
-            $"using __CallingConvention = Runtime.InteropServices.CallingConvention;{newLine}",
-            string.Empty
-        );
-
-        builder.Replace(
-            $"using __IntPtr = IntPtr;{newLine}",
-            string.Empty
-        );
-
-        builder.Replace(
-            "__CallingConvention",
-            "CallingConvention"
-        );
-
-        builder.Replace(
-            "__IntPtr",
-            "IntPtr"
         );
 
         // XML comments are somehow wrong, fix that

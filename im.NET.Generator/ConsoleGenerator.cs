@@ -1,5 +1,6 @@
 ﻿using System.Collections.Immutable;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
 
@@ -71,11 +72,21 @@ public abstract class ConsoleGenerator
 
     private void ProcessAliases(ref string input)
     {
-        // remove double underscore prefix added by CppSharp
-
         foreach (var item in Aliases)
         {
-            input = input.Replace($"__{item.Name}", item.Name);
+            var name = item.Name;
+
+            // remove using alias
+
+            input = Regex.Replace(input,
+                $@"^using __{name} = .*;\r?$\n",
+                string.Empty,
+                RegexOptions.Multiline
+            );
+
+            // remove double underscore prefix
+
+            input = input.Replace($"__{name}", name);
         }
     }
 
@@ -156,5 +167,15 @@ public abstract class ConsoleGenerator
         }
 
         File.WriteAllText(backupPath, ModuleText);
+    }
+
+    protected static ImmutableSortedSet<Type> GetDefaultAliases()
+    {
+        return new SortedSet<Type>(TypeNameComparer.Instance)
+            {
+                typeof(CallingConvention),
+                typeof(IntPtr)
+            }
+            .ToImmutableSortedSet(TypeNameComparer.Instance);
     }
 }
