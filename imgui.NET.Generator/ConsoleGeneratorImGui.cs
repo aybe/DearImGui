@@ -1,8 +1,6 @@
 ﻿using System.Collections.Immutable;
-using System.Text.RegularExpressions;
+using System.Diagnostics.CodeAnalysis;
 using im.NET.Generator;
-
-// ReSharper disable StringLiteralTypo
 
 namespace imgui.NET.Generator;
 
@@ -29,6 +27,15 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 
     protected override void Process(ref string text)
     {
+        ProcessSymbols(ref text);
+
+        ProcessVectorClass(ref text);
+
+        base.Process(ref text);
+    }
+
+    private static void ProcessSymbols(ref string text)
+    {
         const string @namespace = Constants.ImGuiNamespace;
 
         // merge symbols with class to remove __Symbols namespace
@@ -38,6 +45,17 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             "    public unsafe partial class imgui"
         );
 
+        // use our own symbol resolver
+
+        text = text.Replace(
+            "CppSharp.SymbolResolver",
+            $"global::{@namespace}.SymbolResolver"
+        );
+    }
+
+    [SuppressMessage("ReSharper", "StringLiteralTypo")]
+    private static void ProcessVectorClass(ref string text)
+    {
         // hide ImVector namespace as internal class as it cannot be moved onto ImVector<T> because of CS7042
 
         text = text.Replace(
@@ -54,14 +72,5 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             ".__Symbols",
             string.Empty
         );
-
-        // use our own symbol resolver
-
-        text = text.Replace(
-            "CppSharp.SymbolResolver",
-            $"{@namespace}.SymbolResolver"
-        );
-
-        base.Process(ref text);
     }
 }

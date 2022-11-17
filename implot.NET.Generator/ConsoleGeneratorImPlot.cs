@@ -1,5 +1,4 @@
 ﻿using System.Collections.Immutable;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using im.NET.Generator;
 
@@ -30,10 +29,7 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
     {
         ProcessGenericMethods(ref text);
 
-        text = text.Replace(
-            "ImPlotPoint.__Internal ImPlotGetter",
-            "ImPlotPoint ImPlotGetter"
-        );
+        ProcessDelegates(ref text);
 
         base.Process(ref text);
     }
@@ -54,6 +50,16 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             @"(,\s+T)(\s+\w+)(?=.*where\s+T\s+:\s+unmanaged\s*$)",
             @"$1[]$2",
             RegexOptions.Multiline
+        );
+    }
+
+    private static void ProcessDelegates(ref string text)
+    {
+        // for whatever reason, this is wrong, fix
+
+        text = text.Replace(
+            "ImPlotPoint.__Internal ImPlotGetter",
+            "ImPlotPoint ImPlotGetter"
         );
     }
 }

@@ -10,8 +10,6 @@ internal static class Program
 
         var library = new ImGuiLibrary();
         
-        // TODO namespaces
-
         ConsoleGenerator.Run(library, generator);
     }
 }

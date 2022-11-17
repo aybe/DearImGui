@@ -52,7 +52,7 @@ public abstract class ConsoleGenerator
         Console.WriteLine("Generation finished.");
     }
 
-    public void Process()
+    private void Process()
     {
         var text = File.ReadAllText(ModulePath);
 
@@ -65,7 +65,7 @@ public abstract class ConsoleGenerator
     {
         // simplify namespaces first to simplify replacements
         ProcessNamespaces(ref text, Namespaces);
-        
+
         ProcessClasses(ref text, Classes);
         ProcessVectors(ref text);
         ProcessAliases(ref text, Aliases);
@@ -101,8 +101,8 @@ public abstract class ConsoleGenerator
         foreach (var (key, val) in classes)
         {
             input = input.Replace($"class {key}", $"class {val}");
-            input = input.Replace($"{key}()", $"{val}()");
-            input = input.Replace($"{key}._", $"{val}._");
+            input = input.Replace($"{key}()",     $"{val}()");
+            input = input.Replace($"{key}._",     $"{val}._");
         }
     }
 
