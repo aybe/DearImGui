@@ -70,13 +70,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             $"{@namespace}.SymbolResolver"
         );
 
-        // XML comments are somehow wrong, fix that
-
-        builder.Replace(
-            "// <summary>",
-            "/// <summary>"
-        );
-
         var str = builder.ToString();
 
         // add some inherit doc

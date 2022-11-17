@@ -71,6 +71,7 @@ public abstract class ConsoleGenerator
         ProcessAliases(ref text, Aliases);
         ProcessPointers(ref text);
         ProcessVisibility(ref text);
+        ProcessSummaries(ref text);
     }
 
     private static void ProcessAliases(ref string input, ImmutableSortedSet<Type> aliases)
@@ -123,6 +124,11 @@ public abstract class ConsoleGenerator
             "public IntPtr __Instance { get; protected set; }",
             "internal IntPtr __Instance { get; set; }"
         );
+    }
+
+    private static void ProcessSummaries(ref string input)
+    {
+        input = input.Replace("// <summary>", "/// <summary>");
     }
 
     private static void ProcessVectors(ref string input)
