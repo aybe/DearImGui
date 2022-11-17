@@ -8,8 +8,11 @@ internal static class Program
     {
         var generator = new ConsoleGeneratorImGui("imgui");
 
-        var library = new ImGuiLibrary();
-        
+        var library = new ImGuiLibrary
+        {
+            Namespaces = generator.Namespaces
+        };
+
         ConsoleGenerator.Run(library, generator);
     }
 }

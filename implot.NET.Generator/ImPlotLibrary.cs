@@ -13,7 +13,7 @@ namespace implot.NET.Generator;
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
 internal sealed class ImPlotLibrary : LibraryBase
 {
-    public ImmutableSortedSet<string> Namespaces { get; init; } = null!;
+    public override ImmutableSortedSet<string> Namespaces { get; init; } = null!;
 
     public override void Setup(Driver driver)
     {
@@ -80,23 +80,9 @@ internal sealed class ImPlotLibrary : LibraryBase
     {
         foreach (var generator in output.Outputs.Cast<CSharpSources>())
         {
-            if (generator.Module.LibraryName is not "implot")
+            if (generator.Module.LibraryName is "implot")
             {
-                continue;
-            }
-
-            var header = generator.FindBlock(BlockKind.Header);
-
-            header.Text.WriteLine(
-                "#pragma warning disable CS0109 // The member 'member' does not hide an inherited member. The new keyword is not required");
-
-            var usings = generator.FindBlock(BlockKind.Usings);
-
-            usings.Text.StringBuilder.Clear();
-
-            foreach (var item in Namespaces)
-            {
-                usings.Text.WriteLine($"using {item};");
+                ProcessHeader(generator);
             }
         }
     }

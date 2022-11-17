@@ -1,7 +1,9 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
 using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
+using CppSharp.Generators.CSharp;
 using CppSharp.Passes;
 using im.NET.Generator.Logging;
 
@@ -9,6 +11,8 @@ namespace im.NET.Generator;
 
 public abstract class LibraryBase : ILibrary
 {
+    public abstract ImmutableSortedSet<string> Namespaces { get; init; }
+
     #region ILibrary Members
 
     public virtual void Setup(Driver driver)
@@ -55,6 +59,30 @@ public abstract class LibraryBase : ILibrary
                 return;
             default:
                 throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null);
+        }
+    }
+
+    protected void ProcessHeader(CSharpSources generator)
+    {
+        var header = generator.FindBlock(BlockKind.Header);
+
+        header.Text.WriteLine(
+            "#pragma warning disable CS0109 // The member 'member' does not hide an inherited member. The new keyword is not required");
+
+        var usings = generator.FindBlock(BlockKind.Usings);
+
+        usings.Text.StringBuilder.Clear();
+
+        foreach (var item in Namespaces)
+        {
+            usings.Text.WriteLine($"using {item};");
+        }
+
+        var comments = generator.FindBlocks(BlockKind.BlockComment);
+
+        foreach (var comment in comments)
+        {
+            comment.Text.StringBuilder.Replace("&lt;br/&gt;", "<br/>");
         }
     }
 

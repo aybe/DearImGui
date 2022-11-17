@@ -1,6 +1,8 @@
-﻿using CppSharp;
+﻿using System.Collections.Immutable;
+using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
+using CppSharp.Generators.CSharp;
 using CppSharp.Passes;
 using im.NET.Generator;
 using im.NET.Generator.Logging;
@@ -17,6 +19,8 @@ namespace imgui.NET.Generator;
 
 internal sealed class ImGuiLibrary : LibraryBase
 {
+    public override ImmutableSortedSet<string> Namespaces { get; init; } = null!;
+
     public override void Setup(Driver driver)
     {
         base.Setup(driver);
@@ -35,7 +39,7 @@ internal sealed class ImGuiLibrary : LibraryBase
         driver.AddTranslationUnitPass(new ImEnumPass());
         driver.AddTranslationUnitPass(new ProduceSummary());
 
-        driver.Generator.OnUnitGenerated += UnitGenerated;
+        driver.Generator.OnUnitGenerated += OnUnitGenerated;
     }
 
     public override void Preprocess(Driver driver, ASTContext ctx)
@@ -208,33 +212,14 @@ internal sealed class ImGuiLibrary : LibraryBase
         }
     }
 
-    private static void UnitGenerated(GeneratorOutput output)
+    private void OnUnitGenerated(GeneratorOutput output)
     {
-        foreach (var generator in output.Outputs)
+        foreach (var generator in output.Outputs.Cast<CSharpSources>())
         {
-            UpdateGeneratedContent(generator);
-        }
-    }
-
-    private static void UpdateGeneratedContent(CodeGenerator generator)
-    {
-        var header = generator.FindBlock(BlockKind.Header);
-
-        header.Text.WriteLine(
-            "#pragma warning disable CS0109 // The member 'member' does not hide an inherited member. The new keyword is not required");
-
-        var usings = generator.FindBlock(BlockKind.Usings);
-
-        usings.Text.WriteLine("using System.Collections.Concurrent;");
-        usings.Text.WriteLine("using System.Numerics;");
-        usings.Text.WriteLine("using System.Runtime.CompilerServices;");
-        usings.Text.WriteLine("using System.Text;");
-
-        var comments = generator.FindBlocks(BlockKind.BlockComment);
-
-        foreach (var comment in comments)
-        {
-            comment.Text.StringBuilder.Replace("&lt;br/&gt;", "<br/>");
+            if (generator.Module.LibraryName is "imgui")
+            {
+                ProcessHeader(generator);
+            }
         }
     }
 
