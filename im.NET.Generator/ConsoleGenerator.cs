@@ -64,18 +64,18 @@ public abstract class ConsoleGenerator
     protected virtual void Process(ref string text)
     {
         // simplify namespaces first to simplify replacements
-        ProcessNamespaces(ref text);
+        ProcessNamespaces(ref text, Namespaces);
         
-        ProcessClasses(ref text);
+        ProcessClasses(ref text, Classes);
         ProcessVectors(ref text);
-        ProcessAliases(ref text);
+        ProcessAliases(ref text, Aliases);
         ProcessPointers(ref text);
         ProcessVisibility(ref text);
     }
 
-    private void ProcessAliases(ref string input)
+    private static void ProcessAliases(ref string input, ImmutableSortedSet<Type> aliases)
     {
-        foreach (var item in Aliases)
+        foreach (var item in aliases)
         {
             var name = item.Name;
 
@@ -93,11 +93,11 @@ public abstract class ConsoleGenerator
         }
     }
 
-    private void ProcessClasses(ref string input)
+    private static void ProcessClasses(ref string input, ImmutableSortedSet<KeyValuePair<string, string>> classes)
     {
         // rename classes and references to their internals
 
-        foreach (var (key, val) in Classes)
+        foreach (var (key, val) in classes)
         {
             input = input.Replace($"class {key}", $"class {val}");
             input = input.Replace($"{key}()", $"{val}()");
@@ -105,21 +105,21 @@ public abstract class ConsoleGenerator
         }
     }
 
-    private void ProcessNamespaces(ref string input)
+    private static void ProcessNamespaces(ref string input, ImmutableSortedSet<string> namespaces)
     {
         // simplify fully qualified names
 
-        foreach (var item in Namespaces.Reverse())
+        foreach (var item in namespaces.Reverse())
         {
             input = input.Replace($"global::{item}.", string.Empty);
         }
     }
 
-    private void ProcessPointers(ref string text)
+    private static void ProcessPointers(ref string input)
     {
         // hide pointers to internal classes
 
-        text = text.Replace(
+        input = input.Replace(
             "public IntPtr __Instance { get; protected set; }",
             "internal IntPtr __Instance { get; set; }"
         );
@@ -136,11 +136,11 @@ public abstract class ConsoleGenerator
         );
     }
 
-    private void ProcessVisibility(ref string text)
+    private static void ProcessVisibility(ref string input)
     {
         // hide internal structs and vectors
 
-        text = Regex.Replace(text,
+        input = Regex.Replace(input,
             @"public ((?:unsafe )?partial struct (?:__Internal|ImVec\d))",
             @"internal $1",
             RegexOptions.Multiline
@@ -148,8 +148,7 @@ public abstract class ConsoleGenerator
 
         // hide protected members to remove more CS1591
 
-        text = Regex.Replace(
-            text,
+        input = Regex.Replace(input,
             @"(internal\s+)*protected",
             "private protected",
             RegexOptions.Multiline
