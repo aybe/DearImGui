@@ -46,7 +46,7 @@ internal sealed class GeneratorImPlot : GeneratorBase
     protected override void Process(ref string text)
     {
         ProcessVectors(ref text);
-        
+
         ProcessGenericMethods(ref text);
 
         base.Process(ref text);
@@ -73,14 +73,10 @@ internal sealed class GeneratorImPlot : GeneratorBase
 
     private static void ProcessVectors(ref string input)
     {
-        input = input.Replace(
-            "new global::implot.NET.ImVec2.__Internal()",
-            "new global::System.Numerics.Vector2()"
-        );
-
-        input = input.Replace(
-            "new global::implot.NET.ImVec4.__Internal()",
-            "new global::System.Numerics.Vector4()"
+        input = Regex.Replace(input,
+            @"new global::implot\.NET\.ImVec(\d)\.__Internal\(\)",
+            @"new global::System.Numerics.Vector$1()",
+            RegexOptions.Multiline
         );
     }
 }
