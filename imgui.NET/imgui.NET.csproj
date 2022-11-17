@@ -28,7 +28,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="..\imgui.NET.Generator\bin\Debug\net6.0\NEW\imgui.cs" Link="ImGui.g.cs" />
+		<Compile Include="..\imgui.NET.Generator\bin\$(Configuration)\net6.0\imgui.cs" Link="ImGui.g.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
