@@ -64,6 +64,7 @@ public abstract class ConsoleGenerator
     protected virtual void Process(ref string text)
     {
         ProcessClasses(ref text);
+        ProcessVectors(ref text);
         ProcessNamespaces(ref text);
         ProcessAliases(ref text);
         ProcessPointers(ref text);
@@ -119,6 +120,17 @@ public abstract class ConsoleGenerator
         text = text.Replace(
             "public IntPtr __Instance { get; protected set; }",
             "internal IntPtr __Instance { get; set; }"
+        );
+    }
+
+    private static void ProcessVectors(ref string input)
+    {
+        // type maps aren't enough to pass vectors directly
+
+        input = Regex.Replace(input,
+            @"new global::.*\.ImVec(\d)\.__Internal\(\)",
+            @"new global::System.Numerics.Vector$1()",
+            RegexOptions.Multiline
         );
     }
 

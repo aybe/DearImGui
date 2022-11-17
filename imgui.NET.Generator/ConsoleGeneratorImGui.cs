@@ -65,18 +65,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             "internal unsafe partial struct ImVec4"
         );
 
-        // pass vectors directly, doesn't mean that we can ditch type maps that did the heavy lifting
-
-        builder.Replace(
-            $"new global::{@namespace}.ImVec2.__Internal()",
-            "new global::System.Numerics.Vector2()"
-        );
-
-        builder.Replace(
-            $"new global::{@namespace}.ImVec4.__Internal()",
-            "new global::System.Numerics.Vector4()"
-        );
-
         // they're now unused in sources, let's add a little guard though
 
         builder.Replace(

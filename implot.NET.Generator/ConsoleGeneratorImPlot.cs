@@ -28,8 +28,6 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
 
     protected override void Process(ref string text)
     {
-        ProcessVectors(ref text);
-
         ProcessGenericMethods(ref text);
 
         base.Process(ref text);
@@ -50,15 +48,6 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
         input = Regex.Replace(input,
             @"(,\s+T)(\s+\w+)(?=.*where\s+T\s+:\s+unmanaged\s*$)",
             @"$1[]$2",
-            RegexOptions.Multiline
-        );
-    }
-
-    private static void ProcessVectors(ref string input)
-    {
-        input = Regex.Replace(input,
-            @"new global::implot\.NET\.ImVec(\d)\.__Internal\(\)",
-            @"new global::System.Numerics.Vector$1()",
             RegexOptions.Multiline
         );
     }
