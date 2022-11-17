@@ -17,8 +17,6 @@ namespace imgui.NET.Generator;
 
 internal sealed class ImGuiLibrary : LibraryBase
 {
-    public bool? Enhanced { get; init; }
-
     public override void Setup(Driver driver)
     {
         base.Setup(driver);
@@ -37,10 +35,6 @@ internal sealed class ImGuiLibrary : LibraryBase
         driver.AddTranslationUnitPass(new ImEnumPass());
         driver.AddTranslationUnitPass(new ProduceSummary());
 
-        if (Enhanced is true)
-        {
-        }
-
         driver.Generator.OnUnitGenerated += UnitGenerated;
     }
 
@@ -51,10 +45,6 @@ internal sealed class ImGuiLibrary : LibraryBase
         PreprocessNamespace(ctx);
         PreprocessValueTypes(ctx);
         PreprocessIgnores(ctx);
-
-        if (Enhanced is true)
-        {
-        }
     }
 
     public override void Postprocess(Driver driver, ASTContext ctx)
@@ -63,10 +53,6 @@ internal sealed class ImGuiLibrary : LibraryBase
         PostprocessDelegates(ctx);
         PostprocessEnumerations(ctx);
         PostprocessProperties(ctx);
-
-        if (Enhanced is true)
-        {
-        }
     }
 
     #region Preprocess
