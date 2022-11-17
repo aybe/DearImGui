@@ -21,23 +21,9 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     public override void Setup(Driver driver)
     {
-        var options = driver.Options;
+        base.Setup(driver);
 
-        options.OutputDir = Enhanced.HasValue
-            ? Enhanced.Value
-                ? "NEW"
-                : "OLD"
-            : @"..\..\..\..\imgui.NET";
-
-        options.GeneratorKind = GeneratorKind.CSharp;
-        options.GenerateFinalizers = true;
-#if DEBUG
-        options.GenerateDebugOutput = true;
-#endif
-        options.MarshalCharAsManagedChar = true;
-        options.Verbose = true;
-
-        var module = options.AddModule("imgui");
+        var module = driver.Options.AddModule("imgui");
 
         module.OutputNamespace = Constants.ImGuiNamespace;
         module.IncludeDirs.Add(@"..\..\..\..\imgui\imgui");

@@ -17,17 +17,9 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     public override void Setup(Driver driver)
     {
-        var options = driver.Options;
+        base.Setup(driver);
 
-        options.GeneratorKind = GeneratorKind.CSharp;
-        options.GenerateFinalizers = true;
-#if DEBUG
-        options.GenerateDebugOutput = true;
-#endif
-        options.MarshalCharAsManagedChar = true;
-        options.Verbose = true;
-
-        var module = options.AddModule("implot");
+        var module = driver.Options.AddModule("implot");
 
         module.OutputNamespace = Constants.ImPlotNamespace;
         module.IncludeDirs.Add(@"..\..\..\..\imgui\imgui");

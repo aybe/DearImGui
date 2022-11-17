@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using CppSharp;
 using CppSharp.AST;
+using CppSharp.Generators;
 using CppSharp.Passes;
 using im.NET.Generator.Logging;
 
@@ -10,7 +11,18 @@ public abstract class LibraryBase : ILibrary
 {
     #region ILibrary Members
 
-    public abstract void Setup(Driver driver);
+    public virtual void Setup(Driver driver)
+    {
+        var options = driver.Options;
+
+        options.GeneratorKind = GeneratorKind.CSharp;
+        options.GenerateFinalizers = true;
+#if DEBUG
+        options.GenerateDebugOutput = true;
+#endif
+        options.MarshalCharAsManagedChar = true;
+        options.Verbose = true;
+    }
 
     public abstract void SetupPasses(Driver driver);
 

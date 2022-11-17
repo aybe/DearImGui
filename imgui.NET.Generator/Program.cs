@@ -9,6 +9,8 @@ internal static class Program
         var generator = new ConsoleGeneratorImGui("imgui");
 
         var library = new ImGuiLibrary();
+        
+        // TODO namespaces
 
         ConsoleGenerator.Run(library, generator);
     }
