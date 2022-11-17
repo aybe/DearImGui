@@ -1,5 +1,6 @@
 ﻿using System.Collections.Immutable;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using CppSharp;
 
 namespace im.NET.Generator;
@@ -65,6 +66,7 @@ public abstract class ConsoleGenerator
         ProcessNamespaces(ref text);
         ProcessAliases(ref text);
         ProcessPointers(ref text);
+        ProcessVisibility(ref text);
     }
 
     private void ProcessAliases(ref string input)
@@ -100,6 +102,18 @@ public abstract class ConsoleGenerator
         text = text.Replace(
             "public IntPtr __Instance { get; protected set; }",
             "internal IntPtr __Instance { get; set; }"
+        );
+    }
+
+    private void ProcessVisibility(ref string text)
+    {
+        // hide protected members to remove more CS1591
+
+        text = Regex.Replace(
+            text,
+            @"(internal\s+)*protected",
+            "private protected",
+            RegexOptions.Multiline
         );
     }
 

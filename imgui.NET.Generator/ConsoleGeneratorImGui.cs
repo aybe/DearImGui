@@ -198,15 +198,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             RegexOptions.Multiline
         );
 
-        // hide some protected members to remove more CS1591
-
-        str = Regex.Replace(
-            str,
-            @"(internal\s+)*protected",
-            "private protected",
-            RegexOptions.Multiline
-        );
-
         text = str;
 
         base.Process(ref text);
