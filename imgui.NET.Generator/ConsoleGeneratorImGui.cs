@@ -1,7 +1,8 @@
 ﻿using System.Collections.Immutable;
 using System.Text.RegularExpressions;
-using System.Text;
 using im.NET.Generator;
+
+// ReSharper disable StringLiteralTypo
 
 namespace imgui.NET.Generator;
 
@@ -28,60 +29,54 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 
     protected override void Process(ref string text)
     {
-        
-        var builder = new StringBuilder(text);
-
         const string @namespace = Constants.ImGuiNamespace;
 
         // merge symbols with class to remove __Symbols namespace
 
-        builder.Replace(
+        text = text.Replace(
             $"}}\r\nnamespace {@namespace}.__Symbols\r\n{{\r\n    internal class imgui",
             "    public unsafe partial class imgui"
         );
 
         // hide ImVector namespace as internal class as it cannot be moved onto ImVector<T> because of CS7042
 
-        builder.Replace(
+        text = text.Replace(
             "namespace ImVector",
             "internal static partial class ImVector"
         );
-        builder.Replace(
+
+        text = text.Replace(
             "public static IntPtr _EmptyString_ImGuiTextBuffer__2PADA",
             "internal static IntPtr _EmptyString_ImGuiTextBuffer__2PADA"
         );
 
-        builder.Replace(
+        text = text.Replace(
             ".__Symbols",
             string.Empty
         );
 
         // use our own symbol resolver
 
-        builder.Replace(
+        text = text.Replace(
             "CppSharp.SymbolResolver",
             $"{@namespace}.SymbolResolver"
         );
 
-        var str = builder.ToString();
-
         // add some inherit doc
 
-        str = Regex.Replace(
-            str,
+        text = Regex.Replace(
+            text,
             @"^(\s+)(public void Dispose\(\))",
             @"$1/// <inheritdoc />$1$2",
             RegexOptions.Multiline
         );
 
-        str = Regex.Replace(
-            str,
+        text = Regex.Replace(
+            text,
             @"^(\s+)(~\w+\(\))",
             @"$1/// <inheritdoc />$1$2",
             RegexOptions.Multiline
         );
-
-        text = str;
 
         base.Process(ref text);
     }
