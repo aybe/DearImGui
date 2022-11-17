@@ -6,13 +6,13 @@ internal static class Program
 {
     public static void Main(string[] args)
     {
-        var generator = new GeneratorImPlot("implot");
+        var generator = new ConsoleGeneratorImPlot("implot");
 
         var library = new ImPlotLibrary
         {
             Namespaces = generator.Namespaces
         };
 
-        GeneratorBase.Run(library, generator);
+        ConsoleGenerator.Run(library, generator);
     }
 }

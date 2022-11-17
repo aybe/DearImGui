@@ -4,9 +4,9 @@ using CppSharp;
 
 namespace im.NET.Generator;
 
-public abstract class GeneratorBase
+public abstract class ConsoleGenerator
 {
-    protected GeneratorBase(string moduleName, string? directory = null)
+    protected ConsoleGenerator(string moduleName, string? directory = null)
     {
         ModuleName = moduleName;
         ModulePath = Path.Combine(directory ?? Environment.CurrentDirectory, Path.ChangeExtension(ModuleName, "cs"));
@@ -34,7 +34,7 @@ public abstract class GeneratorBase
 
     private string ModuleText { get; }
 
-    public static void Run(ILibrary library, GeneratorBase generator)
+    public static void Run(ILibrary library, ConsoleGenerator generator)
     {
         if (Debugger.IsAttached) // cleanup garbage
         {

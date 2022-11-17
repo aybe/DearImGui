@@ -5,9 +5,9 @@ using im.NET.Generator;
 
 namespace implot.NET.Generator;
 
-internal sealed class GeneratorImPlot : GeneratorBase
+internal sealed class ConsoleGeneratorImPlot : im.NET.Generator.ConsoleGenerator
 {
-    public GeneratorImPlot(string moduleName, string? directory = null) : base(moduleName, directory)
+    public ConsoleGeneratorImPlot(string moduleName, string? directory = null) : base(moduleName, directory)
     {
         Namespaces = new SortedSet<string>
             {
