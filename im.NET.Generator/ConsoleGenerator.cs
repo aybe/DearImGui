@@ -148,6 +148,14 @@ public abstract class ConsoleGenerator
             @"[Obsolete(null, true)] internal $1",
             RegexOptions.Multiline
         );
+
+        // setting value type in type maps doesn't work
+
+        input = Regex.Replace(input,
+            @"__element is null \? new .*Vector\d.*;",
+            @"__element;",
+            RegexOptions.Multiline
+        );
     }
 
     private static void ProcessVisibility(ref string input)
