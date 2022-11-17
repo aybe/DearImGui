@@ -9,19 +9,7 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
 {
     public ConsoleGeneratorImPlot(string moduleName, string? directory = null) : base(moduleName, directory)
     {
-        Namespaces = new SortedSet<string>
-            {
-                "imgui.NET",
-                "implot.NET",
-                "System",
-                "System.Collections.Concurrent",
-                "System.Numerics",
-                "System.Runtime.CompilerServices",
-                "System.Runtime.InteropServices",
-                "System.Security",
-                "System.Text"
-            }
-            .ToImmutableSortedSet();
+        Namespaces = GetDefaultNamespaces().Add("implot.NET");
 
         Classes = new SortedSet<KeyValuePair<string, string>>
             {

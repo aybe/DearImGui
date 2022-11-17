@@ -9,7 +9,7 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 {
     public ConsoleGeneratorImGui(string moduleName, string? directory = null) : base(moduleName, directory)
     {
-        Namespaces = ImmutableSortedSet<string>.Empty;                    // TODO
+        Namespaces = GetDefaultNamespaces();
 
         Classes = new SortedSet<KeyValuePair<string, string>>
             {
@@ -117,38 +117,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
         builder.Replace(
             "CppSharp.SymbolResolver",
             $"{@namespace}.SymbolResolver"
-        );
-
-        // simplify namespaces
-
-        builder.Replace(
-            "global::System.Collections.Concurrent.",
-            string.Empty
-        );
-
-        builder.Replace(
-            "global::System.Numerics.",
-            string.Empty
-        );
-
-        builder.Replace(
-            "global::System.Text.",
-            string.Empty
-        );
-
-        builder.Replace(
-            "global::System.",
-            string.Empty
-        );
-
-        builder.Replace(
-            $"global::{@namespace}.",
-            string.Empty
-        );
-
-        builder.Replace(
-            $"{@namespace}.",
-            string.Empty
         );
 
         // XML comments are somehow wrong, fix that

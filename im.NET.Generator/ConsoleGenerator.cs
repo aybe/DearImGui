@@ -169,6 +169,22 @@ public abstract class ConsoleGenerator
         File.WriteAllText(backupPath, ModuleText);
     }
 
+    protected static ImmutableSortedSet<string> GetDefaultNamespaces()
+    {
+        return new SortedSet<string>
+            {
+                "imgui.NET",
+                "System",
+                "System.Collections.Concurrent",
+                "System.Numerics",
+                "System.Runtime.CompilerServices",
+                "System.Runtime.InteropServices",
+                "System.Security",
+                "System.Text"
+            }
+            .ToImmutableSortedSet();
+    }
+
     protected static ImmutableSortedSet<Type> GetDefaultAliases()
     {
         return new SortedSet<Type>(TypeNameComparer.Instance)
