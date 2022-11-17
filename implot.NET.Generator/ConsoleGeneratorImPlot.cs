@@ -30,6 +30,11 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
     {
         ProcessGenericMethods(ref text);
 
+        text = text.Replace(
+            "ImPlotPoint.__Internal ImPlotGetter",
+            "ImPlotPoint ImPlotGetter"
+        );
+
         base.Process(ref text);
     }
 
