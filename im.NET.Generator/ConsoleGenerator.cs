@@ -134,6 +134,14 @@ public abstract class ConsoleGenerator
             @"new Vector$1()",
             RegexOptions.Multiline
         );
+
+        // make vectors as obsolete so it's crystal clear
+
+        input = Regex.Replace(input,
+            @"public (unsafe partial struct ImVec\d)",
+            @"[Obsolete(null, true)] internal $1",
+            RegexOptions.Multiline
+        );
     }
 
     private static void ProcessVisibility(ref string input)
