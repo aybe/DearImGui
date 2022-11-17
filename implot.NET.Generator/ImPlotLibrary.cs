@@ -8,6 +8,8 @@ using CppSharp.Passes;
 using im.NET.Generator;
 using im.NET.Generator.Passes;
 
+// ReSharper disable IdentifierTypo
+
 namespace implot.NET.Generator;
 
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
@@ -39,29 +41,23 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     public override void Preprocess(Driver driver, ASTContext ctx)
     {
-        RemovePass<CheckIgnoredDeclsPass>(driver);
+        PreprocessPasses(driver);
         PreprocessNamespaces(ctx);
-        
-        ctx.SetClassAsValueType("ImPlotInputMap");
-        ctx.SetClassAsValueType("ImPlotPoint");
-        ctx.SetClassAsValueType("ImPlotRange");
-        ctx.SetClassAsValueType("ImPlotRect");
+        PreprocessValueTypes(ctx);
     }
 
     public override void Postprocess(Driver driver, ASTContext ctx)
     {
-        Ignore(ctx, "ImPlotPoint", "Item",   IgnoreType.Property); // manual
-        Ignore(ctx, "ImPlotStyle", "Colors", IgnoreType.Property); // manual
-
-        ctx.SetNameOfEnumWithName("ImAxis", "ImPlotAxis");
-
-        SetEnumerationsFlags(GetImPlotTranslationUnit(ctx));
+        PostprocessProperties(ctx);
+        PostprocessEnumerations(ctx);
     }
 
     private static TranslationUnit GetImPlotTranslationUnit(ASTContext ctx)
     {
         return ctx.TranslationUnits.Single(s => s.FileName is "implot.h");
     }
+
+    #region Preprocess
 
     private static void PreprocessNamespaces(ASTContext ctx)
     {
@@ -76,6 +72,36 @@ internal sealed class ImPlotLibrary : LibraryBase
         ns.Declarations.Clear();
     }
 
+    private static void PreprocessPasses(Driver driver)
+    {
+        RemovePass<CheckIgnoredDeclsPass>(driver);
+    }
+
+    private static void PreprocessValueTypes(ASTContext ctx)
+    {
+        ctx.SetClassAsValueType("ImPlotInputMap");
+        ctx.SetClassAsValueType("ImPlotPoint");
+        ctx.SetClassAsValueType("ImPlotRange");
+        ctx.SetClassAsValueType("ImPlotRect");
+    }
+
+    #endregion
+
+    #region Postprocess
+
+    private static void PostprocessEnumerations(ASTContext ctx)
+    {
+        ctx.SetNameOfEnumWithName("ImAxis", "ImPlotAxis");
+
+        SetEnumerationsFlags(GetImPlotTranslationUnit(ctx));
+    }
+
+    private static void PostprocessProperties(ASTContext ctx)
+    {
+        Ignore(ctx, "ImPlotPoint", "Item",   IgnoreType.Property); // manual
+        Ignore(ctx, "ImPlotStyle", "Colors", IgnoreType.Property); // manual
+    }
+
     private void OnUnitGenerated(GeneratorOutput output)
     {
         foreach (var generator in output.Outputs.Cast<CSharpSources>())
@@ -86,4 +112,6 @@ internal sealed class ImPlotLibrary : LibraryBase
             }
         }
     }
+
+    #endregion
 }
