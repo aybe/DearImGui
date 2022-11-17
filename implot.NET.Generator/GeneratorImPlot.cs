@@ -76,7 +76,6 @@ internal sealed class GeneratorImPlot : GeneratorBase
     {
         // add generic type parameter with unmanaged constraint
 
-        // TODO see if that can't be done upstream anyhow
         input = Regex.Replace(input,
             @"^(\s+public\s+static\s+\w+\s+\w+)(\(.*T\s+\w+.*\))",
             @"$1<T>$2 where T : unmanaged",
