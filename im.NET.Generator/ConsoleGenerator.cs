@@ -129,6 +129,22 @@ public abstract class ConsoleGenerator
     private static void ProcessSummaries(ref string input)
     {
         input = input.Replace("// <summary>", "/// <summary>");
+
+        // add few inherit doc to reduce CS1591 warnings count
+
+        input = Regex.Replace(
+            input,
+            @"^(\s+)(public void Dispose\(\))",
+            @"$1/// <inheritdoc />$1$2",
+            RegexOptions.Multiline
+        );
+
+        input = Regex.Replace(
+            input,
+            @"^(\s+)(~\w+\(\))",
+            @"$1/// <inheritdoc />$1$2",
+            RegexOptions.Multiline
+        );
     }
 
     private static void ProcessVectors(ref string input)

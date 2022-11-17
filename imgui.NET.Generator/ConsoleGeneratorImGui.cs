@@ -62,22 +62,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             $"{@namespace}.SymbolResolver"
         );
 
-        // add some inherit doc
-
-        text = Regex.Replace(
-            text,
-            @"^(\s+)(public void Dispose\(\))",
-            @"$1/// <inheritdoc />$1$2",
-            RegexOptions.Multiline
-        );
-
-        text = Regex.Replace(
-            text,
-            @"^(\s+)(~\w+\(\))",
-            @"$1/// <inheritdoc />$1$2",
-            RegexOptions.Multiline
-        );
-
         base.Process(ref text);
     }
 }
