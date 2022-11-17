@@ -154,19 +154,12 @@
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\imgui\imgui\imgui.h" />
-    <ClInclude Include="..\imgui\imgui\imgui_internal.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="implot\implot.h" />
     <ClInclude Include="implot\implot_internal.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\imgui\imgui\imgui.cpp" />
-    <ClCompile Include="..\imgui\imgui\imgui_demo.cpp" />
-    <ClCompile Include="..\imgui\imgui\imgui_draw.cpp" />
-    <ClCompile Include="..\imgui\imgui\imgui_tables.cpp" />
-    <ClCompile Include="..\imgui\imgui\imgui_widgets.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="implot\implot.cpp" />
     <ClCompile Include="implot\implot_demo.cpp" />
@@ -174,6 +167,11 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="implot.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\imgui\imgui.vcxproj">
+      <Project>{064947c0-ff04-49d5-918f-5b491791a566}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
