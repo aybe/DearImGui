@@ -41,9 +41,14 @@ public abstract class GeneratorBase
         Write(text);
     }
 
-    protected abstract void Process(ref string text);
+    protected virtual void Process(ref string text)
+    {
+        ProcessClasses(ref text);
+        ProcessNamespaces(ref text);
+        ProcessAliases(ref text);
+    }
 
-    protected void ProcessAliases(ref string input)
+    private void ProcessAliases(ref string input)
     {
         foreach (var item in Aliases)
         {
@@ -51,7 +56,7 @@ public abstract class GeneratorBase
         }
     }
 
-    protected void ProcessClasses(ref string input)
+    private void ProcessClasses(ref string input)
     {
         foreach (var item in Classes)
         {
@@ -59,7 +64,7 @@ public abstract class GeneratorBase
         }
     }
 
-    protected void ProcessNamespaces(ref string input)
+    private void ProcessNamespaces(ref string input)
     {
         foreach (var item in Namespaces.Reverse())
         {

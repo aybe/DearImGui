@@ -28,7 +28,7 @@ internal sealed class GeneratorImPlot : GeneratorBase
                 new("implot", "ImPlot")
             }
             .ToImmutableSortedSet();
-        
+
         Aliases = new SortedSet<Type>(TypeNameComparer.Instance)
             {
                 typeof(CallingConvention),
@@ -45,15 +45,11 @@ internal sealed class GeneratorImPlot : GeneratorBase
 
     protected override void Process(ref string text)
     {
-        ProcessClasses(ref text);
-
         ProcessVectors(ref text);
-
-        ProcessNamespaces(ref text);
-
-        ProcessAliases(ref text);
-
+        
         ProcessGenericMethods(ref text);
+
+        base.Process(ref text);
     }
 
     private static void ProcessGenericMethods(ref string input)
