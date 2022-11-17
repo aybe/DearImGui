@@ -71,6 +71,8 @@ public abstract class ConsoleGenerator
 
     private void ProcessAliases(ref string input)
     {
+        // remove double underscore prefix added by CppSharp
+
         foreach (var item in Aliases)
         {
             input = input.Replace($"__{item.Name}", item.Name);
@@ -79,6 +81,8 @@ public abstract class ConsoleGenerator
 
     private void ProcessClasses(ref string input)
     {
+        // rename classes and references to their internals
+
         foreach (var (key, val) in Classes)
         {
             input = input.Replace($"class {key}", $"class {val}");
@@ -89,6 +93,8 @@ public abstract class ConsoleGenerator
 
     private void ProcessNamespaces(ref string input)
     {
+        // simplify fully qualified names
+
         foreach (var item in Namespaces.Reverse())
         {
             input = input.Replace($"global::{item}.", string.Empty);
