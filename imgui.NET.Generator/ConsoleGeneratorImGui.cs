@@ -10,7 +10,13 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
     public ConsoleGeneratorImGui(string moduleName, string? directory = null) : base(moduleName, directory)
     {
         Namespaces = ImmutableSortedSet<string>.Empty;                    // TODO
-        Classes = ImmutableSortedSet<KeyValuePair<string, string>>.Empty; // TODO
+
+        Classes = new SortedSet<KeyValuePair<string, string>>
+            {
+                new("imgui", "ImGui")
+            }
+            .ToImmutableSortedSet();
+        
         Aliases = ImmutableSortedSet<Type>.Empty;                         // TODO
     }
 
@@ -27,21 +33,11 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 
         const string @namespace = Constants.ImGuiNamespace;
 
-        // rename imgui class and fix references to it
+        // merge symbols with class to remove __Symbols namespace
 
         builder.Replace(
-            "class imgui",
-            "class ImGui"
-        );
-
-        builder.Replace(
-            "imgui()",
-            "ImGui()"
-        );
-
-        builder.Replace(
-            "imgui._",
-            "ImGui._"
+            $"}}\r\nnamespace {@namespace}.__Symbols\r\n{{\r\n    internal class imgui",
+            "    public unsafe partial class imgui"
         );
 
         // hide pointers that should have been internal
@@ -106,14 +102,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             "namespace ImVector",
             "internal static partial class ImVector"
         );
-
-        // merge symbols with class to remove __Symbols namespace
-
-        builder.Replace(
-            $"}}\r\nnamespace {@namespace}.__Symbols\r\n{{\r\n    internal class ImGui",
-            "    public unsafe partial class ImGui"
-        );
-
         builder.Replace(
             "public static IntPtr _EmptyString_ImGuiTextBuffer__2PADA",
             "internal static IntPtr _EmptyString_ImGuiTextBuffer__2PADA"

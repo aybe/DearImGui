@@ -76,9 +76,11 @@ public abstract class ConsoleGenerator
 
     private void ProcessClasses(ref string input)
     {
-        foreach (var item in Classes)
+        foreach (var (key, val) in Classes)
         {
-            input = input.Replace($"class {item.Key}", $"class {item.Value}");
+            input = input.Replace($"class {key}", $"class {val}");
+            input = input.Replace($"{key}()", $"{val}()");
+            input = input.Replace($"{key}._", $"{val}._");
         }
     }
 
