@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<!--EXTERNAL_PROPERTIES: TargetFramework-->
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -28,7 +29,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="..\imgui.NET.Generator\bin\$(Configuration)\net6.0\imgui.cs" Link="ImGui.g.cs" />
+		<Compile Include="..\imgui.NET.Generator\bin\$(Configuration)\$(TargetFramework)\imgui.cs" Link="ImGui.g.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

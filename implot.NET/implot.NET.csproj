@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<!--EXTERNAL_PROPERTIES: TargetFramework-->
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -17,7 +18,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Include="..\implot.NET.Generator\bin\$(Configuration)\net6.0\implot.cs" Link="ImPlot.g.cs" />
+		<Compile Include="..\implot.NET.Generator\bin\$(Configuration)\$(TargetFramework)\implot.cs" Link="ImPlot.g.cs" />
 	</ItemGroup>
 
 </Project>
