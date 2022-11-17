@@ -5,7 +5,7 @@ using im.NET.Generator;
 
 namespace imgui.NET.Generator;
 
-internal sealed class ConsoleGeneratorImGui : im.NET.Generator.ConsoleGenerator
+internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 {
     public ConsoleGeneratorImGui(string moduleName, string? directory = null) : base(moduleName, directory)
     {

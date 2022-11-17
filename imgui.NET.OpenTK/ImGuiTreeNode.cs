@@ -6,14 +6,14 @@ public readonly struct ImGuiTreeNode : IDisposable
 
     public ImGuiTreeNode(string label, ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags.SpanAvailWidth | ImGuiTreeNodeFlags.FramePadding)
     {
-        Expanded = imgui.NET.ImGui.TreeNodeEx(label, flags);
+        Expanded = ImGui.TreeNodeEx(label, flags);
     }
 
     public void Dispose()
     {
         if (Expanded)
         {
-            imgui.NET.ImGui.TreePop();
+            ImGui.TreePop();
         }
     }
 }

@@ -5,7 +5,7 @@ using im.NET.Generator;
 
 namespace implot.NET.Generator;
 
-internal sealed class ConsoleGeneratorImPlot : im.NET.Generator.ConsoleGenerator
+internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
 {
     public ConsoleGeneratorImPlot(string moduleName, string? directory = null) : base(moduleName, directory)
     {
