@@ -136,6 +136,14 @@ public abstract class ConsoleGenerator
 
     private void ProcessVisibility(ref string text)
     {
+        // hide internal structs and vectors
+
+        text = Regex.Replace(text,
+            @"public ((?:unsafe )?partial struct (?:__Internal|ImVec\d))",
+            @"internal $1",
+            RegexOptions.Multiline
+        );
+
         // hide protected members to remove more CS1591
 
         text = Regex.Replace(

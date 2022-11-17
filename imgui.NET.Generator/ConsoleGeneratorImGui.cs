@@ -40,31 +40,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             "    public unsafe partial class imgui"
         );
 
-        // hide structs that should have been internal
-
-        builder.Replace(
-            "public partial struct __Internal",
-            "internal partial struct __Internal"
-        );
-
-        builder.Replace(
-            "public unsafe partial struct __Internal",
-            "internal unsafe partial struct __Internal"
-        );
-
-        // hide replaced vectors, their internal stuff is still used
-
-        builder.Replace(
-            "public unsafe partial struct ImVec2",
-            "internal unsafe partial struct ImVec2"
-        );
-
-
-        builder.Replace(
-            "public unsafe partial struct ImVec4",
-            "internal unsafe partial struct ImVec4"
-        );
-
         // they're now unused in sources, let's add a little guard though
 
         builder.Replace(
