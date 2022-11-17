@@ -40,13 +40,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             "    public unsafe partial class imgui"
         );
 
-        // hide pointers that should have been internal
-
-        builder.Replace(
-            "public __IntPtr __Instance { get; protected set; }",
-            "internal __IntPtr __Instance { get; set; }"
-        );
-
         // hide structs that should have been internal
 
         builder.Replace(

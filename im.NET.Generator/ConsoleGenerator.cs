@@ -64,6 +64,7 @@ public abstract class ConsoleGenerator
         ProcessClasses(ref text);
         ProcessNamespaces(ref text);
         ProcessAliases(ref text);
+        ProcessPointers(ref text);
     }
 
     private void ProcessAliases(ref string input)
@@ -90,6 +91,16 @@ public abstract class ConsoleGenerator
         {
             input = input.Replace($"global::{item}.", string.Empty);
         }
+    }
+
+    private void ProcessPointers(ref string text)
+    {
+        // hide pointers to internal classes
+
+        text = text.Replace(
+            "public IntPtr __Instance { get; protected set; }",
+            "internal IntPtr __Instance { get; set; }"
+        );
     }
 
     private void Write(string text)
