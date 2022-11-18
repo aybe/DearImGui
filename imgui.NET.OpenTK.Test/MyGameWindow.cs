@@ -1,4 +1,5 @@
 ﻿using imgui.NET.OpenTK.Extensions;
+using implot.NET;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
@@ -10,10 +11,18 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 {
     private readonly ImGuiController Controller;
 
+    private readonly ImPlotContext ImPlotContext;
+
     public MyGameWindow(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings)
         : base(gameWindowSettings, nativeWindowSettings)
     {
         Controller = new ImGuiController(this, new ImGuiFontConfig("Roboto-Regular.ttf", 10.0f));
+
+        ImPlotContext = ImPlot.CreateContext();
+
+        ImPlot.SetCurrentContext(ImPlotContext);
+
+        ImPlot.SetImGuiContext(Controller.Context);
     }
 
     private double ElapsedTime { get; set; }
@@ -23,6 +32,7 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
         if (disposing)
         {
             Controller.Dispose();
+            ImPlot.DestroyContext(ImPlotContext);
         }
 
         base.Dispose(disposing);
@@ -43,6 +53,8 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
         var b = true;
 
         ImGui.ShowDemoWindow(ref b);
+
+        ImPlot.ShowDemoWindow(ref b);
 
         Controller.Render();
 
