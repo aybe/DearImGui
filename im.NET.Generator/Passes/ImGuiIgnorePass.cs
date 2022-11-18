@@ -67,7 +67,7 @@ public sealed class ImGuiIgnorePass : ImBasePass
     {
         if (IgnoreIfNotImGui(item, LogIgnoredImGuiEnumerationItem))
         {
-            throw new InvalidOperationException(); // should never be reached
+            throw new InvalidOperationException(); // never happens
         }
 
         return base.VisitEnumItemDecl(item);

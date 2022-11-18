@@ -53,7 +53,7 @@ public sealed class ImEnumPass : ImBasePass
 
     public override bool VisitEnumItemDecl(Enumeration.Item item)
     {
-        // ignore enumerations items with some suffixes, these are only relevant for C++
+        // ignore enumerations items with some suffixes, these are only useful when using C++
 
         var suffix = IgnoredSuffixes.FirstOrDefault(s => item.Name.EndsWith(s, StringComparison.Ordinal));
 
@@ -78,7 +78,7 @@ public sealed class ImEnumPass : ImBasePass
         {
             item.Name = item.Name.Replace(item.Namespace.Name, string.Empty);
 
-            // prefix enumeration name with a 'D' when it starts with a digit, e.g. ImGuiKey_1 -> D1
+            // prefix enumeration name with a 'D' when it starts with a digit, e.g. 1 -> D1
 
             if (char.IsDigit(item.Name[0]))
             {
