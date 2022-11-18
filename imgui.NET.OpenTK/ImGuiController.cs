@@ -166,7 +166,7 @@ public sealed class ImGuiController : Disposable
         { Keys.F12, ImGuiKey.F12 }
     };
 
-    private readonly ImGuiContext Context;
+    public ImGuiContext Context { get; }
 
     private readonly ImGuiIO IO;
 
