@@ -1,6 +1,6 @@
-﻿namespace imgui.NET.OpenTK;
+﻿namespace imgui.NET;
 
-internal readonly struct ImGuiContextScope : IDisposable
+public readonly struct ImGuiContextScope : IDisposable
 {
     private readonly ImGuiContext Context;
 
@@ -11,6 +11,7 @@ internal readonly struct ImGuiContextScope : IDisposable
         ImGui.SetCurrentContext(context);
     }
 
+    /// <inheritdoc />
     public void Dispose()
     {
         ImGui.SetCurrentContext(Context);
