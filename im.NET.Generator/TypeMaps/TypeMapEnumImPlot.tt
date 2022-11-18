@@ -1,4 +1,4 @@
 ﻿<#@ include file="TypeMapEnum.tt" once="true" #>
 <#
-	Test(Host.ResolvePath("TypeMapEnumImPlot.txt"), "implot.NET");
+	Generate(Host.ResolvePath("TypeMapEnumImPlot.txt"), "implot.NET");
 #>

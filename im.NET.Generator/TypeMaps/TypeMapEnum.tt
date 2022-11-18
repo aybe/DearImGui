@@ -8,7 +8,7 @@ using JetBrains.Annotations;
 
 namespace im.NET.Generator.TypeMaps;
 <#+
-	public void Test(string path, string @namespace)
+	public void Generate(string path, string @namespace)
 	{
 		var types = File.ReadAllLines(path);
 
