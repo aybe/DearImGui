@@ -19,6 +19,9 @@ namespace im.NET.Generator.TypeMaps;
 				continue; // empty line or comment
 			}
 
+			// we support adding multiple type map attributes, each separated with a semi-colon
+			// see the comments in TypeMapEnum.cs CSharpSignatureType on why we have to do this
+
 			const string prefix = "TypeMapEnum";
 			
 			WriteLine("[UsedImplicitly]");

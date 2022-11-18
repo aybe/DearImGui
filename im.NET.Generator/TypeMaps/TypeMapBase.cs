@@ -11,6 +11,8 @@ public class TypeMapBase : TypeMap
     [Conditional("DEBUG_TYPE_MAP")]
     private void WriteDebugInformation(MarshalContext ctx, [CallerMemberName] string memberName = null!)
     {
+        // write some debug information as the numerous cases are confusing
+
         var text = $"{nameof(memberName)}: {GetType().Name}.{memberName}, " +
                    $"{nameof(ctx.Function)}: {ctx.Function != null}, " +
                    $"{nameof(ctx.ReturnVarName)}: {ctx.ReturnVarName != null}";
