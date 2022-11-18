@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "imgui.NET", "imgui.NET\imgui.NET.csproj", "{9648C15D-F5F9-45E3-B2FB-1A9B291334FF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{064947C0-FF04-49D5-918F-5B491791A566} = {064947C0-FF04-49D5-918F-5B491791A566}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "imgui.NET.Generator", "imgui.NET.Generator\imgui.NET.Generator.csproj", "{023B1F68-D654-4501-A99A-C499EBAAC295}"
 EndProject
@@ -18,6 +21,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "implot.NET.Generator", "implot.NET.Generator\implot.NET.Generator.csproj", "{DE2079B1-EDFD-4BE3-A247-3DBDE1F23B0C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "implot.NET", "implot.NET\implot.NET.csproj", "{109B13EE-AE21-4C23-B81C-304F2BEE08F6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DE0704DC-03C2-4413-BA2E-024604C1E58A} = {DE0704DC-03C2-4413-BA2E-024604C1E58A}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "im.NET.Generator", "im.NET.Generator\im.NET.Generator.csproj", "{AE23614A-D27C-4FFA-800A-456B674D9D43}"
 EndProject
