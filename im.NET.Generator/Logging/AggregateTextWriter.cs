@@ -1,7 +1,9 @@
 ﻿using System.Text;
+using JetBrains.Annotations;
 
 namespace im.NET.Generator.Logging;
 
+[PublicAPI]
 public sealed class AggregateTextWriter : TextWriter
 {
     private readonly TextWriter Writer1;

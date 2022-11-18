@@ -1,5 +1,8 @@
-﻿namespace im.NET.Generator.Logging;
+﻿using JetBrains.Annotations;
 
+namespace im.NET.Generator.Logging;
+
+[PublicAPI]
 public sealed class AggregateConsoleOut : IDisposable
 {
     private readonly TextWriter Out;

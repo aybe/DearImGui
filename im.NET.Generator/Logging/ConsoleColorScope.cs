@@ -11,10 +11,14 @@ public readonly struct ConsoleColorScope : IDisposable
         ForegroundColor = Console.ForegroundColor;
 
         if (backgroundColor.HasValue)
+        {
             Console.BackgroundColor = backgroundColor.Value;
+        }
 
         if (foregroundColor.HasValue)
+        {
             Console.ForegroundColor = foregroundColor.Value;
+        }
     }
 
     public void Dispose()
