@@ -42,7 +42,7 @@ internal sealed class ImPlotLibrary : LibraryBase
     public override void Preprocess(Driver driver, ASTContext ctx)
     {
         PreprocessPasses(driver);
-        PreprocessNamespaces(ctx);
+        PreprocessNamespace(ctx);
         PreprocessValueTypes(ctx);
     }
 
@@ -59,7 +59,7 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     #region Preprocess
 
-    private static void PreprocessNamespaces(ASTContext ctx)
+    private static void PreprocessNamespace(ASTContext ctx)
     {
         // move imports class to outer scope, i.e. remove superfluous namespace
 
