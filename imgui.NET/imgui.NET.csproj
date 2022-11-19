@@ -1,5 +1,4 @@
-﻿<!--EXTERNAL_PROPERTIES: TargetFramework-->
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -25,7 +24,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<NoWarn>1701;1702<!--;1591;1587--></NoWarn>
+		<NoWarn>1701;1702</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
