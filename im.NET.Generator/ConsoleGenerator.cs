@@ -63,15 +63,18 @@ public abstract class ConsoleGenerator
 
     protected virtual void Process(ref string text)
     {
-        // simplify namespaces first to simplify replacements
-        ProcessNamespaces(ref text, Namespaces);
+        // apply module-wide changes stuff first
 
-        ProcessClasses(ref text, Classes);
-        ProcessVectors(ref text);
+        ProcessNamespaces(ref text, Namespaces);
         ProcessAliases(ref text, Aliases);
+        ProcessClasses(ref text, Classes);
+
+        // apply fine-grained stuff
+
+        ProcessVectors(ref text);
         ProcessPointers(ref text);
-        ProcessVisibility(ref text);
         ProcessSummaries(ref text);
+        ProcessVisibility(ref text);
     }
 
     private static void ProcessAliases(ref string input, ImmutableSortedSet<Type> aliases)
