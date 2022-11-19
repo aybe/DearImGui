@@ -34,7 +34,8 @@ internal sealed class ImPlotLibrary : LibraryBase
     public override void SetupPasses(Driver driver)
     {
         driver.AddTranslationUnitPass(new ImGuiIgnorePass());
-        driver.AddTranslationUnitPass(new ImEnumPass());
+
+        AddDefaultPasses(driver);
 
         driver.Generator.OnUnitGenerated += OnUnitGenerated;
     }
@@ -70,11 +71,6 @@ internal sealed class ImPlotLibrary : LibraryBase
         ns.Namespace.Declarations.AddRange(ns.Declarations);
 
         ns.Declarations.Clear();
-    }
-
-    private static void PreprocessPasses(Driver driver)
-    {
-        RemovePass<CheckIgnoredDeclsPass>(driver);
     }
 
     private static void PreprocessValueTypes(ASTContext ctx)

@@ -6,6 +6,7 @@ using CppSharp.Generators;
 using CppSharp.Generators.CSharp;
 using CppSharp.Passes;
 using im.NET.Generator.Logging;
+using im.NET.Generator.Passes;
 
 namespace im.NET.Generator;
 
@@ -36,6 +37,12 @@ public abstract class LibraryBase : ILibrary
 
     #endregion
 
+    protected static void AddDefaultPasses(Driver driver)
+    {
+        driver.AddTranslationUnitPass(new ImEnumPass());
+        driver.AddTranslationUnitPass(new ImGuiSummaryPass());
+    }
+
     protected static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
     {
         return ctx.TranslationUnits.Single(s => s.FileName == "imgui.h");
@@ -60,6 +67,17 @@ public abstract class LibraryBase : ILibrary
             default:
                 throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null);
         }
+    }
+
+    protected static void PreprocessPasses(Driver driver)
+    {
+        // actually, we do want these, else we'll get pretty much nothing generated
+
+        RemovePass<CheckIgnoredDeclsPass>(driver);
+
+        // this is useless in our case, it also throws when adding our own comments
+
+        RemovePass<CleanCommentsPass>(driver);
     }
 
     protected void ProcessSources(CSharpSources sources)
@@ -95,7 +113,7 @@ public abstract class LibraryBase : ILibrary
         }
     }
 
-    protected static void RemovePass<T>(Driver driver, [CallerMemberName] string memberName = null!) where T : TranslationUnitPass
+    private static void RemovePass<T>(Driver driver, [CallerMemberName] string memberName = null!) where T : TranslationUnitPass
     {
         var count = driver.Context.TranslationUnitPasses.Passes.RemoveAll(s => s is T);
 

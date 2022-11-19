@@ -35,8 +35,7 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     public override void SetupPasses(Driver driver)
     {
-        driver.AddTranslationUnitPass(new ImEnumPass());
-        driver.AddTranslationUnitPass(new ImGuiSummaryPass());
+        AddDefaultPasses(driver);
 
         driver.Generator.OnUnitGenerated += OnUnitGenerated;
     }
@@ -59,17 +58,6 @@ internal sealed class ImGuiLibrary : LibraryBase
     }
 
     #region Preprocess
-
-    private static void PreprocessPasses(Driver driver)
-    {
-        // actually, we do want these, else we'll get pretty much nothing generated
-
-        RemovePass<CheckIgnoredDeclsPass>(driver);
-
-        // this is useless in our case, it also throws when adding our own comments
-
-        RemovePass<CleanCommentsPass>(driver);
-    }
 
     private static void PreprocessEnumerations(ASTContext ctx)
     {
