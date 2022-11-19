@@ -62,14 +62,14 @@ public abstract class LibraryBase : ILibrary
         }
     }
 
-    protected void ProcessHeader(CSharpSources generator)
+    protected void ProcessSources(CSharpSources sources)
     {
-        var header = generator.FindBlock(BlockKind.Header);
+        var header = sources.FindBlock(BlockKind.Header);
 
         header.Text.WriteLine(
             "#pragma warning disable CS0109 // The member 'member' does not hide an inherited member. The new keyword is not required");
 
-        var usings = generator.FindBlock(BlockKind.Usings);
+        var usings = sources.FindBlock(BlockKind.Usings);
 
         usings.Text.StringBuilder.Clear();
 
@@ -78,7 +78,7 @@ public abstract class LibraryBase : ILibrary
             usings.Text.WriteLine($"using {item};");
         }
 
-        var comments = generator.FindBlocks(BlockKind.BlockComment);
+        var comments = sources.FindBlocks(BlockKind.BlockComment);
 
         foreach (var comment in comments)
         {
@@ -91,22 +91,26 @@ public abstract class LibraryBase : ILibrary
         var count = driver.Context.TranslationUnitPasses.Passes.RemoveAll(s => s is T);
 
         using (new ConsoleColorScope(null, ConsoleColor.Yellow))
+        {
             Console.WriteLine($"Removed {count} passes of type {typeof(T)} in {memberName}");
+        }
     }
 
     protected static void SetEnumerationsFlags(TranslationUnit unit)
     {
         foreach (var enumeration in unit.Enums)
         {
-            if (enumeration.Name.Contains("Flags"))
+            if (enumeration.Name.Contains("Flags") is false)
+                continue;
+
+            if (enumeration.IsFlags)
+                continue;
+
+            enumeration.SetFlags();
+
+            using (new ConsoleColorScope(null, ConsoleColor.Yellow))
             {
-                if (enumeration.IsFlags is true)
-                    continue;
-
-                enumeration.SetFlags();
-
-                using (new ConsoleColorScope(null, ConsoleColor.Yellow))
-                    Console.WriteLine($"Set enumeration as flags: {enumeration.Name}");
+                Console.WriteLine($"Set enumeration as flags: {enumeration.Name}");
             }
         }
     }

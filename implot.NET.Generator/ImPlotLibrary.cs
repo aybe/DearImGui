@@ -108,7 +108,7 @@ internal sealed class ImPlotLibrary : LibraryBase
         {
             if (generator.Module.LibraryName is "implot")
             {
-                ProcessHeader(generator);
+                ProcessSources(generator);
             }
         }
     }

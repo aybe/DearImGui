@@ -218,7 +218,7 @@ internal sealed class ImGuiLibrary : LibraryBase
         {
             if (generator.Module.LibraryName is "imgui")
             {
-                ProcessHeader(generator);
+                ProcessSources(generator);
             }
         }
     }
