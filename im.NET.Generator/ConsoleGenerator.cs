@@ -38,7 +38,8 @@ public abstract class ConsoleGenerator
 
     public static void Run(ILibrary library, ConsoleGenerator generator)
     {
-        if (Debugger.IsAttached) // cleanup garbage
+        if (Debugger.IsAttached)
+            // using color between runs confuses console
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -131,6 +132,8 @@ public abstract class ConsoleGenerator
 
     private static void ProcessSummaries(ref string input)
     {
+        // for some reason, summaries have wrong syntax, repair
+
         input = input.Replace("// <summary>", "/// <summary>");
 
         // add few inherit doc to reduce CS1591 warnings count

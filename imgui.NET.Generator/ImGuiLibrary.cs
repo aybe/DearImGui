@@ -64,9 +64,11 @@ internal sealed class ImGuiLibrary : LibraryBase
     private static void PreprocessPasses(Driver driver)
     {
         // actually, we do want these, else we'll get pretty much nothing generated
+
         RemovePass<CheckIgnoredDeclsPass>(driver);
 
         // this is useless in our case, it also throws when adding our own comments
+
         RemovePass<CleanCommentsPass>(driver);
     }
 
@@ -95,7 +97,8 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     private static void PreprocessValueTypes(ASTContext ctx)
     {
-        // though ignored and manually implemented, we must set these as value types
+        // though ignored or manually implemented or remapped, we must set these as value types anyway
+
         ctx.SetClassAsValueType("ImDrawVert");
         ctx.SetClassAsValueType("ImVec2");
         ctx.SetClassAsValueType("ImVec4");
@@ -175,7 +178,9 @@ internal sealed class ImGuiLibrary : LibraryBase
             declaration.Namespace = tu;
 
             using (new ConsoleColorScope(null, ConsoleColor.Yellow))
+            {
                 Console.WriteLine($"Set declaration {declaration} namespace to {tu}");
+            }
         }
 
         tu.Declarations.AddRange(ns.Declarations);
@@ -207,7 +212,9 @@ internal sealed class ImGuiLibrary : LibraryBase
                 ctx.SetPropertyAsReadOnly(c.Name, p.Name);
 
                 using (new ConsoleColorScope(null, ConsoleColor.Yellow))
+                {
                     Console.WriteLine($"Set ImVector<T> property as read-only: {c.Name}.{p.Name}");
+                }
             }
         }
     }
