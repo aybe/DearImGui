@@ -1,11 +1,10 @@
 ﻿using System.Text.RegularExpressions;
 using CppSharp.AST;
 using CppSharp.Passes;
-using im.NET.Generator;
 
-namespace imgui.NET.Generator.Passes;
+namespace im.NET.Generator.Passes;
 
-internal sealed class ProduceSummary : TranslationUnitPass
+public sealed class ImGuiSummaryPass : TranslationUnitPass
 {
     private readonly Dictionary<TranslationUnit, string[]> Dictionary = new();
 

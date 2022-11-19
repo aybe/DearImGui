@@ -7,7 +7,6 @@ using CppSharp.Passes;
 using im.NET.Generator;
 using im.NET.Generator.Logging;
 using im.NET.Generator.Passes;
-using imgui.NET.Generator.Passes;
 
 // ReSharper disable IdentifierTypo
 // ReSharper disable RedundantIfElseBlock
@@ -37,7 +36,7 @@ internal sealed class ImGuiLibrary : LibraryBase
     public override void SetupPasses(Driver driver)
     {
         driver.AddTranslationUnitPass(new ImEnumPass());
-        driver.AddTranslationUnitPass(new ProduceSummary());
+        driver.AddTranslationUnitPass(new ImGuiSummaryPass());
 
         driver.Generator.OnUnitGenerated += OnUnitGenerated;
     }

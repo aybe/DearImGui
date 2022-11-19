@@ -19,4 +19,8 @@
 		<ProjectReference Include="..\im.NET.Generator\im.NET.Generator.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Passes\" />
+	</ItemGroup>
+
 </Project>
