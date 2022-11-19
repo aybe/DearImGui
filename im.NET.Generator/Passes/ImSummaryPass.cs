@@ -4,7 +4,7 @@ using CppSharp.Passes;
 
 namespace im.NET.Generator.Passes;
 
-public sealed class ImGuiSummaryPass : TranslationUnitPass
+public sealed class ImSummaryPass : TranslationUnitPass
 {
     private readonly Dictionary<TranslationUnit, string[]> Dictionary = new();
 

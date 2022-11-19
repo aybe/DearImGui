@@ -40,7 +40,7 @@ public abstract class LibraryBase : ILibrary
     protected static void AddDefaultPasses(Driver driver)
     {
         driver.AddTranslationUnitPass(new ImEnumPass());
-        driver.AddTranslationUnitPass(new ImGuiSummaryPass());
+        driver.AddTranslationUnitPass(new ImSummaryPass());
     }
 
     protected static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
