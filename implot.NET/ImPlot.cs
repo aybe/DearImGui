@@ -3,7 +3,10 @@ using JetBrains.Annotations;
 
 namespace implot.NET;
 
-[UsedImplicitly]
+/// <summary>
+///     https://github.com/epezent/implot
+/// </summary>
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImPlot
 {
     static ImPlot()
