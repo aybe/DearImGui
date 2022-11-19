@@ -1,5 +1,7 @@
 ﻿using JetBrains.Annotations;
 
+#pragma warning disable CS1591
+
 namespace imgui.NET;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]

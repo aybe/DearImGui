@@ -71,6 +71,9 @@ public abstract class LibraryBase : ILibrary
         header.Text.WriteLine(
             "#pragma warning disable CS0109 // The member 'member' does not hide an inherited member. The new keyword is not required");
 
+        header.Text.WriteLine( // there is no generic solution for these ones, e.g. delegates, indexers
+            "#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Type_or_Member'");
+
         // add used usings
 
         var usings = sources.FindBlock(BlockKind.Usings);

@@ -1,7 +1,12 @@
 ﻿using JetBrains.Annotations;
 
+#pragma warning disable CS1591
+
 namespace imgui.NET;
 
+/// <summary>
+///     Scope for temporarily switching imgui context.
+/// </summary>
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public readonly struct ImGuiContextScope : IDisposable
 {

@@ -6,6 +6,9 @@ namespace imgui.NET;
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImGuiStyle
 {
+    /// <summary>
+    ///     https://github.com/ocornut/imgui/blob/9aae45eb4a05a5a1f96be1ef37eb503a12ceb889/imgui.h#L1882
+    /// </summary>
     public Vector4[] Colors
     {
         get

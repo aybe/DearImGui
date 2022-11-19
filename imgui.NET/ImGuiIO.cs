@@ -8,6 +8,9 @@ namespace imgui.NET;
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImGuiIO
 {
+    /// <summary>
+    ///     https://github.com/ocornut/imgui/blob/9aae45eb4a05a5a1f96be1ef37eb503a12ceb889/imgui.h#L2038
+    /// </summary>
     public Vector2[] MouseClickedPos
     {
         get
