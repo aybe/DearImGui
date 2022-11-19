@@ -1,7 +1,5 @@
 ﻿using JetBrains.Annotations;
 
-#pragma warning disable CS1591
-
 namespace imgui.NET;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
@@ -55,12 +53,16 @@ partial class ImGuiContext : IEquatable<ImGuiContext>
         return __Instance.GetHashCode();
     }
 
+#pragma warning disable CS1591
     public static bool operator ==(ImGuiContext? left, ImGuiContext? right)
+#pragma warning restore CS1591
     {
         return Equals(left, right);
     }
 
+#pragma warning disable CS1591
     public static bool operator !=(ImGuiContext? left, ImGuiContext? right)
+#pragma warning restore CS1591
     {
         return !Equals(left, right);
     }

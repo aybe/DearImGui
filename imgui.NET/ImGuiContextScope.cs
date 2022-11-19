@@ -1,7 +1,5 @@
 ﻿using JetBrains.Annotations;
 
-#pragma warning disable CS1591
-
 namespace imgui.NET;
 
 /// <summary>
@@ -12,7 +10,9 @@ public readonly struct ImGuiContextScope : IDisposable
 {
     private readonly ImGuiContext Context;
 
+#pragma warning disable CS1591
     public ImGuiContextScope(ImGuiContext context)
+#pragma warning restore CS1591
     {
         Context = ImGui.GetCurrentContext();
 
