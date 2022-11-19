@@ -23,11 +23,11 @@ public abstract class ImSummaryPass : TranslationUnitPass
         if (declaration is not Enumeration.Item item)
             return null;
 
-        const string none = "None";
+        // we do not compare with zero because some enum values don't mean 'None'
 
-        if (item.Name == none)
+        if (string.Equals(item.Name, "None", StringComparison.OrdinalIgnoreCase))
         {
-            return none;
+            return "Use the default behavior.";
         }
 
         const string key = "ImGuiKey_";
