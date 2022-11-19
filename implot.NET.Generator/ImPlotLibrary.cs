@@ -4,9 +4,9 @@ using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Generators.CSharp;
-using CppSharp.Passes;
 using im.NET.Generator;
 using im.NET.Generator.Passes;
+using implot.NET.Generator.Passes;
 
 // ReSharper disable IdentifierTypo
 
@@ -36,6 +36,8 @@ internal sealed class ImPlotLibrary : LibraryBase
         driver.AddTranslationUnitPass(new ImIgnoreImGuiPass());
 
         AddDefaultPasses(driver);
+
+        driver.AddTranslationUnitPass(new ImPlotSummaryPass());
 
         driver.Generator.OnUnitGenerated += OnUnitGenerated;
     }

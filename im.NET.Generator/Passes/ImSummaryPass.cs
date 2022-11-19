@@ -4,8 +4,12 @@ using CppSharp.Passes;
 
 namespace im.NET.Generator.Passes;
 
-public sealed class ImSummaryPass : TranslationUnitPass
+public abstract class ImSummaryPass : TranslationUnitPass
 {
+    protected abstract string HeaderName { get; }
+
+    protected abstract string HeaderUrl { get; }
+
     private readonly Dictionary<TranslationUnit, string[]> Dictionary = new();
 
     public override bool VisitDeclaration(Declaration decl)
@@ -50,7 +54,7 @@ public sealed class ImSummaryPass : TranslationUnitPass
         return lines;
     }
 
-    private static bool Ignore(Declaration declaration)
+    private bool Ignore(Declaration declaration)
     {
         if (declaration.Namespace == null)
         {
@@ -64,7 +68,7 @@ public sealed class ImSummaryPass : TranslationUnitPass
             return true;
         }
 
-        if (unit.FileName != "imgui.h")
+        if (unit.FileName != HeaderName)
         {
             return true;
         }
@@ -98,7 +102,7 @@ public sealed class ImSummaryPass : TranslationUnitPass
 
         var stack = new Stack<string>();
 
-        stack.Push($@"{Constants.ImGuiHeaderUrl}#L{start}");
+        stack.Push($@"{HeaderUrl}#L{start}");
 
         TryFindComment(declaration, stack, getter);
 
@@ -110,7 +114,7 @@ public sealed class ImSummaryPass : TranslationUnitPass
         };
     }
 
-    private static string Normalize(string value)
+    private string Normalize(string value)
     {
         value = value.Trim(' ', '.');
 
@@ -121,7 +125,7 @@ public sealed class ImSummaryPass : TranslationUnitPass
 
         value = Regex.Replace(value, @"\s{2,}", @", ");
 
-        if (value.StartsWith(Constants.ImGuiHeaderUrl) is false)
+        if (value.StartsWith(HeaderUrl) is false)
         {
             value = $"{char.ToUpperInvariant(value[0])}{value[1..]}";
         }
