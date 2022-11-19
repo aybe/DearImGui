@@ -14,11 +14,11 @@ public abstract class ImSummaryPass : TranslationUnitPass
 
     public override bool VisitDeclaration(Declaration decl)
     {
-        TryComment(decl, decl is Enumeration.Item ? EnumNone : null);
+        TryComment(decl, decl is Enumeration.Item ? EnumSummary : null);
         return base.VisitDeclaration(decl);
     }
 
-    private static string? EnumNone(Declaration declaration)
+    private static string? EnumSummary(Declaration declaration)
     {
         if (declaration is not Enumeration.Item item)
             return null;
