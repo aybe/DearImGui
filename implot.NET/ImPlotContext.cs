@@ -1,5 +1,8 @@
 ﻿namespace implot.NET;
 
+/// <summary>
+///     https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L76
+/// </summary>
 partial class ImPlotContext : IEquatable<ImPlotContext>
 {
     #region IEquatable<ImPlotContext> Members
@@ -50,12 +53,16 @@ partial class ImPlotContext : IEquatable<ImPlotContext>
         return __Instance.GetHashCode();
     }
 
+#pragma warning disable CS1591
     public static bool operator ==(ImPlotContext? left, ImPlotContext? right)
+#pragma warning restore CS1591
     {
         return Equals(left, right);
     }
 
+#pragma warning disable CS1591
     public static bool operator !=(ImPlotContext? left, ImPlotContext? right)
+#pragma warning restore CS1591
     {
         return !Equals(left, right);
     }
