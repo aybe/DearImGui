@@ -64,10 +64,14 @@ public abstract class LibraryBase : ILibrary
 
     protected void ProcessSources(CSharpSources sources)
     {
+        // disable some warnings
+
         var header = sources.FindBlock(BlockKind.Header);
 
         header.Text.WriteLine(
             "#pragma warning disable CS0109 // The member 'member' does not hide an inherited member. The new keyword is not required");
+
+        // add used usings
 
         var usings = sources.FindBlock(BlockKind.Usings);
 
@@ -77,6 +81,8 @@ public abstract class LibraryBase : ILibrary
         {
             usings.Text.WriteLine($"using {item};");
         }
+
+        // fix escaped new lines in comments
 
         var comments = sources.FindBlocks(BlockKind.BlockComment);
 
