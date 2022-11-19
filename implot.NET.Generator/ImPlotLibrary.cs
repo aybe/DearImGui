@@ -33,7 +33,7 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     public override void SetupPasses(Driver driver)
     {
-        driver.AddTranslationUnitPass(new ImGuiIgnorePass());
+        driver.AddTranslationUnitPass(new ImIgnoreImGuiPass());
 
         AddDefaultPasses(driver);
 

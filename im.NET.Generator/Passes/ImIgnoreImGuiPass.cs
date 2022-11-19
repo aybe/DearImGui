@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 
 namespace im.NET.Generator.Passes;
 
-public sealed class ImGuiIgnorePass : ImBasePass
+public sealed class ImIgnoreImGuiPass : ImBasePass
 {
     [PublicAPI]
     public bool LogIgnoredImGuiClass { get; set; } = true;
