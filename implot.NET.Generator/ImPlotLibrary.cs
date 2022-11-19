@@ -91,6 +91,7 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     private static void PostprocessEnumerations(ASTContext ctx)
     {
+        // there is also stuff in T4 templates about that
         ctx.SetNameOfEnumWithName("ImAxis", "ImPlotAxis");
 
         SetEnumerationsFlags(GetImPlotTranslationUnit(ctx));
