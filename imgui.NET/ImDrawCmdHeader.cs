@@ -1,5 +1,8 @@
-﻿namespace imgui.NET;
+﻿using JetBrains.Annotations;
 
+namespace imgui.NET;
+
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImDrawCmdHeader
 {
     /// <inheritdoc />

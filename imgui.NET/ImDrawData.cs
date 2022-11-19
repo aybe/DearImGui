@@ -1,8 +1,10 @@
-﻿namespace imgui.NET;
+﻿using JetBrains.Annotations;
 
+namespace imgui.NET;
+
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImDrawData
 {
-    /// <summary> Array of ImDrawList* to render.<br />The ImDrawList are owned by ImGuiContext and only pointed to from here. </summary>
     public unsafe ImDrawList[] CmdLists
     {
         get

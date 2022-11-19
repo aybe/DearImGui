@@ -1,5 +1,8 @@
-﻿namespace imgui.NET;
+﻿using JetBrains.Annotations;
 
+namespace imgui.NET;
+
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 partial class ImDrawCmd
 {
     public unsafe IntPtr GetTexID()
@@ -11,6 +14,7 @@ partial class ImDrawCmd
     /// <inheritdoc />
     public override string ToString()
     {
-        return $"{nameof(ClipRect)}: {ClipRect}, {nameof(ElemCount)}: {ElemCount}, {nameof(VtxOffset)}: {VtxOffset}, {nameof(IdxOffset)}: {IdxOffset}, {nameof(TextureId)}: {TextureId}";
+        return
+            $"{nameof(ClipRect)}: {ClipRect}, {nameof(ElemCount)}: {ElemCount}, {nameof(VtxOffset)}: {VtxOffset}, {nameof(IdxOffset)}: {IdxOffset}, {nameof(TextureId)}: {TextureId}";
     }
 }
