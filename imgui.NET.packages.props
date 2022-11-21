@@ -1,0 +1,20 @@
+<Project>
+
+	<PropertyGroup>
+		<FileVersion>$(AssemblyVersion)</FileVersion>
+		<Version>$(AssemblyVersion)</Version>
+		<Authors>aybe</Authors>
+		<Description>$(Title)</Description>
+		<Company>$(Authors)</Company>
+		<Copyright>$(Authors)</Copyright>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/aybe/imgui.NET</RepositoryUrl>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<PackageOutputPath>$(SolutionDir)build\packages\$(Platform)\$(Configuration)</PackageOutputPath>
+		<DebugType>embedded</DebugType>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+</Project>
