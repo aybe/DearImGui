@@ -22,10 +22,9 @@
 		<RepositoryUrl>https://github.com/aybe/ImGuiNET</RepositoryUrl>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PackageTags>imgui imgui.NET</PackageTags>
 		<PackageOutputPath>$(SolutionDir)build\packages\$(Platform)\$(Configuration)</PackageOutputPath>
+		<DebugType>embedded</DebugType>
 	</PropertyGroup>
 
 	<ItemGroup>
