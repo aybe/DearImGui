@@ -61,4 +61,14 @@
 		</Content>
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\imgui.NET.Generator\imgui.NET.Generator.csproj">
+			<ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+		</ProjectReference>
+	</ItemGroup>
+
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="pushd $(SolutionDir)imgui.NET.Generator\bin\$(Configuration)\$(TargetFramework)\&#xD;&#xA;imgui.NET.Generator.exe&#xD;&#xA;popd" />
+	</Target>
+
 </Project>

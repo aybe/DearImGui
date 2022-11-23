@@ -65,4 +65,14 @@
 		<ProjectReference Include="..\imgui.NET\imgui.NET.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\implot.NET.Generator\implot.NET.Generator.csproj">
+			<ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+		</ProjectReference>
+	</ItemGroup>
+
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="pushd $(SolutionDir)implot.NET.Generator\bin\$(Configuration)\$(TargetFramework)\&#xD;&#xA;implot.NET.Generator.exe&#xD;&#xA;popd" />
+	</Target>
+
 </Project>
