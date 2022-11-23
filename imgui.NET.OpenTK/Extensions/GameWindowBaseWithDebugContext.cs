@@ -8,7 +8,7 @@ using OpenTK.Windowing.Desktop;
 namespace imgui.NET.OpenTK.Extensions;
 
 /// <summary>
-///     A game window that uses OpenGL 4.5 with an enabled debug context.
+///     Base class for a game window that uses OpenGL 4.5 with an enabled debug context.
 /// </summary>
 public abstract class GameWindowBaseWithDebugContext : GameWindowBase
     // https://www.khronos.org/opengl/wiki/OpenGL_Context
@@ -18,6 +18,7 @@ public abstract class GameWindowBaseWithDebugContext : GameWindowBase
 {
     private readonly DebugProc DebugProc = DebugProcCallback;
 
+    /// <inheritdoc />
     protected GameWindowBaseWithDebugContext(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings)
         : base(gameWindowSettings, UpdateSettings(nativeWindowSettings))
     {

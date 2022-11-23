@@ -1,4 +1,5 @@
-﻿namespace imgui.NET.OpenTK.Extensions;
+﻿#pragma warning disable CS1591
+namespace imgui.NET.OpenTK.Extensions;
 
 public static class EnumExtensions
 {

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿#pragma warning disable CS1591
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.CompilerServices;
@@ -20,6 +21,9 @@ using Win32Exception = PInvoke.Win32Exception;
 
 namespace imgui.NET.OpenTK;
 
+/// <summary>
+///     OpenTK controller for imgui.
+/// </summary>
 public sealed class ImGuiController : Disposable
 {
     private const string ShaderSourceVS = @"
@@ -166,6 +170,9 @@ public sealed class ImGuiController : Disposable
         { Keys.F12, ImGuiKey.F12 }
     };
 
+    /// <summary>
+    ///     Gets the imgui context for this instance.
+    /// </summary>
     public ImGuiContext Context { get; }
 
     private readonly ImGuiIO IO;
@@ -230,6 +237,7 @@ public sealed class ImGuiController : Disposable
         Window.TextInput += OnWindowTextInput;
     }
 
+    /// <inheritdoc />
     protected override void DisposeManaged()
     {
         Window.FocusedChanged -= OnWindowFocusChanged;
@@ -522,6 +530,12 @@ public sealed class ImGuiController : Disposable
         IO.AddInputCharacter((uint)e.Unicode);
     }
 
+    /// <summary>
+    ///     Updates this instance.
+    /// </summary>
+    /// <param name="deltaTime">
+    ///     The time that passed since last frame.
+    /// </param>
     public void Update(float deltaTime)
     {
         using (new ImGuiContextScope(Context))
@@ -664,6 +678,9 @@ public sealed class ImGuiController : Disposable
         }
     }
 
+    /// <summary>
+    ///     Renders this instance.
+    /// </summary>
     public void Render()
     {
         if (NewFrame is false)

@@ -7,8 +7,12 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace imgui.NET.OpenTK.Extensions;
 
+/// <summary>
+///     Base class for a game window.
+/// </summary>
 public abstract class GameWindowBase : GameWindow
 {
+    /// <inheritdoc />
     protected GameWindowBase(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings)
         : base(gameWindowSettings, nativeWindowSettings)
     {
@@ -16,6 +20,7 @@ public abstract class GameWindowBase : GameWindow
 
     private bool WindowWasMaximized { get; set; }
 
+    /// <inheritdoc />
     protected override void OnRenderFrame(FrameEventArgs args)
     {
         GL.ClearColor(Color.CornflowerBlue);
@@ -26,6 +31,7 @@ public abstract class GameWindowBase : GameWindow
         base.OnRenderFrame(args);
     }
 
+    /// <inheritdoc />
     protected override void OnResize(ResizeEventArgs e)
     {
         GL.Viewport(0, 0, e.Width, e.Height);
@@ -33,6 +39,7 @@ public abstract class GameWindowBase : GameWindow
         base.OnResize(e);
     }
 
+    /// <inheritdoc />
     protected override void OnUpdateFrame(FrameEventArgs args)
     {
         var alt = KeyboardState.IsKeyDown(Keys.LeftAlt, Keys.RightAlt);

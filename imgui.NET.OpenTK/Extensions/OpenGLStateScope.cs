@@ -1,8 +1,12 @@
-﻿using OpenTK.Graphics.OpenGL;
+﻿#pragma warning disable CS1591
+using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 
 namespace imgui.NET.OpenTK.Extensions;
 
+/// <summary>
+///     Scope for temporarily changing OpenGL state.
+/// </summary>
 public readonly struct OpenGLStateScope : IDisposable
 {
     private readonly TextureUnit ActiveTexture;
@@ -54,6 +58,7 @@ public readonly struct OpenGLStateScope : IDisposable
 
     #region IDisposable Members
 
+    /// <inheritdoc />
     public void Dispose()
     {
         GL.ActiveTexture(ActiveTexture);

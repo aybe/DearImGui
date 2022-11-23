@@ -1,7 +1,11 @@
+#pragma warning disable CS1591
 using JetBrains.Annotations;
 
 namespace imgui.NET.OpenTK.Extensions;
 
+/// <summary>
+///     Base class for a disposable object.
+/// </summary>
 [PublicAPI]
 public abstract class Disposable : IDisposable
 {
@@ -9,6 +13,7 @@ public abstract class Disposable : IDisposable
 
     #region IDisposable Members
 
+    /// <inheritdoc />
     public void Dispose()
     {
         Dispose(true);
@@ -42,6 +47,7 @@ public abstract class Disposable : IDisposable
     {
     }
 
+    /// <inheritdoc />
     ~Disposable()
     {
         Dispose(false);

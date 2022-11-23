@@ -1,4 +1,5 @@
-﻿using OpenTK.Windowing.GraphicsLibraryFramework;
+﻿#pragma warning disable CS1591
+using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace imgui.NET.OpenTK.Extensions;
 

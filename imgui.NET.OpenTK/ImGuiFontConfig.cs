@@ -1,5 +1,9 @@
-﻿namespace imgui.NET.OpenTK;
+﻿#pragma warning disable CS1591
+namespace imgui.NET.OpenTK;
 
+/// <summary>
+///     Specifies a font to use by <see cref="ImGuiController" />.
+/// </summary>
 public readonly struct ImGuiFontConfig
 {
     public string Path { get; }
@@ -22,6 +26,7 @@ public readonly struct ImGuiFontConfig
         Size = size;
     }
 
+    /// <inheritdoc />
     public override string ToString()
     {
         return $"{nameof(Path)}: {Path}, {nameof(Size)}: {Size}";
