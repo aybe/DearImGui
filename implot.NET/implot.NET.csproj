@@ -65,6 +65,10 @@
 		<ProjectReference Include="..\imgui.NET\imgui.NET.csproj" />
 	</ItemGroup>
 
+	<PropertyGroup>
+		<DisableFastUpToDateCheck>False</DisableFastUpToDateCheck>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<ProjectReference Include="..\implot.NET.Generator\implot.NET.Generator.csproj">
 			<ReferenceOutputAssembly>False</ReferenceOutputAssembly>
