@@ -1,0 +1,7 @@
+<Project>
+    <PropertyGroup>
+        <!-- allow managed projects to build native dependencies and generate bindings automatically -->
+        <ImGuiManagedBuild>true</ImGuiManagedBuild>
+        <!-- else native dependencies will have to be batch built and the generators be run manually -->
+    </PropertyGroup>
+</Project>
