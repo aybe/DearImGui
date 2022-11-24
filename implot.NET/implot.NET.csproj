@@ -75,11 +75,10 @@
 		</ProjectReference>
 	</ItemGroup>
 
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-		<Exec Command="pushd $(SolutionDir)implot.NET.Generator\bin\$(Configuration)\$(TargetFramework)\&#xD;&#xA;implot.NET.Generator.exe&#xD;&#xA;popd" />
-	</Target>
-
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(ImGuiManagedBuild)' == 'true'">
+
+		<Message Text="Generating bindings for implot" Importance="High" />
+		<Exec Command="pushd $(SolutionDir)implot.NET.Generator\bin\$(Configuration)\$(TargetFramework)\&#xD;&#xA;implot.NET.Generator.exe&#xD;&#xA;popd" />
 
 		<Message Text="Building 32-bit implot" Importance="High" />
 		<MSBuild
