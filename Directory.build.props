@@ -1,7 +1,13 @@
 <Project>
-    <PropertyGroup>
-        <!-- allow managed projects to build native dependencies and generate bindings automatically -->
-        <ImGuiManagedBuild>true</ImGuiManagedBuild>
-        <!-- else native dependencies will have to be batch built and the generators be run manually -->
-    </PropertyGroup>
+	<PropertyGroup>
+
+		<!-- allow managed projects to build native dependencies and generate bindings automatically -->
+		<!-- else native dependencies will have to be batch built and the generators be run manually -->
+		<ImGuiManagedBuild>true</ImGuiManagedBuild>
+
+		<!-- this supposedly avoids rebuilding needlessly but just works at Visual Studio discretion -->
+		<!-- toggling the flag from within Visual Studio appears to fix the issue for the time being -->
+		<DisableFastUpToDateCheck>false</DisableFastUpToDateCheck>
+
+	</PropertyGroup>
 </Project>
