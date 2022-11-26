@@ -205,7 +205,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    protected virtual void ProcessSymbols(ref string text)
+    private void ProcessSymbols(ref string text)
     {
         // hide public symbols that ought to be internal
 

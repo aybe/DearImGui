@@ -43,17 +43,12 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             ".__Symbols",
             string.Empty
         );
-    }
 
-    protected override void ProcessSymbols(ref string text)
-    {
-        // use our own symbol resolver
+        // use our own symbol resolver because theirs doesn't handle 32/64 loading
 
-        text = text.Replace(
+        input = input.Replace(
             "CppSharp.SymbolResolver",
-            $"global::{Constants.ImGuiNamespace}.SymbolResolver"
+            $"{Constants.ImGuiNamespace}.SymbolResolver"
         );
-
-        base.ProcessSymbols(ref text);
     }
 }
