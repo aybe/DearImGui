@@ -149,7 +149,7 @@ public abstract class ConsoleGenerator
     {
     }
 
-    protected virtual void ProcessEnumerations(ref string input)
+    private static void ProcessEnumerations(ref string input)
     {
         // enumerations default values other than zero must be cast
 
