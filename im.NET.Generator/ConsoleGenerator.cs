@@ -16,9 +16,9 @@ public abstract class ConsoleGenerator
     }
 
     /// <summary>
-    ///     The set of namespaces used.
+    ///     The set of aliases to be renamed.
     /// </summary>
-    public abstract ImmutableSortedSet<string> Namespaces { get; }
+    public abstract ImmutableSortedSet<Type> Aliases { get; }
 
     /// <summary>
     ///     The set of classes to be renamed.
@@ -26,9 +26,9 @@ public abstract class ConsoleGenerator
     public abstract ImmutableSortedSet<KeyValuePair<string, string>> Classes { get; }
 
     /// <summary>
-    ///     The set of aliases to be renamed.
+    ///     The set of namespaces used.
     /// </summary>
-    public abstract ImmutableSortedSet<Type> Aliases { get; }
+    public abstract ImmutableSortedSet<string> Namespaces { get; }
 
     private string ModuleName { get; }
 
@@ -36,21 +36,30 @@ public abstract class ConsoleGenerator
 
     private string ModuleText { get; }
 
-    public static void Run(ILibrary library, ConsoleGenerator generator)
+    protected static ImmutableSortedSet<Type> GetDefaultAliases()
     {
-        if (Debugger.IsAttached)
-            // using color between runs confuses console
-        {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Clear();
-        }
+        return new SortedSet<Type>(TypeNameComparer.Instance)
+            {
+                typeof(CallingConvention),
+                typeof(IntPtr)
+            }
+            .ToImmutableSortedSet(TypeNameComparer.Instance);
+    }
 
-        ConsoleDriver.Run(library);
-
-        generator.Process();
-
-        Console.WriteLine("Generation finished.");
+    protected static ImmutableSortedSet<string> GetDefaultNamespaces()
+    {
+        return new SortedSet<string>
+            {
+                "imgui.NET",
+                "System",
+                "System.Collections.Concurrent",
+                "System.Numerics",
+                "System.Runtime.CompilerServices",
+                "System.Runtime.InteropServices",
+                "System.Security",
+                "System.Text"
+            }
+            .ToImmutableSortedSet();
     }
 
     private void Process()
@@ -109,6 +118,25 @@ public abstract class ConsoleGenerator
             input = input.Replace($"{key}()",     $"{val}()");
             input = input.Replace($"{key}._",     $"{val}._");
         }
+    }
+
+    protected virtual void ProcessEnumerations(ref string input)
+    {
+        // enumerations default values other than zero must be cast
+
+        input = Regex.Replace(input,
+            @"(?<!//\s+DEBUG:.*)(\w+)\s+(\w+)\s+=\s+([-+]?\d+)(?=[,)])",
+            @"$1 $2 = ($1)($3)",
+            RegexOptions.Multiline
+        );
+
+        // enumerations cast to int while there's no reason to
+
+        input = Regex.Replace(input,
+            @"(?<type>\w+)\s+(\w+)\s+=\s+\(int\)\s*\k<type>\.(\w+)",
+            "${type} $1 = ${type}.$2",
+            RegexOptions.Multiline
+        );
     }
 
     protected virtual void ProcessNamespaces(ref string input)
@@ -200,6 +228,23 @@ public abstract class ConsoleGenerator
         );
     }
 
+    public static void Run(ILibrary library, ConsoleGenerator generator)
+    {
+        if (Debugger.IsAttached)
+            // using color between runs confuses console
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Clear();
+        }
+
+        ConsoleDriver.Run(library);
+
+        generator.Process();
+
+        Console.WriteLine("Generation finished.");
+    }
+
     private void Write(string text)
     {
         File.WriteAllText(ModulePath, text);
@@ -233,50 +278,5 @@ public abstract class ConsoleGenerator
         }
 
         File.WriteAllText(backupPath, ModuleText);
-    }
-
-    protected static ImmutableSortedSet<string> GetDefaultNamespaces()
-    {
-        return new SortedSet<string>
-            {
-                "imgui.NET",
-                "System",
-                "System.Collections.Concurrent",
-                "System.Numerics",
-                "System.Runtime.CompilerServices",
-                "System.Runtime.InteropServices",
-                "System.Security",
-                "System.Text"
-            }
-            .ToImmutableSortedSet();
-    }
-
-    protected static ImmutableSortedSet<Type> GetDefaultAliases()
-    {
-        return new SortedSet<Type>(TypeNameComparer.Instance)
-            {
-                typeof(CallingConvention),
-                typeof(IntPtr)
-            }
-            .ToImmutableSortedSet(TypeNameComparer.Instance);
-    }
-
-    protected virtual void ProcessEnumerations(ref string input)
-    {
-        // enumerations default values other than zero must be cast
-
-        input = Regex.Replace(input,
-            @"(?<!//\s+DEBUG:.*)(\w+)\s+(\w+)\s+=\s+([-+]?\d+)(?=[,)])",
-            @"$1 $2 = ($1)($3)",
-            RegexOptions.Multiline
-        );
-
-        // enumerations cast to int while there's no reason to
-
-        input = Regex.Replace(input,
-            @"(?<type>\w+)\s+(\w+)\s+=\s+\(int\)\s*\k<type>\.(\w+)",
-            "${type} $1 = ${type}.$2",
-            RegexOptions.Multiline
-        );
     }
 }
