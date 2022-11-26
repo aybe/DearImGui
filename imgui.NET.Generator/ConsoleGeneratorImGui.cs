@@ -47,6 +47,14 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             "CppSharp.SymbolResolver",
             $"global::{Constants.ImGuiNamespace}.SymbolResolver"
         );
+
+        // hide public symbols that ought to be internal
+
+        text = Regex.Replace(text,
+            @"public\s+static\s+(\w+)\s+(_(?!_)\w+)",
+            @"internal static $1 $2",
+            RegexOptions.Multiline
+        );
     }
 
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
@@ -57,11 +65,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
         text = text.Replace(
             "namespace ImVector",
             "internal static partial class ImVector"
-        );
-
-        text = text.Replace(
-            "public static IntPtr _EmptyString_ImGuiTextBuffer__2PADA",
-            "internal static IntPtr _EmptyString_ImGuiTextBuffer__2PADA"
         );
 
         text = text.Replace(
