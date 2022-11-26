@@ -43,11 +43,8 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             "ImPlotPoint.__Internal ImPlotGetter",
             "ImPlotPoint ImPlotGetter"
         );
-    }
 
-    protected override void ProcessGenericMethods(ref string input)
-    {
-        // add generic type parameter with unmanaged constraint
+        // generic 1/3: add type parameter with unmanaged constraint
 
         input = Regex.Replace(input,
             @"^(\s+public\s+static\s+\w+\s+\w+)(\(.*T\s+\w+.*\))",
@@ -55,7 +52,7 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             RegexOptions.Multiline
         );
 
-        // set generic type parameters as arrays
+        // generic 2/3: set type parameters to be arrays
 
         input = Regex.Replace(input,
             @"(,\s+T)(\s+\w+)(?=.*where\s+T\s+:\s+unmanaged\s*$)",
@@ -63,7 +60,7 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             RegexOptions.Multiline
         );
 
-        // sizeof(T) must be compile-time constant, compute locally
+        // generic 3/3: sizeof(T) is not compile-time constant, compute locally
 
         input = Regex.Replace(input,
             @"(?<!extern.*)int\s+stride\s+=\s+sizeof\(T\)",
@@ -76,7 +73,5 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             "stride ?? Unsafe.SizeOf<T>()",
             RegexOptions.Multiline
         );
-
-        base.ProcessGenericMethods(ref input);
     }
 }
