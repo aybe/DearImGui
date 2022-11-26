@@ -31,6 +31,8 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
 
         ProcessDelegates(ref text);
 
+        ProcessDefaultParameters(ref text);
+
         ProcessEnumerations(ref text);
 
         base.Process(ref text);
@@ -53,6 +55,20 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             @"$1[]$2",
             RegexOptions.Multiline
         );
+
+        // sizeof(T) must be compile-time constant, compute locally
+
+        input = Regex.Replace(input,
+            @"(?<!extern.*)int\s+stride\s+=\s+sizeof\(T\)",
+            "int? stride = null",
+            RegexOptions.Multiline
+        );
+
+        input = Regex.Replace(input,
+            @"(?<!static.*)stride",
+            "stride ?? Unsafe.SizeOf<T>()",
+            RegexOptions.Multiline
+        );
     }
 
     private static void ProcessDelegates(ref string text)
@@ -62,6 +78,17 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
         text = text.Replace(
             "ImPlotPoint.__Internal ImPlotGetter",
             "ImPlotPoint ImPlotGetter"
+        );
+    }
+
+    private static void ProcessDefaultParameters(ref string text)
+    {
+        // fix invalid syntax 'string[] name = 0'
+
+        text = Regex.Replace(text,
+            @"string\s*\[\]\s+(\w+)\s*=\s*0\s*,",
+            "string[] $1 = null,",
+            RegexOptions.Multiline
         );
     }
 
