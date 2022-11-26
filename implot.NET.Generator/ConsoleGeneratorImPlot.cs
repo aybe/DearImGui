@@ -31,6 +31,8 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
 
         ProcessDelegates(ref text);
 
+        ProcessEnumerations(ref text);
+
         base.Process(ref text);
     }
 
@@ -61,5 +63,16 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             "ImPlotPoint.__Internal ImPlotGetter",
             "ImPlotPoint ImPlotGetter"
         );
+    }
+
+    protected override void ProcessEnumerations(ref string input)
+    {
+        input = Regex.Replace(input,
+            @"(?<!static.*)(Colormap.*)(-1)",
+            "$1(ImPlotColormap)($2)",
+            RegexOptions.Multiline
+        );
+
+        base.ProcessEnumerations(ref input);
     }
 }

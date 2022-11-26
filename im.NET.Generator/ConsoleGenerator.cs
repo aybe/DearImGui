@@ -261,13 +261,22 @@ public abstract class ConsoleGenerator
             .ToImmutableSortedSet(TypeNameComparer.Instance);
     }
 
-    protected static void ProcessEnumerations(ref string text)
+    protected virtual void ProcessEnumerations(ref string text)
     {
         // enumerations default values other than zero must be cast
 
         text = Regex.Replace(text,
             @"(?<!//\s+DEBUG:.*)(\w+)\s+(\w+)\s+=\s+([-+]?\d+)(?=[,)])",
-            @"$1 $2 = ($1)($3)"
+            @"$1 $2 = ($1)($3)",
+            RegexOptions.Multiline
+        );
+
+        // enumerations cast to int while there's no reason to
+
+        text = Regex.Replace(text,
+            @"(?<type>\w+)\s+(\w+)\s+=\s+\(int\)\s*\k<type>\.(\w+)",
+            "${type} $1 = ${type}.$2",
+            RegexOptions.Multiline
         );
     }
 }
