@@ -23,6 +23,7 @@ public abstract class LibraryBase : ILibrary
         options.GeneratorKind = GeneratorKind.CSharp;
         options.GenerateFinalizers = true;
         options.GenerateDebugOutput = true;
+        options.GenerateDefaultValuesForArguments = true;
         options.MarshalCharAsManagedChar = true;
         options.Verbose = true;
     }
