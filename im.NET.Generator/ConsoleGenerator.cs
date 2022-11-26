@@ -88,7 +88,6 @@ public abstract class ConsoleGenerator
         ProcessSymbols(ref input);
         ProcessVisibility(ref input);
         ProcessGenericMethods(ref input);
-        ProcessDelegates(ref input);
         ProcessDefaultParameters(ref input);
     }
 
@@ -143,10 +142,6 @@ public abstract class ConsoleGenerator
             "string[] $1 = null,",
             RegexOptions.Multiline
         );
-    }
-
-    protected virtual void ProcessDelegates(ref string input)
-    {
     }
 
     private static void ProcessEnumerations(ref string input)

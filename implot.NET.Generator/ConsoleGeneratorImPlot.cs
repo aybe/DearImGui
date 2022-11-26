@@ -36,6 +36,13 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             "$1(ImPlotColormap)($2)",
             RegexOptions.Multiline
         );
+
+        // fix this wrong reference to internal pointer
+
+        input = input.Replace(
+            "ImPlotPoint.__Internal ImPlotGetter",
+            "ImPlotPoint ImPlotGetter"
+        );
     }
 
     protected override void ProcessGenericMethods(ref string input)
@@ -71,17 +78,5 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
         );
 
         base.ProcessGenericMethods(ref input);
-    }
-
-    protected override void ProcessDelegates(ref string text)
-    {
-        // for whatever reason, this is wrong, fix
-
-        text = text.Replace(
-            "ImPlotPoint.__Internal ImPlotGetter",
-            "ImPlotPoint ImPlotGetter"
-        );
-
-        base.ProcessDelegates(ref text);
     }
 }
