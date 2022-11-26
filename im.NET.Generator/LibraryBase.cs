@@ -111,6 +111,15 @@ public abstract class LibraryBase : ILibrary
         }
     }
 
+    protected static void PushDeclarationUpstream(TranslationUnit unit, string @class)
+    {
+        var ns = unit.Namespaces.Single(s => s.Name == @class);
+
+        unit.Declarations.AddRange(ns.Declarations);
+
+        ns.Declarations.Clear();
+    }
+
     private static void RemovePass<T>(Driver driver, [CallerMemberName] string memberName = null!) where T : TranslationUnitPass
     {
         var count = driver.Context.TranslationUnitPasses.Passes.RemoveAll(s => s is T);

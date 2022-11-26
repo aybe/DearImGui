@@ -45,7 +45,6 @@ internal sealed class ImPlotLibrary : LibraryBase
     public override void Preprocess(Driver driver, ASTContext ctx)
     {
         PreprocessPasses(driver);
-        PreprocessNamespace(ctx);
         PreprocessValueTypes(ctx);
     }
 
@@ -53,6 +52,14 @@ internal sealed class ImPlotLibrary : LibraryBase
     {
         PostprocessProperties(ctx);
         PostprocessEnumerations(ctx);
+        PostprocessNamespaces(ctx);
+    }
+
+    private static void PostprocessNamespaces(ASTContext ctx)
+    {
+        var unit = GetImPlotTranslationUnit(ctx);
+
+        PushDeclarationUpstream(unit, "ImPlot");
     }
 
     private static TranslationUnit GetImPlotTranslationUnit(ASTContext ctx)
@@ -61,19 +68,6 @@ internal sealed class ImPlotLibrary : LibraryBase
     }
 
     #region Preprocess
-
-    private static void PreprocessNamespace(ASTContext ctx)
-    {
-        // move imports class to outer scope, i.e. remove superfluous namespace
-
-        var unit = GetImPlotTranslationUnit(ctx);
-
-        var ns = unit.Namespaces.Single(s => s.Name is "ImPlot");
-
-        ns.Namespace.Declarations.AddRange(ns.Declarations);
-
-        ns.Declarations.Clear();
-    }
 
     private static void PreprocessValueTypes(ASTContext ctx)
     {

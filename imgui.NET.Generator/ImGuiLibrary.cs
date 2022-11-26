@@ -121,12 +121,8 @@ internal sealed class ImGuiLibrary : LibraryBase
         // merge the imports in inner namespace with main class
 
         var unit = GetImGuiTranslationUnit(ctx);
-        
-        var ns = unit.Namespaces.Single(s => s.Name is "ImGui");
-        
-        unit.Declarations.AddRange(ns.Declarations);
-        
-        ns.Declarations.Clear();
+
+        PushDeclarationUpstream(unit, "ImGui");
     }
 
     private static void PostprocessIgnores(ASTContext ctx)
