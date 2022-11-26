@@ -32,16 +32,16 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 
         ProcessVectorClass(ref text);
 
-        ProcessClasses(ref text);
-
         base.Process(ref text);
     }
 
-    private static void ProcessClasses(ref string text)
+    protected override void ProcessClasses(ref string text)
     {
         // the symbols class has wrong visibility and lacks partial, fix it
 
         text = text.Replace("internal class imgui", "partial class imgui");
+
+        base.ProcessClasses(ref text);
     }
 
     private static void ProcessSymbols(ref string text)
