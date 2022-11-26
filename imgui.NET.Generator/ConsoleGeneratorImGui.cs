@@ -44,7 +44,7 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
         base.ProcessClasses(ref text);
     }
 
-    private static void ProcessSymbols(ref string text)
+    private void ProcessSymbols(ref string text)
     {
         // use our own symbol resolver
 
@@ -63,7 +63,7 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
     }
 
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
-    private static void ProcessVectorClass(ref string text)
+    private void ProcessVectorClass(ref string text)
     {
         // hide ImVector namespace as internal class as it cannot be moved onto ImVector<T> because of CS7042
 
