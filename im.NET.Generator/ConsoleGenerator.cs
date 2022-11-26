@@ -69,6 +69,7 @@ public abstract class ConsoleGenerator
         ProcessNamespaces(ref text, Namespaces);
         ProcessAliases(ref text, Aliases);
         ProcessClasses(ref text, Classes);
+        ProcessEnumerations(ref text);
 
         // apply fine-grained stuff
 
@@ -258,5 +259,15 @@ public abstract class ConsoleGenerator
                 typeof(IntPtr)
             }
             .ToImmutableSortedSet(TypeNameComparer.Instance);
+    }
+
+    protected static void ProcessEnumerations(ref string text)
+    {
+        // enumerations default values other than zero must be cast
+
+        text = Regex.Replace(text,
+            @"(?<!//\s+DEBUG:.*)(\w+)\s+(\w+)\s+=\s+([-+]?\d+)(?=[,)])",
+            @"$1 $2 = ($1)($3)"
+        );
     }
 }
