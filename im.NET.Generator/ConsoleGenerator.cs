@@ -88,7 +88,11 @@ public abstract class ConsoleGenerator
         ProcessVectors(ref input);
         ProcessPointers(ref input);
         ProcessSummaries(ref input);
+        ProcessSymbols(ref input);
         ProcessVisibility(ref input);
+        ProcessGenericMethods(ref input);
+        ProcessDelegates(ref input);
+        ProcessDefaultParameters(ref input);
     }
 
     protected virtual void ProcessAliases(ref string input)
@@ -123,6 +127,21 @@ public abstract class ConsoleGenerator
         }
     }
 
+    protected virtual void ProcessDefaultParameters(ref string input)
+    {
+        // fix invalid syntax 'string[] name = 0'
+
+        input = Regex.Replace(input,
+            @"string\s*\[\]\s+(\w+)\s*=\s*0\s*,",
+            "string[] $1 = null,",
+            RegexOptions.Multiline
+        );
+    }
+
+    protected virtual void ProcessDelegates(ref string input)
+    {
+    }
+
     protected virtual void ProcessEnumerations(ref string input)
     {
         // enumerations default values other than zero must be cast
@@ -140,6 +159,10 @@ public abstract class ConsoleGenerator
             "${type} $1 = ${type}.$2",
             RegexOptions.Multiline
         );
+    }
+
+    protected virtual void ProcessGenericMethods(ref string input)
+    {
     }
 
     protected virtual void ProcessNamespaces(ref string input)
@@ -181,6 +204,17 @@ public abstract class ConsoleGenerator
             input,
             @"^(\s+)(~\w+\(\))",
             @"$1/// <inheritdoc />$1$2",
+            RegexOptions.Multiline
+        );
+    }
+
+    protected virtual void ProcessSymbols(ref string text)
+    {
+        // hide public symbols that ought to be internal
+
+        text = Regex.Replace(text,
+            @"public\s+static\s+(\w+)\s+(_(?!_)\w+)",
+            @"internal static $1 $2",
             RegexOptions.Multiline
         );
     }

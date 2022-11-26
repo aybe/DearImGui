@@ -1,5 +1,4 @@
 ﻿using System.Collections.Immutable;
-using System.Text.RegularExpressions;
 using im.NET.Generator;
 
 namespace imgui.NET.Generator;
@@ -25,13 +24,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 
     public override ImmutableSortedSet<string> Namespaces { get; }
 
-    protected override void Process(ref string text)
-    {
-        ProcessSymbols(ref text);
-
-        base.Process(ref text);
-    }
-
     protected override void ProcessClasses(ref string text)
     {
         // the symbols class has wrong visibility and lacks partial, fix it
@@ -53,7 +45,7 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
         base.ProcessClasses(ref text);
     }
 
-    private void ProcessSymbols(ref string text)
+    protected override void ProcessSymbols(ref string text)
     {
         // use our own symbol resolver
 
@@ -62,12 +54,6 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             $"global::{Constants.ImGuiNamespace}.SymbolResolver"
         );
 
-        // hide public symbols that ought to be internal
-
-        text = Regex.Replace(text,
-            @"public\s+static\s+(\w+)\s+(_(?!_)\w+)",
-            @"internal static $1 $2",
-            RegexOptions.Multiline
-        );
+        base.ProcessSymbols(ref text);
     }
 }

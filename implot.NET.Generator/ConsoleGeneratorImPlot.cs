@@ -25,20 +25,7 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
 
     public override ImmutableSortedSet<Type> Aliases { get; }
 
-    protected override void Process(ref string text)
-    {
-        ProcessGenericMethods(ref text);
-
-        ProcessDelegates(ref text);
-
-        ProcessDefaultParameters(ref text);
-
-        ProcessEnumerations(ref text);
-
-        base.Process(ref text);
-    }
-
-    private static void ProcessGenericMethods(ref string input)
+    protected override void ProcessGenericMethods(ref string input)
     {
         // add generic type parameter with unmanaged constraint
 
@@ -69,9 +56,11 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             "stride ?? Unsafe.SizeOf<T>()",
             RegexOptions.Multiline
         );
+
+        base.ProcessGenericMethods(ref input);
     }
 
-    private static void ProcessDelegates(ref string text)
+    protected override void ProcessDelegates(ref string text)
     {
         // for whatever reason, this is wrong, fix
 
@@ -79,17 +68,8 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             "ImPlotPoint.__Internal ImPlotGetter",
             "ImPlotPoint ImPlotGetter"
         );
-    }
 
-    private static void ProcessDefaultParameters(ref string text)
-    {
-        // fix invalid syntax 'string[] name = 0'
-
-        text = Regex.Replace(text,
-            @"string\s*\[\]\s+(\w+)\s*=\s*0\s*,",
-            "string[] $1 = null,",
-            RegexOptions.Multiline
-        );
+        base.ProcessDelegates(ref text);
     }
 
     protected override void ProcessEnumerations(ref string input)
