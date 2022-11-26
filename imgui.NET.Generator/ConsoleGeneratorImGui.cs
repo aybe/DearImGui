@@ -34,25 +34,18 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 
         ProcessEnumerations(ref text);
 
+        ProcessClasses(ref text);
+
         base.Process(ref text);
     }
 
     private static void ProcessSymbols(ref string text)
     {
-        const string @namespace = Constants.ImGuiNamespace;
-
-        // merge symbols with class to remove __Symbols namespace
-
-        text = text.Replace(
-            $"}}\r\nnamespace {@namespace}.__Symbols\r\n{{\r\n    internal class imgui",
-            "    public unsafe partial class imgui"
-        );
-
         // use our own symbol resolver
 
         text = text.Replace(
             "CppSharp.SymbolResolver",
-            $"global::{@namespace}.SymbolResolver"
+            $"global::{Constants.ImGuiNamespace}.SymbolResolver"
         );
     }
 
@@ -85,5 +78,12 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             @"(?<!//\s+DEBUG:.*)(ImGui\w+Flags)\s+(\w+)\s+=\s+(\d+)",
             @"$1 $2 = ($1)($3)"
         );
+    }
+
+    private static void ProcessClasses(ref string text)
+    {
+        // the symbols class has wrong visibility and lacks partial, fix it
+
+        text = text.Replace("internal class imgui", "partial class imgui");
     }
 }

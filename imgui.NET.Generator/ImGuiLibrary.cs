@@ -53,6 +53,7 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     public override void Postprocess(Driver driver, ASTContext ctx)
     {
+        PostprocessImports(ctx);
         PostprocessIgnores(ctx);
         PostprocessDelegates(ctx);
         PostprocessEnumerations(ctx);
@@ -114,6 +115,19 @@ internal sealed class ImGuiLibrary : LibraryBase
     #endregion
 
     #region Postprocess
+
+    private static void PostprocessImports(ASTContext ctx)
+    {
+        // merge the imports in inner namespace with main class
+
+        var unit = GetImGuiTranslationUnit(ctx);
+        
+        var ns = unit.Namespaces.Single(s => s.Name is "ImGui");
+        
+        unit.Declarations.AddRange(ns.Declarations);
+        
+        ns.Declarations.Clear();
+    }
 
     private static void PostprocessIgnores(ASTContext ctx)
     {
