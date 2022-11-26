@@ -4,6 +4,9 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
 
+// ReSharper disable MemberCanBeProtected.Global
+// ReSharper disable VirtualMemberNeverOverridden.Global
+
 namespace im.NET.Generator;
 
 public abstract class ConsoleGenerator
