@@ -62,21 +62,21 @@ public abstract class ConsoleGenerator
         Write(text);
     }
 
-    protected virtual void Process(ref string text)
+    protected virtual void Process(ref string input)
     {
         // apply module-wide changes stuff first
 
-        ProcessNamespaces(ref text);
-        ProcessAliases(ref text);
-        ProcessClasses(ref text);
-        ProcessEnumerations(ref text);
+        ProcessNamespaces(ref input);
+        ProcessAliases(ref input);
+        ProcessClasses(ref input);
+        ProcessEnumerations(ref input);
 
         // apply fine-grained stuff
 
-        ProcessVectors(ref text);
-        ProcessPointers(ref text);
-        ProcessSummaries(ref text);
-        ProcessVisibility(ref text);
+        ProcessVectors(ref input);
+        ProcessPointers(ref input);
+        ProcessSummaries(ref input);
+        ProcessVisibility(ref input);
     }
 
     protected virtual void ProcessAliases(ref string input)
@@ -261,11 +261,11 @@ public abstract class ConsoleGenerator
             .ToImmutableSortedSet(TypeNameComparer.Instance);
     }
 
-    protected virtual void ProcessEnumerations(ref string text)
+    protected virtual void ProcessEnumerations(ref string input)
     {
         // enumerations default values other than zero must be cast
 
-        text = Regex.Replace(text,
+        input = Regex.Replace(input,
             @"(?<!//\s+DEBUG:.*)(\w+)\s+(\w+)\s+=\s+([-+]?\d+)(?=[,)])",
             @"$1 $2 = ($1)($3)",
             RegexOptions.Multiline
@@ -273,7 +273,7 @@ public abstract class ConsoleGenerator
 
         // enumerations cast to int while there's no reason to
 
-        text = Regex.Replace(text,
+        input = Regex.Replace(input,
             @"(?<type>\w+)\s+(\w+)\s+=\s+\(int\)\s*\k<type>\.(\w+)",
             "${type} $1 = ${type}.$2",
             RegexOptions.Multiline
