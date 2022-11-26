@@ -66,9 +66,9 @@ public abstract class ConsoleGenerator
     {
         // apply module-wide changes stuff first
 
-        ProcessNamespaces(ref text, Namespaces);
-        ProcessAliases(ref text, Aliases);
-        ProcessClasses(ref text, Classes);
+        ProcessNamespaces(ref text);
+        ProcessAliases(ref text);
+        ProcessClasses(ref text);
         ProcessEnumerations(ref text);
 
         // apply fine-grained stuff
@@ -79,9 +79,9 @@ public abstract class ConsoleGenerator
         ProcessVisibility(ref text);
     }
 
-    private static void ProcessAliases(ref string input, ImmutableSortedSet<Type> aliases)
+    protected virtual void ProcessAliases(ref string input)
     {
-        foreach (var item in aliases)
+        foreach (var item in Aliases)
         {
             var name = item.Name;
 
@@ -99,11 +99,11 @@ public abstract class ConsoleGenerator
         }
     }
 
-    private static void ProcessClasses(ref string input, ImmutableSortedSet<KeyValuePair<string, string>> classes)
+    protected virtual void ProcessClasses(ref string input)
     {
         // rename classes and references to their internals
 
-        foreach (var (key, val) in classes)
+        foreach (var (key, val) in Classes)
         {
             input = input.Replace($"class {key}", $"class {val}");
             input = input.Replace($"{key}()",     $"{val}()");
@@ -111,17 +111,17 @@ public abstract class ConsoleGenerator
         }
     }
 
-    private static void ProcessNamespaces(ref string input, ImmutableSortedSet<string> namespaces)
+    protected virtual void ProcessNamespaces(ref string input)
     {
         // simplify fully qualified names
 
-        foreach (var item in namespaces.Reverse())
+        foreach (var item in Namespaces.Reverse())
         {
             input = input.Replace($"global::{item}.", string.Empty);
         }
     }
 
-    private static void ProcessPointers(ref string input)
+    protected virtual void ProcessPointers(ref string input)
     {
         // hide pointers to internal classes
 
@@ -131,7 +131,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    private static void ProcessSummaries(ref string input)
+    protected virtual void ProcessSummaries(ref string input)
     {
         // for some reason, summaries have wrong syntax, repair
 
@@ -154,7 +154,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    private static void ProcessVectors(ref string input)
+    protected virtual void ProcessVectors(ref string input)
     {
         // type maps aren't enough to pass vectors directly
 
@@ -181,7 +181,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    private static void ProcessVisibility(ref string input)
+    protected virtual void ProcessVisibility(ref string input)
     {
         // hide internal structs and vectors
 
