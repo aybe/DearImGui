@@ -25,6 +25,19 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
 
     public override ImmutableSortedSet<Type> Aliases { get; }
 
+    protected override void Process(ref string input)
+    {
+        base.Process(ref input);
+
+        // fix enumeration syntax for negative values
+
+        input = Regex.Replace(input,
+            @"(?<!(?:static|///\s*<summary>).*)(Colormap.*)(-1)",
+            "$1(ImPlotColormap)($2)",
+            RegexOptions.Multiline
+        );
+    }
+
     protected override void ProcessGenericMethods(ref string input)
     {
         // add generic type parameter with unmanaged constraint
@@ -70,16 +83,5 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
         );
 
         base.ProcessDelegates(ref text);
-    }
-
-    protected override void ProcessEnumerations(ref string input)
-    {
-        input = Regex.Replace(input,
-            @"(?<!static.*)(Colormap.*)(-1)",
-            "$1(ImPlotColormap)($2)",
-            RegexOptions.Multiline
-        );
-
-        base.ProcessEnumerations(ref input);
     }
 }

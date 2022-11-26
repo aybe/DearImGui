@@ -154,7 +154,7 @@ public abstract class ConsoleGenerator
         // enumerations default values other than zero must be cast
 
         input = Regex.Replace(input,
-            @"(?<!//\s+DEBUG:.*)(\w+)\s+(\w+)\s+=\s+([-+]?\d+)(?=[,)])",
+            @"(?<!(?://\s*DEBUG:|///\s*<summary>).*)(\w+)\s+(\w+)\s+=\s+([-+]?\d+)(?=[,)])",
             @"$1 $2 = ($1)($3)",
             RegexOptions.Multiline
         );
