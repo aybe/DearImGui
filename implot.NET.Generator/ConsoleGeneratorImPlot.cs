@@ -6,7 +6,8 @@ namespace implot.NET.Generator;
 
 internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
 {
-    public ConsoleGeneratorImPlot(string moduleName, string? directory = null) : base(moduleName, directory)
+    public ConsoleGeneratorImPlot(string moduleName, string? directory = null)
+        : base(moduleName, directory)
     {
         Namespaces = GetDefaultNamespaces().Add("implot.NET");
 
