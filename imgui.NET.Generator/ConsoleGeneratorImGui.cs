@@ -20,11 +20,11 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
         Aliases = GetDefaultAliases();
     }
 
-    public override ImmutableSortedSet<string> Namespaces { get; }
+    public override ImmutableSortedSet<Type> Aliases { get; }
 
     public override ImmutableSortedSet<KeyValuePair<string, string>> Classes { get; }
 
-    public override ImmutableSortedSet<Type> Aliases { get; }
+    public override ImmutableSortedSet<string> Namespaces { get; }
 
     protected override void Process(ref string text)
     {
@@ -35,6 +35,13 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
         ProcessClasses(ref text);
 
         base.Process(ref text);
+    }
+
+    private static void ProcessClasses(ref string text)
+    {
+        // the symbols class has wrong visibility and lacks partial, fix it
+
+        text = text.Replace("internal class imgui", "partial class imgui");
     }
 
     private static void ProcessSymbols(ref string text)
@@ -69,12 +76,5 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             ".__Symbols",
             string.Empty
         );
-    }
-
-    private static void ProcessClasses(ref string text)
-    {
-        // the symbols class has wrong visibility and lacks partial, fix it
-
-        text = text.Replace("internal class imgui", "partial class imgui");
     }
 }
