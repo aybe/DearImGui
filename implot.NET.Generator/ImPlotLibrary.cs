@@ -28,6 +28,7 @@ internal sealed class ImPlotLibrary : LibraryBase
         module.IncludeDirs.Add(@"..\..\..\..\implot\implot");
         module.Defines.Add("IMGUI_DISABLE_OBSOLETE_FUNCTIONS");
         module.Defines.Add("IMGUI_DISABLE_OBSOLETE_KEYIO");
+        module.Defines.Add("IMPLOT_DISABLE_OBSOLETE_FUNCTIONS");
         module.Headers.Add("implot.h");
     }
 
