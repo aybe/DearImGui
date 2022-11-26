@@ -24,25 +24,25 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 
     public override ImmutableSortedSet<string> Namespaces { get; }
 
-    protected override void ProcessClasses(ref string text)
+    protected override void Process(ref string input)
     {
+        base.Process(ref input);
+
         // the symbols class has wrong visibility and lacks partial, fix it
 
-        text = text.Replace("internal class imgui", "partial class imgui");
+        input = input.Replace("internal class ImGui", "partial class ImGui");
 
         // hide ImVector namespace as internal class as it cannot be moved onto ImVector<T> because of CS7042
 
-        text = text.Replace(
+        input = input.Replace(
             "namespace ImVector",
             "internal static partial class ImVector"
         );
 
-        text = text.Replace(
+        input = input.Replace(
             ".__Symbols",
             string.Empty
         );
-
-        base.ProcessClasses(ref text);
     }
 
     protected override void ProcessSymbols(ref string text)

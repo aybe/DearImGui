@@ -4,9 +4,6 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
 
-// ReSharper disable MemberCanBeProtected.Global
-// ReSharper disable VirtualMemberNeverOverridden.Global
-
 namespace im.NET.Generator;
 
 public abstract class ConsoleGenerator
@@ -95,7 +92,7 @@ public abstract class ConsoleGenerator
         ProcessDefaultParameters(ref input);
     }
 
-    protected virtual void ProcessAliases(ref string input)
+    private void ProcessAliases(ref string input)
     {
         foreach (var item in Aliases)
         {
@@ -115,7 +112,17 @@ public abstract class ConsoleGenerator
         }
     }
 
-    protected virtual void ProcessClasses(ref string input)
+    private void ProcessNamespaces(ref string input)
+    {
+        // simplify fully qualified names
+
+        foreach (var item in Namespaces.Reverse())
+        {
+            input = input.Replace($"global::{item}.", string.Empty);
+        }
+    }
+
+    private void ProcessClasses(ref string input)
     {
         // rename classes and references to their internals
 
@@ -163,16 +170,6 @@ public abstract class ConsoleGenerator
 
     protected virtual void ProcessGenericMethods(ref string input)
     {
-    }
-
-    protected virtual void ProcessNamespaces(ref string input)
-    {
-        // simplify fully qualified names
-
-        foreach (var item in Namespaces.Reverse())
-        {
-            input = input.Replace($"global::{item}.", string.Empty);
-        }
     }
 
     protected virtual void ProcessPointers(ref string input)
