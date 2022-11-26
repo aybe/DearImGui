@@ -1,5 +1,6 @@
 ﻿using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
 using im.NET.Generator;
 
 namespace imgui.NET.Generator;
@@ -30,6 +31,8 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
         ProcessSymbols(ref text);
 
         ProcessVectorClass(ref text);
+
+        ProcessEnumerations(ref text);
 
         base.Process(ref text);
     }
@@ -71,6 +74,16 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
         text = text.Replace(
             ".__Symbols",
             string.Empty
+        );
+    }
+
+    private static void ProcessEnumerations(ref string text)
+    {
+        // enumerations default values other than zero must be cast
+
+        text = Regex.Replace(text,
+            @"(?<!//\s+DEBUG:.*)(ImGui\w+Flags)\s+(\w+)\s+=\s+(\d+)",
+            @"$1 $2 = ($1)($3)"
         );
     }
 }
