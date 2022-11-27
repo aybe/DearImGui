@@ -1,13 +1,16 @@
 <Project>
 	<PropertyGroup>
 
+		<!-- if editing the file, consider restarting Visual Studio otherwise you're in for some fun -->
+		<!-- this only works partially and overall is more trouble than it's worth, disabled for now -->
+
 		<!-- allow managed projects to build native dependencies and generate bindings automatically -->
 		<!-- else native dependencies will have to be batch built and the generators be run manually -->
-		<ImGuiManagedBuild>true</ImGuiManagedBuild>
+		<!-- <ImGuiManagedBuild>true</ImGuiManagedBuild> -->
 
 		<!-- this supposedly avoids rebuilding needlessly but just works at Visual Studio discretion -->
 		<!-- toggling the flag from within Visual Studio appears to fix the issue for the time being -->
-		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+		<!-- <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck> -->
 
 	</PropertyGroup>
 </Project>
