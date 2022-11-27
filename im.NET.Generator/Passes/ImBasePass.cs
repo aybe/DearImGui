@@ -7,7 +7,7 @@ public abstract class ImBasePass : TranslationUnitPass
 {
     protected const string Indent = "    "; // Microsoft Visual Studio Debug Console sucks
 
-    protected static ConsoleColorScope GetConsoleColorScope(ConsoleColor? backgroundColor = ConsoleColor.Red, ConsoleColor? foregroundColor = ConsoleColor.White)
+    protected static ConsoleColorScope GetConsoleColorScope(ConsoleColor? backgroundColor = null, ConsoleColor? foregroundColor = ConsoleColor.Yellow)
     {
         return new ConsoleColorScope(backgroundColor, foregroundColor);
     }
