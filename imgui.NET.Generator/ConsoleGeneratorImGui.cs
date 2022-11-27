@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Text.RegularExpressions;
 using im.NET.Generator;
 
 namespace imgui.NET.Generator;
@@ -38,10 +39,13 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             "namespace ImVector",
             "internal static partial class ImVector"
         );
+        
+        // fix references to former symbols namespace
 
-        input = input.Replace(
-            ".__Symbols",
-            string.Empty
+        input = Regex.Replace(input,
+            @"\.?__Symbols\.?",
+            string.Empty,
+            RegexOptions.Multiline
         );
 
         // use our own symbol resolver because theirs doesn't handle 32/64 loading
