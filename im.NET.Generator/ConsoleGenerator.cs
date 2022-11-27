@@ -136,7 +136,7 @@ public abstract class ConsoleGenerator
         }
     }
 
-    protected virtual void ProcessDefaultParameters(ref string input)
+    private static void ProcessDefaultParameters(ref string input)
     {
         // fix invalid syntax 'string[] name = 0'
 
@@ -166,7 +166,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    protected virtual void ProcessPointers(ref string input)
+    private static void ProcessPointers(ref string input)
     {
         // hide pointers to internal classes
 
@@ -176,7 +176,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    protected virtual void ProcessSummaries(ref string input)
+    private static void ProcessSummaries(ref string input)
     {
         // for some reason, summaries have wrong syntax, repair
 
@@ -199,7 +199,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    private void ProcessSymbols(ref string text)
+    private static void ProcessSymbols(ref string text)
     {
         // hide public symbols that ought to be internal
 
@@ -210,7 +210,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    protected virtual void ProcessVectors(ref string input)
+    private static void ProcessVectors(ref string input)
     {
         // type maps aren't enough to pass vectors directly
 
@@ -237,7 +237,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    protected virtual void ProcessVisibility(ref string input)
+    private static void ProcessVisibility(ref string input)
     {
         // hide internal structs and vectors
 
