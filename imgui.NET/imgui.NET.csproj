@@ -61,6 +61,13 @@
 		</Content>
 	</ItemGroup>
 
+
+	<ItemGroup Condition="'$(ImGuiManagedBuild)' == 'true'">
+		<ProjectReference Include="..\imgui.NET.Generator\imgui.NET.Generator.csproj">
+			<ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+		</ProjectReference>
+	</ItemGroup>
+
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(ImGuiManagedBuild)' == 'true'">
 
 		<Message Text="Generating bindings for imgui" Importance="High" />

@@ -65,7 +65,7 @@
 		<ProjectReference Include="..\imgui.NET\imgui.NET.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(ImGuiManagedBuild)' == 'true'">
 		<ProjectReference Include="..\implot.NET.Generator\implot.NET.Generator.csproj">
 			<ReferenceOutputAssembly>False</ReferenceOutputAssembly>
 		</ProjectReference>
