@@ -15,6 +15,10 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
     private readonly ImPlotContext ImPlotContext;
 
+    private bool ShowImGuiDemo = true;
+
+    private bool ShowImPlotDemo = true;
+
     public MyGameWindow(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings)
         : base(gameWindowSettings, nativeWindowSettings)
     {
@@ -52,11 +56,23 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
         GL.ClearColor(Color4.FromHsv(new Vector4((float)(ElapsedTime % 10.0f / 10.0f), 1.0f, 0.25f, 1.0f)));
         GL.Clear(ClearBufferMask.ColorBufferBit);
 
-        var b = true;
+        if (ImGui.Begin("Hello, world!"))
+        {
+            ImGui.Checkbox("Show ImGui Demo",  ref ShowImGuiDemo);
+            ImGui.Checkbox("Show ImPlot Demo", ref ShowImPlotDemo);
+        }
 
-        ImGui.ShowDemoWindow(ref b);
+        ImGui.End();
 
-        ImPlot.ShowDemoWindow(ref b);
+        if (ShowImGuiDemo)
+        {
+            ImGui.ShowDemoWindow(ref ShowImGuiDemo);
+        }
+
+        if (ShowImPlotDemo)
+        {
+            ImPlot.ShowDemoWindow(ref ShowImPlotDemo);
+        }
 
         Controller.Render();
 
