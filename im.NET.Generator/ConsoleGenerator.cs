@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
+using JetBrains.Annotations;
 
 namespace im.NET.Generator;
 
@@ -18,16 +19,19 @@ public abstract class ConsoleGenerator
     /// <summary>
     ///     The set of aliases to be renamed.
     /// </summary>
+    [PublicAPI]
     public abstract ImmutableSortedSet<Type> Aliases { get; }
 
     /// <summary>
     ///     The set of classes to be renamed.
     /// </summary>
+    [PublicAPI]
     public abstract ImmutableSortedSet<KeyValuePair<string, string>> Classes { get; }
 
     /// <summary>
     ///     The set of namespaces used.
     /// </summary>
+    [PublicAPI]
     public abstract ImmutableSortedSet<string> Namespaces { get; }
 
     private string ModuleName { get; }
