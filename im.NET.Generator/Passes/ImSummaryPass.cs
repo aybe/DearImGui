@@ -6,11 +6,11 @@ namespace im.NET.Generator.Passes;
 
 public abstract class ImSummaryPass : TranslationUnitPass
 {
+    private readonly Dictionary<TranslationUnit, string[]> Dictionary = new();
+
     protected abstract string HeaderName { get; }
 
     protected abstract string HeaderUrl { get; }
-
-    private readonly Dictionary<TranslationUnit, string[]> Dictionary = new();
 
     public override bool VisitDeclaration(Declaration decl)
     {
@@ -21,7 +21,9 @@ public abstract class ImSummaryPass : TranslationUnitPass
     private static string? EnumSummary(Declaration declaration)
     {
         if (declaration is not Enumeration.Item item)
+        {
             return null;
+        }
 
         // we do not compare with zero because some enum values don't mean 'None'
 

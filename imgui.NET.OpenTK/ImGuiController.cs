@@ -170,11 +170,6 @@ public sealed class ImGuiController : Disposable
         { Keys.F12, ImGuiKey.F12 }
     };
 
-    /// <summary>
-    ///     Gets the imgui context for this instance.
-    /// </summary>
-    public ImGuiContext Context { get; }
-
     private readonly ImGuiIO IO;
 
     private readonly Dictionary<ImGuiMouseCursor, IntPtr> MouseCursors;
@@ -205,7 +200,7 @@ public sealed class ImGuiController : Disposable
     {
         Window = window;
 
-        ImGui.SetCurrentContext(ImGui.CreateContext(null));
+        ImGui.SetCurrentContext(ImGui.CreateContext());
 
         IO = ImGui.GetIO(); // needs context
 
@@ -236,6 +231,11 @@ public sealed class ImGuiController : Disposable
         Window.MouseWheel += OnWindowMouseWheel;
         Window.TextInput += OnWindowTextInput;
     }
+
+    /// <summary>
+    ///     Gets the imgui context for this instance.
+    /// </summary>
+    public ImGuiContext Context { get; }
 
     /// <inheritdoc />
     protected override void DisposeManaged()
@@ -275,7 +275,7 @@ public sealed class ImGuiController : Disposable
 
         GL.ObjectLabel(ObjectLabelIdentifier.Program, program, label.Length, label);
 
-        var vs = CreateShader(name, ShaderType.VertexShader, sourceVS);
+        var vs = CreateShader(name, ShaderType.VertexShader,   sourceVS);
         var fs = CreateShader(name, ShaderType.FragmentShader, sourceFS);
 
         GL.AttachShader(program, vs);
@@ -356,7 +356,7 @@ public sealed class ImGuiController : Disposable
         }
         else
         {
-            IO.Fonts.AddFontDefault(null);
+            IO.Fonts.AddFontDefault();
         }
 
         var pp = new IntPtr();
@@ -374,11 +374,11 @@ public sealed class ImGuiController : Disposable
 
         var levels = (int)Math.Floor(Math.Log(Math.Max(pw, ph), 2));
 
-        GL.TextureParameter(Texture, TextureParameterName.TextureMaxLevel, levels - 1);
+        GL.TextureParameter(Texture, TextureParameterName.TextureMaxLevel,  levels - 1);
         GL.TextureParameter(Texture, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
         GL.TextureParameter(Texture, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
-        GL.TextureParameter(Texture, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
-        GL.TextureParameter(Texture, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
+        GL.TextureParameter(Texture, TextureParameterName.TextureWrapS,     (int)TextureWrapMode.Repeat);
+        GL.TextureParameter(Texture, TextureParameterName.TextureWrapT,     (int)TextureWrapMode.Repeat);
 
         GL.TextureStorage2D(Texture, levels, SizedInternalFormat.Rgba8, pw, ph);
 
@@ -440,9 +440,9 @@ public sealed class ImGuiController : Disposable
         var offset2 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Uv)).ToInt32();
         var offset3 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Col)).ToInt32();
 
-        GL.VertexArrayAttribFormat(VertexArray, 0, 2, VertexAttribType.Float, false, offset1);
-        GL.VertexArrayAttribFormat(VertexArray, 1, 2, VertexAttribType.Float, false, offset2);
-        GL.VertexArrayAttribFormat(VertexArray, 2, 4, VertexAttribType.UnsignedByte, true, offset3);
+        GL.VertexArrayAttribFormat(VertexArray, 0, 2, VertexAttribType.Float,        false, offset1);
+        GL.VertexArrayAttribFormat(VertexArray, 1, 2, VertexAttribType.Float,        false, offset2);
+        GL.VertexArrayAttribFormat(VertexArray, 2, 4, VertexAttribType.UnsignedByte, true,  offset3);
 
         GL.VertexArrayAttribBinding(VertexArray, 0, 0);
         GL.VertexArrayAttribBinding(VertexArray, 1, 0);
@@ -453,7 +453,7 @@ public sealed class ImGuiController : Disposable
     {
         Shader = CreateProgram("ImGui shader", ShaderSourceVS, ShaderSourceFS);
         ShaderProjection = GL.GetUniformLocation(Shader, "Projection");
-        ShaderTexture = GL.GetUniformLocation(Shader, "Texture");
+        ShaderTexture = GL.GetUniformLocation(Shader,    "Texture");
     }
 
     private void OnWindowFocusChanged(FocusedChangedEventArgs e)
@@ -561,9 +561,9 @@ public sealed class ImGuiController : Disposable
         var alt = modifiers.HasFlags(KeyModifiers.Alt);
         var super = modifiers.HasFlags(KeyModifiers.Super);
 
-        IO.AddKeyEvent(ImGuiKey.ModCtrl, control);
+        IO.AddKeyEvent(ImGuiKey.ModCtrl,  control);
         IO.AddKeyEvent(ImGuiKey.ModShift, shift);
-        IO.AddKeyEvent(ImGuiKey.ModAlt, alt);
+        IO.AddKeyEvent(ImGuiKey.ModAlt,   alt);
         IO.AddKeyEvent(ImGuiKey.ModSuper, super);
     }
 
@@ -756,7 +756,7 @@ public sealed class ImGuiController : Disposable
             }
 
             GL.NamedBufferSubData(VertexBuffer, IntPtr.Zero, vtxBufferSize, vtxBuffer.Data);
-            GL.NamedBufferSubData(IndexBuffer, IntPtr.Zero, idxBufferSize, idxBuffer.Data);
+            GL.NamedBufferSubData(IndexBuffer,  IntPtr.Zero, idxBufferSize, idxBuffer.Data);
 
             foreach (var cmd in list.CmdBuffer)
             {

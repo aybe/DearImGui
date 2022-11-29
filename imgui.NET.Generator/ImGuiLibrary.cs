@@ -5,7 +5,6 @@ using CppSharp.Generators;
 using CppSharp.Generators.CSharp;
 using im.NET.Generator;
 using im.NET.Generator.Logging;
-using im.NET.Generator.Passes;
 using imgui.NET.Generator.Passes;
 
 // ReSharper disable IdentifierTypo
@@ -203,10 +202,14 @@ internal sealed class ImGuiLibrary : LibraryBase
             foreach (var p in c.Properties)
             {
                 if (p.QualifiedType.Type is not TemplateSpecializationType type)
+                {
                     continue;
+                }
 
                 if (type.Template.Name is not "ImVector")
+                {
                     continue;
+                }
 
                 ctx.SetPropertyAsReadOnly(c.Name, p.Name);
 

@@ -39,7 +39,7 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             "namespace ImVector",
             "internal static partial class ImVector"
         );
-        
+
         // fix references to former symbols namespace
 
         input = Regex.Replace(input,

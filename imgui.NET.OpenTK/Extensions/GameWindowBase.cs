@@ -81,6 +81,7 @@ public abstract class GameWindowBase : GameWindow
                 {
                     WindowState = WindowState.Normal;
                 }
+
                 break;
             default:
                 throw new InvalidEnumArgumentException(null, (int)WindowState, typeof(WindowState));

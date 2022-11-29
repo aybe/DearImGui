@@ -2,7 +2,7 @@
 
 namespace imgui.NET.Generator.Passes;
 
-public sealed class ImGuiSummaryPass:ImSummaryPass
+public sealed class ImGuiSummaryPass : ImSummaryPass
 {
     protected override string HeaderName { get; } = "imgui.h";
 

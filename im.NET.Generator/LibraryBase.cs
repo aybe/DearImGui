@@ -14,28 +14,6 @@ public abstract class LibraryBase : ILibrary
 {
     public abstract ImmutableSortedSet<string> Namespaces { get; init; }
 
-    #region ILibrary Members
-
-    public virtual void Setup(Driver driver)
-    {
-        var options = driver.Options;
-
-        options.GeneratorKind = GeneratorKind.CSharp;
-        options.GenerateFinalizers = true;
-        options.GenerateDebugOutput = true;
-        options.GenerateDefaultValuesForArguments = true;
-        options.MarshalCharAsManagedChar = true;
-        options.Verbose = true;
-    }
-
-    public abstract void SetupPasses(Driver driver);
-
-    public abstract void Preprocess(Driver driver, ASTContext ctx);
-
-    public abstract void Postprocess(Driver driver, ASTContext ctx);
-
-    #endregion
-
     protected static void AddDefaultPasses(Driver driver)
     {
         driver.AddTranslationUnitPass(new ImEnumPass());
@@ -135,10 +113,14 @@ public abstract class LibraryBase : ILibrary
         foreach (var enumeration in unit.Enums)
         {
             if (enumeration.Name.Contains("Flags") is false)
+            {
                 continue;
+            }
 
             if (enumeration.IsFlags)
+            {
                 continue;
+            }
 
             enumeration.SetFlags();
 
@@ -148,4 +130,26 @@ public abstract class LibraryBase : ILibrary
             }
         }
     }
+
+    #region ILibrary Members
+
+    public virtual void Setup(Driver driver)
+    {
+        var options = driver.Options;
+
+        options.GeneratorKind = GeneratorKind.CSharp;
+        options.GenerateFinalizers = true;
+        options.GenerateDebugOutput = true;
+        options.GenerateDefaultValuesForArguments = true;
+        options.MarshalCharAsManagedChar = true;
+        options.Verbose = true;
+    }
+
+    public abstract void SetupPasses(Driver driver);
+
+    public abstract void Preprocess(Driver driver, ASTContext ctx);
+
+    public abstract void Postprocess(Driver driver, ASTContext ctx);
+
+    #endregion
 }
