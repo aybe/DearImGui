@@ -94,7 +94,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>IMGUI_DISABLE_OBSOLETE_FUNCTIONS;IMGUI_DISABLE_OBSOLETE_KEYIO;IMGUI_API=__declspec(dllimport);IMPLOT_API=__declspec(dllexport);WIN32;_DEBUG;IMPLOT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_DISABLE_OBSOLETE_FUNCTIONS;IMGUI_DISABLE_OBSOLETE_KEYIO;IMGUI_API=__declspec(dllimport);IMPLOT_DISABLE_OBSOLETE_FUNCTIONS;IMPLOT_API=__declspec(dllexport);WIN32;_DEBUG;IMPLOT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)imgui\imgui;$(SolutionDir)implot\implot</AdditionalIncludeDirectories>
     </ClCompile>
@@ -110,7 +110,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>IMGUI_DISABLE_OBSOLETE_FUNCTIONS;IMGUI_DISABLE_OBSOLETE_KEYIO;IMGUI_API=__declspec(dllimport);IMPLOT_API=__declspec(dllexport);WIN32;NDEBUG;IMPLOT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_DISABLE_OBSOLETE_FUNCTIONS;IMGUI_DISABLE_OBSOLETE_KEYIO;IMGUI_API=__declspec(dllimport);IMPLOT_DISABLE_OBSOLETE_FUNCTIONS;IMPLOT_API=__declspec(dllexport);WIN32;NDEBUG;IMPLOT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)imgui\imgui;$(SolutionDir)implot\implot</AdditionalIncludeDirectories>
     </ClCompile>
@@ -126,7 +126,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>IMGUI_DISABLE_OBSOLETE_FUNCTIONS;IMGUI_DISABLE_OBSOLETE_KEYIO;IMGUI_API=__declspec(dllimport);IMPLOT_API=__declspec(dllexport);_DEBUG;IMPLOT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_DISABLE_OBSOLETE_FUNCTIONS;IMGUI_DISABLE_OBSOLETE_KEYIO;IMGUI_API=__declspec(dllimport);IMPLOT_DISABLE_OBSOLETE_FUNCTIONS;IMPLOT_API=__declspec(dllexport);_DEBUG;IMPLOT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)imgui\imgui;$(SolutionDir)implot\implot</AdditionalIncludeDirectories>
     </ClCompile>
@@ -142,7 +142,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>IMGUI_DISABLE_OBSOLETE_FUNCTIONS;IMGUI_DISABLE_OBSOLETE_KEYIO;IMGUI_API=__declspec(dllimport);IMPLOT_API=__declspec(dllexport);NDEBUG;IMPLOT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_DISABLE_OBSOLETE_FUNCTIONS;IMGUI_DISABLE_OBSOLETE_KEYIO;IMGUI_API=__declspec(dllimport);IMPLOT_DISABLE_OBSOLETE_FUNCTIONS;IMPLOT_API=__declspec(dllexport);NDEBUG;IMPLOT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)imgui\imgui;$(SolutionDir)implot\implot</AdditionalIncludeDirectories>
     </ClCompile>
