@@ -14,7 +14,7 @@
 		<PackageTags>imgui imgui.NET implot implot.NET</PackageTags>
 	</PropertyGroup>
 
-	<Import Project="$(SolutionDir)Directory.packages.targets" />
+	<Import Project="$(MSBuildThisFileDirectory)..\Directory.packages.targets" />
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
