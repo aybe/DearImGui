@@ -12,7 +12,7 @@
 		<RepositoryUrl>https://github.com/aybe/imgui.NET</RepositoryUrl>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<PackageOutputPath>$(SolutionDir)build\packages\$(Platform)\$(Configuration)</PackageOutputPath>
+		<PackageOutputPath>$(MSBuildThisFileDirectory)build\packages\$(Platform)\$(Configuration)</PackageOutputPath>
 		<DebugType>embedded</DebugType>
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
