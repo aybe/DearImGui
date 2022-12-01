@@ -70,7 +70,7 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
         );
 
         input = Regex.Replace(input,
-            @"(?<!static.*)stride",
+            @"(?<!(?:DEBUG|static).*)stride",
             "stride ?? Unsafe.SizeOf<T>()",
             RegexOptions.Multiline
         );
