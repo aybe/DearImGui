@@ -77,14 +77,10 @@
 		<Exec Command="pushd $(SolutionDir)implot.NET.Generator\bin\$(Configuration)\$(TargetFramework)\&#xD;&#xA;implot.NET.Generator.exe 1&gt; nul&#xD;&#xA;popd" />
 
 		<Message Text="Building 32-bit implot" Importance="High" />
-		<MSBuild
-			Projects="$(SolutionDir)implot\implot.vcxproj"
-			Properties="Configuration=$(Configuration);Platform=x86;OutDir=$(SolutionDir)build\x86\$(Configuration)\" />
+		<MSBuild Projects="$(SolutionDir)implot\implot.vcxproj" Properties="Configuration=$(Configuration);Platform=x86;OutDir=$(SolutionDir)build\x86\$(Configuration)\" />
 
 		<Message Text="Building 64-bit implot" Importance="High" />
-		<MSBuild
-			Projects="$(SolutionDir)implot\implot.vcxproj"
-			Properties="Configuration=$(Configuration);Platform=x64;OutDir=$(SolutionDir)build\x64\$(Configuration)\" />
+		<MSBuild Projects="$(SolutionDir)implot\implot.vcxproj" Properties="Configuration=$(Configuration);Platform=x64;OutDir=$(SolutionDir)build\x64\$(Configuration)\" />
 
 	</Target>
 
