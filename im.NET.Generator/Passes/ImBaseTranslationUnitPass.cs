@@ -3,7 +3,7 @@ using im.NET.Generator.Logging;
 
 namespace im.NET.Generator.Passes;
 
-public abstract class ImBasePass : TranslationUnitPass
+public abstract class ImBaseTranslationUnitPass : TranslationUnitPass
 {
     protected const string Indent = "    "; // Microsoft Visual Studio Debug Console sucks
 

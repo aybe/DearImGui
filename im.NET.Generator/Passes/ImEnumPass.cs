@@ -7,7 +7,7 @@ namespace im.NET.Generator.Passes;
 
 [SuppressMessage("ReSharper", "RedundantIfElseBlock")]
 [SuppressMessage("ReSharper", "InvertIf")]
-public sealed class ImEnumPass : ImBasePass
+public sealed class ImEnumPass : ImBaseTranslationUnitPass
 {
     [PublicAPI]
     public bool LogIgnoredEnumeration { get; set; } = true;
