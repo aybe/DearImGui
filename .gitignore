@@ -402,3 +402,5 @@ FodyWeavers.xsd
 *.bak
 *.g.cs
 launchSettings.json
+implot.NET.Generator/Generics/GenerateDefinitions.g.txt
+implot/implot_generics.h

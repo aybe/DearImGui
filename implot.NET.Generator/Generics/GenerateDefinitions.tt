@@ -1,0 +1,78 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ output extension=".g.txt" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#
+	WriteLine(@"#pragma once");
+	WriteLine(@"#include ""implot/implot.h""");
+	WriteLine(@"namespace ImPlot");
+	WriteLine(@"{");
+
+	var types = new[]
+	{
+		"ImS8",
+		"ImU8",
+		"ImS16",
+		"ImU16",
+		"ImS32",
+		"ImU32",
+		"ImS64",
+		"ImU64",
+		"float",
+		"double"
+	};
+
+	var lines = File.ReadLines(Path.Combine(Host.ResolvePath(@"..\..\implot\implot"), "implot.h"));
+
+	var index = 0;
+	var count = 0;
+
+	foreach (var line in lines)
+	{
+		if (line.StartsWith("IMPLOT_TMP")) // template method
+		{
+			foreach (var type in types)
+			{
+				var text = line;
+
+				// replace type parameter T by actual type for this overload
+
+				text = Regex.Replace(text, @"const\s+T\*", $"const {type}*");
+				text = Regex.Replace(text, @"sizeof\s*\(\s*T\s*\)", $"sizeof({type})");
+				
+				// replace the template macro by API macro
+
+				text = Regex.Replace(text, @"^IMPLOT_TMP", "IMPLOT_API");
+
+				// make the overload a specialized function template
+
+				text = Regex.Replace(text, @"^(\s*IMPLOT_API\s+\w+\s+\w+)", $"template <> $1<{type}>");
+				
+				// remove defaults as they're already in original header
+
+				text = Regex.Replace(text, @"=\S+(?=[,)])", string.Empty);
+
+				// add a special comment so that we can pull docs for it
+
+				WriteLine($"{text} // imgui.NET @ implot.h @ {index}");
+
+				count++;
+			}
+		}
+
+		index++;
+	}
+
+	WriteLine(@"}");
+
+	WriteLine($"// {count} functions generated");
+
+	var path = Path.GetFullPath(Path.Combine(Host.ResolvePath(@"..\..\implot"), "implot_generics.h"));
+
+	File.WriteAllText(path, GenerationEnvironment.ToString());
+
+	GenerationEnvironment.Clear();
+
+	WriteLine(path);
+#>

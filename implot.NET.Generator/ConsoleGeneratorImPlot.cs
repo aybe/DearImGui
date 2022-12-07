@@ -45,33 +45,11 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             "ImPlotPoint ImPlotGetter"
         );
 
-        // generic 1/3: add type parameter with unmanaged constraint
+        // stride in generic function still have wrong default value of T
 
         input = Regex.Replace(input,
-            @"^(\s+public\s+static\s+\w+\s+\w+)(\(.*T\s+\w+.*\))",
-            @"$1<T>$2 where T : unmanaged",
-            RegexOptions.Multiline
-        );
-
-        // generic 2/3: set type parameters to be arrays
-
-        input = Regex.Replace(input,
-            @"(,\s+T)(\s+\w+)(?=.*where\s+T\s+:\s+unmanaged\s*$)",
-            @"$1[]$2",
-            RegexOptions.Multiline
-        );
-
-        // generic 3/3: sizeof(T) is not compile-time constant, compute locally
-
-        input = Regex.Replace(input,
-            @"(?<!extern.*)int\s+stride\s+=\s+sizeof\(T\)",
-            "int? stride = null",
-            RegexOptions.Multiline
-        );
-
-        input = Regex.Replace(input,
-            @"(?<!(?:DEBUG|static).*)stride",
-            "stride ?? Unsafe.SizeOf<T>()",
+            @"(public\s+static\s+\w+\s+Plot.*?\s)(ref\s)?(\w+)(\*?\s)(values|xs)(.*\s+stride\s+=\s+sizeof\()T(\)\))",
+            @"$1$2$3$4$5$6$3$7",
             RegexOptions.Multiline
         );
     }
