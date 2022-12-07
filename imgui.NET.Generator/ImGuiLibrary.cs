@@ -1,8 +1,6 @@
 ﻿using System.Collections.Immutable;
 using CppSharp;
 using CppSharp.AST;
-using CppSharp.Generators;
-using CppSharp.Generators.CSharp;
 using im.NET.Generator;
 using im.NET.Generator.Logging;
 using imgui.NET.Generator.Passes;
@@ -17,7 +15,7 @@ namespace imgui.NET.Generator;
 
 internal sealed class ImGuiLibrary : LibraryBase
 {
-    public override ImmutableSortedSet<string> Namespaces { get; init; } = null!;
+    public ImmutableSortedSet<string> Namespaces { get; init; } = null!;
 
     public override void Setup(Driver driver)
     {
@@ -38,7 +36,7 @@ internal sealed class ImGuiLibrary : LibraryBase
 
         driver.AddTranslationUnitPass(new ImGuiSummaryPass());
 
-        driver.Generator.OnUnitGenerated += OnUnitGenerated;
+        driver.AddGeneratorOutputPass(new ImGuiGeneratorOutputPass(Namespaces));
     }
 
     public override void Preprocess(Driver driver, ASTContext ctx)
@@ -217,17 +215,6 @@ internal sealed class ImGuiLibrary : LibraryBase
                 {
                     Console.WriteLine($"Set ImVector<T> property as read-only: {c.Name}.{p.Name}");
                 }
-            }
-        }
-    }
-
-    private void OnUnitGenerated(GeneratorOutput output)
-    {
-        foreach (var generator in output.Outputs.Cast<CSharpSources>())
-        {
-            if (generator.Module.LibraryName is "imgui")
-            {
-                ProcessSources(generator);
             }
         }
     }

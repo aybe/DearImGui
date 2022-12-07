@@ -1,9 +1,7 @@
-﻿using System.Collections.Immutable;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
-using CppSharp.Generators.CSharp;
 using CppSharp.Passes;
 using im.NET.Generator.Logging;
 using im.NET.Generator.Passes;
@@ -12,8 +10,6 @@ namespace im.NET.Generator;
 
 public abstract class LibraryBase : ILibrary
 {
-    public abstract ImmutableSortedSet<string> Namespaces { get; init; }
-
     protected static void AddDefaultPasses(Driver driver)
     {
         driver.AddTranslationUnitPass(new ImEnumPass());
@@ -54,39 +50,6 @@ public abstract class LibraryBase : ILibrary
         // this is useless in our case, it also throws when adding our own comments
 
         RemovePass<CleanCommentsPass>(driver);
-    }
-
-    protected void ProcessSources(CSharpSources sources)
-    {
-        // disable some warnings
-
-        var header = sources.FindBlock(BlockKind.Header);
-
-        header.Text.WriteLine(
-            "#pragma warning disable CS0109 // The member 'member' does not hide an inherited member. The new keyword is not required");
-
-        header.Text.WriteLine( // there is no generic solution for these ones, e.g. delegates, indexers
-            "#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Type_or_Member'");
-
-        // add used usings
-
-        var usings = sources.FindBlock(BlockKind.Usings);
-
-        usings.Text.StringBuilder.Clear();
-
-        foreach (var item in Namespaces)
-        {
-            usings.Text.WriteLine($"using {item};");
-        }
-
-        // fix escaped new lines in comments
-
-        var comments = sources.FindBlocks(BlockKind.BlockComment);
-
-        foreach (var comment in comments)
-        {
-            comment.Text.StringBuilder.Replace("&lt;br/&gt;", "<br/>");
-        }
     }
 
     protected static void PushDeclarationUpstream(TranslationUnit unit, string @class)

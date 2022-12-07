@@ -2,8 +2,6 @@
 using System.Diagnostics.CodeAnalysis;
 using CppSharp;
 using CppSharp.AST;
-using CppSharp.Generators;
-using CppSharp.Generators.CSharp;
 using im.NET.Generator;
 using im.NET.Generator.Passes;
 using implot.NET.Generator.Passes;
@@ -15,7 +13,7 @@ namespace implot.NET.Generator;
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
 internal sealed class ImPlotLibrary : LibraryBase
 {
-    public override ImmutableSortedSet<string> Namespaces { get; init; } = null!;
+    public ImmutableSortedSet<string> Namespaces { get; init; } = null!;
 
     public override void Setup(Driver driver)
     {
@@ -43,7 +41,7 @@ internal sealed class ImPlotLibrary : LibraryBase
 
         driver.AddTranslationUnitPass(new ImPlotSummaryPass());
 
-        driver.Generator.OnUnitGenerated += OnUnitGenerated;
+        driver.AddGeneratorOutputPass(new ImPlotGeneratorOutputPass(Namespaces));
     }
 
     public override void Preprocess(Driver driver, ASTContext ctx)
@@ -137,32 +135,6 @@ internal sealed class ImPlotLibrary : LibraryBase
     {
         Ignore(ctx, "ImPlotPoint", "Item",   IgnoreType.Property); // manual
         Ignore(ctx, "ImPlotStyle", "Colors", IgnoreType.Property); // manual
-    }
-
-    private void OnUnitGenerated(GeneratorOutput output)
-    {
-        foreach (var generator in output.Outputs.Cast<CSharpSources>())
-        {
-            if (generator.Module.LibraryName is "implot")
-            {
-                ProcessSources(generator);
-
-                // these typedefs aren't inferred, add some usings
-
-                var usings = generator.FindBlock(BlockKind.Usings);
-
-                var text = usings.Text;
-
-                text.WriteLine("using ImS8  = System.SByte;");
-                text.WriteLine("using ImU8  = System.Byte;");
-                text.WriteLine("using ImS16 = System.Int16;");
-                text.WriteLine("using ImU16 = System.UInt16;");
-                text.WriteLine("using ImS32 = System.Int32;");
-                text.WriteLine("using ImU32 = System.UInt32;");
-                text.WriteLine("using ImS64 = System.Int64;");
-                text.WriteLine("using ImU64 = System.UInt64;");
-            }
-        }
     }
 
     #endregion
