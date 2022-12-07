@@ -60,17 +60,14 @@ internal sealed class ImPlotLibrary : LibraryBase
         PostprocessNamespaces(ctx);
     }
 
-    private static void PostprocessNamespaces(ASTContext ctx)
-    {
-        var unit = GetImPlotTranslationUnit(ctx);
-
-        PushDeclarationUpstream(unit, "ImPlot");
-    }
+    #region Helpers
 
     private static TranslationUnit GetImPlotTranslationUnit(ASTContext ctx)
     {
         return ctx.TranslationUnits.Single(s => s.FileName is "implot.h");
     }
+
+    #endregion
 
     #region Preprocess
 
@@ -127,6 +124,13 @@ internal sealed class ImPlotLibrary : LibraryBase
         ctx.SetNameOfEnumWithName("ImAxis", "ImPlotAxis");
 
         SetEnumerationsFlags(GetImPlotTranslationUnit(ctx));
+    }
+
+    private static void PostprocessNamespaces(ASTContext ctx)
+    {
+        var unit = GetImPlotTranslationUnit(ctx);
+
+        PushDeclarationUpstream(unit, "ImPlot");
     }
 
     private static void PostprocessProperties(ASTContext ctx)
