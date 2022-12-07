@@ -6,11 +6,16 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
+using Vector2 = System.Numerics.Vector2;
 
 namespace SampleApplication.OpenTK;
 
 internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 {
+    private static readonly double[] SampleData1 = Enumerable.Range(0, 256).Select(s => Math.Cos(s / 2.0d / Math.PI)).ToArray();
+
+    private static readonly double[] SampleData2 = Enumerable.Range(0, 256).Select(s => Math.Sin(s / 2.0d / Math.PI)).ToArray();
+
     private readonly ImGuiController Controller;
 
     private readonly ImPlotContext ImPlotContext;
@@ -73,6 +78,21 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
         {
             ImPlot.ShowDemoWindow(ref ShowImPlotDemo);
         }
+
+        ImGui.SetNextWindowSize(new Vector2(1000, 400), ImGuiCond.Once);
+
+        if (ImGui.Begin("Hello, ImPlot!"))
+        {
+            if (ImPlot.BeginPlot("Hello, PlotLine!"))
+            {
+                ImPlot.SetupAxes("X", "Y");
+                ImPlot.PlotLine("Sample data 1", ref SampleData1[0], SampleData1.Length);
+                ImPlot.PlotLine("Sample data 2", ref SampleData2[0], SampleData2.Length);
+                ImPlot.EndPlot();
+            }
+        }
+
+        ImGui.End();
 
         Controller.Render();
 
