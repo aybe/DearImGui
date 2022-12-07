@@ -1,5 +1,6 @@
 ﻿using OpenTK.Mathematics;
 using OpenTK.Windowing.Desktop;
+using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace SampleApplication.OpenTK;
 
@@ -7,10 +8,29 @@ internal static class Program
 {
     private static void Main(string[] args)
     {
-        var nws = new NativeWindowSettings
+        static unsafe NativeWindowSettings GetNativeWindowSettings()
         {
-            Size = new Vector2i(1920, 1080)
-        };
+            GLFW.Init();
+
+            var pm = GLFW.GetPrimaryMonitor();
+            var vm = GLFW.GetVideoMode(pm);
+            var sw = vm->Width;
+            var sh = vm->Height;
+            var ww = sw * 2 / 3;
+            var wh = sh * 2 / 3;
+            var wx = sw / 2 - ww / 2;
+            var wy = sh / 2 - wh / 2;
+            var vs = new Vector2i(ww, wh);
+            var vl = new Vector2i(wx, wy);
+
+            return new NativeWindowSettings
+            {
+                Size = vs,
+                Location = vl
+            };
+        }
+
+        var nws = GetNativeWindowSettings();
 
         using var window = new MyGameWindow(GameWindowSettings.Default, nws);
 
