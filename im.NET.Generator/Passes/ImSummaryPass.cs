@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using CppSharp.AST;
 using CppSharp.Passes;
+using im.NET.Generator.Logging;
 
 namespace im.NET.Generator.Passes;
 
@@ -12,10 +13,11 @@ public abstract class ImSummaryPass : TranslationUnitPass
 
     protected abstract string HeaderUrl { get; }
 
-    public override bool VisitDeclaration(Declaration decl)
+    public override bool VisitDeclaration(Declaration declaration)
     {
-        TryComment(decl, decl is Enumeration.Item ? EnumSummary : null);
-        return base.VisitDeclaration(decl);
+        TryGetComments(declaration, declaration is Enumeration.Item ? EnumSummary : null);
+
+        return base.VisitDeclaration(declaration);
     }
 
     private static string? EnumSummary(Declaration declaration)
@@ -32,14 +34,151 @@ public abstract class ImSummaryPass : TranslationUnitPass
             return "Use the default behavior.";
         }
 
+        // for keys enumerations, the comment will be enum suffix
+
         const string key = "ImGuiKey_";
 
-        if (item.Namespace.Name == key && item.DebugText.Contains("//") is false)
+        if (item.Namespace.Name != key)
         {
-            return item.Name.Replace(key, string.Empty);
+            return null;
         }
 
-        return null;
+        if (item.DebugText.Contains("//"))
+        {
+            return null;
+        }
+
+        var summary = item.Name.Replace(key, string.Empty);
+
+        summary = $"The key '{summary}'.";
+
+        return summary;
+    }
+
+    private void TryGetComments(Declaration declaration, Func<Declaration, string?>? summary = null)
+    {
+        // ignore irrelevant and system declarations
+
+        if (Ignore(declaration))
+        {
+            return;
+        }
+
+        var start = declaration.LineNumberStart;
+
+        if (start is -1)
+        {
+            return;
+        }
+
+        // try grab comments, remove empty lines, always add a GitHub link to header @ line
+
+        var comments = new List<string>();
+
+        if (!TryGetComments(declaration, summary, comments))
+        {
+            using (new ConsoleColorScope(foregroundColor: ConsoleColor.Red))
+            {
+                var text = Regex.Replace(declaration.ToString(), @"\t|\s+", " ");
+                Console.WriteLine($"Couldn't find comment for declaration at line {start}: {text}.");
+            }
+        }
+
+        comments.RemoveAll(string.IsNullOrWhiteSpace);
+
+        comments.Add($@"{HeaderUrl}#L{start}");
+
+        declaration.Comment = new RawComment
+        {
+            BriefText = string.Join("<br/>", comments.Select(Normalize))
+        };
+    }
+
+    private bool TryGetComments(Declaration declaration, Func<Declaration, string?>? summary, IList<string> comments)
+    {
+        // try find the comments either from right, callback, or above
+
+        var lines = GetSourceLines(declaration);
+
+        var index = declaration.LineNumberStart - 1;
+
+        // if declaration is an enum 'None', defer to callback instead
+
+        if (declaration is not Enumeration.Item { Name: "None" })
+        {
+            if (TryGetCommentsRight(lines, index, comments))
+            {
+                return true;
+            }
+        }
+
+        var callback = summary?.Invoke(declaration);
+
+        if (callback != null)
+        {
+            comments.Add(callback);
+            return true;
+        }
+
+        var above = TryGetCommentsAbove(lines, index, comments);
+
+        return above;
+    }
+
+    private static bool TryGetCommentsAbove(IReadOnlyList<string> lines, int index, IList<string> comments)
+    {
+        // grab consecutive comments immediately preceding declaration
+
+        var count = comments.Count;
+
+        while (--index >= 0)
+        {
+            var input = lines[index];
+            var match = Regex.Match(input, @"(?<=^\s*//\s).*");
+
+            if (match.Success)
+            {
+                comments.Insert(0, match.Value);
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return comments.Count != count;
+    }
+
+    private static bool TryGetCommentsRight(IReadOnlyList<string> lines, int index, ICollection<string> comments)
+    {
+        var count = comments.Count;
+
+        var input = lines[index];
+
+        // match multiple comments after declaration
+
+        var matches = Regex.Matches(input, @"//.*?(?=//|$)");
+
+        // split multiple spaces as different lines
+
+        foreach (var match in matches.Cast<Match>())
+        {
+            var split = Regex.Split(match.Value, @"\s{2,}");
+
+            foreach (var value in split)
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    continue;
+                }
+
+                var item = value.Trim('/', ' ');
+
+                comments.Add(item);
+            }
+        }
+
+        return comments.Count != count;
     }
 
     private string[] GetSourceLines<T>(T decl) where T : Declaration
@@ -80,44 +219,22 @@ public abstract class ImSummaryPass : TranslationUnitPass
             return true;
         }
 
-        if (declaration is TypedefDecl && declaration.DebugText.IndexOf('(') is -1)
+        if (declaration is not TypedefDecl)
         {
-            return true; // only callbacks otherwise we'll introduce tons of CS1587
+            return false;
         }
 
-        return false;
-    }
+        // only callbacks otherwise we'll introduce tons of CS1587
 
-    private void TryComment(Declaration declaration, Func<Declaration, string?>? getter = null)
-    {
-        if (Ignore(declaration))
-        {
-            return;
-        }
+        var ignore = declaration.DebugText.IndexOf('(') is -1;
 
-        var start = declaration.LineNumberStart;
-
-        if (start is -1)
-        {
-            return;
-        }
-
-        var stack = new Stack<string>();
-
-        stack.Push($@"{HeaderUrl}#L{start}");
-
-        TryFindComment(declaration, stack, getter);
-
-        var value = string.Join("<br/>", stack.Select(Normalize));
-
-        declaration.Comment = new RawComment
-        {
-            BriefText = value
-        };
+        return ignore;
     }
 
     private string Normalize(string value)
     {
+        // prepend period if necessary
+
         value = value.Trim(' ', '.');
 
         if (value.EndsWith('!') is false)
@@ -125,93 +242,21 @@ public abstract class ImSummaryPass : TranslationUnitPass
             value = $"{value}.";
         }
 
+        // replace multiple spaces by a comma
+
         value = Regex.Replace(value, @"\s{2,}", @", ");
+
+        // capitalize first letter
 
         if (value.StartsWith(HeaderUrl) is false)
         {
             value = $"{char.ToUpperInvariant(value[0])}{value[1..]}";
         }
 
+        // XML-escape the stuff
+
         value = value.Replace(@"&", @"&amp;").Replace(@"<", @"&lt;").Replace(@">", @"&gt;");
 
         return value;
-    }
-
-    private static bool TryFindCommentAbove(IReadOnlyList<string> lines, int index, Stack<string> stack)
-    {
-        var count = stack.Count;
-
-        do
-        {
-            var input = lines[index];
-
-            if (Regex.IsMatch(input, @"^\s*$")) // empty line
-            {
-                break;
-            }
-
-            var match = Regex.Match(input, @"^\s*//\s?(.*)$"); // comment
-
-            if (match.Success is false)
-            {
-                continue;
-            }
-
-            var value = match.Groups[1].Value;
-
-            stack.Push(value);
-        } while (--index > 0);
-
-        return stack.Count != count;
-    }
-
-    private static bool TryFindCommentRight(IReadOnlyList<string> lines, int index, Stack<string> stack)
-    {
-        var input = lines[index];
-
-        if (input.Contains('/') is false)
-        {
-            return false;
-        }
-
-        var match = Regex.Match(input, @"[^/]+$"); // anything after last slash
-
-        if (match.Success is false)
-        {
-            return false;
-        }
-
-        var value = match.Value;
-
-        stack.Push(value);
-
-        return true;
-    }
-
-    private bool TryFindComment(Declaration declaration, Stack<string> stack, Func<Declaration, string?>? getter)
-    {
-        var lines = GetSourceLines(declaration);
-
-        var index = declaration.LineNumberStart - 1;
-
-        if (TryFindCommentRight(lines, index, stack))
-        {
-            return true;
-        }
-
-        var value = getter?.Invoke(declaration);
-
-        if (value != null)
-        {
-            stack.Push(value);
-            return true;
-        }
-
-        if (TryFindCommentAbove(lines, index, stack))
-        {
-            return true;
-        }
-
-        return false;
     }
 }
