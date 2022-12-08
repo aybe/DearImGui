@@ -55,6 +55,7 @@ internal sealed class ImPlotLibrary : LibraryBase
     {
         PostprocessProperties(ctx);
         PostprocessEnumerations(ctx);
+        PostprocessGenericMethods(ctx);
         PostprocessNamespaces(ctx);
     }
 
@@ -85,23 +86,6 @@ internal sealed class ImPlotLibrary : LibraryBase
         {
             function.ExplicitlyIgnore();
         }
-
-        // move the overloads we've generated to the namespace where other functions are
-
-        var source = ctx.TranslationUnits.Single(s => s.FileName is "implot_generics.h");
-
-        var sourceNamespace = source.Namespaces.Single();
-
-        var sourceDeclarations = sourceNamespace.Declarations;
-
-        foreach (var declaration in sourceDeclarations)
-        {
-            declaration.Namespace = targetNamespace;
-        }
-
-        targetNamespace.Declarations.AddRange(sourceDeclarations);
-
-        sourceDeclarations.Clear();
     }
 
     private static void PreprocessValueTypes(ASTContext ctx)
@@ -122,6 +106,32 @@ internal sealed class ImPlotLibrary : LibraryBase
         ctx.SetNameOfEnumWithName("ImAxis", "ImPlotAxis");
 
         SetEnumerationsFlags(GetImPlotTranslationUnit(ctx));
+    }
+
+    private static void PostprocessGenericMethods(ASTContext ctx)
+    {
+        // move the overloads we've generated to the namespace where other functions are
+
+        var target = GetImPlotTranslationUnit(ctx);
+
+        var targetNamespace = target.Namespaces.Single(s => s.Name is "ImPlot");
+
+        var source = ctx.TranslationUnits.Single(s => s.FileName is "implot_generics.h");
+
+        var sourceNamespace = source.Namespaces.Single();
+
+        var sourceDeclarations = sourceNamespace.Declarations;
+
+        // BUG works but why heat map functions are seen thrice?
+
+        foreach (var declaration in sourceDeclarations)
+        {
+            declaration.Namespace = targetNamespace;
+        }
+
+        targetNamespace.Declarations.AddRange(sourceDeclarations);
+
+        sourceDeclarations.Clear();
     }
 
     private static void PostprocessNamespaces(ASTContext ctx)
