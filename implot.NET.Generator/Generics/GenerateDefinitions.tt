@@ -23,7 +23,8 @@
 		"double"
 	};
 
-	var lines = File.ReadLines(Path.Combine(Host.ResolvePath(@"..\..\implot\implot"), "implot.h"));
+	var input = Path.GetFullPath(Path.Combine(Host.ResolvePath(@"..\..\implot\implot"), "implot.h"));
+	var lines = File.ReadAllLines(input);
 
 	var index = 0;
 	var count = 0;
@@ -40,7 +41,7 @@
 
 				text = Regex.Replace(text, @"const\s+T\*", $"const {type}*");
 				text = Regex.Replace(text, @"sizeof\s*\(\s*T\s*\)", $"sizeof({type})");
-				
+
 				// replace the template macro by API macro
 
 				text = Regex.Replace(text, @"^IMPLOT_TMP", "IMPLOT_API");
@@ -48,14 +49,26 @@
 				// make the overload a specialized function template
 
 				text = Regex.Replace(text, @"^(\s*IMPLOT_API\s+\w+\s+\w+)", $"template <> $1<{type}>");
-				
+
 				// remove defaults as they're already in original header
 
 				text = Regex.Replace(text, @"=\S+(?=[,)])", string.Empty);
 
 				// add a special comment so that we can pull docs for it
 
-				WriteLine($"{text} // imgui.NET @ implot.h @ {index}");
+				var above = index;
+
+				do
+				{
+					var value = lines[above];
+
+					if (Regex.IsMatch(value, @"^\s*//"))
+					{
+						break;
+					}
+				} while (--above >= 0);
+
+				WriteLine($@"{text} // imgui.NET @ ""{input}"" @ {above + 2}|{index + 1}");
 
 				count++;
 			}

@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Immutable;
+using System.Text.RegularExpressions;
 using CppSharp.AST;
 using CppSharp.Passes;
 using im.NET.Generator.Logging;
@@ -7,9 +8,9 @@ namespace im.NET.Generator.Passes;
 
 public abstract class ImSummaryPass : TranslationUnitPass
 {
-    private readonly Dictionary<TranslationUnit, string[]> Dictionary = new();
+    private readonly Dictionary<string, string[]> Dictionary = new();
 
-    protected abstract string HeaderName { get; }
+    protected abstract ImmutableSortedSet<string> HeaderNames { get; }
 
     protected abstract string HeaderUrl { get; }
 
@@ -75,7 +76,7 @@ public abstract class ImSummaryPass : TranslationUnitPass
 
         var comments = new List<string>();
 
-        if (!TryGetComments(declaration, summary, comments))
+        if (!TryGetComments(declaration, summary, comments, ref start))
         {
             using (new ConsoleColorScope(foregroundColor: ConsoleColor.Red))
             {
@@ -94,13 +95,30 @@ public abstract class ImSummaryPass : TranslationUnitPass
         };
     }
 
-    private bool TryGetComments(Declaration declaration, Func<Declaration, string?>? summary, IList<string> comments)
+    private bool TryGetComments(Declaration declaration, Func<Declaration, string?>? summary, IList<string> comments, ref int start)
     {
         // try find the comments either from right, callback, or above
 
-        var lines = GetSourceLines(declaration);
+        var lines = GetSourceLines(declaration.TranslationUnit.FilePath);
 
         var index = declaration.LineNumberStart - 1;
+
+        // if comment on right is our special doc comment, update refs
+
+        var value = lines[index];
+
+        var match = Regex.Match(value, @"//\s+imgui\.NET\s+@\s+""(?<header>[\w\:\.\\]+)""\s+@\s+(?<index1>\d+)\|(?<index2>\d+)$");
+
+        if (match.Success)
+        {
+            var header = match.Groups["header"].Value;
+            var index1 = match.Groups["index1"].Value;
+            var index2 = match.Groups["index2"].Value;
+            var unit = ASTContext.TranslationUnits.Single(s => string.Equals(s.FilePath, header, StringComparison.OrdinalIgnoreCase));
+            lines = GetSourceLines(unit.FilePath);
+            index = int.Parse(index1) - 1;
+            start = int.Parse(index2);
+        }
 
         // if declaration is an enum 'None', defer to callback instead
 
@@ -181,16 +199,14 @@ public abstract class ImSummaryPass : TranslationUnitPass
         return comments.Count != count;
     }
 
-    private string[] GetSourceLines<T>(T decl) where T : Declaration
+    private string[] GetSourceLines(string header)
     {
-        var unit = decl.TranslationUnit;
-
-        if (!Dictionary.ContainsKey(unit))
+        if (!Dictionary.ContainsKey(header))
         {
-            Dictionary[unit] = File.ReadAllLines(unit.FilePath);
+            Dictionary[header] = File.ReadAllLines(header);
         }
 
-        var lines = Dictionary[unit];
+        var lines = Dictionary[header];
 
         return lines;
     }
@@ -209,7 +225,7 @@ public abstract class ImSummaryPass : TranslationUnitPass
             return true;
         }
 
-        if (unit.FileName != HeaderName)
+        if (HeaderNames.All(s => !string.Equals(s, unit.FileName, StringComparison.Ordinal)))
         {
             return true;
         }
