@@ -404,3 +404,4 @@ FodyWeavers.xsd
 launchSettings.json
 implot.NET.Generator/Generics/GenerateDefinitions.g.txt
 implot/implot_generics.h
+*.lutconfig
