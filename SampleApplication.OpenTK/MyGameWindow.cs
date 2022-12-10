@@ -1,4 +1,5 @@
-﻿using imgui.NET;
+﻿using System.Drawing;
+using imgui.NET;
 using imgui.NET.OpenTK;
 using imgui.NET.OpenTK.Extensions;
 using implot.NET;
@@ -20,6 +21,10 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
     private readonly ImPlotContext ImPlotContext;
 
+    private Color4 Color1 = Color4.Crimson;
+
+    private Color4 Color2 = Color4.DeepSkyBlue;
+
     private bool ShowImGuiDemo = true;
 
     private bool ShowImPlotDemo = true;
@@ -36,8 +41,6 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
         ImPlot.SetImGuiContext(Controller.Context);
     }
 
-    private double ElapsedTime { get; set; }
-
     protected override void Dispose(bool disposing)
     {
         if (disposing)
@@ -52,19 +55,36 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
     protected override void OnUpdateFrame(FrameEventArgs args)
     {
         Controller.Update((float)args.Time);
-
-        ElapsedTime += args.Time;
     }
 
     protected override void OnRenderFrame(FrameEventArgs args)
     {
-        GL.ClearColor(Color4.FromHsv(new Vector4((float)(ElapsedTime % 10.0f / 10.0f), 1.0f, 0.25f, 1.0f)));
+        GL.ClearColor(Color.CornflowerBlue);
         GL.Clear(ClearBufferMask.ColorBufferBit);
+
+        ImGui.SetNextWindowSize(new Vector2(800, 500), ImGuiCond.Once);
 
         if (ImGui.Begin("Hello, world!"))
         {
             ImGui.Checkbox("Show ImGui Demo",  ref ShowImGuiDemo);
             ImGui.Checkbox("Show ImPlot Demo", ref ShowImPlotDemo);
+
+            ImGui.ColorEdit4("Color 1", Color1.AsSpan(), ImGuiColorEditFlags.NoInputs);
+
+            ImGui.ColorEdit4("Color 2", Color2.AsSpan(), ImGuiColorEditFlags.NoInputs);
+
+            if (ImPlot.BeginPlot("Sample plot"))
+            {
+                ImPlot.SetupAxes("X", "Y");
+
+                ImPlot.SetNextLineStyle(Color1.ToVector4());
+                ImPlot.PlotLine("Sample data 1", ref SampleData1[0], SampleData1.Length);
+
+                ImPlot.SetNextLineStyle(Color2.ToVector4());
+                ImPlot.PlotLine("Sample data 2", ref SampleData2[0], SampleData2.Length);
+
+                ImPlot.EndPlot();
+            }
         }
 
         ImGui.End();
@@ -78,21 +98,6 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
         {
             ImPlot.ShowDemoWindow(ref ShowImPlotDemo);
         }
-
-        ImGui.SetNextWindowSize(new Vector2(1000, 400), ImGuiCond.Once);
-
-        if (ImGui.Begin("Hello, ImPlot!"))
-        {
-            if (ImPlot.BeginPlot("Hello, PlotLine!"))
-            {
-                ImPlot.SetupAxes("X", "Y");
-                ImPlot.PlotLine("Sample data 1", ref SampleData1[0], SampleData1.Length);
-                ImPlot.PlotLine("Sample data 2", ref SampleData2[0], SampleData2.Length);
-                ImPlot.EndPlot();
-            }
-        }
-
-        ImGui.End();
 
         Controller.Render();
 
