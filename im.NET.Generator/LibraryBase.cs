@@ -105,6 +105,7 @@ public abstract class LibraryBase : ILibrary
         options.GenerateDebugOutput = true;
         options.GenerateDefaultValuesForArguments = true;
         options.MarshalCharAsManagedChar = true;
+        options.UseSpan = true;
         options.Verbose = true;
     }
 
