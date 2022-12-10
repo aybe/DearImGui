@@ -74,14 +74,10 @@
 		<Exec Command="pushd $(SolutionDir)imgui.NET.Generator\bin\$(Configuration)\$(TargetFramework)\&#xD;&#xA;imgui.NET.Generator.exe 1&gt; nul&#xD;&#xA;popd" />
 
 		<Message Text="Building 32-bit imgui" Importance="High" />
-		<MSBuild
-			Projects="$(SolutionDir)imgui\imgui.vcxproj"
-			Properties="Configuration=$(Configuration);Platform=x86;OutDir=$(SolutionDir)build\x86\$(Configuration)\" />
+		<MSBuild Projects="$(SolutionDir)imgui\imgui.vcxproj" Properties="Configuration=$(Configuration);Platform=x86;OutDir=$(SolutionDir)build\x86\$(Configuration)\" />
 
 		<Message Text="Building 64-bit imgui" Importance="High" />
-		<MSBuild
-			Projects="$(SolutionDir)imgui\imgui.vcxproj"
-			Properties="Configuration=$(Configuration);Platform=x64;OutDir=$(SolutionDir)build\x64\$(Configuration)\" />
+		<MSBuild Projects="$(SolutionDir)imgui\imgui.vcxproj" Properties="Configuration=$(Configuration);Platform=x64;OutDir=$(SolutionDir)build\x64\$(Configuration)\" />
 
 	</Target>
 
