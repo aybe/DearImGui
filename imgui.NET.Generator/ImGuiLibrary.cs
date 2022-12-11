@@ -186,7 +186,11 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     private static void PostprocessEnumerations(ASTContext ctx)
     {
-        SetEnumerationsFlags(GetImGuiTranslationUnit(ctx));
+        var unit = GetImGuiTranslationUnit(ctx);
+
+        SetEnumerationsFlags(unit);
+
+        unit.FindEnum("ImGuiCond").Modifiers &= ~Enumeration.EnumModifiers.Flags;
     }
 
     private static void PostprocessProperties(ASTContext ctx)
