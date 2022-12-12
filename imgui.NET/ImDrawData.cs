@@ -11,19 +11,23 @@ partial class ImDrawData
     /// <summary>
     ///     https://github.com/ocornut/imgui/blob/9aae45eb4a05a5a1f96be1ef37eb503a12ceb889/imgui.h#L2639
     /// </summary>
-    public unsafe ImDrawList[] CmdLists
+    public unsafe int GetCmdLists([System.Diagnostics.CodeAnalysis.NotNull] ref ImDrawList[]? lists)
     {
-        get
+        var count = CmdListsCount;
+
+        if (lists is null || lists.Length < count)
         {
-            var lists = new ImDrawList[CmdListsCount];
-
-            for (var i = 0; i < lists.Length; i++)
-            {
-                lists[i] = ImDrawList.__GetOrCreateInstance(((IntPtr*)((__Internal*)__Instance)->CmdLists)[i]);
-            }
-
-            return lists;
+            Array.Resize(ref lists, count);
         }
+
+        var input = (IntPtr*)((__Internal*)__Instance)->CmdLists;
+
+        for (var i = 0; i < count; i++)
+        {
+            lists[i] = ImDrawList.__CreateInstance(input[i]);
+        }
+
+        return count;
     }
 
     /// <inheritdoc />

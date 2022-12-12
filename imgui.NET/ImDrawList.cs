@@ -7,9 +7,17 @@ namespace imgui.NET;
 ///     https://github.com/ocornut/imgui/blob/9aae45eb4a05a5a1f96be1ef37eb503a12ceb889/imgui.h#L2505
 /// </summary>
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-unsafe partial class ImDrawList
+partial struct ImDrawList
 {
-    private ImVector<Vector4> ClipRectStack => Marshalling.ReadVector<Vector4>(ref ((__Internal*)__Instance)->_ClipRectStack);
+    private ImVector<Vector4> ClipRectStack
+    {
+        get
+        {
+            var source = __Instance._ClipRectStack;
+            var vector = Marshalling.ReadVector<Vector4>(ref source);
+            return vector;
+        }
+    }
 
     /// <summary>
     ///     https://github.com/ocornut/imgui/blob/9aae45eb4a05a5a1f96be1ef37eb503a12ceb889/imgui.h#L2535

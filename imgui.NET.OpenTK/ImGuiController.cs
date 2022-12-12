@@ -195,6 +195,8 @@ public sealed class ImGuiController : Disposable
     private int VertexBuffer;
 
     private int VertexBufferSize = 10000;
+    
+    private ImDrawList[] DrawLists = new ImDrawList[100];
 
     public ImGuiController(GameWindow window, ImGuiFontConfig? fontConfig = null)
     {
@@ -732,10 +734,12 @@ public sealed class ImGuiController : Disposable
         GL.UniformMatrix4(ShaderProjection, false, ref projection);
         GL.BindSampler(0, 0);
         GL.BindVertexArray(VertexArray);
+        
+        var count = data.GetCmdLists(ref DrawLists);
 
-        for (var i = 0; i < data.CmdListsCount; i++)
+        for (var i = 0; i < count; i++)
         {
-            var list = data.CmdLists[i];
+            var list = DrawLists[i];
 
             var vtxBuffer = list.VtxBuffer;
             var idxBuffer = list.IdxBuffer;
