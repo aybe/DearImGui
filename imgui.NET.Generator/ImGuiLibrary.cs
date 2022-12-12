@@ -86,6 +86,7 @@ internal sealed class ImGuiLibrary : LibraryBase
     {
         // though ignored or manually implemented or remapped, we must set these as value types anyway
 
+        ctx.SetClassAsValueType("ImDrawData");
         ctx.SetClassAsValueType("ImDrawList");
         ctx.SetClassAsValueType("ImDrawVert");
         ctx.SetClassAsValueType("ImVec2");
@@ -224,6 +225,10 @@ internal sealed class ImGuiLibrary : LibraryBase
                 }
             }
         }
+
+        Ignore(ctx, "ImDrawData", "DisplayPos",       IgnoreType.Property); // manual
+        Ignore(ctx, "ImDrawData", "DisplaySize",      IgnoreType.Property); // manual
+        Ignore(ctx, "ImDrawData", "FramebufferScale", IgnoreType.Property); // manual
     }
 
     #endregion
