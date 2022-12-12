@@ -788,7 +788,7 @@ public sealed class ImGuiController : Disposable
                 var length = (int)cmd.ElemCount;
                 var offset = cmd.IdxOffset * sizeof(ushort);
 
-                if (IO.BackendFlags.HasFlags(ImGuiBackendFlags.RendererHasVtxOffset))
+                if ((IO.BackendFlags & ImGuiBackendFlags.RendererHasVtxOffset) != ImGuiBackendFlags.None)
                 {
                     GL.DrawElementsBaseVertex(PrimitiveType.Triangles, length, DrawElementsType.UnsignedShort, (IntPtr)offset, unchecked((int)cmd.VtxOffset));
                 }
