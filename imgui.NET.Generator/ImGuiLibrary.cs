@@ -127,8 +127,10 @@ internal sealed class ImGuiLibrary : LibraryBase
         Ignore(ctx, "ImDrawData",            "CmdLists",        IgnoreType.Property); // manual
         Ignore(ctx, "ImDrawList",            "ClipRectStack",   IgnoreType.Property); // intern
         Ignore(ctx, "ImDrawList",            "CmdHeader",       IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",            "Data",            IgnoreType.Property); // intern
         Ignore(ctx, "ImDrawList",            "FringeScale",     IgnoreType.Property); // intern
         Ignore(ctx, "ImDrawList",            "IdxWritePtr",     IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList",            "OwnerName",       IgnoreType.Property); // intern
         Ignore(ctx, "ImDrawList",            "Path",            IgnoreType.Property); // intern
         Ignore(ctx, "ImDrawList",            "Splitter",        IgnoreType.Property); // intern
         Ignore(ctx, "ImDrawList",            "TextureIdStack",  IgnoreType.Property); // intern
