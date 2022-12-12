@@ -758,8 +758,10 @@ public sealed class ImGuiController : Disposable
             GL.NamedBufferSubData(VertexBuffer, IntPtr.Zero, vtxBufferSize, vtxBuffer.Data);
             GL.NamedBufferSubData(IndexBuffer,  IntPtr.Zero, idxBufferSize, idxBuffer.Data);
 
-            foreach (var cmd in list.CmdBuffer)
+            for (var j = 0; j < list.CmdBuffer.Size; j++)
             {
+                var cmd = list.CmdBuffer[j];
+
                 var clipOff = data.DisplayPos;
                 var clipScl = data.FramebufferScale;
                 var clipMin = new Vector2((cmd.ClipRect.X - clipOff.X) * clipScl.X, (cmd.ClipRect.Y - clipOff.Y) * clipScl.Y);
