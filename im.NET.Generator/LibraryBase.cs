@@ -146,6 +146,7 @@ public abstract class LibraryBase : ILibrary
         PostprocessEnumerations(ctx);
         PostprocessDeclarations(ctx);
         PostprocessDelegates(ctx);
+        PostprocessProperties(ctx);
     }
 
     #endregion
@@ -157,6 +158,10 @@ public abstract class LibraryBase : ILibrary
     protected abstract void PostprocessDeclarations(ASTContext ctx);
 
     protected virtual void PostprocessDelegates(ASTContext ctx)
+    {
+    }
+
+    protected virtual void PostprocessProperties(ASTContext ctx)
     {
     }
 }

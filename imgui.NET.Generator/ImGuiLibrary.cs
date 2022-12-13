@@ -57,8 +57,6 @@ internal sealed class ImGuiLibrary : LibraryBase
     public override void Postprocess(Driver driver, ASTContext ctx)
     {
         base.Postprocess(driver, ctx);
-
-        PostprocessProperties(ctx);
     }
 
     #region Preprocess
@@ -190,7 +188,7 @@ internal sealed class ImGuiLibrary : LibraryBase
         ns.Declarations.Clear();
     }
 
-    private static void PostprocessProperties(ASTContext ctx)
+    protected override void PostprocessProperties(ASTContext ctx)
     {
         // ImVector<T> properties are not meant to be assignable, make them read-only
 
