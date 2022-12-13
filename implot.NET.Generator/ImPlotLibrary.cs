@@ -98,6 +98,12 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     #region Postprocess
 
+    protected override void PostprocessIgnores(ASTContext ctx)
+    {
+        Ignore(ctx, "ImPlotPoint", "Item",   IgnoreType.Property); // manual
+        Ignore(ctx, "ImPlotStyle", "Colors", IgnoreType.Property); // manual
+    }
+
     protected override void PostprocessEnumerations(ASTContext ctx)
     {
         // there is also stuff in T4 templates about that
@@ -135,12 +141,6 @@ internal sealed class ImPlotLibrary : LibraryBase
         targetNamespace.Declarations.AddRange(sourceDeclarations);
 
         sourceDeclarations.Clear();
-    }
-
-    protected override void PostprocessIgnores(ASTContext ctx)
-    {
-        Ignore(ctx, "ImPlotPoint", "Item",   IgnoreType.Property); // manual
-        Ignore(ctx, "ImPlotStyle", "Colors", IgnoreType.Property); // manual
     }
 
     #endregion

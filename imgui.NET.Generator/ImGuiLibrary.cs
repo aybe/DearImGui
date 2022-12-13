@@ -109,15 +109,6 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     #region Postprocess
 
-    protected override void PostprocessDeclarations(ASTContext ctx)
-    {
-        // merge the imports in inner namespace with main class
-
-        var unit = GetImGuiTranslationUnit(ctx);
-
-        PushClassDeclarationsUpstream(unit, "ImGui");
-    }
-
     protected override void PostprocessIgnores(ASTContext ctx)
     {
         Ignore(ctx, "ImDrawData",            "CmdLists",        IgnoreType.Property); // manual
@@ -140,6 +131,24 @@ internal sealed class ImGuiLibrary : LibraryBase
         Ignore(ctx, "ImGuiStyle",            "Colors",          IgnoreType.Property); // manual
 
         Ignore(ctx, "ImVectorExtensions", null, IgnoreType.Class); // unused
+    }
+
+    protected override void PostprocessEnumerations(ASTContext ctx)
+    {
+        var unit = GetImGuiTranslationUnit(ctx);
+
+        SetEnumerationsFlags(unit);
+
+        unit.FindEnum("ImGuiCond").Modifiers &= ~Enumeration.EnumModifiers.Flags;
+    }
+
+    protected override void PostprocessDeclarations(ASTContext ctx)
+    {
+        // merge the imports in inner namespace with main class
+
+        var unit = GetImGuiTranslationUnit(ctx);
+
+        PushClassDeclarationsUpstream(unit, "ImGui");
     }
 
     private static void PostprocessDelegates(ASTContext ctx)
@@ -180,15 +189,6 @@ internal sealed class ImGuiLibrary : LibraryBase
         tu.Declarations.AddRange(ns.Declarations);
 
         ns.Declarations.Clear();
-    }
-
-    protected override void PostprocessEnumerations(ASTContext ctx)
-    {
-        var unit = GetImGuiTranslationUnit(ctx);
-
-        SetEnumerationsFlags(unit);
-
-        unit.FindEnum("ImGuiCond").Modifiers &= ~Enumeration.EnumModifiers.Flags;
     }
 
     private static void PostprocessProperties(ASTContext ctx)
