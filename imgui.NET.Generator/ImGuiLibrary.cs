@@ -54,11 +54,6 @@ internal sealed class ImGuiLibrary : LibraryBase
         PreprocessIgnores(ctx);
     }
 
-    public override void Postprocess(Driver driver, ASTContext ctx)
-    {
-        base.Postprocess(driver, ctx);
-    }
-
     #region Preprocess
 
     private static void PreprocessEnumerations(ASTContext ctx)

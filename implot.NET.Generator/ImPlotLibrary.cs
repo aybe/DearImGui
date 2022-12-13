@@ -59,11 +59,6 @@ internal sealed class ImPlotLibrary : LibraryBase
         PreprocessGenericMethods(ctx);
     }
 
-    public override void Postprocess(Driver driver, ASTContext ctx)
-    {
-        base.Postprocess(driver, ctx);
-    }
-
     #region Preprocess
 
     private static void PreprocessGenericMethods(ASTContext ctx)
