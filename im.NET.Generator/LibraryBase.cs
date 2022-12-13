@@ -151,11 +151,17 @@ public abstract class LibraryBase : ILibrary
 
     #endregion
 
-    protected abstract void PostprocessIgnores(ASTContext ctx);
+    protected virtual void PostprocessIgnores(ASTContext ctx)
+    {
+    }
 
-    protected abstract void PostprocessEnumerations(ASTContext ctx);
+    protected virtual void PostprocessEnumerations(ASTContext ctx)
+    {
+    }
 
-    protected abstract void PostprocessDeclarations(ASTContext ctx);
+    protected virtual void PostprocessDeclarations(ASTContext ctx)
+    {
+    }
 
     protected virtual void PostprocessDelegates(ASTContext ctx)
     {
