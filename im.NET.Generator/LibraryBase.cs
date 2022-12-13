@@ -12,7 +12,17 @@ public abstract class LibraryBase : ILibrary
 {
     protected static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
     {
-        return ctx.TranslationUnits.Single(s => s.FileName == "imgui.h");
+        return GetTranslationUnit(ctx, "imgui.h");
+    }
+
+    protected static TranslationUnit GetImPlotTranslationUnit(ASTContext ctx)
+    {
+        return GetTranslationUnit(ctx, "implot.h");
+    }
+
+    private static TranslationUnit GetTranslationUnit(ASTContext ctx, string fileName)
+    {
+        return ctx.TranslationUnits.Single(s => s.FileName == fileName);
     }
 
     protected static void Ignore(ASTContext ctx, string? className, string? memberName, IgnoreType ignoreType)

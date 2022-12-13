@@ -67,15 +67,6 @@ internal sealed class ImPlotLibrary : LibraryBase
         PostprocessNamespaces(ctx);
     }
 
-    #region Helpers
-
-    private static TranslationUnit GetImPlotTranslationUnit(ASTContext ctx)
-    {
-        return ctx.TranslationUnits.Single(s => s.FileName is "implot.h");
-    }
-
-    #endregion
-
     #region Preprocess
 
     private static void PreprocessGenericMethods(ASTContext ctx)
