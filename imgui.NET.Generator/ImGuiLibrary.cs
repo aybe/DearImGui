@@ -58,7 +58,6 @@ internal sealed class ImGuiLibrary : LibraryBase
     {
         base.Postprocess(driver, ctx);
 
-        PostprocessDelegates(ctx);
         PostprocessProperties(ctx);
     }
 
@@ -151,7 +150,7 @@ internal sealed class ImGuiLibrary : LibraryBase
         PushClassDeclarationsUpstream(unit, "ImGui");
     }
 
-    private static void PostprocessDelegates(ASTContext ctx)
+    protected override void PostprocessDelegates(ASTContext ctx)
     {
         // rename delegates to more appropriate names
 
