@@ -48,9 +48,9 @@ internal sealed class ImGuiLibrary : LibraryBase
     public override void Preprocess(Driver driver, ASTContext ctx)
     {
         PreprocessPasses(driver);
+        PreprocessValueTypes(ctx);
         PreprocessEnumerations(ctx);
         PreprocessNamespace(ctx);
-        PreprocessValueTypes(ctx);
         PreprocessIgnores(ctx);
     }
 
@@ -86,18 +86,6 @@ internal sealed class ImGuiLibrary : LibraryBase
         ns.Declarations.Clear();
 
         unit.Declarations.AddRange(declarations);
-    }
-
-    private static void PreprocessValueTypes(ASTContext ctx)
-    {
-        // though ignored or manually implemented or remapped, we must set these as value types anyway
-
-        ctx.SetClassAsValueType("ImDrawCmd");
-        ctx.SetClassAsValueType("ImDrawData");
-        ctx.SetClassAsValueType("ImDrawList");
-        ctx.SetClassAsValueType("ImDrawVert");
-        ctx.SetClassAsValueType("ImVec2");
-        ctx.SetClassAsValueType("ImVec4");
     }
 
     private static void PreprocessIgnores(ASTContext ctx)

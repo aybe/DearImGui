@@ -5,6 +5,7 @@ using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Passes;
 using im.NET.Generator.Logging;
+// ReSharper disable StringLiteralTypo
 
 namespace im.NET.Generator;
 
@@ -56,6 +57,16 @@ public abstract class LibraryBase : ILibrary
         // this is useless in our case, it also throws when adding our own comments
 
         RemovePass<CleanCommentsPass>(driver);
+    }
+
+    protected virtual void PreprocessValueTypes(ASTContext ctx)
+    {
+        ctx.SetClassAsValueType("ImDrawCmd");
+        ctx.SetClassAsValueType("ImDrawData");
+        ctx.SetClassAsValueType("ImDrawList");
+        ctx.SetClassAsValueType("ImDrawVert");
+        ctx.SetClassAsValueType("ImVec2");
+        ctx.SetClassAsValueType("ImVec4");
     }
 
     protected static void PushDeclarationUpstream(TranslationUnit unit, string @class)

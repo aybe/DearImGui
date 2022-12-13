@@ -87,11 +87,9 @@ internal sealed class ImPlotLibrary : LibraryBase
         }
     }
 
-    private static void PreprocessValueTypes(ASTContext ctx)
+    protected override void PreprocessValueTypes(ASTContext ctx)
     {
-        // TODO make this non-static and push common stuff in base
-        ctx.SetClassAsValueType("ImDrawData");
-        ctx.SetClassAsValueType("ImDrawList");
+        base.PreprocessValueTypes(ctx);
 
         ctx.SetClassAsValueType("ImPlotInputMap");
         ctx.SetClassAsValueType("ImPlotPoint");
