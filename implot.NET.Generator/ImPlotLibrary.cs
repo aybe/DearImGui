@@ -62,8 +62,6 @@ internal sealed class ImPlotLibrary : LibraryBase
     public override void Postprocess(Driver driver, ASTContext ctx)
     {
         base.Postprocess(driver, ctx);
-
-        PostprocessGenericMethods(ctx);
     }
 
     #region Preprocess
@@ -108,8 +106,13 @@ internal sealed class ImPlotLibrary : LibraryBase
         SetEnumerationsFlags(GetImPlotTranslationUnit(ctx));
     }
 
-    private static void PostprocessGenericMethods(ASTContext ctx)
+    protected override void PostprocessDeclarations(ASTContext ctx)
     {
+        var unit = GetImPlotTranslationUnit(ctx);
+
+        PushClassDeclarationsUpstream(unit, "ImPlot");
+
+
         // move the overloads we've generated to the namespace where other functions are
 
         var target = GetImPlotTranslationUnit(ctx);
@@ -132,13 +135,6 @@ internal sealed class ImPlotLibrary : LibraryBase
         targetNamespace.Declarations.AddRange(sourceDeclarations);
 
         sourceDeclarations.Clear();
-    }
-
-    protected override void PostprocessDeclarations(ASTContext ctx)
-    {
-        var unit = GetImPlotTranslationUnit(ctx);
-
-        PushClassDeclarationsUpstream(unit, "ImPlot");
     }
 
     protected override void PostprocessIgnores(ASTContext ctx)
