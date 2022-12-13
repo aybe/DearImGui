@@ -95,13 +95,25 @@ public abstract class LibraryBase : ILibrary
         Ignore(ctx, null, "IM_DELETE", IgnoreType.Function); // unused
     }
 
-    protected static void PushClassDeclarationsUpstream(TranslationUnit unit, string @class)
+    protected static void PushDeclarationsUpstream(TranslationUnit unit, string @namespace)
     {
-        var ns = unit.Namespaces.Single(s => s.Name == @class);
+        var ns = unit.Namespaces.Single(s => s.Name == @namespace);
 
-        unit.Declarations.AddRange(ns.Declarations);
+        var declarations = ns.Declarations;
 
-        ns.Declarations.Clear();
+        foreach (var declaration in declarations)
+        {
+            declaration.Namespace = unit;
+
+            unit.Declarations.Add(declaration);
+
+            using (new ConsoleColorScope(null, ConsoleColor.Yellow))
+            {
+                Console.WriteLine($"Moved declaration {declaration} to translation unit {unit}");
+            }
+        }
+
+        declarations.Clear();
     }
 
     private static void RemovePass<T>(Driver driver, [CallerMemberName] string memberName = null!) where T : TranslationUnitPass

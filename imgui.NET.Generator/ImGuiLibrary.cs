@@ -86,16 +86,18 @@ internal sealed class ImGuiLibrary : LibraryBase
 
         var unit = GetImGuiTranslationUnit(ctx);
 
-        PushClassDeclarationsUpstream(unit, "ImGui");
+        PushDeclarationsUpstream(unit, "ImGui");
     }
 
     protected override void PostprocessDelegates(ASTContext ctx)
     {
         // rename delegates to more appropriate names
 
+        const string delegates = "Delegates";
+
         var tu = GetImGuiTranslationUnit(ctx);
 
-        var ns = tu.FindNamespace("Delegates");
+        var ns = tu.FindNamespace(delegates);
 
         ns.FindTypedef("Func___IntPtr___IntPtr")
             .Name = "ImGetClipboardTextHandler";
@@ -112,21 +114,7 @@ internal sealed class ImGuiLibrary : LibraryBase
         ns.FindTypedef("Func_float___IntPtr_int")
             .Name = "ImValuesGetterHandler";
 
-        // merge these delegates with upper namespace
-
-        foreach (var declaration in ns.Declarations)
-        {
-            declaration.Namespace = tu;
-
-            using (new ConsoleColorScope(null, ConsoleColor.Yellow))
-            {
-                Console.WriteLine($"Set declaration {declaration} namespace to {tu}");
-            }
-        }
-
-        tu.Declarations.AddRange(ns.Declarations);
-
-        ns.Declarations.Clear();
+        PushDeclarationsUpstream(tu, delegates);
     }
 
     protected override void PostprocessProperties(ASTContext ctx)

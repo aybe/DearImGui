@@ -110,7 +110,7 @@ internal sealed class ImPlotLibrary : LibraryBase
     {
         var unit = GetImPlotTranslationUnit(ctx);
 
-        PushClassDeclarationsUpstream(unit, "ImPlot");
+        PushDeclarationsUpstream(unit, "ImPlot");
 
 
         // move the overloads we've generated to the namespace where other functions are
