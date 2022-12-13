@@ -3,6 +3,7 @@
 public enum IgnoreType
 {
     Class,
+    Enum,
     Function,
     Method,
     Property

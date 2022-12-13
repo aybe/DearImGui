@@ -34,6 +34,9 @@ public abstract class LibraryBase : ILibrary
             case IgnoreType.Class:
                 ctx.IgnoreClassWithName(className);
                 return;
+            case IgnoreType.Enum:
+                ctx.FindCompleteEnum(className).ExplicitlyIgnore();
+                return;
             case IgnoreType.Function:
                 ctx.IgnoreFunctionWithName(memberName);
                 return;

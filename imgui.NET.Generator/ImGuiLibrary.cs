@@ -58,8 +58,8 @@ internal sealed class ImGuiLibrary : LibraryBase
     {
         // hide some enumerations that aren't useful in our case
 
-        ctx.FindCompleteEnum("ImGuiModFlags_").ExplicitlyIgnore();
-        ctx.FindCompleteEnum("ImGuiNavInput_").ExplicitlyIgnore();
+        Ignore(ctx, "ImGuiModFlags_", null, IgnoreType.Enum); // useless
+        Ignore(ctx, "ImGuiNavInput_", null, IgnoreType.Enum); // useless
     }
 
     private static void PreprocessIgnores(ASTContext ctx)
