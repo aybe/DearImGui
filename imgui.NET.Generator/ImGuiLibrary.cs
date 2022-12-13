@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Text.RegularExpressions;
 using CppSharp;
 using CppSharp.AST;
 using im.NET.Generator;
@@ -227,9 +228,38 @@ internal sealed class ImGuiLibrary : LibraryBase
             }
         }
 
-        Ignore(ctx, "ImDrawData", "DisplayPos",       IgnoreType.Property); // manual
-        Ignore(ctx, "ImDrawData", "DisplaySize",      IgnoreType.Property); // manual
-        Ignore(ctx, "ImDrawData", "FramebufferScale", IgnoreType.Property); // manual
+        // type mapped properties in a value type are never generated
+        // this is because of nasty bugs in CppSharp, ignore & notify
+
+        foreach (var c in unit.Classes)
+        {
+            if (c.GenerationKind == GenerationKind.None)
+            {
+                continue;
+            }
+
+            if (!c.IsValueType)
+            {
+                continue;
+            }
+
+            foreach (var p in c.Properties)
+            {
+                var type = p.QualifiedType.ToString();
+
+                if (!Regex.IsMatch(type, @"^global::System\.Numerics\.Vector\d$"))
+                {
+                    continue;
+                }
+
+                p.ExplicitlyIgnore();
+
+                using (new ConsoleColorScope(null, ConsoleColor.Red))
+                {
+                    Console.WriteLine($"Type mapped property in value type explicitly ignored (TODO implement manually): {c.Name}.{p.Name}");
+                }
+            }
+        }
     }
 
     #endregion
