@@ -5,14 +5,16 @@ using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Passes;
 using im.NET.Generator.Logging;
-// ReSharper disable StringLiteralTypo
+
 // ReSharper disable IdentifierTypo
+// ReSharper disable StringLiteralTypo
 
 namespace im.NET.Generator;
 
-[SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
 public abstract class LibraryBase : ILibrary
 {
+    #region Helpers
+
     protected static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
     {
         return GetTranslationUnit(ctx, "imgui.h");
@@ -50,49 +52,6 @@ public abstract class LibraryBase : ILibrary
             default:
                 throw new ArgumentOutOfRangeException(nameof(ignoreType), ignoreType, null);
         }
-    }
-
-    [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
-    protected virtual void PreprocessPasses(Driver driver)
-    {
-        // actually, we do want these, else we'll get pretty much nothing generated
-
-        RemovePass<CheckIgnoredDeclsPass>(driver);
-
-        // this is useless in our case, it also throws when adding our own comments
-
-        RemovePass<CleanCommentsPass>(driver);
-    }
-
-    protected virtual void PreprocessValueTypes(ASTContext ctx)
-    {
-        ctx.SetClassAsValueType("ImDrawCmd");
-        ctx.SetClassAsValueType("ImDrawData");
-        ctx.SetClassAsValueType("ImDrawList");
-        ctx.SetClassAsValueType("ImDrawVert");
-        ctx.SetClassAsValueType("ImVec2");
-        ctx.SetClassAsValueType("ImVec4");
-    }
-
-    protected virtual void PreprocessIgnores(ASTContext ctx)
-    {
-        Ignore(ctx, "ImColor",    null, IgnoreType.Class); // unused
-        Ignore(ctx, "ImDrawVert", null, IgnoreType.Class); // manual
-        Ignore(ctx, "ImVec2",     null, IgnoreType.Class); // manual
-        Ignore(ctx, "ImVec4",     null, IgnoreType.Class); // manual
-        Ignore(ctx, "ImVector",   null, IgnoreType.Class); // manual
-
-        Ignore(ctx, "ImGuiModFlags_", null, IgnoreType.Enum); // useless
-        Ignore(ctx, "ImGuiNavInput_", null, IgnoreType.Enum); // useless
-
-        Ignore(ctx, "ImDrawCmd",   "GetTexID",       IgnoreType.Method); // manual
-        Ignore(ctx, "ImDrawList",  "GetClipRectMax", IgnoreType.Method); // manual
-        Ignore(ctx, "ImDrawList",  "GetClipRectMin", IgnoreType.Method); // manual
-        Ignore(ctx, "ImFont",      "GetDebugName",   IgnoreType.Method); // manual
-        Ignore(ctx, "ImFont",      "IsLoaded",       IgnoreType.Method); // manual
-        Ignore(ctx, "ImFontAtlas", "SetTexID",       IgnoreType.Method); // manual
-
-        Ignore(ctx, null, "IM_DELETE", IgnoreType.Function); // unused
     }
 
     protected static void PushDeclarationsUpstream(TranslationUnit unit, string @namespace)
@@ -158,6 +117,76 @@ public abstract class LibraryBase : ILibrary
         module.Headers.Add("imgui.h");
     }
 
+    #endregion
+
+    #region Preprocess
+
+    [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
+    protected virtual void PreprocessPasses(Driver driver)
+    {
+        // actually, we do want these, else we'll get pretty much nothing generated
+
+        RemovePass<CheckIgnoredDeclsPass>(driver);
+
+        // this is useless in our case, it also throws when adding our own comments
+
+        RemovePass<CleanCommentsPass>(driver);
+    }
+
+    protected virtual void PreprocessValueTypes(ASTContext ctx)
+    {
+        ctx.SetClassAsValueType("ImDrawCmd");
+        ctx.SetClassAsValueType("ImDrawData");
+        ctx.SetClassAsValueType("ImDrawList");
+        ctx.SetClassAsValueType("ImDrawVert");
+        ctx.SetClassAsValueType("ImVec2");
+        ctx.SetClassAsValueType("ImVec4");
+    }
+
+    [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
+    protected virtual void PreprocessIgnores(ASTContext ctx)
+    {
+        Ignore(ctx, "ImColor",    null, IgnoreType.Class); // unused
+        Ignore(ctx, "ImDrawVert", null, IgnoreType.Class); // manual
+        Ignore(ctx, "ImVec2",     null, IgnoreType.Class); // manual
+        Ignore(ctx, "ImVec4",     null, IgnoreType.Class); // manual
+        Ignore(ctx, "ImVector",   null, IgnoreType.Class); // manual
+
+        Ignore(ctx, "ImGuiModFlags_", null, IgnoreType.Enum); // useless
+        Ignore(ctx, "ImGuiNavInput_", null, IgnoreType.Enum); // useless
+
+        Ignore(ctx, "ImDrawCmd",   "GetTexID",       IgnoreType.Method); // manual
+        Ignore(ctx, "ImDrawList",  "GetClipRectMax", IgnoreType.Method); // manual
+        Ignore(ctx, "ImDrawList",  "GetClipRectMin", IgnoreType.Method); // manual
+        Ignore(ctx, "ImFont",      "GetDebugName",   IgnoreType.Method); // manual
+        Ignore(ctx, "ImFont",      "IsLoaded",       IgnoreType.Method); // manual
+        Ignore(ctx, "ImFontAtlas", "SetTexID",       IgnoreType.Method); // manual
+
+        Ignore(ctx, null, "IM_DELETE", IgnoreType.Function); // unused
+    }
+
+    #endregion
+
+    #region Postprocess
+
+    protected virtual void PostprocessIgnores(ASTContext ctx)
+    {
+    }
+
+    protected virtual void PostprocessEnumerations(ASTContext ctx)
+    {
+    }
+
+    protected virtual void PostprocessDeclarations(ASTContext ctx)
+    {
+    }
+
+    protected virtual void PostprocessProperties(ASTContext ctx)
+    {
+    }
+
+    #endregion
+
     #region ILibrary Members
 
     public virtual void Setup(Driver driver)
@@ -191,20 +220,4 @@ public abstract class LibraryBase : ILibrary
     }
 
     #endregion
-
-    protected virtual void PostprocessIgnores(ASTContext ctx)
-    {
-    }
-
-    protected virtual void PostprocessEnumerations(ASTContext ctx)
-    {
-    }
-
-    protected virtual void PostprocessDeclarations(ASTContext ctx)
-    {
-    }
-
-    protected virtual void PostprocessProperties(ASTContext ctx)
-    {
-    }
 }

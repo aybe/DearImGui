@@ -1,5 +1,4 @@
 ﻿using System.Collections.Immutable;
-using System.Diagnostics.CodeAnalysis;
 using CppSharp;
 using CppSharp.AST;
 using im.NET.Generator;
@@ -10,10 +9,11 @@ using implot.NET.Generator.Passes;
 
 namespace implot.NET.Generator;
 
-[SuppressMessage("ReSharper", "StringLiteralTypo")]
 internal sealed class ImPlotLibrary : LibraryBase
 {
     public ImmutableSortedSet<string> Namespaces { get; init; } = null!;
+
+    #region Overrides
 
     public override void Setup(Driver driver)
     {
@@ -52,10 +52,7 @@ internal sealed class ImPlotLibrary : LibraryBase
         driver.AddTranslationUnitPass(new ImIgnoreImGuiPass());
     }
 
-    public override void Preprocess(Driver driver, ASTContext ctx)
-    {
-        base.Preprocess(driver, ctx);
-    }
+    #endregion
 
     #region Preprocess
 
@@ -92,7 +89,6 @@ internal sealed class ImPlotLibrary : LibraryBase
         var unit = GetImPlotTranslationUnit(ctx);
 
         PushDeclarationsUpstream(unit, "ImPlot");
-
 
         // move the overloads we've generated to the namespace where other functions are
 

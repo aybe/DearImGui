@@ -8,9 +8,6 @@ using im.NET.Generator.Passes;
 using imgui.NET.Generator.Passes;
 
 // ReSharper disable IdentifierTypo
-// ReSharper disable RedundantIfElseBlock
-// ReSharper disable CommentTypo
-// ReSharper disable InvertIf
 // ReSharper disable StringLiteralTypo
 
 namespace imgui.NET.Generator;
@@ -18,6 +15,8 @@ namespace imgui.NET.Generator;
 internal sealed class ImGuiLibrary : LibraryBase
 {
     public ImmutableSortedSet<string> Namespaces { get; init; } = null!;
+
+    #region Overrides
 
     public override void Setup(Driver driver)
     {
@@ -44,6 +43,8 @@ internal sealed class ImGuiLibrary : LibraryBase
 
         driver.AddGeneratorOutputPass(new ImGuiGeneratorOutputPass(Namespaces));
     }
+
+    #endregion
 
     #region Postprocess
 
