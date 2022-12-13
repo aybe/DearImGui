@@ -35,13 +35,21 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     public override void SetupPasses(Driver driver)
     {
-        driver.AddTranslationUnitPass(new ImIgnoreImGuiPass());
+        // ignore obsolete/useless + friendly naming scheme
 
-        AddDefaultPasses(driver);
+        driver.AddTranslationUnitPass(new ImEnumPass()); // before summary!
+
+        // for generating nice documentation
 
         driver.AddTranslationUnitPass(new ImPlotSummaryPass());
 
+        // for updating usings and formatting documentation
+
         driver.AddGeneratorOutputPass(new ImPlotGeneratorOutputPass(Namespaces));
+
+        // for not generating imgui stuff
+
+        driver.AddTranslationUnitPass(new ImIgnoreImGuiPass());
     }
 
     public override void Preprocess(Driver driver, ASTContext ctx)

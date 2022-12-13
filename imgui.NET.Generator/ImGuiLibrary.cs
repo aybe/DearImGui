@@ -4,6 +4,7 @@ using CppSharp;
 using CppSharp.AST;
 using im.NET.Generator;
 using im.NET.Generator.Logging;
+using im.NET.Generator.Passes;
 using imgui.NET.Generator.Passes;
 
 // ReSharper disable IdentifierTypo
@@ -33,9 +34,15 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     public override void SetupPasses(Driver driver)
     {
-        AddDefaultPasses(driver);
+        // ignore obsolete/useless + friendly naming scheme
+
+        driver.AddTranslationUnitPass(new ImEnumPass()); // before summary!
+
+        // for generating nice documentation
 
         driver.AddTranslationUnitPass(new ImGuiSummaryPass());
+
+        // for updating usings and formatting documentation
 
         driver.AddGeneratorOutputPass(new ImGuiGeneratorOutputPass(Namespaces));
     }

@@ -10,11 +10,6 @@ namespace im.NET.Generator;
 
 public abstract class LibraryBase : ILibrary
 {
-    protected static void AddDefaultPasses(Driver driver)
-    {
-        driver.AddTranslationUnitPass(new ImEnumPass());
-    }
-
     protected static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
     {
         return ctx.TranslationUnits.Single(s => s.FileName == "imgui.h");
