@@ -82,15 +82,6 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     protected override void PostprocessDeclarations(ASTContext ctx)
     {
-        // merge the imports in inner namespace with main class
-
-        var unit = GetImGuiTranslationUnit(ctx);
-
-        PushDeclarationsUpstream(unit, "ImGui");
-    }
-
-    protected override void PostprocessDelegates(ASTContext ctx)
-    {
         // rename delegates to more appropriate names
 
         const string delegates = "Delegates";
@@ -113,6 +104,10 @@ internal sealed class ImGuiLibrary : LibraryBase
 
         ns.FindTypedef("Func_float___IntPtr_int")
             .Name = "ImValuesGetterHandler";
+
+        // push everything up so it ends up in ImGui class
+
+        PushDeclarationsUpstream(tu, "ImGui");
 
         PushDeclarationsUpstream(tu, delegates);
     }

@@ -187,7 +187,6 @@ public abstract class LibraryBase : ILibrary
         PostprocessIgnores(ctx);
         PostprocessEnumerations(ctx);
         PostprocessDeclarations(ctx);
-        PostprocessDelegates(ctx);
         PostprocessProperties(ctx);
     }
 
@@ -202,10 +201,6 @@ public abstract class LibraryBase : ILibrary
     }
 
     protected virtual void PostprocessDeclarations(ASTContext ctx)
-    {
-    }
-
-    protected virtual void PostprocessDelegates(ASTContext ctx)
     {
     }
 
