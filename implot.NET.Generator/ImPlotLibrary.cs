@@ -64,7 +64,6 @@ internal sealed class ImPlotLibrary : LibraryBase
         base.Postprocess(driver, ctx);
 
         PostprocessGenericMethods(ctx);
-        PostprocessNamespaces(ctx);
     }
 
     #region Preprocess
@@ -135,7 +134,7 @@ internal sealed class ImPlotLibrary : LibraryBase
         sourceDeclarations.Clear();
     }
 
-    private static void PostprocessNamespaces(ASTContext ctx)
+    protected override void PostprocessDeclarations(ASTContext ctx)
     {
         var unit = GetImPlotTranslationUnit(ctx);
 

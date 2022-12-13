@@ -144,6 +144,7 @@ public abstract class LibraryBase : ILibrary
     {
         PostprocessIgnores(ctx);
         PostprocessEnumerations(ctx);
+        PostprocessDeclarations(ctx);
     }
 
     #endregion
@@ -151,4 +152,6 @@ public abstract class LibraryBase : ILibrary
     protected abstract void PostprocessIgnores(ASTContext ctx);
 
     protected abstract void PostprocessEnumerations(ASTContext ctx);
+
+    protected abstract void PostprocessDeclarations(ASTContext ctx);
 }

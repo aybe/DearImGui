@@ -58,7 +58,6 @@ internal sealed class ImGuiLibrary : LibraryBase
     {
         base.Postprocess(driver, ctx);
 
-        PostprocessImports(ctx);
         PostprocessDelegates(ctx);
         PostprocessProperties(ctx);
     }
@@ -110,7 +109,7 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     #region Postprocess
 
-    private static void PostprocessImports(ASTContext ctx)
+    protected override void PostprocessDeclarations(ASTContext ctx)
     {
         // merge the imports in inner namespace with main class
 
