@@ -143,9 +143,12 @@ public abstract class LibraryBase : ILibrary
     public virtual void Postprocess(Driver driver, ASTContext ctx)
     {
         PostprocessIgnores(ctx);
+        PostprocessEnumerations(ctx);
     }
 
     #endregion
 
     protected abstract void PostprocessIgnores(ASTContext ctx);
+
+    protected abstract void PostprocessEnumerations(ASTContext ctx);
 }

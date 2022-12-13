@@ -63,7 +63,6 @@ internal sealed class ImPlotLibrary : LibraryBase
     {
         base.Postprocess(driver, ctx);
 
-        PostprocessEnumerations(ctx);
         PostprocessGenericMethods(ctx);
         PostprocessNamespaces(ctx);
     }
@@ -102,7 +101,7 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     #region Postprocess
 
-    private static void PostprocessEnumerations(ASTContext ctx)
+    protected override void PostprocessEnumerations(ASTContext ctx)
     {
         // there is also stuff in T4 templates about that
         ctx.SetNameOfEnumWithName("ImAxis", "ImPlotAxis");

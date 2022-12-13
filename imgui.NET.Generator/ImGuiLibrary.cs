@@ -60,7 +60,6 @@ internal sealed class ImGuiLibrary : LibraryBase
 
         PostprocessImports(ctx);
         PostprocessDelegates(ctx);
-        PostprocessEnumerations(ctx);
         PostprocessProperties(ctx);
     }
 
@@ -184,7 +183,7 @@ internal sealed class ImGuiLibrary : LibraryBase
         ns.Declarations.Clear();
     }
 
-    private static void PostprocessEnumerations(ASTContext ctx)
+    protected override void PostprocessEnumerations(ASTContext ctx)
     {
         var unit = GetImGuiTranslationUnit(ctx);
 
