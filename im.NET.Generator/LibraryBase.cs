@@ -70,7 +70,7 @@ public abstract class LibraryBase : ILibrary
         ctx.SetClassAsValueType("ImVec4");
     }
 
-    protected static void PushDeclarationUpstream(TranslationUnit unit, string @class)
+    protected static void PushClassDeclarationsUpstream(TranslationUnit unit, string @class)
     {
         var ns = unit.Namespaces.Single(s => s.Name == @class);
 

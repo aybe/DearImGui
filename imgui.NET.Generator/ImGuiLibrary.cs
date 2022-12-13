@@ -116,7 +116,7 @@ internal sealed class ImGuiLibrary : LibraryBase
 
         var unit = GetImGuiTranslationUnit(ctx);
 
-        PushDeclarationUpstream(unit, "ImGui");
+        PushClassDeclarationsUpstream(unit, "ImGui");
     }
 
     protected override void PostprocessIgnores(ASTContext ctx)

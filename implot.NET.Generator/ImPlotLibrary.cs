@@ -139,7 +139,7 @@ internal sealed class ImPlotLibrary : LibraryBase
     {
         var unit = GetImPlotTranslationUnit(ctx);
 
-        PushDeclarationUpstream(unit, "ImPlot");
+        PushClassDeclarationsUpstream(unit, "ImPlot");
     }
 
     protected override void PostprocessIgnores(ASTContext ctx)
