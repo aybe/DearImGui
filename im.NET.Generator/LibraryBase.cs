@@ -141,6 +141,7 @@ public abstract class LibraryBase : ILibrary
     public virtual void Preprocess(Driver driver, ASTContext ctx)
     {
         PreprocessPasses(driver);
+        PreprocessValueTypes(ctx);
     }
 
     public virtual void Postprocess(Driver driver, ASTContext ctx)
