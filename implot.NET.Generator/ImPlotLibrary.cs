@@ -114,7 +114,7 @@ internal sealed class ImPlotLibrary : LibraryBase
 
         var target = GetImPlotTranslationUnit(ctx);
 
-        var targetNamespace = target.Namespaces.Single(s => s.Name is "ImPlot");
+        var targetNamespace = target;
 
         var source = ctx.TranslationUnits.Single(s => s.FileName is "implot_generics.h");
 
