@@ -201,7 +201,7 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     private static void PostprocessProperties(ASTContext ctx)
     {
-        // vector properties are not meant to be assignable, make them read-only
+        // ImVector<T> properties are not meant to be assignable, make them read-only
 
         var unit = GetImGuiTranslationUnit(ctx);
 
