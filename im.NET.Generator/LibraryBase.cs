@@ -46,7 +46,8 @@ public abstract class LibraryBase : ILibrary
         }
     }
 
-    protected static void PreprocessPasses(Driver driver)
+    [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
+    protected virtual void PreprocessPasses(Driver driver)
     {
         // actually, we do want these, else we'll get pretty much nothing generated
 
