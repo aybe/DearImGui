@@ -26,10 +26,8 @@ internal sealed class ImGuiLibrary : LibraryBase
         var module = driver.Options.AddModule("imgui");
 
         module.OutputNamespace = Constants.ImGuiNamespace;
-        module.IncludeDirs.Add(@"..\..\..\..\imgui\imgui");
-        module.Defines.Add("IMGUI_DISABLE_OBSOLETE_FUNCTIONS");
-        module.Defines.Add("IMGUI_DISABLE_OBSOLETE_KEYIO");
-        module.Headers.Add("imgui.h");
+
+        SetupImGui(module);
     }
 
     public override void SetupPasses(Driver driver)

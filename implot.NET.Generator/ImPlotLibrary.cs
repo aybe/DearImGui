@@ -22,10 +22,10 @@ internal sealed class ImPlotLibrary : LibraryBase
         var module = driver.Options.AddModule("implot");
 
         module.OutputNamespace = "implot.NET";
-        module.IncludeDirs.Add(@"..\..\..\..\imgui\imgui");
+
+        SetupImGui(module);
+
         module.IncludeDirs.Add(@"..\..\..\..\implot\implot");
-        module.Defines.Add("IMGUI_DISABLE_OBSOLETE_FUNCTIONS");
-        module.Defines.Add("IMGUI_DISABLE_OBSOLETE_KEYIO");
         module.Defines.Add("IMPLOT_DISABLE_OBSOLETE_FUNCTIONS");
         module.Headers.Add("implot.h");
 

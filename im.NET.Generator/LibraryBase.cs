@@ -1,10 +1,10 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Passes;
 using im.NET.Generator.Logging;
-using im.NET.Generator.Passes;
 
 namespace im.NET.Generator;
 
@@ -87,6 +87,15 @@ public abstract class LibraryBase : ILibrary
                 Console.WriteLine($"Set enumeration as flags: {enumeration.Name}");
             }
         }
+    }
+
+    [SuppressMessage("ReSharper", "StringLiteralTypo")]
+    protected static void SetupImGui(Module module)
+    {
+        module.IncludeDirs.Add(@"..\..\..\..\imgui\imgui");
+        module.Defines.Add("IMGUI_DISABLE_OBSOLETE_FUNCTIONS");
+        module.Defines.Add("IMGUI_DISABLE_OBSOLETE_KEYIO");
+        module.Headers.Add("imgui.h");
     }
 
     #region ILibrary Members
