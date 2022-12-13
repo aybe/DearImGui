@@ -86,6 +86,7 @@ internal sealed class ImGuiLibrary : LibraryBase
     {
         // though ignored or manually implemented or remapped, we must set these as value types anyway
 
+        ctx.SetClassAsValueType("ImDrawCmd");
         ctx.SetClassAsValueType("ImDrawData");
         ctx.SetClassAsValueType("ImDrawList");
         ctx.SetClassAsValueType("ImDrawVert");

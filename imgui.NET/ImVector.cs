@@ -32,17 +32,10 @@ public readonly struct ImVector<T>
             }
 
             var type = typeof(T);
-            var size = Unsafe.SizeOf<T>();
-            var data = Data + size * i;
-
-            if (type.IsValueType)
-            {
-                return Unsafe.AsRef<T>(data.ToPointer());
-            }
 
             if (type == typeof(ImDrawCmd))
             {
-                var source = ImDrawCmd.__GetOrCreateInstance(Data + sizeof(ImDrawCmd.__Internal) * i);
+                var source = ImDrawCmd.__CreateInstance(Data + sizeof(ImDrawCmd.__Internal) * i);
                 var result = Unsafe.As<ImDrawCmd, T>(ref source);
                 return result;
             }
