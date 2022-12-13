@@ -61,7 +61,8 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     public override void Postprocess(Driver driver, ASTContext ctx)
     {
-        PostprocessProperties(ctx);
+        base.Postprocess(driver, ctx);
+
         PostprocessEnumerations(ctx);
         PostprocessGenericMethods(ctx);
         PostprocessNamespaces(ctx);
@@ -142,7 +143,7 @@ internal sealed class ImPlotLibrary : LibraryBase
         PushDeclarationUpstream(unit, "ImPlot");
     }
 
-    private static void PostprocessProperties(ASTContext ctx)
+    protected override void PostprocessIgnores(ASTContext ctx)
     {
         Ignore(ctx, "ImPlotPoint", "Item",   IgnoreType.Property); // manual
         Ignore(ctx, "ImPlotStyle", "Colors", IgnoreType.Property); // manual

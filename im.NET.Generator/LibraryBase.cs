@@ -6,6 +6,7 @@ using CppSharp.Generators;
 using CppSharp.Passes;
 using im.NET.Generator.Logging;
 // ReSharper disable StringLiteralTypo
+// ReSharper disable IdentifierTypo
 
 namespace im.NET.Generator;
 
@@ -139,7 +140,12 @@ public abstract class LibraryBase : ILibrary
 
     public abstract void Preprocess(Driver driver, ASTContext ctx);
 
-    public abstract void Postprocess(Driver driver, ASTContext ctx);
+    public virtual void Postprocess(Driver driver, ASTContext ctx)
+    {
+        PostprocessIgnores(ctx);
+    }
 
     #endregion
+
+    protected abstract void PostprocessIgnores(ASTContext ctx);
 }

@@ -56,8 +56,9 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     public override void Postprocess(Driver driver, ASTContext ctx)
     {
+        base.Postprocess(driver, ctx);
+
         PostprocessImports(ctx);
-        PostprocessIgnores(ctx);
         PostprocessDelegates(ctx);
         PostprocessEnumerations(ctx);
         PostprocessProperties(ctx);
@@ -119,7 +120,7 @@ internal sealed class ImGuiLibrary : LibraryBase
         PushDeclarationUpstream(unit, "ImGui");
     }
 
-    private static void PostprocessIgnores(ASTContext ctx)
+    protected override void PostprocessIgnores(ASTContext ctx)
     {
         Ignore(ctx, "ImDrawData",            "CmdLists",        IgnoreType.Property); // manual
         Ignore(ctx, "ImDrawList",            "ClipRectStack",   IgnoreType.Property); // intern
