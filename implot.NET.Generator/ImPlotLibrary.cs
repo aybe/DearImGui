@@ -55,28 +55,9 @@ internal sealed class ImPlotLibrary : LibraryBase
     public override void Preprocess(Driver driver, ASTContext ctx)
     {
         base.Preprocess(driver, ctx);
-        PreprocessGenericMethods(ctx);
     }
 
     #region Preprocess
-
-    private static void PreprocessGenericMethods(ASTContext ctx)
-    {
-        var target = GetImPlotTranslationUnit(ctx);
-
-        var targetNamespace = target.Namespaces.Single(s => s.Name is "ImPlot");
-
-        // ignore generic functions that are to be incorrectly generated (exports don't exist)
-
-        var functions = targetNamespace.Declarations
-            .OfType<Function>()
-            .Where(s => s.Name.StartsWith("Plot") && s.Parameters.Any(t => t.Type is PointerType { Pointee: TemplateParameterType }));
-
-        foreach (var function in functions)
-        {
-            function.ExplicitlyIgnore();
-        }
-    }
 
     protected override void PreprocessValueTypes(ASTContext ctx)
     {
@@ -135,6 +116,21 @@ internal sealed class ImPlotLibrary : LibraryBase
         targetNamespace.Declarations.AddRange(sourceDeclarations);
 
         sourceDeclarations.Clear();
+
+        // ignore generic functions that are to be incorrectly generated (exports don't exist)
+
+        var target1 = GetImPlotTranslationUnit(ctx);
+
+        var targetNamespace1 = target1.Namespaces.Single(s => s.Name is "ImPlot");
+
+        var functions = targetNamespace1.Declarations
+            .OfType<Function>()
+            .Where(s => s.Name.StartsWith("Plot") && s.Parameters.Any(t => t.Type is PointerType { Pointee: TemplateParameterType }));
+
+        foreach (var function in functions)
+        {
+            function.ExplicitlyIgnore();
+        }
     }
 
     #endregion
