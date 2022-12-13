@@ -54,7 +54,7 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     public override void Preprocess(Driver driver, ASTContext ctx)
     {
-        PreprocessPasses(driver);
+        base.Preprocess(driver, ctx);
         PreprocessValueTypes(ctx);
         PreprocessGenericMethods(ctx);
     }

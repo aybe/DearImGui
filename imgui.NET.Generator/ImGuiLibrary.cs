@@ -47,7 +47,7 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     public override void Preprocess(Driver driver, ASTContext ctx)
     {
-        PreprocessPasses(driver);
+        base.Preprocess(driver, ctx);
         PreprocessValueTypes(ctx);
         PreprocessEnumerations(ctx);
         PreprocessNamespace(ctx);
