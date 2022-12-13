@@ -86,40 +86,13 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     protected override void PostprocessDeclarations(ASTContext ctx)
     {
-        var unit = GetImPlotTranslationUnit(ctx);
-
-        PushDeclarationsUpstream(unit, "ImPlot");
-
-        // move the overloads we've generated to the namespace where other functions are
-
-        var target = GetImPlotTranslationUnit(ctx);
-
-        var targetNamespace = target;
-
-        var source = ctx.TranslationUnits.Single(s => s.FileName is "implot_generics.h");
-
-        var sourceNamespace = source.Namespaces.Single();
-
-        var sourceDeclarations = sourceNamespace.Declarations;
-
-        // BUG works but why heat map functions are seen thrice?
-
-        foreach (var declaration in sourceDeclarations)
-        {
-            declaration.Namespace = targetNamespace;
-        }
-
-        targetNamespace.Declarations.AddRange(sourceDeclarations);
-
-        sourceDeclarations.Clear();
+        var tu = GetImPlotTranslationUnit(ctx);
 
         // ignore generic functions that are to be incorrectly generated (exports don't exist)
 
-        var target1 = GetImPlotTranslationUnit(ctx);
+        var ns = tu.Namespaces.Single(s => s.Name is "ImPlot");
 
-        var targetNamespace1 = target1.Namespaces.Single(s => s.Name is "ImPlot");
-
-        var functions = targetNamespace1.Declarations
+        var functions = ns.Declarations
             .OfType<Function>()
             .Where(s => s.Name.StartsWith("Plot") && s.Parameters.Any(t => t.Type is PointerType { Pointee: TemplateParameterType }));
 
@@ -127,6 +100,25 @@ internal sealed class ImPlotLibrary : LibraryBase
         {
             function.ExplicitlyIgnore();
         }
+
+        // move the overloads we've generated to the namespace where other functions are
+
+        var gu = ctx.TranslationUnits.Single(s => s.FileName is "implot_generics.h");
+
+        var gd = gu.Namespaces.Single().Declarations;
+
+        // BUG works but why heat map functions are seen thrice?
+
+        foreach (var declaration in gd)
+        {
+            declaration.Namespace = tu;
+        }
+
+        tu.Declarations.AddRange(gd);
+
+        gd.Clear();
+
+        PushDeclarationsUpstream(tu, "ImPlot");
     }
 
     #endregion
