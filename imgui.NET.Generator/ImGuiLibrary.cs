@@ -49,7 +49,6 @@ internal sealed class ImGuiLibrary : LibraryBase
     {
         base.Preprocess(driver, ctx);
         PreprocessEnumerations(ctx);
-        PreprocessNamespace(ctx);
         PreprocessIgnores(ctx);
     }
 
@@ -61,21 +60,6 @@ internal sealed class ImGuiLibrary : LibraryBase
 
         ctx.FindCompleteEnum("ImGuiModFlags_").ExplicitlyIgnore();
         ctx.FindCompleteEnum("ImGuiNavInput_").ExplicitlyIgnore();
-    }
-
-    private static void PreprocessNamespace(ASTContext ctx)
-    {
-        // consolidate all of that stuff onto a unique namespace
-
-        var unit = GetImGuiTranslationUnit(ctx);
-
-        var ns = unit.Declarations.OfType<Namespace>().Single();
-
-        var declarations = ns.Declarations.ToArray();
-
-        ns.Declarations.Clear();
-
-        unit.Declarations.AddRange(declarations);
     }
 
     private static void PreprocessIgnores(ASTContext ctx)
