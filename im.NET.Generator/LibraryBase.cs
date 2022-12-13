@@ -10,6 +10,7 @@ using im.NET.Generator.Logging;
 
 namespace im.NET.Generator;
 
+[SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
 public abstract class LibraryBase : ILibrary
 {
     protected static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
@@ -71,6 +72,27 @@ public abstract class LibraryBase : ILibrary
         ctx.SetClassAsValueType("ImDrawVert");
         ctx.SetClassAsValueType("ImVec2");
         ctx.SetClassAsValueType("ImVec4");
+    }
+
+    protected virtual void PreprocessIgnores(ASTContext ctx)
+    {
+        Ignore(ctx, "ImColor",    null, IgnoreType.Class); // unused
+        Ignore(ctx, "ImDrawVert", null, IgnoreType.Class); // manual
+        Ignore(ctx, "ImVec2",     null, IgnoreType.Class); // manual
+        Ignore(ctx, "ImVec4",     null, IgnoreType.Class); // manual
+        Ignore(ctx, "ImVector",   null, IgnoreType.Class); // manual
+
+        Ignore(ctx, "ImGuiModFlags_", null, IgnoreType.Enum); // useless
+        Ignore(ctx, "ImGuiNavInput_", null, IgnoreType.Enum); // useless
+
+        Ignore(ctx, "ImDrawCmd",   "GetTexID",       IgnoreType.Method); // manual
+        Ignore(ctx, "ImDrawList",  "GetClipRectMax", IgnoreType.Method); // manual
+        Ignore(ctx, "ImDrawList",  "GetClipRectMin", IgnoreType.Method); // manual
+        Ignore(ctx, "ImFont",      "GetDebugName",   IgnoreType.Method); // manual
+        Ignore(ctx, "ImFont",      "IsLoaded",       IgnoreType.Method); // manual
+        Ignore(ctx, "ImFontAtlas", "SetTexID",       IgnoreType.Method); // manual
+
+        Ignore(ctx, null, "IM_DELETE", IgnoreType.Function); // unused
     }
 
     protected static void PushClassDeclarationsUpstream(TranslationUnit unit, string @class)
@@ -145,6 +167,7 @@ public abstract class LibraryBase : ILibrary
     {
         PreprocessPasses(driver);
         PreprocessValueTypes(ctx);
+        PreprocessIgnores(ctx);
     }
 
     public virtual void Postprocess(Driver driver, ASTContext ctx)

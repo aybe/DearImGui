@@ -45,43 +45,6 @@ internal sealed class ImGuiLibrary : LibraryBase
         driver.AddGeneratorOutputPass(new ImGuiGeneratorOutputPass(Namespaces));
     }
 
-    public override void Preprocess(Driver driver, ASTContext ctx)
-    {
-        base.Preprocess(driver, ctx);
-        PreprocessEnumerations(ctx);
-        PreprocessIgnores(ctx);
-    }
-
-    #region Preprocess
-
-    private static void PreprocessEnumerations(ASTContext ctx)
-    {
-        // hide some enumerations that aren't useful in our case
-
-        Ignore(ctx, "ImGuiModFlags_", null, IgnoreType.Enum); // useless
-        Ignore(ctx, "ImGuiNavInput_", null, IgnoreType.Enum); // useless
-    }
-
-    private static void PreprocessIgnores(ASTContext ctx)
-    {
-        Ignore(ctx, "ImColor",    null, IgnoreType.Class); // unused
-        Ignore(ctx, "ImDrawVert", null, IgnoreType.Class); // manual
-        Ignore(ctx, "ImVec2",     null, IgnoreType.Class); // manual
-        Ignore(ctx, "ImVec4",     null, IgnoreType.Class); // manual
-        Ignore(ctx, "ImVector",   null, IgnoreType.Class); // manual
-
-        Ignore(ctx, "ImDrawCmd",   "GetTexID",       IgnoreType.Method); // manual
-        Ignore(ctx, "ImDrawList",  "GetClipRectMax", IgnoreType.Method); // manual
-        Ignore(ctx, "ImDrawList",  "GetClipRectMin", IgnoreType.Method); // manual
-        Ignore(ctx, "ImFont",      "GetDebugName",   IgnoreType.Method); // manual
-        Ignore(ctx, "ImFont",      "IsLoaded",       IgnoreType.Method); // manual
-        Ignore(ctx, "ImFontAtlas", "SetTexID",       IgnoreType.Method); // manual
-
-        Ignore(ctx, null, "IM_DELETE", IgnoreType.Function); // unused
-    }
-
-    #endregion
-
     #region Postprocess
 
     protected override void PostprocessIgnores(ASTContext ctx)
