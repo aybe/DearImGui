@@ -200,7 +200,7 @@ public sealed class ImGuiController : Disposable
 
     public ImGuiController(GameWindow window, ImGuiFontConfig? fontConfig = null)
     {
-        Window = window;
+        Window = window ?? throw new ArgumentNullException(nameof(window));
 
         ImGui.SetCurrentContext(ImGui.CreateContext());
 
