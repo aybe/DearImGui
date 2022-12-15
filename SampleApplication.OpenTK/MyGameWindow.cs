@@ -32,7 +32,7 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
     public MyGameWindow(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings)
         : base(gameWindowSettings, nativeWindowSettings)
     {
-        Controller = new ImGuiController(this, new ImGuiFontConfig("Roboto-Regular.ttf", 10.0f));
+        Controller = new ImGuiController(this, "Roboto-Regular.ttf", 10.0f);
 
         ImPlotContext = ImPlot.CreateContext();
 

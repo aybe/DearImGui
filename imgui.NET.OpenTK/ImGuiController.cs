@@ -198,7 +198,7 @@ public sealed class ImGuiController : Disposable
     
     private ImDrawList[] DrawLists = new ImDrawList[100];
 
-    public ImGuiController(GameWindow window, ImGuiFontConfig? fontConfig = null)
+    public ImGuiController(GameWindow window, string? fontPath = null, float? fontSize = null)
     {
         Window = window ?? throw new ArgumentNullException(nameof(window));
 
@@ -212,7 +212,7 @@ public sealed class ImGuiController : Disposable
         {
             InitializeFlags();
 
-            InitializeFont(fontConfig);
+            InitializeFont(fontPath, fontSize);
 
             InitializeStyle();
         }
@@ -337,10 +337,22 @@ public sealed class ImGuiController : Disposable
         IO.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
     }
 
-    private unsafe void InitializeFont(ImGuiFontConfig? fontConfig)
+    private unsafe void InitializeFont(string? fontPath, float? fontSize)
     {
-        if (fontConfig.HasValue)
+        if (fontPath != null)
         {
+            fontSize = fontSize switch
+            {
+                null    => 10.0f,
+                <= 0.0f => throw new ArgumentOutOfRangeException(nameof(fontSize), fontSize, null),
+                _       => fontSize
+            };
+
+            if (!File.Exists(fontPath))
+            {
+                throw new FileNotFoundException("The font file could not be found.", fontPath);
+            }
+
             var scale = 1.0f;
 
             GLFW.GetWindowContentScale(Window.WindowPtr, out var xScale, out var yScale);
@@ -350,11 +362,11 @@ public sealed class ImGuiController : Disposable
                 scale = xScale;
             }
 
-            var size = fontConfig.Value.Size * scale * scale; // makes it like as Notepad
+            var size = fontSize.Value * scale * scale; // makes it like as Notepad
 
             var ranges = IO.Fonts.GlyphRangesDefault;
 
-            IO.Fonts.AddFontFromFileTTF(fontConfig.Value.Path, size, null, ref *ranges);
+            IO.Fonts.AddFontFromFileTTF(fontPath, size, null, ref *ranges);
         }
         else
         {
