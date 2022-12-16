@@ -152,6 +152,15 @@ public abstract class ImSummaryPass : TranslationUnitPass
         while (--index >= 0)
         {
             var input = lines[index];
+
+            if (comments.Count == count)
+            {
+                if (Regex.IsMatch(input, @"^\s*$"))
+                {
+                    continue; // skip empty lines before declaration
+                }
+            }
+            
             var match = Regex.Match(input, @"(?<=^\s*//\s).*");
 
             if (match.Success)
