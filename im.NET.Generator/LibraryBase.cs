@@ -146,6 +146,8 @@ public abstract class LibraryBase : ILibrary
     [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
     protected virtual void PreprocessIgnores(ASTContext ctx)
     {
+        Ignore(ctx, "ImGuiContext", null, IgnoreType.Class); // IntPtr
+
         Ignore(ctx, "ImColor",    null, IgnoreType.Class); // unused
         Ignore(ctx, "ImDrawVert", null, IgnoreType.Class); // manual
         Ignore(ctx, "ImVec2",     null, IgnoreType.Class); // manual

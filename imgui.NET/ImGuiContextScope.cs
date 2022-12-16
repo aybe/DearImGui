@@ -8,10 +8,10 @@ namespace imgui.NET;
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public readonly struct ImGuiContextScope : IDisposable
 {
-    private readonly ImGuiContext Context;
+    private readonly IntPtr Context;
 
 #pragma warning disable CS1591
-    public ImGuiContextScope(ImGuiContext context)
+    public ImGuiContextScope(IntPtr context)
 #pragma warning restore CS1591
     {
         Context = ImGui.GetCurrentContext();

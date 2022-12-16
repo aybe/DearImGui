@@ -237,7 +237,7 @@ public sealed class ImGuiController : Disposable
     /// <summary>
     ///     Gets the imgui context for this instance.
     /// </summary>
-    public ImGuiContext Context { get; }
+    public IntPtr Context { get; }
 
     /// <inheritdoc />
     protected override void DisposeManaged()
