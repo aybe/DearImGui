@@ -66,13 +66,6 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
         if (ImGui.Begin("Hello, world!"))
         {
-            ImGui.Checkbox("Show ImGui Demo",  ref ShowImGuiDemo);
-            ImGui.Checkbox("Show ImPlot Demo", ref ShowImPlotDemo);
-
-            ImGui.ColorEdit4("Color 1", Color1.AsSpan(), ImGuiColorEditFlags.NoInputs);
-
-            ImGui.ColorEdit4("Color 2", Color2.AsSpan(), ImGuiColorEditFlags.NoInputs);
-
             if (ImPlot.BeginPlot("Sample plot"))
             {
                 ImPlot.SetupAxes("X", "Y");
@@ -85,6 +78,12 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
                 ImPlot.EndPlot();
             }
+
+            ImGui.ColorEdit4("Color 1", Color1.AsSpan(), ImGuiColorEditFlags.NoInputs);
+            ImGui.ColorEdit4("Color 2", Color2.AsSpan(), ImGuiColorEditFlags.NoInputs);
+
+            ImGui.Checkbox("Show ImGui Demo",  ref ShowImGuiDemo);
+            ImGui.Checkbox("Show ImPlot Demo", ref ShowImPlotDemo);
         }
 
         ImGui.End();

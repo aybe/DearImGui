@@ -26,7 +26,8 @@ internal static class Program
             return new NativeWindowSettings
             {
                 Size = vs,
-                Location = vl
+                Location = vl,
+                Title = "imgui.NET"
             };
         }
 
