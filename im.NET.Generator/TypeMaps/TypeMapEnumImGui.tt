@@ -1,4 +1,4 @@
 <#@ include file="TypeMapEnum.tt" once="true" #>
 <#
-	Generate(Host.ResolvePath("TypeMapEnumImGui.txt"), "imgui.NET");
+	Generate(Host.ResolvePath("TypeMapEnumImGui.txt"), "Constants.ImGuiNamespace");
 #>

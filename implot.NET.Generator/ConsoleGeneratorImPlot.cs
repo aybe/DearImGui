@@ -9,7 +9,7 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
     public ConsoleGeneratorImPlot(string moduleName, string? directory = null)
         : base(moduleName, directory)
     {
-        Namespaces = GetDefaultNamespaces().Add("implot.NET");
+        Namespaces = GetDefaultNamespaces().Add(Constants.ImPlotNamespace);
 
         Classes = new SortedSet<KeyValuePair<string, string>>
             {

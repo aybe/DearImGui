@@ -40,7 +40,7 @@ namespace im.NET.Generator.TypeMaps;
 				WriteLine($"[TypeMap(\"{alias}\")]");
 			}
 
-			WriteLine($"[TypeMapEnumNamespace(\"{@namespace}\")]");
+			WriteLine($"[TypeMapEnumNamespace({@namespace})]");
 
 			WriteLine($"internal sealed class {prefix}{value} : {prefix} {{}}");
 

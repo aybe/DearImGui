@@ -21,7 +21,7 @@ internal sealed class ImPlotLibrary : LibraryBase
 
         var module = driver.Options.AddModule("implot");
 
-        module.OutputNamespace = "implot.NET";
+        module.OutputNamespace = Constants.ImPlotNamespace;
 
         SetupImGui(module);
 

@@ -54,7 +54,7 @@ public abstract class ConsoleGenerator
     {
         return new SortedSet<string>
             {
-                "imgui.NET",
+                Constants.ImGuiNamespace,
                 "System",
                 "System.Collections.Concurrent",
                 "System.Numerics",
