@@ -72,12 +72,16 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     protected override void PostprocessIgnores(ASTContext ctx)
     {
+        base.PostprocessIgnores(ctx);
+
         Ignore(ctx, "ImPlotPoint", "Item",   IgnoreType.Property); // manual
         Ignore(ctx, "ImPlotStyle", "Colors", IgnoreType.Property); // manual
     }
 
     protected override void PostprocessEnumerations(ASTContext ctx)
     {
+        base.PostprocessEnumerations(ctx);
+
         // there is also stuff in T4 templates about that
         ctx.SetNameOfEnumWithName("ImAxis", "ImPlotAxis");
 
@@ -86,6 +90,8 @@ internal sealed class ImPlotLibrary : LibraryBase
 
     protected override void PostprocessDeclarations(ASTContext ctx)
     {
+        base.PostprocessDeclarations(ctx);
+
         var tu = GetImPlotTranslationUnit(ctx);
 
         // ignore generic functions that are to be incorrectly generated (exports don't exist)

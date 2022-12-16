@@ -50,6 +50,8 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     protected override void PostprocessIgnores(ASTContext ctx)
     {
+        base.PostprocessIgnores(ctx);
+
         Ignore(ctx, "ImDrawData",            "CmdLists",        IgnoreType.Property); // manual
         Ignore(ctx, "ImDrawList",            "ClipRectStack",   IgnoreType.Property); // intern
         Ignore(ctx, "ImDrawList",            "CmdHeader",       IgnoreType.Property); // intern
@@ -74,6 +76,8 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     protected override void PostprocessEnumerations(ASTContext ctx)
     {
+        base.PostprocessEnumerations(ctx);
+
         var unit = GetImGuiTranslationUnit(ctx);
 
         SetEnumerationsFlags(unit);
@@ -83,6 +87,8 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     protected override void PostprocessDeclarations(ASTContext ctx)
     {
+        base.PostprocessDeclarations(ctx);
+
         // rename delegates to more appropriate names
 
         const string delegates = "Delegates";
@@ -115,6 +121,8 @@ internal sealed class ImGuiLibrary : LibraryBase
 
     protected override void PostprocessProperties(ASTContext ctx)
     {
+        base.PostprocessProperties(ctx);
+
         // ImVector<T> properties are not meant to be assignable, make them read-only
 
         var unit = GetImGuiTranslationUnit(ctx);
