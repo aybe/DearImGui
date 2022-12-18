@@ -63,6 +63,9 @@ MSBuild /p:Configuration=%BUILD_TYPE% imgui.NET.OpenTK\imgui.NET.OpenTK.csproj |
 echo %COLOR_WARN%Building implot.NET%COLOR_NORM%
 MSBuild /p:Configuration=%BUILD_TYPE% implot.NET\implot.NET.csproj || goto err
 
+echo %COLOR_WARN%Building SampleApplication.OpenTK%COLOR_NORM%
+MSBuild /p:Configuration=%BUILD_TYPE% SampleApplication.OpenTK\SampleApplication.OpenTK.csproj || goto err
+
 echo %COLOR_WARN%Built imgui.NET successfully%COLOR_NORM%
 
 goto end
