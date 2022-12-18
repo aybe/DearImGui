@@ -38,6 +38,9 @@ MSBuild /p:Configuration=%BUILD_TYPE% /p:Platform=x86 /p:OutDir=..\build\x86\%BU
 echo %COLOR_WARN%Building implot %BUILD_TYPE%^|x64%COLOR_NORM%
 MSBuild /p:Configuration=%BUILD_TYPE% /p:Platform=x64 /p:OutDir=..\build\x64\%BUILD_TYPE%\ implot\implot.vcxproj || goto err
 
+echo %COLOR_WARN%Building im.NET.Generator%COLOR_NORM%
+MSBuild /p:Configuration=%BUILD_TYPE% im.NET.Generator\im.NET.Generator.csproj || goto err
+
 echo %COLOR_WARN%Building imgui.NET.Generator%COLOR_NORM%
 MSBuild /p:Configuration=%BUILD_TYPE% imgui.NET.Generator\imgui.NET.Generator.csproj || goto err
 
