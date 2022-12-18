@@ -24,7 +24,7 @@ if not defined BUILD_TYPE (
 echo %COLOR_WARN%Building imgui.NET...%COLOR_NORM%
 
 echo %COLOR_WARN%Restoring packages...%COLOR_NORM%
-msbuild -t:restore || goto err
+MSBuild /p:Configuration=%BUILD_TYPE% -t:restore || goto err
 
 echo %COLOR_WARN%Building imgui %BUILD_TYPE%^|x86%COLOR_NORM%
 MSBuild /p:Configuration=%BUILD_TYPE% /p:Platform=x86 /p:OutDir=..\build\x86\%BUILD_TYPE%\ imgui\imgui.vcxproj || goto err
