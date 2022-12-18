@@ -1,4 +1,42 @@
 <#@ include file="TypeMapEnum.tt" once="true" #>
 <#
-	Generate(Host.ResolvePath("TypeMapEnumImGui.txt"), "Constants.ImGuiNamespace");
+	var types = new[]
+		// ReSharper disable StringLiteralTypo
+	{
+		"ImDrawFlags",
+		"ImDrawListFlags",
+		"ImGuiBackendFlags",
+		"ImGuiButtonFlags",
+		"ImGuiColorEditFlags",
+		"ImGuiCol",
+		"ImGuiComboFlags",
+		"ImGuiCond",
+		"ImGuiConfigFlags",
+		"ImGuiDataType",
+		"ImGuiDir",
+		"ImGuiDragDropFlags",
+		"ImGuiFocusedFlags",
+		"ImFontAtlasFlags",
+		"ImGuiHoveredFlags",
+		"ImGuiInputTextFlags",
+		"ImGuiKey",
+		"ImGuiMouseButton",
+		"ImGuiMouseCursor",
+		"ImGuiPopupFlags",
+		"ImGuiSelectableFlags",
+		"ImGuiSortDirection",
+		"ImGuiSliderFlags",
+		"ImGuiStyleVar",
+		"ImGuiTabBarFlags",
+		"ImGuiTabItemFlags",
+		"ImGuiTableBgTarget",
+		"ImGuiTableColumnFlags",
+		"ImGuiTableFlags",
+		"ImGuiTableRowFlags",
+		"ImGuiTreeNodeFlags",
+		"ImGuiViewportFlags",
+		"ImGuiWindowFlags"
+	};
+
+	Generate(types, "Constants.ImGuiNamespace");
 #>

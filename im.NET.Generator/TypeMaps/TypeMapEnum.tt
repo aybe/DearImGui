@@ -1,6 +1,5 @@
-﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+﻿<#@ template debug="true" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ import namespace="System.IO" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ output extension=".g.cs" #>
 using CppSharp.Types;
@@ -8,10 +7,8 @@ using JetBrains.Annotations;
 
 namespace im.NET.Generator.TypeMaps;
 <#+
-	public void Generate(string path, string @namespace)
+	public void Generate(string[] types, string @namespace)
 	{
-		var types = File.ReadAllLines(path);
-
 		foreach (var type in types)
 		{
 			if (Regex.IsMatch(type, @"^\s*(?:\/\/|$)"))
