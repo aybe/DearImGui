@@ -195,9 +195,12 @@ public abstract class LibraryBase : ILibrary
     {
         var options = driver.Options;
 
+#if DEBUG
+        options.GenerateDebugOutput = true;
+#endif
+
         options.GeneratorKind = GeneratorKind.CSharp;
         options.GenerateFinalizers = true;
-        options.GenerateDebugOutput = true;
         options.GenerateDefaultValuesForArguments = true;
         options.MarshalCharAsManagedChar = true;
         options.UseSpan = true;

@@ -1,5 +1,4 @@
-﻿#define DEBUG_TYPE_MAP_VEC
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 using CppSharp.AST;
 using CppSharp.Generators.CSharp;
@@ -32,7 +31,7 @@ internal abstract class TypeMapImVec : TypeMapBase
             if (ctx.ReturnVarName == null)
             {
                 // NOP
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                 ctx.Return.Write("/*CSharpMarshalToManaged Case 1*/");
 #endif
             }
@@ -43,14 +42,14 @@ internal abstract class TypeMapImVec : TypeMapBase
                 if (string.IsNullOrEmpty(match.Value))
                 {
                     ctx.Return.Write(ctx.ReturnVarName); // imgui
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                     ctx.Return.Write("/*CSharpMarshalToManaged Case 2*/");
 #endif
                 }
                 else
                 {
                     ctx.Return.Write(match.Value); // implot
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                     ctx.Return.Write("/*CSharpMarshalToManaged Case 3*/");
 #endif
                 }
@@ -61,7 +60,7 @@ internal abstract class TypeMapImVec : TypeMapBase
             if (ctx.ReturnVarName == null)
             {
                 // NOP
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                 ctx.Return.Write("/*CSharpMarshalToManaged Case 4*/");
 #endif
             }
@@ -70,14 +69,14 @@ internal abstract class TypeMapImVec : TypeMapBase
                 if (ctx.ReturnType.Type is PointerType)
                 {
                     ctx.Return.Write($"Unsafe.Read<global::{TargetType.FullName}>({ctx.ReturnVarName}.ToPointer())");
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                     ctx.Return.Write("/*CSharpMarshalToManaged Case 5*/");
 #endif
                 }
                 else
                 {
                     ctx.Return.Write(ctx.ReturnVarName);
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                     ctx.Return.Write("/*CSharpMarshalToManaged Case 6*/");
 #endif
                 }
@@ -94,14 +93,14 @@ internal abstract class TypeMapImVec : TypeMapBase
             if (ctx.ReturnVarName == null)
             {
                 // NOP
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                 ctx.Return.Write("/*CSharpMarshalToNative Case 1*/");
 #endif
             }
             else
             {
                 ctx.Return.Write(ctx.Parameter.Name);
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                 ctx.Return.Write("/*CSharpMarshalToNative Case 2*/");
 #endif
             }
@@ -117,14 +116,14 @@ internal abstract class TypeMapImVec : TypeMapBase
                     if (ctx.Parameter.HasDefaultValue)
                     {
                         ctx.Return.Write(asIntPtr);
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                         ctx.Return.Write("/*CSharpMarshalToNative Case 3*/");
 #endif
                     }
                     else
                     {
                         ctx.Return.Write(asIntPtr);
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                         ctx.Return.Write("/*CSharpMarshalToNative Case 4*/");
 #endif
                     }
@@ -145,14 +144,14 @@ internal abstract class TypeMapImVec : TypeMapBase
                                 throw new NotImplementedException();
                         }
 
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                         ctx.Return.Write("/*CSharpMarshalToNative Case 5*/");
 #endif
                     }
                     else
                     {
                         ctx.Return.Write(asIntPtr);
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                         ctx.Return.Write("/*CSharpMarshalToNative Case 6*/");
 #endif
                     }
@@ -161,7 +160,7 @@ internal abstract class TypeMapImVec : TypeMapBase
             else
             {
                 ctx.Return.Write(ctx.ReturnVarName);
-#if DEBUG_TYPE_MAP_VEC
+#if DEBUG_TYPE_MAP
                 ctx.Return.Write("/*CSharpMarshalToNative Case 7*/");
 #endif
             }
