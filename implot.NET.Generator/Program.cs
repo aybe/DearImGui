@@ -1,18 +1,24 @@
-﻿using im.NET.Generator;
+﻿using CommandLine;
+using im.NET.Generator;
 
 namespace implot.NET.Generator;
 
 internal static class Program
 {
-    public static void Main(string[] args)
+    private static void Main(string[] args)
     {
-        var generator = new ConsoleGeneratorImPlot("implot");
+        ConsoleGeneratorOptions.SetDefaultArgumentsIfEmpty(ref args);
 
-        var library = new ImPlotLibrary
-        {
-            Namespaces = generator.Namespaces
-        };
+        Parser
+            .Default
+            .ParseArguments<ConsoleGeneratorOptions>(args)
+            .WithParsed(Generate);
+    }
 
-        ConsoleGenerator.Run(library, generator);
+    private static void Generate(ConsoleGeneratorOptions options)
+    {
+        var generator = new ConsoleGeneratorImPlot(options.Architecture, options.Directory);
+
+        generator.Run();
     }
 }

@@ -401,8 +401,8 @@ FodyWeavers.xsd
 ## imgui.NET
 *.bak
 *.g.cs
-launchSettings.json
 implot.NET.Generator/Generics/GenerateDefinitions.g.txt
 implot/implot_generics.h
 *.lutconfig
 *.diagsession
+SampleApplication.OpenTK/Properties/launchSettings.json

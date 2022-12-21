@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "imgui.NET.Generator": {
+      "commandName": "Project",
+      "commandLineArgs": "--cpu X64 --dir ."
+    },
+    "imgui.NET.Generator | x86": {
+      "commandName": "Project",
+      "commandLineArgs": "--cpu X86 --dir .\\x86"
+    },
+    "imgui.NET.Generator | x64": {
+      "commandName": "Project",
+      "commandLineArgs": "--cpu X64 --dir .\\x64"
+    }
+  }
+}

@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
@@ -13,6 +14,16 @@ namespace im.NET.Generator;
 
 public abstract class LibraryBase : ILibrary
 {
+    protected LibraryBase(Architecture architecture, string? directory = null)
+    {
+        Architecture = architecture;
+        Directory = directory;
+    }
+
+    private Architecture Architecture { get; }
+
+    private string? Directory { get; }
+
     #region Helpers
 
     protected static TranslationUnit GetImGuiTranslationUnit(ASTContext ctx)
@@ -193,7 +204,20 @@ public abstract class LibraryBase : ILibrary
 
     public virtual void Setup(Driver driver)
     {
+        driver.ParserOptions.TargetTriple = Architecture switch
+        {
+            Architecture.X86   => "i686-pc-win32-msvc",
+            Architecture.X64   => "x86_64-pc-win32-msvc",
+            Architecture.Arm   => throw new NotSupportedException(),
+            Architecture.Arm64 => throw new NotSupportedException(),
+            Architecture.Wasm  => throw new NotSupportedException(),
+            Architecture.S390x => throw new NotSupportedException(),
+            _                  => throw new ArgumentOutOfRangeException()
+        };
+
         var options = driver.Options;
+
+        options.OutputDir = Directory ?? Path.Combine(Environment.CurrentDirectory, Architecture.ToString());
 
 #if DEBUG
         options.GenerateDebugOutput = true;

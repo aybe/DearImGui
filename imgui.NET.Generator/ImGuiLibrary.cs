@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
 using CppSharp.AST;
@@ -14,7 +15,13 @@ namespace imgui.NET.Generator;
 
 internal sealed class ImGuiLibrary : LibraryBase
 {
-    public ImmutableSortedSet<string> Namespaces { get; init; } = null!;
+    public ImGuiLibrary(Architecture architecture, string directory, ImmutableSortedSet<string> namespaces)
+        : base(architecture, directory)
+    {
+        Namespaces = namespaces;
+    }
+
+    private ImmutableSortedSet<string> Namespaces { get; }
 
     #region Overrides
 

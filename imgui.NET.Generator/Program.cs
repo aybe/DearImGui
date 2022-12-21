@@ -1,4 +1,5 @@
-﻿using im.NET.Generator;
+﻿using CommandLine;
+using im.NET.Generator;
 
 namespace imgui.NET.Generator;
 
@@ -6,13 +7,18 @@ internal static class Program
 {
     private static void Main(string[] args)
     {
-        var generator = new ConsoleGeneratorImGui("imgui");
+        ConsoleGeneratorOptions.SetDefaultArgumentsIfEmpty(ref args);
 
-        var library = new ImGuiLibrary
-        {
-            Namespaces = generator.Namespaces
-        };
+        Parser
+            .Default
+            .ParseArguments<ConsoleGeneratorOptions>(args)
+            .WithParsed(Generate);
+    }
 
-        ConsoleGenerator.Run(library, generator);
+    private static void Generate(ConsoleGeneratorOptions options)
+    {
+        var generator = new ConsoleGeneratorImGui(options.Architecture, options.Directory);
+
+        generator.Run();
     }
 }

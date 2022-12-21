@@ -34,6 +34,11 @@ public abstract class ConsoleGenerator
     [PublicAPI]
     public abstract ImmutableSortedSet<string> Namespaces { get; }
 
+    /// <summary>
+    ///     The library used.
+    /// </summary>
+    protected abstract ILibrary Library { get; }
+
     private string ModuleName { get; }
 
     private string ModulePath { get; }
@@ -256,7 +261,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    public static void Run(ILibrary library, ConsoleGenerator generator)
+    public void Run()
     {
         if (Debugger.IsAttached)
             // using color between runs confuses console
@@ -266,9 +271,11 @@ public abstract class ConsoleGenerator
             Console.Clear();
         }
 
-        ConsoleDriver.Run(library);
+        Console.WriteLine("Generation started...");
 
-        generator.Process();
+        ConsoleDriver.Run(Library);
+
+        Process();
 
         Console.WriteLine("Generation finished.");
     }

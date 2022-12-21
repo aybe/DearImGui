@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 using CppSharp;
 using CppSharp.AST;
 using im.NET.Generator;
@@ -11,7 +12,13 @@ namespace implot.NET.Generator;
 
 internal sealed class ImPlotLibrary : LibraryBase
 {
-    public ImmutableSortedSet<string> Namespaces { get; init; } = null!;
+    public ImPlotLibrary(Architecture architecture, string directory, ImmutableSortedSet<string> namespaces)
+        : base(architecture, directory)
+    {
+        Namespaces = namespaces;
+    }
+
+    private ImmutableSortedSet<string> Namespaces { get; }
 
     #region Overrides
 

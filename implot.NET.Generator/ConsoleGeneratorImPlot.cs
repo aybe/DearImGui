@@ -1,13 +1,15 @@
 ﻿using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using CppSharp;
 using im.NET.Generator;
 
 namespace implot.NET.Generator;
 
 internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
 {
-    public ConsoleGeneratorImPlot(string moduleName, string? directory = null)
-        : base(moduleName, directory)
+    public ConsoleGeneratorImPlot(Architecture architecture, string directory)
+        : base("implot", directory)
     {
         Namespaces = GetDefaultNamespaces().Add(Constants.ImPlotNamespace);
 
@@ -18,6 +20,8 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
             .ToImmutableSortedSet();
 
         Aliases = GetDefaultAliases();
+
+        Library = new ImPlotLibrary(architecture, directory, Namespaces);
     }
 
     public override ImmutableSortedSet<string> Namespaces { get; }
@@ -25,6 +29,8 @@ internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
     public override ImmutableSortedSet<KeyValuePair<string, string>> Classes { get; }
 
     public override ImmutableSortedSet<Type> Aliases { get; }
+
+    protected override ILibrary Library { get; }
 
     protected override void Process(ref string input)
     {

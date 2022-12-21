@@ -1,12 +1,15 @@
 ﻿using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using CppSharp;
 using im.NET.Generator;
 
 namespace imgui.NET.Generator;
 
 internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 {
-    public ConsoleGeneratorImGui(string moduleName, string? directory = null) : base(moduleName, directory)
+    public ConsoleGeneratorImGui(Architecture architecture, string directory)
+        : base("imgui", directory)
     {
         Namespaces = GetDefaultNamespaces();
 
@@ -17,6 +20,8 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             .ToImmutableSortedSet();
 
         Aliases = GetDefaultAliases();
+
+        Library = new ImGuiLibrary(architecture, directory, Namespaces);
     }
 
     public override ImmutableSortedSet<Type> Aliases { get; }
@@ -24,6 +29,8 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
     public override ImmutableSortedSet<KeyValuePair<string, string>> Classes { get; }
 
     public override ImmutableSortedSet<string> Namespaces { get; }
+
+    protected override ILibrary Library { get; }
 
     protected override void Process(ref string input)
     {
