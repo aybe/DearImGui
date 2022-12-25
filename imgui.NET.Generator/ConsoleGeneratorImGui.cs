@@ -54,5 +54,13 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
             "CppSharp.SymbolResolver",
             $"{Constants.ImGuiNamespace}.SymbolResolver"
         );
+
+        // merge partial ImGui classes
+
+        input = Regex.Replace(input,
+            @"\s*}\s*\}\s*namespace\s+imgui\.NET\s*\{\s*partial\s+class\s+ImGui\s*\{",
+            Environment.NewLine,
+            RegexOptions.Multiline
+        );
     }
 }
