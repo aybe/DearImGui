@@ -184,6 +184,13 @@ public abstract class LibraryBase : ILibrary
 
     protected virtual void PostprocessIgnores(ASTContext ctx)
     {
+        // ignore useless ImVector stuff, removes ~1K LOC
+
+        var imVectorClass = ctx.FindCompleteClass("ImVector");
+
+        imVectorClass.Methods.ForEach(s => s.ExplicitlyIgnore());
+
+        imVectorClass.Specializations.ForEach(s => s.ExplicitlyIgnore());
     }
 
     protected virtual void PostprocessEnumerations(ASTContext ctx)
