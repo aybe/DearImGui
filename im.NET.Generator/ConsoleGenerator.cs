@@ -179,6 +179,23 @@ public abstract class ConsoleGenerator
             "public IntPtr __Instance { get; protected set; }",
             "internal IntPtr __Instance { get; set; }"
         );
+
+
+        // fix pointer errors caused by use of TypeMapSizeT
+
+        // cast won't work when it's a default parameter
+
+        input = Regex.Replace(input,
+            @"\(U?IntPtr\)\(0\)",
+            @"default",
+            RegexOptions.Multiline);
+
+        // cast is needed when built from an integral type
+
+        input = Regex.Replace(input,
+            @"^(\s*)(U?IntPtr)(\s+\S+\s+=\s+)(\d+)(\s*;)",
+            @"$1$2$3($2)$4$5",
+            RegexOptions.Multiline);
     }
 
     private static void ProcessSummaries(ref string input)
