@@ -1,6 +1,8 @@
 ﻿using System.Runtime.InteropServices;
 using CommandLine;
 using JetBrains.Annotations;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 
 namespace im.NET.Generator;
 
@@ -12,15 +14,43 @@ public sealed class ConsoleGeneratorOptions
     [Option('c', "cpu", Required = true, HelpText = "Output architecture.")]
     public Architecture Architecture { get; [UsedImplicitly] set; }
 
-    public static void SetDefaultArgumentsIfEmpty(ref string[] args)
+    public static void Generate(Action<ConsoleGeneratorOptions> action)
     {
-        if (args.Length is not 0)
+        const string args1 = @"--cpu X86 --dir .\x86";
+        const string args2 = @"--cpu X64 --dir .\x64";
+
+        foreach (var args in new[] { args1, args2 })
         {
-            return;
+            var temp = args.Split();
+
+            Parser
+                .Default
+                .ParseArguments<ConsoleGeneratorOptions>(temp)
+                .WithParsed(action);
         }
+    }
 
-        var arc = (Environment.Is64BitProcess ? Architecture.X64 : Architecture.X86).ToString();
+    public static void Rewrite(string csPath32, string csPath64, string csPathAnyCpu)
+    {
+        if (string.IsNullOrWhiteSpace(csPath32))
+            throw new ArgumentException("Value cannot be null or whitespace.", nameof(csPath32));
 
-        args = new[] { "--cpu", arc, "--dir", $".\\{arc}" };
+        if (string.IsNullOrWhiteSpace(csPath64))
+            throw new ArgumentException("Value cannot be null or whitespace.", nameof(csPath64));
+
+        if (string.IsNullOrWhiteSpace(csPathAnyCpu))
+            throw new ArgumentException("Value cannot be null or whitespace.", nameof(csPathAnyCpu));
+
+        var tree32 = CSharpSyntaxTree.ParseText(File.ReadAllText(csPath32));
+        var tree64 = CSharpSyntaxTree.ParseText(File.ReadAllText(csPath64));
+
+        var root32 = tree32.GetRoot();
+        var root64 = tree64.GetRoot();
+
+        var rewriter = new ConsoleGeneratorRewriter(root32, root64);
+
+        var visit = rewriter.Visit(root32);
+
+        File.WriteAllText(csPathAnyCpu, visit.NormalizeWhitespace().ToFullString());
     }
 }

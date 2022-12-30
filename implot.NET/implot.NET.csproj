@@ -25,7 +25,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="..\implot.NET.Generator\bin\$(Configuration)\$(TargetFramework)\implot.cs" Link="ImPlot.g.cs" />
+		<Compile Include="..\implot.NET.Generator\bin\$(Configuration)\$(TargetFramework)\implot.AnyCPU.g.cs" Link="ImPlot.AnyCPU.g.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

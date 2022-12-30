@@ -285,7 +285,6 @@ public abstract class ConsoleGenerator
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Clear();
         }
 
         Console.WriteLine("Generation started...");

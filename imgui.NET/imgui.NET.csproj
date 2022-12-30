@@ -25,7 +25,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="..\imgui.NET.Generator\bin\$(Configuration)\$(TargetFramework)\imgui.cs" Link="ImGui.g.cs" />
+		<Compile Include="..\imgui.NET.Generator\bin\$(Configuration)\$(TargetFramework)\imgui.AnyCPU.cs" Link="ImGui.AnyCPU.g.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

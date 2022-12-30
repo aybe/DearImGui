@@ -1,16 +1,7 @@
 {
   "profiles": {
     "implot.NET.Generator": {
-      "commandName": "Project",
-      "commandLineArgs": "--cpu X64 --dir ."
-    },
-    "implot.NET.Generator | x86": {
-      "commandName": "Project",
-      "commandLineArgs": "--cpu X86 --dir .\\x86"
-    },
-    "implot.NET.Generator | x64": {
-      "commandName": "Project",
-      "commandLineArgs": "--cpu X64 --dir .\\x64"
+      "commandName": "Project"
     }
   }
 }
