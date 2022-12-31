@@ -21,6 +21,8 @@ public sealed class ConsoleGeneratorOptions
 
         foreach (var args in new[] { args1, args2 })
         {
+            Console.WriteLine($@"Generating with arguments ""{args}""");
+
             var temp = args.Split();
 
             Parser
