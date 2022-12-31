@@ -231,6 +231,8 @@ public sealed class ConsoleGeneratorRewriter : CSharpSyntaxRewriter
 
     private static StructDeclarationSyntax WithPrivatePartialModifiers(StructDeclarationSyntax node)
     {
-        return node.WithModifiers(TokenList(Token(SyntaxKind.PrivateKeyword), Token(SyntaxKind.PartialKeyword)));
+        return node
+            .WithModifiers(TokenList(Token(SyntaxKind.PrivateKeyword), Token(SyntaxKind.PartialKeyword)))
+            .NormalizeWhitespace();
     }
 }

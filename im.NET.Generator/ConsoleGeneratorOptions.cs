@@ -1,7 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using CommandLine;
 using JetBrains.Annotations;
-using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
 namespace im.NET.Generator;
@@ -53,6 +52,6 @@ public sealed class ConsoleGeneratorOptions
 
         var visit = rewriter.Visit(root32);
 
-        File.WriteAllText(csPathAnyCpu, visit.NormalizeWhitespace().ToFullString());
+        File.WriteAllText(csPathAnyCpu, visit.ToFullString());
     }
 }
