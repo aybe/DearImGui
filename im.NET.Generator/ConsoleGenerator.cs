@@ -1,9 +1,9 @@
 ﻿using System.Collections.Immutable;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
 using JetBrains.Annotations;
+using Microsoft.CodeAnalysis.CSharp;
 
 namespace im.NET.Generator;
 
@@ -69,15 +69,6 @@ public abstract class ConsoleGenerator
                 "System.Text"
             }
             .ToImmutableSortedSet();
-    }
-
-    private void Process()
-    {
-        var text = File.ReadAllText(ModulePath);
-
-        Process(ref text);
-
-        Write(text);
     }
 
     protected virtual void Process(ref string input)
@@ -278,24 +269,6 @@ public abstract class ConsoleGenerator
         );
     }
 
-    public void Run()
-    {
-        if (Debugger.IsAttached)
-            // using color between runs confuses console
-        {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Gray;
-        }
-
-        Console.WriteLine("Generation started...");
-
-        ConsoleDriver.Run(Library);
-
-        Process();
-
-        Console.WriteLine("Generation finished.");
-    }
-
     private void Write(string text)
     {
         File.WriteAllText(ModulePath, text);
@@ -329,5 +302,57 @@ public abstract class ConsoleGenerator
         }
 
         File.WriteAllText(backupPath, ModuleText);
+    }
+
+    public static void Generate(ConsoleGeneratorFactory factory, ConsoleGeneratorOutputs outputs, ConsoleGeneratorTransform? transform = null)
+    {
+        Console.WriteLine("Generation starting...");
+
+        var tuples = new[]
+        {
+            (Architecture.X86, @".\x86"),
+            (Architecture.X64, @".\x64")
+        };
+
+        foreach (var (arch, path) in tuples)
+        {
+            Console.WriteLine($"Generating for {arch} in {path}...");
+
+            var generator = factory(arch, path);
+
+            ConsoleDriver.Run(generator.Library);
+
+            Console.WriteLine("Post-processing generated code...");
+
+            var text = File.ReadAllText(generator.ModulePath);
+
+            generator.Process(ref text);
+
+            generator.Write(text);
+        }
+
+        Console.WriteLine($"Generating for AnyCPU in {outputs.CsPathAny}...");
+
+        var tree32 = CSharpSyntaxTree.ParseText(File.ReadAllText(outputs.CsPathX32));
+        var tree64 = CSharpSyntaxTree.ParseText(File.ReadAllText(outputs.CsPathX64));
+
+        var root32 = tree32.GetRoot();
+        var root64 = tree64.GetRoot();
+
+        var rewriter = new ConsoleGeneratorRewriter(root32, root64);
+
+        var visit = rewriter.Visit(root32);
+
+        var contents = visit.ToFullString();
+
+        if (transform != null)
+        {
+            Console.WriteLine("Transforming AnyCPU...");
+            contents = transform(contents);
+        }
+
+        File.WriteAllText(outputs.CsPathAny, contents);
+
+        Console.WriteLine("Generation complete.");
     }
 }
