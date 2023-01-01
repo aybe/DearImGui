@@ -406,3 +406,5 @@ implot/implot_generics.h
 *.lutconfig
 *.diagsession
 SampleApplication.OpenTK/Properties/launchSettings.json
+*.cd
+*.dgml
