@@ -211,15 +211,12 @@ public abstract class LibraryBase : ILibrary
 
     public virtual void Setup(Driver driver)
     {
+        // ReSharper disable once SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
         driver.ParserOptions.TargetTriple = Architecture switch
         {
             Architecture.X86   => "i686-pc-win32-msvc",
             Architecture.X64   => "x86_64-pc-win32-msvc",
-            Architecture.Arm   => throw new NotSupportedException(),
-            Architecture.Arm64 => throw new NotSupportedException(),
-            Architecture.Wasm  => throw new NotSupportedException(),
-            Architecture.S390x => throw new NotSupportedException(),
-            _                  => throw new ArgumentOutOfRangeException()
+            _                  => throw new NotSupportedException(Architecture.ToString())
         };
 
         var options = driver.Options;
