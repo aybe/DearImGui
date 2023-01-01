@@ -10,12 +10,6 @@ namespace im.NET.Generator;
 
 public abstract class ConsoleGenerator
 {
-    protected ConsoleGenerator(string moduleName, string? directory = null)
-    {
-        ModuleName = moduleName;
-        ModulePath = Path.Combine(directory ?? Environment.CurrentDirectory, Path.ChangeExtension(ModuleName, "cs"));
-    }
-
     /// <summary>
     ///     The set of aliases to be renamed.
     /// </summary>
@@ -38,10 +32,6 @@ public abstract class ConsoleGenerator
     ///     The library used.
     /// </summary>
     protected abstract ILibrary Library { get; }
-
-    private string ModuleName { get; }
-
-    private string ModulePath { get; }
 
     protected static ImmutableSortedSet<Type> GetDefaultAliases()
     {
@@ -267,7 +257,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    public static async Task Generate(ConsoleGeneratorFactory factory, ConsoleGeneratorOutputs outputs, ConsoleGeneratorTransform? transform = null)
+    public static async Task Generate(string module, string directory, ConsoleGeneratorFactory factory, ConsoleGeneratorOutputs outputs, ConsoleGeneratorTransform? transform = null)
     {
         Console.WriteLine("Generation starting...");
 
@@ -297,7 +287,7 @@ public abstract class ConsoleGenerator
 
                 Console.WriteLine("Post-processing generated code...");
 
-                var text = await File.ReadAllTextAsync(generator.ModulePath);
+                var text = await File.ReadAllTextAsync(Path.Combine(directory, Path.ChangeExtension(module, ".cs")));
 
                 generator.Process(ref text);
 

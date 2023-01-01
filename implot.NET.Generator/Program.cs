@@ -9,7 +9,7 @@ internal static class Program
     {
         var options = new ConsoleGeneratorOutputs(@".\x86\implot.cs", @".\x64\implot.cs", @".\implot.AnyCPU.g.cs");
 
-        await ConsoleGenerator.Generate((s, t) => new ConsoleGeneratorImPlot(s, t), options, Transform);
+        await ConsoleGenerator.Generate("implot", Environment.CurrentDirectory, (s, t) => new ConsoleGeneratorImPlot(s, t), options, Transform);
     }
 
     private static string Transform(string text)

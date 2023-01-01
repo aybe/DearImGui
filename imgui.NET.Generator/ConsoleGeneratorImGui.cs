@@ -9,7 +9,6 @@ namespace imgui.NET.Generator;
 internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 {
     public ConsoleGeneratorImGui(Architecture architecture, string directory)
-        : base("imgui", directory)
     {
         Namespaces = GetDefaultNamespaces();
 

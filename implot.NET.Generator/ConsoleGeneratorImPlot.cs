@@ -9,7 +9,6 @@ namespace implot.NET.Generator;
 internal sealed class ConsoleGeneratorImPlot : ConsoleGenerator
 {
     public ConsoleGeneratorImPlot(Architecture architecture, string directory)
-        : base("implot", directory)
     {
         Namespaces = GetDefaultNamespaces().Add(Constants.ImPlotNamespace);
 
