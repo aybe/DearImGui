@@ -13,7 +13,6 @@ public abstract class ConsoleGenerator
     {
         ModuleName = moduleName;
         ModulePath = Path.Combine(directory ?? Environment.CurrentDirectory, Path.ChangeExtension(ModuleName, "cs"));
-        ModuleText = File.Exists(ModulePath) ? File.ReadAllText(ModulePath) : string.Empty;
     }
 
     /// <summary>
@@ -42,8 +41,6 @@ public abstract class ConsoleGenerator
     private string ModuleName { get; }
 
     private string ModulePath { get; }
-
-    private string ModuleText { get; }
 
     protected static ImmutableSortedSet<Type> GetDefaultAliases()
     {
@@ -269,42 +266,7 @@ public abstract class ConsoleGenerator
         );
     }
 
-    private void Write(string text)
-    {
-        File.WriteAllText(ModulePath, text);
-
-        if (ModuleText == string.Empty)
-        {
-            return;
-        }
-
-        if (ModuleText == text)
-        {
-            return;
-        }
-
-        // create a backup history so we can diff them
-        // imgui-backup.cs -> imgui-backup-date.cs
-        // imgui.cs -> imgui-backup.cs
-
-        var backupDirectory = Path.GetDirectoryName(ModulePath) ?? string.Empty;
-        var backupExtension = Path.GetExtension(ModulePath);
-        var backupPath = Path.Combine(backupDirectory, Path.ChangeExtension($"{ModuleName}-backup", backupExtension));
-
-        if (File.Exists(backupPath))
-        {
-            var backupTime = File.GetLastWriteTimeUtc(backupPath);
-            var backupName = backupTime.ToString("O").Replace(':', '-').Replace('.', '-');
-            var backupFile = Path.GetFileNameWithoutExtension(backupPath);
-            var backupDest = Path.Combine(backupDirectory, Path.ChangeExtension($"{backupFile}-{backupName}", backupExtension));
-
-            File.Copy(backupPath, backupDest, true);
-        }
-
-        File.WriteAllText(backupPath, ModuleText);
-    }
-
-    public static void Generate(ConsoleGeneratorFactory factory, ConsoleGeneratorOutputs outputs, ConsoleGeneratorTransform? transform = null)
+    public static async Task Generate(ConsoleGeneratorFactory factory, ConsoleGeneratorOutputs outputs, ConsoleGeneratorTransform? transform = null)
     {
         Console.WriteLine("Generation starting...");
 
@@ -318,26 +280,37 @@ public abstract class ConsoleGenerator
         {
             Console.WriteLine($"Generating for {arch} in {path}...");
 
-            var generator = factory(arch, path);
+            // ReSharper disable once SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
+            var dest = arch switch
+            {
+                Architecture.X86 => outputs.CsPathX32,
+                Architecture.X64 => outputs.CsPathX64,
+                _                => throw new NotSupportedException(arch.ToString())
+            };
 
-            ConsoleDriver.Run(generator.Library);
+            await using (await FileHistory.CreateAsync(dest))
+            {
+                var generator = factory(arch, path);
 
-            Console.WriteLine("Post-processing generated code...");
+                ConsoleDriver.Run(generator.Library);
 
-            var text = File.ReadAllText(generator.ModulePath);
+                Console.WriteLine("Post-processing generated code...");
 
-            generator.Process(ref text);
+                var text = await File.ReadAllTextAsync(generator.ModulePath);
 
-            generator.Write(text);
+                generator.Process(ref text);
+
+                await File.WriteAllTextAsync(dest, text);
+            }
         }
 
         Console.WriteLine($"Generating for AnyCPU in {outputs.CsPathAny}...");
 
-        var tree32 = CSharpSyntaxTree.ParseText(File.ReadAllText(outputs.CsPathX32));
-        var tree64 = CSharpSyntaxTree.ParseText(File.ReadAllText(outputs.CsPathX64));
+        var tree32 = CSharpSyntaxTree.ParseText(await File.ReadAllTextAsync(outputs.CsPathX32));
+        var tree64 = CSharpSyntaxTree.ParseText(await File.ReadAllTextAsync(outputs.CsPathX64));
 
-        var root32 = tree32.GetRoot();
-        var root64 = tree64.GetRoot();
+        var root32 = await tree32.GetRootAsync();
+        var root64 = await tree64.GetRootAsync();
 
         var rewriter = new ConsoleGeneratorRewriter(root32, root64);
 
@@ -351,7 +324,10 @@ public abstract class ConsoleGenerator
             contents = transform(contents);
         }
 
-        File.WriteAllText(outputs.CsPathAny, contents);
+        await using (await FileHistory.CreateAsync(outputs.CsPathAny))
+        {
+            await File.WriteAllTextAsync(outputs.CsPathAny, contents);
+        }
 
         Console.WriteLine("Generation complete.");
     }
