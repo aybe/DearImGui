@@ -1,4 +1,4 @@
-﻿namespace im.NET.Generator;
+﻿namespace im.NET.Generator.Extensions;
 
 public sealed class FileHistory : IDisposable, IAsyncDisposable
 {

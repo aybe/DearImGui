@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using CppSharp.AST;
 using CppSharp.Passes;
-using im.NET.Generator.Logging;
+using im.NET.Generator.Extensions;
 
 namespace im.NET.Generator.Passes;
 

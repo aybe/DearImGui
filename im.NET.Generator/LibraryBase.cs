@@ -5,7 +5,7 @@ using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Passes;
-using im.NET.Generator.Logging;
+using im.NET.Generator.Extensions;
 
 // ReSharper disable IdentifierTypo
 // ReSharper disable StringLiteralTypo

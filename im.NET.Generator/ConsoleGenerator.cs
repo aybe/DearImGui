@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
+using im.NET.Generator.Extensions;
 using JetBrains.Annotations;
 using Microsoft.CodeAnalysis.CSharp;
 

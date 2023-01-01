@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using CppSharp;
 using CppSharp.AST;
 using im.NET.Generator;
-using im.NET.Generator.Logging;
+using im.NET.Generator.Extensions;
 using im.NET.Generator.Passes;
 using imgui.NET.Generator.Passes;
 

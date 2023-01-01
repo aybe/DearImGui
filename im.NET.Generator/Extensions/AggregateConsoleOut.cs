@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace im.NET.Generator.Logging;
+namespace im.NET.Generator.Extensions;
 
 [PublicAPI]
 public sealed class AggregateConsoleOut : IDisposable
