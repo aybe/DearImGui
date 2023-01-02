@@ -20,7 +20,7 @@ internal sealed class GeneratorImGui : im.NET.Generator.Generator
 
         Aliases = GetDefaultAliases();
 
-        Library = new ImGuiLibrary(platform, directory, Namespaces);
+        Library = new LibraryImGui(platform, directory, Namespaces);
     }
 
     public override ImmutableSortedSet<Type> Aliases { get; }
