@@ -1,10 +1,10 @@
 ﻿using System.Collections.Immutable;
-using System.Runtime.InteropServices;
 using CppSharp;
 using CppSharp.AST;
 using im.NET.Generator;
 using im.NET.Generator.Passes;
 using implot.NET.Generator.Passes;
+using Platform = Microsoft.CodeAnalysis.Platform;
 
 // ReSharper disable IdentifierTypo
 
@@ -12,8 +12,8 @@ namespace implot.NET.Generator;
 
 internal sealed class ImPlotLibrary : LibraryBase
 {
-    public ImPlotLibrary(Architecture architecture, string directory, ImmutableSortedSet<string> namespaces)
-        : base(architecture, directory)
+    public ImPlotLibrary(Platform platform, string directory, ImmutableSortedSet<string> namespaces)
+        : base(platform, directory)
     {
         Namespaces = namespaces;
     }

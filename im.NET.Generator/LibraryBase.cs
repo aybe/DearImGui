@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
 using CppSharp.Passes;
 using im.NET.Generator.Extensions;
+using Platform = Microsoft.CodeAnalysis.Platform;
 
 // ReSharper disable IdentifierTypo
 // ReSharper disable StringLiteralTypo
@@ -14,13 +14,13 @@ namespace im.NET.Generator;
 
 public abstract class LibraryBase : ILibrary
 {
-    protected LibraryBase(Architecture architecture, string? directory = null)
+    protected LibraryBase(Platform platform, string? directory = null)
     {
-        Architecture = architecture;
+        Platform = platform;
         Directory = directory;
     }
 
-    private Architecture Architecture { get; }
+    private Platform Platform { get; }
 
     private string? Directory { get; }
 
@@ -212,16 +212,16 @@ public abstract class LibraryBase : ILibrary
     public virtual void Setup(Driver driver)
     {
         // ReSharper disable once SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
-        driver.ParserOptions.TargetTriple = Architecture switch
+        driver.ParserOptions.TargetTriple = Platform switch
         {
-            Architecture.X86   => "i686-pc-win32-msvc",
-            Architecture.X64   => "x86_64-pc-win32-msvc",
-            _                  => throw new NotSupportedException(Architecture.ToString())
+            Platform.X86 => "i686-pc-win32-msvc",
+            Platform.X64 => "x86_64-pc-win32-msvc",
+            _            => throw new NotSupportedException(Platform.ToString())
         };
 
         var options = driver.Options;
 
-        options.OutputDir = Directory ?? Path.Combine(Environment.CurrentDirectory, Architecture.ToString());
+        options.OutputDir = Directory ?? Path.Combine(Environment.CurrentDirectory, Platform.ToString());
 
 #if DEBUG
         options.GenerateDebugOutput = true;

@@ -5,6 +5,7 @@ using CppSharp;
 using im.NET.Generator.Extensions;
 using JetBrains.Annotations;
 using Microsoft.CodeAnalysis.CSharp;
+using Platform = Microsoft.CodeAnalysis.Platform;
 
 namespace im.NET.Generator;
 
@@ -257,48 +258,48 @@ public abstract class ConsoleGenerator
         );
     }
 
-    public static async Task Generate(string module, string directory, ConsoleGeneratorFactory factory, ConsoleGeneratorOutputs outputs, ConsoleGeneratorTransform? transform = null)
+    public static async Task Generate(string module, string directory, ConsoleGeneratorFactory factory, ConsoleGeneratorTransform? transform = null)
     {
         Console.WriteLine("Generation starting...");
 
-        var tuples = new[]
+        var paths =
+            new[] { Platform.X86, Platform.X64, Platform.AnyCpu }
+                .ToImmutableDictionary(s => s, s => Path.Combine(directory, s.ToString(), Path.ChangeExtension(module, ".cs")));
+
+        foreach (var pair in paths)
         {
-            (Architecture.X86, @".\x86"),
-            (Architecture.X64, @".\x64")
-        };
+            Directory.CreateDirectory(Path.GetDirectoryName(pair.Value)!);
+        }
 
-        foreach (var (arch, path) in tuples)
+        foreach (var (platform, path) in paths)
         {
-            Console.WriteLine($"Generating for {arch} in {path}...");
+            if (platform is Platform.AnyCpu)
+                continue;
 
-            // ReSharper disable once SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
-            var dest = arch switch
-            {
-                Architecture.X86 => outputs.CsPathX32,
-                Architecture.X64 => outputs.CsPathX64,
-                _                => throw new NotSupportedException(arch.ToString())
-            };
+            Console.WriteLine($"Generating for {platform} in {path}...");
 
-            await using (await FileHistory.CreateAsync(dest))
+            await using (await FileHistory.CreateAsync(path))
             {
-                var generator = factory(arch, path);
+                var generator = factory(platform, Path.GetDirectoryName(path)!);
 
                 ConsoleDriver.Run(generator.Library);
 
                 Console.WriteLine("Post-processing generated code...");
 
-                var text = await File.ReadAllTextAsync(Path.Combine(directory, Path.ChangeExtension(module, ".cs")));
+                var text = await File.ReadAllTextAsync(path);
 
                 generator.Process(ref text);
 
-                await File.WriteAllTextAsync(dest, text);
+                await File.WriteAllTextAsync(path, text);
             }
         }
 
-        Console.WriteLine($"Generating for AnyCPU in {outputs.CsPathAny}...");
+        var pathAnyCpu = paths[Platform.AnyCpu];
 
-        var tree32 = CSharpSyntaxTree.ParseText(await File.ReadAllTextAsync(outputs.CsPathX32));
-        var tree64 = CSharpSyntaxTree.ParseText(await File.ReadAllTextAsync(outputs.CsPathX64));
+        Console.WriteLine($"Generating for AnyCPU in {pathAnyCpu}...");
+
+        var tree32 = CSharpSyntaxTree.ParseText(await File.ReadAllTextAsync(paths[Platform.X86]));
+        var tree64 = CSharpSyntaxTree.ParseText(await File.ReadAllTextAsync(paths[Platform.X64]));
 
         var root32 = await tree32.GetRootAsync();
         var root64 = await tree64.GetRootAsync();
@@ -315,9 +316,9 @@ public abstract class ConsoleGenerator
             contents = transform(contents);
         }
 
-        await using (await FileHistory.CreateAsync(outputs.CsPathAny))
+        await using (await FileHistory.CreateAsync(pathAnyCpu))
         {
-            await File.WriteAllTextAsync(outputs.CsPathAny, contents);
+            await File.WriteAllTextAsync(pathAnyCpu, contents);
         }
 
         Console.WriteLine("Generation complete.");

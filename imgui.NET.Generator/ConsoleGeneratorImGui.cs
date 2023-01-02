@@ -1,14 +1,14 @@
 ﻿using System.Collections.Immutable;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
 using im.NET.Generator;
+using Platform = Microsoft.CodeAnalysis.Platform;
 
 namespace imgui.NET.Generator;
 
 internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 {
-    public ConsoleGeneratorImGui(Architecture architecture, string directory)
+    public ConsoleGeneratorImGui(Platform platform, string directory)
     {
         Namespaces = GetDefaultNamespaces();
 
@@ -20,7 +20,7 @@ internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
 
         Aliases = GetDefaultAliases();
 
-        Library = new ImGuiLibrary(architecture, directory, Namespaces);
+        Library = new ImGuiLibrary(platform, directory, Namespaces);
     }
 
     public override ImmutableSortedSet<Type> Aliases { get; }

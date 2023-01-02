@@ -1,5 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using Microsoft.CodeAnalysis;
 
 namespace im.NET.Generator;
 
-public delegate ConsoleGenerator ConsoleGeneratorFactory(Architecture architecture, string directory);
+public delegate ConsoleGenerator ConsoleGeneratorFactory(Platform platform, string directory);
