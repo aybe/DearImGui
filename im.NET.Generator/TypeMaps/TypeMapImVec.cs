@@ -4,8 +4,6 @@ using CppSharp.AST;
 using CppSharp.Generators.CSharp;
 using Type = System.Type;
 
-// ReSharper disable RedundantIfElseBlock
-
 namespace im.NET.Generator.TypeMaps;
 
 [SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
@@ -31,9 +29,8 @@ internal abstract class TypeMapImVec : TypeMapBase
             if (ctx.ReturnVarName == null)
             {
                 // NOP
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/*CSharpMarshalToManaged Case 1*/");
-#endif
+
+                WriteDebugInformation(ctx, "Case 1");
             }
             else
             {
@@ -42,16 +39,14 @@ internal abstract class TypeMapImVec : TypeMapBase
                 if (string.IsNullOrEmpty(match.Value))
                 {
                     ctx.Return.Write(ctx.ReturnVarName); // imgui
-#if DEBUG_TYPE_MAP
-                    ctx.Return.Write("/*CSharpMarshalToManaged Case 2*/");
-#endif
+
+                    WriteDebugInformation(ctx, "Case 2");
                 }
                 else
                 {
                     ctx.Return.Write(match.Value); // implot
-#if DEBUG_TYPE_MAP
-                    ctx.Return.Write("/*CSharpMarshalToManaged Case 3*/");
-#endif
+
+                    WriteDebugInformation(ctx, "Case 3");
                 }
             }
         }
@@ -60,25 +55,22 @@ internal abstract class TypeMapImVec : TypeMapBase
             if (ctx.ReturnVarName == null)
             {
                 // NOP
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/*CSharpMarshalToManaged Case 4*/");
-#endif
+
+                WriteDebugInformation(ctx, "Case 4");
             }
             else
             {
                 if (ctx.ReturnType.Type is PointerType)
                 {
                     ctx.Return.Write($"Unsafe.Read<global::{TargetType.FullName}>({ctx.ReturnVarName}.ToPointer())");
-#if DEBUG_TYPE_MAP
-                    ctx.Return.Write("/*CSharpMarshalToManaged Case 5*/");
-#endif
+
+                    WriteDebugInformation(ctx, "Case 5");
                 }
                 else
                 {
                     ctx.Return.Write(ctx.ReturnVarName);
-#if DEBUG_TYPE_MAP
-                    ctx.Return.Write("/*CSharpMarshalToManaged Case 6*/");
-#endif
+
+                    WriteDebugInformation(ctx, "Case 6");
                 }
             }
         }
@@ -93,16 +85,14 @@ internal abstract class TypeMapImVec : TypeMapBase
             if (ctx.ReturnVarName == null)
             {
                 // NOP
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/*CSharpMarshalToNative Case 1*/");
-#endif
+
+                WriteDebugInformation(ctx, "Case 1");
             }
             else
             {
                 ctx.Return.Write(ctx.Parameter.Name);
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/*CSharpMarshalToNative Case 2*/");
-#endif
+
+                WriteDebugInformation(ctx, "Case 2");
             }
         }
         else
@@ -116,16 +106,14 @@ internal abstract class TypeMapImVec : TypeMapBase
                     if (ctx.Parameter.HasDefaultValue)
                     {
                         ctx.Return.Write(asIntPtr);
-#if DEBUG_TYPE_MAP
-                        ctx.Return.Write("/*CSharpMarshalToNative Case 3*/");
-#endif
+
+                        WriteDebugInformation(ctx, "Case 3");
                     }
                     else
                     {
                         ctx.Return.Write(asIntPtr);
-#if DEBUG_TYPE_MAP
-                        ctx.Return.Write("/*CSharpMarshalToNative Case 4*/");
-#endif
+
+                        WriteDebugInformation(ctx, "Case 4");
                     }
                 }
                 else
@@ -144,25 +132,21 @@ internal abstract class TypeMapImVec : TypeMapBase
                                 throw new NotImplementedException();
                         }
 
-#if DEBUG_TYPE_MAP
-                        ctx.Return.Write("/*CSharpMarshalToNative Case 5*/");
-#endif
+                        WriteDebugInformation(ctx, "Case 5");
                     }
                     else
                     {
                         ctx.Return.Write(asIntPtr);
-#if DEBUG_TYPE_MAP
-                        ctx.Return.Write("/*CSharpMarshalToNative Case 6*/");
-#endif
+
+                        WriteDebugInformation(ctx, "Case 6");
                     }
                 }
             }
             else
             {
                 ctx.Return.Write(ctx.ReturnVarName);
-#if DEBUG_TYPE_MAP
-                ctx.Return.Write("/*CSharpMarshalToNative Case 7*/");
-#endif
+
+                WriteDebugInformation(ctx, "Case 7");
             }
         }
 
