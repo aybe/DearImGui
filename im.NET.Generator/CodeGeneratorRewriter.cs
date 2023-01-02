@@ -5,7 +5,7 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace im.NET.Generator;
 
-public sealed class GeneratorRewriter : CSharpSyntaxRewriter
+public sealed class CodeGeneratorRewriter : CSharpSyntaxRewriter
 {
     private const string Internal = "__Internal";
 
@@ -13,7 +13,7 @@ public sealed class GeneratorRewriter : CSharpSyntaxRewriter
 
     private const string Internal64 = "__Internal64";
 
-    public GeneratorRewriter(SyntaxNode root32, SyntaxNode root64)
+    public CodeGeneratorRewriter(SyntaxNode root32, SyntaxNode root64)
     {
         Root32 = root32;
         Root64 = root64;
