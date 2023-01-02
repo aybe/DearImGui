@@ -15,7 +15,7 @@ public abstract class ImBaseGeneratorOutputPass : GeneratorOutputPass
 
     private ImmutableSortedSet<string> Namespaces { get; }
 
-    public override void VisitCodeGenerator(CodeGenerator generator)
+    public override void VisitCodeGenerator(CppSharp.Generators.CodeGenerator generator)
     {
         if (generator is not CSharpSources sources)
         {

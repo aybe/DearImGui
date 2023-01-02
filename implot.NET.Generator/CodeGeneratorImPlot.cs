@@ -6,9 +6,9 @@ using Platform = Microsoft.CodeAnalysis.Platform;
 
 namespace implot.NET.Generator;
 
-internal sealed class GeneratorImPlot : im.NET.Generator.Generator
+internal sealed class CodeGeneratorImPlot : im.NET.Generator.CodeGenerator
 {
-    public GeneratorImPlot(Platform platform, string directory)
+    public CodeGeneratorImPlot(Platform platform, string directory)
     {
         Namespaces = GetDefaultNamespaces().Add(Constants.ImPlotNamespace);
 

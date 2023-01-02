@@ -2,4 +2,4 @@
 
 namespace im.NET.Generator;
 
-public delegate Generator GeneratorFactory(Platform platform, string directory);
+public delegate CodeGenerator GeneratorFactory(Platform platform, string directory);
