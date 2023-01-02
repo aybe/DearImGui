@@ -7,7 +7,13 @@ internal static class Program
 {
     private static async Task Main()
     {
-        await CodeGenerator.Generate("implot", Environment.CurrentDirectory, (s, t) => new CodeGeneratorImPlot(s, t), Transform);
+        await CodeGenerator.Generate(
+            "ImPlot",
+            Environment.CurrentDirectory,
+            @"..\..\..\..\implot.NET",
+            (s, t) => new CodeGeneratorImPlot(s, t),
+            Transform
+        );
     }
 
     private static string Transform(string text)

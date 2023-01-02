@@ -6,6 +6,11 @@ internal static class Program
 {
     private static async Task Main()
     {
-        await CodeGenerator.Generate("imgui", Environment.CurrentDirectory, (s, t) => new CodeGeneratorImGui(s, t));
+        await CodeGenerator.Generate(
+            "ImGui",
+            Environment.CurrentDirectory,
+            @"..\..\..\..\imgui.NET",
+            (s, t) => new CodeGeneratorImGui(s, t)
+        );
     }
 }

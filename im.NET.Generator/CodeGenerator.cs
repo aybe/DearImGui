@@ -1,9 +1,11 @@
 ﻿using System.Collections.Immutable;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
 using im.NET.Generator.Extensions;
 using JetBrains.Annotations;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Platform = Microsoft.CodeAnalysis.Platform;
 
@@ -250,13 +252,13 @@ public abstract class CodeGenerator
         );
     }
 
-    public static async Task Generate(string module, string directory, CodeGeneratorFactory factory, CodeGeneratorTransform? transform = null)
+    public static async Task Generate(string module, string sourceDirectory, string targetDirectory, CodeGeneratorFactory factory, CodeGeneratorTransform? transform = null)
     {
         Console.WriteLine("Generation starting...");
 
         var paths =
             new[] { Platform.X86, Platform.X64, Platform.AnyCpu }
-                .ToImmutableDictionary(s => s, s => Path.Combine(directory, s.ToString(), Path.ChangeExtension(module, ".cs")));
+                .ToImmutableDictionary(s => s, s => Path.Combine(sourceDirectory, s.ToString(), Path.ChangeExtension(module, ".cs")));
 
         foreach (var pair in paths)
         {
@@ -312,6 +314,8 @@ public abstract class CodeGenerator
         {
             await File.WriteAllTextAsync(pathAnyCpu, contents);
         }
+
+        File.Copy(pathAnyCpu, Path.Combine(targetDirectory, Path.ChangeExtension(Path.GetFileName(pathAnyCpu), ".g.cs")), true);
 
         Console.WriteLine("Generation complete.");
     }
