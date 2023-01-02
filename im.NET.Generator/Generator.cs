@@ -258,7 +258,7 @@ public abstract class Generator
         );
     }
 
-    public static async Task Generate(string module, string directory, GeneratorFactory factory, ConsoleGeneratorTransform? transform = null)
+    public static async Task Generate(string module, string directory, GeneratorFactory factory, GeneratorTransform? transform = null)
     {
         Console.WriteLine("Generation starting...");
 
