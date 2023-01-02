@@ -300,7 +300,7 @@ public abstract class CodeGenerator
 
         var visit = rewriter.Visit(root32);
 
-        var contents = visit.ToFullString();
+        var contents = visit.NormalizeWhitespace().ToFullString();
 
         if (transform != null)
         {
