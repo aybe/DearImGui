@@ -304,7 +304,7 @@ public abstract class Generator
         var root32 = await tree32.GetRootAsync();
         var root64 = await tree64.GetRootAsync();
 
-        var rewriter = new ConsoleGeneratorRewriter(root32, root64);
+        var rewriter = new GeneratorRewriter(root32, root64);
 
         var visit = rewriter.Visit(root32);
 
