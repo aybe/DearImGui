@@ -78,6 +78,8 @@ internal sealed class LibraryImGui : Library
         Ignore(ctx, "ImGuiIO",               "MouseClickedPos", IgnoreType.Property); // manual
         Ignore(ctx, "ImGuiStyle",            "Colors",          IgnoreType.Property); // manual
 
+        Ignore(ctx, "ImNewWrapper", null, IgnoreType.Class); // unused
+
         Ignore(ctx, "ImVectorExtensions", null, IgnoreType.Class); // unused
      
         Ignore(ctx, "ImVec2", null, IgnoreType.Class); // unused
