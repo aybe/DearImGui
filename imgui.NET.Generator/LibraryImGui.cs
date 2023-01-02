@@ -79,6 +79,9 @@ internal sealed class LibraryImGui : Library
         Ignore(ctx, "ImGuiStyle",            "Colors",          IgnoreType.Property); // manual
 
         Ignore(ctx, "ImVectorExtensions", null, IgnoreType.Class); // unused
+     
+        Ignore(ctx, "ImVec2", null, IgnoreType.Class); // unused
+        Ignore(ctx, "ImVec4", null, IgnoreType.Class); // unused
     }
 
     protected override void PostprocessEnumerations(ASTContext ctx)

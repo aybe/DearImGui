@@ -222,14 +222,6 @@ public abstract class CodeGenerator
             RegexOptions.Multiline
         );
 
-        // make vectors as obsolete so it's crystal clear
-
-        input = Regex.Replace(input,
-            @"public (unsafe partial struct ImVec\d)",
-            @"[Obsolete(null, true)] internal $1",
-            RegexOptions.Multiline
-        );
-
         // setting value type in type maps doesn't work
 
         input = Regex.Replace(input,
