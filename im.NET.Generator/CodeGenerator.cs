@@ -258,7 +258,7 @@ public abstract class CodeGenerator
         );
     }
 
-    public static async Task Generate(string module, string directory, CodeGeneratorFactory factory, GeneratorTransform? transform = null)
+    public static async Task Generate(string module, string directory, CodeGeneratorFactory factory, CodeGeneratorTransform? transform = null)
     {
         Console.WriteLine("Generation starting...");
 
