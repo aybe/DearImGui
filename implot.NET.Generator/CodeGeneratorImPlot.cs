@@ -6,7 +6,7 @@ using Platform = Microsoft.CodeAnalysis.Platform;
 
 namespace implot.NET.Generator;
 
-internal sealed class CodeGeneratorImPlot : im.NET.Generator.CodeGenerator
+internal sealed class CodeGeneratorImPlot : CodeGenerator
 {
     public CodeGeneratorImPlot(Platform platform, string directory)
     {
