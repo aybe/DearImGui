@@ -12,9 +12,9 @@ using Platform = Microsoft.CodeAnalysis.Platform;
 
 namespace im.NET.Generator;
 
-public abstract class LibraryBase : ILibrary
+public abstract class Library : ILibrary
 {
-    protected LibraryBase(Platform platform, string? directory = null)
+    protected Library(Platform platform, string? directory = null)
     {
         Platform = platform;
         Directory = directory;

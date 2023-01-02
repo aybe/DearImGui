@@ -13,7 +13,7 @@ using Platform = Microsoft.CodeAnalysis.Platform;
 
 namespace imgui.NET.Generator;
 
-internal sealed class LibraryImGui : LibraryBase
+internal sealed class LibraryImGui : Library
 {
     public LibraryImGui(Platform platform, string directory, ImmutableSortedSet<string> namespaces)
         : base(platform, directory)
