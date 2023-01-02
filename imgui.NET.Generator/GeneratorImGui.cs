@@ -6,9 +6,9 @@ using Platform = Microsoft.CodeAnalysis.Platform;
 
 namespace imgui.NET.Generator;
 
-internal sealed class ConsoleGeneratorImGui : ConsoleGenerator
+internal sealed class GeneratorImGui : im.NET.Generator.Generator
 {
-    public ConsoleGeneratorImGui(Platform platform, string directory)
+    public GeneratorImGui(Platform platform, string directory)
     {
         Namespaces = GetDefaultNamespaces();
 

@@ -6,6 +6,6 @@ internal static class Program
 {
     private static async Task Main()
     {
-        await ConsoleGenerator.Generate("imgui", Environment.CurrentDirectory, (s, t) => new ConsoleGeneratorImGui(s, t));
+        await im.NET.Generator.Generator.Generate("imgui", Environment.CurrentDirectory, (s, t) => new GeneratorImGui(s, t));
     }
 }

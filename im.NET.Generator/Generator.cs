@@ -9,7 +9,7 @@ using Platform = Microsoft.CodeAnalysis.Platform;
 
 namespace im.NET.Generator;
 
-public abstract class ConsoleGenerator
+public abstract class Generator
 {
     /// <summary>
     ///     The set of aliases to be renamed.
