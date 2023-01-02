@@ -10,9 +10,9 @@ using Platform = Microsoft.CodeAnalysis.Platform;
 
 namespace implot.NET.Generator;
 
-internal sealed class ImPlotLibrary : LibraryBase
+internal sealed class LibraryImPlot : LibraryBase
 {
-    public ImPlotLibrary(Platform platform, string directory, ImmutableSortedSet<string> namespaces)
+    public LibraryImPlot(Platform platform, string directory, ImmutableSortedSet<string> namespaces)
         : base(platform, directory)
     {
         Namespaces = namespaces;

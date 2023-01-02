@@ -20,7 +20,7 @@ internal sealed class GeneratorImPlot : im.NET.Generator.Generator
 
         Aliases = GetDefaultAliases();
 
-        Library = new ImPlotLibrary(platform, directory, Namespaces);
+        Library = new LibraryImPlot(platform, directory, Namespaces);
     }
 
     public override ImmutableSortedSet<string> Namespaces { get; }
