@@ -1,7 +1,7 @@
 ﻿using System.Collections.Immutable;
 using DearGenerator.Passes;
 
-namespace implot.NET.Generator.Passes;
+namespace DearImPlot.Generator.Passes;
 
 public sealed class ImPlotSummaryPass : ImSummaryPass
 {

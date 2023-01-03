@@ -401,7 +401,7 @@ FodyWeavers.xsd
 ## imgui.NET
 *.bak
 *.g.cs
-implot.NET.Generator/Generics/GenerateDefinitions.g.txt
+DearImPlot.Generator/Generics/GenerateDefinitions.g.txt
 implot/implot_generics.h
 *.lutconfig
 *.diagsession

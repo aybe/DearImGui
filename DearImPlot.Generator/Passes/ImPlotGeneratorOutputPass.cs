@@ -2,7 +2,7 @@
 using CppSharp.Generators.CSharp;
 using DearGenerator.Passes;
 
-namespace implot.NET.Generator.Passes;
+namespace DearImPlot.Generator.Passes;
 
 internal sealed class ImPlotGeneratorOutputPass : ImBaseGeneratorOutputPass
 {

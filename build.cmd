@@ -44,17 +44,17 @@ MSBuild /p:Configuration=%BUILD_TYPE% DearGenerator\DearGenerator.csproj || goto
 echo %COLOR_WARN%Building DearImGui.Generator%COLOR_NORM%
 MSBuild /p:Configuration=%BUILD_TYPE% DearImGui.Generator\DearImGui.Generator.csproj || goto err
 
-echo %COLOR_WARN%Building implot.NET.Generator%COLOR_NORM%
-MSBuild /p:Configuration=%BUILD_TYPE% implot.NET.Generator\implot.NET.Generator.csproj || goto err
+echo %COLOR_WARN%Building DearImPlot.Generator%COLOR_NORM%
+MSBuild /p:Configuration=%BUILD_TYPE% DearImPlot.Generator\DearImPlot.Generator.csproj || goto err
 
 echo %COLOR_WARN%Running DearImGui.Generator%COLOR_NORM%
 pushd DearImGui.Generator\bin\%BUILD_TYPE%\net6.0
 DearImGui.Generator.exe || goto err
 popd
 
-echo %COLOR_WARN%Running implot.NET.Generator%COLOR_NORM%
-pushd implot.NET.Generator\bin\%BUILD_TYPE%\net6.0
-implot.NET.Generator.exe || goto err
+echo %COLOR_WARN%Running DearImPlot.Generator%COLOR_NORM%
+pushd DearImPlot.Generator\bin\%BUILD_TYPE%\net6.0
+DearImPlot.Generator.exe || goto err
 popd
 
 echo %COLOR_WARN%Building imgui.NET%COLOR_NORM%

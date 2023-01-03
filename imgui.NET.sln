@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgui", "imgui\imgui.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "implot", "implot\implot.vcxproj", "{DE0704DC-03C2-4413-BA2E-024604C1E58A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "implot.NET.Generator", "implot.NET.Generator\implot.NET.Generator.csproj", "{DE2079B1-EDFD-4BE3-A247-3DBDE1F23B0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DearImPlot.Generator", "DearImPlot.Generator\DearImPlot.Generator.csproj", "{DE2079B1-EDFD-4BE3-A247-3DBDE1F23B0C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "implot.NET", "implot.NET\implot.NET.csproj", "{109B13EE-AE21-4C23-B81C-304F2BEE08F6}"
 EndProject

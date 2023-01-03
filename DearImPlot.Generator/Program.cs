@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using DearGenerator;
 
-namespace implot.NET.Generator;
+namespace DearImPlot.Generator;
 
 internal static class Program
 {

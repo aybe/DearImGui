@@ -62,7 +62,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(ImGuiManagedBuild)' == 'true'">
-		<ProjectReference Include="..\implot.NET.Generator\implot.NET.Generator.csproj">
+		<ProjectReference Include="..\DearImPlot.Generator\DearImPlot.Generator.csproj">
 			<ReferenceOutputAssembly>False</ReferenceOutputAssembly>
 		</ProjectReference>
 	</ItemGroup>
@@ -70,7 +70,7 @@
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(ImGuiManagedBuild)' == 'true'">
 
 		<Message Text="Generating bindings for implot" Importance="High" />
-		<Exec Command="pushd $(SolutionDir)implot.NET.Generator\bin\$(Configuration)\$(TargetFramework)\&#xD;&#xA;implot.NET.Generator.exe 1&gt; nul&#xD;&#xA;popd" />
+		<Exec Command="pushd $(SolutionDir)DearImPlot.Generator\bin\$(Configuration)\$(TargetFramework)\&#xD;&#xA;DearImPlot.Generator.exe 1&gt; nul&#xD;&#xA;popd" />
 
 		<Message Text="Building 32-bit implot" Importance="High" />
 		<MSBuild Projects="$(SolutionDir)implot\implot.vcxproj" Properties="Configuration=$(Configuration);Platform=x86;OutDir=$(SolutionDir)build\x86\$(Configuration)\" />

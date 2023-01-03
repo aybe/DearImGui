@@ -4,7 +4,7 @@ using CppSharp;
 using DearGenerator;
 using Platform = Microsoft.CodeAnalysis.Platform;
 
-namespace implot.NET.Generator;
+namespace DearImPlot.Generator;
 
 internal sealed class CodeGeneratorImPlot : CodeGenerator
 {

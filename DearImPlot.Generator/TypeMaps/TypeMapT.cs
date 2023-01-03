@@ -3,7 +3,7 @@ using CppSharp.Types;
 using DearGenerator.TypeMaps;
 using JetBrains.Annotations;
 
-namespace implot.NET.Generator.TypeMaps;
+namespace DearImPlot.Generator.TypeMaps;
 
 [TypeMap("T")]
 [UsedImplicitly]

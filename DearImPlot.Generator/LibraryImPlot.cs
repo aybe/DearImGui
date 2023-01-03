@@ -3,12 +3,12 @@ using CppSharp;
 using CppSharp.AST;
 using DearGenerator;
 using DearGenerator.Passes;
-using implot.NET.Generator.Passes;
+using DearImPlot.Generator.Passes;
 using Platform = Microsoft.CodeAnalysis.Platform;
 
 // ReSharper disable IdentifierTypo
 
-namespace implot.NET.Generator;
+namespace DearImPlot.Generator;
 
 internal sealed class LibraryImPlot : Library
 {
