@@ -64,7 +64,7 @@ internal sealed class CodeGeneratorImGui : CodeGenerator
         // merge partial ImGui classes
 
         input = Regex.Replace(input,
-            @"\s*}\s*\}\s*namespace\s+imgui\.NET\s*\{\s*partial\s+class\s+ImGui\s*\{",
+            @"\s*}\s*\}\s*namespace\s+" + Regex.Escape(Constants.ImGuiNamespace) + @"\s*\{\s*partial\s+class\s+ImGui\s*\{",
             Environment.NewLine,
             RegexOptions.Multiline
         );
