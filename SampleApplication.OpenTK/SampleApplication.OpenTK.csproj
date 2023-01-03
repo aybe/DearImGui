@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\imgui.NET.OpenTK\imgui.NET.OpenTK.csproj" />
+		<ProjectReference Include="..\DearImGui.OpenTK\DearImGui.OpenTK.csproj" />
 		<ProjectReference Include="..\imgui.NET\imgui.NET.csproj" />
 		<ProjectReference Include="..\implot.NET\implot.NET.csproj" />
 	</ItemGroup>

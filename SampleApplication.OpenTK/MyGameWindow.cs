@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using imgui.NET;
-using imgui.NET.OpenTK;
-using imgui.NET.OpenTK.Extensions;
+using DearImGui.OpenTK;
+using DearImGui.OpenTK.Extensions;
 using implot.NET;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;

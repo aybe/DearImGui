@@ -5,7 +5,7 @@ using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
-namespace imgui.NET.OpenTK.Extensions;
+namespace DearImGui.OpenTK.Extensions;
 
 /// <summary>
 ///     Base class for a game window.

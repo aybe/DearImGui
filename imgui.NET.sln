@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DearImGui.Generator", "Dear
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApplication.OpenTK", "SampleApplication.OpenTK\SampleApplication.OpenTK.csproj", "{102C660B-CFF3-499B-9F3D-CBE714EBBB85}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "imgui.NET.OpenTK", "imgui.NET.OpenTK\imgui.NET.OpenTK.csproj", "{C5A74D6B-2D9B-49B4-BE7D-F76D58ED93B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DearImGui.OpenTK", "DearImGui.OpenTK\DearImGui.OpenTK.csproj", "{C5A74D6B-2D9B-49B4-BE7D-F76D58ED93B9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgui", "imgui\imgui.vcxproj", "{064947C0-FF04-49D5-918F-5B491791A566}"
 EndProject

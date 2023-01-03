@@ -1,7 +1,7 @@
 #pragma warning disable CS1591
 using JetBrains.Annotations;
 
-namespace imgui.NET.OpenTK.Extensions;
+namespace DearImGui.OpenTK.Extensions;
 
 /// <summary>
 ///     Base class for a disposable object.

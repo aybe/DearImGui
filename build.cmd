@@ -60,8 +60,8 @@ popd
 echo %COLOR_WARN%Building imgui.NET%COLOR_NORM%
 MSBuild /p:Configuration=%BUILD_TYPE% imgui.NET\imgui.NET.csproj || goto err
 
-echo %COLOR_WARN%Building imgui.NET.OpenTK%COLOR_NORM%
-MSBuild /p:Configuration=%BUILD_TYPE% imgui.NET.OpenTK\imgui.NET.OpenTK.csproj || goto err
+echo %COLOR_WARN%Building DearImGui.OpenTK%COLOR_NORM%
+MSBuild /p:Configuration=%BUILD_TYPE% DearImGui.OpenTK\DearImGui.OpenTK.csproj || goto err
 
 echo %COLOR_WARN%Building implot.NET%COLOR_NORM%
 MSBuild /p:Configuration=%BUILD_TYPE% implot.NET\implot.NET.csproj || goto err

@@ -1,4 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("imgui.NET.OpenTK")]
+[assembly: InternalsVisibleTo("DearImGui.OpenTK")]
 [assembly: InternalsVisibleTo("implot.NET")]

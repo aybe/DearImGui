@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
-using imgui.NET.OpenTK.Extensions;
+using DearImGui.OpenTK.Extensions;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
@@ -19,7 +19,7 @@ using Win32Exception = PInvoke.Win32Exception;
 
 // ReSharper disable InconsistentNaming
 
-namespace imgui.NET.OpenTK;
+namespace DearImGui.OpenTK;
 
 /// <summary>
 ///     OpenTK controller for imgui.

@@ -2,7 +2,7 @@
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 
-namespace imgui.NET.OpenTK.Extensions;
+namespace DearImGui.OpenTK.Extensions;
 
 /// <summary>
 ///     Scope for temporarily changing OpenGL state.
