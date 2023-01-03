@@ -222,11 +222,7 @@ public abstract class Library : ILibrary
         var options = driver.Options;
 
         options.OutputDir = Directory ?? Path.Combine(Environment.CurrentDirectory, Platform.ToString());
-
-#if DEBUG
         options.GenerateDebugOutput = true;
-#endif
-
         options.GeneratorKind = GeneratorKind.CSharp;
         options.GenerateFinalizers = true;
         options.GenerateDefaultValuesForArguments = true;
