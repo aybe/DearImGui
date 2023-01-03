@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace implot.NET;
+namespace DearImPlot;
 
 /// <summary>
 ///     Scope for temporarily switching implot context.

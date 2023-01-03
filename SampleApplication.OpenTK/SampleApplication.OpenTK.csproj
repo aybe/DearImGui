@@ -15,7 +15,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\DearImGui.OpenTK\DearImGui.OpenTK.csproj" />
 		<ProjectReference Include="..\DearImGui\DearImGui.csproj" />
-		<ProjectReference Include="..\implot.NET\implot.NET.csproj" />
+		<ProjectReference Include="..\DearImPlot\DearImPlot.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

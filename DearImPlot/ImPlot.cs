@@ -1,7 +1,7 @@
 ﻿using DearImGui;
 using JetBrains.Annotations;
 
-namespace implot.NET;
+namespace DearImPlot;
 
 /// <summary>
 ///     https://github.com/epezent/implot

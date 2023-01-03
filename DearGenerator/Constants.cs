@@ -4,5 +4,5 @@ public static class Constants
 {
     public const string ImGuiNamespace = "DearImGui";
     
-    public const string ImPlotNamespace = "implot.NET";
+    public const string ImPlotNamespace = "DearImPlot";
 }

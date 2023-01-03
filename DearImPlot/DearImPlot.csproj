@@ -11,7 +11,7 @@
 	<PropertyGroup>
 		<AssemblyVersion>0.17.0.0</AssemblyVersion>
 		<Title>implot for .NET</Title>
-		<PackageTags>imgui DearImGui implot implot.NET</PackageTags>
+		<PackageTags>imgui DearImGui implot DearImPlot</PackageTags>
 	</PropertyGroup>
 
 	<Import Project="$(MSBuildThisFileDirectory)..\Directory.packages.targets" />

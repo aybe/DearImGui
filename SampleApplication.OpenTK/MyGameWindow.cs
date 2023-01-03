@@ -2,7 +2,7 @@
 using DearImGui;
 using DearImGui.OpenTK;
 using DearImGui.OpenTK.Extensions;
-using implot.NET;
+using DearImPlot;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;

@@ -17,7 +17,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "implot", "implot\implot.vcx
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DearImPlot.Generator", "DearImPlot.Generator\DearImPlot.Generator.csproj", "{DE2079B1-EDFD-4BE3-A247-3DBDE1F23B0C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "implot.NET", "implot.NET\implot.NET.csproj", "{109B13EE-AE21-4C23-B81C-304F2BEE08F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DearImPlot", "DearImPlot\DearImPlot.csproj", "{109B13EE-AE21-4C23-B81C-304F2BEE08F6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DearGenerator", "DearGenerator\DearGenerator.csproj", "{AE23614A-D27C-4FFA-800A-456B674D9D43}"
 EndProject

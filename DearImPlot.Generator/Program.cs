@@ -10,7 +10,7 @@ internal static class Program
         await CodeGenerator.Generate(
             "ImPlot",
             Environment.CurrentDirectory,
-            @"..\..\..\..\implot.NET",
+            @"..\..\..\..\DearImPlot",
             (s, t) => new CodeGeneratorImPlot(s, t),
             Transform
         );
