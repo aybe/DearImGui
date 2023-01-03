@@ -400,13 +400,13 @@ FodyWeavers.xsd
 
 ## imgui.NET
 *.bak
-*.g.cs
-DearImPlot.Generator/Generics/GenerateDefinitions.g.txt
-implot/implot_generics.h
-*.lutconfig
-*.diagsession
-SampleApplication.OpenTK/Properties/launchSettings.json
 *.cd
 *.dgml
+*.diagsession
+*.g.cs
+*.lutconfig
 !**/ImGui.g.cs
 !**/ImPlot.g.cs
+DearImPlot.Generator/Generics/GenerateDefinitions.g.txt
+implot/implot_generics.h
+SampleApplication.OpenTK/Properties/launchSettings.json
