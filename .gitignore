@@ -408,3 +408,5 @@ implot/implot_generics.h
 SampleApplication.OpenTK/Properties/launchSettings.json
 *.cd
 *.dgml
+!**/ImGui.g.cs
+!**/ImPlot.g.cs
