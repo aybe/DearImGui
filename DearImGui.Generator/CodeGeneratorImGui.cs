@@ -4,7 +4,7 @@ using CppSharp;
 using DearGenerator;
 using Platform = Microsoft.CodeAnalysis.Platform;
 
-namespace imgui.NET.Generator;
+namespace DearImGui.Generator;
 
 internal sealed class CodeGeneratorImGui : CodeGenerator
 {

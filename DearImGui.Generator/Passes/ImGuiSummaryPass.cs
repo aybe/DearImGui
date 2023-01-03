@@ -1,7 +1,7 @@
 ﻿using System.Collections.Immutable;
 using DearGenerator.Passes;
 
-namespace imgui.NET.Generator.Passes;
+namespace DearImGui.Generator.Passes;
 
 public sealed class ImGuiSummaryPass : ImSummaryPass
 {

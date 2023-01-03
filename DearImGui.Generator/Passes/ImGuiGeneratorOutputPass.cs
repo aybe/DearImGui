@@ -2,7 +2,7 @@
 using CppSharp.Generators.CSharp;
 using DearGenerator.Passes;
 
-namespace imgui.NET.Generator.Passes;
+namespace DearImGui.Generator.Passes;
 
 internal sealed class ImGuiGeneratorOutputPass : ImBaseGeneratorOutputPass
 {

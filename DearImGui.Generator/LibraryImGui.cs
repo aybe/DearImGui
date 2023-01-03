@@ -5,13 +5,13 @@ using CppSharp.AST;
 using DearGenerator;
 using DearGenerator.Extensions;
 using DearGenerator.Passes;
-using imgui.NET.Generator.Passes;
+using DearImGui.Generator.Passes;
 using Platform = Microsoft.CodeAnalysis.Platform;
 
 // ReSharper disable IdentifierTypo
 // ReSharper disable StringLiteralTypo
 
-namespace imgui.NET.Generator;
+namespace DearImGui.Generator;
 
 internal sealed class LibraryImGui : Library
 {

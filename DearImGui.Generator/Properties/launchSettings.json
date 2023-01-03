@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "imgui.NET.Generator": {
+    "DearImGui.Generator": {
       "commandName": "Project"
     }
   }

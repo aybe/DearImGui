@@ -1,6 +1,6 @@
 ﻿using DearGenerator;
 
-namespace imgui.NET.Generator;
+namespace DearImGui.Generator;
 
 internal static class Program
 {
