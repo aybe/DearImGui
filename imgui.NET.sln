@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "implot.NET.Generator", "imp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "implot.NET", "implot.NET\implot.NET.csproj", "{109B13EE-AE21-4C23-B81C-304F2BEE08F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "im.NET.Generator", "im.NET.Generator\im.NET.Generator.csproj", "{AE23614A-D27C-4FFA-800A-456B674D9D43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DearGenerator", "DearGenerator\DearGenerator.csproj", "{AE23614A-D27C-4FFA-800A-456B674D9D43}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generators", "Generators", "{0673A0FF-9232-4E82-B506-22A21F0A26D3}"
 EndProject

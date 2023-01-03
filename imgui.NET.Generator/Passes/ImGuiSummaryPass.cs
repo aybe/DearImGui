@@ -1,5 +1,5 @@
 ﻿using System.Collections.Immutable;
-using im.NET.Generator.Passes;
+using DearGenerator.Passes;
 
 namespace imgui.NET.Generator.Passes;
 

@@ -1,6 +1,6 @@
 ﻿using CppSharp.Generators.CSharp;
 using CppSharp.Types;
-using im.NET.Generator.TypeMaps;
+using DearGenerator.TypeMaps;
 using JetBrains.Annotations;
 
 namespace implot.NET.Generator.TypeMaps;

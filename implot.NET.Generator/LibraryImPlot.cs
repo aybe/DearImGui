@@ -1,8 +1,8 @@
 ﻿using System.Collections.Immutable;
 using CppSharp;
 using CppSharp.AST;
-using im.NET.Generator;
-using im.NET.Generator.Passes;
+using DearGenerator;
+using DearGenerator.Passes;
 using implot.NET.Generator.Passes;
 using Platform = Microsoft.CodeAnalysis.Platform;
 

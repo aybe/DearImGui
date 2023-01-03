@@ -1,5 +1,5 @@
 ﻿using System.Text.RegularExpressions;
-using im.NET.Generator;
+using DearGenerator;
 
 namespace implot.NET.Generator;
 

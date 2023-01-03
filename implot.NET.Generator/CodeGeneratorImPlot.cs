@@ -1,7 +1,7 @@
 ﻿using System.Collections.Immutable;
 using System.Text.RegularExpressions;
 using CppSharp;
-using im.NET.Generator;
+using DearGenerator;
 using Platform = Microsoft.CodeAnalysis.Platform;
 
 namespace implot.NET.Generator;

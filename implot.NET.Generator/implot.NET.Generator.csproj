@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\im.NET.Generator\im.NET.Generator.csproj" />
+		<ProjectReference Include="..\DearGenerator\DearGenerator.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

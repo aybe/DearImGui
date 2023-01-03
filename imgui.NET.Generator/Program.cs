@@ -1,4 +1,4 @@
-﻿using im.NET.Generator;
+﻿using DearGenerator;
 
 namespace imgui.NET.Generator;
 

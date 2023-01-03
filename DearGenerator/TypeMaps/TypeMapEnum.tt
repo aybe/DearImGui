@@ -1,0 +1,47 @@
+﻿<#@ template debug="true" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ output extension=".g.cs" #>
+using CppSharp.Types;
+using JetBrains.Annotations;
+
+namespace DearGenerator.TypeMaps;
+<#+
+	public void Generate(string[] types, string @namespace)
+	{
+		foreach (var type in types)
+		{
+			if (Regex.IsMatch(type, @"^\s*(?:\/\/|$)"))
+			{
+				continue; // empty line or comment
+			}
+
+			// we support adding multiple type map attributes, each separated with a semi-colon
+			// see the comments in TypeMapEnum.cs CSharpSignatureType on why we have to do this
+
+			const string prefix = "TypeMapEnum";
+			
+			WriteLine("[UsedImplicitly]");
+
+			var split = type.Split(';');
+
+			var value = split[0];
+			
+			if (string.IsNullOrWhiteSpace(value))
+			{
+				throw new InvalidOperationException("Type name cannot be null, empty, or white space.");
+			}
+			
+			foreach (var alias in split)
+			{
+				WriteLine($"[TypeMap(\"{alias}\")]");
+			}
+
+			WriteLine($"[TypeMapEnumNamespace({@namespace})]");
+
+			WriteLine($"internal sealed class {prefix}{value} : {prefix} {{}}");
+
+			WriteLine(string.Empty);
+		}
+	}
+#>
