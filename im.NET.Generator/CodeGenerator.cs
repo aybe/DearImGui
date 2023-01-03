@@ -1,5 +1,4 @@
 ﻿using System.Collections.Immutable;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CppSharp;
@@ -252,6 +251,64 @@ public abstract class CodeGenerator
         );
     }
 
+    private static string CleanupAnyCpuOutput(string input)
+    {
+        // remove size on StructLayoutAttribute as it has become meaningless by now
+
+        input = Regex.Replace(input,
+            @"\[\s*StructLayout\s*\(\s*LayoutKind\s*\.\s*Sequential\s*,\s*Size\s*=\s*\d+\s*\)\s*\]",
+            @"[StructLayout(LayoutKind.Sequential)]",
+            RegexOptions.Multiline);
+        
+        // insert a line break after some definitions
+
+        input = Regex.Replace(input,
+            @"(?<=(?:delegate|extern).*);\r?$",
+            ";\r\n",
+            RegexOptions.Multiline);
+
+        // realign our own debug comments screwed by NormalizeWhitespace
+
+        input = Regex.Replace(input,
+            @"(/\*\sDEBUG:.*\*/)\r?$(\s+)(?=(/\*\sDEBUG:|;))",
+            "$2$1$2",
+            RegexOptions.Multiline);
+        
+        input = Regex.Replace(input,
+            @"^(\s+/\*\sDEBUG:\s.*\*/)$\n^\s*$\n^(\s+/\*\sDEBUG:\s.*\*/)$",
+            "$1\r\n$2",
+            RegexOptions.Multiline);
+
+        // realign CppSharp debug comments screwed by NormalizeWhitespace to nearest tab
+
+        var regex = new Regex(@"^(\s+)(//\sDEBUG:.*)$", RegexOptions.Compiled | RegexOptions.Singleline);
+        var lines = input.Split(Environment.NewLine);
+
+        for (var i = 0; i < lines.Length; i++)
+        {
+            var line = lines[i];
+
+            var match = regex.Match(line);
+
+            if (match.Success is false)
+                continue;
+
+            var length = match.Groups[1].Value.Length / 4;
+
+            line = $"{new string(' ', length * 4)}{match.Groups[2].Value}";
+
+            lines[i] = line;
+        }
+
+        input = string.Join(Environment.NewLine, lines);
+        
+        // finally, fix the line endings that got wrong somehow in the process
+
+        input = Regex.Replace(input, @"\r\n|\n\r|\n|\r", Environment.NewLine);
+
+        return input;
+    }
+
     public static async Task Generate(string module, string sourceDirectory, string targetDirectory, CodeGeneratorFactory factory, CodeGeneratorTransform? transform = null)
     {
         Console.WriteLine("Generation starting...");
@@ -309,6 +366,8 @@ public abstract class CodeGenerator
             Console.WriteLine("Transforming AnyCPU...");
             contents = transform(contents);
         }
+
+        contents = CleanupAnyCpuOutput(contents);
 
         await using (await FileHistory.CreateAsync(pathAnyCpu))
         {
