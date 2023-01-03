@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace imgui.NET;
+namespace DearImGui;
 
 /// <summary>
 ///     Scope for temporarily switching imgui context.

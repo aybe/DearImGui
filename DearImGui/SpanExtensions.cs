@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 #pragma warning disable CS1591
 
-namespace imgui.NET;
+namespace DearImGui;
 
 public static class SpanExtensions
 {

@@ -30,4 +30,4 @@ From there, the **imgui.NET** project can be built successfully.
 
 ### Test the generated bindings
 
-Take a look at the project **imgui.NET.OpenTK.Test** in solution.
+Take a look at the project **DearImGui.OpenTK.Test** in solution.

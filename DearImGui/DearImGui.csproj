@@ -11,7 +11,7 @@
 	<PropertyGroup>
 		<AssemblyVersion>1.88.0.0</AssemblyVersion>
 		<Title>imgui for .NET</Title>
-		<PackageTags>imgui imgui.NET</PackageTags>
+		<PackageTags>imgui DearImGui</PackageTags>
 	</PropertyGroup>
 
 	<Import Project="$(MSBuildThisFileDirectory)..\Directory.packages.targets" />

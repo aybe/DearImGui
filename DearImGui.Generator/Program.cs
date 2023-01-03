@@ -9,7 +9,7 @@ internal static class Program
         await CodeGenerator.Generate(
             "ImGui",
             Environment.CurrentDirectory,
-            @"..\..\..\..\imgui.NET",
+            @"..\..\..\..\DearImGui",
             (s, t) => new CodeGeneratorImGui(s, t)
         );
     }

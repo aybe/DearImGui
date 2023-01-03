@@ -21,7 +21,7 @@ if not defined BUILD_TYPE (
     goto end
 )
 
-echo %COLOR_WARN%Building imgui.NET...%COLOR_NORM%
+echo %COLOR_WARN%Building DearImGui...%COLOR_NORM%
 
 echo %COLOR_WARN%Restoring packages...%COLOR_NORM%
 MSBuild /p:Configuration=%BUILD_TYPE% -t:restore || goto err
@@ -57,8 +57,8 @@ pushd DearImPlot.Generator\bin\%BUILD_TYPE%\net6.0
 DearImPlot.Generator.exe || goto err
 popd
 
-echo %COLOR_WARN%Building imgui.NET%COLOR_NORM%
-MSBuild /p:Configuration=%BUILD_TYPE% imgui.NET\imgui.NET.csproj || goto err
+echo %COLOR_WARN%Building DearImGui%COLOR_NORM%
+MSBuild /p:Configuration=%BUILD_TYPE% DearImGui\DearImGui.csproj || goto err
 
 echo %COLOR_WARN%Building DearImGui.OpenTK%COLOR_NORM%
 MSBuild /p:Configuration=%BUILD_TYPE% DearImGui.OpenTK\DearImGui.OpenTK.csproj || goto err
@@ -69,7 +69,7 @@ MSBuild /p:Configuration=%BUILD_TYPE% implot.NET\implot.NET.csproj || goto err
 echo %COLOR_WARN%Building SampleApplication.OpenTK%COLOR_NORM%
 MSBuild /p:Configuration=%BUILD_TYPE% SampleApplication.OpenTK\SampleApplication.OpenTK.csproj || goto err
 
-echo %COLOR_WARN%Built imgui.NET successfully%COLOR_NORM%
+echo %COLOR_WARN%Built DearImGui successfully%COLOR_NORM%
 
 goto end
 

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "imgui.NET", "imgui.NET\imgui.NET.csproj", "{9648C15D-F5F9-45E3-B2FB-1A9B291334FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DearImGui", "DearImGui\DearImGui.csproj", "{9648C15D-F5F9-45E3-B2FB-1A9B291334FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DearImGui.Generator", "DearImGui.Generator\DearImGui.Generator.csproj", "{023B1F68-D654-4501-A99A-C499EBAAC295}"
 EndProject

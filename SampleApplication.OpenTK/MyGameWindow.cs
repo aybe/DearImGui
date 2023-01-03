@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using imgui.NET;
+using DearImGui;
 using DearImGui.OpenTK;
 using DearImGui.OpenTK.Extensions;
 using implot.NET;

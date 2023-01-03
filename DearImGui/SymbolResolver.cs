@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 
 // ReSharper disable StringLiteralTypo
 
-namespace imgui.NET;
+namespace DearImGui;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 internal static class SymbolResolver

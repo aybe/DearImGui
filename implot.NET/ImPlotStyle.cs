@@ -1,5 +1,5 @@
 ﻿using System.Numerics;
-using imgui.NET;
+using DearImGui;
 using JetBrains.Annotations;
 
 namespace implot.NET;

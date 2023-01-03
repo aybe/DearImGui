@@ -68,7 +68,7 @@
 					}
 				} while (--above >= 0);
 
-				WriteLine($@"{text} // imgui.NET @ ""{input}"" @ {above + 2}|{index + 1}");
+				WriteLine($@"{text} // DearImGui @ ""{input}"" @ {above + 2}|{index + 1}");
 
 				count++;
 			}

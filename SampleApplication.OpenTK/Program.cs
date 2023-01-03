@@ -27,7 +27,7 @@ internal static class Program
             {
                 Size = vs,
                 Location = vl,
-                Title = "imgui.NET"
+                Title = "DearImGui"
             };
         }
 

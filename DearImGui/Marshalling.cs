@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace imgui.NET;
+namespace DearImGui;
 
 internal static class Marshalling
 {

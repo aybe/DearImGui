@@ -9,7 +9,7 @@
 		<Copyright>$(Authors)</Copyright>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/aybe/imgui.NET</RepositoryUrl>
+		<RepositoryUrl>https://github.com/aybe/DearImGui</RepositoryUrl>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<PackageOutputPath>$(MSBuildThisFileDirectory)build\packages\$(Platform)\$(Configuration)</PackageOutputPath>
