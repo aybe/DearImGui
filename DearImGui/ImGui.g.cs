@@ -12844,48 +12844,6 @@ namespace DearImGui
             __Instance = IntPtr.Zero;
         }
 
-        /// <summary>Flag to indicate glyph is colored and should generally ignore tinting (make it usable with no shift on little-endian as this is used in loops).<br/>https://github.com/ocornut/imgui/blob/9aae45eb4a05a5a1f96be1ef37eb503a12ceb889/imgui.h#L2686.</summary>
-        public uint Colored
-        {
-            get
-            {
-                return ((__Internal*)__Instance)->Colored;
-            }
-
-            set
-            {
-                ((__Internal*)__Instance)->Colored = value;
-            }
-        }
-
-        /// <summary>Flag to indicate glyph has no visible pixels (e.g. space). Allow early out when rendering.<br/>https://github.com/ocornut/imgui/blob/9aae45eb4a05a5a1f96be1ef37eb503a12ceb889/imgui.h#L2687.</summary>
-        public uint Visible
-        {
-            get
-            {
-                return ((__Internal*)__Instance)->Visible;
-            }
-
-            set
-            {
-                ((__Internal*)__Instance)->Visible = value;
-            }
-        }
-
-        /// <summary>0x0000..0x10FFFF.<br/>https://github.com/ocornut/imgui/blob/9aae45eb4a05a5a1f96be1ef37eb503a12ceb889/imgui.h#L2688.</summary>
-        public uint Codepoint
-        {
-            get
-            {
-                return ((__Internal*)__Instance)->Codepoint;
-            }
-
-            set
-            {
-                ((__Internal*)__Instance)->Codepoint = value;
-            }
-        }
-
         /// <summary>Distance to next character (= data from font + ImFontConfig::GlyphExtraSpacing.x baked in).<br/>https://github.com/ocornut/imgui/blob/9aae45eb4a05a5a1f96be1ef37eb503a12ceb889/imgui.h#L2689.</summary>
         public float AdvanceX
         {

@@ -75,6 +75,9 @@ internal sealed class LibraryImGui : Library
         Ignore(ctx, "ImFontAtlas",           "TexUvLines",      IgnoreType.Property); // manual
         Ignore(ctx, "ImFontAtlasCustomRect", "IsPacked",        IgnoreType.Property); // manual
         Ignore(ctx, "ImFontConfig",          "Name",            IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontGlyph",           "Colored",         IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontGlyph",           "Visible",         IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontGlyph",           "Codepoint",       IgnoreType.Property); // manual
         Ignore(ctx, "ImGuiIO",               "MouseClickedPos", IgnoreType.Property); // manual
         Ignore(ctx, "ImGuiStyle",            "Colors",          IgnoreType.Property); // manual
 

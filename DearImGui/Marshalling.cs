@@ -4,6 +4,27 @@ namespace DearImGui;
 
 internal static class Marshalling
 {
+    public static bool BitGet(uint val, int bit)
+    {
+        return (val & (1u << bit)) != 0;
+    }
+
+    public static uint BitSet(uint val, int bit, bool set)
+    {
+        var msk = 1u << bit;
+
+        if (set)
+        {
+            val |= msk;
+        }
+        else
+        {
+            val &= ~msk;
+        }
+
+        return val;
+    }
+
     public static unsafe void Copy<T>(ref T[] destination, in void* source) where T : struct
     {
         var memory = destination.AsMemory();
