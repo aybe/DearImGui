@@ -13,9 +13,9 @@ This is [imgui](https://github.com/ocornut/imgui) and [implot](https://github.co
 
 Windows, AnyCPU, .NET 6.0, OpenGL 4.5:
 
-![Nuget](https://img.shields.io/nuget/v/DearImGui?label=DearImGui)
-![Nuget](https://img.shields.io/nuget/v/DearImGui.OpenTK?label=DearImGui.OpenTK)
-![Nuget](https://img.shields.io/nuget/v/DearImPlot?label=DearImPlot)
+[![Nuget](https://img.shields.io/nuget/v/DearImGui?label=DearImGui)](https://www.nuget.org/packages/DearImGui)
+[![Nuget](https://img.shields.io/nuget/v/DearImGui.OpenTK?label=DearImGui.OpenTK)](https://www.nuget.org/packages/DearImGui.OpenTK)
+[![Nuget](https://img.shields.io/nuget/v/DearImPlot?label=DearImPlot)](https://www.nuget.org/packages/DearImPlot)
 
 You will also need [Microsoft Visual C++ Redistributable latest supported downloads](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170):
 
