@@ -407,6 +407,7 @@ FodyWeavers.xsd
 *.lutconfig
 !**/ImGui.g.cs
 !**/ImPlot.g.cs
+build
 DearImPlot.Generator/Generics/GenerateDefinitions.g.txt
 implot/implot_generics.h
 SampleApplication.OpenTK/Properties/launchSettings.json
