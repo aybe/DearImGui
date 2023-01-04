@@ -7,6 +7,8 @@
 		<Description>$(Title)</Description>
 		<Company>$(Authors)</Company>
 		<Copyright>$(Authors)</Copyright>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/aybe/DearImGui</RepositoryUrl>
