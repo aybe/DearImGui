@@ -107,7 +107,7 @@ public abstract class ImSummaryPass : TranslationUnitPass
 
         var value = lines[index];
 
-        var match = Regex.Match(value, @"//\s+imgui\.NET\s+@\s+""(?<header>[\w\:\.\\]+)""\s+@\s+(?<index1>\d+)\|(?<index2>\d+)$");
+        var match = Regex.Match(value, @"//\s+" + Constants.ImGuiNamespace + @"\s+@\s+""(?<header>[\w\:\.\\]+)""\s+@\s+(?<index1>\d+)\|(?<index2>\d+)$");
 
         if (match.Success)
         {
