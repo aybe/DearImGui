@@ -17,7 +17,12 @@ Windows, AnyCPU, .NET 6.0, OpenGL 4.5:
 ![Nuget](https://img.shields.io/nuget/v/DearImGui.OpenTK?label=DearImGui.OpenTK)
 ![Nuget](https://img.shields.io/nuget/v/DearImPlot?label=DearImPlot)
 
-# **TODO add debug binaries**
+You will also need [Microsoft Visual C++ Redistributable latest supported downloads](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170):
+
+- https://aka.ms/vs/17/release/vc_redist.x86.exe
+- https://aka.ms/vs/17/release/vc_redist.x64.exe
+
+Should you need debug builds of native DLLs, you will find them in the [Releases](https://github.com/aybe/DearImGui/releases) tab.
 
 ## Getting started (development)
 
