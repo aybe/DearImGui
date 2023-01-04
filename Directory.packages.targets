@@ -19,4 +19,9 @@
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)LICENSE" Pack="true" PackagePath="" />
+		<None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+
 </Project>
