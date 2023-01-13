@@ -58,9 +58,9 @@ public sealed class CodeGeneratorRewriter : CSharpSyntaxRewriter
 
             var statement =
                 IfStatement(GetCondition(),
-                        Block(ExpressionStatement(invocation32)))
+                        Block(ExpressionStatement(invocation64)))
                     .WithElse(ElseClause(
-                        Block(ExpressionStatement(invocation64))))
+                        Block(ExpressionStatement(invocation32))))
                     .WithTriviaFrom(expression);
 
             node = node.ReplaceNode(expression, statement);
@@ -96,18 +96,12 @@ public sealed class CodeGeneratorRewriter : CSharpSyntaxRewriter
         return base.VisitBlock(node);
     }
 
-    private static BinaryExpressionSyntax GetCondition()
+    private static MemberAccessExpressionSyntax GetCondition()
     {
-        var expression =
-            BinaryExpression(
-                SyntaxKind.EqualsExpression,
-                MemberAccessExpression(
-                    SyntaxKind.SimpleMemberAccessExpression,
-                    IdentifierName(nameof(IntPtr)),
-                    IdentifierName(nameof(IntPtr.Size))),
-                LiteralExpression(
-                    SyntaxKind.NumericLiteralExpression,
-                    Literal(4)));
+        var expression = MemberAccessExpression(
+            SyntaxKind.SimpleMemberAccessExpression,
+            IdentifierName(nameof(Environment)),
+            IdentifierName(nameof(Environment.Is64BitProcess)));
 
         return expression;
     }

@@ -2396,13 +2396,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiStyle.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -2416,13 +2416,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -2455,13 +2455,13 @@ namespace DearImGui
         // DEBUG: void ScaleAllSizes(float scale_factor)
         public void ScaleAllSizes(float scale_factor)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ScaleAllSizes(__Instance, scale_factor);
+                __Internal64.ScaleAllSizes(__Instance, scale_factor);
             }
             else
             {
-                __Internal64.ScaleAllSizes(__Instance, scale_factor);
+                __Internal32.ScaleAllSizes(__Instance, scale_factor);
             }
         }
 
@@ -3198,13 +3198,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -3720,13 +3720,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiIO.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -3740,13 +3740,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -3771,13 +3771,13 @@ namespace DearImGui
             NativeToManagedMap.TryRemove(__Instance, out _);
             DisposePartial(disposing);
             if (callNativeDtor)
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.dtor(__Instance);
+                    __Internal64.dtor(__Instance);
                 }
                 else
                 {
-                    __Internal64.dtor(__Instance);
+                    __Internal32.dtor(__Instance);
                 }
 
             if (__IniFilename_OwnsNativeMemory)
@@ -3797,13 +3797,13 @@ namespace DearImGui
         // DEBUG: void  AddKeyEvent(ImGuiKey key, bool down)
         public void AddKeyEvent(ImGuiKey key, bool down)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddKeyEvent(__Instance, key, down);
+                __Internal64.AddKeyEvent(__Instance, key, down);
             }
             else
             {
-                __Internal64.AddKeyEvent(__Instance, key, down);
+                __Internal32.AddKeyEvent(__Instance, key, down);
             }
         }
 
@@ -3811,13 +3811,13 @@ namespace DearImGui
         // DEBUG: void  AddKeyAnalogEvent(ImGuiKey key, bool down, float v)
         public void AddKeyAnalogEvent(ImGuiKey key, bool down, float v)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddKeyAnalogEvent(__Instance, key, down, v);
+                __Internal64.AddKeyAnalogEvent(__Instance, key, down, v);
             }
             else
             {
-                __Internal64.AddKeyAnalogEvent(__Instance, key, down, v);
+                __Internal32.AddKeyAnalogEvent(__Instance, key, down, v);
             }
         }
 
@@ -3825,13 +3825,13 @@ namespace DearImGui
         // DEBUG: void  AddMousePosEvent(float x, float y)
         public void AddMousePosEvent(float x, float y)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddMousePosEvent(__Instance, x, y);
+                __Internal64.AddMousePosEvent(__Instance, x, y);
             }
             else
             {
-                __Internal64.AddMousePosEvent(__Instance, x, y);
+                __Internal32.AddMousePosEvent(__Instance, x, y);
             }
         }
 
@@ -3839,13 +3839,13 @@ namespace DearImGui
         // DEBUG: void  AddMouseButtonEvent(int button, bool down)
         public void AddMouseButtonEvent(int button, bool down)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddMouseButtonEvent(__Instance, button, down);
+                __Internal64.AddMouseButtonEvent(__Instance, button, down);
             }
             else
             {
-                __Internal64.AddMouseButtonEvent(__Instance, button, down);
+                __Internal32.AddMouseButtonEvent(__Instance, button, down);
             }
         }
 
@@ -3853,13 +3853,13 @@ namespace DearImGui
         // DEBUG: void  AddMouseWheelEvent(float wh_x, float wh_y)
         public void AddMouseWheelEvent(float wh_x, float wh_y)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddMouseWheelEvent(__Instance, wh_x, wh_y);
+                __Internal64.AddMouseWheelEvent(__Instance, wh_x, wh_y);
             }
             else
             {
-                __Internal64.AddMouseWheelEvent(__Instance, wh_x, wh_y);
+                __Internal32.AddMouseWheelEvent(__Instance, wh_x, wh_y);
             }
         }
 
@@ -3867,13 +3867,13 @@ namespace DearImGui
         // DEBUG: void  AddFocusEvent(bool focused)
         public void AddFocusEvent(bool focused)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddFocusEvent(__Instance, focused);
+                __Internal64.AddFocusEvent(__Instance, focused);
             }
             else
             {
-                __Internal64.AddFocusEvent(__Instance, focused);
+                __Internal32.AddFocusEvent(__Instance, focused);
             }
         }
 
@@ -3881,13 +3881,13 @@ namespace DearImGui
         // DEBUG: void  AddInputCharacter(unsigned int c)
         public void AddInputCharacter(uint c)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddInputCharacter(__Instance, c);
+                __Internal64.AddInputCharacter(__Instance, c);
             }
             else
             {
-                __Internal64.AddInputCharacter(__Instance, c);
+                __Internal32.AddInputCharacter(__Instance, c);
             }
         }
 
@@ -3895,13 +3895,13 @@ namespace DearImGui
         // DEBUG: void  AddInputCharacterUTF16(ImWchar16 c)
         public void AddInputCharacterUTF16(ushort c)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddInputCharacterUTF16(__Instance, c);
+                __Internal64.AddInputCharacterUTF16(__Instance, c);
             }
             else
             {
-                __Internal64.AddInputCharacterUTF16(__Instance, c);
+                __Internal32.AddInputCharacterUTF16(__Instance, c);
             }
         }
 
@@ -3909,13 +3909,13 @@ namespace DearImGui
         // DEBUG: void  AddInputCharactersUTF8(const char* str)
         public void AddInputCharactersUTF8(string str)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddInputCharactersUTF8(__Instance, str);
+                __Internal64.AddInputCharactersUTF8(__Instance, str);
             }
             else
             {
-                __Internal64.AddInputCharactersUTF8(__Instance, str);
+                __Internal32.AddInputCharactersUTF8(__Instance, str);
             }
         }
 
@@ -3923,13 +3923,13 @@ namespace DearImGui
         // DEBUG: void  SetKeyEventNativeData(ImGuiKey key, int native_keycode, int native_scancode, int native_legacy_index = -1)
         public void SetKeyEventNativeData(ImGuiKey key, int native_keycode, int native_scancode, int native_legacy_index = (int)(-1))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetKeyEventNativeData(__Instance, key, native_keycode, native_scancode, native_legacy_index);
+                __Internal64.SetKeyEventNativeData(__Instance, key, native_keycode, native_scancode, native_legacy_index);
             }
             else
             {
-                __Internal64.SetKeyEventNativeData(__Instance, key, native_keycode, native_scancode, native_legacy_index);
+                __Internal32.SetKeyEventNativeData(__Instance, key, native_keycode, native_scancode, native_legacy_index);
             }
         }
 
@@ -3937,13 +3937,13 @@ namespace DearImGui
         // DEBUG: void  SetAppAcceptingEvents(bool accepting_events)
         public void SetAppAcceptingEvents(bool accepting_events)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetAppAcceptingEvents(__Instance, accepting_events);
+                __Internal64.SetAppAcceptingEvents(__Instance, accepting_events);
             }
             else
             {
-                __Internal64.SetAppAcceptingEvents(__Instance, accepting_events);
+                __Internal32.SetAppAcceptingEvents(__Instance, accepting_events);
             }
         }
 
@@ -3951,13 +3951,13 @@ namespace DearImGui
         // DEBUG: void  ClearInputCharacters()
         public void ClearInputCharacters()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ClearInputCharacters(__Instance);
+                __Internal64.ClearInputCharacters(__Instance);
             }
             else
             {
-                __Internal64.ClearInputCharacters(__Instance);
+                __Internal32.ClearInputCharacters(__Instance);
             }
         }
 
@@ -3965,13 +3965,13 @@ namespace DearImGui
         // DEBUG: void  ClearInputKeys()
         public void ClearInputKeys()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ClearInputKeys(__Instance);
+                __Internal64.ClearInputKeys(__Instance);
             }
             else
             {
-                __Internal64.ClearInputKeys(__Instance);
+                __Internal32.ClearInputKeys(__Instance);
             }
         }
 
@@ -5460,13 +5460,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiInputTextCallbackData.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -5480,13 +5480,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -5519,13 +5519,13 @@ namespace DearImGui
         // DEBUG: void      DeleteChars(int pos, int bytes_count)
         public void DeleteChars(int pos, int bytes_count)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.DeleteChars(__Instance, pos, bytes_count);
+                __Internal64.DeleteChars(__Instance, pos, bytes_count);
             }
             else
             {
-                __Internal64.DeleteChars(__Instance, pos, bytes_count);
+                __Internal32.DeleteChars(__Instance, pos, bytes_count);
             }
         }
 
@@ -5533,13 +5533,13 @@ namespace DearImGui
         // DEBUG: void      InsertChars(int pos, const char* text, const char* text_end = NULL)
         public void InsertChars(int pos, string text, string text_end = default)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.InsertChars(__Instance, pos, text, text_end);
+                __Internal64.InsertChars(__Instance, pos, text, text_end);
             }
             else
             {
-                __Internal64.InsertChars(__Instance, pos, text, text_end);
+                __Internal32.InsertChars(__Instance, pos, text, text_end);
             }
         }
 
@@ -5547,13 +5547,13 @@ namespace DearImGui
         // DEBUG: void                SelectAll()             { SelectionStart = 0; SelectionEnd = BufTextLen; }
         public void SelectAll()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SelectAll(__Instance);
+                __Internal64.SelectAll(__Instance);
             }
             else
             {
-                __Internal64.SelectAll(__Instance);
+                __Internal32.SelectAll(__Instance);
             }
         }
 
@@ -5561,13 +5561,13 @@ namespace DearImGui
         // DEBUG: void                ClearSelection()        { SelectionStart = SelectionEnd = BufTextLen; }
         public void ClearSelection()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ClearSelection(__Instance);
+                __Internal64.ClearSelection(__Instance);
             }
             else
             {
-                __Internal64.ClearSelection(__Instance);
+                __Internal32.ClearSelection(__Instance);
             }
         }
 
@@ -5744,7 +5744,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.HasSelection(__Instance) : __Internal64.HasSelection(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.HasSelection(__Instance) : __Internal64.HasSelection(__Instance);
                 return ___ret;
             }
         }
@@ -5853,13 +5853,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiSizeCallbackData.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -5873,13 +5873,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -6133,13 +6133,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiPayload.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -6153,13 +6153,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -6192,13 +6192,13 @@ namespace DearImGui
         // DEBUG: void Clear()    { SourceId = SourceParentId = 0; Data = NULL; DataSize = 0; memset(DataType, 0, sizeof(DataType)); DataFrameCount = -1; Preview = Delivery = false; }
         public void Clear()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Clear(__Instance);
+                __Internal64.Clear(__Instance);
             }
             else
             {
-                __Internal64.Clear(__Instance);
+                __Internal32.Clear(__Instance);
             }
         }
 
@@ -6206,7 +6206,7 @@ namespace DearImGui
         // DEBUG: bool IsDataType(const char* type) const { return DataFrameCount != -1 && strcmp(type, DataType) == 0; }
         public bool IsDataType(string type)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsDataType(__Instance, type) : __Internal64.IsDataType(__Instance, type);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsDataType(__Instance, type) : __Internal64.IsDataType(__Instance, type);
             return ___ret;
         }
 
@@ -6331,7 +6331,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.IsPreview(__Instance) : __Internal64.IsPreview(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.IsPreview(__Instance) : __Internal64.IsPreview(__Instance);
                 return ___ret;
             }
         }
@@ -6341,7 +6341,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.IsDelivery(__Instance) : __Internal64.IsDelivery(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.IsDelivery(__Instance) : __Internal64.IsDelivery(__Instance);
                 return ___ret;
             }
         }
@@ -6452,13 +6452,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiTableColumnSortSpecs.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -6472,13 +6472,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -6667,13 +6667,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiTableSortSpecs.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -6687,13 +6687,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -6868,13 +6868,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiOnceUponAFrame.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -6888,13 +6888,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -6930,7 +6930,7 @@ namespace DearImGui
             if (ReferenceEquals(__op, null))
                 throw new ArgumentNullException("__op", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = __op.__Instance;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.OperatorConversion(__arg0) : __Internal64.OperatorConversion(__arg0);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.OperatorConversion(__arg0) : __Internal64.OperatorConversion(__arg0);
             return ___ret;
         }
 
@@ -7172,13 +7172,13 @@ namespace DearImGui
                 __Instance = Marshal.AllocHGlobal(sizeof(ImGuiTextFilter.ImGuiTextRange.__Internal));
                 __ownsNativeInstance = true;
                 __RecordNativeToManagedMapping(__Instance, this);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(__Instance);
+                    __Internal64.ctor(__Instance);
                 }
                 else
                 {
-                    __Internal64.ctor(__Instance);
+                    __Internal32.ctor(__Instance);
                 }
             }
 
@@ -7189,13 +7189,13 @@ namespace DearImGui
                 __Instance = Marshal.AllocHGlobal(sizeof(ImGuiTextFilter.ImGuiTextRange.__Internal));
                 __ownsNativeInstance = true;
                 __RecordNativeToManagedMapping(__Instance, this);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(__Instance, _b, _e);
+                    __Internal64.ctor(__Instance, _b, _e);
                 }
                 else
                 {
-                    __Internal64.ctor(__Instance, _b, _e);
+                    __Internal32.ctor(__Instance, _b, _e);
                 }
             }
 
@@ -7209,13 +7209,13 @@ namespace DearImGui
                 if (ReferenceEquals(_0, null))
                     throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
                 var __arg0 = _0.__Instance;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(__Instance, __arg0);
+                    __Internal64.ctor(__Instance, __arg0);
                 }
                 else
                 {
-                    __Internal64.ctor(__Instance, __arg0);
+                    __Internal32.ctor(__Instance, __arg0);
                 }
             }
 
@@ -7256,13 +7256,13 @@ namespace DearImGui
                 var __arg1 = new IntPtr(Unsafe.AsPointer(ref @out))
                 /* DEBUG: TypeMapImVector.CSharpMarshalToNative: Function: True, ReturnVarName: False */
                 ;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.Split(__Instance, __arg0, __arg1);
+                    __Internal64.Split(__Instance, __arg0, __arg1);
                 }
                 else
                 {
-                    __Internal64.Split(__Instance, __arg0, __arg1);
+                    __Internal32.Split(__Instance, __arg0, __arg1);
                 }
             }
 
@@ -7325,7 +7325,7 @@ namespace DearImGui
             {
                 get
                 {
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.Empty(__Instance) : __Internal64.Empty(__Instance);
+                    var ___ret = Environment.Is64BitProcess ? __Internal32.Empty(__Instance) : __Internal64.Empty(__Instance);
                     return ___ret;
                 }
             }
@@ -7395,13 +7395,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiTextFilter.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, default_filter);
+                __Internal64.ctor(__Instance, default_filter);
             }
             else
             {
-                __Internal64.ctor(__Instance, default_filter);
+                __Internal32.ctor(__Instance, default_filter);
             }
         }
 
@@ -7415,13 +7415,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -7446,13 +7446,13 @@ namespace DearImGui
             NativeToManagedMap.TryRemove(__Instance, out _);
             DisposePartial(disposing);
             if (callNativeDtor)
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.dtor(__Instance);
+                    __Internal64.dtor(__Instance);
                 }
                 else
                 {
-                    __Internal64.dtor(__Instance);
+                    __Internal32.dtor(__Instance);
                 }
 
             if (__ownsNativeInstance)
@@ -7464,7 +7464,7 @@ namespace DearImGui
         // DEBUG: bool      Draw(const char* label = "Filter (inc,-exc)", float width = 0.0f)
         public bool Draw(string label = "Filter (inc,-exc)", float width = 0.0F)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.Draw(__Instance, label, width) : __Internal64.Draw(__Instance, label, width);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.Draw(__Instance, label, width) : __Internal64.Draw(__Instance, label, width);
             return ___ret;
         }
 
@@ -7472,7 +7472,7 @@ namespace DearImGui
         // DEBUG: bool      PassFilter(const char* text, const char* text_end = NULL) const
         public bool PassFilter(string text, string text_end = default)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.PassFilter(__Instance, text, text_end) : __Internal64.PassFilter(__Instance, text, text_end);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.PassFilter(__Instance, text, text_end) : __Internal64.PassFilter(__Instance, text, text_end);
             return ___ret;
         }
 
@@ -7480,13 +7480,13 @@ namespace DearImGui
         // DEBUG: void      Build()
         public void Build()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Build(__Instance);
+                __Internal64.Build(__Instance);
             }
             else
             {
-                __Internal64.Build(__Instance);
+                __Internal32.Build(__Instance);
             }
         }
 
@@ -7494,13 +7494,13 @@ namespace DearImGui
         // DEBUG: void                Clear()          { InputBuf[0] = 0; Build(); }
         public void Clear()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Clear(__Instance);
+                __Internal64.Clear(__Instance);
             }
             else
             {
-                __Internal64.Clear(__Instance);
+                __Internal32.Clear(__Instance);
             }
         }
 
@@ -7557,7 +7557,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.IsActive(__Instance) : __Internal64.IsActive(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.IsActive(__Instance) : __Internal64.IsActive(__Instance);
                 return ___ret;
             }
         }
@@ -7748,13 +7748,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiTextBuffer.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -7768,13 +7768,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -7799,13 +7799,13 @@ namespace DearImGui
             NativeToManagedMap.TryRemove(__Instance, out _);
             DisposePartial(disposing);
             if (callNativeDtor)
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.dtor(__Instance);
+                    __Internal64.dtor(__Instance);
                 }
                 else
                 {
-                    __Internal64.dtor(__Instance);
+                    __Internal32.dtor(__Instance);
                 }
 
             if (__ownsNativeInstance)
@@ -7817,7 +7817,7 @@ namespace DearImGui
         // DEBUG: const char*         begin() const           { return Buf.Data ? &Buf.front() : EmptyString; }
         public string Begin()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.Begin(__Instance) : __Internal64.Begin(__Instance);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.Begin(__Instance) : __Internal64.Begin(__Instance);
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
@@ -7825,7 +7825,7 @@ namespace DearImGui
         // DEBUG: const char*         end() const             { return Buf.Data ? &Buf.back() : EmptyString; }
         public string End()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.End(__Instance) : __Internal64.End(__Instance);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.End(__Instance) : __Internal64.End(__Instance);
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
@@ -7833,13 +7833,13 @@ namespace DearImGui
         // DEBUG: void                clear()                 { Buf.clear(); }
         public void Clear()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Clear(__Instance);
+                __Internal64.Clear(__Instance);
             }
             else
             {
-                __Internal64.Clear(__Instance);
+                __Internal32.Clear(__Instance);
             }
         }
 
@@ -7847,13 +7847,13 @@ namespace DearImGui
         // DEBUG: void                reserve(int capacity)   { Buf.reserve(capacity); }
         public void Reserve(int capacity)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Reserve(__Instance, capacity);
+                __Internal64.Reserve(__Instance, capacity);
             }
             else
             {
-                __Internal64.Reserve(__Instance, capacity);
+                __Internal32.Reserve(__Instance, capacity);
             }
         }
 
@@ -7861,13 +7861,13 @@ namespace DearImGui
         // DEBUG: void      append(const char* str, const char* str_end = NULL)
         public void Append(string str, string str_end = default)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Append(__Instance, str, str_end);
+                __Internal64.Append(__Instance, str, str_end);
             }
             else
             {
-                __Internal64.Append(__Instance, str, str_end);
+                __Internal32.Append(__Instance, str, str_end);
             }
         }
 
@@ -7875,13 +7875,13 @@ namespace DearImGui
         // DEBUG: void      appendf(const char* fmt, ...) IM_FMTARGS(2)
         public void Appendf(string fmt)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Appendf(__Instance, fmt);
+                __Internal64.Appendf(__Instance, fmt);
             }
             else
             {
-                __Internal64.Appendf(__Instance, fmt);
+                __Internal32.Appendf(__Instance, fmt);
             }
         }
 
@@ -7889,13 +7889,13 @@ namespace DearImGui
         // DEBUG: void      appendfv(const char* fmt, va_list args) IM_FMTLIST(2)
         public void Appendfv(string fmt, Object args)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Appendfv(__Instance, fmt, args);
+                __Internal64.Appendfv(__Instance, fmt, args);
             }
             else
             {
-                __Internal64.Appendfv(__Instance, fmt, args);
+                __Internal32.Appendfv(__Instance, fmt, args);
             }
         }
 
@@ -7914,7 +7914,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.OperatorSubscript(__Instance, i) : __Internal64.OperatorSubscript(__Instance, i);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.OperatorSubscript(__Instance, i) : __Internal64.OperatorSubscript(__Instance, i);
                 return Convert.ToChar(___ret);
             }
         }
@@ -7935,7 +7935,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Size(__Instance) : __Internal64.Size(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.Size(__Instance) : __Internal64.Size(__Instance);
                 return ___ret;
             }
         }
@@ -7945,7 +7945,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Empty(__Instance) : __Internal64.Empty(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.Empty(__Instance) : __Internal64.Empty(__Instance);
                 return ___ret;
             }
         }
@@ -7955,7 +7955,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.CStr(__Instance) : __Internal64.CStr(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.CStr(__Instance) : __Internal64.CStr(__Instance);
                 return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
             }
         }
@@ -8250,13 +8250,13 @@ namespace DearImGui
                 __Instance = Marshal.AllocHGlobal(sizeof(ImGuiStorage.ImGuiStoragePair.__Internal));
                 __ownsNativeInstance = true;
                 __RecordNativeToManagedMapping(__Instance, this);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(__Instance, _key, _val_i);
+                    __Internal64.ctor(__Instance, _key, _val_i);
                 }
                 else
                 {
-                    __Internal64.ctor(__Instance, _key, _val_i);
+                    __Internal32.ctor(__Instance, _key, _val_i);
                 }
             }
 
@@ -8267,13 +8267,13 @@ namespace DearImGui
                 __Instance = Marshal.AllocHGlobal(sizeof(ImGuiStorage.ImGuiStoragePair.__Internal));
                 __ownsNativeInstance = true;
                 __RecordNativeToManagedMapping(__Instance, this);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor_1(__Instance, _key, _val_f);
+                    __Internal64.ctor_1(__Instance, _key, _val_f);
                 }
                 else
                 {
-                    __Internal64.ctor_1(__Instance, _key, _val_f);
+                    __Internal32.ctor_1(__Instance, _key, _val_f);
                 }
             }
 
@@ -8284,13 +8284,13 @@ namespace DearImGui
                 __Instance = Marshal.AllocHGlobal(sizeof(ImGuiStorage.ImGuiStoragePair.__Internal));
                 __ownsNativeInstance = true;
                 __RecordNativeToManagedMapping(__Instance, this);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(__Instance, _key, _val_p);
+                    __Internal64.ctor(__Instance, _key, _val_p);
                 }
                 else
                 {
-                    __Internal64.ctor(__Instance, _key, _val_p);
+                    __Internal32.ctor(__Instance, _key, _val_p);
                 }
             }
 
@@ -8304,13 +8304,13 @@ namespace DearImGui
                 if (ReferenceEquals(_0, null))
                     throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
                 var __arg0 = _0.__Instance;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(__Instance, __arg0);
+                    __Internal64.ctor(__Instance, __arg0);
                 }
                 else
                 {
-                    __Internal64.ctor(__Instance, __arg0);
+                    __Internal32.ctor(__Instance, __arg0);
                 }
             }
 
@@ -8463,13 +8463,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -8480,13 +8480,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiStorage.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -8511,13 +8511,13 @@ namespace DearImGui
             NativeToManagedMap.TryRemove(__Instance, out _);
             DisposePartial(disposing);
             if (callNativeDtor)
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.dtor(__Instance);
+                    __Internal64.dtor(__Instance);
                 }
                 else
                 {
-                    __Internal64.dtor(__Instance);
+                    __Internal32.dtor(__Instance);
                 }
 
             if (__ownsNativeInstance)
@@ -8529,13 +8529,13 @@ namespace DearImGui
         // DEBUG: void                Clear() { Data.clear(); }
         public void Clear()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Clear(__Instance);
+                __Internal64.Clear(__Instance);
             }
             else
             {
-                __Internal64.Clear(__Instance);
+                __Internal32.Clear(__Instance);
             }
         }
 
@@ -8543,7 +8543,7 @@ namespace DearImGui
         // DEBUG: int       GetInt(ImGuiID key, int default_val = 0) const
         public int GetInt(uint key, int default_val = (int)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetInt(__Instance, key, default_val) : __Internal64.GetInt(__Instance, key, default_val);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetInt(__Instance, key, default_val) : __Internal64.GetInt(__Instance, key, default_val);
             return ___ret;
         }
 
@@ -8551,13 +8551,13 @@ namespace DearImGui
         // DEBUG: void      SetInt(ImGuiID key, int val)
         public void SetInt(uint key, int val)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetInt(__Instance, key, val);
+                __Internal64.SetInt(__Instance, key, val);
             }
             else
             {
-                __Internal64.SetInt(__Instance, key, val);
+                __Internal32.SetInt(__Instance, key, val);
             }
         }
 
@@ -8565,7 +8565,7 @@ namespace DearImGui
         // DEBUG: bool      GetBool(ImGuiID key, bool default_val = false) const
         public bool GetBool(uint key, bool default_val = false)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetBool(__Instance, key, default_val) : __Internal64.GetBool(__Instance, key, default_val);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetBool(__Instance, key, default_val) : __Internal64.GetBool(__Instance, key, default_val);
             return ___ret;
         }
 
@@ -8573,13 +8573,13 @@ namespace DearImGui
         // DEBUG: void      SetBool(ImGuiID key, bool val)
         public void SetBool(uint key, bool val)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetBool(__Instance, key, val);
+                __Internal64.SetBool(__Instance, key, val);
             }
             else
             {
-                __Internal64.SetBool(__Instance, key, val);
+                __Internal32.SetBool(__Instance, key, val);
             }
         }
 
@@ -8587,7 +8587,7 @@ namespace DearImGui
         // DEBUG: float     GetFloat(ImGuiID key, float default_val = 0.0f) const
         public float GetFloat(uint key, float default_val = 0.0F)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetFloat(__Instance, key, default_val) : __Internal64.GetFloat(__Instance, key, default_val);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetFloat(__Instance, key, default_val) : __Internal64.GetFloat(__Instance, key, default_val);
             return ___ret;
         }
 
@@ -8595,13 +8595,13 @@ namespace DearImGui
         // DEBUG: void      SetFloat(ImGuiID key, float val)
         public void SetFloat(uint key, float val)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetFloat(__Instance, key, val);
+                __Internal64.SetFloat(__Instance, key, val);
             }
             else
             {
-                __Internal64.SetFloat(__Instance, key, val);
+                __Internal32.SetFloat(__Instance, key, val);
             }
         }
 
@@ -8609,7 +8609,7 @@ namespace DearImGui
         // DEBUG: void*     GetVoidPtr(ImGuiID key) const
         public IntPtr GetVoidPtr(uint key)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetVoidPtr(__Instance, key) : __Internal64.GetVoidPtr(__Instance, key);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetVoidPtr(__Instance, key) : __Internal64.GetVoidPtr(__Instance, key);
             return ___ret;
         }
 
@@ -8617,13 +8617,13 @@ namespace DearImGui
         // DEBUG: void      SetVoidPtr(ImGuiID key, void* val)
         public void SetVoidPtr(uint key, IntPtr val)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetVoidPtr(__Instance, key, val);
+                __Internal64.SetVoidPtr(__Instance, key, val);
             }
             else
             {
-                __Internal64.SetVoidPtr(__Instance, key, val);
+                __Internal32.SetVoidPtr(__Instance, key, val);
             }
         }
 
@@ -8631,7 +8631,7 @@ namespace DearImGui
         // DEBUG: int*      GetIntRef(ImGuiID key, int default_val = 0)
         public int* GetIntRef(uint key, int default_val = (int)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetIntRef(__Instance, key, default_val) : __Internal64.GetIntRef(__Instance, key, default_val);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetIntRef(__Instance, key, default_val) : __Internal64.GetIntRef(__Instance, key, default_val);
             return ___ret;
         }
 
@@ -8639,7 +8639,7 @@ namespace DearImGui
         // DEBUG: bool*     GetBoolRef(ImGuiID key, bool default_val = false)
         public bool* GetBoolRef(uint key, bool default_val = false)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetBoolRef(__Instance, key, default_val) : __Internal64.GetBoolRef(__Instance, key, default_val);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetBoolRef(__Instance, key, default_val) : __Internal64.GetBoolRef(__Instance, key, default_val);
             return ___ret;
         }
 
@@ -8647,7 +8647,7 @@ namespace DearImGui
         // DEBUG: float*    GetFloatRef(ImGuiID key, float default_val = 0.0f)
         public float* GetFloatRef(uint key, float default_val = 0.0F)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetFloatRef(__Instance, key, default_val) : __Internal64.GetFloatRef(__Instance, key, default_val);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetFloatRef(__Instance, key, default_val) : __Internal64.GetFloatRef(__Instance, key, default_val);
             return ___ret;
         }
 
@@ -8655,7 +8655,7 @@ namespace DearImGui
         // DEBUG: void**    GetVoidPtrRef(ImGuiID key, void* default_val = NULL)
         public IntPtr* GetVoidPtrRef(uint key, IntPtr default_val = default)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetVoidPtrRef(__Instance, key, default_val) : __Internal64.GetVoidPtrRef(__Instance, key, default_val);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetVoidPtrRef(__Instance, key, default_val) : __Internal64.GetVoidPtrRef(__Instance, key, default_val);
             return ___ret;
         }
 
@@ -8663,13 +8663,13 @@ namespace DearImGui
         // DEBUG: void      SetAllInt(int val)
         public void SetAllInt(int val)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetAllInt(__Instance, val);
+                __Internal64.SetAllInt(__Instance, val);
             }
             else
             {
-                __Internal64.SetAllInt(__Instance, val);
+                __Internal32.SetAllInt(__Instance, val);
             }
         }
 
@@ -8677,13 +8677,13 @@ namespace DearImGui
         // DEBUG: void      BuildSortByKey()
         public void BuildSortByKey()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.BuildSortByKey(__Instance);
+                __Internal64.BuildSortByKey(__Instance);
             }
             else
             {
-                __Internal64.BuildSortByKey(__Instance);
+                __Internal32.BuildSortByKey(__Instance);
             }
         }
 
@@ -8853,13 +8853,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiListClipper.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -8894,13 +8894,13 @@ namespace DearImGui
             NativeToManagedMap.TryRemove(__Instance, out _);
             DisposePartial(disposing);
             if (callNativeDtor)
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.dtor(__Instance);
+                    __Internal64.dtor(__Instance);
                 }
                 else
                 {
-                    __Internal64.dtor(__Instance);
+                    __Internal32.dtor(__Instance);
                 }
 
             if (__ownsNativeInstance)
@@ -8912,13 +8912,13 @@ namespace DearImGui
         // DEBUG: void  Begin(int items_count, float items_height = -1.0f)
         public void Begin(int items_count, float items_height = -1.0F)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Begin(__Instance, items_count, items_height);
+                __Internal64.Begin(__Instance, items_count, items_height);
             }
             else
             {
-                __Internal64.Begin(__Instance, items_count, items_height);
+                __Internal32.Begin(__Instance, items_count, items_height);
             }
         }
 
@@ -8926,13 +8926,13 @@ namespace DearImGui
         // DEBUG: void  End()
         public void End()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.End(__Instance);
+                __Internal64.End(__Instance);
             }
             else
             {
-                __Internal64.End(__Instance);
+                __Internal32.End(__Instance);
             }
         }
 
@@ -8940,13 +8940,13 @@ namespace DearImGui
         // DEBUG: void  ForceDisplayRangeByIndices(int item_min, int item_max)
         public void ForceDisplayRangeByIndices(int item_min, int item_max)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ForceDisplayRangeByIndices(__Instance, item_min, item_max);
+                __Internal64.ForceDisplayRangeByIndices(__Instance, item_min, item_max);
             }
             else
             {
-                __Internal64.ForceDisplayRangeByIndices(__Instance, item_min, item_max);
+                __Internal32.ForceDisplayRangeByIndices(__Instance, item_min, item_max);
             }
         }
 
@@ -9039,7 +9039,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Step(__Instance) : __Internal64.Step(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.Step(__Instance) : __Internal64.Step(__Instance);
                 return ___ret;
             }
         }
@@ -9125,13 +9125,13 @@ namespace DearImGui
             var __arg0 = new IntPtr(&____arg0);
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -9326,13 +9326,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -9343,13 +9343,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImDrawCmdHeader.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -9535,13 +9535,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -9552,13 +9552,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImDrawChannel.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -9583,13 +9583,13 @@ namespace DearImGui
             NativeToManagedMap.TryRemove(__Instance, out _);
             DisposePartial(disposing);
             if (callNativeDtor)
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.dtor(__Instance);
+                    __Internal64.dtor(__Instance);
                 }
                 else
                 {
-                    __Internal64.dtor(__Instance);
+                    __Internal32.dtor(__Instance);
                 }
 
             if (__ownsNativeInstance)
@@ -9741,13 +9741,13 @@ namespace DearImGui
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                ImDrawListSplitter.__Internal32.cctor(ret, new IntPtr(&native));
+                ImDrawListSplitter.__Internal64.cctor(ret, new IntPtr(&native));
             }
             else
             {
-                ImDrawListSplitter.__Internal64.cctor(ret, new IntPtr(&native));
+                ImDrawListSplitter.__Internal32.cctor(ret, new IntPtr(&native));
             }
 
             return ret.ToPointer();
@@ -9773,13 +9773,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImDrawListSplitter.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -9793,13 +9793,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.cctor(__Instance, __arg0);
+                __Internal64.cctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.cctor(__Instance, __arg0);
+                __Internal32.cctor(__Instance, __arg0);
             }
         }
 
@@ -9824,13 +9824,13 @@ namespace DearImGui
             NativeToManagedMap.TryRemove(__Instance, out _);
             DisposePartial(disposing);
             if (callNativeDtor)
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.dtor(__Instance);
+                    __Internal64.dtor(__Instance);
                 }
                 else
                 {
-                    __Internal64.dtor(__Instance);
+                    __Internal32.dtor(__Instance);
                 }
 
             if (__ownsNativeInstance)
@@ -9842,13 +9842,13 @@ namespace DearImGui
         // DEBUG: inline void                 Clear() { _Current = 0; _Count = 1; }
         public void Clear()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Clear(__Instance);
+                __Internal64.Clear(__Instance);
             }
             else
             {
-                __Internal64.Clear(__Instance);
+                __Internal32.Clear(__Instance);
             }
         }
 
@@ -9856,13 +9856,13 @@ namespace DearImGui
         // DEBUG: void              ClearFreeMemory()
         public void ClearFreeMemory()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ClearFreeMemory(__Instance);
+                __Internal64.ClearFreeMemory(__Instance);
             }
             else
             {
-                __Internal64.ClearFreeMemory(__Instance);
+                __Internal32.ClearFreeMemory(__Instance);
             }
         }
 
@@ -9872,13 +9872,13 @@ namespace DearImGui
         {
             var ____arg0 = draw_list.__Instance;
             var __arg0 = new IntPtr(&____arg0);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Split(__Instance, __arg0, count);
+                __Internal64.Split(__Instance, __arg0, count);
             }
             else
             {
-                __Internal64.Split(__Instance, __arg0, count);
+                __Internal32.Split(__Instance, __arg0, count);
             }
         }
 
@@ -9888,13 +9888,13 @@ namespace DearImGui
         {
             var ____arg0 = draw_list.__Instance;
             var __arg0 = new IntPtr(&____arg0);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Merge(__Instance, __arg0);
+                __Internal64.Merge(__Instance, __arg0);
             }
             else
             {
-                __Internal64.Merge(__Instance, __arg0);
+                __Internal32.Merge(__Instance, __arg0);
             }
         }
 
@@ -9904,13 +9904,13 @@ namespace DearImGui
         {
             var ____arg0 = draw_list.__Instance;
             var __arg0 = new IntPtr(&____arg0);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetCurrentChannel(__Instance, __arg0, channel_idx);
+                __Internal64.SetCurrentChannel(__Instance, __arg0, channel_idx);
             }
             else
             {
-                __Internal64.SetCurrentChannel(__Instance, __arg0, channel_idx);
+                __Internal32.SetCurrentChannel(__Instance, __arg0, channel_idx);
             }
         }
 
@@ -10517,13 +10517,13 @@ namespace DearImGui
             var __arg0 = shared_data is null ? IntPtr.Zero : shared_data.__Instance;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -10536,13 +10536,13 @@ namespace DearImGui
             var __arg0 = new IntPtr(&____arg0);
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.cctor_1(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.cctor_1(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.cctor_1(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.cctor_1(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -10561,13 +10561,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PushClipRect(new IntPtr(__instancePtr), __arg0, __arg1, intersect_with_current_clip_rect);
+                    __Internal64.PushClipRect(new IntPtr(__instancePtr), __arg0, __arg1, intersect_with_current_clip_rect);
                 }
                 else
                 {
-                    __Internal64.PushClipRect(new IntPtr(__instancePtr), __arg0, __arg1, intersect_with_current_clip_rect);
+                    __Internal32.PushClipRect(new IntPtr(__instancePtr), __arg0, __arg1, intersect_with_current_clip_rect);
                 }
             }
         }
@@ -10578,13 +10578,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PushClipRectFullScreen(new IntPtr(__instancePtr));
+                    __Internal64.PushClipRectFullScreen(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.PushClipRectFullScreen(new IntPtr(__instancePtr));
+                    __Internal32.PushClipRectFullScreen(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -10595,13 +10595,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PopClipRect(new IntPtr(__instancePtr));
+                    __Internal64.PopClipRect(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.PopClipRect(new IntPtr(__instancePtr));
+                    __Internal32.PopClipRect(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -10612,13 +10612,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PushTextureID(new IntPtr(__instancePtr), texture_id);
+                    __Internal64.PushTextureID(new IntPtr(__instancePtr), texture_id);
                 }
                 else
                 {
-                    __Internal64.PushTextureID(new IntPtr(__instancePtr), texture_id);
+                    __Internal32.PushTextureID(new IntPtr(__instancePtr), texture_id);
                 }
             }
         }
@@ -10629,13 +10629,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PopTextureID(new IntPtr(__instancePtr));
+                    __Internal64.PopTextureID(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.PopTextureID(new IntPtr(__instancePtr));
+                    __Internal32.PopTextureID(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -10654,13 +10654,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddLine(new IntPtr(__instancePtr), __arg0, __arg1, col, thickness);
+                    __Internal64.AddLine(new IntPtr(__instancePtr), __arg0, __arg1, col, thickness);
                 }
                 else
                 {
-                    __Internal64.AddLine(new IntPtr(__instancePtr), __arg0, __arg1, col, thickness);
+                    __Internal32.AddLine(new IntPtr(__instancePtr), __arg0, __arg1, col, thickness);
                 }
             }
         }
@@ -10679,13 +10679,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddRect(new IntPtr(__instancePtr), __arg0, __arg1, col, rounding, flags, thickness);
+                    __Internal64.AddRect(new IntPtr(__instancePtr), __arg0, __arg1, col, rounding, flags, thickness);
                 }
                 else
                 {
-                    __Internal64.AddRect(new IntPtr(__instancePtr), __arg0, __arg1, col, rounding, flags, thickness);
+                    __Internal32.AddRect(new IntPtr(__instancePtr), __arg0, __arg1, col, rounding, flags, thickness);
                 }
             }
         }
@@ -10704,13 +10704,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddRectFilled(new IntPtr(__instancePtr), __arg0, __arg1, col, rounding, flags);
+                    __Internal64.AddRectFilled(new IntPtr(__instancePtr), __arg0, __arg1, col, rounding, flags);
                 }
                 else
                 {
-                    __Internal64.AddRectFilled(new IntPtr(__instancePtr), __arg0, __arg1, col, rounding, flags);
+                    __Internal32.AddRectFilled(new IntPtr(__instancePtr), __arg0, __arg1, col, rounding, flags);
                 }
             }
         }
@@ -10729,13 +10729,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddRectFilledMultiColor(new IntPtr(__instancePtr), __arg0, __arg1, col_upr_left, col_upr_right, col_bot_right, col_bot_left);
+                    __Internal64.AddRectFilledMultiColor(new IntPtr(__instancePtr), __arg0, __arg1, col_upr_left, col_upr_right, col_bot_right, col_bot_left);
                 }
                 else
                 {
-                    __Internal64.AddRectFilledMultiColor(new IntPtr(__instancePtr), __arg0, __arg1, col_upr_left, col_upr_right, col_bot_right, col_bot_left);
+                    __Internal32.AddRectFilledMultiColor(new IntPtr(__instancePtr), __arg0, __arg1, col_upr_left, col_upr_right, col_bot_right, col_bot_left);
                 }
             }
         }
@@ -10762,13 +10762,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddQuad(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col, thickness);
+                    __Internal64.AddQuad(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col, thickness);
                 }
                 else
                 {
-                    __Internal64.AddQuad(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col, thickness);
+                    __Internal32.AddQuad(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col, thickness);
                 }
             }
         }
@@ -10795,13 +10795,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddQuadFilled(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col);
+                    __Internal64.AddQuadFilled(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col);
                 }
                 else
                 {
-                    __Internal64.AddQuadFilled(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col);
+                    __Internal32.AddQuadFilled(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col);
                 }
             }
         }
@@ -10824,13 +10824,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddTriangle(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col, thickness);
+                    __Internal64.AddTriangle(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col, thickness);
                 }
                 else
                 {
-                    __Internal64.AddTriangle(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col, thickness);
+                    __Internal32.AddTriangle(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col, thickness);
                 }
             }
         }
@@ -10853,13 +10853,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddTriangleFilled(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col);
+                    __Internal64.AddTriangleFilled(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col);
                 }
                 else
                 {
-                    __Internal64.AddTriangleFilled(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col);
+                    __Internal32.AddTriangleFilled(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col);
                 }
             }
         }
@@ -10874,13 +10874,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddCircle(new IntPtr(__instancePtr), __arg0, radius, col, num_segments, thickness);
+                    __Internal64.AddCircle(new IntPtr(__instancePtr), __arg0, radius, col, num_segments, thickness);
                 }
                 else
                 {
-                    __Internal64.AddCircle(new IntPtr(__instancePtr), __arg0, radius, col, num_segments, thickness);
+                    __Internal32.AddCircle(new IntPtr(__instancePtr), __arg0, radius, col, num_segments, thickness);
                 }
             }
         }
@@ -10895,13 +10895,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddCircleFilled(new IntPtr(__instancePtr), __arg0, radius, col, num_segments);
+                    __Internal64.AddCircleFilled(new IntPtr(__instancePtr), __arg0, radius, col, num_segments);
                 }
                 else
                 {
-                    __Internal64.AddCircleFilled(new IntPtr(__instancePtr), __arg0, radius, col, num_segments);
+                    __Internal32.AddCircleFilled(new IntPtr(__instancePtr), __arg0, radius, col, num_segments);
                 }
             }
         }
@@ -10916,13 +10916,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddNgon(new IntPtr(__instancePtr), __arg0, radius, col, num_segments, thickness);
+                    __Internal64.AddNgon(new IntPtr(__instancePtr), __arg0, radius, col, num_segments, thickness);
                 }
                 else
                 {
-                    __Internal64.AddNgon(new IntPtr(__instancePtr), __arg0, radius, col, num_segments, thickness);
+                    __Internal32.AddNgon(new IntPtr(__instancePtr), __arg0, radius, col, num_segments, thickness);
                 }
             }
         }
@@ -10937,13 +10937,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddNgonFilled(new IntPtr(__instancePtr), __arg0, radius, col, num_segments);
+                    __Internal64.AddNgonFilled(new IntPtr(__instancePtr), __arg0, radius, col, num_segments);
                 }
                 else
                 {
-                    __Internal64.AddNgonFilled(new IntPtr(__instancePtr), __arg0, radius, col, num_segments);
+                    __Internal32.AddNgonFilled(new IntPtr(__instancePtr), __arg0, radius, col, num_segments);
                 }
             }
         }
@@ -10958,13 +10958,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddText(new IntPtr(__instancePtr), __arg0, col, text_begin, text_end);
+                    __Internal64.AddText(new IntPtr(__instancePtr), __arg0, col, text_begin, text_end);
                 }
                 else
                 {
-                    __Internal64.AddText(new IntPtr(__instancePtr), __arg0, col, text_begin, text_end);
+                    __Internal32.AddText(new IntPtr(__instancePtr), __arg0, col, text_begin, text_end);
                 }
             }
         }
@@ -10984,13 +10984,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddText(new IntPtr(__instancePtr), __arg0, font_size, __arg2, col, text_begin, text_end, wrap_width, __arg7);
+                    __Internal64.AddText(new IntPtr(__instancePtr), __arg0, font_size, __arg2, col, text_begin, text_end, wrap_width, __arg7);
                 }
                 else
                 {
-                    __Internal64.AddText(new IntPtr(__instancePtr), __arg0, font_size, __arg2, col, text_begin, text_end, wrap_width, __arg7);
+                    __Internal32.AddText(new IntPtr(__instancePtr), __arg0, font_size, __arg2, col, text_begin, text_end, wrap_width, __arg7);
                 }
             }
         }
@@ -11005,13 +11005,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddPolyline(new IntPtr(__instancePtr), __arg0, num_points, col, flags, thickness);
+                    __Internal64.AddPolyline(new IntPtr(__instancePtr), __arg0, num_points, col, flags, thickness);
                 }
                 else
                 {
-                    __Internal64.AddPolyline(new IntPtr(__instancePtr), __arg0, num_points, col, flags, thickness);
+                    __Internal32.AddPolyline(new IntPtr(__instancePtr), __arg0, num_points, col, flags, thickness);
                 }
             }
         }
@@ -11026,13 +11026,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddConvexPolyFilled(new IntPtr(__instancePtr), __arg0, num_points, col);
+                    __Internal64.AddConvexPolyFilled(new IntPtr(__instancePtr), __arg0, num_points, col);
                 }
                 else
                 {
-                    __Internal64.AddConvexPolyFilled(new IntPtr(__instancePtr), __arg0, num_points, col);
+                    __Internal32.AddConvexPolyFilled(new IntPtr(__instancePtr), __arg0, num_points, col);
                 }
             }
         }
@@ -11059,13 +11059,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddBezierCubic(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col, thickness, num_segments);
+                    __Internal64.AddBezierCubic(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col, thickness, num_segments);
                 }
                 else
                 {
-                    __Internal64.AddBezierCubic(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col, thickness, num_segments);
+                    __Internal32.AddBezierCubic(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col, thickness, num_segments);
                 }
             }
         }
@@ -11088,13 +11088,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddBezierQuadratic(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col, thickness, num_segments);
+                    __Internal64.AddBezierQuadratic(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col, thickness, num_segments);
                 }
                 else
                 {
-                    __Internal64.AddBezierQuadratic(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col, thickness, num_segments);
+                    __Internal32.AddBezierQuadratic(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, col, thickness, num_segments);
                 }
             }
         }
@@ -11121,13 +11121,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddImage(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, col);
+                    __Internal64.AddImage(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, col);
                 }
                 else
                 {
-                    __Internal64.AddImage(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, col);
+                    __Internal32.AddImage(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, col);
                 }
             }
         }
@@ -11170,13 +11170,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddImageQuad(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6, __arg7, __arg8, col);
+                    __Internal64.AddImageQuad(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6, __arg7, __arg8, col);
                 }
                 else
                 {
-                    __Internal64.AddImageQuad(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6, __arg7, __arg8, col);
+                    __Internal32.AddImageQuad(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6, __arg7, __arg8, col);
                 }
             }
         }
@@ -11203,13 +11203,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddImageRounded(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, col, rounding, flags);
+                    __Internal64.AddImageRounded(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, col, rounding, flags);
                 }
                 else
                 {
-                    __Internal64.AddImageRounded(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, col, rounding, flags);
+                    __Internal32.AddImageRounded(new IntPtr(__instancePtr), user_texture_id, __arg1, __arg2, __arg3, __arg4, col, rounding, flags);
                 }
             }
         }
@@ -11220,13 +11220,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathClear(new IntPtr(__instancePtr));
+                    __Internal64.PathClear(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.PathClear(new IntPtr(__instancePtr));
+                    __Internal32.PathClear(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -11241,13 +11241,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathLineTo(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.PathLineTo(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.PathLineTo(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.PathLineTo(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -11262,13 +11262,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathLineToMergeDuplicate(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.PathLineToMergeDuplicate(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.PathLineToMergeDuplicate(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.PathLineToMergeDuplicate(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -11279,13 +11279,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathFillConvex(new IntPtr(__instancePtr), col);
+                    __Internal64.PathFillConvex(new IntPtr(__instancePtr), col);
                 }
                 else
                 {
-                    __Internal64.PathFillConvex(new IntPtr(__instancePtr), col);
+                    __Internal32.PathFillConvex(new IntPtr(__instancePtr), col);
                 }
             }
         }
@@ -11296,13 +11296,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathStroke(new IntPtr(__instancePtr), col, flags, thickness);
+                    __Internal64.PathStroke(new IntPtr(__instancePtr), col, flags, thickness);
                 }
                 else
                 {
-                    __Internal64.PathStroke(new IntPtr(__instancePtr), col, flags, thickness);
+                    __Internal32.PathStroke(new IntPtr(__instancePtr), col, flags, thickness);
                 }
             }
         }
@@ -11317,13 +11317,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathArcTo(new IntPtr(__instancePtr), __arg0, radius, a_min, a_max, num_segments);
+                    __Internal64.PathArcTo(new IntPtr(__instancePtr), __arg0, radius, a_min, a_max, num_segments);
                 }
                 else
                 {
-                    __Internal64.PathArcTo(new IntPtr(__instancePtr), __arg0, radius, a_min, a_max, num_segments);
+                    __Internal32.PathArcTo(new IntPtr(__instancePtr), __arg0, radius, a_min, a_max, num_segments);
                 }
             }
         }
@@ -11338,13 +11338,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathArcToFast(new IntPtr(__instancePtr), __arg0, radius, a_min_of_12, a_max_of_12);
+                    __Internal64.PathArcToFast(new IntPtr(__instancePtr), __arg0, radius, a_min_of_12, a_max_of_12);
                 }
                 else
                 {
-                    __Internal64.PathArcToFast(new IntPtr(__instancePtr), __arg0, radius, a_min_of_12, a_max_of_12);
+                    __Internal32.PathArcToFast(new IntPtr(__instancePtr), __arg0, radius, a_min_of_12, a_max_of_12);
                 }
             }
         }
@@ -11367,13 +11367,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathBezierCubicCurveTo(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, num_segments);
+                    __Internal64.PathBezierCubicCurveTo(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, num_segments);
                 }
                 else
                 {
-                    __Internal64.PathBezierCubicCurveTo(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, num_segments);
+                    __Internal32.PathBezierCubicCurveTo(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, num_segments);
                 }
             }
         }
@@ -11392,13 +11392,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathBezierQuadraticCurveTo(new IntPtr(__instancePtr), __arg0, __arg1, num_segments);
+                    __Internal64.PathBezierQuadraticCurveTo(new IntPtr(__instancePtr), __arg0, __arg1, num_segments);
                 }
                 else
                 {
-                    __Internal64.PathBezierQuadraticCurveTo(new IntPtr(__instancePtr), __arg0, __arg1, num_segments);
+                    __Internal32.PathBezierQuadraticCurveTo(new IntPtr(__instancePtr), __arg0, __arg1, num_segments);
                 }
             }
         }
@@ -11417,13 +11417,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathRect(new IntPtr(__instancePtr), __arg0, __arg1, rounding, flags);
+                    __Internal64.PathRect(new IntPtr(__instancePtr), __arg0, __arg1, rounding, flags);
                 }
                 else
                 {
-                    __Internal64.PathRect(new IntPtr(__instancePtr), __arg0, __arg1, rounding, flags);
+                    __Internal32.PathRect(new IntPtr(__instancePtr), __arg0, __arg1, rounding, flags);
                 }
             }
         }
@@ -11435,13 +11435,13 @@ namespace DearImGui
             var __arg0 = callback == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(callback);
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddCallback(new IntPtr(__instancePtr), __arg0, callback_data);
+                    __Internal64.AddCallback(new IntPtr(__instancePtr), __arg0, callback_data);
                 }
                 else
                 {
-                    __Internal64.AddCallback(new IntPtr(__instancePtr), __arg0, callback_data);
+                    __Internal32.AddCallback(new IntPtr(__instancePtr), __arg0, callback_data);
                 }
             }
         }
@@ -11452,13 +11452,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddDrawCmd(new IntPtr(__instancePtr));
+                    __Internal64.AddDrawCmd(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.AddDrawCmd(new IntPtr(__instancePtr));
+                    __Internal32.AddDrawCmd(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -11469,7 +11469,7 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.CloneOutput(new IntPtr(__instancePtr)) : __Internal64.CloneOutput(new IntPtr(__instancePtr));
+                var ___ret = Environment.Is64BitProcess ? __Internal32.CloneOutput(new IntPtr(__instancePtr)) : __Internal64.CloneOutput(new IntPtr(__instancePtr));
                 var __result0 = ___ret != IntPtr.Zero ? ImDrawList.__CreateInstance(___ret) : default;
                 return __result0;
             }
@@ -11481,13 +11481,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ChannelsSplit(new IntPtr(__instancePtr), count);
+                    __Internal64.ChannelsSplit(new IntPtr(__instancePtr), count);
                 }
                 else
                 {
-                    __Internal64.ChannelsSplit(new IntPtr(__instancePtr), count);
+                    __Internal32.ChannelsSplit(new IntPtr(__instancePtr), count);
                 }
             }
         }
@@ -11498,13 +11498,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ChannelsMerge(new IntPtr(__instancePtr));
+                    __Internal64.ChannelsMerge(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.ChannelsMerge(new IntPtr(__instancePtr));
+                    __Internal32.ChannelsMerge(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -11515,13 +11515,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ChannelsSetCurrent(new IntPtr(__instancePtr), n);
+                    __Internal64.ChannelsSetCurrent(new IntPtr(__instancePtr), n);
                 }
                 else
                 {
-                    __Internal64.ChannelsSetCurrent(new IntPtr(__instancePtr), n);
+                    __Internal32.ChannelsSetCurrent(new IntPtr(__instancePtr), n);
                 }
             }
         }
@@ -11532,13 +11532,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PrimReserve(new IntPtr(__instancePtr), idx_count, vtx_count);
+                    __Internal64.PrimReserve(new IntPtr(__instancePtr), idx_count, vtx_count);
                 }
                 else
                 {
-                    __Internal64.PrimReserve(new IntPtr(__instancePtr), idx_count, vtx_count);
+                    __Internal32.PrimReserve(new IntPtr(__instancePtr), idx_count, vtx_count);
                 }
             }
         }
@@ -11549,13 +11549,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PrimUnreserve(new IntPtr(__instancePtr), idx_count, vtx_count);
+                    __Internal64.PrimUnreserve(new IntPtr(__instancePtr), idx_count, vtx_count);
                 }
                 else
                 {
-                    __Internal64.PrimUnreserve(new IntPtr(__instancePtr), idx_count, vtx_count);
+                    __Internal32.PrimUnreserve(new IntPtr(__instancePtr), idx_count, vtx_count);
                 }
             }
         }
@@ -11574,13 +11574,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PrimRect(new IntPtr(__instancePtr), __arg0, __arg1, col);
+                    __Internal64.PrimRect(new IntPtr(__instancePtr), __arg0, __arg1, col);
                 }
                 else
                 {
-                    __Internal64.PrimRect(new IntPtr(__instancePtr), __arg0, __arg1, col);
+                    __Internal32.PrimRect(new IntPtr(__instancePtr), __arg0, __arg1, col);
                 }
             }
         }
@@ -11607,13 +11607,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PrimRectUV(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col);
+                    __Internal64.PrimRectUV(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col);
                 }
                 else
                 {
-                    __Internal64.PrimRectUV(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col);
+                    __Internal32.PrimRectUV(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, col);
                 }
             }
         }
@@ -11656,13 +11656,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PrimQuadUV(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6, __arg7, col);
+                    __Internal64.PrimQuadUV(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6, __arg7, col);
                 }
                 else
                 {
-                    __Internal64.PrimQuadUV(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6, __arg7, col);
+                    __Internal32.PrimQuadUV(new IntPtr(__instancePtr), __arg0, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6, __arg7, col);
                 }
             }
         }
@@ -11681,13 +11681,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PrimWriteVtx(new IntPtr(__instancePtr), __arg0, __arg1, col);
+                    __Internal64.PrimWriteVtx(new IntPtr(__instancePtr), __arg0, __arg1, col);
                 }
                 else
                 {
-                    __Internal64.PrimWriteVtx(new IntPtr(__instancePtr), __arg0, __arg1, col);
+                    __Internal32.PrimWriteVtx(new IntPtr(__instancePtr), __arg0, __arg1, col);
                 }
             }
         }
@@ -11698,13 +11698,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PrimWriteIdx(new IntPtr(__instancePtr), idx);
+                    __Internal64.PrimWriteIdx(new IntPtr(__instancePtr), idx);
                 }
                 else
                 {
-                    __Internal64.PrimWriteIdx(new IntPtr(__instancePtr), idx);
+                    __Internal32.PrimWriteIdx(new IntPtr(__instancePtr), idx);
                 }
             }
         }
@@ -11723,13 +11723,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PrimVtx(new IntPtr(__instancePtr), __arg0, __arg1, col);
+                    __Internal64.PrimVtx(new IntPtr(__instancePtr), __arg0, __arg1, col);
                 }
                 else
                 {
-                    __Internal64.PrimVtx(new IntPtr(__instancePtr), __arg0, __arg1, col);
+                    __Internal32.PrimVtx(new IntPtr(__instancePtr), __arg0, __arg1, col);
                 }
             }
         }
@@ -11740,13 +11740,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ResetForNewFrame(new IntPtr(__instancePtr));
+                    __Internal64.ResetForNewFrame(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.ResetForNewFrame(new IntPtr(__instancePtr));
+                    __Internal32.ResetForNewFrame(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -11757,13 +11757,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ClearFreeMemory(new IntPtr(__instancePtr));
+                    __Internal64.ClearFreeMemory(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.ClearFreeMemory(new IntPtr(__instancePtr));
+                    __Internal32.ClearFreeMemory(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -11774,13 +11774,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PopUnusedDrawCmd(new IntPtr(__instancePtr));
+                    __Internal64.PopUnusedDrawCmd(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.PopUnusedDrawCmd(new IntPtr(__instancePtr));
+                    __Internal32.PopUnusedDrawCmd(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -11791,13 +11791,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.TryMergeDrawCmds(new IntPtr(__instancePtr));
+                    __Internal64.TryMergeDrawCmds(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.TryMergeDrawCmds(new IntPtr(__instancePtr));
+                    __Internal32.TryMergeDrawCmds(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -11808,13 +11808,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.OnChangedClipRect(new IntPtr(__instancePtr));
+                    __Internal64.OnChangedClipRect(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.OnChangedClipRect(new IntPtr(__instancePtr));
+                    __Internal32.OnChangedClipRect(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -11825,13 +11825,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.OnChangedTextureID(new IntPtr(__instancePtr));
+                    __Internal64.OnChangedTextureID(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.OnChangedTextureID(new IntPtr(__instancePtr));
+                    __Internal32.OnChangedTextureID(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -11842,13 +11842,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.OnChangedVtxOffset(new IntPtr(__instancePtr));
+                    __Internal64.OnChangedVtxOffset(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.OnChangedVtxOffset(new IntPtr(__instancePtr));
+                    __Internal32.OnChangedVtxOffset(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -11859,7 +11859,7 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.CalcCircleAutoSegmentCount(new IntPtr(__instancePtr), radius) : __Internal64.CalcCircleAutoSegmentCount(new IntPtr(__instancePtr), radius);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.CalcCircleAutoSegmentCount(new IntPtr(__instancePtr), radius) : __Internal64.CalcCircleAutoSegmentCount(new IntPtr(__instancePtr), radius);
                 return ___ret;
             }
         }
@@ -11874,13 +11874,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathArcToFastEx(new IntPtr(__instancePtr), __arg0, radius, a_min_sample, a_max_sample, a_step);
+                    __Internal64.PathArcToFastEx(new IntPtr(__instancePtr), __arg0, radius, a_min_sample, a_max_sample, a_step);
                 }
                 else
                 {
-                    __Internal64.PathArcToFastEx(new IntPtr(__instancePtr), __arg0, radius, a_min_sample, a_max_sample, a_step);
+                    __Internal32.PathArcToFastEx(new IntPtr(__instancePtr), __arg0, radius, a_min_sample, a_max_sample, a_step);
                 }
             }
         }
@@ -11895,13 +11895,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PathArcToN(new IntPtr(__instancePtr), __arg0, radius, a_min, a_max, num_segments);
+                    __Internal64.PathArcToN(new IntPtr(__instancePtr), __arg0, radius, a_min, a_max, num_segments);
                 }
                 else
                 {
-                    __Internal64.PathArcToN(new IntPtr(__instancePtr), __arg0, radius, a_min, a_max, num_segments);
+                    __Internal32.PathArcToN(new IntPtr(__instancePtr), __arg0, radius, a_min, a_max, num_segments);
                 }
             }
         }
@@ -12102,13 +12102,13 @@ namespace DearImGui
             var __arg0 = new IntPtr(&____arg0);
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -12119,13 +12119,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.Clear(new IntPtr(__instancePtr));
+                    __Internal64.Clear(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.Clear(new IntPtr(__instancePtr));
+                    __Internal32.Clear(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -12136,13 +12136,13 @@ namespace DearImGui
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.DeIndexAllBuffers(new IntPtr(__instancePtr));
+                    __Internal64.DeIndexAllBuffers(new IntPtr(__instancePtr));
                 }
                 else
                 {
-                    __Internal64.DeIndexAllBuffers(new IntPtr(__instancePtr));
+                    __Internal32.DeIndexAllBuffers(new IntPtr(__instancePtr));
                 }
             }
         }
@@ -12157,13 +12157,13 @@ namespace DearImGui
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ScaleClipRects(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.ScaleClipRects(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.ScaleClipRects(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.ScaleClipRects(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -12362,13 +12362,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImFontConfig.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -12382,13 +12382,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -12809,13 +12809,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -13127,13 +13127,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImFontGlyphRangesBuilder.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -13147,13 +13147,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -13178,13 +13178,13 @@ namespace DearImGui
             NativeToManagedMap.TryRemove(__Instance, out _);
             DisposePartial(disposing);
             if (callNativeDtor)
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.dtor(__Instance);
+                    __Internal64.dtor(__Instance);
                 }
                 else
                 {
-                    __Internal64.dtor(__Instance);
+                    __Internal32.dtor(__Instance);
                 }
 
             if (__ownsNativeInstance)
@@ -13196,13 +13196,13 @@ namespace DearImGui
         // DEBUG: inline void     Clear()                 { int size_in_bytes = (IM_UNICODE_CODEPOINT_MAX + 1) / 8; UsedChars.resize(size_in_bytes / (int)sizeof(ImU32)); memset(UsedChars.Data, 0, (size_t)size_in_bytes); }
         public void Clear()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Clear(__Instance);
+                __Internal64.Clear(__Instance);
             }
             else
             {
-                __Internal64.Clear(__Instance);
+                __Internal32.Clear(__Instance);
             }
         }
 
@@ -13213,7 +13213,7 @@ namespace DearImGui
             var __arg0 = n
             /* DEBUG: TypeMapSizeT.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetBit(__Instance, __arg0) : __Internal64.GetBit(__Instance, __arg0);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetBit(__Instance, __arg0) : __Internal64.GetBit(__Instance, __arg0);
             return ___ret;
         }
 
@@ -13224,13 +13224,13 @@ namespace DearImGui
             var __arg0 = n
             /* DEBUG: TypeMapSizeT.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetBit(__Instance, __arg0);
+                __Internal64.SetBit(__Instance, __arg0);
             }
             else
             {
-                __Internal64.SetBit(__Instance, __arg0);
+                __Internal32.SetBit(__Instance, __arg0);
             }
         }
 
@@ -13238,13 +13238,13 @@ namespace DearImGui
         // DEBUG: inline void     AddChar(ImWchar c)      { SetBit(c); }
         public void AddChar(ushort c)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddChar(__Instance, c);
+                __Internal64.AddChar(__Instance, c);
             }
             else
             {
-                __Internal64.AddChar(__Instance, c);
+                __Internal32.AddChar(__Instance, c);
             }
         }
 
@@ -13252,13 +13252,13 @@ namespace DearImGui
         // DEBUG: void  AddText(const char* text, const char* text_end = NULL)
         public void AddText(string text, string text_end = default)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddText(__Instance, text, text_end);
+                __Internal64.AddText(__Instance, text, text_end);
             }
             else
             {
-                __Internal64.AddText(__Instance, text, text_end);
+                __Internal32.AddText(__Instance, text, text_end);
             }
         }
 
@@ -13269,13 +13269,13 @@ namespace DearImGui
             fixed (ushort* __ranges0 = &ranges)
             {
                 var __arg0 = __ranges0;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.AddRanges(__Instance, __arg0);
+                    __Internal64.AddRanges(__Instance, __arg0);
                 }
                 else
                 {
-                    __Internal64.AddRanges(__Instance, __arg0);
+                    __Internal32.AddRanges(__Instance, __arg0);
                 }
             }
         }
@@ -13287,13 +13287,13 @@ namespace DearImGui
             var __arg0 = new IntPtr(Unsafe.AsPointer(ref out_ranges))
             /* DEBUG: TypeMapImVector.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.BuildRanges(__Instance, __arg0);
+                __Internal64.BuildRanges(__Instance, __arg0);
             }
             else
             {
-                __Internal64.BuildRanges(__Instance, __arg0);
+                __Internal32.BuildRanges(__Instance, __arg0);
             }
         }
 
@@ -13428,13 +13428,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImFontAtlasCustomRect.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -13448,13 +13448,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -13964,13 +13964,13 @@ namespace DearImGui
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                ImFontAtlas.__Internal32.cctor(ret, new IntPtr(&native));
+                ImFontAtlas.__Internal64.cctor(ret, new IntPtr(&native));
             }
             else
             {
-                ImFontAtlas.__Internal64.cctor(ret, new IntPtr(&native));
+                ImFontAtlas.__Internal32.cctor(ret, new IntPtr(&native));
             }
 
             return ret.ToPointer();
@@ -13996,13 +13996,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImFontAtlas.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -14016,13 +14016,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.cctor(__Instance, __arg0);
+                __Internal64.cctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.cctor(__Instance, __arg0);
+                __Internal32.cctor(__Instance, __arg0);
             }
         }
 
@@ -14047,13 +14047,13 @@ namespace DearImGui
             NativeToManagedMap.TryRemove(__Instance, out _);
             DisposePartial(disposing);
             if (callNativeDtor)
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.dtor(__Instance);
+                    __Internal64.dtor(__Instance);
                 }
                 else
                 {
-                    __Internal64.dtor(__Instance);
+                    __Internal32.dtor(__Instance);
                 }
 
             if (__ownsNativeInstance)
@@ -14066,7 +14066,7 @@ namespace DearImGui
         public ImFont AddFont(ImFontConfig font_cfg)
         {
             var __arg0 = font_cfg is null ? IntPtr.Zero : font_cfg.__Instance;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.AddFont(__Instance, __arg0) : __Internal64.AddFont(__Instance, __arg0);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.AddFont(__Instance, __arg0) : __Internal64.AddFont(__Instance, __arg0);
             var __result0 = ImFont.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -14076,7 +14076,7 @@ namespace DearImGui
         public ImFont AddFontDefault(ImFontConfig font_cfg = default)
         {
             var __arg0 = font_cfg is null ? IntPtr.Zero : font_cfg.__Instance;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.AddFontDefault(__Instance, __arg0) : __Internal64.AddFontDefault(__Instance, __arg0);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.AddFontDefault(__Instance, __arg0) : __Internal64.AddFontDefault(__Instance, __arg0);
             var __result0 = ImFont.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -14089,7 +14089,7 @@ namespace DearImGui
             fixed (ushort* __glyph_ranges3 = &glyph_ranges)
             {
                 var __arg3 = __glyph_ranges3;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.AddFontFromFileTTF(__Instance, filename, size_pixels, __arg2, __arg3) : __Internal64.AddFontFromFileTTF(__Instance, filename, size_pixels, __arg2, __arg3);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.AddFontFromFileTTF(__Instance, filename, size_pixels, __arg2, __arg3) : __Internal64.AddFontFromFileTTF(__Instance, filename, size_pixels, __arg2, __arg3);
                 var __result0 = ImFont.__GetOrCreateInstance(___ret, false);
                 return __result0;
             }
@@ -14103,7 +14103,7 @@ namespace DearImGui
             fixed (ushort* __glyph_ranges4 = &glyph_ranges)
             {
                 var __arg4 = __glyph_ranges4;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.AddFontFromMemoryTTF(__Instance, font_data, font_size, size_pixels, __arg3, __arg4) : __Internal64.AddFontFromMemoryTTF(__Instance, font_data, font_size, size_pixels, __arg3, __arg4);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.AddFontFromMemoryTTF(__Instance, font_data, font_size, size_pixels, __arg3, __arg4) : __Internal64.AddFontFromMemoryTTF(__Instance, font_data, font_size, size_pixels, __arg3, __arg4);
                 var __result0 = ImFont.__GetOrCreateInstance(___ret, false);
                 return __result0;
             }
@@ -14117,7 +14117,7 @@ namespace DearImGui
             fixed (ushort* __glyph_ranges4 = &glyph_ranges)
             {
                 var __arg4 = __glyph_ranges4;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.AddFontFromMemoryCompressedTTF(__Instance, compressed_font_data, compressed_font_size, size_pixels, __arg3, __arg4) : __Internal64.AddFontFromMemoryCompressedTTF(__Instance, compressed_font_data, compressed_font_size, size_pixels, __arg3, __arg4);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.AddFontFromMemoryCompressedTTF(__Instance, compressed_font_data, compressed_font_size, size_pixels, __arg3, __arg4) : __Internal64.AddFontFromMemoryCompressedTTF(__Instance, compressed_font_data, compressed_font_size, size_pixels, __arg3, __arg4);
                 var __result0 = ImFont.__GetOrCreateInstance(___ret, false);
                 return __result0;
             }
@@ -14131,7 +14131,7 @@ namespace DearImGui
             fixed (ushort* __glyph_ranges3 = &glyph_ranges)
             {
                 var __arg3 = __glyph_ranges3;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.AddFontFromMemoryCompressedBase85TTF(__Instance, compressed_font_data_base85, size_pixels, __arg2, __arg3) : __Internal64.AddFontFromMemoryCompressedBase85TTF(__Instance, compressed_font_data_base85, size_pixels, __arg2, __arg3);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.AddFontFromMemoryCompressedBase85TTF(__Instance, compressed_font_data_base85, size_pixels, __arg2, __arg3) : __Internal64.AddFontFromMemoryCompressedBase85TTF(__Instance, compressed_font_data_base85, size_pixels, __arg2, __arg3);
                 var __result0 = ImFont.__GetOrCreateInstance(___ret, false);
                 return __result0;
             }
@@ -14141,13 +14141,13 @@ namespace DearImGui
         // DEBUG: void              ClearInputData()
         public void ClearInputData()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ClearInputData(__Instance);
+                __Internal64.ClearInputData(__Instance);
             }
             else
             {
-                __Internal64.ClearInputData(__Instance);
+                __Internal32.ClearInputData(__Instance);
             }
         }
 
@@ -14155,13 +14155,13 @@ namespace DearImGui
         // DEBUG: void              ClearTexData()
         public void ClearTexData()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ClearTexData(__Instance);
+                __Internal64.ClearTexData(__Instance);
             }
             else
             {
-                __Internal64.ClearTexData(__Instance);
+                __Internal32.ClearTexData(__Instance);
             }
         }
 
@@ -14169,13 +14169,13 @@ namespace DearImGui
         // DEBUG: void              ClearFonts()
         public void ClearFonts()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ClearFonts(__Instance);
+                __Internal64.ClearFonts(__Instance);
             }
             else
             {
-                __Internal64.ClearFonts(__Instance);
+                __Internal32.ClearFonts(__Instance);
             }
         }
 
@@ -14183,13 +14183,13 @@ namespace DearImGui
         // DEBUG: void              Clear()
         public void Clear()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Clear(__Instance);
+                __Internal64.Clear(__Instance);
             }
             else
             {
-                __Internal64.Clear(__Instance);
+                __Internal32.Clear(__Instance);
             }
         }
 
@@ -14197,7 +14197,7 @@ namespace DearImGui
         // DEBUG: bool              Build()
         public bool Build()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.Build(__Instance) : __Internal64.Build(__Instance);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.Build(__Instance) : __Internal64.Build(__Instance);
             return ___ret;
         }
 
@@ -14214,13 +14214,13 @@ namespace DearImGui
                     fixed (int* __out_bytes_per_pixel3 = &out_bytes_per_pixel)
                     {
                         var __arg3 = __out_bytes_per_pixel3;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.GetTexDataAsAlpha8(__Instance, out_pixels, __arg1, __arg2, __arg3);
+                            __Internal64.GetTexDataAsAlpha8(__Instance, out_pixels, __arg1, __arg2, __arg3);
                         }
                         else
                         {
-                            __Internal64.GetTexDataAsAlpha8(__Instance, out_pixels, __arg1, __arg2, __arg3);
+                            __Internal32.GetTexDataAsAlpha8(__Instance, out_pixels, __arg1, __arg2, __arg3);
                         }
                     }
                 }
@@ -14240,13 +14240,13 @@ namespace DearImGui
                     fixed (int* __out_bytes_per_pixel3 = &out_bytes_per_pixel)
                     {
                         var __arg3 = __out_bytes_per_pixel3;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.GetTexDataAsRGBA32(__Instance, out_pixels, __arg1, __arg2, __arg3);
+                            __Internal64.GetTexDataAsRGBA32(__Instance, out_pixels, __arg1, __arg2, __arg3);
                         }
                         else
                         {
-                            __Internal64.GetTexDataAsRGBA32(__Instance, out_pixels, __arg1, __arg2, __arg3);
+                            __Internal32.GetTexDataAsRGBA32(__Instance, out_pixels, __arg1, __arg2, __arg3);
                         }
                     }
                 }
@@ -14257,7 +14257,7 @@ namespace DearImGui
         // DEBUG: int               AddCustomRectRegular(int width, int height)
         public int AddCustomRectRegular(int width, int height)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.AddCustomRectRegular(__Instance, width, height) : __Internal64.AddCustomRectRegular(__Instance, width, height);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.AddCustomRectRegular(__Instance, width, height) : __Internal64.AddCustomRectRegular(__Instance, width, height);
             return ___ret;
         }
 
@@ -14270,7 +14270,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.AddCustomRectFontGlyph(__Instance, __arg0, id, width, height, advance_x, __arg5) : __Internal64.AddCustomRectFontGlyph(__Instance, __arg0, id, width, height, advance_x, __arg5);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.AddCustomRectFontGlyph(__Instance, __arg0, id, width, height, advance_x, __arg5) : __Internal64.AddCustomRectFontGlyph(__Instance, __arg0, id, width, height, advance_x, __arg5);
             return ___ret;
         }
 
@@ -14278,7 +14278,7 @@ namespace DearImGui
         // DEBUG: ImFontAtlasCustomRect*      GetCustomRectByIndex(int index) { IM_ASSERT(index >= 0); return &CustomRects[index]; }
         public ImFontAtlasCustomRect GetCustomRectByIndex(int index)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetCustomRectByIndex(__Instance, index) : __Internal64.GetCustomRectByIndex(__Instance, index);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetCustomRectByIndex(__Instance, index) : __Internal64.GetCustomRectByIndex(__Instance, index);
             var __result0 = ImFontAtlasCustomRect.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -14296,13 +14296,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 6 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.CalcCustomRectUV(__Instance, __arg0, __arg1, __arg2);
+                __Internal64.CalcCustomRectUV(__Instance, __arg0, __arg1, __arg2);
             }
             else
             {
-                __Internal64.CalcCustomRectUV(__Instance, __arg0, __arg1, __arg2);
+                __Internal32.CalcCustomRectUV(__Instance, __arg0, __arg1, __arg2);
             }
         }
 
@@ -14354,7 +14354,7 @@ namespace DearImGui
                 fixed (Vector2* ____out_uv_fill4 = &MemoryMarshal.GetReference(__out_uv_fill))
                 {
                     var __arg4 = ____out_uv_fill4;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.GetMouseCursorTexData(__Instance, cursor, __arg1, __arg2, __arg3, __arg4) : __Internal64.GetMouseCursorTexData(__Instance, cursor, __arg1, __arg2, __arg3, __arg4);
+                    var ___ret = Environment.Is64BitProcess ? __Internal32.GetMouseCursorTexData(__Instance, cursor, __arg1, __arg2, __arg3, __arg4) : __Internal64.GetMouseCursorTexData(__Instance, cursor, __arg1, __arg2, __arg3, __arg4);
                     return ___ret;
                 }
             }
@@ -14699,7 +14699,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.GetGlyphRangesDefault(__Instance) : __Internal64.GetGlyphRangesDefault(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.GetGlyphRangesDefault(__Instance) : __Internal64.GetGlyphRangesDefault(__Instance);
                 return ___ret;
             }
         }
@@ -14709,7 +14709,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.GetGlyphRangesKorean(__Instance) : __Internal64.GetGlyphRangesKorean(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.GetGlyphRangesKorean(__Instance) : __Internal64.GetGlyphRangesKorean(__Instance);
                 return ___ret;
             }
         }
@@ -14719,7 +14719,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.GetGlyphRangesJapanese(__Instance) : __Internal64.GetGlyphRangesJapanese(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.GetGlyphRangesJapanese(__Instance) : __Internal64.GetGlyphRangesJapanese(__Instance);
                 return ___ret;
             }
         }
@@ -14729,7 +14729,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.GetGlyphRangesChineseFull(__Instance) : __Internal64.GetGlyphRangesChineseFull(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.GetGlyphRangesChineseFull(__Instance) : __Internal64.GetGlyphRangesChineseFull(__Instance);
                 return ___ret;
             }
         }
@@ -14739,7 +14739,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.GetGlyphRangesChineseSimplifiedCommon(__Instance) : __Internal64.GetGlyphRangesChineseSimplifiedCommon(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.GetGlyphRangesChineseSimplifiedCommon(__Instance) : __Internal64.GetGlyphRangesChineseSimplifiedCommon(__Instance);
                 return ___ret;
             }
         }
@@ -14749,7 +14749,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.GetGlyphRangesCyrillic(__Instance) : __Internal64.GetGlyphRangesCyrillic(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.GetGlyphRangesCyrillic(__Instance) : __Internal64.GetGlyphRangesCyrillic(__Instance);
                 return ___ret;
             }
         }
@@ -14759,7 +14759,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.GetGlyphRangesThai(__Instance) : __Internal64.GetGlyphRangesThai(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.GetGlyphRangesThai(__Instance) : __Internal64.GetGlyphRangesThai(__Instance);
                 return ___ret;
             }
         }
@@ -14769,7 +14769,7 @@ namespace DearImGui
         {
             get
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.GetGlyphRangesVietnamese(__Instance) : __Internal64.GetGlyphRangesVietnamese(__Instance);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.GetGlyphRangesVietnamese(__Instance) : __Internal64.GetGlyphRangesVietnamese(__Instance);
                 return ___ret;
             }
         }
@@ -15003,13 +15003,13 @@ namespace DearImGui
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                ImFont.__Internal32.cctor(ret, new IntPtr(&native));
+                ImFont.__Internal64.cctor(ret, new IntPtr(&native));
             }
             else
             {
-                ImFont.__Internal64.cctor(ret, new IntPtr(&native));
+                ImFont.__Internal32.cctor(ret, new IntPtr(&native));
             }
 
             return ret.ToPointer();
@@ -15035,13 +15035,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImFont.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -15055,13 +15055,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.cctor(__Instance, __arg0);
+                __Internal64.cctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.cctor(__Instance, __arg0);
+                __Internal32.cctor(__Instance, __arg0);
             }
         }
 
@@ -15086,13 +15086,13 @@ namespace DearImGui
             NativeToManagedMap.TryRemove(__Instance, out _);
             DisposePartial(disposing);
             if (callNativeDtor)
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.dtor(__Instance);
+                    __Internal64.dtor(__Instance);
                 }
                 else
                 {
-                    __Internal64.dtor(__Instance);
+                    __Internal32.dtor(__Instance);
                 }
 
             if (__ownsNativeInstance)
@@ -15104,7 +15104,7 @@ namespace DearImGui
         // DEBUG: const ImFontGlyph*FindGlyph(ImWchar c) const
         public ImFontGlyph FindGlyph(ushort c)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.FindGlyph(__Instance, c) : __Internal64.FindGlyph(__Instance, c);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.FindGlyph(__Instance, c) : __Internal64.FindGlyph(__Instance, c);
             var __result0 = ImFontGlyph.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -15113,7 +15113,7 @@ namespace DearImGui
         // DEBUG: const ImFontGlyph*FindGlyphNoFallback(ImWchar c) const
         public ImFontGlyph FindGlyphNoFallback(ushort c)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.FindGlyphNoFallback(__Instance, c) : __Internal64.FindGlyphNoFallback(__Instance, c);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.FindGlyphNoFallback(__Instance, c) : __Internal64.FindGlyphNoFallback(__Instance, c);
             var __result0 = ImFontGlyph.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -15122,7 +15122,7 @@ namespace DearImGui
         // DEBUG: float                       GetCharAdvance(ImWchar c) const     { return ((int)c < IndexAdvanceX.Size) ? IndexAdvanceX[(int)c] : FallbackAdvanceX; }
         public float GetCharAdvance(ushort c)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetCharAdvance(__Instance, c) : __Internal64.GetCharAdvance(__Instance, c);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetCharAdvance(__Instance, c) : __Internal64.GetCharAdvance(__Instance, c);
             return ___ret;
         }
 
@@ -15132,13 +15132,13 @@ namespace DearImGui
         {
             var __arg5 = (sbyte**)&remaining;
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.CalcTextSizeA(__Instance, new IntPtr(&___ret), size, max_width, wrap_width, text_begin, text_end, __arg5);
+                __Internal64.CalcTextSizeA(__Instance, new IntPtr(&___ret), size, max_width, wrap_width, text_begin, text_end, __arg5);
             }
             else
             {
-                __Internal64.CalcTextSizeA(__Instance, new IntPtr(&___ret), size, max_width, wrap_width, text_begin, text_end, __arg5);
+                __Internal32.CalcTextSizeA(__Instance, new IntPtr(&___ret), size, max_width, wrap_width, text_begin, text_end, __arg5);
             }
 
             return ___ret
@@ -15151,7 +15151,7 @@ namespace DearImGui
         // DEBUG: const char*       CalcWordWrapPositionA(float scale, const char* text, const char* text_end, float wrap_width) const
         public string CalcWordWrapPositionA(float scale, string text, string text_end, float wrap_width)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.CalcWordWrapPositionA(__Instance, scale, text, text_end, wrap_width) : __Internal64.CalcWordWrapPositionA(__Instance, scale, text, text_end, wrap_width);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.CalcWordWrapPositionA(__Instance, scale, text, text_end, wrap_width) : __Internal64.CalcWordWrapPositionA(__Instance, scale, text, text_end, wrap_width);
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
@@ -15165,13 +15165,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.RenderChar(__Instance, __arg0, size, __arg2, col, c);
+                __Internal64.RenderChar(__Instance, __arg0, size, __arg2, col, c);
             }
             else
             {
-                __Internal64.RenderChar(__Instance, __arg0, size, __arg2, col, c);
+                __Internal32.RenderChar(__Instance, __arg0, size, __arg2, col, c);
             }
         }
 
@@ -15189,13 +15189,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.RenderText(__Instance, __arg0, size, __arg2, col, __arg4, text_begin, text_end, wrap_width, cpu_fine_clip);
+                __Internal64.RenderText(__Instance, __arg0, size, __arg2, col, __arg4, text_begin, text_end, wrap_width, cpu_fine_clip);
             }
             else
             {
-                __Internal64.RenderText(__Instance, __arg0, size, __arg2, col, __arg4, text_begin, text_end, wrap_width, cpu_fine_clip);
+                __Internal32.RenderText(__Instance, __arg0, size, __arg2, col, __arg4, text_begin, text_end, wrap_width, cpu_fine_clip);
             }
         }
 
@@ -15203,13 +15203,13 @@ namespace DearImGui
         // DEBUG: void              BuildLookupTable()
         public void BuildLookupTable()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.BuildLookupTable(__Instance);
+                __Internal64.BuildLookupTable(__Instance);
             }
             else
             {
-                __Internal64.BuildLookupTable(__Instance);
+                __Internal32.BuildLookupTable(__Instance);
             }
         }
 
@@ -15217,13 +15217,13 @@ namespace DearImGui
         // DEBUG: void              ClearOutputData()
         public void ClearOutputData()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ClearOutputData(__Instance);
+                __Internal64.ClearOutputData(__Instance);
             }
             else
             {
-                __Internal64.ClearOutputData(__Instance);
+                __Internal32.ClearOutputData(__Instance);
             }
         }
 
@@ -15231,13 +15231,13 @@ namespace DearImGui
         // DEBUG: void              GrowIndex(int new_size)
         public void GrowIndex(int new_size)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GrowIndex(__Instance, new_size);
+                __Internal64.GrowIndex(__Instance, new_size);
             }
             else
             {
-                __Internal64.GrowIndex(__Instance, new_size);
+                __Internal32.GrowIndex(__Instance, new_size);
             }
         }
 
@@ -15246,13 +15246,13 @@ namespace DearImGui
         public void AddGlyph(ImFontConfig src_cfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advance_x)
         {
             var __arg0 = src_cfg is null ? IntPtr.Zero : src_cfg.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddGlyph(__Instance, __arg0, c, x0, y0, x1, y1, u0, v0, u1, v1, advance_x);
+                __Internal64.AddGlyph(__Instance, __arg0, c, x0, y0, x1, y1, u0, v0, u1, v1, advance_x);
             }
             else
             {
-                __Internal64.AddGlyph(__Instance, __arg0, c, x0, y0, x1, y1, u0, v0, u1, v1, advance_x);
+                __Internal32.AddGlyph(__Instance, __arg0, c, x0, y0, x1, y1, u0, v0, u1, v1, advance_x);
             }
         }
 
@@ -15260,13 +15260,13 @@ namespace DearImGui
         // DEBUG: void              AddRemapChar(ImWchar dst, ImWchar src, bool overwrite_dst = true)
         public void AddRemapChar(ushort dst, ushort src, bool overwrite_dst = true)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AddRemapChar(__Instance, dst, src, overwrite_dst);
+                __Internal64.AddRemapChar(__Instance, dst, src, overwrite_dst);
             }
             else
             {
-                __Internal64.AddRemapChar(__Instance, dst, src, overwrite_dst);
+                __Internal32.AddRemapChar(__Instance, dst, src, overwrite_dst);
             }
         }
 
@@ -15274,13 +15274,13 @@ namespace DearImGui
         // DEBUG: void              SetGlyphVisible(ImWchar c, bool visible)
         public void SetGlyphVisible(ushort c, bool visible)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetGlyphVisible(__Instance, c, visible);
+                __Internal64.SetGlyphVisible(__Instance, c, visible);
             }
             else
             {
-                __Internal64.SetGlyphVisible(__Instance, c, visible);
+                __Internal32.SetGlyphVisible(__Instance, c, visible);
             }
         }
 
@@ -15288,7 +15288,7 @@ namespace DearImGui
         // DEBUG: bool              IsGlyphRangeUnused(unsigned int c_begin, unsigned int c_last)
         public bool IsGlyphRangeUnused(uint c_begin, uint c_last)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsGlyphRangeUnused(__Instance, c_begin, c_last) : __Internal64.IsGlyphRangeUnused(__Instance, c_begin, c_last);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsGlyphRangeUnused(__Instance, c_begin, c_last) : __Internal64.IsGlyphRangeUnused(__Instance, c_begin, c_last);
             return ___ret;
         }
 
@@ -15660,13 +15660,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiViewport.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -15680,13 +15680,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -15829,13 +15829,13 @@ namespace DearImGui
             get
             {
                 var ___ret = new Vector2();
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.GetCenter(__Instance, new IntPtr(&___ret));
+                    __Internal64.GetCenter(__Instance, new IntPtr(&___ret));
                 }
                 else
                 {
-                    __Internal64.GetCenter(__Instance, new IntPtr(&___ret));
+                    __Internal32.GetCenter(__Instance, new IntPtr(&___ret));
                 }
 
                 return ___ret
@@ -15851,13 +15851,13 @@ namespace DearImGui
             get
             {
                 var ___ret = new Vector2();
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.GetWorkCenter(__Instance, new IntPtr(&___ret));
+                    __Internal64.GetWorkCenter(__Instance, new IntPtr(&___ret));
                 }
                 else
                 {
-                    __Internal64.GetWorkCenter(__Instance, new IntPtr(&___ret));
+                    __Internal32.GetWorkCenter(__Instance, new IntPtr(&___ret));
                 }
 
                 return ___ret
@@ -15971,13 +15971,13 @@ namespace DearImGui
             __Instance = Marshal.AllocHGlobal(sizeof(ImGuiPlatformImeData.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -15991,13 +15991,13 @@ namespace DearImGui
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -18608,7 +18608,7 @@ namespace DearImGui
         public static IntPtr CreateContext(ImFontAtlas shared_font_atlas = default)
         {
             var __arg0 = shared_font_atlas is null ? IntPtr.Zero : shared_font_atlas.__Instance;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.CreateContext(__arg0) : __Internal64.CreateContext(__arg0);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.CreateContext(__arg0) : __Internal64.CreateContext(__arg0);
             return ___ret
             /* DEBUG: TypeMapContext.CSharpMarshalToManaged: Function: True, ReturnVarName: True */
             ;
@@ -18621,13 +18621,13 @@ namespace DearImGui
             var __arg0 = ctx
             /* DEBUG: TypeMapContext.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.DestroyContext(__arg0);
+                __Internal64.DestroyContext(__arg0);
             }
             else
             {
-                __Internal64.DestroyContext(__arg0);
+                __Internal32.DestroyContext(__arg0);
             }
         }
 
@@ -18635,7 +18635,7 @@ namespace DearImGui
         // DEBUG: ImGuiContext* GetCurrentContext()
         public static IntPtr GetCurrentContext()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetCurrentContext() : __Internal64.GetCurrentContext();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetCurrentContext() : __Internal64.GetCurrentContext();
             return ___ret
             /* DEBUG: TypeMapContext.CSharpMarshalToManaged: Function: True, ReturnVarName: True */
             ;
@@ -18648,13 +18648,13 @@ namespace DearImGui
             var __arg0 = ctx
             /* DEBUG: TypeMapContext.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetCurrentContext(__arg0);
+                __Internal64.SetCurrentContext(__arg0);
             }
             else
             {
-                __Internal64.SetCurrentContext(__arg0);
+                __Internal32.SetCurrentContext(__arg0);
             }
         }
 
@@ -18662,7 +18662,7 @@ namespace DearImGui
         // DEBUG: ImGuiIO&      GetIO()
         public static ImGuiIO GetIO()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetIO() : __Internal64.GetIO();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetIO() : __Internal64.GetIO();
             var __result0 = ImGuiIO.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -18671,7 +18671,7 @@ namespace DearImGui
         // DEBUG: ImGuiStyle&   GetStyle()
         public static ImGuiStyle GetStyle()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetStyle() : __Internal64.GetStyle();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetStyle() : __Internal64.GetStyle();
             var __result0 = ImGuiStyle.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -18680,13 +18680,13 @@ namespace DearImGui
         // DEBUG: void          NewFrame()
         public static void NewFrame()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.NewFrame();
+                __Internal64.NewFrame();
             }
             else
             {
-                __Internal64.NewFrame();
+                __Internal32.NewFrame();
             }
         }
 
@@ -18694,13 +18694,13 @@ namespace DearImGui
         // DEBUG: void          EndFrame()
         public static void EndFrame()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndFrame();
+                __Internal64.EndFrame();
             }
             else
             {
-                __Internal64.EndFrame();
+                __Internal32.EndFrame();
             }
         }
 
@@ -18708,13 +18708,13 @@ namespace DearImGui
         // DEBUG: void          Render()
         public static void Render()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Render();
+                __Internal64.Render();
             }
             else
             {
-                __Internal64.Render();
+                __Internal32.Render();
             }
         }
 
@@ -18722,7 +18722,7 @@ namespace DearImGui
         // DEBUG: ImDrawData*   GetDrawData()
         public static ImDrawData GetDrawData()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetDrawData() : __Internal64.GetDrawData();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetDrawData() : __Internal64.GetDrawData();
             var __result0 = ___ret != IntPtr.Zero ? ImDrawData.__CreateInstance(___ret) : default;
             return __result0;
         }
@@ -18734,13 +18734,13 @@ namespace DearImGui
             fixed (bool* __p_open0 = &p_open)
             {
                 var __arg0 = __p_open0;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ShowDemoWindow(__arg0);
+                    __Internal64.ShowDemoWindow(__arg0);
                 }
                 else
                 {
-                    __Internal64.ShowDemoWindow(__arg0);
+                    __Internal32.ShowDemoWindow(__arg0);
                 }
             }
         }
@@ -18752,13 +18752,13 @@ namespace DearImGui
             fixed (bool* __p_open0 = &p_open)
             {
                 var __arg0 = __p_open0;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ShowMetricsWindow(__arg0);
+                    __Internal64.ShowMetricsWindow(__arg0);
                 }
                 else
                 {
-                    __Internal64.ShowMetricsWindow(__arg0);
+                    __Internal32.ShowMetricsWindow(__arg0);
                 }
             }
         }
@@ -18770,13 +18770,13 @@ namespace DearImGui
             fixed (bool* __p_open0 = &p_open)
             {
                 var __arg0 = __p_open0;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ShowDebugLogWindow(__arg0);
+                    __Internal64.ShowDebugLogWindow(__arg0);
                 }
                 else
                 {
-                    __Internal64.ShowDebugLogWindow(__arg0);
+                    __Internal32.ShowDebugLogWindow(__arg0);
                 }
             }
         }
@@ -18788,13 +18788,13 @@ namespace DearImGui
             fixed (bool* __p_open0 = &p_open)
             {
                 var __arg0 = __p_open0;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ShowStackToolWindow(__arg0);
+                    __Internal64.ShowStackToolWindow(__arg0);
                 }
                 else
                 {
-                    __Internal64.ShowStackToolWindow(__arg0);
+                    __Internal32.ShowStackToolWindow(__arg0);
                 }
             }
         }
@@ -18806,13 +18806,13 @@ namespace DearImGui
             fixed (bool* __p_open0 = &p_open)
             {
                 var __arg0 = __p_open0;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ShowAboutWindow(__arg0);
+                    __Internal64.ShowAboutWindow(__arg0);
                 }
                 else
                 {
-                    __Internal64.ShowAboutWindow(__arg0);
+                    __Internal32.ShowAboutWindow(__arg0);
                 }
             }
         }
@@ -18822,13 +18822,13 @@ namespace DearImGui
         public static void ShowStyleEditor(ImGuiStyle @ref = default)
         {
             var __arg0 = @ref is null ? IntPtr.Zero : @ref.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ShowStyleEditor(__arg0);
+                __Internal64.ShowStyleEditor(__arg0);
             }
             else
             {
-                __Internal64.ShowStyleEditor(__arg0);
+                __Internal32.ShowStyleEditor(__arg0);
             }
         }
 
@@ -18836,7 +18836,7 @@ namespace DearImGui
         // DEBUG: bool          ShowStyleSelector(const char* label)
         public static bool ShowStyleSelector(string label)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.ShowStyleSelector(label) : __Internal64.ShowStyleSelector(label);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.ShowStyleSelector(label) : __Internal64.ShowStyleSelector(label);
             return ___ret;
         }
 
@@ -18844,13 +18844,13 @@ namespace DearImGui
         // DEBUG: void          ShowFontSelector(const char* label)
         public static void ShowFontSelector(string label)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ShowFontSelector(label);
+                __Internal64.ShowFontSelector(label);
             }
             else
             {
-                __Internal64.ShowFontSelector(label);
+                __Internal32.ShowFontSelector(label);
             }
         }
 
@@ -18858,13 +18858,13 @@ namespace DearImGui
         // DEBUG: void          ShowUserGuide()
         public static void ShowUserGuide()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ShowUserGuide();
+                __Internal64.ShowUserGuide();
             }
             else
             {
-                __Internal64.ShowUserGuide();
+                __Internal32.ShowUserGuide();
             }
         }
 
@@ -18872,7 +18872,7 @@ namespace DearImGui
         // DEBUG: const char*   GetVersion()
         public static string GetVersion()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetVersion() : __Internal64.GetVersion();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetVersion() : __Internal64.GetVersion();
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
@@ -18881,13 +18881,13 @@ namespace DearImGui
         public static void StyleColorsDark(ImGuiStyle dst = default)
         {
             var __arg0 = dst is null ? IntPtr.Zero : dst.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.StyleColorsDark(__arg0);
+                __Internal64.StyleColorsDark(__arg0);
             }
             else
             {
-                __Internal64.StyleColorsDark(__arg0);
+                __Internal32.StyleColorsDark(__arg0);
             }
         }
 
@@ -18896,13 +18896,13 @@ namespace DearImGui
         public static void StyleColorsLight(ImGuiStyle dst = default)
         {
             var __arg0 = dst is null ? IntPtr.Zero : dst.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.StyleColorsLight(__arg0);
+                __Internal64.StyleColorsLight(__arg0);
             }
             else
             {
-                __Internal64.StyleColorsLight(__arg0);
+                __Internal32.StyleColorsLight(__arg0);
             }
         }
 
@@ -18911,13 +18911,13 @@ namespace DearImGui
         public static void StyleColorsClassic(ImGuiStyle dst = default)
         {
             var __arg0 = dst is null ? IntPtr.Zero : dst.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.StyleColorsClassic(__arg0);
+                __Internal64.StyleColorsClassic(__arg0);
             }
             else
             {
-                __Internal64.StyleColorsClassic(__arg0);
+                __Internal32.StyleColorsClassic(__arg0);
             }
         }
 
@@ -18928,7 +18928,7 @@ namespace DearImGui
             fixed (bool* __p_open1 = &p_open)
             {
                 var __arg1 = __p_open1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Begin(name, __arg1, flags) : __Internal64.Begin(name, __arg1, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.Begin(name, __arg1, flags) : __Internal64.Begin(name, __arg1, flags);
                 return ___ret;
             }
         }
@@ -18937,13 +18937,13 @@ namespace DearImGui
         // DEBUG: void          End()
         public static void End()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.End();
+                __Internal64.End();
             }
             else
             {
-                __Internal64.End();
+                __Internal32.End();
             }
         }
 
@@ -18955,7 +18955,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginChild(str_id, __arg1, border, flags) : __Internal64.BeginChild(str_id, __arg1, border, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginChild(str_id, __arg1, border, flags) : __Internal64.BeginChild(str_id, __arg1, border, flags);
             return ___ret;
         }
 
@@ -18967,7 +18967,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginChild_1(id, __arg1, border, flags) : __Internal64.BeginChild_1(id, __arg1, border, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginChild_1(id, __arg1, border, flags) : __Internal64.BeginChild_1(id, __arg1, border, flags);
             return ___ret;
         }
 
@@ -18975,13 +18975,13 @@ namespace DearImGui
         // DEBUG: void          EndChild()
         public static void EndChild()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndChild();
+                __Internal64.EndChild();
             }
             else
             {
-                __Internal64.EndChild();
+                __Internal32.EndChild();
             }
         }
 
@@ -18989,7 +18989,7 @@ namespace DearImGui
         // DEBUG: bool          IsWindowAppearing()
         public static bool IsWindowAppearing()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsWindowAppearing() : __Internal64.IsWindowAppearing();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsWindowAppearing() : __Internal64.IsWindowAppearing();
             return ___ret;
         }
 
@@ -18997,7 +18997,7 @@ namespace DearImGui
         // DEBUG: bool          IsWindowCollapsed()
         public static bool IsWindowCollapsed()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsWindowCollapsed() : __Internal64.IsWindowCollapsed();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsWindowCollapsed() : __Internal64.IsWindowCollapsed();
             return ___ret;
         }
 
@@ -19005,7 +19005,7 @@ namespace DearImGui
         // DEBUG: bool          IsWindowFocused(ImGuiFocusedFlags flags=0)
         public static bool IsWindowFocused(ImGuiFocusedFlags flags = (ImGuiFocusedFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsWindowFocused(flags) : __Internal64.IsWindowFocused(flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsWindowFocused(flags) : __Internal64.IsWindowFocused(flags);
             return ___ret;
         }
 
@@ -19013,7 +19013,7 @@ namespace DearImGui
         // DEBUG: bool          IsWindowHovered(ImGuiHoveredFlags flags=0)
         public static bool IsWindowHovered(ImGuiHoveredFlags flags = (ImGuiHoveredFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsWindowHovered(flags) : __Internal64.IsWindowHovered(flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsWindowHovered(flags) : __Internal64.IsWindowHovered(flags);
             return ___ret;
         }
 
@@ -19021,7 +19021,7 @@ namespace DearImGui
         // DEBUG: ImDrawList*   GetWindowDrawList()
         public static ImDrawList GetWindowDrawList()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetWindowDrawList() : __Internal64.GetWindowDrawList();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetWindowDrawList() : __Internal64.GetWindowDrawList();
             var __result0 = ___ret != IntPtr.Zero ? ImDrawList.__CreateInstance(___ret) : default;
             return __result0;
         }
@@ -19031,13 +19031,13 @@ namespace DearImGui
         public static Vector2 GetWindowPos()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetWindowPos(new IntPtr(&___ret));
+                __Internal64.GetWindowPos(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetWindowPos(new IntPtr(&___ret));
+                __Internal32.GetWindowPos(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -19051,13 +19051,13 @@ namespace DearImGui
         public static Vector2 GetWindowSize()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetWindowSize(new IntPtr(&___ret));
+                __Internal64.GetWindowSize(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetWindowSize(new IntPtr(&___ret));
+                __Internal32.GetWindowSize(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -19070,7 +19070,7 @@ namespace DearImGui
         // DEBUG: float         GetWindowWidth()
         public static float GetWindowWidth()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetWindowWidth() : __Internal64.GetWindowWidth();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetWindowWidth() : __Internal64.GetWindowWidth();
             return ___ret;
         }
 
@@ -19078,7 +19078,7 @@ namespace DearImGui
         // DEBUG: float         GetWindowHeight()
         public static float GetWindowHeight()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetWindowHeight() : __Internal64.GetWindowHeight();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetWindowHeight() : __Internal64.GetWindowHeight();
             return ___ret;
         }
 
@@ -19094,13 +19094,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextWindowPos(__arg0, cond, __arg2);
+                __Internal64.SetNextWindowPos(__arg0, cond, __arg2);
             }
             else
             {
-                __Internal64.SetNextWindowPos(__arg0, cond, __arg2);
+                __Internal32.SetNextWindowPos(__arg0, cond, __arg2);
             }
         }
 
@@ -19112,13 +19112,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextWindowSize(__arg0, cond);
+                __Internal64.SetNextWindowSize(__arg0, cond);
             }
             else
             {
-                __Internal64.SetNextWindowSize(__arg0, cond);
+                __Internal32.SetNextWindowSize(__arg0, cond);
             }
         }
 
@@ -19135,13 +19135,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
             var __arg2 = custom_callback == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(custom_callback);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextWindowSizeConstraints(__arg0, __arg1, __arg2, custom_callback_data);
+                __Internal64.SetNextWindowSizeConstraints(__arg0, __arg1, __arg2, custom_callback_data);
             }
             else
             {
-                __Internal64.SetNextWindowSizeConstraints(__arg0, __arg1, __arg2, custom_callback_data);
+                __Internal32.SetNextWindowSizeConstraints(__arg0, __arg1, __arg2, custom_callback_data);
             }
         }
 
@@ -19153,13 +19153,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextWindowContentSize(__arg0);
+                __Internal64.SetNextWindowContentSize(__arg0);
             }
             else
             {
-                __Internal64.SetNextWindowContentSize(__arg0);
+                __Internal32.SetNextWindowContentSize(__arg0);
             }
         }
 
@@ -19167,13 +19167,13 @@ namespace DearImGui
         // DEBUG: void          SetNextWindowCollapsed(bool collapsed, ImGuiCond cond = 0)
         public static void SetNextWindowCollapsed(bool collapsed, ImGuiCond cond = (ImGuiCond)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextWindowCollapsed(collapsed, cond);
+                __Internal64.SetNextWindowCollapsed(collapsed, cond);
             }
             else
             {
-                __Internal64.SetNextWindowCollapsed(collapsed, cond);
+                __Internal32.SetNextWindowCollapsed(collapsed, cond);
             }
         }
 
@@ -19181,13 +19181,13 @@ namespace DearImGui
         // DEBUG: void          SetNextWindowFocus()
         public static void SetNextWindowFocus()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextWindowFocus();
+                __Internal64.SetNextWindowFocus();
             }
             else
             {
-                __Internal64.SetNextWindowFocus();
+                __Internal32.SetNextWindowFocus();
             }
         }
 
@@ -19195,13 +19195,13 @@ namespace DearImGui
         // DEBUG: void          SetNextWindowBgAlpha(float alpha)
         public static void SetNextWindowBgAlpha(float alpha)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextWindowBgAlpha(alpha);
+                __Internal64.SetNextWindowBgAlpha(alpha);
             }
             else
             {
-                __Internal64.SetNextWindowBgAlpha(alpha);
+                __Internal32.SetNextWindowBgAlpha(alpha);
             }
         }
 
@@ -19213,13 +19213,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetWindowPos(__arg0, cond);
+                __Internal64.SetWindowPos(__arg0, cond);
             }
             else
             {
-                __Internal64.SetWindowPos(__arg0, cond);
+                __Internal32.SetWindowPos(__arg0, cond);
             }
         }
 
@@ -19231,13 +19231,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetWindowSize(__arg0, cond);
+                __Internal64.SetWindowSize(__arg0, cond);
             }
             else
             {
-                __Internal64.SetWindowSize(__arg0, cond);
+                __Internal32.SetWindowSize(__arg0, cond);
             }
         }
 
@@ -19245,13 +19245,13 @@ namespace DearImGui
         // DEBUG: void          SetWindowCollapsed(bool collapsed, ImGuiCond cond = 0)
         public static void SetWindowCollapsed(bool collapsed, ImGuiCond cond = (ImGuiCond)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetWindowCollapsed(collapsed, cond);
+                __Internal64.SetWindowCollapsed(collapsed, cond);
             }
             else
             {
-                __Internal64.SetWindowCollapsed(collapsed, cond);
+                __Internal32.SetWindowCollapsed(collapsed, cond);
             }
         }
 
@@ -19259,13 +19259,13 @@ namespace DearImGui
         // DEBUG: void          SetWindowFocus()
         public static void SetWindowFocus()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetWindowFocus();
+                __Internal64.SetWindowFocus();
             }
             else
             {
-                __Internal64.SetWindowFocus();
+                __Internal32.SetWindowFocus();
             }
         }
 
@@ -19273,13 +19273,13 @@ namespace DearImGui
         // DEBUG: void          SetWindowFontScale(float scale)
         public static void SetWindowFontScale(float scale)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetWindowFontScale(scale);
+                __Internal64.SetWindowFontScale(scale);
             }
             else
             {
-                __Internal64.SetWindowFontScale(scale);
+                __Internal32.SetWindowFontScale(scale);
             }
         }
 
@@ -19291,13 +19291,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetWindowPos(name, __arg1, cond);
+                __Internal64.SetWindowPos(name, __arg1, cond);
             }
             else
             {
-                __Internal64.SetWindowPos(name, __arg1, cond);
+                __Internal32.SetWindowPos(name, __arg1, cond);
             }
         }
 
@@ -19309,13 +19309,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetWindowSize(name, __arg1, cond);
+                __Internal64.SetWindowSize(name, __arg1, cond);
             }
             else
             {
-                __Internal64.SetWindowSize(name, __arg1, cond);
+                __Internal32.SetWindowSize(name, __arg1, cond);
             }
         }
 
@@ -19323,13 +19323,13 @@ namespace DearImGui
         // DEBUG: void          SetWindowCollapsed(const char* name, bool collapsed, ImGuiCond cond = 0)
         public static void SetWindowCollapsed(string name, bool collapsed, ImGuiCond cond = (ImGuiCond)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetWindowCollapsed(name, collapsed, cond);
+                __Internal64.SetWindowCollapsed(name, collapsed, cond);
             }
             else
             {
-                __Internal64.SetWindowCollapsed(name, collapsed, cond);
+                __Internal32.SetWindowCollapsed(name, collapsed, cond);
             }
         }
 
@@ -19337,13 +19337,13 @@ namespace DearImGui
         // DEBUG: void          SetWindowFocus(const char* name)
         public static void SetWindowFocus(string name)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetWindowFocus(name);
+                __Internal64.SetWindowFocus(name);
             }
             else
             {
-                __Internal64.SetWindowFocus(name);
+                __Internal32.SetWindowFocus(name);
             }
         }
 
@@ -19352,13 +19352,13 @@ namespace DearImGui
         public static Vector2 GetContentRegionAvail()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetContentRegionAvail(new IntPtr(&___ret));
+                __Internal64.GetContentRegionAvail(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetContentRegionAvail(new IntPtr(&___ret));
+                __Internal32.GetContentRegionAvail(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -19372,13 +19372,13 @@ namespace DearImGui
         public static Vector2 GetContentRegionMax()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetContentRegionMax(new IntPtr(&___ret));
+                __Internal64.GetContentRegionMax(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetContentRegionMax(new IntPtr(&___ret));
+                __Internal32.GetContentRegionMax(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -19392,13 +19392,13 @@ namespace DearImGui
         public static Vector2 GetWindowContentRegionMin()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetWindowContentRegionMin(new IntPtr(&___ret));
+                __Internal64.GetWindowContentRegionMin(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetWindowContentRegionMin(new IntPtr(&___ret));
+                __Internal32.GetWindowContentRegionMin(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -19412,13 +19412,13 @@ namespace DearImGui
         public static Vector2 GetWindowContentRegionMax()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetWindowContentRegionMax(new IntPtr(&___ret));
+                __Internal64.GetWindowContentRegionMax(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetWindowContentRegionMax(new IntPtr(&___ret));
+                __Internal32.GetWindowContentRegionMax(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -19431,7 +19431,7 @@ namespace DearImGui
         // DEBUG: float         GetScrollX()
         public static float GetScrollX()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetScrollX() : __Internal64.GetScrollX();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetScrollX() : __Internal64.GetScrollX();
             return ___ret;
         }
 
@@ -19439,7 +19439,7 @@ namespace DearImGui
         // DEBUG: float         GetScrollY()
         public static float GetScrollY()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetScrollY() : __Internal64.GetScrollY();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetScrollY() : __Internal64.GetScrollY();
             return ___ret;
         }
 
@@ -19447,13 +19447,13 @@ namespace DearImGui
         // DEBUG: void          SetScrollX(float scroll_x)
         public static void SetScrollX(float scroll_x)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetScrollX(scroll_x);
+                __Internal64.SetScrollX(scroll_x);
             }
             else
             {
-                __Internal64.SetScrollX(scroll_x);
+                __Internal32.SetScrollX(scroll_x);
             }
         }
 
@@ -19461,13 +19461,13 @@ namespace DearImGui
         // DEBUG: void          SetScrollY(float scroll_y)
         public static void SetScrollY(float scroll_y)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetScrollY(scroll_y);
+                __Internal64.SetScrollY(scroll_y);
             }
             else
             {
-                __Internal64.SetScrollY(scroll_y);
+                __Internal32.SetScrollY(scroll_y);
             }
         }
 
@@ -19475,7 +19475,7 @@ namespace DearImGui
         // DEBUG: float         GetScrollMaxX()
         public static float GetScrollMaxX()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetScrollMaxX() : __Internal64.GetScrollMaxX();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetScrollMaxX() : __Internal64.GetScrollMaxX();
             return ___ret;
         }
 
@@ -19483,7 +19483,7 @@ namespace DearImGui
         // DEBUG: float         GetScrollMaxY()
         public static float GetScrollMaxY()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetScrollMaxY() : __Internal64.GetScrollMaxY();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetScrollMaxY() : __Internal64.GetScrollMaxY();
             return ___ret;
         }
 
@@ -19491,13 +19491,13 @@ namespace DearImGui
         // DEBUG: void          SetScrollHereX(float center_x_ratio = 0.5f)
         public static void SetScrollHereX(float center_x_ratio = 0.5F)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetScrollHereX(center_x_ratio);
+                __Internal64.SetScrollHereX(center_x_ratio);
             }
             else
             {
-                __Internal64.SetScrollHereX(center_x_ratio);
+                __Internal32.SetScrollHereX(center_x_ratio);
             }
         }
 
@@ -19505,13 +19505,13 @@ namespace DearImGui
         // DEBUG: void          SetScrollHereY(float center_y_ratio = 0.5f)
         public static void SetScrollHereY(float center_y_ratio = 0.5F)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetScrollHereY(center_y_ratio);
+                __Internal64.SetScrollHereY(center_y_ratio);
             }
             else
             {
-                __Internal64.SetScrollHereY(center_y_ratio);
+                __Internal32.SetScrollHereY(center_y_ratio);
             }
         }
 
@@ -19519,13 +19519,13 @@ namespace DearImGui
         // DEBUG: void          SetScrollFromPosX(float local_x, float center_x_ratio = 0.5f)
         public static void SetScrollFromPosX(float local_x, float center_x_ratio = 0.5F)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetScrollFromPosX(local_x, center_x_ratio);
+                __Internal64.SetScrollFromPosX(local_x, center_x_ratio);
             }
             else
             {
-                __Internal64.SetScrollFromPosX(local_x, center_x_ratio);
+                __Internal32.SetScrollFromPosX(local_x, center_x_ratio);
             }
         }
 
@@ -19533,13 +19533,13 @@ namespace DearImGui
         // DEBUG: void          SetScrollFromPosY(float local_y, float center_y_ratio = 0.5f)
         public static void SetScrollFromPosY(float local_y, float center_y_ratio = 0.5F)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetScrollFromPosY(local_y, center_y_ratio);
+                __Internal64.SetScrollFromPosY(local_y, center_y_ratio);
             }
             else
             {
-                __Internal64.SetScrollFromPosY(local_y, center_y_ratio);
+                __Internal32.SetScrollFromPosY(local_y, center_y_ratio);
             }
         }
 
@@ -19548,13 +19548,13 @@ namespace DearImGui
         public static void PushFont(ImFont font)
         {
             var __arg0 = font is null ? IntPtr.Zero : font.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushFont(__arg0);
+                __Internal64.PushFont(__arg0);
             }
             else
             {
-                __Internal64.PushFont(__arg0);
+                __Internal32.PushFont(__arg0);
             }
         }
 
@@ -19562,13 +19562,13 @@ namespace DearImGui
         // DEBUG: void          PopFont()
         public static void PopFont()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopFont();
+                __Internal64.PopFont();
             }
             else
             {
-                __Internal64.PopFont();
+                __Internal32.PopFont();
             }
         }
 
@@ -19576,13 +19576,13 @@ namespace DearImGui
         // DEBUG: void          PushStyleColor(ImGuiCol idx, ImU32 col)
         public static void PushStyleColor(ImGuiCol idx, uint col)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushStyleColor(idx, col);
+                __Internal64.PushStyleColor(idx, col);
             }
             else
             {
-                __Internal64.PushStyleColor(idx, col);
+                __Internal32.PushStyleColor(idx, col);
             }
         }
 
@@ -19594,13 +19594,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushStyleColor(idx, __arg1);
+                __Internal64.PushStyleColor(idx, __arg1);
             }
             else
             {
-                __Internal64.PushStyleColor(idx, __arg1);
+                __Internal32.PushStyleColor(idx, __arg1);
             }
         }
 
@@ -19608,13 +19608,13 @@ namespace DearImGui
         // DEBUG: void          PopStyleColor(int count = 1)
         public static void PopStyleColor(int count = (int)(1))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopStyleColor(count);
+                __Internal64.PopStyleColor(count);
             }
             else
             {
-                __Internal64.PopStyleColor(count);
+                __Internal32.PopStyleColor(count);
             }
         }
 
@@ -19622,13 +19622,13 @@ namespace DearImGui
         // DEBUG: void          PushStyleVar(ImGuiStyleVar idx, float val)
         public static void PushStyleVar(ImGuiStyleVar idx, float val)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushStyleVar(idx, val);
+                __Internal64.PushStyleVar(idx, val);
             }
             else
             {
-                __Internal64.PushStyleVar(idx, val);
+                __Internal32.PushStyleVar(idx, val);
             }
         }
 
@@ -19640,13 +19640,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushStyleVar(idx, __arg1);
+                __Internal64.PushStyleVar(idx, __arg1);
             }
             else
             {
-                __Internal64.PushStyleVar(idx, __arg1);
+                __Internal32.PushStyleVar(idx, __arg1);
             }
         }
 
@@ -19654,13 +19654,13 @@ namespace DearImGui
         // DEBUG: void          PopStyleVar(int count = 1)
         public static void PopStyleVar(int count = (int)(1))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopStyleVar(count);
+                __Internal64.PopStyleVar(count);
             }
             else
             {
-                __Internal64.PopStyleVar(count);
+                __Internal32.PopStyleVar(count);
             }
         }
 
@@ -19668,13 +19668,13 @@ namespace DearImGui
         // DEBUG: void          PushAllowKeyboardFocus(bool allow_keyboard_focus)
         public static void PushAllowKeyboardFocus(bool allow_keyboard_focus)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushAllowKeyboardFocus(allow_keyboard_focus);
+                __Internal64.PushAllowKeyboardFocus(allow_keyboard_focus);
             }
             else
             {
-                __Internal64.PushAllowKeyboardFocus(allow_keyboard_focus);
+                __Internal32.PushAllowKeyboardFocus(allow_keyboard_focus);
             }
         }
 
@@ -19682,13 +19682,13 @@ namespace DearImGui
         // DEBUG: void          PopAllowKeyboardFocus()
         public static void PopAllowKeyboardFocus()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopAllowKeyboardFocus();
+                __Internal64.PopAllowKeyboardFocus();
             }
             else
             {
-                __Internal64.PopAllowKeyboardFocus();
+                __Internal32.PopAllowKeyboardFocus();
             }
         }
 
@@ -19696,13 +19696,13 @@ namespace DearImGui
         // DEBUG: void          PushButtonRepeat(bool repeat)
         public static void PushButtonRepeat(bool repeat)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushButtonRepeat(repeat);
+                __Internal64.PushButtonRepeat(repeat);
             }
             else
             {
-                __Internal64.PushButtonRepeat(repeat);
+                __Internal32.PushButtonRepeat(repeat);
             }
         }
 
@@ -19710,13 +19710,13 @@ namespace DearImGui
         // DEBUG: void          PopButtonRepeat()
         public static void PopButtonRepeat()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopButtonRepeat();
+                __Internal64.PopButtonRepeat();
             }
             else
             {
-                __Internal64.PopButtonRepeat();
+                __Internal32.PopButtonRepeat();
             }
         }
 
@@ -19724,13 +19724,13 @@ namespace DearImGui
         // DEBUG: void          PushItemWidth(float item_width)
         public static void PushItemWidth(float item_width)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushItemWidth(item_width);
+                __Internal64.PushItemWidth(item_width);
             }
             else
             {
-                __Internal64.PushItemWidth(item_width);
+                __Internal32.PushItemWidth(item_width);
             }
         }
 
@@ -19738,13 +19738,13 @@ namespace DearImGui
         // DEBUG: void          PopItemWidth()
         public static void PopItemWidth()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopItemWidth();
+                __Internal64.PopItemWidth();
             }
             else
             {
-                __Internal64.PopItemWidth();
+                __Internal32.PopItemWidth();
             }
         }
 
@@ -19752,13 +19752,13 @@ namespace DearImGui
         // DEBUG: void          SetNextItemWidth(float item_width)
         public static void SetNextItemWidth(float item_width)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextItemWidth(item_width);
+                __Internal64.SetNextItemWidth(item_width);
             }
             else
             {
-                __Internal64.SetNextItemWidth(item_width);
+                __Internal32.SetNextItemWidth(item_width);
             }
         }
 
@@ -19766,7 +19766,7 @@ namespace DearImGui
         // DEBUG: float         CalcItemWidth()
         public static float CalcItemWidth()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.CalcItemWidth() : __Internal64.CalcItemWidth();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.CalcItemWidth() : __Internal64.CalcItemWidth();
             return ___ret;
         }
 
@@ -19774,13 +19774,13 @@ namespace DearImGui
         // DEBUG: void          PushTextWrapPos(float wrap_local_pos_x = 0.0f)
         public static void PushTextWrapPos(float wrap_local_pos_x = 0.0F)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushTextWrapPos(wrap_local_pos_x);
+                __Internal64.PushTextWrapPos(wrap_local_pos_x);
             }
             else
             {
-                __Internal64.PushTextWrapPos(wrap_local_pos_x);
+                __Internal32.PushTextWrapPos(wrap_local_pos_x);
             }
         }
 
@@ -19788,13 +19788,13 @@ namespace DearImGui
         // DEBUG: void          PopTextWrapPos()
         public static void PopTextWrapPos()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopTextWrapPos();
+                __Internal64.PopTextWrapPos();
             }
             else
             {
-                __Internal64.PopTextWrapPos();
+                __Internal32.PopTextWrapPos();
             }
         }
 
@@ -19802,7 +19802,7 @@ namespace DearImGui
         // DEBUG: ImFont*       GetFont()
         public static ImFont GetFont()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetFont() : __Internal64.GetFont();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetFont() : __Internal64.GetFont();
             var __result0 = ImFont.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -19811,7 +19811,7 @@ namespace DearImGui
         // DEBUG: float         GetFontSize()
         public static float GetFontSize()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetFontSize() : __Internal64.GetFontSize();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetFontSize() : __Internal64.GetFontSize();
             return ___ret;
         }
 
@@ -19820,13 +19820,13 @@ namespace DearImGui
         public static Vector2 GetFontTexUvWhitePixel()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetFontTexUvWhitePixel(new IntPtr(&___ret));
+                __Internal64.GetFontTexUvWhitePixel(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetFontTexUvWhitePixel(new IntPtr(&___ret));
+                __Internal32.GetFontTexUvWhitePixel(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -19839,7 +19839,7 @@ namespace DearImGui
         // DEBUG: ImU32         GetColorU32(ImGuiCol idx, float alpha_mul = 1.0f)
         public static uint GetColorU32(ImGuiCol idx, float alpha_mul = 1.0F)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetColorU32(idx, alpha_mul) : __Internal64.GetColorU32(idx, alpha_mul);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetColorU32(idx, alpha_mul) : __Internal64.GetColorU32(idx, alpha_mul);
             return ___ret;
         }
 
@@ -19851,7 +19851,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetColorU32(__arg0) : __Internal64.GetColorU32(__arg0);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetColorU32(__arg0) : __Internal64.GetColorU32(__arg0);
             return ___ret;
         }
 
@@ -19859,7 +19859,7 @@ namespace DearImGui
         // DEBUG: ImU32         GetColorU32(ImU32 col)
         public static uint GetColorU32(uint col)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetColorU32(col) : __Internal64.GetColorU32(col);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetColorU32(col) : __Internal64.GetColorU32(col);
             return ___ret;
         }
 
@@ -19867,7 +19867,7 @@ namespace DearImGui
         // DEBUG: const ImVec4& GetStyleColorVec4(ImGuiCol idx)
         public static Vector4 GetStyleColorVec4(ImGuiCol idx)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetStyleColorVec4(idx) : __Internal64.GetStyleColorVec4(idx);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetStyleColorVec4(idx) : __Internal64.GetStyleColorVec4(idx);
             return Unsafe.Read<Vector4>(___ret.ToPointer())
             /* DEBUG: TypeMapImVec4.CSharpMarshalToManaged: Case 5 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToManaged: Function: True, ReturnVarName: True */
@@ -19878,13 +19878,13 @@ namespace DearImGui
         // DEBUG: void          Separator()
         public static void Separator()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Separator();
+                __Internal64.Separator();
             }
             else
             {
-                __Internal64.Separator();
+                __Internal32.Separator();
             }
         }
 
@@ -19892,13 +19892,13 @@ namespace DearImGui
         // DEBUG: void          SameLine(float offset_from_start_x=0.0f, float spacing=-1.0f)
         public static void SameLine(float offset_from_start_x = 0.0F, float spacing = -1.0F)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SameLine(offset_from_start_x, spacing);
+                __Internal64.SameLine(offset_from_start_x, spacing);
             }
             else
             {
-                __Internal64.SameLine(offset_from_start_x, spacing);
+                __Internal32.SameLine(offset_from_start_x, spacing);
             }
         }
 
@@ -19906,13 +19906,13 @@ namespace DearImGui
         // DEBUG: void          NewLine()
         public static void NewLine()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.NewLine();
+                __Internal64.NewLine();
             }
             else
             {
-                __Internal64.NewLine();
+                __Internal32.NewLine();
             }
         }
 
@@ -19920,13 +19920,13 @@ namespace DearImGui
         // DEBUG: void          Spacing()
         public static void Spacing()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Spacing();
+                __Internal64.Spacing();
             }
             else
             {
-                __Internal64.Spacing();
+                __Internal32.Spacing();
             }
         }
 
@@ -19938,13 +19938,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Dummy(__arg0);
+                __Internal64.Dummy(__arg0);
             }
             else
             {
-                __Internal64.Dummy(__arg0);
+                __Internal32.Dummy(__arg0);
             }
         }
 
@@ -19952,13 +19952,13 @@ namespace DearImGui
         // DEBUG: void          Indent(float indent_w = 0.0f)
         public static void Indent(float indent_w = 0.0F)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Indent(indent_w);
+                __Internal64.Indent(indent_w);
             }
             else
             {
-                __Internal64.Indent(indent_w);
+                __Internal32.Indent(indent_w);
             }
         }
 
@@ -19966,13 +19966,13 @@ namespace DearImGui
         // DEBUG: void          Unindent(float indent_w = 0.0f)
         public static void Unindent(float indent_w = 0.0F)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Unindent(indent_w);
+                __Internal64.Unindent(indent_w);
             }
             else
             {
-                __Internal64.Unindent(indent_w);
+                __Internal32.Unindent(indent_w);
             }
         }
 
@@ -19980,13 +19980,13 @@ namespace DearImGui
         // DEBUG: void          BeginGroup()
         public static void BeginGroup()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.BeginGroup();
+                __Internal64.BeginGroup();
             }
             else
             {
-                __Internal64.BeginGroup();
+                __Internal32.BeginGroup();
             }
         }
 
@@ -19994,13 +19994,13 @@ namespace DearImGui
         // DEBUG: void          EndGroup()
         public static void EndGroup()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndGroup();
+                __Internal64.EndGroup();
             }
             else
             {
-                __Internal64.EndGroup();
+                __Internal32.EndGroup();
             }
         }
 
@@ -20009,13 +20009,13 @@ namespace DearImGui
         public static Vector2 GetCursorPos()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetCursorPos(new IntPtr(&___ret));
+                __Internal64.GetCursorPos(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetCursorPos(new IntPtr(&___ret));
+                __Internal32.GetCursorPos(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -20028,7 +20028,7 @@ namespace DearImGui
         // DEBUG: float         GetCursorPosX()
         public static float GetCursorPosX()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetCursorPosX() : __Internal64.GetCursorPosX();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetCursorPosX() : __Internal64.GetCursorPosX();
             return ___ret;
         }
 
@@ -20036,7 +20036,7 @@ namespace DearImGui
         // DEBUG: float         GetCursorPosY()
         public static float GetCursorPosY()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetCursorPosY() : __Internal64.GetCursorPosY();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetCursorPosY() : __Internal64.GetCursorPosY();
             return ___ret;
         }
 
@@ -20048,13 +20048,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetCursorPos(__arg0);
+                __Internal64.SetCursorPos(__arg0);
             }
             else
             {
-                __Internal64.SetCursorPos(__arg0);
+                __Internal32.SetCursorPos(__arg0);
             }
         }
 
@@ -20062,13 +20062,13 @@ namespace DearImGui
         // DEBUG: void          SetCursorPosX(float local_x)
         public static void SetCursorPosX(float local_x)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetCursorPosX(local_x);
+                __Internal64.SetCursorPosX(local_x);
             }
             else
             {
-                __Internal64.SetCursorPosX(local_x);
+                __Internal32.SetCursorPosX(local_x);
             }
         }
 
@@ -20076,13 +20076,13 @@ namespace DearImGui
         // DEBUG: void          SetCursorPosY(float local_y)
         public static void SetCursorPosY(float local_y)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetCursorPosY(local_y);
+                __Internal64.SetCursorPosY(local_y);
             }
             else
             {
-                __Internal64.SetCursorPosY(local_y);
+                __Internal32.SetCursorPosY(local_y);
             }
         }
 
@@ -20091,13 +20091,13 @@ namespace DearImGui
         public static Vector2 GetCursorStartPos()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetCursorStartPos(new IntPtr(&___ret));
+                __Internal64.GetCursorStartPos(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetCursorStartPos(new IntPtr(&___ret));
+                __Internal32.GetCursorStartPos(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -20111,13 +20111,13 @@ namespace DearImGui
         public static Vector2 GetCursorScreenPos()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetCursorScreenPos(new IntPtr(&___ret));
+                __Internal64.GetCursorScreenPos(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetCursorScreenPos(new IntPtr(&___ret));
+                __Internal32.GetCursorScreenPos(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -20134,13 +20134,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetCursorScreenPos(__arg0);
+                __Internal64.SetCursorScreenPos(__arg0);
             }
             else
             {
-                __Internal64.SetCursorScreenPos(__arg0);
+                __Internal32.SetCursorScreenPos(__arg0);
             }
         }
 
@@ -20148,13 +20148,13 @@ namespace DearImGui
         // DEBUG: void          AlignTextToFramePadding()
         public static void AlignTextToFramePadding()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AlignTextToFramePadding();
+                __Internal64.AlignTextToFramePadding();
             }
             else
             {
-                __Internal64.AlignTextToFramePadding();
+                __Internal32.AlignTextToFramePadding();
             }
         }
 
@@ -20162,7 +20162,7 @@ namespace DearImGui
         // DEBUG: float         GetTextLineHeight()
         public static float GetTextLineHeight()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetTextLineHeight() : __Internal64.GetTextLineHeight();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetTextLineHeight() : __Internal64.GetTextLineHeight();
             return ___ret;
         }
 
@@ -20170,7 +20170,7 @@ namespace DearImGui
         // DEBUG: float         GetTextLineHeightWithSpacing()
         public static float GetTextLineHeightWithSpacing()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetTextLineHeightWithSpacing() : __Internal64.GetTextLineHeightWithSpacing();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetTextLineHeightWithSpacing() : __Internal64.GetTextLineHeightWithSpacing();
             return ___ret;
         }
 
@@ -20178,7 +20178,7 @@ namespace DearImGui
         // DEBUG: float         GetFrameHeight()
         public static float GetFrameHeight()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetFrameHeight() : __Internal64.GetFrameHeight();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetFrameHeight() : __Internal64.GetFrameHeight();
             return ___ret;
         }
 
@@ -20186,7 +20186,7 @@ namespace DearImGui
         // DEBUG: float         GetFrameHeightWithSpacing()
         public static float GetFrameHeightWithSpacing()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetFrameHeightWithSpacing() : __Internal64.GetFrameHeightWithSpacing();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetFrameHeightWithSpacing() : __Internal64.GetFrameHeightWithSpacing();
             return ___ret;
         }
 
@@ -20194,13 +20194,13 @@ namespace DearImGui
         // DEBUG: void          PushID(const char* str_id)
         public static void PushID(string str_id)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushID(str_id);
+                __Internal64.PushID(str_id);
             }
             else
             {
-                __Internal64.PushID(str_id);
+                __Internal32.PushID(str_id);
             }
         }
 
@@ -20208,13 +20208,13 @@ namespace DearImGui
         // DEBUG: void          PushID(const char* str_id_begin, const char* str_id_end)
         public static void PushID(string str_id_begin, string str_id_end)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushID(str_id_begin, str_id_end);
+                __Internal64.PushID(str_id_begin, str_id_end);
             }
             else
             {
-                __Internal64.PushID(str_id_begin, str_id_end);
+                __Internal32.PushID(str_id_begin, str_id_end);
             }
         }
 
@@ -20222,13 +20222,13 @@ namespace DearImGui
         // DEBUG: void          PushID(const void* ptr_id)
         public static void PushID(IntPtr ptr_id)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushID(ptr_id);
+                __Internal64.PushID(ptr_id);
             }
             else
             {
-                __Internal64.PushID(ptr_id);
+                __Internal32.PushID(ptr_id);
             }
         }
 
@@ -20236,13 +20236,13 @@ namespace DearImGui
         // DEBUG: void          PushID(int int_id)
         public static void PushID(int int_id)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushID_1(int_id);
+                __Internal64.PushID_1(int_id);
             }
             else
             {
-                __Internal64.PushID_1(int_id);
+                __Internal32.PushID_1(int_id);
             }
         }
 
@@ -20250,13 +20250,13 @@ namespace DearImGui
         // DEBUG: void          PopID()
         public static void PopID()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopID();
+                __Internal64.PopID();
             }
             else
             {
-                __Internal64.PopID();
+                __Internal32.PopID();
             }
         }
 
@@ -20264,7 +20264,7 @@ namespace DearImGui
         // DEBUG: ImGuiID       GetID(const char* str_id)
         public static uint GetID(string str_id)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetID(str_id) : __Internal64.GetID(str_id);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetID(str_id) : __Internal64.GetID(str_id);
             return ___ret;
         }
 
@@ -20272,7 +20272,7 @@ namespace DearImGui
         // DEBUG: ImGuiID       GetID(const char* str_id_begin, const char* str_id_end)
         public static uint GetID(string str_id_begin, string str_id_end)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetID(str_id_begin, str_id_end) : __Internal64.GetID(str_id_begin, str_id_end);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetID(str_id_begin, str_id_end) : __Internal64.GetID(str_id_begin, str_id_end);
             return ___ret;
         }
 
@@ -20280,7 +20280,7 @@ namespace DearImGui
         // DEBUG: ImGuiID       GetID(const void* ptr_id)
         public static uint GetID(IntPtr ptr_id)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetID(ptr_id) : __Internal64.GetID(ptr_id);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetID(ptr_id) : __Internal64.GetID(ptr_id);
             return ___ret;
         }
 
@@ -20288,13 +20288,13 @@ namespace DearImGui
         // DEBUG: void          TextUnformatted(const char* text, const char* text_end = NULL)
         public static void TextUnformatted(string text, string text_end = default)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TextUnformatted(text, text_end);
+                __Internal64.TextUnformatted(text, text_end);
             }
             else
             {
-                __Internal64.TextUnformatted(text, text_end);
+                __Internal32.TextUnformatted(text, text_end);
             }
         }
 
@@ -20302,13 +20302,13 @@ namespace DearImGui
         // DEBUG: void          Text(const char* fmt, ...)                                      IM_FMTARGS(1)
         public static void Text(string fmt)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Text(fmt);
+                __Internal64.Text(fmt);
             }
             else
             {
-                __Internal64.Text(fmt);
+                __Internal32.Text(fmt);
             }
         }
 
@@ -20316,13 +20316,13 @@ namespace DearImGui
         // DEBUG: void          TextV(const char* fmt, va_list args)                            IM_FMTLIST(1)
         public static void TextV(string fmt, Object args)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TextV(fmt, args);
+                __Internal64.TextV(fmt, args);
             }
             else
             {
-                __Internal64.TextV(fmt, args);
+                __Internal32.TextV(fmt, args);
             }
         }
 
@@ -20334,13 +20334,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TextColored(__arg0, fmt);
+                __Internal64.TextColored(__arg0, fmt);
             }
             else
             {
-                __Internal64.TextColored(__arg0, fmt);
+                __Internal32.TextColored(__arg0, fmt);
             }
         }
 
@@ -20352,13 +20352,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TextColoredV(__arg0, fmt, args);
+                __Internal64.TextColoredV(__arg0, fmt, args);
             }
             else
             {
-                __Internal64.TextColoredV(__arg0, fmt, args);
+                __Internal32.TextColoredV(__arg0, fmt, args);
             }
         }
 
@@ -20366,13 +20366,13 @@ namespace DearImGui
         // DEBUG: void          TextDisabled(const char* fmt, ...)                              IM_FMTARGS(1)
         public static void TextDisabled(string fmt)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TextDisabled(fmt);
+                __Internal64.TextDisabled(fmt);
             }
             else
             {
-                __Internal64.TextDisabled(fmt);
+                __Internal32.TextDisabled(fmt);
             }
         }
 
@@ -20380,13 +20380,13 @@ namespace DearImGui
         // DEBUG: void          TextDisabledV(const char* fmt, va_list args)                    IM_FMTLIST(1)
         public static void TextDisabledV(string fmt, Object args)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TextDisabledV(fmt, args);
+                __Internal64.TextDisabledV(fmt, args);
             }
             else
             {
-                __Internal64.TextDisabledV(fmt, args);
+                __Internal32.TextDisabledV(fmt, args);
             }
         }
 
@@ -20394,13 +20394,13 @@ namespace DearImGui
         // DEBUG: void          TextWrapped(const char* fmt, ...)                               IM_FMTARGS(1)
         public static void TextWrapped(string fmt)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TextWrapped(fmt);
+                __Internal64.TextWrapped(fmt);
             }
             else
             {
-                __Internal64.TextWrapped(fmt);
+                __Internal32.TextWrapped(fmt);
             }
         }
 
@@ -20408,13 +20408,13 @@ namespace DearImGui
         // DEBUG: void          TextWrappedV(const char* fmt, va_list args)                     IM_FMTLIST(1)
         public static void TextWrappedV(string fmt, Object args)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TextWrappedV(fmt, args);
+                __Internal64.TextWrappedV(fmt, args);
             }
             else
             {
-                __Internal64.TextWrappedV(fmt, args);
+                __Internal32.TextWrappedV(fmt, args);
             }
         }
 
@@ -20422,13 +20422,13 @@ namespace DearImGui
         // DEBUG: void          LabelText(const char* label, const char* fmt, ...)              IM_FMTARGS(2)
         public static void LabelText(string label, string fmt)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.LabelText(label, fmt);
+                __Internal64.LabelText(label, fmt);
             }
             else
             {
-                __Internal64.LabelText(label, fmt);
+                __Internal32.LabelText(label, fmt);
             }
         }
 
@@ -20436,13 +20436,13 @@ namespace DearImGui
         // DEBUG: void          LabelTextV(const char* label, const char* fmt, va_list args)    IM_FMTLIST(2)
         public static void LabelTextV(string label, string fmt, Object args)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.LabelTextV(label, fmt, args);
+                __Internal64.LabelTextV(label, fmt, args);
             }
             else
             {
-                __Internal64.LabelTextV(label, fmt, args);
+                __Internal32.LabelTextV(label, fmt, args);
             }
         }
 
@@ -20450,13 +20450,13 @@ namespace DearImGui
         // DEBUG: void          BulletText(const char* fmt, ...)                                IM_FMTARGS(1)
         public static void BulletText(string fmt)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.BulletText(fmt);
+                __Internal64.BulletText(fmt);
             }
             else
             {
-                __Internal64.BulletText(fmt);
+                __Internal32.BulletText(fmt);
             }
         }
 
@@ -20464,13 +20464,13 @@ namespace DearImGui
         // DEBUG: void          BulletTextV(const char* fmt, va_list args)                      IM_FMTLIST(1)
         public static void BulletTextV(string fmt, Object args)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.BulletTextV(fmt, args);
+                __Internal64.BulletTextV(fmt, args);
             }
             else
             {
-                __Internal64.BulletTextV(fmt, args);
+                __Internal32.BulletTextV(fmt, args);
             }
         }
 
@@ -20482,7 +20482,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.Button(label, __arg1) : __Internal64.Button(label, __arg1);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.Button(label, __arg1) : __Internal64.Button(label, __arg1);
             return ___ret;
         }
 
@@ -20490,7 +20490,7 @@ namespace DearImGui
         // DEBUG: bool          SmallButton(const char* label)
         public static bool SmallButton(string label)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.SmallButton(label) : __Internal64.SmallButton(label);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.SmallButton(label) : __Internal64.SmallButton(label);
             return ___ret;
         }
 
@@ -20502,7 +20502,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.InvisibleButton(str_id, __arg1, flags) : __Internal64.InvisibleButton(str_id, __arg1, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.InvisibleButton(str_id, __arg1, flags) : __Internal64.InvisibleButton(str_id, __arg1, flags);
             return ___ret;
         }
 
@@ -20510,7 +20510,7 @@ namespace DearImGui
         // DEBUG: bool          ArrowButton(const char* str_id, ImGuiDir dir)
         public static bool ArrowButton(string str_id, ImGuiDir dir)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.ArrowButton(str_id, dir) : __Internal64.ArrowButton(str_id, dir);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.ArrowButton(str_id, dir) : __Internal64.ArrowButton(str_id, dir);
             return ___ret;
         }
 
@@ -20538,13 +20538,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Image(user_texture_id, __arg1, __arg2, __arg3, __arg4, __arg5);
+                __Internal64.Image(user_texture_id, __arg1, __arg2, __arg3, __arg4, __arg5);
             }
             else
             {
-                __Internal64.Image(user_texture_id, __arg1, __arg2, __arg3, __arg4, __arg5);
+                __Internal32.Image(user_texture_id, __arg1, __arg2, __arg3, __arg4, __arg5);
             }
         }
 
@@ -20572,7 +20572,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.ImageButton(user_texture_id, __arg1, __arg2, __arg3, frame_padding, __arg5, __arg6) : __Internal64.ImageButton(user_texture_id, __arg1, __arg2, __arg3, frame_padding, __arg5, __arg6);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.ImageButton(user_texture_id, __arg1, __arg2, __arg3, frame_padding, __arg5, __arg6) : __Internal64.ImageButton(user_texture_id, __arg1, __arg2, __arg3, frame_padding, __arg5, __arg6);
             return ___ret;
         }
 
@@ -20583,7 +20583,7 @@ namespace DearImGui
             fixed (bool* __v1 = &v)
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Checkbox(label, __arg1) : __Internal64.Checkbox(label, __arg1);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.Checkbox(label, __arg1) : __Internal64.Checkbox(label, __arg1);
                 return ___ret;
             }
         }
@@ -20595,7 +20595,7 @@ namespace DearImGui
             fixed (int* __flags1 = &flags)
             {
                 var __arg1 = __flags1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.CheckboxFlags(label, __arg1, flags_value) : __Internal64.CheckboxFlags(label, __arg1, flags_value);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.CheckboxFlags(label, __arg1, flags_value) : __Internal64.CheckboxFlags(label, __arg1, flags_value);
                 return ___ret;
             }
         }
@@ -20607,7 +20607,7 @@ namespace DearImGui
             fixed (uint* __flags1 = &flags)
             {
                 var __arg1 = __flags1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.CheckboxFlags_1(label, __arg1, flags_value) : __Internal64.CheckboxFlags_1(label, __arg1, flags_value);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.CheckboxFlags_1(label, __arg1, flags_value) : __Internal64.CheckboxFlags_1(label, __arg1, flags_value);
                 return ___ret;
             }
         }
@@ -20616,7 +20616,7 @@ namespace DearImGui
         // DEBUG: bool          RadioButton(const char* label, bool active)
         public static bool RadioButton(string label, bool active)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.RadioButton(label, active) : __Internal64.RadioButton(label, active);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.RadioButton(label, active) : __Internal64.RadioButton(label, active);
             return ___ret;
         }
 
@@ -20627,7 +20627,7 @@ namespace DearImGui
             fixed (int* __v1 = &v)
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.RadioButton(label, __arg1, v_button) : __Internal64.RadioButton(label, __arg1, v_button);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.RadioButton(label, __arg1, v_button) : __Internal64.RadioButton(label, __arg1, v_button);
                 return ___ret;
             }
         }
@@ -20640,13 +20640,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ProgressBar(fraction, __arg1, overlay);
+                __Internal64.ProgressBar(fraction, __arg1, overlay);
             }
             else
             {
-                __Internal64.ProgressBar(fraction, __arg1, overlay);
+                __Internal32.ProgressBar(fraction, __arg1, overlay);
             }
         }
 
@@ -20654,13 +20654,13 @@ namespace DearImGui
         // DEBUG: void          Bullet()
         public static void Bullet()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Bullet();
+                __Internal64.Bullet();
             }
             else
             {
-                __Internal64.Bullet();
+                __Internal32.Bullet();
             }
         }
 
@@ -20668,7 +20668,7 @@ namespace DearImGui
         // DEBUG: bool          BeginCombo(const char* label, const char* preview_value, ImGuiComboFlags flags = 0)
         public static bool BeginCombo(string label, string preview_value, ImGuiComboFlags flags = (ImGuiComboFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginCombo(label, preview_value, flags) : __Internal64.BeginCombo(label, preview_value, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginCombo(label, preview_value, flags) : __Internal64.BeginCombo(label, preview_value, flags);
             return ___ret;
         }
 
@@ -20676,13 +20676,13 @@ namespace DearImGui
         // DEBUG: void          EndCombo()
         public static void EndCombo()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndCombo();
+                __Internal64.EndCombo();
             }
             else
             {
-                __Internal64.EndCombo();
+                __Internal32.EndCombo();
             }
         }
 
@@ -20693,7 +20693,7 @@ namespace DearImGui
             fixed (int* __current_item1 = &current_item)
             {
                 var __arg1 = __current_item1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Combo(label, __arg1, items, items_count, popup_max_height_in_items) : __Internal64.Combo(label, __arg1, items, items_count, popup_max_height_in_items);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.Combo(label, __arg1, items, items_count, popup_max_height_in_items) : __Internal64.Combo(label, __arg1, items, items_count, popup_max_height_in_items);
                 return ___ret;
             }
         }
@@ -20705,7 +20705,7 @@ namespace DearImGui
             fixed (int* __current_item1 = &current_item)
             {
                 var __arg1 = __current_item1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Combo(label, __arg1, items_separated_by_zeros, popup_max_height_in_items) : __Internal64.Combo(label, __arg1, items_separated_by_zeros, popup_max_height_in_items);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.Combo(label, __arg1, items_separated_by_zeros, popup_max_height_in_items) : __Internal64.Combo(label, __arg1, items_separated_by_zeros, popup_max_height_in_items);
                 return ___ret;
             }
         }
@@ -20718,7 +20718,7 @@ namespace DearImGui
             {
                 var __arg1 = __current_item1;
                 var __arg2 = items_getter == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(items_getter);
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Combo(label, __arg1, __arg2, data, items_count, popup_max_height_in_items) : __Internal64.Combo(label, __arg1, __arg2, data, items_count, popup_max_height_in_items);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.Combo(label, __arg1, __arg2, data, items_count, popup_max_height_in_items) : __Internal64.Combo(label, __arg1, __arg2, data, items_count, popup_max_height_in_items);
                 return ___ret;
             }
         }
@@ -20730,7 +20730,7 @@ namespace DearImGui
             fixed (float* __v1 = &v)
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.DragFloat(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragFloat(label, __arg1, v_speed, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.DragFloat(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragFloat(label, __arg1, v_speed, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20744,7 +20744,7 @@ namespace DearImGui
             fixed (float* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.DragFloat2(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragFloat2(label, __arg1, v_speed, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.DragFloat2(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragFloat2(label, __arg1, v_speed, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20758,7 +20758,7 @@ namespace DearImGui
             fixed (float* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.DragFloat3(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragFloat3(label, __arg1, v_speed, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.DragFloat3(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragFloat3(label, __arg1, v_speed, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20772,7 +20772,7 @@ namespace DearImGui
             fixed (float* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.DragFloat4(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragFloat4(label, __arg1, v_speed, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.DragFloat4(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragFloat4(label, __arg1, v_speed, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20787,7 +20787,7 @@ namespace DearImGui
                 fixed (float* __v_current_max2 = &v_current_max)
                 {
                     var __arg2 = __v_current_max2;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.DragFloatRange2(label, __arg1, __arg2, v_speed, v_min, v_max, format, format_max, flags) : __Internal64.DragFloatRange2(label, __arg1, __arg2, v_speed, v_min, v_max, format, format_max, flags);
+                    var ___ret = Environment.Is64BitProcess ? __Internal32.DragFloatRange2(label, __arg1, __arg2, v_speed, v_min, v_max, format, format_max, flags) : __Internal64.DragFloatRange2(label, __arg1, __arg2, v_speed, v_min, v_max, format, format_max, flags);
                     return ___ret;
                 }
             }
@@ -20800,7 +20800,7 @@ namespace DearImGui
             fixed (int* __v1 = &v)
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.DragInt(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragInt(label, __arg1, v_speed, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.DragInt(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragInt(label, __arg1, v_speed, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20814,7 +20814,7 @@ namespace DearImGui
             fixed (int* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.DragInt2(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragInt2(label, __arg1, v_speed, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.DragInt2(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragInt2(label, __arg1, v_speed, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20828,7 +20828,7 @@ namespace DearImGui
             fixed (int* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.DragInt3(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragInt3(label, __arg1, v_speed, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.DragInt3(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragInt3(label, __arg1, v_speed, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20842,7 +20842,7 @@ namespace DearImGui
             fixed (int* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.DragInt4(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragInt4(label, __arg1, v_speed, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.DragInt4(label, __arg1, v_speed, v_min, v_max, format, flags) : __Internal64.DragInt4(label, __arg1, v_speed, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20857,7 +20857,7 @@ namespace DearImGui
                 fixed (int* __v_current_max2 = &v_current_max)
                 {
                     var __arg2 = __v_current_max2;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.DragIntRange2(label, __arg1, __arg2, v_speed, v_min, v_max, format, format_max, flags) : __Internal64.DragIntRange2(label, __arg1, __arg2, v_speed, v_min, v_max, format, format_max, flags);
+                    var ___ret = Environment.Is64BitProcess ? __Internal32.DragIntRange2(label, __arg1, __arg2, v_speed, v_min, v_max, format, format_max, flags) : __Internal64.DragIntRange2(label, __arg1, __arg2, v_speed, v_min, v_max, format, format_max, flags);
                     return ___ret;
                 }
             }
@@ -20867,7 +20867,7 @@ namespace DearImGui
         // DEBUG: bool          DragScalar(const char* label, ImGuiDataType data_type, void* p_data, float v_speed = 1.0f, const void* p_min = NULL, const void* p_max = NULL, const char* format = NULL, ImGuiSliderFlags flags = 0)
         public static bool DragScalar(string label, ImGuiDataType data_type, IntPtr p_data, float v_speed = 1.0F, IntPtr p_min = default, IntPtr p_max = default, string format = default, ImGuiSliderFlags flags = (ImGuiSliderFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.DragScalar(label, data_type, p_data, v_speed, p_min, p_max, format, flags) : __Internal64.DragScalar(label, data_type, p_data, v_speed, p_min, p_max, format, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.DragScalar(label, data_type, p_data, v_speed, p_min, p_max, format, flags) : __Internal64.DragScalar(label, data_type, p_data, v_speed, p_min, p_max, format, flags);
             return ___ret;
         }
 
@@ -20875,7 +20875,7 @@ namespace DearImGui
         // DEBUG: bool          DragScalarN(const char* label, ImGuiDataType data_type, void* p_data, int components, float v_speed = 1.0f, const void* p_min = NULL, const void* p_max = NULL, const char* format = NULL, ImGuiSliderFlags flags = 0)
         public static bool DragScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, float v_speed = 1.0F, IntPtr p_min = default, IntPtr p_max = default, string format = default, ImGuiSliderFlags flags = (ImGuiSliderFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.DragScalarN(label, data_type, p_data, components, v_speed, p_min, p_max, format, flags) : __Internal64.DragScalarN(label, data_type, p_data, components, v_speed, p_min, p_max, format, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.DragScalarN(label, data_type, p_data, components, v_speed, p_min, p_max, format, flags) : __Internal64.DragScalarN(label, data_type, p_data, components, v_speed, p_min, p_max, format, flags);
             return ___ret;
         }
 
@@ -20886,7 +20886,7 @@ namespace DearImGui
             fixed (float* __v1 = &v)
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.SliderFloat(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderFloat(label, __arg1, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.SliderFloat(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderFloat(label, __arg1, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20900,7 +20900,7 @@ namespace DearImGui
             fixed (float* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.SliderFloat2(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderFloat2(label, __arg1, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.SliderFloat2(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderFloat2(label, __arg1, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20914,7 +20914,7 @@ namespace DearImGui
             fixed (float* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.SliderFloat3(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderFloat3(label, __arg1, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.SliderFloat3(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderFloat3(label, __arg1, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20928,7 +20928,7 @@ namespace DearImGui
             fixed (float* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.SliderFloat4(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderFloat4(label, __arg1, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.SliderFloat4(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderFloat4(label, __arg1, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20940,7 +20940,7 @@ namespace DearImGui
             fixed (float* __v_rad1 = &v_rad)
             {
                 var __arg1 = __v_rad1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.SliderAngle(label, __arg1, v_degrees_min, v_degrees_max, format, flags) : __Internal64.SliderAngle(label, __arg1, v_degrees_min, v_degrees_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.SliderAngle(label, __arg1, v_degrees_min, v_degrees_max, format, flags) : __Internal64.SliderAngle(label, __arg1, v_degrees_min, v_degrees_max, format, flags);
                 return ___ret;
             }
         }
@@ -20952,7 +20952,7 @@ namespace DearImGui
             fixed (int* __v1 = &v)
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.SliderInt(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderInt(label, __arg1, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.SliderInt(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderInt(label, __arg1, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20966,7 +20966,7 @@ namespace DearImGui
             fixed (int* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.SliderInt2(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderInt2(label, __arg1, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.SliderInt2(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderInt2(label, __arg1, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20980,7 +20980,7 @@ namespace DearImGui
             fixed (int* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.SliderInt3(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderInt3(label, __arg1, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.SliderInt3(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderInt3(label, __arg1, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -20994,7 +20994,7 @@ namespace DearImGui
             fixed (int* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.SliderInt4(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderInt4(label, __arg1, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.SliderInt4(label, __arg1, v_min, v_max, format, flags) : __Internal64.SliderInt4(label, __arg1, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -21003,7 +21003,7 @@ namespace DearImGui
         // DEBUG: bool          SliderScalar(const char* label, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format = NULL, ImGuiSliderFlags flags = 0)
         public static bool SliderScalar(string label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max, string format = default, ImGuiSliderFlags flags = (ImGuiSliderFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.SliderScalar(label, data_type, p_data, p_min, p_max, format, flags) : __Internal64.SliderScalar(label, data_type, p_data, p_min, p_max, format, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.SliderScalar(label, data_type, p_data, p_min, p_max, format, flags) : __Internal64.SliderScalar(label, data_type, p_data, p_min, p_max, format, flags);
             return ___ret;
         }
 
@@ -21011,7 +21011,7 @@ namespace DearImGui
         // DEBUG: bool          SliderScalarN(const char* label, ImGuiDataType data_type, void* p_data, int components, const void* p_min, const void* p_max, const char* format = NULL, ImGuiSliderFlags flags = 0)
         public static bool SliderScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_min, IntPtr p_max, string format = default, ImGuiSliderFlags flags = (ImGuiSliderFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.SliderScalarN(label, data_type, p_data, components, p_min, p_max, format, flags) : __Internal64.SliderScalarN(label, data_type, p_data, components, p_min, p_max, format, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.SliderScalarN(label, data_type, p_data, components, p_min, p_max, format, flags) : __Internal64.SliderScalarN(label, data_type, p_data, components, p_min, p_max, format, flags);
             return ___ret;
         }
 
@@ -21026,7 +21026,7 @@ namespace DearImGui
             fixed (float* __v2 = &v)
             {
                 var __arg2 = __v2;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.VSliderFloat(label, __arg1, __arg2, v_min, v_max, format, flags) : __Internal64.VSliderFloat(label, __arg1, __arg2, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.VSliderFloat(label, __arg1, __arg2, v_min, v_max, format, flags) : __Internal64.VSliderFloat(label, __arg1, __arg2, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -21042,7 +21042,7 @@ namespace DearImGui
             fixed (int* __v2 = &v)
             {
                 var __arg2 = __v2;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.VSliderInt(label, __arg1, __arg2, v_min, v_max, format, flags) : __Internal64.VSliderInt(label, __arg1, __arg2, v_min, v_max, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.VSliderInt(label, __arg1, __arg2, v_min, v_max, format, flags) : __Internal64.VSliderInt(label, __arg1, __arg2, v_min, v_max, format, flags);
                 return ___ret;
             }
         }
@@ -21055,7 +21055,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.VSliderScalar(label, __arg1, data_type, p_data, p_min, p_max, format, flags) : __Internal64.VSliderScalar(label, __arg1, data_type, p_data, p_min, p_max, format, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.VSliderScalar(label, __arg1, data_type, p_data, p_min, p_max, format, flags) : __Internal64.VSliderScalar(label, __arg1, data_type, p_data, p_min, p_max, format, flags);
             return ___ret;
         }
 
@@ -21068,7 +21068,7 @@ namespace DearImGui
             /* DEBUG: TypeMapSizeT.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
             var __arg4 = callback == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(callback);
-            var ___ret = IntPtr.Size == 4 ? __Internal32.InputText(label, __arg1, __arg2, flags, __arg4, user_data) : __Internal64.InputText(label, __arg1, __arg2, flags, __arg4, user_data);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.InputText(label, __arg1, __arg2, flags, __arg4, user_data) : __Internal64.InputText(label, __arg1, __arg2, flags, __arg4, user_data);
             return ___ret;
         }
 
@@ -21085,7 +21085,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
             var __arg5 = callback == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(callback);
-            var ___ret = IntPtr.Size == 4 ? __Internal32.InputTextMultiline(label, __arg1, __arg2, __arg3, flags, __arg5, user_data) : __Internal64.InputTextMultiline(label, __arg1, __arg2, __arg3, flags, __arg5, user_data);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.InputTextMultiline(label, __arg1, __arg2, __arg3, flags, __arg5, user_data) : __Internal64.InputTextMultiline(label, __arg1, __arg2, __arg3, flags, __arg5, user_data);
             return ___ret;
         }
 
@@ -21098,7 +21098,7 @@ namespace DearImGui
             /* DEBUG: TypeMapSizeT.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
             var __arg5 = callback == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(callback);
-            var ___ret = IntPtr.Size == 4 ? __Internal32.InputTextWithHint(label, hint, __arg2, __arg3, flags, __arg5, user_data) : __Internal64.InputTextWithHint(label, hint, __arg2, __arg3, flags, __arg5, user_data);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.InputTextWithHint(label, hint, __arg2, __arg3, flags, __arg5, user_data) : __Internal64.InputTextWithHint(label, hint, __arg2, __arg3, flags, __arg5, user_data);
             return ___ret;
         }
 
@@ -21109,7 +21109,7 @@ namespace DearImGui
             fixed (float* __v1 = &v)
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.InputFloat(label, __arg1, step, step_fast, format, flags) : __Internal64.InputFloat(label, __arg1, step, step_fast, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.InputFloat(label, __arg1, step, step_fast, format, flags) : __Internal64.InputFloat(label, __arg1, step, step_fast, format, flags);
                 return ___ret;
             }
         }
@@ -21123,7 +21123,7 @@ namespace DearImGui
             fixed (float* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.InputFloat2(label, __arg1, format, flags) : __Internal64.InputFloat2(label, __arg1, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.InputFloat2(label, __arg1, format, flags) : __Internal64.InputFloat2(label, __arg1, format, flags);
                 return ___ret;
             }
         }
@@ -21137,7 +21137,7 @@ namespace DearImGui
             fixed (float* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.InputFloat3(label, __arg1, format, flags) : __Internal64.InputFloat3(label, __arg1, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.InputFloat3(label, __arg1, format, flags) : __Internal64.InputFloat3(label, __arg1, format, flags);
                 return ___ret;
             }
         }
@@ -21151,7 +21151,7 @@ namespace DearImGui
             fixed (float* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.InputFloat4(label, __arg1, format, flags) : __Internal64.InputFloat4(label, __arg1, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.InputFloat4(label, __arg1, format, flags) : __Internal64.InputFloat4(label, __arg1, format, flags);
                 return ___ret;
             }
         }
@@ -21163,7 +21163,7 @@ namespace DearImGui
             fixed (int* __v1 = &v)
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.InputInt(label, __arg1, step, step_fast, flags) : __Internal64.InputInt(label, __arg1, step, step_fast, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.InputInt(label, __arg1, step, step_fast, flags) : __Internal64.InputInt(label, __arg1, step, step_fast, flags);
                 return ___ret;
             }
         }
@@ -21177,7 +21177,7 @@ namespace DearImGui
             fixed (int* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.InputInt2(label, __arg1, flags) : __Internal64.InputInt2(label, __arg1, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.InputInt2(label, __arg1, flags) : __Internal64.InputInt2(label, __arg1, flags);
                 return ___ret;
             }
         }
@@ -21191,7 +21191,7 @@ namespace DearImGui
             fixed (int* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.InputInt3(label, __arg1, flags) : __Internal64.InputInt3(label, __arg1, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.InputInt3(label, __arg1, flags) : __Internal64.InputInt3(label, __arg1, flags);
                 return ___ret;
             }
         }
@@ -21205,7 +21205,7 @@ namespace DearImGui
             fixed (int* __v1 = &MemoryMarshal.GetReference(v))
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.InputInt4(label, __arg1, flags) : __Internal64.InputInt4(label, __arg1, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.InputInt4(label, __arg1, flags) : __Internal64.InputInt4(label, __arg1, flags);
                 return ___ret;
             }
         }
@@ -21217,7 +21217,7 @@ namespace DearImGui
             fixed (double* __v1 = &v)
             {
                 var __arg1 = __v1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.InputDouble(label, __arg1, step, step_fast, format, flags) : __Internal64.InputDouble(label, __arg1, step, step_fast, format, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.InputDouble(label, __arg1, step, step_fast, format, flags) : __Internal64.InputDouble(label, __arg1, step, step_fast, format, flags);
                 return ___ret;
             }
         }
@@ -21226,7 +21226,7 @@ namespace DearImGui
         // DEBUG: bool          InputScalar(const char* label, ImGuiDataType data_type, void* p_data, const void* p_step = NULL, const void* p_step_fast = NULL, const char* format = NULL, ImGuiInputTextFlags flags = 0)
         public static bool InputScalar(string label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_step = default, IntPtr p_step_fast = default, string format = default, ImGuiInputTextFlags flags = (ImGuiInputTextFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.InputScalar(label, data_type, p_data, p_step, p_step_fast, format, flags) : __Internal64.InputScalar(label, data_type, p_data, p_step, p_step_fast, format, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.InputScalar(label, data_type, p_data, p_step, p_step_fast, format, flags) : __Internal64.InputScalar(label, data_type, p_data, p_step, p_step_fast, format, flags);
             return ___ret;
         }
 
@@ -21234,7 +21234,7 @@ namespace DearImGui
         // DEBUG: bool          InputScalarN(const char* label, ImGuiDataType data_type, void* p_data, int components, const void* p_step = NULL, const void* p_step_fast = NULL, const char* format = NULL, ImGuiInputTextFlags flags = 0)
         public static bool InputScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_step = default, IntPtr p_step_fast = default, string format = default, ImGuiInputTextFlags flags = (ImGuiInputTextFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.InputScalarN(label, data_type, p_data, components, p_step, p_step_fast, format, flags) : __Internal64.InputScalarN(label, data_type, p_data, components, p_step, p_step_fast, format, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.InputScalarN(label, data_type, p_data, components, p_step, p_step_fast, format, flags) : __Internal64.InputScalarN(label, data_type, p_data, components, p_step, p_step_fast, format, flags);
             return ___ret;
         }
 
@@ -21247,7 +21247,7 @@ namespace DearImGui
             fixed (float* __col1 = &MemoryMarshal.GetReference(col))
             {
                 var __arg1 = __col1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.ColorEdit3(label, __arg1, flags) : __Internal64.ColorEdit3(label, __arg1, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.ColorEdit3(label, __arg1, flags) : __Internal64.ColorEdit3(label, __arg1, flags);
                 return ___ret;
             }
         }
@@ -21261,7 +21261,7 @@ namespace DearImGui
             fixed (float* __col1 = &MemoryMarshal.GetReference(col))
             {
                 var __arg1 = __col1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.ColorEdit4(label, __arg1, flags) : __Internal64.ColorEdit4(label, __arg1, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.ColorEdit4(label, __arg1, flags) : __Internal64.ColorEdit4(label, __arg1, flags);
                 return ___ret;
             }
         }
@@ -21275,7 +21275,7 @@ namespace DearImGui
             fixed (float* __col1 = &MemoryMarshal.GetReference(col))
             {
                 var __arg1 = __col1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.ColorPicker3(label, __arg1, flags) : __Internal64.ColorPicker3(label, __arg1, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.ColorPicker3(label, __arg1, flags) : __Internal64.ColorPicker3(label, __arg1, flags);
                 return ___ret;
             }
         }
@@ -21292,7 +21292,7 @@ namespace DearImGui
                 fixed (float* __ref_col3 = &ref_col)
                 {
                     var __arg3 = __ref_col3;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.ColorPicker4(label, __arg1, flags, __arg3) : __Internal64.ColorPicker4(label, __arg1, flags, __arg3);
+                    var ___ret = Environment.Is64BitProcess ? __Internal32.ColorPicker4(label, __arg1, flags, __arg3) : __Internal64.ColorPicker4(label, __arg1, flags, __arg3);
                     return ___ret;
                 }
             }
@@ -21310,7 +21310,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.ColorButton(desc_id, __arg1, flags, __arg3) : __Internal64.ColorButton(desc_id, __arg1, flags, __arg3);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.ColorButton(desc_id, __arg1, flags, __arg3) : __Internal64.ColorButton(desc_id, __arg1, flags, __arg3);
             return ___ret;
         }
 
@@ -21318,13 +21318,13 @@ namespace DearImGui
         // DEBUG: void          SetColorEditOptions(ImGuiColorEditFlags flags)
         public static void SetColorEditOptions(ImGuiColorEditFlags flags)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetColorEditOptions(flags);
+                __Internal64.SetColorEditOptions(flags);
             }
             else
             {
-                __Internal64.SetColorEditOptions(flags);
+                __Internal32.SetColorEditOptions(flags);
             }
         }
 
@@ -21332,7 +21332,7 @@ namespace DearImGui
         // DEBUG: bool          TreeNode(const char* label)
         public static bool TreeNode(string label)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TreeNode(label) : __Internal64.TreeNode(label);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TreeNode(label) : __Internal64.TreeNode(label);
             return ___ret;
         }
 
@@ -21340,7 +21340,7 @@ namespace DearImGui
         // DEBUG: bool          TreeNode(const char* str_id, const char* fmt, ...) IM_FMTARGS(2)
         public static bool TreeNode(string str_id, string fmt)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TreeNode(str_id, fmt) : __Internal64.TreeNode(str_id, fmt);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TreeNode(str_id, fmt) : __Internal64.TreeNode(str_id, fmt);
             return ___ret;
         }
 
@@ -21348,7 +21348,7 @@ namespace DearImGui
         // DEBUG: bool          TreeNode(const void* ptr_id, const char* fmt, ...) IM_FMTARGS(2)
         public static bool TreeNode(IntPtr ptr_id, string fmt)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TreeNode(ptr_id, fmt) : __Internal64.TreeNode(ptr_id, fmt);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TreeNode(ptr_id, fmt) : __Internal64.TreeNode(ptr_id, fmt);
             return ___ret;
         }
 
@@ -21356,7 +21356,7 @@ namespace DearImGui
         // DEBUG: bool          TreeNodeV(const char* str_id, const char* fmt, va_list args) IM_FMTLIST(2)
         public static bool TreeNodeV(string str_id, string fmt, Object args)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TreeNodeV(str_id, fmt, args) : __Internal64.TreeNodeV(str_id, fmt, args);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TreeNodeV(str_id, fmt, args) : __Internal64.TreeNodeV(str_id, fmt, args);
             return ___ret;
         }
 
@@ -21364,7 +21364,7 @@ namespace DearImGui
         // DEBUG: bool          TreeNodeV(const void* ptr_id, const char* fmt, va_list args) IM_FMTLIST(2)
         public static bool TreeNodeV(IntPtr ptr_id, string fmt, Object args)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TreeNodeV(ptr_id, fmt, args) : __Internal64.TreeNodeV(ptr_id, fmt, args);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TreeNodeV(ptr_id, fmt, args) : __Internal64.TreeNodeV(ptr_id, fmt, args);
             return ___ret;
         }
 
@@ -21372,7 +21372,7 @@ namespace DearImGui
         // DEBUG: bool          TreeNodeEx(const char* label, ImGuiTreeNodeFlags flags = 0)
         public static bool TreeNodeEx(string label, ImGuiTreeNodeFlags flags = (ImGuiTreeNodeFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TreeNodeEx(label, flags) : __Internal64.TreeNodeEx(label, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TreeNodeEx(label, flags) : __Internal64.TreeNodeEx(label, flags);
             return ___ret;
         }
 
@@ -21380,7 +21380,7 @@ namespace DearImGui
         // DEBUG: bool          TreeNodeEx(const char* str_id, ImGuiTreeNodeFlags flags, const char* fmt, ...) IM_FMTARGS(3)
         public static bool TreeNodeEx(string str_id, ImGuiTreeNodeFlags flags, string fmt)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TreeNodeEx(str_id, flags, fmt) : __Internal64.TreeNodeEx(str_id, flags, fmt);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TreeNodeEx(str_id, flags, fmt) : __Internal64.TreeNodeEx(str_id, flags, fmt);
             return ___ret;
         }
 
@@ -21388,7 +21388,7 @@ namespace DearImGui
         // DEBUG: bool          TreeNodeEx(const void* ptr_id, ImGuiTreeNodeFlags flags, const char* fmt, ...) IM_FMTARGS(3)
         public static bool TreeNodeEx(IntPtr ptr_id, ImGuiTreeNodeFlags flags, string fmt)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TreeNodeEx(ptr_id, flags, fmt) : __Internal64.TreeNodeEx(ptr_id, flags, fmt);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TreeNodeEx(ptr_id, flags, fmt) : __Internal64.TreeNodeEx(ptr_id, flags, fmt);
             return ___ret;
         }
 
@@ -21396,7 +21396,7 @@ namespace DearImGui
         // DEBUG: bool          TreeNodeExV(const char* str_id, ImGuiTreeNodeFlags flags, const char* fmt, va_list args) IM_FMTLIST(3)
         public static bool TreeNodeExV(string str_id, ImGuiTreeNodeFlags flags, string fmt, Object args)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TreeNodeExV(str_id, flags, fmt, args) : __Internal64.TreeNodeExV(str_id, flags, fmt, args);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TreeNodeExV(str_id, flags, fmt, args) : __Internal64.TreeNodeExV(str_id, flags, fmt, args);
             return ___ret;
         }
 
@@ -21404,7 +21404,7 @@ namespace DearImGui
         // DEBUG: bool          TreeNodeExV(const void* ptr_id, ImGuiTreeNodeFlags flags, const char* fmt, va_list args) IM_FMTLIST(3)
         public static bool TreeNodeExV(IntPtr ptr_id, ImGuiTreeNodeFlags flags, string fmt, Object args)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TreeNodeExV(ptr_id, flags, fmt, args) : __Internal64.TreeNodeExV(ptr_id, flags, fmt, args);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TreeNodeExV(ptr_id, flags, fmt, args) : __Internal64.TreeNodeExV(ptr_id, flags, fmt, args);
             return ___ret;
         }
 
@@ -21412,13 +21412,13 @@ namespace DearImGui
         // DEBUG: void          TreePush(const char* str_id)
         public static void TreePush(string str_id)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TreePush(str_id);
+                __Internal64.TreePush(str_id);
             }
             else
             {
-                __Internal64.TreePush(str_id);
+                __Internal32.TreePush(str_id);
             }
         }
 
@@ -21426,13 +21426,13 @@ namespace DearImGui
         // DEBUG: void          TreePush(const void* ptr_id = NULL)
         public static void TreePush(IntPtr ptr_id = default)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TreePush(ptr_id);
+                __Internal64.TreePush(ptr_id);
             }
             else
             {
-                __Internal64.TreePush(ptr_id);
+                __Internal32.TreePush(ptr_id);
             }
         }
 
@@ -21440,13 +21440,13 @@ namespace DearImGui
         // DEBUG: void          TreePop()
         public static void TreePop()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TreePop();
+                __Internal64.TreePop();
             }
             else
             {
-                __Internal64.TreePop();
+                __Internal32.TreePop();
             }
         }
 
@@ -21454,7 +21454,7 @@ namespace DearImGui
         // DEBUG: float         GetTreeNodeToLabelSpacing()
         public static float GetTreeNodeToLabelSpacing()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetTreeNodeToLabelSpacing() : __Internal64.GetTreeNodeToLabelSpacing();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetTreeNodeToLabelSpacing() : __Internal64.GetTreeNodeToLabelSpacing();
             return ___ret;
         }
 
@@ -21462,7 +21462,7 @@ namespace DearImGui
         // DEBUG: bool          CollapsingHeader(const char* label, ImGuiTreeNodeFlags flags = 0)
         public static bool CollapsingHeader(string label, ImGuiTreeNodeFlags flags = (ImGuiTreeNodeFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.CollapsingHeader(label, flags) : __Internal64.CollapsingHeader(label, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.CollapsingHeader(label, flags) : __Internal64.CollapsingHeader(label, flags);
             return ___ret;
         }
 
@@ -21473,7 +21473,7 @@ namespace DearImGui
             fixed (bool* __p_visible1 = &p_visible)
             {
                 var __arg1 = __p_visible1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.CollapsingHeader(label, __arg1, flags) : __Internal64.CollapsingHeader(label, __arg1, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.CollapsingHeader(label, __arg1, flags) : __Internal64.CollapsingHeader(label, __arg1, flags);
                 return ___ret;
             }
         }
@@ -21482,13 +21482,13 @@ namespace DearImGui
         // DEBUG: void          SetNextItemOpen(bool is_open, ImGuiCond cond = 0)
         public static void SetNextItemOpen(bool is_open, ImGuiCond cond = (ImGuiCond)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextItemOpen(is_open, cond);
+                __Internal64.SetNextItemOpen(is_open, cond);
             }
             else
             {
-                __Internal64.SetNextItemOpen(is_open, cond);
+                __Internal32.SetNextItemOpen(is_open, cond);
             }
         }
 
@@ -21500,7 +21500,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.Selectable(label, selected, flags, __arg3) : __Internal64.Selectable(label, selected, flags, __arg3);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.Selectable(label, selected, flags, __arg3) : __Internal64.Selectable(label, selected, flags, __arg3);
             return ___ret;
         }
 
@@ -21515,7 +21515,7 @@ namespace DearImGui
                 /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
                 /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
                 ;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Selectable_1(label, __arg1, flags, __arg3) : __Internal64.Selectable_1(label, __arg1, flags, __arg3);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.Selectable_1(label, __arg1, flags, __arg3) : __Internal64.Selectable_1(label, __arg1, flags, __arg3);
                 return ___ret;
             }
         }
@@ -21528,7 +21528,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginListBox(label, __arg1) : __Internal64.BeginListBox(label, __arg1);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginListBox(label, __arg1) : __Internal64.BeginListBox(label, __arg1);
             return ___ret;
         }
 
@@ -21536,13 +21536,13 @@ namespace DearImGui
         // DEBUG: void          EndListBox()
         public static void EndListBox()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndListBox();
+                __Internal64.EndListBox();
             }
             else
             {
-                __Internal64.EndListBox();
+                __Internal32.EndListBox();
             }
         }
 
@@ -21553,7 +21553,7 @@ namespace DearImGui
             fixed (int* __current_item1 = &current_item)
             {
                 var __arg1 = __current_item1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.ListBox(label, __arg1, items, items_count, height_in_items) : __Internal64.ListBox(label, __arg1, items, items_count, height_in_items);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.ListBox(label, __arg1, items, items_count, height_in_items) : __Internal64.ListBox(label, __arg1, items, items_count, height_in_items);
                 return ___ret;
             }
         }
@@ -21566,7 +21566,7 @@ namespace DearImGui
             {
                 var __arg1 = __current_item1;
                 var __arg2 = items_getter == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(items_getter);
-                var ___ret = IntPtr.Size == 4 ? __Internal32.ListBox(label, __arg1, __arg2, data, items_count, height_in_items) : __Internal64.ListBox(label, __arg1, __arg2, data, items_count, height_in_items);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.ListBox(label, __arg1, __arg2, data, items_count, height_in_items) : __Internal64.ListBox(label, __arg1, __arg2, data, items_count, height_in_items);
                 return ___ret;
             }
         }
@@ -21582,13 +21582,13 @@ namespace DearImGui
                 /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 5 */
                 /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
                 ;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotLines(label, __arg1, values_count, values_offset, overlay_text, scale_min, scale_max, __arg7, stride);
+                    __Internal64.PlotLines(label, __arg1, values_count, values_offset, overlay_text, scale_min, scale_max, __arg7, stride);
                 }
                 else
                 {
-                    __Internal64.PlotLines(label, __arg1, values_count, values_offset, overlay_text, scale_min, scale_max, __arg7, stride);
+                    __Internal32.PlotLines(label, __arg1, values_count, values_offset, overlay_text, scale_min, scale_max, __arg7, stride);
                 }
             }
         }
@@ -21602,13 +21602,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 5 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotLines(label, __arg1, data, values_count, values_offset, overlay_text, scale_min, scale_max, __arg8);
+                __Internal64.PlotLines(label, __arg1, data, values_count, values_offset, overlay_text, scale_min, scale_max, __arg8);
             }
             else
             {
-                __Internal64.PlotLines(label, __arg1, data, values_count, values_offset, overlay_text, scale_min, scale_max, __arg8);
+                __Internal32.PlotLines(label, __arg1, data, values_count, values_offset, overlay_text, scale_min, scale_max, __arg8);
             }
         }
 
@@ -21623,13 +21623,13 @@ namespace DearImGui
                 /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 5 */
                 /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
                 ;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotHistogram(label, __arg1, values_count, values_offset, overlay_text, scale_min, scale_max, __arg7, stride);
+                    __Internal64.PlotHistogram(label, __arg1, values_count, values_offset, overlay_text, scale_min, scale_max, __arg7, stride);
                 }
                 else
                 {
-                    __Internal64.PlotHistogram(label, __arg1, values_count, values_offset, overlay_text, scale_min, scale_max, __arg7, stride);
+                    __Internal32.PlotHistogram(label, __arg1, values_count, values_offset, overlay_text, scale_min, scale_max, __arg7, stride);
                 }
             }
         }
@@ -21643,13 +21643,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 5 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotHistogram(label, __arg1, data, values_count, values_offset, overlay_text, scale_min, scale_max, __arg8);
+                __Internal64.PlotHistogram(label, __arg1, data, values_count, values_offset, overlay_text, scale_min, scale_max, __arg8);
             }
             else
             {
-                __Internal64.PlotHistogram(label, __arg1, data, values_count, values_offset, overlay_text, scale_min, scale_max, __arg8);
+                __Internal32.PlotHistogram(label, __arg1, data, values_count, values_offset, overlay_text, scale_min, scale_max, __arg8);
             }
         }
 
@@ -21657,13 +21657,13 @@ namespace DearImGui
         // DEBUG: void          Value(const char* prefix, bool b)
         public static void Value(string prefix, bool b)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Value(prefix, b);
+                __Internal64.Value(prefix, b);
             }
             else
             {
-                __Internal64.Value(prefix, b);
+                __Internal32.Value(prefix, b);
             }
         }
 
@@ -21671,13 +21671,13 @@ namespace DearImGui
         // DEBUG: void          Value(const char* prefix, int v)
         public static void Value(string prefix, int v)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Value_1(prefix, v);
+                __Internal64.Value_1(prefix, v);
             }
             else
             {
-                __Internal64.Value_1(prefix, v);
+                __Internal32.Value_1(prefix, v);
             }
         }
 
@@ -21685,13 +21685,13 @@ namespace DearImGui
         // DEBUG: void          Value(const char* prefix, unsigned int v)
         public static void Value(string prefix, uint v)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Value_2(prefix, v);
+                __Internal64.Value_2(prefix, v);
             }
             else
             {
-                __Internal64.Value_2(prefix, v);
+                __Internal32.Value_2(prefix, v);
             }
         }
 
@@ -21699,13 +21699,13 @@ namespace DearImGui
         // DEBUG: void          Value(const char* prefix, float v, const char* float_format = NULL)
         public static void Value(string prefix, float v, string float_format = default)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Value(prefix, v, float_format);
+                __Internal64.Value(prefix, v, float_format);
             }
             else
             {
-                __Internal64.Value(prefix, v, float_format);
+                __Internal32.Value(prefix, v, float_format);
             }
         }
 
@@ -21713,7 +21713,7 @@ namespace DearImGui
         // DEBUG: bool          BeginMenuBar()
         public static bool BeginMenuBar()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginMenuBar() : __Internal64.BeginMenuBar();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginMenuBar() : __Internal64.BeginMenuBar();
             return ___ret;
         }
 
@@ -21721,13 +21721,13 @@ namespace DearImGui
         // DEBUG: void          EndMenuBar()
         public static void EndMenuBar()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndMenuBar();
+                __Internal64.EndMenuBar();
             }
             else
             {
-                __Internal64.EndMenuBar();
+                __Internal32.EndMenuBar();
             }
         }
 
@@ -21735,7 +21735,7 @@ namespace DearImGui
         // DEBUG: bool          BeginMainMenuBar()
         public static bool BeginMainMenuBar()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginMainMenuBar() : __Internal64.BeginMainMenuBar();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginMainMenuBar() : __Internal64.BeginMainMenuBar();
             return ___ret;
         }
 
@@ -21743,13 +21743,13 @@ namespace DearImGui
         // DEBUG: void          EndMainMenuBar()
         public static void EndMainMenuBar()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndMainMenuBar();
+                __Internal64.EndMainMenuBar();
             }
             else
             {
-                __Internal64.EndMainMenuBar();
+                __Internal32.EndMainMenuBar();
             }
         }
 
@@ -21757,7 +21757,7 @@ namespace DearImGui
         // DEBUG: bool          BeginMenu(const char* label, bool enabled = true)
         public static bool BeginMenu(string label, bool enabled = true)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginMenu(label, enabled) : __Internal64.BeginMenu(label, enabled);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginMenu(label, enabled) : __Internal64.BeginMenu(label, enabled);
             return ___ret;
         }
 
@@ -21765,13 +21765,13 @@ namespace DearImGui
         // DEBUG: void          EndMenu()
         public static void EndMenu()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndMenu();
+                __Internal64.EndMenu();
             }
             else
             {
-                __Internal64.EndMenu();
+                __Internal32.EndMenu();
             }
         }
 
@@ -21779,7 +21779,7 @@ namespace DearImGui
         // DEBUG: bool          MenuItem(const char* label, const char* shortcut = NULL, bool selected = false, bool enabled = true)
         public static bool MenuItem(string label, string shortcut = default, bool selected = false, bool enabled = true)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.MenuItem(label, shortcut, selected, enabled) : __Internal64.MenuItem(label, shortcut, selected, enabled);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.MenuItem(label, shortcut, selected, enabled) : __Internal64.MenuItem(label, shortcut, selected, enabled);
             return ___ret;
         }
 
@@ -21790,7 +21790,7 @@ namespace DearImGui
             fixed (bool* __p_selected2 = &p_selected)
             {
                 var __arg2 = __p_selected2;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.MenuItem_1(label, shortcut, __arg2, enabled) : __Internal64.MenuItem_1(label, shortcut, __arg2, enabled);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.MenuItem_1(label, shortcut, __arg2, enabled) : __Internal64.MenuItem_1(label, shortcut, __arg2, enabled);
                 return ___ret;
             }
         }
@@ -21799,13 +21799,13 @@ namespace DearImGui
         // DEBUG: void          BeginTooltip()
         public static void BeginTooltip()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.BeginTooltip();
+                __Internal64.BeginTooltip();
             }
             else
             {
-                __Internal64.BeginTooltip();
+                __Internal32.BeginTooltip();
             }
         }
 
@@ -21813,13 +21813,13 @@ namespace DearImGui
         // DEBUG: void          EndTooltip()
         public static void EndTooltip()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndTooltip();
+                __Internal64.EndTooltip();
             }
             else
             {
-                __Internal64.EndTooltip();
+                __Internal32.EndTooltip();
             }
         }
 
@@ -21827,13 +21827,13 @@ namespace DearImGui
         // DEBUG: void          SetTooltip(const char* fmt, ...) IM_FMTARGS(1)
         public static void SetTooltip(string fmt)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetTooltip(fmt);
+                __Internal64.SetTooltip(fmt);
             }
             else
             {
-                __Internal64.SetTooltip(fmt);
+                __Internal32.SetTooltip(fmt);
             }
         }
 
@@ -21841,13 +21841,13 @@ namespace DearImGui
         // DEBUG: void          SetTooltipV(const char* fmt, va_list args) IM_FMTLIST(1)
         public static void SetTooltipV(string fmt, Object args)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetTooltipV(fmt, args);
+                __Internal64.SetTooltipV(fmt, args);
             }
             else
             {
-                __Internal64.SetTooltipV(fmt, args);
+                __Internal32.SetTooltipV(fmt, args);
             }
         }
 
@@ -21855,7 +21855,7 @@ namespace DearImGui
         // DEBUG: bool          BeginPopup(const char* str_id, ImGuiWindowFlags flags = 0)
         public static bool BeginPopup(string str_id, ImGuiWindowFlags flags = (ImGuiWindowFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginPopup(str_id, flags) : __Internal64.BeginPopup(str_id, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginPopup(str_id, flags) : __Internal64.BeginPopup(str_id, flags);
             return ___ret;
         }
 
@@ -21866,7 +21866,7 @@ namespace DearImGui
             fixed (bool* __p_open1 = &p_open)
             {
                 var __arg1 = __p_open1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.BeginPopupModal(name, __arg1, flags) : __Internal64.BeginPopupModal(name, __arg1, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.BeginPopupModal(name, __arg1, flags) : __Internal64.BeginPopupModal(name, __arg1, flags);
                 return ___ret;
             }
         }
@@ -21875,13 +21875,13 @@ namespace DearImGui
         // DEBUG: void          EndPopup()
         public static void EndPopup()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndPopup();
+                __Internal64.EndPopup();
             }
             else
             {
-                __Internal64.EndPopup();
+                __Internal32.EndPopup();
             }
         }
 
@@ -21889,13 +21889,13 @@ namespace DearImGui
         // DEBUG: void          OpenPopup(const char* str_id, ImGuiPopupFlags popup_flags = 0)
         public static void OpenPopup(string str_id, ImGuiPopupFlags popup_flags = (ImGuiPopupFlags)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.OpenPopup(str_id, popup_flags);
+                __Internal64.OpenPopup(str_id, popup_flags);
             }
             else
             {
-                __Internal64.OpenPopup(str_id, popup_flags);
+                __Internal32.OpenPopup(str_id, popup_flags);
             }
         }
 
@@ -21903,13 +21903,13 @@ namespace DearImGui
         // DEBUG: void          OpenPopup(ImGuiID id, ImGuiPopupFlags popup_flags = 0)
         public static void OpenPopup(uint id, ImGuiPopupFlags popup_flags = (ImGuiPopupFlags)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.OpenPopup_1(id, popup_flags);
+                __Internal64.OpenPopup_1(id, popup_flags);
             }
             else
             {
-                __Internal64.OpenPopup_1(id, popup_flags);
+                __Internal32.OpenPopup_1(id, popup_flags);
             }
         }
 
@@ -21917,13 +21917,13 @@ namespace DearImGui
         // DEBUG: void          OpenPopupOnItemClick(const char* str_id = NULL, ImGuiPopupFlags popup_flags = 1)
         public static void OpenPopupOnItemClick(string str_id = default, ImGuiPopupFlags popup_flags = (ImGuiPopupFlags)(1))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.OpenPopupOnItemClick(str_id, popup_flags);
+                __Internal64.OpenPopupOnItemClick(str_id, popup_flags);
             }
             else
             {
-                __Internal64.OpenPopupOnItemClick(str_id, popup_flags);
+                __Internal32.OpenPopupOnItemClick(str_id, popup_flags);
             }
         }
 
@@ -21931,13 +21931,13 @@ namespace DearImGui
         // DEBUG: void          CloseCurrentPopup()
         public static void CloseCurrentPopup()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.CloseCurrentPopup();
+                __Internal64.CloseCurrentPopup();
             }
             else
             {
-                __Internal64.CloseCurrentPopup();
+                __Internal32.CloseCurrentPopup();
             }
         }
 
@@ -21945,7 +21945,7 @@ namespace DearImGui
         // DEBUG: bool          BeginPopupContextItem(const char* str_id = NULL, ImGuiPopupFlags popup_flags = 1)
         public static bool BeginPopupContextItem(string str_id = default, ImGuiPopupFlags popup_flags = (ImGuiPopupFlags)(1))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginPopupContextItem(str_id, popup_flags) : __Internal64.BeginPopupContextItem(str_id, popup_flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginPopupContextItem(str_id, popup_flags) : __Internal64.BeginPopupContextItem(str_id, popup_flags);
             return ___ret;
         }
 
@@ -21953,7 +21953,7 @@ namespace DearImGui
         // DEBUG: bool          BeginPopupContextWindow(const char* str_id = NULL, ImGuiPopupFlags popup_flags = 1)
         public static bool BeginPopupContextWindow(string str_id = default, ImGuiPopupFlags popup_flags = (ImGuiPopupFlags)(1))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginPopupContextWindow(str_id, popup_flags) : __Internal64.BeginPopupContextWindow(str_id, popup_flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginPopupContextWindow(str_id, popup_flags) : __Internal64.BeginPopupContextWindow(str_id, popup_flags);
             return ___ret;
         }
 
@@ -21961,7 +21961,7 @@ namespace DearImGui
         // DEBUG: bool          BeginPopupContextVoid(const char* str_id = NULL, ImGuiPopupFlags popup_flags = 1)
         public static bool BeginPopupContextVoid(string str_id = default, ImGuiPopupFlags popup_flags = (ImGuiPopupFlags)(1))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginPopupContextVoid(str_id, popup_flags) : __Internal64.BeginPopupContextVoid(str_id, popup_flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginPopupContextVoid(str_id, popup_flags) : __Internal64.BeginPopupContextVoid(str_id, popup_flags);
             return ___ret;
         }
 
@@ -21969,7 +21969,7 @@ namespace DearImGui
         // DEBUG: bool          IsPopupOpen(const char* str_id, ImGuiPopupFlags flags = 0)
         public static bool IsPopupOpen(string str_id, ImGuiPopupFlags flags = (ImGuiPopupFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsPopupOpen(str_id, flags) : __Internal64.IsPopupOpen(str_id, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsPopupOpen(str_id, flags) : __Internal64.IsPopupOpen(str_id, flags);
             return ___ret;
         }
 
@@ -21981,7 +21981,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginTable(str_id, column, flags, __arg3, inner_width) : __Internal64.BeginTable(str_id, column, flags, __arg3, inner_width);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginTable(str_id, column, flags, __arg3, inner_width) : __Internal64.BeginTable(str_id, column, flags, __arg3, inner_width);
             return ___ret;
         }
 
@@ -21989,13 +21989,13 @@ namespace DearImGui
         // DEBUG: void          EndTable()
         public static void EndTable()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndTable();
+                __Internal64.EndTable();
             }
             else
             {
-                __Internal64.EndTable();
+                __Internal32.EndTable();
             }
         }
 
@@ -22003,13 +22003,13 @@ namespace DearImGui
         // DEBUG: void          TableNextRow(ImGuiTableRowFlags row_flags = 0, float min_row_height = 0.0f)
         public static void TableNextRow(ImGuiTableRowFlags row_flags = (ImGuiTableRowFlags)(0), float min_row_height = 0.0F)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TableNextRow(row_flags, min_row_height);
+                __Internal64.TableNextRow(row_flags, min_row_height);
             }
             else
             {
-                __Internal64.TableNextRow(row_flags, min_row_height);
+                __Internal32.TableNextRow(row_flags, min_row_height);
             }
         }
 
@@ -22017,7 +22017,7 @@ namespace DearImGui
         // DEBUG: bool          TableNextColumn()
         public static bool TableNextColumn()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TableNextColumn() : __Internal64.TableNextColumn();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TableNextColumn() : __Internal64.TableNextColumn();
             return ___ret;
         }
 
@@ -22025,7 +22025,7 @@ namespace DearImGui
         // DEBUG: bool          TableSetColumnIndex(int column_n)
         public static bool TableSetColumnIndex(int column_n)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TableSetColumnIndex(column_n) : __Internal64.TableSetColumnIndex(column_n);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TableSetColumnIndex(column_n) : __Internal64.TableSetColumnIndex(column_n);
             return ___ret;
         }
 
@@ -22033,13 +22033,13 @@ namespace DearImGui
         // DEBUG: void          TableSetupColumn(const char* label, ImGuiTableColumnFlags flags = 0, float init_width_or_weight = 0.0f, ImGuiID user_id = 0)
         public static void TableSetupColumn(string label, ImGuiTableColumnFlags flags = (ImGuiTableColumnFlags)(0), float init_width_or_weight = 0.0F, uint user_id = (uint)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TableSetupColumn(label, flags, init_width_or_weight, user_id);
+                __Internal64.TableSetupColumn(label, flags, init_width_or_weight, user_id);
             }
             else
             {
-                __Internal64.TableSetupColumn(label, flags, init_width_or_weight, user_id);
+                __Internal32.TableSetupColumn(label, flags, init_width_or_weight, user_id);
             }
         }
 
@@ -22047,13 +22047,13 @@ namespace DearImGui
         // DEBUG: void          TableSetupScrollFreeze(int cols, int rows)
         public static void TableSetupScrollFreeze(int cols, int rows)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TableSetupScrollFreeze(cols, rows);
+                __Internal64.TableSetupScrollFreeze(cols, rows);
             }
             else
             {
-                __Internal64.TableSetupScrollFreeze(cols, rows);
+                __Internal32.TableSetupScrollFreeze(cols, rows);
             }
         }
 
@@ -22061,13 +22061,13 @@ namespace DearImGui
         // DEBUG: void          TableHeadersRow()
         public static void TableHeadersRow()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TableHeadersRow();
+                __Internal64.TableHeadersRow();
             }
             else
             {
-                __Internal64.TableHeadersRow();
+                __Internal32.TableHeadersRow();
             }
         }
 
@@ -22075,13 +22075,13 @@ namespace DearImGui
         // DEBUG: void          TableHeader(const char* label)
         public static void TableHeader(string label)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TableHeader(label);
+                __Internal64.TableHeader(label);
             }
             else
             {
-                __Internal64.TableHeader(label);
+                __Internal32.TableHeader(label);
             }
         }
 
@@ -22089,7 +22089,7 @@ namespace DearImGui
         // DEBUG: ImGuiTableSortSpecs*  TableGetSortSpecs()
         public static ImGuiTableSortSpecs TableGetSortSpecs()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TableGetSortSpecs() : __Internal64.TableGetSortSpecs();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TableGetSortSpecs() : __Internal64.TableGetSortSpecs();
             var __result0 = ImGuiTableSortSpecs.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -22098,7 +22098,7 @@ namespace DearImGui
         // DEBUG: int                   TableGetColumnCount()
         public static int TableGetColumnCount()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TableGetColumnCount() : __Internal64.TableGetColumnCount();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TableGetColumnCount() : __Internal64.TableGetColumnCount();
             return ___ret;
         }
 
@@ -22106,7 +22106,7 @@ namespace DearImGui
         // DEBUG: int                   TableGetColumnIndex()
         public static int TableGetColumnIndex()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TableGetColumnIndex() : __Internal64.TableGetColumnIndex();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TableGetColumnIndex() : __Internal64.TableGetColumnIndex();
             return ___ret;
         }
 
@@ -22114,7 +22114,7 @@ namespace DearImGui
         // DEBUG: int                   TableGetRowIndex()
         public static int TableGetRowIndex()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TableGetRowIndex() : __Internal64.TableGetRowIndex();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TableGetRowIndex() : __Internal64.TableGetRowIndex();
             return ___ret;
         }
 
@@ -22122,7 +22122,7 @@ namespace DearImGui
         // DEBUG: const char*           TableGetColumnName(int column_n = -1)
         public static string TableGetColumnName(int column_n = (int)(-1))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TableGetColumnName(column_n) : __Internal64.TableGetColumnName(column_n);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TableGetColumnName(column_n) : __Internal64.TableGetColumnName(column_n);
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
@@ -22130,7 +22130,7 @@ namespace DearImGui
         // DEBUG: ImGuiTableColumnFlags TableGetColumnFlags(int column_n = -1)
         public static ImGuiTableColumnFlags TableGetColumnFlags(int column_n = (int)(-1))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TableGetColumnFlags(column_n) : __Internal64.TableGetColumnFlags(column_n);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TableGetColumnFlags(column_n) : __Internal64.TableGetColumnFlags(column_n);
             return ___ret;
         }
 
@@ -22138,13 +22138,13 @@ namespace DearImGui
         // DEBUG: void                  TableSetColumnEnabled(int column_n, bool v)
         public static void TableSetColumnEnabled(int column_n, bool v)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TableSetColumnEnabled(column_n, v);
+                __Internal64.TableSetColumnEnabled(column_n, v);
             }
             else
             {
-                __Internal64.TableSetColumnEnabled(column_n, v);
+                __Internal32.TableSetColumnEnabled(column_n, v);
             }
         }
 
@@ -22152,13 +22152,13 @@ namespace DearImGui
         // DEBUG: void                  TableSetBgColor(ImGuiTableBgTarget target, ImU32 color, int column_n = -1)
         public static void TableSetBgColor(ImGuiTableBgTarget target, uint color, int column_n = (int)(-1))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TableSetBgColor(target, color, column_n);
+                __Internal64.TableSetBgColor(target, color, column_n);
             }
             else
             {
-                __Internal64.TableSetBgColor(target, color, column_n);
+                __Internal32.TableSetBgColor(target, color, column_n);
             }
         }
 
@@ -22166,13 +22166,13 @@ namespace DearImGui
         // DEBUG: void          Columns(int count = 1, const char* id = NULL, bool border = true)
         public static void Columns(int count = (int)(1), string id = default, bool border = true)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Columns(count, id, border);
+                __Internal64.Columns(count, id, border);
             }
             else
             {
-                __Internal64.Columns(count, id, border);
+                __Internal32.Columns(count, id, border);
             }
         }
 
@@ -22180,13 +22180,13 @@ namespace DearImGui
         // DEBUG: void          NextColumn()
         public static void NextColumn()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.NextColumn();
+                __Internal64.NextColumn();
             }
             else
             {
-                __Internal64.NextColumn();
+                __Internal32.NextColumn();
             }
         }
 
@@ -22194,7 +22194,7 @@ namespace DearImGui
         // DEBUG: int           GetColumnIndex()
         public static int GetColumnIndex()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetColumnIndex() : __Internal64.GetColumnIndex();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetColumnIndex() : __Internal64.GetColumnIndex();
             return ___ret;
         }
 
@@ -22202,7 +22202,7 @@ namespace DearImGui
         // DEBUG: float         GetColumnWidth(int column_index = -1)
         public static float GetColumnWidth(int column_index = (int)(-1))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetColumnWidth(column_index) : __Internal64.GetColumnWidth(column_index);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetColumnWidth(column_index) : __Internal64.GetColumnWidth(column_index);
             return ___ret;
         }
 
@@ -22210,13 +22210,13 @@ namespace DearImGui
         // DEBUG: void          SetColumnWidth(int column_index, float width)
         public static void SetColumnWidth(int column_index, float width)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetColumnWidth(column_index, width);
+                __Internal64.SetColumnWidth(column_index, width);
             }
             else
             {
-                __Internal64.SetColumnWidth(column_index, width);
+                __Internal32.SetColumnWidth(column_index, width);
             }
         }
 
@@ -22224,7 +22224,7 @@ namespace DearImGui
         // DEBUG: float         GetColumnOffset(int column_index = -1)
         public static float GetColumnOffset(int column_index = (int)(-1))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetColumnOffset(column_index) : __Internal64.GetColumnOffset(column_index);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetColumnOffset(column_index) : __Internal64.GetColumnOffset(column_index);
             return ___ret;
         }
 
@@ -22232,13 +22232,13 @@ namespace DearImGui
         // DEBUG: void          SetColumnOffset(int column_index, float offset_x)
         public static void SetColumnOffset(int column_index, float offset_x)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetColumnOffset(column_index, offset_x);
+                __Internal64.SetColumnOffset(column_index, offset_x);
             }
             else
             {
-                __Internal64.SetColumnOffset(column_index, offset_x);
+                __Internal32.SetColumnOffset(column_index, offset_x);
             }
         }
 
@@ -22246,7 +22246,7 @@ namespace DearImGui
         // DEBUG: int           GetColumnsCount()
         public static int GetColumnsCount()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetColumnsCount() : __Internal64.GetColumnsCount();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetColumnsCount() : __Internal64.GetColumnsCount();
             return ___ret;
         }
 
@@ -22254,7 +22254,7 @@ namespace DearImGui
         // DEBUG: bool          BeginTabBar(const char* str_id, ImGuiTabBarFlags flags = 0)
         public static bool BeginTabBar(string str_id, ImGuiTabBarFlags flags = (ImGuiTabBarFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginTabBar(str_id, flags) : __Internal64.BeginTabBar(str_id, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginTabBar(str_id, flags) : __Internal64.BeginTabBar(str_id, flags);
             return ___ret;
         }
 
@@ -22262,13 +22262,13 @@ namespace DearImGui
         // DEBUG: void          EndTabBar()
         public static void EndTabBar()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndTabBar();
+                __Internal64.EndTabBar();
             }
             else
             {
-                __Internal64.EndTabBar();
+                __Internal32.EndTabBar();
             }
         }
 
@@ -22279,7 +22279,7 @@ namespace DearImGui
             fixed (bool* __p_open1 = &p_open)
             {
                 var __arg1 = __p_open1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.BeginTabItem(label, __arg1, flags) : __Internal64.BeginTabItem(label, __arg1, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.BeginTabItem(label, __arg1, flags) : __Internal64.BeginTabItem(label, __arg1, flags);
                 return ___ret;
             }
         }
@@ -22288,13 +22288,13 @@ namespace DearImGui
         // DEBUG: void          EndTabItem()
         public static void EndTabItem()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndTabItem();
+                __Internal64.EndTabItem();
             }
             else
             {
-                __Internal64.EndTabItem();
+                __Internal32.EndTabItem();
             }
         }
 
@@ -22302,7 +22302,7 @@ namespace DearImGui
         // DEBUG: bool          TabItemButton(const char* label, ImGuiTabItemFlags flags = 0)
         public static bool TabItemButton(string label, ImGuiTabItemFlags flags = (ImGuiTabItemFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.TabItemButton(label, flags) : __Internal64.TabItemButton(label, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.TabItemButton(label, flags) : __Internal64.TabItemButton(label, flags);
             return ___ret;
         }
 
@@ -22310,13 +22310,13 @@ namespace DearImGui
         // DEBUG: void          SetTabItemClosed(const char* tab_or_docked_window_label)
         public static void SetTabItemClosed(string tab_or_docked_window_label)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetTabItemClosed(tab_or_docked_window_label);
+                __Internal64.SetTabItemClosed(tab_or_docked_window_label);
             }
             else
             {
-                __Internal64.SetTabItemClosed(tab_or_docked_window_label);
+                __Internal32.SetTabItemClosed(tab_or_docked_window_label);
             }
         }
 
@@ -22324,13 +22324,13 @@ namespace DearImGui
         // DEBUG: void          LogToTTY(int auto_open_depth = -1)
         public static void LogToTTY(int auto_open_depth = (int)(-1))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.LogToTTY(auto_open_depth);
+                __Internal64.LogToTTY(auto_open_depth);
             }
             else
             {
-                __Internal64.LogToTTY(auto_open_depth);
+                __Internal32.LogToTTY(auto_open_depth);
             }
         }
 
@@ -22338,13 +22338,13 @@ namespace DearImGui
         // DEBUG: void          LogToFile(int auto_open_depth = -1, const char* filename = NULL)
         public static void LogToFile(int auto_open_depth = (int)(-1), string filename = default)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.LogToFile(auto_open_depth, filename);
+                __Internal64.LogToFile(auto_open_depth, filename);
             }
             else
             {
-                __Internal64.LogToFile(auto_open_depth, filename);
+                __Internal32.LogToFile(auto_open_depth, filename);
             }
         }
 
@@ -22352,13 +22352,13 @@ namespace DearImGui
         // DEBUG: void          LogToClipboard(int auto_open_depth = -1)
         public static void LogToClipboard(int auto_open_depth = (int)(-1))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.LogToClipboard(auto_open_depth);
+                __Internal64.LogToClipboard(auto_open_depth);
             }
             else
             {
-                __Internal64.LogToClipboard(auto_open_depth);
+                __Internal32.LogToClipboard(auto_open_depth);
             }
         }
 
@@ -22366,13 +22366,13 @@ namespace DearImGui
         // DEBUG: void          LogFinish()
         public static void LogFinish()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.LogFinish();
+                __Internal64.LogFinish();
             }
             else
             {
-                __Internal64.LogFinish();
+                __Internal32.LogFinish();
             }
         }
 
@@ -22380,13 +22380,13 @@ namespace DearImGui
         // DEBUG: void          LogButtons()
         public static void LogButtons()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.LogButtons();
+                __Internal64.LogButtons();
             }
             else
             {
-                __Internal64.LogButtons();
+                __Internal32.LogButtons();
             }
         }
 
@@ -22394,13 +22394,13 @@ namespace DearImGui
         // DEBUG: void          LogText(const char* fmt, ...) IM_FMTARGS(1)
         public static void LogText(string fmt)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.LogText(fmt);
+                __Internal64.LogText(fmt);
             }
             else
             {
-                __Internal64.LogText(fmt);
+                __Internal32.LogText(fmt);
             }
         }
 
@@ -22408,13 +22408,13 @@ namespace DearImGui
         // DEBUG: void          LogTextV(const char* fmt, va_list args) IM_FMTLIST(1)
         public static void LogTextV(string fmt, Object args)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.LogTextV(fmt, args);
+                __Internal64.LogTextV(fmt, args);
             }
             else
             {
-                __Internal64.LogTextV(fmt, args);
+                __Internal32.LogTextV(fmt, args);
             }
         }
 
@@ -22422,7 +22422,7 @@ namespace DearImGui
         // DEBUG: bool          BeginDragDropSource(ImGuiDragDropFlags flags = 0)
         public static bool BeginDragDropSource(ImGuiDragDropFlags flags = (ImGuiDragDropFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginDragDropSource(flags) : __Internal64.BeginDragDropSource(flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginDragDropSource(flags) : __Internal64.BeginDragDropSource(flags);
             return ___ret;
         }
 
@@ -22433,7 +22433,7 @@ namespace DearImGui
             var __arg2 = sz
             /* DEBUG: TypeMapSizeT.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.SetDragDropPayload(type, data, __arg2, cond) : __Internal64.SetDragDropPayload(type, data, __arg2, cond);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.SetDragDropPayload(type, data, __arg2, cond) : __Internal64.SetDragDropPayload(type, data, __arg2, cond);
             return ___ret;
         }
 
@@ -22441,13 +22441,13 @@ namespace DearImGui
         // DEBUG: void          EndDragDropSource()
         public static void EndDragDropSource()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndDragDropSource();
+                __Internal64.EndDragDropSource();
             }
             else
             {
-                __Internal64.EndDragDropSource();
+                __Internal32.EndDragDropSource();
             }
         }
 
@@ -22455,7 +22455,7 @@ namespace DearImGui
         // DEBUG: bool                  BeginDragDropTarget()
         public static bool BeginDragDropTarget()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginDragDropTarget() : __Internal64.BeginDragDropTarget();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginDragDropTarget() : __Internal64.BeginDragDropTarget();
             return ___ret;
         }
 
@@ -22463,7 +22463,7 @@ namespace DearImGui
         // DEBUG: const ImGuiPayload*   AcceptDragDropPayload(const char* type, ImGuiDragDropFlags flags = 0)
         public static ImGuiPayload AcceptDragDropPayload(string type, ImGuiDragDropFlags flags = (ImGuiDragDropFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.AcceptDragDropPayload(type, flags) : __Internal64.AcceptDragDropPayload(type, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.AcceptDragDropPayload(type, flags) : __Internal64.AcceptDragDropPayload(type, flags);
             var __result0 = ImGuiPayload.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -22472,13 +22472,13 @@ namespace DearImGui
         // DEBUG: void                  EndDragDropTarget()
         public static void EndDragDropTarget()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndDragDropTarget();
+                __Internal64.EndDragDropTarget();
             }
             else
             {
-                __Internal64.EndDragDropTarget();
+                __Internal32.EndDragDropTarget();
             }
         }
 
@@ -22486,7 +22486,7 @@ namespace DearImGui
         // DEBUG: const ImGuiPayload*   GetDragDropPayload()
         public static ImGuiPayload GetDragDropPayload()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetDragDropPayload() : __Internal64.GetDragDropPayload();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetDragDropPayload() : __Internal64.GetDragDropPayload();
             var __result0 = ImGuiPayload.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -22495,13 +22495,13 @@ namespace DearImGui
         // DEBUG: void          BeginDisabled(bool disabled = true)
         public static void BeginDisabled(bool disabled = true)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.BeginDisabled(disabled);
+                __Internal64.BeginDisabled(disabled);
             }
             else
             {
-                __Internal64.BeginDisabled(disabled);
+                __Internal32.BeginDisabled(disabled);
             }
         }
 
@@ -22509,13 +22509,13 @@ namespace DearImGui
         // DEBUG: void          EndDisabled()
         public static void EndDisabled()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndDisabled();
+                __Internal64.EndDisabled();
             }
             else
             {
-                __Internal64.EndDisabled();
+                __Internal32.EndDisabled();
             }
         }
 
@@ -22531,13 +22531,13 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushClipRect(__arg0, __arg1, intersect_with_current_clip_rect);
+                __Internal64.PushClipRect(__arg0, __arg1, intersect_with_current_clip_rect);
             }
             else
             {
-                __Internal64.PushClipRect(__arg0, __arg1, intersect_with_current_clip_rect);
+                __Internal32.PushClipRect(__arg0, __arg1, intersect_with_current_clip_rect);
             }
         }
 
@@ -22545,13 +22545,13 @@ namespace DearImGui
         // DEBUG: void          PopClipRect()
         public static void PopClipRect()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopClipRect();
+                __Internal64.PopClipRect();
             }
             else
             {
-                __Internal64.PopClipRect();
+                __Internal32.PopClipRect();
             }
         }
 
@@ -22559,13 +22559,13 @@ namespace DearImGui
         // DEBUG: void          SetItemDefaultFocus()
         public static void SetItemDefaultFocus()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetItemDefaultFocus();
+                __Internal64.SetItemDefaultFocus();
             }
             else
             {
-                __Internal64.SetItemDefaultFocus();
+                __Internal32.SetItemDefaultFocus();
             }
         }
 
@@ -22573,13 +22573,13 @@ namespace DearImGui
         // DEBUG: void          SetKeyboardFocusHere(int offset = 0)
         public static void SetKeyboardFocusHere(int offset = (int)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetKeyboardFocusHere(offset);
+                __Internal64.SetKeyboardFocusHere(offset);
             }
             else
             {
-                __Internal64.SetKeyboardFocusHere(offset);
+                __Internal32.SetKeyboardFocusHere(offset);
             }
         }
 
@@ -22587,7 +22587,7 @@ namespace DearImGui
         // DEBUG: bool          IsItemHovered(ImGuiHoveredFlags flags = 0)
         public static bool IsItemHovered(ImGuiHoveredFlags flags = (ImGuiHoveredFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsItemHovered(flags) : __Internal64.IsItemHovered(flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsItemHovered(flags) : __Internal64.IsItemHovered(flags);
             return ___ret;
         }
 
@@ -22595,7 +22595,7 @@ namespace DearImGui
         // DEBUG: bool          IsItemActive()
         public static bool IsItemActive()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsItemActive() : __Internal64.IsItemActive();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsItemActive() : __Internal64.IsItemActive();
             return ___ret;
         }
 
@@ -22603,7 +22603,7 @@ namespace DearImGui
         // DEBUG: bool          IsItemFocused()
         public static bool IsItemFocused()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsItemFocused() : __Internal64.IsItemFocused();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsItemFocused() : __Internal64.IsItemFocused();
             return ___ret;
         }
 
@@ -22611,7 +22611,7 @@ namespace DearImGui
         // DEBUG: bool          IsItemClicked(ImGuiMouseButton mouse_button = 0)
         public static bool IsItemClicked(ImGuiMouseButton mouse_button = (ImGuiMouseButton)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsItemClicked(mouse_button) : __Internal64.IsItemClicked(mouse_button);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsItemClicked(mouse_button) : __Internal64.IsItemClicked(mouse_button);
             return ___ret;
         }
 
@@ -22619,7 +22619,7 @@ namespace DearImGui
         // DEBUG: bool          IsItemVisible()
         public static bool IsItemVisible()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsItemVisible() : __Internal64.IsItemVisible();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsItemVisible() : __Internal64.IsItemVisible();
             return ___ret;
         }
 
@@ -22627,7 +22627,7 @@ namespace DearImGui
         // DEBUG: bool          IsItemEdited()
         public static bool IsItemEdited()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsItemEdited() : __Internal64.IsItemEdited();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsItemEdited() : __Internal64.IsItemEdited();
             return ___ret;
         }
 
@@ -22635,7 +22635,7 @@ namespace DearImGui
         // DEBUG: bool          IsItemActivated()
         public static bool IsItemActivated()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsItemActivated() : __Internal64.IsItemActivated();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsItemActivated() : __Internal64.IsItemActivated();
             return ___ret;
         }
 
@@ -22643,7 +22643,7 @@ namespace DearImGui
         // DEBUG: bool          IsItemDeactivated()
         public static bool IsItemDeactivated()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsItemDeactivated() : __Internal64.IsItemDeactivated();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsItemDeactivated() : __Internal64.IsItemDeactivated();
             return ___ret;
         }
 
@@ -22651,7 +22651,7 @@ namespace DearImGui
         // DEBUG: bool          IsItemDeactivatedAfterEdit()
         public static bool IsItemDeactivatedAfterEdit()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsItemDeactivatedAfterEdit() : __Internal64.IsItemDeactivatedAfterEdit();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsItemDeactivatedAfterEdit() : __Internal64.IsItemDeactivatedAfterEdit();
             return ___ret;
         }
 
@@ -22659,7 +22659,7 @@ namespace DearImGui
         // DEBUG: bool          IsItemToggledOpen()
         public static bool IsItemToggledOpen()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsItemToggledOpen() : __Internal64.IsItemToggledOpen();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsItemToggledOpen() : __Internal64.IsItemToggledOpen();
             return ___ret;
         }
 
@@ -22667,7 +22667,7 @@ namespace DearImGui
         // DEBUG: bool          IsAnyItemHovered()
         public static bool IsAnyItemHovered()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsAnyItemHovered() : __Internal64.IsAnyItemHovered();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsAnyItemHovered() : __Internal64.IsAnyItemHovered();
             return ___ret;
         }
 
@@ -22675,7 +22675,7 @@ namespace DearImGui
         // DEBUG: bool          IsAnyItemActive()
         public static bool IsAnyItemActive()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsAnyItemActive() : __Internal64.IsAnyItemActive();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsAnyItemActive() : __Internal64.IsAnyItemActive();
             return ___ret;
         }
 
@@ -22683,7 +22683,7 @@ namespace DearImGui
         // DEBUG: bool          IsAnyItemFocused()
         public static bool IsAnyItemFocused()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsAnyItemFocused() : __Internal64.IsAnyItemFocused();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsAnyItemFocused() : __Internal64.IsAnyItemFocused();
             return ___ret;
         }
 
@@ -22692,13 +22692,13 @@ namespace DearImGui
         public static Vector2 GetItemRectMin()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetItemRectMin(new IntPtr(&___ret));
+                __Internal64.GetItemRectMin(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetItemRectMin(new IntPtr(&___ret));
+                __Internal32.GetItemRectMin(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -22712,13 +22712,13 @@ namespace DearImGui
         public static Vector2 GetItemRectMax()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetItemRectMax(new IntPtr(&___ret));
+                __Internal64.GetItemRectMax(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetItemRectMax(new IntPtr(&___ret));
+                __Internal32.GetItemRectMax(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -22732,13 +22732,13 @@ namespace DearImGui
         public static Vector2 GetItemRectSize()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetItemRectSize(new IntPtr(&___ret));
+                __Internal64.GetItemRectSize(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetItemRectSize(new IntPtr(&___ret));
+                __Internal32.GetItemRectSize(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -22751,13 +22751,13 @@ namespace DearImGui
         // DEBUG: void          SetItemAllowOverlap()
         public static void SetItemAllowOverlap()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetItemAllowOverlap();
+                __Internal64.SetItemAllowOverlap();
             }
             else
             {
-                __Internal64.SetItemAllowOverlap();
+                __Internal32.SetItemAllowOverlap();
             }
         }
 
@@ -22765,7 +22765,7 @@ namespace DearImGui
         // DEBUG: ImGuiViewport* GetMainViewport()
         public static ImGuiViewport GetMainViewport()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetMainViewport() : __Internal64.GetMainViewport();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetMainViewport() : __Internal64.GetMainViewport();
             var __result0 = ImGuiViewport.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -22774,7 +22774,7 @@ namespace DearImGui
         // DEBUG: ImDrawList*   GetBackgroundDrawList()
         public static ImDrawList GetBackgroundDrawList()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetBackgroundDrawList() : __Internal64.GetBackgroundDrawList();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetBackgroundDrawList() : __Internal64.GetBackgroundDrawList();
             var __result0 = ___ret != IntPtr.Zero ? ImDrawList.__CreateInstance(___ret) : default;
             return __result0;
         }
@@ -22783,7 +22783,7 @@ namespace DearImGui
         // DEBUG: ImDrawList*   GetForegroundDrawList()
         public static ImDrawList GetForegroundDrawList()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetForegroundDrawList() : __Internal64.GetForegroundDrawList();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetForegroundDrawList() : __Internal64.GetForegroundDrawList();
             var __result0 = ___ret != IntPtr.Zero ? ImDrawList.__CreateInstance(___ret) : default;
             return __result0;
         }
@@ -22796,7 +22796,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsRectVisible(__arg0) : __Internal64.IsRectVisible(__arg0);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsRectVisible(__arg0) : __Internal64.IsRectVisible(__arg0);
             return ___ret;
         }
 
@@ -22812,7 +22812,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsRectVisible(__arg0, __arg1) : __Internal64.IsRectVisible(__arg0, __arg1);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsRectVisible(__arg0, __arg1) : __Internal64.IsRectVisible(__arg0, __arg1);
             return ___ret;
         }
 
@@ -22820,7 +22820,7 @@ namespace DearImGui
         // DEBUG: double        GetTime()
         public static double GetTime()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetTime() : __Internal64.GetTime();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetTime() : __Internal64.GetTime();
             return ___ret;
         }
 
@@ -22828,7 +22828,7 @@ namespace DearImGui
         // DEBUG: int           GetFrameCount()
         public static int GetFrameCount()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetFrameCount() : __Internal64.GetFrameCount();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetFrameCount() : __Internal64.GetFrameCount();
             return ___ret;
         }
 
@@ -22836,7 +22836,7 @@ namespace DearImGui
         // DEBUG: ImDrawListSharedData* GetDrawListSharedData()
         public static ImDrawListSharedData GetDrawListSharedData()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetDrawListSharedData() : __Internal64.GetDrawListSharedData();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetDrawListSharedData() : __Internal64.GetDrawListSharedData();
             var __result0 = ImDrawListSharedData.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -22845,7 +22845,7 @@ namespace DearImGui
         // DEBUG: const char*   GetStyleColorName(ImGuiCol idx)
         public static string GetStyleColorName(ImGuiCol idx)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetStyleColorName(idx) : __Internal64.GetStyleColorName(idx);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetStyleColorName(idx) : __Internal64.GetStyleColorName(idx);
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
@@ -22854,13 +22854,13 @@ namespace DearImGui
         public static void SetStateStorage(ImGuiStorage storage)
         {
             var __arg0 = storage is null ? IntPtr.Zero : storage.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetStateStorage(__arg0);
+                __Internal64.SetStateStorage(__arg0);
             }
             else
             {
-                __Internal64.SetStateStorage(__arg0);
+                __Internal32.SetStateStorage(__arg0);
             }
         }
 
@@ -22868,7 +22868,7 @@ namespace DearImGui
         // DEBUG: ImGuiStorage* GetStateStorage()
         public static ImGuiStorage GetStateStorage()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetStateStorage() : __Internal64.GetStateStorage();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetStateStorage() : __Internal64.GetStateStorage();
             var __result0 = ImGuiStorage.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -22881,7 +22881,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginChildFrame(id, __arg1, flags) : __Internal64.BeginChildFrame(id, __arg1, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.BeginChildFrame(id, __arg1, flags) : __Internal64.BeginChildFrame(id, __arg1, flags);
             return ___ret;
         }
 
@@ -22889,13 +22889,13 @@ namespace DearImGui
         // DEBUG: void          EndChildFrame()
         public static void EndChildFrame()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndChildFrame();
+                __Internal64.EndChildFrame();
             }
             else
             {
-                __Internal64.EndChildFrame();
+                __Internal32.EndChildFrame();
             }
         }
 
@@ -22904,13 +22904,13 @@ namespace DearImGui
         public static Vector2 CalcTextSize(string text, string text_end = default, bool hide_text_after_double_hash = false, float wrap_width = -1.0F)
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.CalcTextSize(new IntPtr(&___ret), text, text_end, hide_text_after_double_hash, wrap_width);
+                __Internal64.CalcTextSize(new IntPtr(&___ret), text, text_end, hide_text_after_double_hash, wrap_width);
             }
             else
             {
-                __Internal64.CalcTextSize(new IntPtr(&___ret), text, text_end, hide_text_after_double_hash, wrap_width);
+                __Internal32.CalcTextSize(new IntPtr(&___ret), text, text_end, hide_text_after_double_hash, wrap_width);
             }
 
             return ___ret
@@ -22924,13 +22924,13 @@ namespace DearImGui
         public static Vector4 ColorConvertU32ToFloat4(uint @in)
         {
             var ___ret = new Vector4();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ColorConvertU32ToFloat4(new IntPtr(&___ret), @in);
+                __Internal64.ColorConvertU32ToFloat4(new IntPtr(&___ret), @in);
             }
             else
             {
-                __Internal64.ColorConvertU32ToFloat4(new IntPtr(&___ret), @in);
+                __Internal32.ColorConvertU32ToFloat4(new IntPtr(&___ret), @in);
             }
 
             return ___ret
@@ -22947,7 +22947,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.ColorConvertFloat4ToU32(__arg0) : __Internal64.ColorConvertFloat4ToU32(__arg0);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.ColorConvertFloat4ToU32(__arg0) : __Internal64.ColorConvertFloat4ToU32(__arg0);
             return ___ret;
         }
 
@@ -22964,13 +22964,13 @@ namespace DearImGui
                     fixed (float* __out_v5 = &out_v)
                     {
                         var __arg5 = __out_v5;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.ColorConvertRGBtoHSV(r, g, b, __arg3, __arg4, __arg5);
+                            __Internal64.ColorConvertRGBtoHSV(r, g, b, __arg3, __arg4, __arg5);
                         }
                         else
                         {
-                            __Internal64.ColorConvertRGBtoHSV(r, g, b, __arg3, __arg4, __arg5);
+                            __Internal32.ColorConvertRGBtoHSV(r, g, b, __arg3, __arg4, __arg5);
                         }
                     }
                 }
@@ -22990,13 +22990,13 @@ namespace DearImGui
                     fixed (float* __out_b5 = &out_b)
                     {
                         var __arg5 = __out_b5;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.ColorConvertHSVtoRGB(h, s, v, __arg3, __arg4, __arg5);
+                            __Internal64.ColorConvertHSVtoRGB(h, s, v, __arg3, __arg4, __arg5);
                         }
                         else
                         {
-                            __Internal64.ColorConvertHSVtoRGB(h, s, v, __arg3, __arg4, __arg5);
+                            __Internal32.ColorConvertHSVtoRGB(h, s, v, __arg3, __arg4, __arg5);
                         }
                     }
                 }
@@ -23007,7 +23007,7 @@ namespace DearImGui
         // DEBUG: bool          IsKeyDown(ImGuiKey key)
         public static bool IsKeyDown(ImGuiKey key)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsKeyDown(key) : __Internal64.IsKeyDown(key);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsKeyDown(key) : __Internal64.IsKeyDown(key);
             return ___ret;
         }
 
@@ -23015,7 +23015,7 @@ namespace DearImGui
         // DEBUG: bool          IsKeyPressed(ImGuiKey key, bool repeat = true)
         public static bool IsKeyPressed(ImGuiKey key, bool repeat = true)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsKeyPressed(key, repeat) : __Internal64.IsKeyPressed(key, repeat);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsKeyPressed(key, repeat) : __Internal64.IsKeyPressed(key, repeat);
             return ___ret;
         }
 
@@ -23023,7 +23023,7 @@ namespace DearImGui
         // DEBUG: bool          IsKeyReleased(ImGuiKey key)
         public static bool IsKeyReleased(ImGuiKey key)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsKeyReleased(key) : __Internal64.IsKeyReleased(key);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsKeyReleased(key) : __Internal64.IsKeyReleased(key);
             return ___ret;
         }
 
@@ -23031,7 +23031,7 @@ namespace DearImGui
         // DEBUG: int           GetKeyPressedAmount(ImGuiKey key, float repeat_delay, float rate)
         public static int GetKeyPressedAmount(ImGuiKey key, float repeat_delay, float rate)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetKeyPressedAmount(key, repeat_delay, rate) : __Internal64.GetKeyPressedAmount(key, repeat_delay, rate);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetKeyPressedAmount(key, repeat_delay, rate) : __Internal64.GetKeyPressedAmount(key, repeat_delay, rate);
             return ___ret;
         }
 
@@ -23039,7 +23039,7 @@ namespace DearImGui
         // DEBUG: const char*   GetKeyName(ImGuiKey key)
         public static string GetKeyName(ImGuiKey key)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetKeyName(key) : __Internal64.GetKeyName(key);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetKeyName(key) : __Internal64.GetKeyName(key);
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
@@ -23047,13 +23047,13 @@ namespace DearImGui
         // DEBUG: void          SetNextFrameWantCaptureKeyboard(bool want_capture_keyboard)
         public static void SetNextFrameWantCaptureKeyboard(bool want_capture_keyboard)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextFrameWantCaptureKeyboard(want_capture_keyboard);
+                __Internal64.SetNextFrameWantCaptureKeyboard(want_capture_keyboard);
             }
             else
             {
-                __Internal64.SetNextFrameWantCaptureKeyboard(want_capture_keyboard);
+                __Internal32.SetNextFrameWantCaptureKeyboard(want_capture_keyboard);
             }
         }
 
@@ -23061,7 +23061,7 @@ namespace DearImGui
         // DEBUG: bool          IsMouseDown(ImGuiMouseButton button)
         public static bool IsMouseDown(ImGuiMouseButton button)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsMouseDown(button) : __Internal64.IsMouseDown(button);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsMouseDown(button) : __Internal64.IsMouseDown(button);
             return ___ret;
         }
 
@@ -23069,7 +23069,7 @@ namespace DearImGui
         // DEBUG: bool          IsMouseClicked(ImGuiMouseButton button, bool repeat = false)
         public static bool IsMouseClicked(ImGuiMouseButton button, bool repeat = false)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsMouseClicked(button, repeat) : __Internal64.IsMouseClicked(button, repeat);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsMouseClicked(button, repeat) : __Internal64.IsMouseClicked(button, repeat);
             return ___ret;
         }
 
@@ -23077,7 +23077,7 @@ namespace DearImGui
         // DEBUG: bool          IsMouseReleased(ImGuiMouseButton button)
         public static bool IsMouseReleased(ImGuiMouseButton button)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsMouseReleased(button) : __Internal64.IsMouseReleased(button);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsMouseReleased(button) : __Internal64.IsMouseReleased(button);
             return ___ret;
         }
 
@@ -23085,7 +23085,7 @@ namespace DearImGui
         // DEBUG: bool          IsMouseDoubleClicked(ImGuiMouseButton button)
         public static bool IsMouseDoubleClicked(ImGuiMouseButton button)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsMouseDoubleClicked(button) : __Internal64.IsMouseDoubleClicked(button);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsMouseDoubleClicked(button) : __Internal64.IsMouseDoubleClicked(button);
             return ___ret;
         }
 
@@ -23093,7 +23093,7 @@ namespace DearImGui
         // DEBUG: int           GetMouseClickedCount(ImGuiMouseButton button)
         public static int GetMouseClickedCount(ImGuiMouseButton button)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetMouseClickedCount(button) : __Internal64.GetMouseClickedCount(button);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetMouseClickedCount(button) : __Internal64.GetMouseClickedCount(button);
             return ___ret;
         }
 
@@ -23109,7 +23109,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsMouseHoveringRect(__arg0, __arg1, clip) : __Internal64.IsMouseHoveringRect(__arg0, __arg1, clip);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsMouseHoveringRect(__arg0, __arg1, clip) : __Internal64.IsMouseHoveringRect(__arg0, __arg1, clip);
             return ___ret;
         }
 
@@ -23121,7 +23121,7 @@ namespace DearImGui
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsMousePosValid(__arg0) : __Internal64.IsMousePosValid(__arg0);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsMousePosValid(__arg0) : __Internal64.IsMousePosValid(__arg0);
             return ___ret;
         }
 
@@ -23129,7 +23129,7 @@ namespace DearImGui
         // DEBUG: bool          IsAnyMouseDown()
         public static bool IsAnyMouseDown()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsAnyMouseDown() : __Internal64.IsAnyMouseDown();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsAnyMouseDown() : __Internal64.IsAnyMouseDown();
             return ___ret;
         }
 
@@ -23138,13 +23138,13 @@ namespace DearImGui
         public static Vector2 GetMousePos()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetMousePos(new IntPtr(&___ret));
+                __Internal64.GetMousePos(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetMousePos(new IntPtr(&___ret));
+                __Internal32.GetMousePos(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -23158,13 +23158,13 @@ namespace DearImGui
         public static Vector2 GetMousePosOnOpeningCurrentPopup()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetMousePosOnOpeningCurrentPopup(new IntPtr(&___ret));
+                __Internal64.GetMousePosOnOpeningCurrentPopup(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetMousePosOnOpeningCurrentPopup(new IntPtr(&___ret));
+                __Internal32.GetMousePosOnOpeningCurrentPopup(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -23177,7 +23177,7 @@ namespace DearImGui
         // DEBUG: bool          IsMouseDragging(ImGuiMouseButton button, float lock_threshold = -1.0f)
         public static bool IsMouseDragging(ImGuiMouseButton button, float lock_threshold = -1.0F)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsMouseDragging(button, lock_threshold) : __Internal64.IsMouseDragging(button, lock_threshold);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.IsMouseDragging(button, lock_threshold) : __Internal64.IsMouseDragging(button, lock_threshold);
             return ___ret;
         }
 
@@ -23186,13 +23186,13 @@ namespace DearImGui
         public static Vector2 GetMouseDragDelta(ImGuiMouseButton button = (ImGuiMouseButton)(0), float lock_threshold = -1.0F)
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetMouseDragDelta(new IntPtr(&___ret), button, lock_threshold);
+                __Internal64.GetMouseDragDelta(new IntPtr(&___ret), button, lock_threshold);
             }
             else
             {
-                __Internal64.GetMouseDragDelta(new IntPtr(&___ret), button, lock_threshold);
+                __Internal32.GetMouseDragDelta(new IntPtr(&___ret), button, lock_threshold);
             }
 
             return ___ret
@@ -23205,13 +23205,13 @@ namespace DearImGui
         // DEBUG: void          ResetMouseDragDelta(ImGuiMouseButton button = 0)
         public static void ResetMouseDragDelta(ImGuiMouseButton button = (ImGuiMouseButton)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ResetMouseDragDelta(button);
+                __Internal64.ResetMouseDragDelta(button);
             }
             else
             {
-                __Internal64.ResetMouseDragDelta(button);
+                __Internal32.ResetMouseDragDelta(button);
             }
         }
 
@@ -23219,7 +23219,7 @@ namespace DearImGui
         // DEBUG: ImGuiMouseCursor GetMouseCursor()
         public static ImGuiMouseCursor GetMouseCursor()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetMouseCursor() : __Internal64.GetMouseCursor();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetMouseCursor() : __Internal64.GetMouseCursor();
             return ___ret;
         }
 
@@ -23227,13 +23227,13 @@ namespace DearImGui
         // DEBUG: void          SetMouseCursor(ImGuiMouseCursor cursor_type)
         public static void SetMouseCursor(ImGuiMouseCursor cursor_type)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetMouseCursor(cursor_type);
+                __Internal64.SetMouseCursor(cursor_type);
             }
             else
             {
-                __Internal64.SetMouseCursor(cursor_type);
+                __Internal32.SetMouseCursor(cursor_type);
             }
         }
 
@@ -23241,13 +23241,13 @@ namespace DearImGui
         // DEBUG: void          SetNextFrameWantCaptureMouse(bool want_capture_mouse)
         public static void SetNextFrameWantCaptureMouse(bool want_capture_mouse)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextFrameWantCaptureMouse(want_capture_mouse);
+                __Internal64.SetNextFrameWantCaptureMouse(want_capture_mouse);
             }
             else
             {
-                __Internal64.SetNextFrameWantCaptureMouse(want_capture_mouse);
+                __Internal32.SetNextFrameWantCaptureMouse(want_capture_mouse);
             }
         }
 
@@ -23255,7 +23255,7 @@ namespace DearImGui
         // DEBUG: const char*   GetClipboardText()
         public static string GetClipboardText()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetClipboardText() : __Internal64.GetClipboardText();
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetClipboardText() : __Internal64.GetClipboardText();
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
@@ -23263,13 +23263,13 @@ namespace DearImGui
         // DEBUG: void          SetClipboardText(const char* text)
         public static void SetClipboardText(string text)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetClipboardText(text);
+                __Internal64.SetClipboardText(text);
             }
             else
             {
-                __Internal64.SetClipboardText(text);
+                __Internal32.SetClipboardText(text);
             }
         }
 
@@ -23277,13 +23277,13 @@ namespace DearImGui
         // DEBUG: void          LoadIniSettingsFromDisk(const char* ini_filename)
         public static void LoadIniSettingsFromDisk(string ini_filename)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.LoadIniSettingsFromDisk(ini_filename);
+                __Internal64.LoadIniSettingsFromDisk(ini_filename);
             }
             else
             {
-                __Internal64.LoadIniSettingsFromDisk(ini_filename);
+                __Internal32.LoadIniSettingsFromDisk(ini_filename);
             }
         }
 
@@ -23294,13 +23294,13 @@ namespace DearImGui
             var __arg1 = ini_size
             /* DEBUG: TypeMapSizeT.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.LoadIniSettingsFromMemory(ini_data, __arg1);
+                __Internal64.LoadIniSettingsFromMemory(ini_data, __arg1);
             }
             else
             {
-                __Internal64.LoadIniSettingsFromMemory(ini_data, __arg1);
+                __Internal32.LoadIniSettingsFromMemory(ini_data, __arg1);
             }
         }
 
@@ -23308,13 +23308,13 @@ namespace DearImGui
         // DEBUG: void          SaveIniSettingsToDisk(const char* ini_filename)
         public static void SaveIniSettingsToDisk(string ini_filename)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SaveIniSettingsToDisk(ini_filename);
+                __Internal64.SaveIniSettingsToDisk(ini_filename);
             }
             else
             {
-                __Internal64.SaveIniSettingsToDisk(ini_filename);
+                __Internal32.SaveIniSettingsToDisk(ini_filename);
             }
         }
 
@@ -23325,7 +23325,7 @@ namespace DearImGui
             fixed (UIntPtr* __out_ini_size0 = &out_ini_size)
             {
                 var __arg0 = __out_ini_size0;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.SaveIniSettingsToMemory(__arg0) : __Internal64.SaveIniSettingsToMemory(__arg0);
+                var ___ret = Environment.Is64BitProcess ? __Internal32.SaveIniSettingsToMemory(__arg0) : __Internal64.SaveIniSettingsToMemory(__arg0);
                 return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
             }
         }
@@ -23334,13 +23334,13 @@ namespace DearImGui
         // DEBUG: void          DebugTextEncoding(const char* text)
         public static void DebugTextEncoding(string text)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.DebugTextEncoding(text);
+                __Internal64.DebugTextEncoding(text);
             }
             else
             {
-                __Internal64.DebugTextEncoding(text);
+                __Internal32.DebugTextEncoding(text);
             }
         }
 
@@ -23366,7 +23366,7 @@ namespace DearImGui
             var __arg6 = sz_drawidx
             /* DEBUG: TypeMapSizeT.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.DebugCheckVersionAndDataLayout(version_str, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6) : __Internal64.DebugCheckVersionAndDataLayout(version_str, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.DebugCheckVersionAndDataLayout(version_str, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6) : __Internal64.DebugCheckVersionAndDataLayout(version_str, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6);
             return ___ret;
         }
 
@@ -23376,13 +23376,13 @@ namespace DearImGui
         {
             var __arg0 = alloc_func == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(alloc_func);
             var __arg1 = free_func == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(free_func);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetAllocatorFunctions(__arg0, __arg1, user_data);
+                __Internal64.SetAllocatorFunctions(__arg0, __arg1, user_data);
             }
             else
             {
-                __Internal64.SetAllocatorFunctions(__arg0, __arg1, user_data);
+                __Internal32.SetAllocatorFunctions(__arg0, __arg1, user_data);
             }
         }
 
@@ -23392,13 +23392,13 @@ namespace DearImGui
         {
             var __arg0 = p_alloc_func == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(p_alloc_func);
             var __arg1 = p_free_func == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(p_free_func);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetAllocatorFunctions(__arg0, __arg1, p_user_data);
+                __Internal64.GetAllocatorFunctions(__arg0, __arg1, p_user_data);
             }
             else
             {
-                __Internal64.GetAllocatorFunctions(__arg0, __arg1, p_user_data);
+                __Internal32.GetAllocatorFunctions(__arg0, __arg1, p_user_data);
             }
         }
 
@@ -23409,7 +23409,7 @@ namespace DearImGui
             var __arg0 = size
             /* DEBUG: TypeMapSizeT.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.MemAlloc(__arg0) : __Internal64.MemAlloc(__arg0);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.MemAlloc(__arg0) : __Internal64.MemAlloc(__arg0);
             return ___ret;
         }
 
@@ -23417,13 +23417,13 @@ namespace DearImGui
         // DEBUG: void          MemFree(void* ptr)
         public static void MemFree(IntPtr ptr)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.MemFree(ptr);
+                __Internal64.MemFree(ptr);
             }
             else
             {
-                __Internal64.MemFree(ptr);
+                __Internal32.MemFree(ptr);
             }
         }
 
@@ -23431,7 +23431,7 @@ namespace DearImGui
         // DEBUG: static inline int   GetKeyIndex(ImGuiKey key)   { IM_ASSERT(key >= ImGuiKey_NamedKey_BEGIN && key < ImGuiKey_NamedKey_END && "ImGuiKey and native_index was merged together and native_index is disabled by IMGUI_DISABLE_OBSOLETE_KEYIO. Please switch to ImGuiKey."); return key; }
         public static int GetKeyIndex(ImGuiKey key)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetKeyIndex(key) : __Internal64.GetKeyIndex(key);
+            var ___ret = Environment.Is64BitProcess ? __Internal32.GetKeyIndex(key) : __Internal64.GetKeyIndex(key);
             return ___ret;
         }
 
