@@ -1,6 +1,7 @@
 v1.0.1 Jan 13, 2023
 - Fixed wrong assembly version of 0.17 to 0.14 in DearImPlot
 - Use Environment.Is64BitProcess instead of checking IntPtr size
+- Add IMPLOT_AUTO and IMPLOT_AUTO_COL
 
 v1.0 Jan 4, 2023
 - first release
