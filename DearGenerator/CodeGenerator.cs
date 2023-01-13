@@ -259,7 +259,7 @@ public abstract class CodeGenerator
             @"\[\s*StructLayout\s*\(\s*LayoutKind\s*\.\s*Sequential\s*,\s*Size\s*=\s*\d+\s*\)\s*\]",
             @"[StructLayout(LayoutKind.Sequential)]",
             RegexOptions.Multiline);
-        
+
         // insert a line break after some definitions
 
         input = Regex.Replace(input,
@@ -273,7 +273,7 @@ public abstract class CodeGenerator
             @"(/\*\sDEBUG:.*\*/)\r?$(\s+)(?=(/\*\sDEBUG:|;))",
             "$2$1$2",
             RegexOptions.Multiline);
-        
+
         input = Regex.Replace(input,
             @"^(\s+/\*\sDEBUG:\s.*\*/)$\n^\s*$\n^(\s+/\*\sDEBUG:\s.*\*/)$",
             "$1\r\n$2",
@@ -301,7 +301,7 @@ public abstract class CodeGenerator
         }
 
         input = string.Join(Environment.NewLine, lines);
-        
+
         // finally, fix the line endings that got wrong somehow in the process
 
         input = Regex.Replace(input, @"\r\n|\n\r|\n|\r", Environment.NewLine);

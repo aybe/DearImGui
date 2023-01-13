@@ -160,7 +160,7 @@ public abstract class ImSummaryPass : TranslationUnitPass
                     continue; // skip empty lines before declaration
                 }
             }
-            
+
             var match = Regex.Match(input, @"(?<=^\s*//\s).*");
 
             if (match.Success)

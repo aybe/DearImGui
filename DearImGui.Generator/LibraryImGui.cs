@@ -84,7 +84,7 @@ internal sealed class LibraryImGui : Library
         Ignore(ctx, "ImNewWrapper", null, IgnoreType.Class); // unused
 
         Ignore(ctx, "ImVectorExtensions", null, IgnoreType.Class); // unused
-     
+
         Ignore(ctx, "ImVec2", null, IgnoreType.Class); // unused
         Ignore(ctx, "ImVec4", null, IgnoreType.Class); // unused
     }
