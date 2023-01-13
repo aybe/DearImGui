@@ -1,5 +1,6 @@
 ﻿#pragma warning disable CS1591
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.CompilerServices;
@@ -353,16 +354,7 @@ public sealed class ImGuiController : Disposable
                 throw new FileNotFoundException("The font file could not be found.", fontPath);
             }
 
-            var scale = 1.0f;
-
-            GLFW.GetWindowContentScale(Window.WindowPtr, out var xScale, out var yScale);
-
-            if (Math.Abs(xScale - yScale) < 0.001f)
-            {
-                scale = xScale;
-            }
-
-            var size = fontSize.Value * scale * scale; // makes it like as Notepad
+            var size = GetDpiScaledFontSize(fontSize!.Value);
 
             var ranges = IO.Fonts.GlyphRangesDefault;
 
@@ -373,36 +365,7 @@ public sealed class ImGuiController : Disposable
             IO.Fonts.AddFontDefault();
         }
 
-        var pp = new IntPtr();
-        var pw = default(int);
-        var ph = default(int);
-        var ps = default(int);
-
-        var pointer = Unsafe.AsPointer(ref pp);
-
-        IO.Fonts.GetTexDataAsRGBA32((byte**)pointer, ref pw, ref ph, ref ps);
-
-        const string labelTEX = "ImGui Texture";
-        GL.CreateTextures(TextureTarget.Texture2D, 1, out Texture);
-        GL.ObjectLabel(ObjectLabelIdentifier.Texture, Texture, labelTEX.Length, labelTEX);
-
-        var levels = (int)Math.Floor(Math.Log(Math.Max(pw, ph), 2));
-
-        GL.TextureParameter(Texture, TextureParameterName.TextureMaxLevel,  levels - 1);
-        GL.TextureParameter(Texture, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
-        GL.TextureParameter(Texture, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
-        GL.TextureParameter(Texture, TextureParameterName.TextureWrapS,     (int)TextureWrapMode.Repeat);
-        GL.TextureParameter(Texture, TextureParameterName.TextureWrapT,     (int)TextureWrapMode.Repeat);
-
-        GL.TextureStorage2D(Texture, levels, SizedInternalFormat.Rgba8, pw, ph);
-
-        GL.TextureSubImage2D(Texture, 0, 0, 0, pw, ph, PixelFormat.Bgra, PixelType.UnsignedByte, pp);
-
-        GL.GenerateTextureMipmap(Texture);
-
-        IO.Fonts.TexID = (IntPtr)Texture;
-
-        IO.Fonts.ClearTexData();
+        UpdateFontsTextureAtlas();
     }
 
     private unsafe void InitializeStyle()
@@ -542,6 +505,97 @@ public sealed class ImGuiController : Disposable
     private void OnWindowTextInput(TextInputEventArgs e)
     {
         IO.AddInputCharacter((uint)e.Unicode);
+    }
+
+    /// <summary>
+    ///     Scales a font size according current environment's DPI.
+    /// </summary>
+    /// <param name="size">
+    ///     The input font size.
+    /// </param>
+    /// <returns>
+    ///     The scaled font size.
+    /// </returns>
+    public float GetDpiScaledFontSize(float size)
+    {
+        float xScale;
+        float yScale;
+
+        unsafe
+        {
+            GLFW.GetWindowContentScale(Window.WindowPtr, out xScale, out yScale);
+        }
+
+        var equal = Math.Abs(xScale - yScale) < 0.001f;
+
+        // the above condition should always be true but who knows...
+
+        Trace.Assert(equal, $"{nameof(GetDpiScaledFontSize)}: mismatch between {nameof(xScale)} and {nameof(yScale)}");
+
+        var scale = equal ? xScale : 1.0f;
+
+        // whatever that formula is, it just looks like as in Notepad
+
+        return size * scale * scale;
+    }
+
+    /// <summary>
+    ///     Updates the fonts texture atlas.
+    /// </summary>
+    /// <remarks>
+    ///     To add an additional font, proceed as follows:
+    ///     <list type="bullet">
+    ///         <item>
+    ///             add a font using a function from <see cref="ImFontAtlas" />, e.g.
+    ///             <see cref="ImFontAtlas.AddFontFromFileTTF(string,float,DearImGui.ImFontConfig,ref ushort)" />
+    ///         </item>
+    ///         <item>
+    ///             call <see cref="ImFontAtlas.Build" /> to build pixel data
+    ///         </item>
+    ///         <item>
+    ///             call this method to update the fonts texture atlas
+    ///         </item>
+    ///     </list>
+    ///     This cannot be done between <see cref="ImGui.NewFrame" /> and <see cref="ImGui.EndFrame" />,
+    ///     e.g. do that before calling <see cref="Update" />.
+    /// </remarks>
+    public unsafe void UpdateFontsTextureAtlas()
+    {
+        if (GL.IsTexture(Texture))
+        {
+            GL.DeleteTextures(1, ref Texture);
+        }
+
+        var pp = new IntPtr();
+        var pw = default(int);
+        var ph = default(int);
+        var ps = default(int);
+
+        var pointer = Unsafe.AsPointer(ref pp);
+
+        IO.Fonts.GetTexDataAsRGBA32((byte**)pointer, ref pw, ref ph, ref ps);
+
+        const string labelTEX = "ImGui Texture";
+        GL.CreateTextures(TextureTarget.Texture2D, 1, out Texture);
+        GL.ObjectLabel(ObjectLabelIdentifier.Texture, Texture, labelTEX.Length, labelTEX);
+
+        var levels = (int)Math.Floor(Math.Log(Math.Max(pw, ph), 2));
+
+        GL.TextureParameter(Texture, TextureParameterName.TextureMaxLevel,  levels - 1);
+        GL.TextureParameter(Texture, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+        GL.TextureParameter(Texture, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
+        GL.TextureParameter(Texture, TextureParameterName.TextureWrapS,     (int)TextureWrapMode.Repeat);
+        GL.TextureParameter(Texture, TextureParameterName.TextureWrapT,     (int)TextureWrapMode.Repeat);
+
+        GL.TextureStorage2D(Texture, levels, SizedInternalFormat.Rgba8, pw, ph);
+
+        GL.TextureSubImage2D(Texture, 0, 0, 0, pw, ph, PixelFormat.Bgra, PixelType.UnsignedByte, pp);
+
+        GL.GenerateTextureMipmap(Texture);
+
+        IO.Fonts.TexID = (IntPtr)Texture;
+
+        IO.Fonts.ClearTexData();
     }
 
     /// <summary>
