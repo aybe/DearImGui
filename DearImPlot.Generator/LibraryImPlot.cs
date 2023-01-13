@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Text.RegularExpressions;
 using CppSharp;
 using CppSharp.AST;
 using DearGenerator;
@@ -71,6 +72,15 @@ internal sealed class LibraryImPlot : Library
         ctx.SetClassAsValueType("ImPlotPoint");
         ctx.SetClassAsValueType("ImPlotRange");
         ctx.SetClassAsValueType("ImPlotRect");
+    }
+
+    protected override void PreprocessParameters(ASTContext ctx)
+    {
+        base.PreprocessParameters(ctx);
+
+        // apply out/ref to vector parameters
+
+        SetVectorParametersUsage(GetImPlotTranslationUnit(ctx).Declarations.OfType<Namespace>().Single());
     }
 
     #endregion

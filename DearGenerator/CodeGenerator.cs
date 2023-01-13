@@ -230,6 +230,22 @@ public abstract class CodeGenerator
             @"__element;",
             RegexOptions.Multiline
         );
+
+        // out/ref parameters cannot have a default value
+
+        input = Regex.Replace(input,
+            @"(?<=(?:out|ref)\sVector\d\s.*)\s=\sdefault",
+            string.Empty,
+            RegexOptions.Multiline
+        );
+
+        // these constructs aren't handled by type maps
+
+        input = Regex.Replace(input,
+            @"new ImVec(?=\d)",
+            @"new Vector",
+            RegexOptions.Multiline
+        );
     }
 
     private static void ProcessVisibility(ref string input)

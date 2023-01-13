@@ -23115,7 +23115,7 @@ namespace DearImGui
 
         /// <summary>By convention we use (-FLT_MAX,-FLT_MAX) to denote that there is no mouse available.<br/>https://github.com/ocornut/imgui/blob/9aae45eb4a05a5a1f96be1ef37eb503a12ceb889/imgui.h#L897.</summary>
         // DEBUG: bool          IsMousePosValid(const ImVec2* mouse_pos = NULL)
-        public static bool IsMousePosValid(Vector2 mouse_pos = default)
+        public static bool IsMousePosValid(ref Vector2 mouse_pos)
         {
             var __arg0 = new IntPtr(Unsafe.AsPointer(ref mouse_pos))
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */

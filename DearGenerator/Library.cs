@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using CppSharp;
 using CppSharp.AST;
 using CppSharp.Generators;
@@ -119,6 +120,45 @@ public abstract class Library : ILibrary
         }
     }
 
+    protected static void SetVectorParametersUsage(Namespace @namespace)
+    {
+        if (@namespace is null)
+            throw new ArgumentNullException(nameof(@namespace));
+
+        // some vectors should be references but currently they aren't thus we get access denied, fix
+
+        // neither DefaultValue or HasDefaultValue have any effect so we're good for some regex again
+
+        var regex = new Regex(@"(ImVec\d\*\sout\s=\sNULL)|(const\sImVec\d\*)", RegexOptions.Compiled | RegexOptions.Singleline);
+
+        foreach (var function in @namespace.Functions)
+        {
+            foreach (var parameter in function.Parameters)
+            {
+                var match = regex.Match(parameter.DebugText);
+
+                if (!match.Success)
+                    continue;
+
+                var groups = match.Groups;
+
+                switch (match.Success)
+                {
+                    case true when groups[1].Success:
+                        parameter.Usage = ParameterUsage.Out;
+                        break;
+                    case true when groups[2].Success:
+                        parameter.Usage = ParameterUsage.InOut;
+                        break;
+                    default:
+                        continue;
+                }
+
+                Console.WriteLine($"Changed usage to '{parameter.Usage}' for parameter '{parameter}' in function '{function}'.");
+            }
+        }
+    }
+
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
     protected static void SetupImGui(Module module)
     {
@@ -152,6 +192,10 @@ public abstract class Library : ILibrary
         ctx.SetClassAsValueType("ImDrawVert");
         ctx.SetClassAsValueType("ImVec2");
         ctx.SetClassAsValueType("ImVec4");
+    }
+
+    protected virtual void PreprocessParameters(ASTContext ctx)
+    {
     }
 
     [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
@@ -237,6 +281,7 @@ public abstract class Library : ILibrary
     {
         PreprocessPasses(driver);
         PreprocessValueTypes(ctx);
+        PreprocessParameters(ctx);
         PreprocessIgnores(ctx);
     }
 

@@ -10752,7 +10752,7 @@ namespace DearImPlot
 
         /// <summary>Add a new colormap. The color data will be copied. The colormap can be used by pushing either the returned index or the.<br/>String name with PushColormap. The colormap name must be unique and the size must be greater than 1. You will receive.<br/>An assert otherwise! By default colormaps are considered to be qualitative (i.e. discrete). If you want to create a.<br/>Continuous colormap, set #qual=false. This will treat the colors you provide as keys, and ImPlot will build a linearly.<br/>Interpolated lookup table. The memory footprint of this table will be exactly ((size-1)*255+1)*4 bytes.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1142.</summary>
         // DEBUG: ImPlotColormap AddColormap(const char* name, const ImVec4* cols, int size, bool qual=true)
-        public static ImPlotColormap AddColormap(string name, Vector4 cols, int size, bool qual = true)
+        public static ImPlotColormap AddColormap(string name, ref Vector4 cols, int size, bool qual = true)
         {
             var __arg1 = new IntPtr(Unsafe.AsPointer(ref cols))
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
@@ -10928,11 +10928,12 @@ namespace DearImPlot
 
         /// <summary>Shows a horizontal slider with a colormap gradient background. Optionally returns the color sampled at t in [0 1].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1176.</summary>
         // DEBUG: bool ColormapSlider(const char* label, float* t, ImVec4* out = NULL, const char* format = "", ImPlotColormap cmap = IMPLOT_AUTO)
-        public static bool ColormapSlider(string label, ref float t, Vector4 @out = default, string format = "", ImPlotColormap cmap = (ImPlotColormap)(-1))
+        public static bool ColormapSlider(string label, ref float t, out Vector4 @out, string format = "", ImPlotColormap cmap = (ImPlotColormap)(-1))
         {
             fixed (float* __t1 = &t)
             {
                 var __arg1 = __t1;
+                @out = new Vector4();
                 var __arg2 = new IntPtr(Unsafe.AsPointer(ref @out))
                 /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 5 */
                 /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */

@@ -53,6 +53,19 @@ internal sealed class LibraryImGui : Library
 
     #endregion
 
+    #region Preprocess
+
+    protected override void PreprocessParameters(ASTContext ctx)
+    {
+        base.PreprocessParameters(ctx);
+
+        // apply out/ref to vector parameters
+
+        SetVectorParametersUsage(GetImGuiTranslationUnit(ctx).Declarations.OfType<Namespace>().Single());
+    }
+
+    #endregion
+
     #region Postprocess
 
     protected override void PostprocessIgnores(ASTContext ctx)
