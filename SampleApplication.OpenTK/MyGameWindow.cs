@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
 using DearImGui;
 using DearImGui.OpenTK;
 using DearImGui.OpenTK.Extensions;
@@ -54,6 +55,8 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
     protected override void OnUpdateFrame(FrameEventArgs args)
     {
+        SampleExtraFontImpl();
+
         Controller.Update((float)args.Time);
     }
 
@@ -88,6 +91,8 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
         ImGui.End();
 
+        SampleExtraFontDemo();
+
         if (ShowImGuiDemo)
         {
             ImGui.ShowDemoWindow(ref ShowImGuiDemo);
@@ -109,4 +114,56 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
         GL.Viewport(0, 0, e.Width, e.Height);
     }
+
+    #region SampleExtraFont
+
+    private bool? SampleExtraFontFlag;
+
+    private unsafe void SampleExtraFontImpl()
+    {
+        if (SampleExtraFontFlag is false)
+            return;
+
+        SampleExtraFontFlag = false;
+
+        var io = ImGui.GetIO();
+
+        var fonts = io.Fonts;
+
+        var ranges = fonts.GlyphRangesDefault;
+
+        var size = Controller.GetDpiScaledFontSize(12.0f);
+
+        var font = fonts.AddFontFromFileTTF("Roboto-Regular.ttf", size, null, ref *ranges);
+
+        Debug.WriteLine(font);
+
+        fonts.Build();
+
+        Controller.UpdateFontsTextureAtlas();
+    }
+
+    private void SampleExtraFontDemo()
+    {
+        ImGui.SetNextWindowSize(new Vector2(400, 100), ImGuiCond.Once);
+
+        if (ImGui.Begin("Sample: extra font"))
+        {
+            if (SampleExtraFontFlag is false)
+            {
+                ImGui.Text("Change font from Tools/Style Editor.");
+            }
+            else
+            {
+                if (ImGui.Button("Click to add an extra font"))
+                {
+                    SampleExtraFontFlag = true;
+                }
+            }
+        }
+
+        ImGui.End();
+    }
+
+    #endregion
 }
