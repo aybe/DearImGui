@@ -1120,13 +1120,13 @@ namespace DearImPlot
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(new IntPtr(__instancePtr), _x, _y);
+                    __Internal64.ctor(new IntPtr(__instancePtr), _x, _y);
                 }
                 else
                 {
-                    __Internal64.ctor(new IntPtr(__instancePtr), _x, _y);
+                    __Internal32.ctor(new IntPtr(__instancePtr), _x, _y);
                 }
             }
         }
@@ -1141,13 +1141,13 @@ namespace DearImPlot
             ;
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -1160,13 +1160,13 @@ namespace DearImPlot
             var __arg0 = new IntPtr(&____arg0);
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor_1(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.ctor_1(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.ctor_1(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.ctor_1(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -1297,13 +1297,13 @@ namespace DearImPlot
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(new IntPtr(__instancePtr), _min, _max);
+                    __Internal64.ctor(new IntPtr(__instancePtr), _min, _max);
                 }
                 else
                 {
-                    __Internal64.ctor(new IntPtr(__instancePtr), _min, _max);
+                    __Internal32.ctor(new IntPtr(__instancePtr), _min, _max);
                 }
             }
         }
@@ -1316,13 +1316,13 @@ namespace DearImPlot
             var __arg0 = new IntPtr(&____arg0);
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -1333,7 +1333,7 @@ namespace DearImPlot
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Contains(new IntPtr(__instancePtr), value) : __Internal64.Contains(new IntPtr(__instancePtr), value);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.Contains(new IntPtr(__instancePtr), value) : __Internal32.Contains(new IntPtr(__instancePtr), value);
                 return ___ret;
             }
         }
@@ -1344,7 +1344,7 @@ namespace DearImPlot
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Clamp(new IntPtr(__instancePtr), value) : __Internal64.Clamp(new IntPtr(__instancePtr), value);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.Clamp(new IntPtr(__instancePtr), value) : __Internal32.Clamp(new IntPtr(__instancePtr), value);
                 return ___ret;
             }
         }
@@ -1384,7 +1384,7 @@ namespace DearImPlot
             {
                 fixed (__Internal* __instancePtr = &__instance)
                 {
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.Size(new IntPtr(__instancePtr)) : __Internal64.Size(new IntPtr(__instancePtr));
+                    var ___ret = Environment.Is64BitProcess ? __Internal64.Size(new IntPtr(__instancePtr)) : __Internal32.Size(new IntPtr(__instancePtr));
                     return ___ret;
                 }
             }
@@ -1513,13 +1513,13 @@ namespace DearImPlot
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(new IntPtr(__instancePtr), x_min, x_max, y_min, y_max);
+                    __Internal64.ctor(new IntPtr(__instancePtr), x_min, x_max, y_min, y_max);
                 }
                 else
                 {
-                    __Internal64.ctor(new IntPtr(__instancePtr), x_min, x_max, y_min, y_max);
+                    __Internal32.ctor(new IntPtr(__instancePtr), x_min, x_max, y_min, y_max);
                 }
             }
         }
@@ -1532,13 +1532,13 @@ namespace DearImPlot
             var __arg0 = new IntPtr(&____arg0);
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -1551,7 +1551,7 @@ namespace DearImPlot
             var __arg0 = new IntPtr(&____arg0);
             fixed (__Internal* __instancePtr = &__instance)
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Contains(new IntPtr(__instancePtr), __arg0) : __Internal64.Contains(new IntPtr(__instancePtr), __arg0);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.Contains(new IntPtr(__instancePtr), __arg0) : __Internal32.Contains(new IntPtr(__instancePtr), __arg0);
                 return ___ret;
             }
         }
@@ -1562,7 +1562,7 @@ namespace DearImPlot
         {
             fixed (__Internal* __instancePtr = &__instance)
             {
-                var ___ret = IntPtr.Size == 4 ? __Internal32.Contains(new IntPtr(__instancePtr), x, y) : __Internal64.Contains(new IntPtr(__instancePtr), x, y);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.Contains(new IntPtr(__instancePtr), x, y) : __Internal32.Contains(new IntPtr(__instancePtr), x, y);
                 return ___ret;
             }
         }
@@ -1576,13 +1576,13 @@ namespace DearImPlot
             var ___ret = new ImPlotPoint.__Internal();
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.Clamp(new IntPtr(__instancePtr), new IntPtr(&___ret), __arg0);
+                    __Internal64.Clamp(new IntPtr(__instancePtr), new IntPtr(&___ret), __arg0);
                 }
                 else
                 {
-                    __Internal64.Clamp(new IntPtr(__instancePtr), new IntPtr(&___ret), __arg0);
+                    __Internal32.Clamp(new IntPtr(__instancePtr), new IntPtr(&___ret), __arg0);
                 }
 
                 return ImPlotPoint.__CreateInstance(___ret);
@@ -1596,13 +1596,13 @@ namespace DearImPlot
             var ___ret = new ImPlotPoint.__Internal();
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.Clamp(new IntPtr(__instancePtr), new IntPtr(&___ret), x, y);
+                    __Internal64.Clamp(new IntPtr(__instancePtr), new IntPtr(&___ret), x, y);
                 }
                 else
                 {
-                    __Internal64.Clamp(new IntPtr(__instancePtr), new IntPtr(&___ret), x, y);
+                    __Internal32.Clamp(new IntPtr(__instancePtr), new IntPtr(&___ret), x, y);
                 }
 
                 return ImPlotPoint.__CreateInstance(___ret);
@@ -1623,13 +1623,13 @@ namespace DearImPlot
                 var ___ret = new ImPlotPoint.__Internal();
                 fixed (__Internal* __instancePtr = &__instance)
                 {
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.Size(new IntPtr(__instancePtr), new IntPtr(&___ret));
+                        __Internal64.Size(new IntPtr(__instancePtr), new IntPtr(&___ret));
                     }
                     else
                     {
-                        __Internal64.Size(new IntPtr(__instancePtr), new IntPtr(&___ret));
+                        __Internal32.Size(new IntPtr(__instancePtr), new IntPtr(&___ret));
                     }
 
                     return ImPlotPoint.__CreateInstance(___ret);
@@ -1645,13 +1645,13 @@ namespace DearImPlot
                 var ___ret = new ImPlotPoint.__Internal();
                 fixed (__Internal* __instancePtr = &__instance)
                 {
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.Min(new IntPtr(__instancePtr), new IntPtr(&___ret));
+                        __Internal64.Min(new IntPtr(__instancePtr), new IntPtr(&___ret));
                     }
                     else
                     {
-                        __Internal64.Min(new IntPtr(__instancePtr), new IntPtr(&___ret));
+                        __Internal32.Min(new IntPtr(__instancePtr), new IntPtr(&___ret));
                     }
 
                     return ImPlotPoint.__CreateInstance(___ret);
@@ -1667,13 +1667,13 @@ namespace DearImPlot
                 var ___ret = new ImPlotPoint.__Internal();
                 fixed (__Internal* __instancePtr = &__instance)
                 {
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.Max(new IntPtr(__instancePtr), new IntPtr(&___ret));
+                        __Internal64.Max(new IntPtr(__instancePtr), new IntPtr(&___ret));
                     }
                     else
                     {
-                        __Internal64.Max(new IntPtr(__instancePtr), new IntPtr(&___ret));
+                        __Internal32.Max(new IntPtr(__instancePtr), new IntPtr(&___ret));
                     }
 
                     return ImPlotPoint.__CreateInstance(___ret);
@@ -1846,13 +1846,13 @@ namespace DearImPlot
             __Instance = Marshal.AllocHGlobal(sizeof(ImPlotStyle.__Internal));
             __ownsNativeInstance = true;
             __RecordNativeToManagedMapping(__Instance, this);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance);
+                __Internal64.ctor(__Instance);
             }
             else
             {
-                __Internal64.ctor(__Instance);
+                __Internal32.ctor(__Instance);
             }
         }
 
@@ -1866,13 +1866,13 @@ namespace DearImPlot
             if (ReferenceEquals(_0, null))
                 throw new ArgumentNullException("_0", "Cannot be null because it is a C++ reference (&).");
             var __arg0 = _0.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ctor(__Instance, __arg0);
+                __Internal64.ctor(__Instance, __arg0);
             }
             else
             {
-                __Internal64.ctor(__Instance, __arg0);
+                __Internal32.ctor(__Instance, __arg0);
             }
         }
 
@@ -2517,13 +2517,13 @@ namespace DearImPlot
             var __arg0 = new IntPtr(&____arg0);
             fixed (__Internal* __instancePtr = &__instance)
             {
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
                 }
                 else
                 {
-                    __Internal64.ctor(new IntPtr(__instancePtr), __arg0);
+                    __Internal32.ctor(new IntPtr(__instancePtr), __arg0);
                 }
             }
         }
@@ -4881,13 +4881,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotLine<ImS8>(const char* label_id, const ImS8* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, sbyte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotLine(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal64.PlotLine(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotLine(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal32.PlotLine(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
         }
 
@@ -4895,13 +4895,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotLine<ImU8>(const char* label_id, const ImU8* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, byte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotLine_1(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal64.PlotLine_1(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotLine_1(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal32.PlotLine_1(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
         }
 
@@ -4912,13 +4912,13 @@ namespace DearImPlot
             fixed (short* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotLine_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotLine_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotLine_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotLine_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -4930,13 +4930,13 @@ namespace DearImPlot
             fixed (ushort* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotLine_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotLine_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotLine_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotLine_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -4948,13 +4948,13 @@ namespace DearImPlot
             fixed (int* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotLine_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotLine_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotLine_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotLine_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -4966,13 +4966,13 @@ namespace DearImPlot
             fixed (uint* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotLine_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotLine_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotLine_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotLine_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -4984,13 +4984,13 @@ namespace DearImPlot
             fixed (long* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotLine_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotLine_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotLine_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotLine_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5002,13 +5002,13 @@ namespace DearImPlot
             fixed (ulong* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotLine_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotLine_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotLine_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotLine_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5020,13 +5020,13 @@ namespace DearImPlot
             fixed (float* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotLine_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotLine_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotLine_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotLine_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5038,13 +5038,13 @@ namespace DearImPlot
             fixed (double* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotLine_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotLine_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotLine_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotLine_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5053,13 +5053,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotLine<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, sbyte* xs, sbyte* ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotLine(label_id, xs, ys, count, flags, offset, stride);
+                __Internal64.PlotLine(label_id, xs, ys, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotLine(label_id, xs, ys, count, flags, offset, stride);
+                __Internal32.PlotLine(label_id, xs, ys, count, flags, offset, stride);
             }
         }
 
@@ -5067,13 +5067,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotLine<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, byte* xs, byte* ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotLine_1(label_id, xs, ys, count, flags, offset, stride);
+                __Internal64.PlotLine_1(label_id, xs, ys, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotLine_1(label_id, xs, ys, count, flags, offset, stride);
+                __Internal32.PlotLine_1(label_id, xs, ys, count, flags, offset, stride);
             }
         }
 
@@ -5087,13 +5087,13 @@ namespace DearImPlot
                 fixed (short* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotLine_2(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotLine_2(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotLine_2(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotLine_2(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5109,13 +5109,13 @@ namespace DearImPlot
                 fixed (ushort* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotLine_3(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotLine_3(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotLine_3(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotLine_3(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5131,13 +5131,13 @@ namespace DearImPlot
                 fixed (int* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotLine_4(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotLine_4(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotLine_4(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotLine_4(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5153,13 +5153,13 @@ namespace DearImPlot
                 fixed (uint* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotLine_5(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotLine_5(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotLine_5(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotLine_5(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5175,13 +5175,13 @@ namespace DearImPlot
                 fixed (long* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotLine_6(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotLine_6(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotLine_6(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotLine_6(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5197,13 +5197,13 @@ namespace DearImPlot
                 fixed (ulong* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotLine_7(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotLine_7(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotLine_7(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotLine_7(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5219,13 +5219,13 @@ namespace DearImPlot
                 fixed (float* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotLine_8(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotLine_8(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotLine_8(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotLine_8(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5241,13 +5241,13 @@ namespace DearImPlot
                 fixed (double* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotLine_9(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotLine_9(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotLine_9(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotLine_9(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5257,13 +5257,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImS8>(const char* label_id, const ImS8* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, sbyte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotScatter(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal64.PlotScatter(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotScatter(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal32.PlotScatter(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
         }
 
@@ -5271,13 +5271,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImU8>(const char* label_id, const ImU8* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, byte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotScatter_1(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal64.PlotScatter_1(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotScatter_1(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal32.PlotScatter_1(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
         }
 
@@ -5288,13 +5288,13 @@ namespace DearImPlot
             fixed (short* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotScatter_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotScatter_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotScatter_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotScatter_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5306,13 +5306,13 @@ namespace DearImPlot
             fixed (ushort* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotScatter_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotScatter_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotScatter_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotScatter_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5324,13 +5324,13 @@ namespace DearImPlot
             fixed (int* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotScatter_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotScatter_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotScatter_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotScatter_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5342,13 +5342,13 @@ namespace DearImPlot
             fixed (uint* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotScatter_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotScatter_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotScatter_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotScatter_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5360,13 +5360,13 @@ namespace DearImPlot
             fixed (long* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotScatter_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotScatter_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotScatter_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotScatter_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5378,13 +5378,13 @@ namespace DearImPlot
             fixed (ulong* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotScatter_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotScatter_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotScatter_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotScatter_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5396,13 +5396,13 @@ namespace DearImPlot
             fixed (float* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotScatter_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotScatter_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotScatter_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotScatter_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5414,13 +5414,13 @@ namespace DearImPlot
             fixed (double* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotScatter_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotScatter_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotScatter_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotScatter_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5429,13 +5429,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, sbyte* xs, sbyte* ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotScatter(label_id, xs, ys, count, flags, offset, stride);
+                __Internal64.PlotScatter(label_id, xs, ys, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotScatter(label_id, xs, ys, count, flags, offset, stride);
+                __Internal32.PlotScatter(label_id, xs, ys, count, flags, offset, stride);
             }
         }
 
@@ -5443,13 +5443,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, byte* xs, byte* ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotScatter_1(label_id, xs, ys, count, flags, offset, stride);
+                __Internal64.PlotScatter_1(label_id, xs, ys, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotScatter_1(label_id, xs, ys, count, flags, offset, stride);
+                __Internal32.PlotScatter_1(label_id, xs, ys, count, flags, offset, stride);
             }
         }
 
@@ -5463,13 +5463,13 @@ namespace DearImPlot
                 fixed (short* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotScatter_2(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotScatter_2(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotScatter_2(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotScatter_2(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5485,13 +5485,13 @@ namespace DearImPlot
                 fixed (ushort* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotScatter_3(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotScatter_3(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotScatter_3(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotScatter_3(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5507,13 +5507,13 @@ namespace DearImPlot
                 fixed (int* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotScatter_4(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotScatter_4(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotScatter_4(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotScatter_4(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5529,13 +5529,13 @@ namespace DearImPlot
                 fixed (uint* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotScatter_5(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotScatter_5(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotScatter_5(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotScatter_5(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5551,13 +5551,13 @@ namespace DearImPlot
                 fixed (long* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotScatter_6(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotScatter_6(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotScatter_6(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotScatter_6(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5573,13 +5573,13 @@ namespace DearImPlot
                 fixed (ulong* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotScatter_7(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotScatter_7(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotScatter_7(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotScatter_7(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5595,13 +5595,13 @@ namespace DearImPlot
                 fixed (float* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotScatter_8(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotScatter_8(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotScatter_8(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotScatter_8(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5617,13 +5617,13 @@ namespace DearImPlot
                 fixed (double* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotScatter_9(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotScatter_9(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotScatter_9(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotScatter_9(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5633,13 +5633,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImS8>(const char* label_id, const ImS8* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, sbyte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotStairs(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal64.PlotStairs(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotStairs(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal32.PlotStairs(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
         }
 
@@ -5647,13 +5647,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImU8>(const char* label_id, const ImU8* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, byte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotStairs_1(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal64.PlotStairs_1(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotStairs_1(label_id, values, count, xscale, xstart, flags, offset, stride);
+                __Internal32.PlotStairs_1(label_id, values, count, xscale, xstart, flags, offset, stride);
             }
         }
 
@@ -5664,13 +5664,13 @@ namespace DearImPlot
             fixed (short* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStairs_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotStairs_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStairs_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotStairs_2(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5682,13 +5682,13 @@ namespace DearImPlot
             fixed (ushort* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStairs_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotStairs_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStairs_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotStairs_3(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5700,13 +5700,13 @@ namespace DearImPlot
             fixed (int* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStairs_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotStairs_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStairs_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotStairs_4(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5718,13 +5718,13 @@ namespace DearImPlot
             fixed (uint* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStairs_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotStairs_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStairs_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotStairs_5(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5736,13 +5736,13 @@ namespace DearImPlot
             fixed (long* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStairs_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotStairs_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStairs_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotStairs_6(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5754,13 +5754,13 @@ namespace DearImPlot
             fixed (ulong* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStairs_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotStairs_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStairs_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotStairs_7(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5772,13 +5772,13 @@ namespace DearImPlot
             fixed (float* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStairs_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotStairs_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStairs_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotStairs_8(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5790,13 +5790,13 @@ namespace DearImPlot
             fixed (double* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStairs_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotStairs_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStairs_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotStairs_9(label_id, __arg1, count, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -5805,13 +5805,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, sbyte* xs, sbyte* ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotStairs(label_id, xs, ys, count, flags, offset, stride);
+                __Internal64.PlotStairs(label_id, xs, ys, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotStairs(label_id, xs, ys, count, flags, offset, stride);
+                __Internal32.PlotStairs(label_id, xs, ys, count, flags, offset, stride);
             }
         }
 
@@ -5819,13 +5819,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, byte* xs, byte* ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotStairs_1(label_id, xs, ys, count, flags, offset, stride);
+                __Internal64.PlotStairs_1(label_id, xs, ys, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotStairs_1(label_id, xs, ys, count, flags, offset, stride);
+                __Internal32.PlotStairs_1(label_id, xs, ys, count, flags, offset, stride);
             }
         }
 
@@ -5839,13 +5839,13 @@ namespace DearImPlot
                 fixed (short* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStairs_2(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotStairs_2(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStairs_2(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotStairs_2(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5861,13 +5861,13 @@ namespace DearImPlot
                 fixed (ushort* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStairs_3(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotStairs_3(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStairs_3(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotStairs_3(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5883,13 +5883,13 @@ namespace DearImPlot
                 fixed (int* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStairs_4(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotStairs_4(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStairs_4(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotStairs_4(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5905,13 +5905,13 @@ namespace DearImPlot
                 fixed (uint* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStairs_5(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotStairs_5(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStairs_5(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotStairs_5(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5927,13 +5927,13 @@ namespace DearImPlot
                 fixed (long* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStairs_6(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotStairs_6(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStairs_6(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotStairs_6(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5949,13 +5949,13 @@ namespace DearImPlot
                 fixed (ulong* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStairs_7(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotStairs_7(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStairs_7(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotStairs_7(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5971,13 +5971,13 @@ namespace DearImPlot
                 fixed (float* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStairs_8(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotStairs_8(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStairs_8(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotStairs_8(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -5993,13 +5993,13 @@ namespace DearImPlot
                 fixed (double* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStairs_9(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotStairs_9(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStairs_9(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotStairs_9(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -6009,13 +6009,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS8>(const char* label_id, const ImS8* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, sbyte* values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotShaded(label_id, values, count, yref, xscale, xstart, flags, offset, stride);
+                __Internal64.PlotShaded(label_id, values, count, yref, xscale, xstart, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotShaded(label_id, values, count, yref, xscale, xstart, flags, offset, stride);
+                __Internal32.PlotShaded(label_id, values, count, yref, xscale, xstart, flags, offset, stride);
             }
         }
 
@@ -6023,13 +6023,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU8>(const char* label_id, const ImU8* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, byte* values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotShaded_1(label_id, values, count, yref, xscale, xstart, flags, offset, stride);
+                __Internal64.PlotShaded_1(label_id, values, count, yref, xscale, xstart, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotShaded_1(label_id, values, count, yref, xscale, xstart, flags, offset, stride);
+                __Internal32.PlotShaded_1(label_id, values, count, yref, xscale, xstart, flags, offset, stride);
             }
         }
 
@@ -6040,13 +6040,13 @@ namespace DearImPlot
             fixed (short* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotShaded_2(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotShaded_2(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotShaded_2(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotShaded_2(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -6058,13 +6058,13 @@ namespace DearImPlot
             fixed (ushort* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotShaded_3(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotShaded_3(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotShaded_3(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotShaded_3(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -6076,13 +6076,13 @@ namespace DearImPlot
             fixed (int* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotShaded_4(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotShaded_4(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotShaded_4(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotShaded_4(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -6094,13 +6094,13 @@ namespace DearImPlot
             fixed (uint* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotShaded_5(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotShaded_5(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotShaded_5(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotShaded_5(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -6112,13 +6112,13 @@ namespace DearImPlot
             fixed (long* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotShaded_6(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotShaded_6(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotShaded_6(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotShaded_6(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -6130,13 +6130,13 @@ namespace DearImPlot
             fixed (ulong* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotShaded_7(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotShaded_7(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotShaded_7(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotShaded_7(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -6148,13 +6148,13 @@ namespace DearImPlot
             fixed (float* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotShaded_8(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotShaded_8(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotShaded_8(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotShaded_8(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -6166,13 +6166,13 @@ namespace DearImPlot
             fixed (double* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotShaded_9(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal64.PlotShaded_9(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotShaded_9(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
+                    __Internal32.PlotShaded_9(label_id, __arg1, count, yref, xscale, xstart, flags, offset, stride);
                 }
             }
         }
@@ -6181,13 +6181,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, sbyte* xs, sbyte* ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotShaded(label_id, xs, ys, count, yref, flags, offset, stride);
+                __Internal64.PlotShaded(label_id, xs, ys, count, yref, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotShaded(label_id, xs, ys, count, yref, flags, offset, stride);
+                __Internal32.PlotShaded(label_id, xs, ys, count, yref, flags, offset, stride);
             }
         }
 
@@ -6195,13 +6195,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, byte* xs, byte* ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotShaded_1(label_id, xs, ys, count, yref, flags, offset, stride);
+                __Internal64.PlotShaded_1(label_id, xs, ys, count, yref, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotShaded_1(label_id, xs, ys, count, yref, flags, offset, stride);
+                __Internal32.PlotShaded_1(label_id, xs, ys, count, yref, flags, offset, stride);
             }
         }
 
@@ -6215,13 +6215,13 @@ namespace DearImPlot
                 fixed (short* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotShaded_2(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal64.PlotShaded_2(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotShaded_2(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal32.PlotShaded_2(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                 }
             }
@@ -6237,13 +6237,13 @@ namespace DearImPlot
                 fixed (ushort* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotShaded_3(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal64.PlotShaded_3(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotShaded_3(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal32.PlotShaded_3(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                 }
             }
@@ -6259,13 +6259,13 @@ namespace DearImPlot
                 fixed (int* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotShaded_4(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal64.PlotShaded_4(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotShaded_4(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal32.PlotShaded_4(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                 }
             }
@@ -6281,13 +6281,13 @@ namespace DearImPlot
                 fixed (uint* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotShaded_5(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal64.PlotShaded_5(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotShaded_5(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal32.PlotShaded_5(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                 }
             }
@@ -6303,13 +6303,13 @@ namespace DearImPlot
                 fixed (long* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotShaded_6(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal64.PlotShaded_6(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotShaded_6(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal32.PlotShaded_6(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                 }
             }
@@ -6325,13 +6325,13 @@ namespace DearImPlot
                 fixed (ulong* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotShaded_7(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal64.PlotShaded_7(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotShaded_7(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal32.PlotShaded_7(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                 }
             }
@@ -6347,13 +6347,13 @@ namespace DearImPlot
                 fixed (float* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotShaded_8(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal64.PlotShaded_8(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotShaded_8(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal32.PlotShaded_8(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                 }
             }
@@ -6369,13 +6369,13 @@ namespace DearImPlot
                 fixed (double* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotShaded_9(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal64.PlotShaded_9(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotShaded_9(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
+                        __Internal32.PlotShaded_9(label_id, __arg1, __arg2, count, yref, flags, offset, stride);
                     }
                 }
             }
@@ -6385,13 +6385,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys1, const ImS8* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, sbyte* xs, sbyte* ys1, sbyte* ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotShaded_10(label_id, xs, ys1, ys2, count, flags, offset, stride);
+                __Internal64.PlotShaded_10(label_id, xs, ys1, ys2, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotShaded_10(label_id, xs, ys1, ys2, count, flags, offset, stride);
+                __Internal32.PlotShaded_10(label_id, xs, ys1, ys2, count, flags, offset, stride);
             }
         }
 
@@ -6399,13 +6399,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys1, const ImU8* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, byte* xs, byte* ys1, byte* ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotShaded_11(label_id, xs, ys1, ys2, count, flags, offset, stride);
+                __Internal64.PlotShaded_11(label_id, xs, ys1, ys2, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotShaded_11(label_id, xs, ys1, ys2, count, flags, offset, stride);
+                __Internal32.PlotShaded_11(label_id, xs, ys1, ys2, count, flags, offset, stride);
             }
         }
 
@@ -6422,13 +6422,13 @@ namespace DearImPlot
                     fixed (short* __ys23 = &ys2)
                     {
                         var __arg3 = __ys23;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotShaded_12(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotShaded_12(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotShaded_12(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotShaded_12(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -6448,13 +6448,13 @@ namespace DearImPlot
                     fixed (ushort* __ys23 = &ys2)
                     {
                         var __arg3 = __ys23;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotShaded_13(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotShaded_13(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotShaded_13(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotShaded_13(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -6474,13 +6474,13 @@ namespace DearImPlot
                     fixed (int* __ys23 = &ys2)
                     {
                         var __arg3 = __ys23;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotShaded_14(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotShaded_14(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotShaded_14(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotShaded_14(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -6500,13 +6500,13 @@ namespace DearImPlot
                     fixed (uint* __ys23 = &ys2)
                     {
                         var __arg3 = __ys23;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotShaded_15(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotShaded_15(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotShaded_15(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotShaded_15(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -6526,13 +6526,13 @@ namespace DearImPlot
                     fixed (long* __ys23 = &ys2)
                     {
                         var __arg3 = __ys23;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotShaded_16(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotShaded_16(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotShaded_16(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotShaded_16(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -6552,13 +6552,13 @@ namespace DearImPlot
                     fixed (ulong* __ys23 = &ys2)
                     {
                         var __arg3 = __ys23;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotShaded_17(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotShaded_17(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotShaded_17(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotShaded_17(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -6578,13 +6578,13 @@ namespace DearImPlot
                     fixed (float* __ys23 = &ys2)
                     {
                         var __arg3 = __ys23;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotShaded_18(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotShaded_18(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotShaded_18(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotShaded_18(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -6604,13 +6604,13 @@ namespace DearImPlot
                     fixed (double* __ys23 = &ys2)
                     {
                         var __arg3 = __ys23;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotShaded_19(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotShaded_19(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotShaded_19(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotShaded_19(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -6621,13 +6621,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotBars<ImS8>(const char* label_id, const ImS8* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, sbyte* values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotBars(label_id, values, count, bar_size, shift, flags, offset, stride);
+                __Internal64.PlotBars(label_id, values, count, bar_size, shift, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotBars(label_id, values, count, bar_size, shift, flags, offset, stride);
+                __Internal32.PlotBars(label_id, values, count, bar_size, shift, flags, offset, stride);
             }
         }
 
@@ -6635,13 +6635,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotBars<ImU8>(const char* label_id, const ImU8* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, byte* values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotBars_1(label_id, values, count, bar_size, shift, flags, offset, stride);
+                __Internal64.PlotBars_1(label_id, values, count, bar_size, shift, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotBars_1(label_id, values, count, bar_size, shift, flags, offset, stride);
+                __Internal32.PlotBars_1(label_id, values, count, bar_size, shift, flags, offset, stride);
             }
         }
 
@@ -6652,13 +6652,13 @@ namespace DearImPlot
             fixed (short* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBars_2(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal64.PlotBars_2(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotBars_2(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal32.PlotBars_2(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
             }
         }
@@ -6670,13 +6670,13 @@ namespace DearImPlot
             fixed (ushort* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBars_3(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal64.PlotBars_3(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotBars_3(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal32.PlotBars_3(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
             }
         }
@@ -6688,13 +6688,13 @@ namespace DearImPlot
             fixed (int* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBars_4(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal64.PlotBars_4(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotBars_4(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal32.PlotBars_4(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
             }
         }
@@ -6706,13 +6706,13 @@ namespace DearImPlot
             fixed (uint* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBars_5(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal64.PlotBars_5(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotBars_5(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal32.PlotBars_5(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
             }
         }
@@ -6724,13 +6724,13 @@ namespace DearImPlot
             fixed (long* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBars_6(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal64.PlotBars_6(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotBars_6(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal32.PlotBars_6(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
             }
         }
@@ -6742,13 +6742,13 @@ namespace DearImPlot
             fixed (ulong* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBars_7(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal64.PlotBars_7(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotBars_7(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal32.PlotBars_7(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
             }
         }
@@ -6760,13 +6760,13 @@ namespace DearImPlot
             fixed (float* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBars_8(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal64.PlotBars_8(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotBars_8(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal32.PlotBars_8(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
             }
         }
@@ -6778,13 +6778,13 @@ namespace DearImPlot
             fixed (double* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBars_9(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal64.PlotBars_9(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotBars_9(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
+                    __Internal32.PlotBars_9(label_id, __arg1, count, bar_size, shift, flags, offset, stride);
                 }
             }
         }
@@ -6793,13 +6793,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotBars<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, sbyte* xs, sbyte* ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotBars_10(label_id, xs, ys, count, bar_size, flags, offset, stride);
+                __Internal64.PlotBars_10(label_id, xs, ys, count, bar_size, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotBars_10(label_id, xs, ys, count, bar_size, flags, offset, stride);
+                __Internal32.PlotBars_10(label_id, xs, ys, count, bar_size, flags, offset, stride);
             }
         }
 
@@ -6807,13 +6807,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotBars<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, byte* xs, byte* ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotBars_11(label_id, xs, ys, count, bar_size, flags, offset, stride);
+                __Internal64.PlotBars_11(label_id, xs, ys, count, bar_size, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotBars_11(label_id, xs, ys, count, bar_size, flags, offset, stride);
+                __Internal32.PlotBars_11(label_id, xs, ys, count, bar_size, flags, offset, stride);
             }
         }
 
@@ -6827,13 +6827,13 @@ namespace DearImPlot
                 fixed (short* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotBars_12(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal64.PlotBars_12(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotBars_12(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal32.PlotBars_12(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                 }
             }
@@ -6849,13 +6849,13 @@ namespace DearImPlot
                 fixed (ushort* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotBars_13(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal64.PlotBars_13(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotBars_13(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal32.PlotBars_13(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                 }
             }
@@ -6871,13 +6871,13 @@ namespace DearImPlot
                 fixed (int* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotBars_14(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal64.PlotBars_14(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotBars_14(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal32.PlotBars_14(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                 }
             }
@@ -6893,13 +6893,13 @@ namespace DearImPlot
                 fixed (uint* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotBars_15(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal64.PlotBars_15(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotBars_15(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal32.PlotBars_15(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                 }
             }
@@ -6915,13 +6915,13 @@ namespace DearImPlot
                 fixed (long* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotBars_16(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal64.PlotBars_16(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotBars_16(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal32.PlotBars_16(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                 }
             }
@@ -6937,13 +6937,13 @@ namespace DearImPlot
                 fixed (ulong* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotBars_17(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal64.PlotBars_17(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotBars_17(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal32.PlotBars_17(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                 }
             }
@@ -6959,13 +6959,13 @@ namespace DearImPlot
                 fixed (float* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotBars_18(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal64.PlotBars_18(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotBars_18(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal32.PlotBars_18(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                 }
             }
@@ -6981,13 +6981,13 @@ namespace DearImPlot
                 fixed (double* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotBars_19(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal64.PlotBars_19(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotBars_19(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
+                        __Internal32.PlotBars_19(label_id, __arg1, __arg2, count, bar_size, flags, offset, stride);
                     }
                 }
             }
@@ -6997,13 +6997,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<ImS8>(const char* const label_ids[], const ImS8* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, sbyte* values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotBarGroups(label_ids, values, item_count, group_count, group_size, shift, flags);
+                __Internal64.PlotBarGroups(label_ids, values, item_count, group_count, group_size, shift, flags);
             }
             else
             {
-                __Internal64.PlotBarGroups(label_ids, values, item_count, group_count, group_size, shift, flags);
+                __Internal32.PlotBarGroups(label_ids, values, item_count, group_count, group_size, shift, flags);
             }
         }
 
@@ -7011,13 +7011,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<ImU8>(const char* const label_ids[], const ImU8* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, byte* values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotBarGroups_1(label_ids, values, item_count, group_count, group_size, shift, flags);
+                __Internal64.PlotBarGroups_1(label_ids, values, item_count, group_count, group_size, shift, flags);
             }
             else
             {
-                __Internal64.PlotBarGroups_1(label_ids, values, item_count, group_count, group_size, shift, flags);
+                __Internal32.PlotBarGroups_1(label_ids, values, item_count, group_count, group_size, shift, flags);
             }
         }
 
@@ -7028,13 +7028,13 @@ namespace DearImPlot
             fixed (short* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBarGroups_2(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal64.PlotBarGroups_2(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
                 else
                 {
-                    __Internal64.PlotBarGroups_2(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal32.PlotBarGroups_2(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
             }
         }
@@ -7046,13 +7046,13 @@ namespace DearImPlot
             fixed (ushort* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBarGroups_3(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal64.PlotBarGroups_3(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
                 else
                 {
-                    __Internal64.PlotBarGroups_3(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal32.PlotBarGroups_3(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
             }
         }
@@ -7064,13 +7064,13 @@ namespace DearImPlot
             fixed (int* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBarGroups_4(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal64.PlotBarGroups_4(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
                 else
                 {
-                    __Internal64.PlotBarGroups_4(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal32.PlotBarGroups_4(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
             }
         }
@@ -7082,13 +7082,13 @@ namespace DearImPlot
             fixed (uint* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBarGroups_5(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal64.PlotBarGroups_5(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
                 else
                 {
-                    __Internal64.PlotBarGroups_5(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal32.PlotBarGroups_5(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
             }
         }
@@ -7100,13 +7100,13 @@ namespace DearImPlot
             fixed (long* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBarGroups_6(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal64.PlotBarGroups_6(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
                 else
                 {
-                    __Internal64.PlotBarGroups_6(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal32.PlotBarGroups_6(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
             }
         }
@@ -7118,13 +7118,13 @@ namespace DearImPlot
             fixed (ulong* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBarGroups_7(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal64.PlotBarGroups_7(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
                 else
                 {
-                    __Internal64.PlotBarGroups_7(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal32.PlotBarGroups_7(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
             }
         }
@@ -7136,13 +7136,13 @@ namespace DearImPlot
             fixed (float* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBarGroups_8(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal64.PlotBarGroups_8(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
                 else
                 {
-                    __Internal64.PlotBarGroups_8(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal32.PlotBarGroups_8(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
             }
         }
@@ -7154,13 +7154,13 @@ namespace DearImPlot
             fixed (double* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotBarGroups_9(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal64.PlotBarGroups_9(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
                 else
                 {
-                    __Internal64.PlotBarGroups_9(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
+                    __Internal32.PlotBarGroups_9(label_ids, __arg1, item_count, group_count, group_size, shift, flags);
                 }
             }
         }
@@ -7169,13 +7169,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, const ImS8* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, sbyte* xs, sbyte* ys, sbyte* err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotErrorBars(label_id, xs, ys, err, count, flags, offset, stride);
+                __Internal64.PlotErrorBars(label_id, xs, ys, err, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotErrorBars(label_id, xs, ys, err, count, flags, offset, stride);
+                __Internal32.PlotErrorBars(label_id, xs, ys, err, count, flags, offset, stride);
             }
         }
 
@@ -7183,13 +7183,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, const ImU8* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, byte* xs, byte* ys, byte* err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotErrorBars_1(label_id, xs, ys, err, count, flags, offset, stride);
+                __Internal64.PlotErrorBars_1(label_id, xs, ys, err, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotErrorBars_1(label_id, xs, ys, err, count, flags, offset, stride);
+                __Internal32.PlotErrorBars_1(label_id, xs, ys, err, count, flags, offset, stride);
             }
         }
 
@@ -7206,13 +7206,13 @@ namespace DearImPlot
                     fixed (short* __err3 = &err)
                     {
                         var __arg3 = __err3;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotErrorBars_2(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotErrorBars_2(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotErrorBars_2(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotErrorBars_2(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -7232,13 +7232,13 @@ namespace DearImPlot
                     fixed (ushort* __err3 = &err)
                     {
                         var __arg3 = __err3;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotErrorBars_3(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotErrorBars_3(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotErrorBars_3(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotErrorBars_3(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -7258,13 +7258,13 @@ namespace DearImPlot
                     fixed (int* __err3 = &err)
                     {
                         var __arg3 = __err3;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotErrorBars_4(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotErrorBars_4(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotErrorBars_4(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotErrorBars_4(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -7284,13 +7284,13 @@ namespace DearImPlot
                     fixed (uint* __err3 = &err)
                     {
                         var __arg3 = __err3;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotErrorBars_5(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotErrorBars_5(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotErrorBars_5(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotErrorBars_5(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -7310,13 +7310,13 @@ namespace DearImPlot
                     fixed (long* __err3 = &err)
                     {
                         var __arg3 = __err3;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotErrorBars_6(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotErrorBars_6(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotErrorBars_6(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotErrorBars_6(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -7336,13 +7336,13 @@ namespace DearImPlot
                     fixed (ulong* __err3 = &err)
                     {
                         var __arg3 = __err3;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotErrorBars_7(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotErrorBars_7(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotErrorBars_7(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotErrorBars_7(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -7362,13 +7362,13 @@ namespace DearImPlot
                     fixed (float* __err3 = &err)
                     {
                         var __arg3 = __err3;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotErrorBars_8(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotErrorBars_8(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotErrorBars_8(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotErrorBars_8(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -7388,13 +7388,13 @@ namespace DearImPlot
                     fixed (double* __err3 = &err)
                     {
                         var __arg3 = __err3;
-                        if (IntPtr.Size == 4)
+                        if (Environment.Is64BitProcess)
                         {
-                            __Internal32.PlotErrorBars_9(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal64.PlotErrorBars_9(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                         else
                         {
-                            __Internal64.PlotErrorBars_9(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
+                            __Internal32.PlotErrorBars_9(label_id, __arg1, __arg2, __arg3, count, flags, offset, stride);
                         }
                     }
                 }
@@ -7405,13 +7405,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, const ImS8* neg, const ImS8* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, sbyte* xs, sbyte* ys, sbyte* neg, sbyte* pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotErrorBars(label_id, xs, ys, neg, pos, count, flags, offset, stride);
+                __Internal64.PlotErrorBars(label_id, xs, ys, neg, pos, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotErrorBars(label_id, xs, ys, neg, pos, count, flags, offset, stride);
+                __Internal32.PlotErrorBars(label_id, xs, ys, neg, pos, count, flags, offset, stride);
             }
         }
 
@@ -7419,13 +7419,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, const ImU8* neg, const ImU8* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, byte* xs, byte* ys, byte* neg, byte* pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotErrorBars_1(label_id, xs, ys, neg, pos, count, flags, offset, stride);
+                __Internal64.PlotErrorBars_1(label_id, xs, ys, neg, pos, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotErrorBars_1(label_id, xs, ys, neg, pos, count, flags, offset, stride);
+                __Internal32.PlotErrorBars_1(label_id, xs, ys, neg, pos, count, flags, offset, stride);
             }
         }
 
@@ -7445,13 +7445,13 @@ namespace DearImPlot
                         fixed (short* __pos4 = &pos)
                         {
                             var __arg4 = __pos4;
-                            if (IntPtr.Size == 4)
+                            if (Environment.Is64BitProcess)
                             {
-                                __Internal32.PlotErrorBars_2(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal64.PlotErrorBars_2(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                             else
                             {
-                                __Internal64.PlotErrorBars_2(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal32.PlotErrorBars_2(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                         }
                     }
@@ -7475,13 +7475,13 @@ namespace DearImPlot
                         fixed (ushort* __pos4 = &pos)
                         {
                             var __arg4 = __pos4;
-                            if (IntPtr.Size == 4)
+                            if (Environment.Is64BitProcess)
                             {
-                                __Internal32.PlotErrorBars_3(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal64.PlotErrorBars_3(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                             else
                             {
-                                __Internal64.PlotErrorBars_3(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal32.PlotErrorBars_3(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                         }
                     }
@@ -7505,13 +7505,13 @@ namespace DearImPlot
                         fixed (int* __pos4 = &pos)
                         {
                             var __arg4 = __pos4;
-                            if (IntPtr.Size == 4)
+                            if (Environment.Is64BitProcess)
                             {
-                                __Internal32.PlotErrorBars_4(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal64.PlotErrorBars_4(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                             else
                             {
-                                __Internal64.PlotErrorBars_4(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal32.PlotErrorBars_4(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                         }
                     }
@@ -7535,13 +7535,13 @@ namespace DearImPlot
                         fixed (uint* __pos4 = &pos)
                         {
                             var __arg4 = __pos4;
-                            if (IntPtr.Size == 4)
+                            if (Environment.Is64BitProcess)
                             {
-                                __Internal32.PlotErrorBars_5(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal64.PlotErrorBars_5(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                             else
                             {
-                                __Internal64.PlotErrorBars_5(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal32.PlotErrorBars_5(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                         }
                     }
@@ -7565,13 +7565,13 @@ namespace DearImPlot
                         fixed (long* __pos4 = &pos)
                         {
                             var __arg4 = __pos4;
-                            if (IntPtr.Size == 4)
+                            if (Environment.Is64BitProcess)
                             {
-                                __Internal32.PlotErrorBars_6(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal64.PlotErrorBars_6(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                             else
                             {
-                                __Internal64.PlotErrorBars_6(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal32.PlotErrorBars_6(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                         }
                     }
@@ -7595,13 +7595,13 @@ namespace DearImPlot
                         fixed (ulong* __pos4 = &pos)
                         {
                             var __arg4 = __pos4;
-                            if (IntPtr.Size == 4)
+                            if (Environment.Is64BitProcess)
                             {
-                                __Internal32.PlotErrorBars_7(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal64.PlotErrorBars_7(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                             else
                             {
-                                __Internal64.PlotErrorBars_7(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal32.PlotErrorBars_7(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                         }
                     }
@@ -7625,13 +7625,13 @@ namespace DearImPlot
                         fixed (float* __pos4 = &pos)
                         {
                             var __arg4 = __pos4;
-                            if (IntPtr.Size == 4)
+                            if (Environment.Is64BitProcess)
                             {
-                                __Internal32.PlotErrorBars_8(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal64.PlotErrorBars_8(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                             else
                             {
-                                __Internal64.PlotErrorBars_8(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal32.PlotErrorBars_8(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                         }
                     }
@@ -7655,13 +7655,13 @@ namespace DearImPlot
                         fixed (double* __pos4 = &pos)
                         {
                             var __arg4 = __pos4;
-                            if (IntPtr.Size == 4)
+                            if (Environment.Is64BitProcess)
                             {
-                                __Internal32.PlotErrorBars_9(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal64.PlotErrorBars_9(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                             else
                             {
-                                __Internal64.PlotErrorBars_9(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
+                                __Internal32.PlotErrorBars_9(label_id, __arg1, __arg2, __arg3, __arg4, count, flags, offset, stride);
                             }
                         }
                     }
@@ -7673,13 +7673,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotStems<ImS8>(const char* label_id, const ImS8* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, sbyte* values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotStems(label_id, values, count, @ref, scale, start, flags, offset, stride);
+                __Internal64.PlotStems(label_id, values, count, @ref, scale, start, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotStems(label_id, values, count, @ref, scale, start, flags, offset, stride);
+                __Internal32.PlotStems(label_id, values, count, @ref, scale, start, flags, offset, stride);
             }
         }
 
@@ -7687,13 +7687,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotStems<ImU8>(const char* label_id, const ImU8* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, byte* values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotStems_1(label_id, values, count, @ref, scale, start, flags, offset, stride);
+                __Internal64.PlotStems_1(label_id, values, count, @ref, scale, start, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotStems_1(label_id, values, count, @ref, scale, start, flags, offset, stride);
+                __Internal32.PlotStems_1(label_id, values, count, @ref, scale, start, flags, offset, stride);
             }
         }
 
@@ -7704,13 +7704,13 @@ namespace DearImPlot
             fixed (short* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStems_2(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal64.PlotStems_2(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStems_2(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal32.PlotStems_2(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
             }
         }
@@ -7722,13 +7722,13 @@ namespace DearImPlot
             fixed (ushort* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStems_3(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal64.PlotStems_3(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStems_3(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal32.PlotStems_3(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
             }
         }
@@ -7740,13 +7740,13 @@ namespace DearImPlot
             fixed (int* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStems_4(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal64.PlotStems_4(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStems_4(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal32.PlotStems_4(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
             }
         }
@@ -7758,13 +7758,13 @@ namespace DearImPlot
             fixed (uint* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStems_5(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal64.PlotStems_5(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStems_5(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal32.PlotStems_5(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
             }
         }
@@ -7776,13 +7776,13 @@ namespace DearImPlot
             fixed (long* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStems_6(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal64.PlotStems_6(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStems_6(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal32.PlotStems_6(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
             }
         }
@@ -7794,13 +7794,13 @@ namespace DearImPlot
             fixed (ulong* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStems_7(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal64.PlotStems_7(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStems_7(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal32.PlotStems_7(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
             }
         }
@@ -7812,13 +7812,13 @@ namespace DearImPlot
             fixed (float* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStems_8(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal64.PlotStems_8(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStems_8(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal32.PlotStems_8(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
             }
         }
@@ -7830,13 +7830,13 @@ namespace DearImPlot
             fixed (double* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotStems_9(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal64.PlotStems_9(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotStems_9(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
+                    __Internal32.PlotStems_9(label_id, __arg1, count, @ref, scale, start, flags, offset, stride);
                 }
             }
         }
@@ -7845,13 +7845,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotStems<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, sbyte* xs, sbyte* ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotStems(label_id, xs, ys, count, @ref, flags, offset, stride);
+                __Internal64.PlotStems(label_id, xs, ys, count, @ref, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotStems(label_id, xs, ys, count, @ref, flags, offset, stride);
+                __Internal32.PlotStems(label_id, xs, ys, count, @ref, flags, offset, stride);
             }
         }
 
@@ -7859,13 +7859,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotStems<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, byte* xs, byte* ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotStems_1(label_id, xs, ys, count, @ref, flags, offset, stride);
+                __Internal64.PlotStems_1(label_id, xs, ys, count, @ref, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotStems_1(label_id, xs, ys, count, @ref, flags, offset, stride);
+                __Internal32.PlotStems_1(label_id, xs, ys, count, @ref, flags, offset, stride);
             }
         }
 
@@ -7879,13 +7879,13 @@ namespace DearImPlot
                 fixed (short* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStems_2(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal64.PlotStems_2(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStems_2(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal32.PlotStems_2(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                 }
             }
@@ -7901,13 +7901,13 @@ namespace DearImPlot
                 fixed (ushort* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStems_3(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal64.PlotStems_3(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStems_3(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal32.PlotStems_3(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                 }
             }
@@ -7923,13 +7923,13 @@ namespace DearImPlot
                 fixed (int* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStems_4(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal64.PlotStems_4(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStems_4(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal32.PlotStems_4(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                 }
             }
@@ -7945,13 +7945,13 @@ namespace DearImPlot
                 fixed (uint* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStems_5(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal64.PlotStems_5(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStems_5(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal32.PlotStems_5(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                 }
             }
@@ -7967,13 +7967,13 @@ namespace DearImPlot
                 fixed (long* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStems_6(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal64.PlotStems_6(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStems_6(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal32.PlotStems_6(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                 }
             }
@@ -7989,13 +7989,13 @@ namespace DearImPlot
                 fixed (ulong* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStems_7(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal64.PlotStems_7(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStems_7(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal32.PlotStems_7(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                 }
             }
@@ -8011,13 +8011,13 @@ namespace DearImPlot
                 fixed (float* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStems_8(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal64.PlotStems_8(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStems_8(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal32.PlotStems_8(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                 }
             }
@@ -8033,13 +8033,13 @@ namespace DearImPlot
                 fixed (double* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotStems_9(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal64.PlotStems_9(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotStems_9(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
+                        __Internal32.PlotStems_9(label_id, __arg1, __arg2, count, @ref, flags, offset, stride);
                     }
                 }
             }
@@ -8049,13 +8049,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotInfLines<ImS8>(const char* label_id, const ImS8* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, sbyte* values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotInfLines(label_id, values, count, flags, offset, stride);
+                __Internal64.PlotInfLines(label_id, values, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotInfLines(label_id, values, count, flags, offset, stride);
+                __Internal32.PlotInfLines(label_id, values, count, flags, offset, stride);
             }
         }
 
@@ -8063,13 +8063,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotInfLines<ImU8>(const char* label_id, const ImU8* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, byte* values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotInfLines_1(label_id, values, count, flags, offset, stride);
+                __Internal64.PlotInfLines_1(label_id, values, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotInfLines_1(label_id, values, count, flags, offset, stride);
+                __Internal32.PlotInfLines_1(label_id, values, count, flags, offset, stride);
             }
         }
 
@@ -8080,13 +8080,13 @@ namespace DearImPlot
             fixed (short* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotInfLines_2(label_id, __arg1, count, flags, offset, stride);
+                    __Internal64.PlotInfLines_2(label_id, __arg1, count, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotInfLines_2(label_id, __arg1, count, flags, offset, stride);
+                    __Internal32.PlotInfLines_2(label_id, __arg1, count, flags, offset, stride);
                 }
             }
         }
@@ -8098,13 +8098,13 @@ namespace DearImPlot
             fixed (ushort* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotInfLines_3(label_id, __arg1, count, flags, offset, stride);
+                    __Internal64.PlotInfLines_3(label_id, __arg1, count, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotInfLines_3(label_id, __arg1, count, flags, offset, stride);
+                    __Internal32.PlotInfLines_3(label_id, __arg1, count, flags, offset, stride);
                 }
             }
         }
@@ -8116,13 +8116,13 @@ namespace DearImPlot
             fixed (int* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotInfLines_4(label_id, __arg1, count, flags, offset, stride);
+                    __Internal64.PlotInfLines_4(label_id, __arg1, count, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotInfLines_4(label_id, __arg1, count, flags, offset, stride);
+                    __Internal32.PlotInfLines_4(label_id, __arg1, count, flags, offset, stride);
                 }
             }
         }
@@ -8134,13 +8134,13 @@ namespace DearImPlot
             fixed (uint* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotInfLines_5(label_id, __arg1, count, flags, offset, stride);
+                    __Internal64.PlotInfLines_5(label_id, __arg1, count, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotInfLines_5(label_id, __arg1, count, flags, offset, stride);
+                    __Internal32.PlotInfLines_5(label_id, __arg1, count, flags, offset, stride);
                 }
             }
         }
@@ -8152,13 +8152,13 @@ namespace DearImPlot
             fixed (long* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotInfLines_6(label_id, __arg1, count, flags, offset, stride);
+                    __Internal64.PlotInfLines_6(label_id, __arg1, count, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotInfLines_6(label_id, __arg1, count, flags, offset, stride);
+                    __Internal32.PlotInfLines_6(label_id, __arg1, count, flags, offset, stride);
                 }
             }
         }
@@ -8170,13 +8170,13 @@ namespace DearImPlot
             fixed (ulong* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotInfLines_7(label_id, __arg1, count, flags, offset, stride);
+                    __Internal64.PlotInfLines_7(label_id, __arg1, count, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotInfLines_7(label_id, __arg1, count, flags, offset, stride);
+                    __Internal32.PlotInfLines_7(label_id, __arg1, count, flags, offset, stride);
                 }
             }
         }
@@ -8188,13 +8188,13 @@ namespace DearImPlot
             fixed (float* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotInfLines_8(label_id, __arg1, count, flags, offset, stride);
+                    __Internal64.PlotInfLines_8(label_id, __arg1, count, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotInfLines_8(label_id, __arg1, count, flags, offset, stride);
+                    __Internal32.PlotInfLines_8(label_id, __arg1, count, flags, offset, stride);
                 }
             }
         }
@@ -8206,13 +8206,13 @@ namespace DearImPlot
             fixed (double* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotInfLines_9(label_id, __arg1, count, flags, offset, stride);
+                    __Internal64.PlotInfLines_9(label_id, __arg1, count, flags, offset, stride);
                 }
                 else
                 {
-                    __Internal64.PlotInfLines_9(label_id, __arg1, count, flags, offset, stride);
+                    __Internal32.PlotInfLines_9(label_id, __arg1, count, flags, offset, stride);
                 }
             }
         }
@@ -8221,13 +8221,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotPieChart<ImS8>(const char* const label_ids[], const ImS8* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, sbyte* values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotPieChart(label_ids, values, count, x, y, radius, label_fmt, angle0, flags);
+                __Internal64.PlotPieChart(label_ids, values, count, x, y, radius, label_fmt, angle0, flags);
             }
             else
             {
-                __Internal64.PlotPieChart(label_ids, values, count, x, y, radius, label_fmt, angle0, flags);
+                __Internal32.PlotPieChart(label_ids, values, count, x, y, radius, label_fmt, angle0, flags);
             }
         }
 
@@ -8235,13 +8235,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotPieChart<ImU8>(const char* const label_ids[], const ImU8* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, byte* values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotPieChart_1(label_ids, values, count, x, y, radius, label_fmt, angle0, flags);
+                __Internal64.PlotPieChart_1(label_ids, values, count, x, y, radius, label_fmt, angle0, flags);
             }
             else
             {
-                __Internal64.PlotPieChart_1(label_ids, values, count, x, y, radius, label_fmt, angle0, flags);
+                __Internal32.PlotPieChart_1(label_ids, values, count, x, y, radius, label_fmt, angle0, flags);
             }
         }
 
@@ -8252,13 +8252,13 @@ namespace DearImPlot
             fixed (short* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotPieChart_2(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal64.PlotPieChart_2(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
                 else
                 {
-                    __Internal64.PlotPieChart_2(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal32.PlotPieChart_2(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
             }
         }
@@ -8270,13 +8270,13 @@ namespace DearImPlot
             fixed (ushort* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotPieChart_3(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal64.PlotPieChart_3(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
                 else
                 {
-                    __Internal64.PlotPieChart_3(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal32.PlotPieChart_3(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
             }
         }
@@ -8288,13 +8288,13 @@ namespace DearImPlot
             fixed (int* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotPieChart_4(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal64.PlotPieChart_4(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
                 else
                 {
-                    __Internal64.PlotPieChart_4(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal32.PlotPieChart_4(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
             }
         }
@@ -8306,13 +8306,13 @@ namespace DearImPlot
             fixed (uint* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotPieChart_5(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal64.PlotPieChart_5(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
                 else
                 {
-                    __Internal64.PlotPieChart_5(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal32.PlotPieChart_5(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
             }
         }
@@ -8324,13 +8324,13 @@ namespace DearImPlot
             fixed (long* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotPieChart_6(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal64.PlotPieChart_6(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
                 else
                 {
-                    __Internal64.PlotPieChart_6(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal32.PlotPieChart_6(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
             }
         }
@@ -8342,13 +8342,13 @@ namespace DearImPlot
             fixed (ulong* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotPieChart_7(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal64.PlotPieChart_7(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
                 else
                 {
-                    __Internal64.PlotPieChart_7(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal32.PlotPieChart_7(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
             }
         }
@@ -8360,13 +8360,13 @@ namespace DearImPlot
             fixed (float* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotPieChart_8(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal64.PlotPieChart_8(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
                 else
                 {
-                    __Internal64.PlotPieChart_8(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal32.PlotPieChart_8(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
             }
         }
@@ -8378,13 +8378,13 @@ namespace DearImPlot
             fixed (double* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotPieChart_9(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal64.PlotPieChart_9(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
                 else
                 {
-                    __Internal64.PlotPieChart_9(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
+                    __Internal32.PlotPieChart_9(label_ids, __arg1, count, x, y, radius, label_fmt, angle0, flags);
                 }
             }
         }
@@ -8397,13 +8397,13 @@ namespace DearImPlot
             var __arg7 = new IntPtr(&____arg7);
             var ____arg8 = bounds_max.__Instance;
             var __arg8 = new IntPtr(&____arg8);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotHeatmap(label_id, values, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                __Internal64.PlotHeatmap(label_id, values, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
             }
             else
             {
-                __Internal64.PlotHeatmap(label_id, values, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                __Internal32.PlotHeatmap(label_id, values, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
             }
         }
 
@@ -8415,13 +8415,13 @@ namespace DearImPlot
             var __arg7 = new IntPtr(&____arg7);
             var ____arg8 = bounds_max.__Instance;
             var __arg8 = new IntPtr(&____arg8);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotHeatmap_1(label_id, values, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                __Internal64.PlotHeatmap_1(label_id, values, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
             }
             else
             {
-                __Internal64.PlotHeatmap_1(label_id, values, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                __Internal32.PlotHeatmap_1(label_id, values, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
             }
         }
 
@@ -8436,13 +8436,13 @@ namespace DearImPlot
                 var __arg7 = new IntPtr(&____arg7);
                 var ____arg8 = bounds_max.__Instance;
                 var __arg8 = new IntPtr(&____arg8);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotHeatmap_2(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal64.PlotHeatmap_2(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
                 else
                 {
-                    __Internal64.PlotHeatmap_2(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal32.PlotHeatmap_2(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
             }
         }
@@ -8458,13 +8458,13 @@ namespace DearImPlot
                 var __arg7 = new IntPtr(&____arg7);
                 var ____arg8 = bounds_max.__Instance;
                 var __arg8 = new IntPtr(&____arg8);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotHeatmap_3(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal64.PlotHeatmap_3(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
                 else
                 {
-                    __Internal64.PlotHeatmap_3(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal32.PlotHeatmap_3(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
             }
         }
@@ -8480,13 +8480,13 @@ namespace DearImPlot
                 var __arg7 = new IntPtr(&____arg7);
                 var ____arg8 = bounds_max.__Instance;
                 var __arg8 = new IntPtr(&____arg8);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotHeatmap_4(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal64.PlotHeatmap_4(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
                 else
                 {
-                    __Internal64.PlotHeatmap_4(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal32.PlotHeatmap_4(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
             }
         }
@@ -8502,13 +8502,13 @@ namespace DearImPlot
                 var __arg7 = new IntPtr(&____arg7);
                 var ____arg8 = bounds_max.__Instance;
                 var __arg8 = new IntPtr(&____arg8);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotHeatmap_5(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal64.PlotHeatmap_5(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
                 else
                 {
-                    __Internal64.PlotHeatmap_5(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal32.PlotHeatmap_5(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
             }
         }
@@ -8524,13 +8524,13 @@ namespace DearImPlot
                 var __arg7 = new IntPtr(&____arg7);
                 var ____arg8 = bounds_max.__Instance;
                 var __arg8 = new IntPtr(&____arg8);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotHeatmap_6(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal64.PlotHeatmap_6(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
                 else
                 {
-                    __Internal64.PlotHeatmap_6(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal32.PlotHeatmap_6(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
             }
         }
@@ -8546,13 +8546,13 @@ namespace DearImPlot
                 var __arg7 = new IntPtr(&____arg7);
                 var ____arg8 = bounds_max.__Instance;
                 var __arg8 = new IntPtr(&____arg8);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotHeatmap_7(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal64.PlotHeatmap_7(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
                 else
                 {
-                    __Internal64.PlotHeatmap_7(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal32.PlotHeatmap_7(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
             }
         }
@@ -8568,13 +8568,13 @@ namespace DearImPlot
                 var __arg7 = new IntPtr(&____arg7);
                 var ____arg8 = bounds_max.__Instance;
                 var __arg8 = new IntPtr(&____arg8);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotHeatmap_8(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal64.PlotHeatmap_8(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
                 else
                 {
-                    __Internal64.PlotHeatmap_8(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal32.PlotHeatmap_8(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
             }
         }
@@ -8590,13 +8590,13 @@ namespace DearImPlot
                 var __arg7 = new IntPtr(&____arg7);
                 var ____arg8 = bounds_max.__Instance;
                 var __arg8 = new IntPtr(&____arg8);
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.PlotHeatmap_9(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal64.PlotHeatmap_9(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
                 else
                 {
-                    __Internal64.PlotHeatmap_9(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
+                    __Internal32.PlotHeatmap_9(label_id, __arg1, rows, cols, scale_min, scale_max, label_fmt, __arg7, __arg8, flags);
                 }
             }
         }
@@ -8606,7 +8606,7 @@ namespace DearImPlot
         public static double PlotHistogram(string label_id, sbyte* values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
             var __arg5 = range.__Instance;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram(label_id, values, count, bins, bar_scale, __arg5, flags) : __Internal64.PlotHistogram(label_id, values, count, bins, bar_scale, new IntPtr(&__arg5), flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram(label_id, values, count, bins, bar_scale, new IntPtr(&__arg5), flags) : __Internal32.PlotHistogram(label_id, values, count, bins, bar_scale, __arg5, flags);
             return ___ret;
         }
 
@@ -8615,7 +8615,7 @@ namespace DearImPlot
         public static double PlotHistogram(string label_id, byte* values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
             var __arg5 = range.__Instance;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram_1(label_id, values, count, bins, bar_scale, __arg5, flags) : __Internal64.PlotHistogram_1(label_id, values, count, bins, bar_scale, new IntPtr(&__arg5), flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram_1(label_id, values, count, bins, bar_scale, new IntPtr(&__arg5), flags) : __Internal32.PlotHistogram_1(label_id, values, count, bins, bar_scale, __arg5, flags);
             return ___ret;
         }
 
@@ -8627,7 +8627,7 @@ namespace DearImPlot
             {
                 var __arg1 = __values1;
                 var __arg5 = range.__Instance;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram_2(label_id, __arg1, count, bins, bar_scale, __arg5, flags) : __Internal64.PlotHistogram_2(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram_2(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags) : __Internal32.PlotHistogram_2(label_id, __arg1, count, bins, bar_scale, __arg5, flags);
                 return ___ret;
             }
         }
@@ -8640,7 +8640,7 @@ namespace DearImPlot
             {
                 var __arg1 = __values1;
                 var __arg5 = range.__Instance;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram_3(label_id, __arg1, count, bins, bar_scale, __arg5, flags) : __Internal64.PlotHistogram_3(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram_3(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags) : __Internal32.PlotHistogram_3(label_id, __arg1, count, bins, bar_scale, __arg5, flags);
                 return ___ret;
             }
         }
@@ -8653,7 +8653,7 @@ namespace DearImPlot
             {
                 var __arg1 = __values1;
                 var __arg5 = range.__Instance;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram_4(label_id, __arg1, count, bins, bar_scale, __arg5, flags) : __Internal64.PlotHistogram_4(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram_4(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags) : __Internal32.PlotHistogram_4(label_id, __arg1, count, bins, bar_scale, __arg5, flags);
                 return ___ret;
             }
         }
@@ -8666,7 +8666,7 @@ namespace DearImPlot
             {
                 var __arg1 = __values1;
                 var __arg5 = range.__Instance;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram_5(label_id, __arg1, count, bins, bar_scale, __arg5, flags) : __Internal64.PlotHistogram_5(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram_5(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags) : __Internal32.PlotHistogram_5(label_id, __arg1, count, bins, bar_scale, __arg5, flags);
                 return ___ret;
             }
         }
@@ -8679,7 +8679,7 @@ namespace DearImPlot
             {
                 var __arg1 = __values1;
                 var __arg5 = range.__Instance;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram_6(label_id, __arg1, count, bins, bar_scale, __arg5, flags) : __Internal64.PlotHistogram_6(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram_6(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags) : __Internal32.PlotHistogram_6(label_id, __arg1, count, bins, bar_scale, __arg5, flags);
                 return ___ret;
             }
         }
@@ -8692,7 +8692,7 @@ namespace DearImPlot
             {
                 var __arg1 = __values1;
                 var __arg5 = range.__Instance;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram_7(label_id, __arg1, count, bins, bar_scale, __arg5, flags) : __Internal64.PlotHistogram_7(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram_7(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags) : __Internal32.PlotHistogram_7(label_id, __arg1, count, bins, bar_scale, __arg5, flags);
                 return ___ret;
             }
         }
@@ -8705,7 +8705,7 @@ namespace DearImPlot
             {
                 var __arg1 = __values1;
                 var __arg5 = range.__Instance;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram_8(label_id, __arg1, count, bins, bar_scale, __arg5, flags) : __Internal64.PlotHistogram_8(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram_8(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags) : __Internal32.PlotHistogram_8(label_id, __arg1, count, bins, bar_scale, __arg5, flags);
                 return ___ret;
             }
         }
@@ -8718,7 +8718,7 @@ namespace DearImPlot
             {
                 var __arg1 = __values1;
                 var __arg5 = range.__Instance;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram_9(label_id, __arg1, count, bins, bar_scale, __arg5, flags) : __Internal64.PlotHistogram_9(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram_9(label_id, __arg1, count, bins, bar_scale, new IntPtr(&__arg5), flags) : __Internal32.PlotHistogram_9(label_id, __arg1, count, bins, bar_scale, __arg5, flags);
                 return ___ret;
             }
         }
@@ -8728,7 +8728,7 @@ namespace DearImPlot
         public static double PlotHistogram2D(string label_id, sbyte* xs, sbyte* ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
             var __arg6 = range.__Instance;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram2D(label_id, xs, ys, count, x_bins, y_bins, __arg6, flags) : __Internal64.PlotHistogram2D(label_id, xs, ys, count, x_bins, y_bins, new IntPtr(&__arg6), flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram2D(label_id, xs, ys, count, x_bins, y_bins, new IntPtr(&__arg6), flags) : __Internal32.PlotHistogram2D(label_id, xs, ys, count, x_bins, y_bins, __arg6, flags);
             return ___ret;
         }
 
@@ -8737,7 +8737,7 @@ namespace DearImPlot
         public static double PlotHistogram2D(string label_id, byte* xs, byte* ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
             var __arg6 = range.__Instance;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram2D_1(label_id, xs, ys, count, x_bins, y_bins, __arg6, flags) : __Internal64.PlotHistogram2D_1(label_id, xs, ys, count, x_bins, y_bins, new IntPtr(&__arg6), flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram2D_1(label_id, xs, ys, count, x_bins, y_bins, new IntPtr(&__arg6), flags) : __Internal32.PlotHistogram2D_1(label_id, xs, ys, count, x_bins, y_bins, __arg6, flags);
             return ___ret;
         }
 
@@ -8752,7 +8752,7 @@ namespace DearImPlot
                 {
                     var __arg2 = __ys2;
                     var __arg6 = range.__Instance;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram2D_2(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags) : __Internal64.PlotHistogram2D_2(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags);
+                    var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram2D_2(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags) : __Internal32.PlotHistogram2D_2(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags);
                     return ___ret;
                 }
             }
@@ -8769,7 +8769,7 @@ namespace DearImPlot
                 {
                     var __arg2 = __ys2;
                     var __arg6 = range.__Instance;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram2D_3(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags) : __Internal64.PlotHistogram2D_3(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags);
+                    var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram2D_3(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags) : __Internal32.PlotHistogram2D_3(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags);
                     return ___ret;
                 }
             }
@@ -8786,7 +8786,7 @@ namespace DearImPlot
                 {
                     var __arg2 = __ys2;
                     var __arg6 = range.__Instance;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram2D_4(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags) : __Internal64.PlotHistogram2D_4(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags);
+                    var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram2D_4(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags) : __Internal32.PlotHistogram2D_4(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags);
                     return ___ret;
                 }
             }
@@ -8803,7 +8803,7 @@ namespace DearImPlot
                 {
                     var __arg2 = __ys2;
                     var __arg6 = range.__Instance;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram2D_5(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags) : __Internal64.PlotHistogram2D_5(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags);
+                    var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram2D_5(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags) : __Internal32.PlotHistogram2D_5(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags);
                     return ___ret;
                 }
             }
@@ -8820,7 +8820,7 @@ namespace DearImPlot
                 {
                     var __arg2 = __ys2;
                     var __arg6 = range.__Instance;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram2D_6(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags) : __Internal64.PlotHistogram2D_6(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags);
+                    var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram2D_6(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags) : __Internal32.PlotHistogram2D_6(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags);
                     return ___ret;
                 }
             }
@@ -8837,7 +8837,7 @@ namespace DearImPlot
                 {
                     var __arg2 = __ys2;
                     var __arg6 = range.__Instance;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram2D_7(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags) : __Internal64.PlotHistogram2D_7(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags);
+                    var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram2D_7(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags) : __Internal32.PlotHistogram2D_7(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags);
                     return ___ret;
                 }
             }
@@ -8854,7 +8854,7 @@ namespace DearImPlot
                 {
                     var __arg2 = __ys2;
                     var __arg6 = range.__Instance;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram2D_8(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags) : __Internal64.PlotHistogram2D_8(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags);
+                    var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram2D_8(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags) : __Internal32.PlotHistogram2D_8(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags);
                     return ___ret;
                 }
             }
@@ -8871,7 +8871,7 @@ namespace DearImPlot
                 {
                     var __arg2 = __ys2;
                     var __arg6 = range.__Instance;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.PlotHistogram2D_9(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags) : __Internal64.PlotHistogram2D_9(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags);
+                    var ___ret = Environment.Is64BitProcess ? __Internal64.PlotHistogram2D_9(label_id, __arg1, __arg2, count, x_bins, y_bins, new IntPtr(&__arg6), flags) : __Internal32.PlotHistogram2D_9(label_id, __arg1, __arg2, count, x_bins, y_bins, __arg6, flags);
                     return ___ret;
                 }
             }
@@ -8881,13 +8881,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotDigital<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, sbyte* xs, sbyte* ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotDigital(label_id, xs, ys, count, flags, offset, stride);
+                __Internal64.PlotDigital(label_id, xs, ys, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotDigital(label_id, xs, ys, count, flags, offset, stride);
+                __Internal32.PlotDigital(label_id, xs, ys, count, flags, offset, stride);
             }
         }
 
@@ -8895,13 +8895,13 @@ namespace DearImPlot
         // DEBUG: template <> IMPLOT_API void PlotDigital<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, byte* xs, byte* ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotDigital_1(label_id, xs, ys, count, flags, offset, stride);
+                __Internal64.PlotDigital_1(label_id, xs, ys, count, flags, offset, stride);
             }
             else
             {
-                __Internal64.PlotDigital_1(label_id, xs, ys, count, flags, offset, stride);
+                __Internal32.PlotDigital_1(label_id, xs, ys, count, flags, offset, stride);
             }
         }
 
@@ -8915,13 +8915,13 @@ namespace DearImPlot
                 fixed (short* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotDigital_2(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotDigital_2(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotDigital_2(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotDigital_2(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -8937,13 +8937,13 @@ namespace DearImPlot
                 fixed (ushort* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotDigital_3(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotDigital_3(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotDigital_3(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotDigital_3(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -8959,13 +8959,13 @@ namespace DearImPlot
                 fixed (int* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotDigital_4(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotDigital_4(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotDigital_4(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotDigital_4(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -8981,13 +8981,13 @@ namespace DearImPlot
                 fixed (uint* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotDigital_5(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotDigital_5(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotDigital_5(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotDigital_5(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -9003,13 +9003,13 @@ namespace DearImPlot
                 fixed (long* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotDigital_6(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotDigital_6(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotDigital_6(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotDigital_6(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -9025,13 +9025,13 @@ namespace DearImPlot
                 fixed (ulong* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotDigital_7(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotDigital_7(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotDigital_7(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotDigital_7(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -9047,13 +9047,13 @@ namespace DearImPlot
                 fixed (float* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotDigital_8(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotDigital_8(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotDigital_8(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotDigital_8(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -9069,13 +9069,13 @@ namespace DearImPlot
                 fixed (double* __ys2 = &ys)
                 {
                     var __arg2 = __ys2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.PlotDigital_9(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal64.PlotDigital_9(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                     else
                     {
-                        __Internal64.PlotDigital_9(label_id, __arg1, __arg2, count, flags, offset, stride);
+                        __Internal32.PlotDigital_9(label_id, __arg1, __arg2, count, flags, offset, stride);
                     }
                 }
             }
@@ -9225,7 +9225,7 @@ namespace DearImPlot
         // DEBUG: ImPlotContext* CreateContext()
         public static ImPlotContext CreateContext()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.CreateContext() : __Internal64.CreateContext();
+            var ___ret = Environment.Is64BitProcess ? __Internal64.CreateContext() : __Internal32.CreateContext();
             var __result0 = ImPlotContext.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -9235,13 +9235,13 @@ namespace DearImPlot
         public static void DestroyContext(ImPlotContext ctx = default)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.DestroyContext(__arg0);
+                __Internal64.DestroyContext(__arg0);
             }
             else
             {
-                __Internal64.DestroyContext(__arg0);
+                __Internal32.DestroyContext(__arg0);
             }
         }
 
@@ -9249,7 +9249,7 @@ namespace DearImPlot
         // DEBUG: ImPlotContext* GetCurrentContext()
         public static ImPlotContext GetCurrentContext()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetCurrentContext() : __Internal64.GetCurrentContext();
+            var ___ret = Environment.Is64BitProcess ? __Internal64.GetCurrentContext() : __Internal32.GetCurrentContext();
             var __result0 = ImPlotContext.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -9259,13 +9259,13 @@ namespace DearImPlot
         public static void SetCurrentContext(ImPlotContext ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetCurrentContext(__arg0);
+                __Internal64.SetCurrentContext(__arg0);
             }
             else
             {
-                __Internal64.SetCurrentContext(__arg0);
+                __Internal32.SetCurrentContext(__arg0);
             }
         }
 
@@ -9276,13 +9276,13 @@ namespace DearImPlot
             var __arg0 = ctx
             /* DEBUG: TypeMapContext.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetImGuiContext(__arg0);
+                __Internal64.SetImGuiContext(__arg0);
             }
             else
             {
-                __Internal64.SetImGuiContext(__arg0);
+                __Internal32.SetImGuiContext(__arg0);
             }
         }
 
@@ -9294,7 +9294,7 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginPlot(title_id, __arg1, flags) : __Internal64.BeginPlot(title_id, __arg1, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.BeginPlot(title_id, __arg1, flags) : __Internal32.BeginPlot(title_id, __arg1, flags);
             return ___ret;
         }
 
@@ -9302,13 +9302,13 @@ namespace DearImPlot
         // DEBUG: void EndPlot()
         public static void EndPlot()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndPlot();
+                __Internal64.EndPlot();
             }
             else
             {
-                __Internal64.EndPlot();
+                __Internal32.EndPlot();
             }
         }
 
@@ -9332,7 +9332,7 @@ namespace DearImPlot
                 fixed (float* __col_ratios6 = &col_ratios)
                 {
                     var __arg6 = __col_ratios6;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.BeginSubplots(title_id, rows, cols, __arg3, flags, __arg5, __arg6) : __Internal64.BeginSubplots(title_id, rows, cols, __arg3, flags, __arg5, __arg6);
+                    var ___ret = Environment.Is64BitProcess ? __Internal64.BeginSubplots(title_id, rows, cols, __arg3, flags, __arg5, __arg6) : __Internal32.BeginSubplots(title_id, rows, cols, __arg3, flags, __arg5, __arg6);
                     return ___ret;
                 }
             }
@@ -9342,13 +9342,13 @@ namespace DearImPlot
         // DEBUG: void EndSubplots()
         public static void EndSubplots()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndSubplots();
+                __Internal64.EndSubplots();
             }
             else
             {
-                __Internal64.EndSubplots();
+                __Internal32.EndSubplots();
             }
         }
 
@@ -9356,13 +9356,13 @@ namespace DearImPlot
         // DEBUG: void SetupAxis(ImAxis axis, const char* label=NULL, ImPlotAxisFlags flags=0)
         public static void SetupAxis(ImPlotAxis axis, string label = default, ImPlotAxisFlags flags = (ImPlotAxisFlags)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupAxis(axis, label, flags);
+                __Internal64.SetupAxis(axis, label, flags);
             }
             else
             {
-                __Internal64.SetupAxis(axis, label, flags);
+                __Internal32.SetupAxis(axis, label, flags);
             }
         }
 
@@ -9370,13 +9370,13 @@ namespace DearImPlot
         // DEBUG: void SetupAxisLimits(ImAxis axis, double v_min, double v_max, ImPlotCond cond = ImPlotCond_Once)
         public static void SetupAxisLimits(ImPlotAxis axis, double v_min, double v_max, ImPlotCond cond = ImPlotCond.Once)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupAxisLimits(axis, v_min, v_max, cond);
+                __Internal64.SetupAxisLimits(axis, v_min, v_max, cond);
             }
             else
             {
-                __Internal64.SetupAxisLimits(axis, v_min, v_max, cond);
+                __Internal32.SetupAxisLimits(axis, v_min, v_max, cond);
             }
         }
 
@@ -9390,13 +9390,13 @@ namespace DearImPlot
                 fixed (double* __link_max2 = &link_max)
                 {
                     var __arg2 = __link_max2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.SetupAxisLinks(axis, __arg1, __arg2);
+                        __Internal64.SetupAxisLinks(axis, __arg1, __arg2);
                     }
                     else
                     {
-                        __Internal64.SetupAxisLinks(axis, __arg1, __arg2);
+                        __Internal32.SetupAxisLinks(axis, __arg1, __arg2);
                     }
                 }
             }
@@ -9406,13 +9406,13 @@ namespace DearImPlot
         // DEBUG: void SetupAxisFormat(ImAxis axis, const char* fmt)
         public static void SetupAxisFormat(ImPlotAxis axis, string fmt)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupAxisFormat(axis, fmt);
+                __Internal64.SetupAxisFormat(axis, fmt);
             }
             else
             {
-                __Internal64.SetupAxisFormat(axis, fmt);
+                __Internal32.SetupAxisFormat(axis, fmt);
             }
         }
 
@@ -9421,13 +9421,13 @@ namespace DearImPlot
         public static void SetupAxisFormat(ImPlotAxis axis, ImPlotFormatter formatter, IntPtr data = default)
         {
             var __arg1 = formatter == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(formatter);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupAxisFormat(axis, __arg1, data);
+                __Internal64.SetupAxisFormat(axis, __arg1, data);
             }
             else
             {
-                __Internal64.SetupAxisFormat(axis, __arg1, data);
+                __Internal32.SetupAxisFormat(axis, __arg1, data);
             }
         }
 
@@ -9438,13 +9438,13 @@ namespace DearImPlot
             fixed (double* __values1 = &values)
             {
                 var __arg1 = __values1;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.SetupAxisTicks(axis, __arg1, n_ticks, labels, keep_default);
+                    __Internal64.SetupAxisTicks(axis, __arg1, n_ticks, labels, keep_default);
                 }
                 else
                 {
-                    __Internal64.SetupAxisTicks(axis, __arg1, n_ticks, labels, keep_default);
+                    __Internal32.SetupAxisTicks(axis, __arg1, n_ticks, labels, keep_default);
                 }
             }
         }
@@ -9453,13 +9453,13 @@ namespace DearImPlot
         // DEBUG: void SetupAxisTicks(ImAxis axis, double v_min, double v_max, int n_ticks, const char* const labels[]=NULL, bool keep_default=false)
         public static void SetupAxisTicks(ImPlotAxis axis, double v_min, double v_max, int n_ticks, string[] labels = null, bool keep_default = false)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupAxisTicks(axis, v_min, v_max, n_ticks, labels, keep_default);
+                __Internal64.SetupAxisTicks(axis, v_min, v_max, n_ticks, labels, keep_default);
             }
             else
             {
-                __Internal64.SetupAxisTicks(axis, v_min, v_max, n_ticks, labels, keep_default);
+                __Internal32.SetupAxisTicks(axis, v_min, v_max, n_ticks, labels, keep_default);
             }
         }
 
@@ -9467,13 +9467,13 @@ namespace DearImPlot
         // DEBUG: void SetupAxisScale(ImAxis axis, ImPlotScale scale)
         public static void SetupAxisScale(ImPlotAxis axis, ImPlotScale scale)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupAxisScale(axis, scale);
+                __Internal64.SetupAxisScale(axis, scale);
             }
             else
             {
-                __Internal64.SetupAxisScale(axis, scale);
+                __Internal32.SetupAxisScale(axis, scale);
             }
         }
 
@@ -9483,13 +9483,13 @@ namespace DearImPlot
         {
             var __arg1 = forward == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(forward);
             var __arg2 = inverse == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(inverse);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupAxisScale(axis, __arg1, __arg2, data);
+                __Internal64.SetupAxisScale(axis, __arg1, __arg2, data);
             }
             else
             {
-                __Internal64.SetupAxisScale(axis, __arg1, __arg2, data);
+                __Internal32.SetupAxisScale(axis, __arg1, __arg2, data);
             }
         }
 
@@ -9497,13 +9497,13 @@ namespace DearImPlot
         // DEBUG: void SetupAxisLimitsConstraints(ImAxis axis, double v_min, double v_max)
         public static void SetupAxisLimitsConstraints(ImPlotAxis axis, double v_min, double v_max)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupAxisLimitsConstraints(axis, v_min, v_max);
+                __Internal64.SetupAxisLimitsConstraints(axis, v_min, v_max);
             }
             else
             {
-                __Internal64.SetupAxisLimitsConstraints(axis, v_min, v_max);
+                __Internal32.SetupAxisLimitsConstraints(axis, v_min, v_max);
             }
         }
 
@@ -9511,13 +9511,13 @@ namespace DearImPlot
         // DEBUG: void SetupAxisZoomConstraints(ImAxis axis, double z_min, double z_max)
         public static void SetupAxisZoomConstraints(ImPlotAxis axis, double z_min, double z_max)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupAxisZoomConstraints(axis, z_min, z_max);
+                __Internal64.SetupAxisZoomConstraints(axis, z_min, z_max);
             }
             else
             {
-                __Internal64.SetupAxisZoomConstraints(axis, z_min, z_max);
+                __Internal32.SetupAxisZoomConstraints(axis, z_min, z_max);
             }
         }
 
@@ -9525,13 +9525,13 @@ namespace DearImPlot
         // DEBUG: void SetupAxes(const char* x_label, const char* y_label, ImPlotAxisFlags x_flags=0, ImPlotAxisFlags y_flags=0)
         public static void SetupAxes(string x_label, string y_label, ImPlotAxisFlags x_flags = (ImPlotAxisFlags)(0), ImPlotAxisFlags y_flags = (ImPlotAxisFlags)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupAxes(x_label, y_label, x_flags, y_flags);
+                __Internal64.SetupAxes(x_label, y_label, x_flags, y_flags);
             }
             else
             {
-                __Internal64.SetupAxes(x_label, y_label, x_flags, y_flags);
+                __Internal32.SetupAxes(x_label, y_label, x_flags, y_flags);
             }
         }
 
@@ -9539,13 +9539,13 @@ namespace DearImPlot
         // DEBUG: void SetupAxesLimits(double x_min, double x_max, double y_min, double y_max, ImPlotCond cond = ImPlotCond_Once)
         public static void SetupAxesLimits(double x_min, double x_max, double y_min, double y_max, ImPlotCond cond = ImPlotCond.Once)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupAxesLimits(x_min, x_max, y_min, y_max, cond);
+                __Internal64.SetupAxesLimits(x_min, x_max, y_min, y_max, cond);
             }
             else
             {
-                __Internal64.SetupAxesLimits(x_min, x_max, y_min, y_max, cond);
+                __Internal32.SetupAxesLimits(x_min, x_max, y_min, y_max, cond);
             }
         }
 
@@ -9553,13 +9553,13 @@ namespace DearImPlot
         // DEBUG: void SetupLegend(ImPlotLocation location, ImPlotLegendFlags flags=0)
         public static void SetupLegend(ImPlotLocation location, ImPlotLegendFlags flags = (ImPlotLegendFlags)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupLegend(location, flags);
+                __Internal64.SetupLegend(location, flags);
             }
             else
             {
-                __Internal64.SetupLegend(location, flags);
+                __Internal32.SetupLegend(location, flags);
             }
         }
 
@@ -9567,13 +9567,13 @@ namespace DearImPlot
         // DEBUG: void SetupMouseText(ImPlotLocation location, ImPlotMouseTextFlags flags=0)
         public static void SetupMouseText(ImPlotLocation location, ImPlotMouseTextFlags flags = (ImPlotMouseTextFlags)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupMouseText(location, flags);
+                __Internal64.SetupMouseText(location, flags);
             }
             else
             {
-                __Internal64.SetupMouseText(location, flags);
+                __Internal32.SetupMouseText(location, flags);
             }
         }
 
@@ -9581,13 +9581,13 @@ namespace DearImPlot
         // DEBUG: void SetupFinish()
         public static void SetupFinish()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetupFinish();
+                __Internal64.SetupFinish();
             }
             else
             {
-                __Internal64.SetupFinish();
+                __Internal32.SetupFinish();
             }
         }
 
@@ -9595,13 +9595,13 @@ namespace DearImPlot
         // DEBUG: void SetNextAxisLimits(ImAxis axis, double v_min, double v_max, ImPlotCond cond = ImPlotCond_Once)
         public static void SetNextAxisLimits(ImPlotAxis axis, double v_min, double v_max, ImPlotCond cond = ImPlotCond.Once)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextAxisLimits(axis, v_min, v_max, cond);
+                __Internal64.SetNextAxisLimits(axis, v_min, v_max, cond);
             }
             else
             {
-                __Internal64.SetNextAxisLimits(axis, v_min, v_max, cond);
+                __Internal32.SetNextAxisLimits(axis, v_min, v_max, cond);
             }
         }
 
@@ -9615,13 +9615,13 @@ namespace DearImPlot
                 fixed (double* __link_max2 = &link_max)
                 {
                     var __arg2 = __link_max2;
-                    if (IntPtr.Size == 4)
+                    if (Environment.Is64BitProcess)
                     {
-                        __Internal32.SetNextAxisLinks(axis, __arg1, __arg2);
+                        __Internal64.SetNextAxisLinks(axis, __arg1, __arg2);
                     }
                     else
                     {
-                        __Internal64.SetNextAxisLinks(axis, __arg1, __arg2);
+                        __Internal32.SetNextAxisLinks(axis, __arg1, __arg2);
                     }
                 }
             }
@@ -9631,13 +9631,13 @@ namespace DearImPlot
         // DEBUG: void SetNextAxisToFit(ImAxis axis)
         public static void SetNextAxisToFit(ImPlotAxis axis)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextAxisToFit(axis);
+                __Internal64.SetNextAxisToFit(axis);
             }
             else
             {
-                __Internal64.SetNextAxisToFit(axis);
+                __Internal32.SetNextAxisToFit(axis);
             }
         }
 
@@ -9645,13 +9645,13 @@ namespace DearImPlot
         // DEBUG: void SetNextAxesLimits(double x_min, double x_max, double y_min, double y_max, ImPlotCond cond = ImPlotCond_Once)
         public static void SetNextAxesLimits(double x_min, double x_max, double y_min, double y_max, ImPlotCond cond = ImPlotCond.Once)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextAxesLimits(x_min, x_max, y_min, y_max, cond);
+                __Internal64.SetNextAxesLimits(x_min, x_max, y_min, y_max, cond);
             }
             else
             {
-                __Internal64.SetNextAxesLimits(x_min, x_max, y_min, y_max, cond);
+                __Internal32.SetNextAxesLimits(x_min, x_max, y_min, y_max, cond);
             }
         }
 
@@ -9659,13 +9659,13 @@ namespace DearImPlot
         // DEBUG: void SetNextAxesToFit()
         public static void SetNextAxesToFit()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextAxesToFit();
+                __Internal64.SetNextAxesToFit();
             }
             else
             {
-                __Internal64.SetNextAxesToFit();
+                __Internal32.SetNextAxesToFit();
             }
         }
 
@@ -9674,13 +9674,13 @@ namespace DearImPlot
         public static void PlotLineG(string label_id, ImPlotGetter getter, IntPtr data, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0))
         {
             var __arg1 = getter == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(getter);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotLineG(label_id, __arg1, data, count, flags);
+                __Internal64.PlotLineG(label_id, __arg1, data, count, flags);
             }
             else
             {
-                __Internal64.PlotLineG(label_id, __arg1, data, count, flags);
+                __Internal32.PlotLineG(label_id, __arg1, data, count, flags);
             }
         }
 
@@ -9689,13 +9689,13 @@ namespace DearImPlot
         public static void PlotScatterG(string label_id, ImPlotGetter getter, IntPtr data, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0))
         {
             var __arg1 = getter == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(getter);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotScatterG(label_id, __arg1, data, count, flags);
+                __Internal64.PlotScatterG(label_id, __arg1, data, count, flags);
             }
             else
             {
-                __Internal64.PlotScatterG(label_id, __arg1, data, count, flags);
+                __Internal32.PlotScatterG(label_id, __arg1, data, count, flags);
             }
         }
 
@@ -9704,13 +9704,13 @@ namespace DearImPlot
         public static void PlotStairsG(string label_id, ImPlotGetter getter, IntPtr data, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0))
         {
             var __arg1 = getter == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(getter);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotStairsG(label_id, __arg1, data, count, flags);
+                __Internal64.PlotStairsG(label_id, __arg1, data, count, flags);
             }
             else
             {
-                __Internal64.PlotStairsG(label_id, __arg1, data, count, flags);
+                __Internal32.PlotStairsG(label_id, __arg1, data, count, flags);
             }
         }
 
@@ -9720,13 +9720,13 @@ namespace DearImPlot
         {
             var __arg1 = getter1 == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(getter1);
             var __arg3 = getter2 == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(getter2);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotShadedG(label_id, __arg1, data1, __arg3, data2, count, flags);
+                __Internal64.PlotShadedG(label_id, __arg1, data1, __arg3, data2, count, flags);
             }
             else
             {
-                __Internal64.PlotShadedG(label_id, __arg1, data1, __arg3, data2, count, flags);
+                __Internal32.PlotShadedG(label_id, __arg1, data1, __arg3, data2, count, flags);
             }
         }
 
@@ -9735,13 +9735,13 @@ namespace DearImPlot
         public static void PlotBarsG(string label_id, ImPlotGetter getter, IntPtr data, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0))
         {
             var __arg1 = getter == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(getter);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotBarsG(label_id, __arg1, data, count, bar_size, flags);
+                __Internal64.PlotBarsG(label_id, __arg1, data, count, bar_size, flags);
             }
             else
             {
-                __Internal64.PlotBarsG(label_id, __arg1, data, count, bar_size, flags);
+                __Internal32.PlotBarsG(label_id, __arg1, data, count, bar_size, flags);
             }
         }
 
@@ -9750,13 +9750,13 @@ namespace DearImPlot
         public static void PlotDigitalG(string label_id, ImPlotGetter getter, IntPtr data, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0))
         {
             var __arg1 = getter == null ? IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(getter);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotDigitalG(label_id, __arg1, data, count, flags);
+                __Internal64.PlotDigitalG(label_id, __arg1, data, count, flags);
             }
             else
             {
-                __Internal64.PlotDigitalG(label_id, __arg1, data, count, flags);
+                __Internal32.PlotDigitalG(label_id, __arg1, data, count, flags);
             }
         }
 
@@ -9780,13 +9780,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotImage(label_id, user_texture_id, __arg2, __arg3, __arg4, __arg5, __arg6, flags);
+                __Internal64.PlotImage(label_id, user_texture_id, __arg2, __arg3, __arg4, __arg5, __arg6, flags);
             }
             else
             {
-                __Internal64.PlotImage(label_id, user_texture_id, __arg2, __arg3, __arg4, __arg5, __arg6, flags);
+                __Internal32.PlotImage(label_id, user_texture_id, __arg2, __arg3, __arg4, __arg5, __arg6, flags);
             }
         }
 
@@ -9798,13 +9798,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotText(text, x, y, __arg3, flags);
+                __Internal64.PlotText(text, x, y, __arg3, flags);
             }
             else
             {
-                __Internal64.PlotText(text, x, y, __arg3, flags);
+                __Internal32.PlotText(text, x, y, __arg3, flags);
             }
         }
 
@@ -9812,13 +9812,13 @@ namespace DearImPlot
         // DEBUG: void PlotDummy(const char* label_id, ImPlotDummyFlags flags=0)
         public static void PlotDummy(string label_id, ImPlotDummyFlags flags = (ImPlotDummyFlags)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotDummy(label_id, flags);
+                __Internal64.PlotDummy(label_id, flags);
             }
             else
             {
-                __Internal64.PlotDummy(label_id, flags);
+                __Internal32.PlotDummy(label_id, flags);
             }
         }
 
@@ -9836,7 +9836,7 @@ namespace DearImPlot
                     /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
                     /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
                     ;
-                    var ___ret = IntPtr.Size == 4 ? __Internal32.DragPoint(id, __arg1, __arg2, __arg3, size, flags) : __Internal64.DragPoint(id, __arg1, __arg2, __arg3, size, flags);
+                    var ___ret = Environment.Is64BitProcess ? __Internal64.DragPoint(id, __arg1, __arg2, __arg3, size, flags) : __Internal32.DragPoint(id, __arg1, __arg2, __arg3, size, flags);
                     return ___ret;
                 }
             }
@@ -9853,7 +9853,7 @@ namespace DearImPlot
                 /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
                 /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
                 ;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.DragLineX(id, __arg1, __arg2, thickness, flags) : __Internal64.DragLineX(id, __arg1, __arg2, thickness, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.DragLineX(id, __arg1, __arg2, thickness, flags) : __Internal32.DragLineX(id, __arg1, __arg2, thickness, flags);
                 return ___ret;
             }
         }
@@ -9869,7 +9869,7 @@ namespace DearImPlot
                 /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
                 /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
                 ;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.DragLineY(id, __arg1, __arg2, thickness, flags) : __Internal64.DragLineY(id, __arg1, __arg2, thickness, flags);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.DragLineY(id, __arg1, __arg2, thickness, flags) : __Internal32.DragLineY(id, __arg1, __arg2, thickness, flags);
                 return ___ret;
             }
         }
@@ -9894,7 +9894,7 @@ namespace DearImPlot
                             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
                             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
                             ;
-                            var ___ret = IntPtr.Size == 4 ? __Internal32.DragRect(id, __arg1, __arg2, __arg3, __arg4, __arg5, flags) : __Internal64.DragRect(id, __arg1, __arg2, __arg3, __arg4, __arg5, flags);
+                            var ___ret = Environment.Is64BitProcess ? __Internal64.DragRect(id, __arg1, __arg2, __arg3, __arg4, __arg5, flags) : __Internal32.DragRect(id, __arg1, __arg2, __arg3, __arg4, __arg5, flags);
                             return ___ret;
                         }
                     }
@@ -9914,13 +9914,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Annotation(x, y, __arg2, __arg3, clamp, round);
+                __Internal64.Annotation(x, y, __arg2, __arg3, clamp, round);
             }
             else
             {
-                __Internal64.Annotation(x, y, __arg2, __arg3, clamp, round);
+                __Internal32.Annotation(x, y, __arg2, __arg3, clamp, round);
             }
         }
 
@@ -9936,13 +9936,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.Annotation_1(x, y, __arg2, __arg3, clamp, fmt);
+                __Internal64.Annotation_1(x, y, __arg2, __arg3, clamp, fmt);
             }
             else
             {
-                __Internal64.Annotation_1(x, y, __arg2, __arg3, clamp, fmt);
+                __Internal32.Annotation_1(x, y, __arg2, __arg3, clamp, fmt);
             }
         }
 
@@ -9958,13 +9958,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.AnnotationV(x, y, __arg2, __arg3, clamp, fmt, args);
+                __Internal64.AnnotationV(x, y, __arg2, __arg3, clamp, fmt, args);
             }
             else
             {
-                __Internal64.AnnotationV(x, y, __arg2, __arg3, clamp, fmt, args);
+                __Internal32.AnnotationV(x, y, __arg2, __arg3, clamp, fmt, args);
             }
         }
 
@@ -9976,13 +9976,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TagX(x, __arg1, round);
+                __Internal64.TagX(x, __arg1, round);
             }
             else
             {
-                __Internal64.TagX(x, __arg1, round);
+                __Internal32.TagX(x, __arg1, round);
             }
         }
 
@@ -9994,13 +9994,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TagX_1(x, __arg1, fmt);
+                __Internal64.TagX_1(x, __arg1, fmt);
             }
             else
             {
-                __Internal64.TagX_1(x, __arg1, fmt);
+                __Internal32.TagX_1(x, __arg1, fmt);
             }
         }
 
@@ -10012,13 +10012,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TagXV(x, __arg1, fmt, args);
+                __Internal64.TagXV(x, __arg1, fmt, args);
             }
             else
             {
-                __Internal64.TagXV(x, __arg1, fmt, args);
+                __Internal32.TagXV(x, __arg1, fmt, args);
             }
         }
 
@@ -10030,13 +10030,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TagY(y, __arg1, round);
+                __Internal64.TagY(y, __arg1, round);
             }
             else
             {
-                __Internal64.TagY(y, __arg1, round);
+                __Internal32.TagY(y, __arg1, round);
             }
         }
 
@@ -10048,13 +10048,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TagY_1(y, __arg1, fmt);
+                __Internal64.TagY_1(y, __arg1, fmt);
             }
             else
             {
-                __Internal64.TagY_1(y, __arg1, fmt);
+                __Internal32.TagY_1(y, __arg1, fmt);
             }
         }
 
@@ -10066,13 +10066,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.TagYV(y, __arg1, fmt, args);
+                __Internal64.TagYV(y, __arg1, fmt, args);
             }
             else
             {
-                __Internal64.TagYV(y, __arg1, fmt, args);
+                __Internal32.TagYV(y, __arg1, fmt, args);
             }
         }
 
@@ -10080,13 +10080,13 @@ namespace DearImPlot
         // DEBUG: void SetAxis(ImAxis axis)
         public static void SetAxis(ImPlotAxis axis)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetAxis(axis);
+                __Internal64.SetAxis(axis);
             }
             else
             {
-                __Internal64.SetAxis(axis);
+                __Internal32.SetAxis(axis);
             }
         }
 
@@ -10094,13 +10094,13 @@ namespace DearImPlot
         // DEBUG: void SetAxes(ImAxis x_axis, ImAxis y_axis)
         public static void SetAxes(ImPlotAxis x_axis, ImPlotAxis y_axis)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetAxes(x_axis, y_axis);
+                __Internal64.SetAxes(x_axis, y_axis);
             }
             else
             {
-                __Internal64.SetAxes(x_axis, y_axis);
+                __Internal32.SetAxes(x_axis, y_axis);
             }
         }
 
@@ -10113,13 +10113,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
             var ___ret = new ImPlotPoint.__Internal();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PixelsToPlot(new IntPtr(&___ret), __arg0, x_axis, y_axis);
+                __Internal64.PixelsToPlot(new IntPtr(&___ret), __arg0, x_axis, y_axis);
             }
             else
             {
-                __Internal64.PixelsToPlot(new IntPtr(&___ret), __arg0, x_axis, y_axis);
+                __Internal32.PixelsToPlot(new IntPtr(&___ret), __arg0, x_axis, y_axis);
             }
 
             return ImPlotPoint.__CreateInstance(___ret);
@@ -10130,13 +10130,13 @@ namespace DearImPlot
         public static ImPlotPoint PixelsToPlot(float x, float y, ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
             var ___ret = new ImPlotPoint.__Internal();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PixelsToPlot(new IntPtr(&___ret), x, y, x_axis, y_axis);
+                __Internal64.PixelsToPlot(new IntPtr(&___ret), x, y, x_axis, y_axis);
             }
             else
             {
-                __Internal64.PixelsToPlot(new IntPtr(&___ret), x, y, x_axis, y_axis);
+                __Internal32.PixelsToPlot(new IntPtr(&___ret), x, y, x_axis, y_axis);
             }
 
             return ImPlotPoint.__CreateInstance(___ret);
@@ -10149,13 +10149,13 @@ namespace DearImPlot
             var ____arg0 = plt.__Instance;
             var __arg0 = new IntPtr(&____arg0);
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotToPixels(new IntPtr(&___ret), __arg0, x_axis, y_axis);
+                __Internal64.PlotToPixels(new IntPtr(&___ret), __arg0, x_axis, y_axis);
             }
             else
             {
-                __Internal64.PlotToPixels(new IntPtr(&___ret), __arg0, x_axis, y_axis);
+                __Internal32.PlotToPixels(new IntPtr(&___ret), __arg0, x_axis, y_axis);
             }
 
             return ___ret
@@ -10169,13 +10169,13 @@ namespace DearImPlot
         public static Vector2 PlotToPixels(double x, double y, ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PlotToPixels(new IntPtr(&___ret), x, y, x_axis, y_axis);
+                __Internal64.PlotToPixels(new IntPtr(&___ret), x, y, x_axis, y_axis);
             }
             else
             {
-                __Internal64.PlotToPixels(new IntPtr(&___ret), x, y, x_axis, y_axis);
+                __Internal32.PlotToPixels(new IntPtr(&___ret), x, y, x_axis, y_axis);
             }
 
             return ___ret
@@ -10189,13 +10189,13 @@ namespace DearImPlot
         public static Vector2 GetPlotPos()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetPlotPos(new IntPtr(&___ret));
+                __Internal64.GetPlotPos(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetPlotPos(new IntPtr(&___ret));
+                __Internal32.GetPlotPos(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -10209,13 +10209,13 @@ namespace DearImPlot
         public static Vector2 GetPlotSize()
         {
             var ___ret = new Vector2();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetPlotSize(new IntPtr(&___ret));
+                __Internal64.GetPlotSize(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetPlotSize(new IntPtr(&___ret));
+                __Internal32.GetPlotSize(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -10229,13 +10229,13 @@ namespace DearImPlot
         public static ImPlotPoint GetPlotMousePos(ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
             var ___ret = new ImPlotPoint.__Internal();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetPlotMousePos(new IntPtr(&___ret), x_axis, y_axis);
+                __Internal64.GetPlotMousePos(new IntPtr(&___ret), x_axis, y_axis);
             }
             else
             {
-                __Internal64.GetPlotMousePos(new IntPtr(&___ret), x_axis, y_axis);
+                __Internal32.GetPlotMousePos(new IntPtr(&___ret), x_axis, y_axis);
             }
 
             return ImPlotPoint.__CreateInstance(___ret);
@@ -10246,13 +10246,13 @@ namespace DearImPlot
         public static ImPlotRect GetPlotLimits(ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
             var ___ret = new ImPlotRect.__Internal();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetPlotLimits(new IntPtr(&___ret), x_axis, y_axis);
+                __Internal64.GetPlotLimits(new IntPtr(&___ret), x_axis, y_axis);
             }
             else
             {
-                __Internal64.GetPlotLimits(new IntPtr(&___ret), x_axis, y_axis);
+                __Internal32.GetPlotLimits(new IntPtr(&___ret), x_axis, y_axis);
             }
 
             return ImPlotRect.__CreateInstance(___ret);
@@ -10262,7 +10262,7 @@ namespace DearImPlot
         // DEBUG: bool IsPlotHovered()
         public static bool IsPlotHovered()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsPlotHovered() : __Internal64.IsPlotHovered();
+            var ___ret = Environment.Is64BitProcess ? __Internal64.IsPlotHovered() : __Internal32.IsPlotHovered();
             return ___ret;
         }
 
@@ -10270,7 +10270,7 @@ namespace DearImPlot
         // DEBUG: bool IsAxisHovered(ImAxis axis)
         public static bool IsAxisHovered(ImPlotAxis axis)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsAxisHovered(axis) : __Internal64.IsAxisHovered(axis);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.IsAxisHovered(axis) : __Internal32.IsAxisHovered(axis);
             return ___ret;
         }
 
@@ -10278,7 +10278,7 @@ namespace DearImPlot
         // DEBUG: bool IsSubplotsHovered()
         public static bool IsSubplotsHovered()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsSubplotsHovered() : __Internal64.IsSubplotsHovered();
+            var ___ret = Environment.Is64BitProcess ? __Internal64.IsSubplotsHovered() : __Internal32.IsSubplotsHovered();
             return ___ret;
         }
 
@@ -10286,7 +10286,7 @@ namespace DearImPlot
         // DEBUG: bool IsPlotSelected()
         public static bool IsPlotSelected()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsPlotSelected() : __Internal64.IsPlotSelected();
+            var ___ret = Environment.Is64BitProcess ? __Internal64.IsPlotSelected() : __Internal32.IsPlotSelected();
             return ___ret;
         }
 
@@ -10295,13 +10295,13 @@ namespace DearImPlot
         public static ImPlotRect GetPlotSelection(ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
             var ___ret = new ImPlotRect.__Internal();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetPlotSelection(new IntPtr(&___ret), x_axis, y_axis);
+                __Internal64.GetPlotSelection(new IntPtr(&___ret), x_axis, y_axis);
             }
             else
             {
-                __Internal64.GetPlotSelection(new IntPtr(&___ret), x_axis, y_axis);
+                __Internal32.GetPlotSelection(new IntPtr(&___ret), x_axis, y_axis);
             }
 
             return ImPlotRect.__CreateInstance(___ret);
@@ -10311,13 +10311,13 @@ namespace DearImPlot
         // DEBUG: void CancelPlotSelection()
         public static void CancelPlotSelection()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.CancelPlotSelection();
+                __Internal64.CancelPlotSelection();
             }
             else
             {
-                __Internal64.CancelPlotSelection();
+                __Internal32.CancelPlotSelection();
             }
         }
 
@@ -10325,13 +10325,13 @@ namespace DearImPlot
         // DEBUG: void HideNextItem(bool hidden = true, ImPlotCond cond = ImPlotCond_Once)
         public static void HideNextItem(bool hidden = true, ImPlotCond cond = ImPlotCond.Once)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.HideNextItem(hidden, cond);
+                __Internal64.HideNextItem(hidden, cond);
             }
             else
             {
-                __Internal64.HideNextItem(hidden, cond);
+                __Internal32.HideNextItem(hidden, cond);
             }
         }
 
@@ -10339,7 +10339,7 @@ namespace DearImPlot
         // DEBUG: bool BeginAlignedPlots(const char* group_id, bool vertical = true)
         public static bool BeginAlignedPlots(string group_id, bool vertical = true)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginAlignedPlots(group_id, vertical) : __Internal64.BeginAlignedPlots(group_id, vertical);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.BeginAlignedPlots(group_id, vertical) : __Internal32.BeginAlignedPlots(group_id, vertical);
             return ___ret;
         }
 
@@ -10347,13 +10347,13 @@ namespace DearImPlot
         // DEBUG: void EndAlignedPlots()
         public static void EndAlignedPlots()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndAlignedPlots();
+                __Internal64.EndAlignedPlots();
             }
             else
             {
-                __Internal64.EndAlignedPlots();
+                __Internal32.EndAlignedPlots();
             }
         }
 
@@ -10361,7 +10361,7 @@ namespace DearImPlot
         // DEBUG: bool BeginLegendPopup(const char* label_id, ImGuiMouseButton mouse_button=1)
         public static bool BeginLegendPopup(string label_id, ImGuiMouseButton mouse_button = (ImGuiMouseButton)(1))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginLegendPopup(label_id, mouse_button) : __Internal64.BeginLegendPopup(label_id, mouse_button);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.BeginLegendPopup(label_id, mouse_button) : __Internal32.BeginLegendPopup(label_id, mouse_button);
             return ___ret;
         }
 
@@ -10369,13 +10369,13 @@ namespace DearImPlot
         // DEBUG: void EndLegendPopup()
         public static void EndLegendPopup()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndLegendPopup();
+                __Internal64.EndLegendPopup();
             }
             else
             {
-                __Internal64.EndLegendPopup();
+                __Internal32.EndLegendPopup();
             }
         }
 
@@ -10383,7 +10383,7 @@ namespace DearImPlot
         // DEBUG: bool IsLegendEntryHovered(const char* label_id)
         public static bool IsLegendEntryHovered(string label_id)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.IsLegendEntryHovered(label_id) : __Internal64.IsLegendEntryHovered(label_id);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.IsLegendEntryHovered(label_id) : __Internal32.IsLegendEntryHovered(label_id);
             return ___ret;
         }
 
@@ -10391,7 +10391,7 @@ namespace DearImPlot
         // DEBUG: bool BeginDragDropTargetPlot()
         public static bool BeginDragDropTargetPlot()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginDragDropTargetPlot() : __Internal64.BeginDragDropTargetPlot();
+            var ___ret = Environment.Is64BitProcess ? __Internal64.BeginDragDropTargetPlot() : __Internal32.BeginDragDropTargetPlot();
             return ___ret;
         }
 
@@ -10399,7 +10399,7 @@ namespace DearImPlot
         // DEBUG: bool BeginDragDropTargetAxis(ImAxis axis)
         public static bool BeginDragDropTargetAxis(ImPlotAxis axis)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginDragDropTargetAxis(axis) : __Internal64.BeginDragDropTargetAxis(axis);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.BeginDragDropTargetAxis(axis) : __Internal32.BeginDragDropTargetAxis(axis);
             return ___ret;
         }
 
@@ -10407,7 +10407,7 @@ namespace DearImPlot
         // DEBUG: bool BeginDragDropTargetLegend()
         public static bool BeginDragDropTargetLegend()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginDragDropTargetLegend() : __Internal64.BeginDragDropTargetLegend();
+            var ___ret = Environment.Is64BitProcess ? __Internal64.BeginDragDropTargetLegend() : __Internal32.BeginDragDropTargetLegend();
             return ___ret;
         }
 
@@ -10415,13 +10415,13 @@ namespace DearImPlot
         // DEBUG: void EndDragDropTarget()
         public static void EndDragDropTarget()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndDragDropTarget();
+                __Internal64.EndDragDropTarget();
             }
             else
             {
-                __Internal64.EndDragDropTarget();
+                __Internal32.EndDragDropTarget();
             }
         }
 
@@ -10429,7 +10429,7 @@ namespace DearImPlot
         // DEBUG: bool BeginDragDropSourcePlot(ImGuiDragDropFlags flags=0)
         public static bool BeginDragDropSourcePlot(ImGuiDragDropFlags flags = (ImGuiDragDropFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginDragDropSourcePlot(flags) : __Internal64.BeginDragDropSourcePlot(flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.BeginDragDropSourcePlot(flags) : __Internal32.BeginDragDropSourcePlot(flags);
             return ___ret;
         }
 
@@ -10437,7 +10437,7 @@ namespace DearImPlot
         // DEBUG: bool BeginDragDropSourceAxis(ImAxis axis, ImGuiDragDropFlags flags=0)
         public static bool BeginDragDropSourceAxis(ImPlotAxis axis, ImGuiDragDropFlags flags = (ImGuiDragDropFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginDragDropSourceAxis(axis, flags) : __Internal64.BeginDragDropSourceAxis(axis, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.BeginDragDropSourceAxis(axis, flags) : __Internal32.BeginDragDropSourceAxis(axis, flags);
             return ___ret;
         }
 
@@ -10445,7 +10445,7 @@ namespace DearImPlot
         // DEBUG: bool BeginDragDropSourceItem(const char* label_id, ImGuiDragDropFlags flags=0)
         public static bool BeginDragDropSourceItem(string label_id, ImGuiDragDropFlags flags = (ImGuiDragDropFlags)(0))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.BeginDragDropSourceItem(label_id, flags) : __Internal64.BeginDragDropSourceItem(label_id, flags);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.BeginDragDropSourceItem(label_id, flags) : __Internal32.BeginDragDropSourceItem(label_id, flags);
             return ___ret;
         }
 
@@ -10453,13 +10453,13 @@ namespace DearImPlot
         // DEBUG: void EndDragDropSource()
         public static void EndDragDropSource()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.EndDragDropSource();
+                __Internal64.EndDragDropSource();
             }
             else
             {
-                __Internal64.EndDragDropSource();
+                __Internal32.EndDragDropSource();
             }
         }
 
@@ -10467,7 +10467,7 @@ namespace DearImPlot
         // DEBUG: ImPlotStyle& GetStyle()
         public static ImPlotStyle GetStyle()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetStyle() : __Internal64.GetStyle();
+            var ___ret = Environment.Is64BitProcess ? __Internal64.GetStyle() : __Internal32.GetStyle();
             var __result0 = ImPlotStyle.__GetOrCreateInstance(___ret, false);
             return __result0;
         }
@@ -10477,13 +10477,13 @@ namespace DearImPlot
         public static void StyleColorsAuto(ImPlotStyle dst = default)
         {
             var __arg0 = dst is null ? IntPtr.Zero : dst.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.StyleColorsAuto(__arg0);
+                __Internal64.StyleColorsAuto(__arg0);
             }
             else
             {
-                __Internal64.StyleColorsAuto(__arg0);
+                __Internal32.StyleColorsAuto(__arg0);
             }
         }
 
@@ -10492,13 +10492,13 @@ namespace DearImPlot
         public static void StyleColorsClassic(ImPlotStyle dst = default)
         {
             var __arg0 = dst is null ? IntPtr.Zero : dst.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.StyleColorsClassic(__arg0);
+                __Internal64.StyleColorsClassic(__arg0);
             }
             else
             {
-                __Internal64.StyleColorsClassic(__arg0);
+                __Internal32.StyleColorsClassic(__arg0);
             }
         }
 
@@ -10507,13 +10507,13 @@ namespace DearImPlot
         public static void StyleColorsDark(ImPlotStyle dst = default)
         {
             var __arg0 = dst is null ? IntPtr.Zero : dst.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.StyleColorsDark(__arg0);
+                __Internal64.StyleColorsDark(__arg0);
             }
             else
             {
-                __Internal64.StyleColorsDark(__arg0);
+                __Internal32.StyleColorsDark(__arg0);
             }
         }
 
@@ -10522,13 +10522,13 @@ namespace DearImPlot
         public static void StyleColorsLight(ImPlotStyle dst = default)
         {
             var __arg0 = dst is null ? IntPtr.Zero : dst.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.StyleColorsLight(__arg0);
+                __Internal64.StyleColorsLight(__arg0);
             }
             else
             {
-                __Internal64.StyleColorsLight(__arg0);
+                __Internal32.StyleColorsLight(__arg0);
             }
         }
 
@@ -10536,13 +10536,13 @@ namespace DearImPlot
         // DEBUG: void PushStyleColor(ImPlotCol idx, ImU32 col)
         public static void PushStyleColor(ImPlotCol idx, uint col)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushStyleColor(idx, col);
+                __Internal64.PushStyleColor(idx, col);
             }
             else
             {
-                __Internal64.PushStyleColor(idx, col);
+                __Internal32.PushStyleColor(idx, col);
             }
         }
 
@@ -10554,13 +10554,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushStyleColor(idx, __arg1);
+                __Internal64.PushStyleColor(idx, __arg1);
             }
             else
             {
-                __Internal64.PushStyleColor(idx, __arg1);
+                __Internal32.PushStyleColor(idx, __arg1);
             }
         }
 
@@ -10568,13 +10568,13 @@ namespace DearImPlot
         // DEBUG: void PopStyleColor(int count = 1)
         public static void PopStyleColor(int count = (int)(1))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopStyleColor(count);
+                __Internal64.PopStyleColor(count);
             }
             else
             {
-                __Internal64.PopStyleColor(count);
+                __Internal32.PopStyleColor(count);
             }
         }
 
@@ -10582,13 +10582,13 @@ namespace DearImPlot
         // DEBUG: void PushStyleVar(ImPlotStyleVar idx, float val)
         public static void PushStyleVar(ImPlotStyleVar idx, float val)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushStyleVar(idx, val);
+                __Internal64.PushStyleVar(idx, val);
             }
             else
             {
-                __Internal64.PushStyleVar(idx, val);
+                __Internal32.PushStyleVar(idx, val);
             }
         }
 
@@ -10596,13 +10596,13 @@ namespace DearImPlot
         // DEBUG: void PushStyleVar(ImPlotStyleVar idx, int val)
         public static void PushStyleVar(ImPlotStyleVar idx, int val)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushStyleVar_1(idx, val);
+                __Internal64.PushStyleVar_1(idx, val);
             }
             else
             {
-                __Internal64.PushStyleVar_1(idx, val);
+                __Internal32.PushStyleVar_1(idx, val);
             }
         }
 
@@ -10614,13 +10614,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushStyleVar(idx, __arg1);
+                __Internal64.PushStyleVar(idx, __arg1);
             }
             else
             {
-                __Internal64.PushStyleVar(idx, __arg1);
+                __Internal32.PushStyleVar(idx, __arg1);
             }
         }
 
@@ -10628,13 +10628,13 @@ namespace DearImPlot
         // DEBUG: void PopStyleVar(int count = 1)
         public static void PopStyleVar(int count = (int)(1))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopStyleVar(count);
+                __Internal64.PopStyleVar(count);
             }
             else
             {
-                __Internal64.PopStyleVar(count);
+                __Internal32.PopStyleVar(count);
             }
         }
 
@@ -10646,13 +10646,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextLineStyle(__arg0, weight);
+                __Internal64.SetNextLineStyle(__arg0, weight);
             }
             else
             {
-                __Internal64.SetNextLineStyle(__arg0, weight);
+                __Internal32.SetNextLineStyle(__arg0, weight);
             }
         }
 
@@ -10664,13 +10664,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextFillStyle(__arg0, alpha_mod);
+                __Internal64.SetNextFillStyle(__arg0, alpha_mod);
             }
             else
             {
-                __Internal64.SetNextFillStyle(__arg0, alpha_mod);
+                __Internal32.SetNextFillStyle(__arg0, alpha_mod);
             }
         }
 
@@ -10686,13 +10686,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextMarkerStyle(marker, size, __arg2, weight, __arg4);
+                __Internal64.SetNextMarkerStyle(marker, size, __arg2, weight, __arg4);
             }
             else
             {
-                __Internal64.SetNextMarkerStyle(marker, size, __arg2, weight, __arg4);
+                __Internal32.SetNextMarkerStyle(marker, size, __arg2, weight, __arg4);
             }
         }
 
@@ -10704,13 +10704,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SetNextErrorBarStyle(__arg0, size, weight);
+                __Internal64.SetNextErrorBarStyle(__arg0, size, weight);
             }
             else
             {
-                __Internal64.SetNextErrorBarStyle(__arg0, size, weight);
+                __Internal32.SetNextErrorBarStyle(__arg0, size, weight);
             }
         }
 
@@ -10719,13 +10719,13 @@ namespace DearImPlot
         public static Vector4 GetLastItemColor()
         {
             var ___ret = new Vector4();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetLastItemColor(new IntPtr(&___ret));
+                __Internal64.GetLastItemColor(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.GetLastItemColor(new IntPtr(&___ret));
+                __Internal32.GetLastItemColor(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -10738,7 +10738,7 @@ namespace DearImPlot
         // DEBUG: const char* GetStyleColorName(ImPlotCol idx)
         public static string GetStyleColorName(ImPlotCol idx)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetStyleColorName(idx) : __Internal64.GetStyleColorName(idx);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.GetStyleColorName(idx) : __Internal32.GetStyleColorName(idx);
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
@@ -10746,7 +10746,7 @@ namespace DearImPlot
         // DEBUG: const char* GetMarkerName(ImPlotMarker idx)
         public static string GetMarkerName(ImPlotMarker idx)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetMarkerName(idx) : __Internal64.GetMarkerName(idx);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.GetMarkerName(idx) : __Internal32.GetMarkerName(idx);
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
@@ -10758,7 +10758,7 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.AddColormap(name, __arg1, size, qual) : __Internal64.AddColormap(name, __arg1, size, qual);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.AddColormap(name, __arg1, size, qual) : __Internal32.AddColormap(name, __arg1, size, qual);
             return ___ret;
         }
 
@@ -10769,7 +10769,7 @@ namespace DearImPlot
             fixed (uint* __cols1 = &cols)
             {
                 var __arg1 = __cols1;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.AddColormap(name, __arg1, size, qual) : __Internal64.AddColormap(name, __arg1, size, qual);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.AddColormap(name, __arg1, size, qual) : __Internal32.AddColormap(name, __arg1, size, qual);
                 return ___ret;
             }
         }
@@ -10778,7 +10778,7 @@ namespace DearImPlot
         // DEBUG: int GetColormapCount()
         public static int GetColormapCount()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetColormapCount() : __Internal64.GetColormapCount();
+            var ___ret = Environment.Is64BitProcess ? __Internal64.GetColormapCount() : __Internal32.GetColormapCount();
             return ___ret;
         }
 
@@ -10786,7 +10786,7 @@ namespace DearImPlot
         // DEBUG: const char* GetColormapName(ImPlotColormap cmap)
         public static string GetColormapName(ImPlotColormap cmap)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetColormapName(cmap) : __Internal64.GetColormapName(cmap);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.GetColormapName(cmap) : __Internal32.GetColormapName(cmap);
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
@@ -10794,7 +10794,7 @@ namespace DearImPlot
         // DEBUG: ImPlotColormap GetColormapIndex(const char* name)
         public static ImPlotColormap GetColormapIndex(string name)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetColormapIndex(name) : __Internal64.GetColormapIndex(name);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.GetColormapIndex(name) : __Internal32.GetColormapIndex(name);
             return ___ret;
         }
 
@@ -10802,13 +10802,13 @@ namespace DearImPlot
         // DEBUG: void PushColormap(ImPlotColormap cmap)
         public static void PushColormap(ImPlotColormap cmap)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushColormap(cmap);
+                __Internal64.PushColormap(cmap);
             }
             else
             {
-                __Internal64.PushColormap(cmap);
+                __Internal32.PushColormap(cmap);
             }
         }
 
@@ -10816,13 +10816,13 @@ namespace DearImPlot
         // DEBUG: void PushColormap(const char* name)
         public static void PushColormap(string name)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushColormap_1(name);
+                __Internal64.PushColormap_1(name);
             }
             else
             {
-                __Internal64.PushColormap_1(name);
+                __Internal32.PushColormap_1(name);
             }
         }
 
@@ -10830,13 +10830,13 @@ namespace DearImPlot
         // DEBUG: void PopColormap(int count = 1)
         public static void PopColormap(int count = (int)(1))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopColormap(count);
+                __Internal64.PopColormap(count);
             }
             else
             {
-                __Internal64.PopColormap(count);
+                __Internal32.PopColormap(count);
             }
         }
 
@@ -10845,13 +10845,13 @@ namespace DearImPlot
         public static Vector4 NextColormapColor()
         {
             var ___ret = new Vector4();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.NextColormapColor(new IntPtr(&___ret));
+                __Internal64.NextColormapColor(new IntPtr(&___ret));
             }
             else
             {
-                __Internal64.NextColormapColor(new IntPtr(&___ret));
+                __Internal32.NextColormapColor(new IntPtr(&___ret));
             }
 
             return ___ret
@@ -10864,7 +10864,7 @@ namespace DearImPlot
         // DEBUG: int GetColormapSize(ImPlotColormap cmap = IMPLOT_AUTO)
         public static int GetColormapSize(ImPlotColormap cmap = (ImPlotColormap)(-1))
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetColormapSize(cmap) : __Internal64.GetColormapSize(cmap);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.GetColormapSize(cmap) : __Internal32.GetColormapSize(cmap);
             return ___ret;
         }
 
@@ -10873,13 +10873,13 @@ namespace DearImPlot
         public static Vector4 GetColormapColor(int idx, ImPlotColormap cmap = (ImPlotColormap)(-1))
         {
             var ___ret = new Vector4();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.GetColormapColor(new IntPtr(&___ret), idx, cmap);
+                __Internal64.GetColormapColor(new IntPtr(&___ret), idx, cmap);
             }
             else
             {
-                __Internal64.GetColormapColor(new IntPtr(&___ret), idx, cmap);
+                __Internal32.GetColormapColor(new IntPtr(&___ret), idx, cmap);
             }
 
             return ___ret
@@ -10893,13 +10893,13 @@ namespace DearImPlot
         public static Vector4 SampleColormap(float t, ImPlotColormap cmap = (ImPlotColormap)(-1))
         {
             var ___ret = new Vector4();
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.SampleColormap(new IntPtr(&___ret), t, cmap);
+                __Internal64.SampleColormap(new IntPtr(&___ret), t, cmap);
             }
             else
             {
-                __Internal64.SampleColormap(new IntPtr(&___ret), t, cmap);
+                __Internal32.SampleColormap(new IntPtr(&___ret), t, cmap);
             }
 
             return ___ret
@@ -10916,13 +10916,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ColormapScale(label, scale_min, scale_max, __arg3, format, flags, cmap);
+                __Internal64.ColormapScale(label, scale_min, scale_max, __arg3, format, flags, cmap);
             }
             else
             {
-                __Internal64.ColormapScale(label, scale_min, scale_max, __arg3, format, flags, cmap);
+                __Internal32.ColormapScale(label, scale_min, scale_max, __arg3, format, flags, cmap);
             }
         }
 
@@ -10937,7 +10937,7 @@ namespace DearImPlot
                 /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 5 */
                 /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
                 ;
-                var ___ret = IntPtr.Size == 4 ? __Internal32.ColormapSlider(label, __arg1, __arg2, format, cmap) : __Internal64.ColormapSlider(label, __arg1, __arg2, format, cmap);
+                var ___ret = Environment.Is64BitProcess ? __Internal64.ColormapSlider(label, __arg1, __arg2, format, cmap) : __Internal32.ColormapSlider(label, __arg1, __arg2, format, cmap);
                 return ___ret;
             }
         }
@@ -10950,7 +10950,7 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            var ___ret = IntPtr.Size == 4 ? __Internal32.ColormapButton(label, __arg1, cmap) : __Internal64.ColormapButton(label, __arg1, cmap);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.ColormapButton(label, __arg1, cmap) : __Internal32.ColormapButton(label, __arg1, cmap);
             return ___ret;
         }
 
@@ -10958,13 +10958,13 @@ namespace DearImPlot
         // DEBUG: void BustColorCache(const char* plot_title_id = NULL)
         public static void BustColorCache(string plot_title_id = default)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.BustColorCache(plot_title_id);
+                __Internal64.BustColorCache(plot_title_id);
             }
             else
             {
-                __Internal64.BustColorCache(plot_title_id);
+                __Internal32.BustColorCache(plot_title_id);
             }
         }
 
@@ -10972,7 +10972,7 @@ namespace DearImPlot
         // DEBUG: ImPlotInputMap& GetInputMap()
         public static ImPlotInputMap GetInputMap()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetInputMap() : __Internal64.GetInputMap();
+            var ___ret = Environment.Is64BitProcess ? __Internal64.GetInputMap() : __Internal32.GetInputMap();
             var __result0 = ___ret != IntPtr.Zero ? ImPlotInputMap.__CreateInstance(___ret) : default;
             return __result0;
         }
@@ -10983,13 +10983,13 @@ namespace DearImPlot
         {
             var ____arg0 = dst.__Instance;
             var __arg0 = new IntPtr(&____arg0);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.MapInputDefault(__arg0);
+                __Internal64.MapInputDefault(__arg0);
             }
             else
             {
-                __Internal64.MapInputDefault(__arg0);
+                __Internal32.MapInputDefault(__arg0);
             }
         }
 
@@ -10999,13 +10999,13 @@ namespace DearImPlot
         {
             var ____arg0 = dst.__Instance;
             var __arg0 = new IntPtr(&____arg0);
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.MapInputReverse(__arg0);
+                __Internal64.MapInputReverse(__arg0);
             }
             else
             {
-                __Internal64.MapInputReverse(__arg0);
+                __Internal32.MapInputReverse(__arg0);
             }
         }
 
@@ -11017,13 +11017,13 @@ namespace DearImPlot
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Case 4 */
             /* DEBUG: TypeMapImVec4.CSharpMarshalToNative: Function: True, ReturnVarName: False */
             ;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ItemIcon(__arg0);
+                __Internal64.ItemIcon(__arg0);
             }
             else
             {
-                __Internal64.ItemIcon(__arg0);
+                __Internal32.ItemIcon(__arg0);
             }
         }
 
@@ -11031,13 +11031,13 @@ namespace DearImPlot
         // DEBUG: void ItemIcon(ImU32 col)
         public static void ItemIcon(uint col)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ItemIcon(col);
+                __Internal64.ItemIcon(col);
             }
             else
             {
-                __Internal64.ItemIcon(col);
+                __Internal32.ItemIcon(col);
             }
         }
 
@@ -11045,13 +11045,13 @@ namespace DearImPlot
         // DEBUG: void ColormapIcon(ImPlotColormap cmap)
         public static void ColormapIcon(ImPlotColormap cmap)
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ColormapIcon(cmap);
+                __Internal64.ColormapIcon(cmap);
             }
             else
             {
-                __Internal64.ColormapIcon(cmap);
+                __Internal32.ColormapIcon(cmap);
             }
         }
 
@@ -11059,7 +11059,7 @@ namespace DearImPlot
         // DEBUG: ImDrawList* GetPlotDrawList()
         public static ImDrawList GetPlotDrawList()
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.GetPlotDrawList() : __Internal64.GetPlotDrawList();
+            var ___ret = Environment.Is64BitProcess ? __Internal64.GetPlotDrawList() : __Internal32.GetPlotDrawList();
             var __result0 = ___ret != IntPtr.Zero ? ImDrawList.__CreateInstance(___ret) : default;
             return __result0;
         }
@@ -11068,13 +11068,13 @@ namespace DearImPlot
         // DEBUG: void PushPlotClipRect(float expand=0)
         public static void PushPlotClipRect(float expand = (float)(0))
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PushPlotClipRect(expand);
+                __Internal64.PushPlotClipRect(expand);
             }
             else
             {
-                __Internal64.PushPlotClipRect(expand);
+                __Internal32.PushPlotClipRect(expand);
             }
         }
 
@@ -11082,13 +11082,13 @@ namespace DearImPlot
         // DEBUG: void PopPlotClipRect()
         public static void PopPlotClipRect()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.PopPlotClipRect();
+                __Internal64.PopPlotClipRect();
             }
             else
             {
-                __Internal64.PopPlotClipRect();
+                __Internal32.PopPlotClipRect();
             }
         }
 
@@ -11096,7 +11096,7 @@ namespace DearImPlot
         // DEBUG: bool ShowStyleSelector(const char* label)
         public static bool ShowStyleSelector(string label)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.ShowStyleSelector(label) : __Internal64.ShowStyleSelector(label);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.ShowStyleSelector(label) : __Internal32.ShowStyleSelector(label);
             return ___ret;
         }
 
@@ -11104,7 +11104,7 @@ namespace DearImPlot
         // DEBUG: bool ShowColormapSelector(const char* label)
         public static bool ShowColormapSelector(string label)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.ShowColormapSelector(label) : __Internal64.ShowColormapSelector(label);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.ShowColormapSelector(label) : __Internal32.ShowColormapSelector(label);
             return ___ret;
         }
 
@@ -11112,7 +11112,7 @@ namespace DearImPlot
         // DEBUG: bool ShowInputMapSelector(const char* label)
         public static bool ShowInputMapSelector(string label)
         {
-            var ___ret = IntPtr.Size == 4 ? __Internal32.ShowInputMapSelector(label) : __Internal64.ShowInputMapSelector(label);
+            var ___ret = Environment.Is64BitProcess ? __Internal64.ShowInputMapSelector(label) : __Internal32.ShowInputMapSelector(label);
             return ___ret;
         }
 
@@ -11121,13 +11121,13 @@ namespace DearImPlot
         public static void ShowStyleEditor(ImPlotStyle @ref = default)
         {
             var __arg0 = @ref is null ? IntPtr.Zero : @ref.__Instance;
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ShowStyleEditor(__arg0);
+                __Internal64.ShowStyleEditor(__arg0);
             }
             else
             {
-                __Internal64.ShowStyleEditor(__arg0);
+                __Internal32.ShowStyleEditor(__arg0);
             }
         }
 
@@ -11135,13 +11135,13 @@ namespace DearImPlot
         // DEBUG: void ShowUserGuide()
         public static void ShowUserGuide()
         {
-            if (IntPtr.Size == 4)
+            if (Environment.Is64BitProcess)
             {
-                __Internal32.ShowUserGuide();
+                __Internal64.ShowUserGuide();
             }
             else
             {
-                __Internal64.ShowUserGuide();
+                __Internal32.ShowUserGuide();
             }
         }
 
@@ -11152,13 +11152,13 @@ namespace DearImPlot
             fixed (bool* __p_popen0 = &p_popen)
             {
                 var __arg0 = __p_popen0;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ShowMetricsWindow(__arg0);
+                    __Internal64.ShowMetricsWindow(__arg0);
                 }
                 else
                 {
-                    __Internal64.ShowMetricsWindow(__arg0);
+                    __Internal32.ShowMetricsWindow(__arg0);
                 }
             }
         }
@@ -11170,13 +11170,13 @@ namespace DearImPlot
             fixed (bool* __p_open0 = &p_open)
             {
                 var __arg0 = __p_open0;
-                if (IntPtr.Size == 4)
+                if (Environment.Is64BitProcess)
                 {
-                    __Internal32.ShowDemoWindow(__arg0);
+                    __Internal64.ShowDemoWindow(__arg0);
                 }
                 else
                 {
-                    __Internal64.ShowDemoWindow(__arg0);
+                    __Internal32.ShowDemoWindow(__arg0);
                 }
             }
         }

@@ -21,7 +21,7 @@ internal static class Program
         // for whatever reason, generated 64-bit code is IntPtr in some places, fix
 
         text = Regex.Replace(text,
-            @"(__Internal64\.PlotHistogram(?:2D)?(?:_\d+)?\(.*)(__arg(?:5|6))(.*)",
+            @"(__Internal64\.PlotHistogram(?:2D)?(?:_\d+)?\(.*?)(__arg(?:5|6))(.*)",
             "$1new IntPtr(&$2)$3",
             RegexOptions.Multiline
         );
