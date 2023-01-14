@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<AssemblyVersion>0.14.0.0</AssemblyVersion>
+		<AssemblyVersion>0.14.0.1</AssemblyVersion>
 		<Title>implot for .NET</Title>
 		<PackageTags>imgui DearImGui implot DearImPlot</PackageTags>
 	</PropertyGroup>
