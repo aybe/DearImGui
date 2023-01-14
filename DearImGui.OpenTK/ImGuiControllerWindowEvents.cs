@@ -17,7 +17,15 @@ public enum ImGuiControllerWindowEvents
     /// <summary>
     ///     Listen to every window event specified in <see cref="ImGuiControllerWindowEvents" />.
     /// </summary>
-    Everything = ~None,
+    Everything = FocusedChanged | 
+                 KeyDown | 
+                 KeyUp | 
+                 MouseDown | 
+                 MouseUp | 
+                 MouseEnter | 
+                 MouseMove | 
+                 MouseWheel | 
+                 TextInput,
 
     /// <summary>
     ///     Listen to <see cref="NativeWindow.FocusedChanged" />.
