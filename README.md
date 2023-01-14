@@ -61,7 +61,7 @@ In order for the projects in *Managed* folder to build, there are implicit depen
 - projects in *Generated* folder shall be started at least once
 - projects in *Native* folder shall be batch built at least once
 
-These dependencies can be pre-built by invoking `build.cmd $(Configuration)`.
+These dependencies can be pre-built by invoking `dearimgui-build.cmd $(Configuration)`.
 
 ### Extending
 
