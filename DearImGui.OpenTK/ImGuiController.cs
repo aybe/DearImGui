@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
+using DearImGui.Extensions;
 using DearImGui.OpenTK.Extensions;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
@@ -240,6 +241,13 @@ public sealed class ImGuiController : Disposable
     /// </summary>
     public IntPtr Context { get; }
 
+    private ImGuiControllerWindowEvents WindowEvents_ = ImGuiControllerWindowEvents.Everything;
+
+    /// <summary>
+    ///     Gets or sets which window events this instance should listen to.
+    /// </summary>
+    public ref ImGuiControllerWindowEvents WindowEvents => ref WindowEvents_;
+
     /// <inheritdoc />
     protected override void DisposeManaged()
     {
@@ -435,6 +443,9 @@ public sealed class ImGuiController : Disposable
 
     private void OnWindowFocusChanged(FocusedChangedEventArgs e)
     {
+        if (!WindowEvents.HasFlags(ImGuiControllerWindowEvents.FocusedChanged))
+            return;
+
         IO.AddFocusEvent(e.IsFocused);
     }
 
@@ -455,16 +466,25 @@ public sealed class ImGuiController : Disposable
 
     private void OnWindowKeyPressDown(KeyboardKeyEventArgs e)
     {
+        if (!WindowEvents.HasFlags(ImGuiControllerWindowEvents.KeyDown))
+            return;
+
         OnWindowKeyPress(e, true);
     }
 
     private void OnWindowKeyPressUp(KeyboardKeyEventArgs e)
     {
+        if (!WindowEvents.HasFlags(ImGuiControllerWindowEvents.KeyUp))
+            return;
+
         OnWindowKeyPress(e, false);
     }
 
     private void OnWindowMouseEnter()
     {
+        if (!WindowEvents.HasFlags(ImGuiControllerWindowEvents.MouseEnter))
+            return;
+
         var position = Window.MouseState.Position;
 
         IO.AddMousePosEvent(position.X, position.Y);
@@ -472,6 +492,9 @@ public sealed class ImGuiController : Disposable
 
     private void OnWindowMouseMove(MouseMoveEventArgs e)
     {
+        if (!WindowEvents.HasFlags(ImGuiControllerWindowEvents.MouseMove))
+            return;
+
         IO.AddMousePosEvent(e.X, e.Y);
     }
 
@@ -489,21 +512,33 @@ public sealed class ImGuiController : Disposable
 
     private void OnWindowMouseButtonDown(MouseButtonEventArgs e)
     {
+        if (!WindowEvents.HasFlags(ImGuiControllerWindowEvents.MouseDown))
+            return;
+
         OnWindowMouseButton(e);
     }
 
     private void OnWindowMouseButtonUp(MouseButtonEventArgs e)
     {
+        if (!WindowEvents.HasFlags(ImGuiControllerWindowEvents.MouseUp))
+            return;
+
         OnWindowMouseButton(e);
     }
 
     private void OnWindowMouseWheel(MouseWheelEventArgs e)
     {
+        if (!WindowEvents.HasFlags(ImGuiControllerWindowEvents.MouseWheel))
+            return;
+
         IO.AddMouseWheelEvent(e.OffsetX, e.OffsetY);
     }
 
     private void OnWindowTextInput(TextInputEventArgs e)
     {
+        if (!WindowEvents.HasFlags(ImGuiControllerWindowEvents.TextInput))
+            return;
+
         IO.AddInputCharacter((uint)e.Unicode);
     }
 
