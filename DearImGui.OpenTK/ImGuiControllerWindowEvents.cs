@@ -10,12 +10,12 @@ namespace DearImGui.OpenTK;
 public enum ImGuiControllerWindowEvents
 {
     /// <summary>
-    ///     Listen to none of the window event specified in <see cref="ImGuiControllerWindowEvents" />.
+    ///     Listen to none of the window events specified in <see cref="ImGuiControllerWindowEvents" />.
     /// </summary>
     None = 0,
 
     /// <summary>
-    ///     Listen to every window event specified in <see cref="ImGuiControllerWindowEvents" />.
+    ///     Listen to every window events specified in <see cref="ImGuiControllerWindowEvents" />.
     /// </summary>
     Everything = FocusedChanged | 
                  KeyDown | 
