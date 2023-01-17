@@ -71,7 +71,7 @@ Take a look at how [implot](https://github.com/aybe/DearImGui/tree/develop/DearI
 
 However, few things may prove to be challenging due to how CppSharp works.
 
-When bindings are generated, there is a [version history](https://github.com/aybe/DearImGui/blob/develop/DearGenerator/CodeGenerator.cs#L312) for easily diff'ing them.
+When bindings are generated, there is a version history for easily diff'ing them.
 
 ### Known issues
 
