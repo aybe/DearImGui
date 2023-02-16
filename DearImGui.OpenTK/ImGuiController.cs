@@ -344,6 +344,7 @@ public sealed class ImGuiController : Disposable
         IO.BackendFlags |= ImGuiBackendFlags.HasMouseCursors;
 
         IO.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
+        IO.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
     }
 
     private unsafe void InitializeFont(string? fontPath, float? fontSize)
