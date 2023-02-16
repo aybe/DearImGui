@@ -6325,7 +6325,7 @@ namespace DearImGui
             internal ImGuiViewportFlags ViewportFlagsOverrideSet;
             internal ImGuiViewportFlags ViewportFlagsOverrideClear;
             internal ImGuiTabItemFlags TabItemFlagsOverrideSet;
-            internal int DockNodeFlagsOverrideSet;
+            internal ImGuiDockNodeFlags DockNodeFlagsOverrideSet;
             internal byte DockingAlwaysTabBar;
             internal byte DockingAllowUnclassed;
         }
@@ -6542,7 +6542,7 @@ namespace DearImGui
         }
 
         /// <summary>[EXPERIMENTAL] Dock node flags to set when a window of this class is hosted by a dock node (it doesn't have to be selected!).<br/>https://github.com/ocornut/imgui/blob/9cd9c2eff99877a3f10a7f9c2a3a5b9c15ea36c6/imgui.h#L2222.</summary>
-        public int DockNodeFlagsOverrideSet
+        public ImGuiDockNodeFlags DockNodeFlagsOverrideSet
         {
             get
             {
@@ -18756,10 +18756,10 @@ namespace DearImGui
             internal static extern void SetTabItemClosed([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string tab_or_docked_window_label);
 
             [SuppressUnmanagedCodeSecurity, DllImport("imgui", EntryPoint = "?DockSpace@ImGui@@YAIIABUImVec2@@HPBUImGuiWindowClass@@@Z", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern uint DockSpace(uint id, IntPtr size, int flags, IntPtr window_class);
+            internal static extern uint DockSpace(uint id, IntPtr size, ImGuiDockNodeFlags flags, IntPtr window_class);
 
             [SuppressUnmanagedCodeSecurity, DllImport("imgui", EntryPoint = "?DockSpaceOverViewport@ImGui@@YAIPBUImGuiViewport@@HPBUImGuiWindowClass@@@Z", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern uint DockSpaceOverViewport(IntPtr viewport, int flags, IntPtr window_class);
+            internal static extern uint DockSpaceOverViewport(IntPtr viewport, ImGuiDockNodeFlags flags, IntPtr window_class);
 
             [SuppressUnmanagedCodeSecurity, DllImport("imgui", EntryPoint = "?SetNextWindowDockID@ImGui@@YAXIH@Z", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void SetNextWindowDockID(uint dock_id, ImGuiCond cond);
@@ -20069,10 +20069,10 @@ namespace DearImGui
             internal static extern void SetTabItemClosed([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string tab_or_docked_window_label);
 
             [SuppressUnmanagedCodeSecurity, DllImport("imgui", EntryPoint = "?DockSpace@ImGui@@YAIIAEBUImVec2@@HPEBUImGuiWindowClass@@@Z", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern uint DockSpace(uint id, IntPtr size, int flags, IntPtr window_class);
+            internal static extern uint DockSpace(uint id, IntPtr size, ImGuiDockNodeFlags flags, IntPtr window_class);
 
             [SuppressUnmanagedCodeSecurity, DllImport("imgui", EntryPoint = "?DockSpaceOverViewport@ImGui@@YAIPEBUImGuiViewport@@HPEBUImGuiWindowClass@@@Z", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern uint DockSpaceOverViewport(IntPtr viewport, int flags, IntPtr window_class);
+            internal static extern uint DockSpaceOverViewport(IntPtr viewport, ImGuiDockNodeFlags flags, IntPtr window_class);
 
             [SuppressUnmanagedCodeSecurity, DllImport("imgui", EntryPoint = "?SetNextWindowDockID@ImGui@@YAXIH@Z", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void SetNextWindowDockID(uint dock_id, ImGuiCond cond);
@@ -24164,7 +24164,7 @@ namespace DearImGui
 
         /// <summary>Docking.<br/>[BETA API] Enable with io.ConfigFlags |= ImGuiConfigFlags_DockingEnable.<br/>Note: You can use most Docking facilities without calling any API. You DO NOT need to call DockSpace() to use Docking!<br/>- Drag from window title bar or their tab to dock/undock. Hold SHIFT to disable docking/undocking.<br/>- Drag from window menu button (upper-left button) to undock an entire node (all windows).<br/>- When io.ConfigDockingWithShift == true, you instead need to hold SHIFT to _enable_ docking/undocking.<br/>About dockspaces:.<br/>- Use DockSpace() to create an explicit dock node _within_ an existing window. See Docking demo for details.<br/>- Use DockSpaceOverViewport() to create an explicit dock node covering the screen or a specific viewport.<br/>This is often used with ImGuiDockNodeFlags_PassthruCentralNode.<br/>- Important: Dockspaces need to be submitted _before_ any window they can host. Submit it early in your frame!<br/>- Important: Dockspaces need to be kept alive if hidden, otherwise windows docked into it will be undocked.<br/>E.g. if you have multiple tabs with a dockspace inside each tab: submit the non-visible dockspaces with ImGuiDockNodeFlags_KeepAliveOnly.<br/>https://github.com/ocornut/imgui/blob/9cd9c2eff99877a3f10a7f9c2a3a5b9c15ea36c6/imgui.h#L805.</summary>
         // DEBUG: ImGuiID       DockSpace(ImGuiID id, const ImVec2& size = ImVec2(0, 0), ImGuiDockNodeFlags flags = 0, const ImGuiWindowClass* window_class = NULL)
-        public static uint DockSpace(uint id, Vector2 size, int flags = (int)(0), ImGuiWindowClass window_class = default)
+        public static uint DockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags = (ImGuiDockNodeFlags)(0), ImGuiWindowClass window_class = default)
         {
             var __arg1 = new IntPtr(Unsafe.AsPointer(ref size))
             /* DEBUG: TypeMapImVec2.CSharpMarshalToNative: Case 3 */
@@ -24177,7 +24177,7 @@ namespace DearImGui
 
         /// <summary>https://github.com/ocornut/imgui/blob/9cd9c2eff99877a3f10a7f9c2a3a5b9c15ea36c6/imgui.h#L806.</summary>
         // DEBUG: ImGuiID       DockSpaceOverViewport(const ImGuiViewport* viewport = NULL, ImGuiDockNodeFlags flags = 0, const ImGuiWindowClass* window_class = NULL)
-        public static uint DockSpaceOverViewport(ImGuiViewport viewport = default, int flags = (int)(0), ImGuiWindowClass window_class = default)
+        public static uint DockSpaceOverViewport(ImGuiViewport viewport = default, ImGuiDockNodeFlags flags = (ImGuiDockNodeFlags)(0), ImGuiWindowClass window_class = default)
         {
             var __arg0 = viewport is null ? IntPtr.Zero : viewport.__Instance;
             var __arg2 = window_class is null ? IntPtr.Zero : window_class.__Instance;

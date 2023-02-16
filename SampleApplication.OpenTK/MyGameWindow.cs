@@ -72,7 +72,6 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
         if (ShowDockingDemo)
         {
             DrawDockSpaceOptionsBar(ref ShowDockingDemo);
-            ImGui.DockSpaceOverViewport(ImGui.GetMainViewport(), (int)dockspace_flags);
         }
 
 
@@ -131,6 +130,7 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
     void DrawDockSpaceOptionsBar(ref bool p_open)
     {
+        ImGui.DockSpaceOverViewport(ImGui.GetMainViewport(), dockspace_flags);
         if (ImGui.BeginMainMenuBar())
         {
             if (ImGui.BeginMenu("Options"))

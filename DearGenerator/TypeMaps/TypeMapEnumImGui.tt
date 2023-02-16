@@ -35,7 +35,8 @@
 		"ImGuiTableRowFlags",
 		"ImGuiTreeNodeFlags",
 		"ImGuiViewportFlags",
-		"ImGuiWindowFlags"
+		"ImGuiWindowFlags",
+		"ImGuiDockNodeFlags"
 	};
 
 	Generate(types, "Constants.ImGuiNamespace");
