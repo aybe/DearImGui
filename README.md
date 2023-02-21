@@ -54,8 +54,6 @@ The repository has submodules, don't forget to clone them in the process:
 
 ### Building
 
-Restoring [CppSharp](https://github.com/orgs/mono/packages?repo_name=CppSharp) from GitHub's NuGet registry requires a [personal access token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-nuget-registry).
-
 In order for the projects in *Managed* folder to build, there are implicit dependencies:
 
 - projects in *Generated* folder shall be started at least once
