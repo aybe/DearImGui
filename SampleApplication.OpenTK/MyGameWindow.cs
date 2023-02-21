@@ -30,6 +30,8 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
     private bool ShowImPlotDemo = true;
 
+    private bool ShowDockingDemo = true;
+
     public MyGameWindow(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings)
         : base(gameWindowSettings, nativeWindowSettings)
     {
@@ -67,6 +69,12 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
         ImGui.SetNextWindowSize(new Vector2(800, 500), ImGuiCond.Once);
 
+        if (ShowDockingDemo)
+        {
+            DrawDockSpaceOptionsBar(ref ShowDockingDemo);
+        }
+
+
         if (ImGui.Begin("Hello, world!"))
         {
             if (ImPlot.BeginPlot("Sample plot"))
@@ -85,8 +93,9 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
             ImGui.ColorEdit4("Color 1", Color1.AsSpan(), ImGuiColorEditFlags.NoInputs);
             ImGui.ColorEdit4("Color 2", Color2.AsSpan(), ImGuiColorEditFlags.NoInputs);
 
-            ImGui.Checkbox("Show ImGui Demo",  ref ShowImGuiDemo);
+            ImGui.Checkbox("Show ImGui Demo", ref ShowImGuiDemo);
             ImGui.Checkbox("Show ImPlot Demo", ref ShowImPlotDemo);
+            ImGui.Checkbox("Show Docking Demo", ref ShowDockingDemo);
         }
 
         ImGui.End();
@@ -114,6 +123,67 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
         GL.Viewport(0, 0, e.Width, e.Height);
     }
+
+    #region SampleDocking
+
+    private ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags.None;
+
+    void DrawDockSpaceOptionsBar(ref bool p_open)
+    {
+        ImGui.DockSpaceOverViewport(ImGui.GetMainViewport(), dockspace_flags);
+        if (ImGui.BeginMainMenuBar())
+        {
+            if (ImGui.BeginMenu("Options"))
+            {
+                if (ImGui.MenuItem("Enable Docking", "IO.ConfigFlags.DockingEnable", ImGui.GetIO().ConfigFlags.HasFlag(ImGuiConfigFlags.DockingEnable))) {
+                    ImGui.GetIO().ConfigFlags ^= ImGuiConfigFlags.DockingEnable;
+                }
+
+                ImGui.Separator();
+
+                if (ImGui.MenuItem("Require Shift For Docking", "IO.ConfigDockingWithShift",
+                    ImGui.GetIO().ConfigDockingWithShift)) { ImGui.GetIO().ConfigDockingWithShift = !ImGui.GetIO().ConfigDockingWithShift; }
+
+                ImGui.Separator();
+
+                if (ImGui.MenuItem("Flag: NoSplit", "", (dockspace_flags & ImGuiDockNodeFlags.NoSplit) != 0)) {  dockspace_flags ^= ImGuiDockNodeFlags.NoSplit; }
+                if (ImGui.MenuItem("Flag: NoResize", "", (dockspace_flags & ImGuiDockNodeFlags.NoResize) != 0)) { dockspace_flags ^= ImGuiDockNodeFlags.NoResize; }
+                if (ImGui.MenuItem("Flag: NoDockingInCentralNode", "", (dockspace_flags & ImGuiDockNodeFlags.NoDockingInCentralNode) != 0)) { dockspace_flags ^= ImGuiDockNodeFlags.NoDockingInCentralNode; }
+                if (ImGui.MenuItem("Flag: AutoHideTabBar", "", (dockspace_flags & ImGuiDockNodeFlags.AutoHideTabBar) != 0)) { dockspace_flags ^= ImGuiDockNodeFlags.AutoHideTabBar; }
+                if (ImGui.MenuItem("Flag: PassthruCentralNode", "", (dockspace_flags & ImGuiDockNodeFlags.PassthruCentralNode) != 0)) { dockspace_flags ^= ImGuiDockNodeFlags.PassthruCentralNode; }
+                ImGui.EndMenu();
+            }
+            HelpMarker(
+                @"When docking is enabled, you can ALWAYS dock MOST window into another! Try it now!
+    
+- Drag from window title bar or their tab to dock/undock.
+    
+- Drag from window menu button (upper-left button) to undock an entire node (all windows).
+    
+- Hold SHIFT to disable docking (if io.ConfigDockingWithShift == false, default)
+    
+- Hold SHIFT to enable docking (if io.ConfigDockingWithShift == true)");
+
+            ImGui.EndMainMenuBar();
+        }
+
+        static void HelpMarker(string desc)
+        {
+            ImGui.TextDisabled("(?)");
+            if (ImGui.IsItemHovered())
+            {
+                ImGui.BeginTooltip();
+                ImGui.PushTextWrapPos(ImGui.GetFontSize() * 35.0f);
+                ImGui.TextUnformatted(desc);
+                ImGui.PopTextWrapPos();
+                ImGui.EndTooltip();
+            }
+        }
+    }
+
+    
+
+    #endregion
 
     #region SampleExtraFont
 

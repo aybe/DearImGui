@@ -68,6 +68,13 @@ public abstract class GameWindowBaseWithDebugContext : GameWindowBase
 
         var str = builder.ToString();
 
-        throw new InvalidOperationException(str);
+        if (severity == DebugSeverity.DebugSeverityNotification || severity == DebugSeverity.DebugSeverityLow)
+        {
+            Debug.WriteLine(str);
+        }
+        else
+        {
+            throw new InvalidOperationException(str);
+        }
     }
 }

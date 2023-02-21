@@ -12,5 +12,5 @@ public sealed class ImGuiSummaryPass : ImSummaryPass
             }
             .ToImmutableSortedSet();
 
-    protected override string HeaderUrl { get; } = @"https://github.com/ocornut/imgui/blob/9aae45eb4a05a5a1f96be1ef37eb503a12ceb889/imgui.h";
+    protected override string HeaderUrl { get; } = @"https://github.com/ocornut/imgui/blob/9cd9c2eff99877a3f10a7f9c2a3a5b9c15ea36c6/imgui.h";
 }

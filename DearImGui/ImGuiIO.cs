@@ -38,4 +38,31 @@ partial class ImGuiIO
             }
         }
     }
+
+    public Vector2[] MouseDragMaxDistanceAbs
+    {
+        get
+        {
+            var value = new Vector2[5];
+
+            unsafe
+            {
+                Marshalling.Copy(ref value, ((__Internal*)__Instance)->MouseDragMaxDistanceAbs);
+            }
+
+            return value;
+        }
+
+        set
+        {
+            ArgumentNullException.ThrowIfNull(value);
+
+            unsafe
+            {
+                Marshalling.Copy(((__Internal*)__Instance)->MouseDragMaxDistanceAbs, ref value);
+            }
+        }
+    }
+
+    
 }

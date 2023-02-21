@@ -28,6 +28,8 @@ using ImU32 = System.UInt32;
 using ImS64 = System.Int64;
 using ImU64 = System.UInt64;
 
+#pragma warning disable CS0109 // Member does not hide an inherited member; new keyword is not required
+
 namespace DearImPlot
 {
     /// <summary>Axis indices. The values assigned may change; NEVER hardcode these.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L116.</summary>
@@ -991,6 +993,8 @@ namespace DearImPlot
         private protected bool __ownsNativeInstance;
         internal static ImPlotContext __CreateInstance(IntPtr native, bool skipVTables = false)
         {
+            if (native == IntPtr.Zero)
+                return null;
             return new ImPlotContext(native.ToPointer(), skipVTables);
         }
 
@@ -1799,6 +1803,8 @@ namespace DearImPlot
         private protected bool __ownsNativeInstance;
         internal static ImPlotStyle __CreateInstance(IntPtr native, bool skipVTables = false)
         {
+            if (native == IntPtr.Zero)
+                return null;
             return new ImPlotStyle(native.ToPointer(), skipVTables);
         }
 
