@@ -83,6 +83,27 @@ Occasionally, you may encounter a similiar exception while generating:
 
 Something has outstanding handles on that file, try to generate again.
 
+### Tips
+
+Building with `dearimgui-build.cmd` within Visual Studio Code is the best approach.
+
+You can add an equivalent terminal profile to get the  _Developer Command Prompt_:
+
+```
+"terminal.integrated.profiles.windows": {
+    "Developer Command Prompt": {
+        "path": [
+            "${env:windir}\\System32\\cmd.exe"
+        ],
+        "args": [
+            "/K",
+            "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\Tools\\VsDevCmd.bat",
+        ],
+        "icon": "terminal-cmd"
+    }
+}
+```
+
 # Credits
 
 https://github.com/ocornut/imgui
