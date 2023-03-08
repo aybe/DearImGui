@@ -953,17 +953,17 @@ namespace DearImPlot
     // DEBUG: typedef int ImPlotColormap
     // DEBUG: typedef int ImPlotLocation
     // DEBUG: typedef int ImPlotBin
-    /// <summary>Callback signature for axis tick label formatter.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L577.</summary>
+    /// <summary>Callback signature for axis tick label formatter.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L583.</summary>
     // DEBUG: typedef int (*ImPlotFormatter)(double value, char* buff, int size, void* user_data)
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate int ImPlotFormatter(double value, sbyte* buff, int size, IntPtr user_data);
 
-    /// <summary>Callback signature for data getter.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L580.</summary>
+    /// <summary>Callback signature for data getter.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L586.</summary>
     // DEBUG: typedef ImPlotPoint (*ImPlotGetter)(int idx, void* user_data)
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate ImPlotPoint ImPlotGetter(int idx, IntPtr user_data);
 
-    /// <summary>Callback signature for axis transform.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L583.</summary>
+    /// <summary>Callback signature for axis transform.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L589.</summary>
     // DEBUG: typedef double (*ImPlotTransform)(double value, void* user_data)
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate double ImPlotTransform(double value, IntPtr user_data);
@@ -2438,19 +2438,19 @@ namespace DearImPlot
         }
     }
 
-    /// <summary>Input mapping structure. Default values listed. See also MapInputDefault, MapInputReverse.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L556.</summary>
+    /// <summary>Input mapping structure. Default values listed. See also MapInputDefault, MapInputReverse.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L562.</summary>
     // DEBUG: struct ImPlotInputMap {
     // DEBUG:     ImGuiMouseButton Pan;           // LMB    enables panning when held,
-    // DEBUG:     ImGuiModFlags    PanMod;        // none   optional modifier that must be held for panning/fitting
+    // DEBUG:     int              PanMod;        // none   optional modifier that must be held for panning/fitting
     // DEBUG:     ImGuiMouseButton Fit;           // LMB    initiates fit when double clicked
     // DEBUG:     ImGuiMouseButton Select;        // RMB    begins box selection when pressed and confirms selection when released
     // DEBUG:     ImGuiMouseButton SelectCancel;  // LMB    cancels active box selection when pressed; cannot be same as Select
-    // DEBUG:     ImGuiModFlags    SelectMod;     // none   optional modifier that must be held for box selection
-    // DEBUG:     ImGuiModFlags    SelectHorzMod; // Alt    expands active box selection horizontally to plot edge when held
-    // DEBUG:     ImGuiModFlags    SelectVertMod; // Shift  expands active box selection vertically to plot edge when held
+    // DEBUG:     int              SelectMod;     // none   optional modifier that must be held for box selection
+    // DEBUG:     int              SelectHorzMod; // Alt    expands active box selection horizontally to plot edge when held
+    // DEBUG:     int              SelectVertMod; // Shift  expands active box selection vertically to plot edge when held
     // DEBUG:     ImGuiMouseButton Menu;          // RMB    opens context menus (if enabled) when clicked
-    // DEBUG:     ImGuiModFlags    OverrideMod;   // Ctrl   when held, all input is ignored; used to enable axis/plots as DND sources
-    // DEBUG:     ImGuiModFlags    ZoomMod;       // none   optional modifier that must be held for scroll wheel zooming
+    // DEBUG:     int              OverrideMod;   // Ctrl   when held, all input is ignored; used to enable axis/plots as DND sources
+    // DEBUG:     int              ZoomMod;       // none   optional modifier that must be held for scroll wheel zooming
     // DEBUG:     float            ZoomRate;      // 0.1f   zoom rate for scroll (e.g. 0.1f = 10% plot range every scroll click); make negative to invert
     // DEBUG:     IMPLOT_API ImPlotInputMap();
     // DEBUG: }
@@ -2515,7 +2515,7 @@ namespace DearImPlot
             __instance = *(ImPlotInputMap.__Internal*)native;
         }
 
-        /// <summary>Input mapping structure. Default values listed. See also MapInputDefault, MapInputReverse.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L556.</summary>
+        /// <summary>Input mapping structure. Default values listed. See also MapInputDefault, MapInputReverse.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L562.</summary>
         // DEBUG: ImPlotInputMap
         public ImPlotInputMap(ImPlotInputMap _0) : this()
         {
@@ -2534,7 +2534,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>LMB.<br/>Enables panning when held,.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L557.</summary>
+        /// <summary>LMB.<br/>Enables panning when held,.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L563.</summary>
         public ImGuiMouseButton Pan
         {
             get
@@ -2548,7 +2548,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>None.<br/>Optional modifier that must be held for panning/fitting.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L558.</summary>
+        /// <summary>None.<br/>Optional modifier that must be held for panning/fitting.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L564.</summary>
         public int PanMod
         {
             get
@@ -2562,7 +2562,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>LMB.<br/>Initiates fit when double clicked.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L559.</summary>
+        /// <summary>LMB.<br/>Initiates fit when double clicked.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L565.</summary>
         public ImGuiMouseButton Fit
         {
             get
@@ -2576,7 +2576,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>RMB.<br/>Begins box selection when pressed and confirms selection when released.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L560.</summary>
+        /// <summary>RMB.<br/>Begins box selection when pressed and confirms selection when released.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L566.</summary>
         public ImGuiMouseButton Select
         {
             get
@@ -2590,7 +2590,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>LMB.<br/>Cancels active box selection when pressed; cannot be same as Select.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L561.</summary>
+        /// <summary>LMB.<br/>Cancels active box selection when pressed; cannot be same as Select.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L567.</summary>
         public ImGuiMouseButton SelectCancel
         {
             get
@@ -2604,7 +2604,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>None.<br/>Optional modifier that must be held for box selection.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L562.</summary>
+        /// <summary>None.<br/>Optional modifier that must be held for box selection.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L568.</summary>
         public int SelectMod
         {
             get
@@ -2618,7 +2618,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Alt.<br/>Expands active box selection horizontally to plot edge when held.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L563.</summary>
+        /// <summary>Alt.<br/>Expands active box selection horizontally to plot edge when held.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L569.</summary>
         public int SelectHorzMod
         {
             get
@@ -2632,7 +2632,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shift.<br/>Expands active box selection vertically to plot edge when held.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L564.</summary>
+        /// <summary>Shift.<br/>Expands active box selection vertically to plot edge when held.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L570.</summary>
         public int SelectVertMod
         {
             get
@@ -2646,7 +2646,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>RMB.<br/>Opens context menus (if enabled) when clicked.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L565.</summary>
+        /// <summary>RMB.<br/>Opens context menus (if enabled) when clicked.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L571.</summary>
         public ImGuiMouseButton Menu
         {
             get
@@ -2660,7 +2660,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Ctrl.<br/>When held, all input is ignored; used to enable axis/plots as DND sources.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L566.</summary>
+        /// <summary>Ctrl.<br/>When held, all input is ignored; used to enable axis/plots as DND sources.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L572.</summary>
         public int OverrideMod
         {
             get
@@ -2674,7 +2674,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>None.<br/>Optional modifier that must be held for scroll wheel zooming.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L567.</summary>
+        /// <summary>None.<br/>Optional modifier that must be held for scroll wheel zooming.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L573.</summary>
         public int ZoomMod
         {
             get
@@ -2688,7 +2688,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>0.1f.<br/>Zoom rate for scroll (e.g. 0.1f = 10% plot range every scroll click); make negative to invert.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L568.</summary>
+        /// <summary>0.1f.<br/>Zoom rate for scroll (e.g. 0.1f = 10% plot range every scroll click); make negative to invert.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L574.</summary>
         public float ZoomRate
         {
             get
@@ -4883,7 +4883,7 @@ namespace DearImPlot
 
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L848.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImS8>(const char* label_id, const ImS8* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, sbyte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -4897,7 +4897,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L848.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImU8>(const char* label_id, const ImU8* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, byte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -4911,7 +4911,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L848.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImS16>(const char* label_id, const ImS16* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref short values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -4929,7 +4929,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L848.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImU16>(const char* label_id, const ImU16* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref ushort values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -4947,7 +4947,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L848.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImS32>(const char* label_id, const ImS32* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref int values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -4965,7 +4965,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L848.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImU32>(const char* label_id, const ImU32* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref uint values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -4983,7 +4983,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L848.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImS64>(const char* label_id, const ImS64* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref long values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -5001,7 +5001,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L848.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImU64>(const char* label_id, const ImU64* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref ulong values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -5019,7 +5019,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L848.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<float>(const char* label_id, const float* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref float values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -5037,7 +5037,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L848.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<double>(const char* label_id, const double* values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref double values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -5055,7 +5055,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L849.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L855.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, sbyte* xs, sbyte* ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -5069,7 +5069,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L849.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L855.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, byte* xs, byte* ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -5083,7 +5083,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L849.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L855.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImS16>(const char* label_id, const ImS16* xs, const ImS16* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref short xs, ref short ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -5105,7 +5105,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L849.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L855.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImU16>(const char* label_id, const ImU16* xs, const ImU16* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -5127,7 +5127,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L849.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L855.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImS32>(const char* label_id, const ImS32* xs, const ImS32* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref int xs, ref int ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -5149,7 +5149,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L849.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L855.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImU32>(const char* label_id, const ImU32* xs, const ImU32* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref uint xs, ref uint ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -5171,7 +5171,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L849.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L855.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImS64>(const char* label_id, const ImS64* xs, const ImS64* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref long xs, ref long ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -5193,7 +5193,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L849.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L855.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<ImU64>(const char* label_id, const ImU64* xs, const ImU64* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -5215,7 +5215,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L849.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L855.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<float>(const char* label_id, const float* xs, const float* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref float xs, ref float ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -5237,7 +5237,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L849.</summary>
+        /// <summary>Plots a standard 2D line plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L855.</summary>
         // DEBUG: template <> IMPLOT_API void PlotLine<double>(const char* label_id, const double* xs, const double* ys, int count, ImPlotLineFlags flags, int offset, int stride)
         public static void PlotLine(string label_id, ref double xs, ref double ys, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -5259,7 +5259,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L853.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImS8>(const char* label_id, const ImS8* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, sbyte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -5273,7 +5273,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L853.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImU8>(const char* label_id, const ImU8* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, byte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -5287,7 +5287,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L853.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImS16>(const char* label_id, const ImS16* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref short values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -5305,7 +5305,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L853.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImU16>(const char* label_id, const ImU16* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref ushort values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -5323,7 +5323,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L853.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImS32>(const char* label_id, const ImS32* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref int values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -5341,7 +5341,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L853.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImU32>(const char* label_id, const ImU32* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref uint values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -5359,7 +5359,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L853.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImS64>(const char* label_id, const ImS64* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref long values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -5377,7 +5377,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L853.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImU64>(const char* label_id, const ImU64* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref ulong values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -5395,7 +5395,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L853.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<float>(const char* label_id, const float* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref float values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -5413,7 +5413,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L853.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<double>(const char* label_id, const double* values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref double values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -5431,7 +5431,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L860.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, sbyte* xs, sbyte* ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -5445,7 +5445,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L860.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, byte* xs, byte* ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -5459,7 +5459,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L860.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImS16>(const char* label_id, const ImS16* xs, const ImS16* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref short xs, ref short ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -5481,7 +5481,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L860.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImU16>(const char* label_id, const ImU16* xs, const ImU16* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -5503,7 +5503,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L860.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImS32>(const char* label_id, const ImS32* xs, const ImS32* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref int xs, ref int ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -5525,7 +5525,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L860.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImU32>(const char* label_id, const ImU32* xs, const ImU32* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref uint xs, ref uint ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -5547,7 +5547,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L860.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImS64>(const char* label_id, const ImS64* xs, const ImS64* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref long xs, ref long ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -5569,7 +5569,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L860.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<ImU64>(const char* label_id, const ImU64* xs, const ImU64* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -5591,7 +5591,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L860.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<float>(const char* label_id, const float* xs, const float* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref float xs, ref float ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -5613,7 +5613,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L854.</summary>
+        /// <summary>Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L860.</summary>
         // DEBUG: template <> IMPLOT_API void PlotScatter<double>(const char* label_id, const double* xs, const double* ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         public static void PlotScatter(string label_id, ref double xs, ref double ys, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -5635,7 +5635,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L858.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImS8>(const char* label_id, const ImS8* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, sbyte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -5649,7 +5649,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L858.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImU8>(const char* label_id, const ImU8* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, byte* values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -5663,7 +5663,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L858.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImS16>(const char* label_id, const ImS16* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref short values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -5681,7 +5681,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L858.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImU16>(const char* label_id, const ImU16* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref ushort values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -5699,7 +5699,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L858.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImS32>(const char* label_id, const ImS32* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref int values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -5717,7 +5717,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L858.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImU32>(const char* label_id, const ImU32* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref uint values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -5735,7 +5735,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L858.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImS64>(const char* label_id, const ImS64* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref long values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -5753,7 +5753,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L858.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImU64>(const char* label_id, const ImU64* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref ulong values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -5771,7 +5771,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L858.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<float>(const char* label_id, const float* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref float values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -5789,7 +5789,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L858.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<double>(const char* label_id, const double* values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref double values, int count, double xscale = (double)(1), double xstart = (double)(0), ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -5807,7 +5807,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, sbyte* xs, sbyte* ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -5821,7 +5821,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, byte* xs, byte* ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -5835,7 +5835,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImS16>(const char* label_id, const ImS16* xs, const ImS16* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref short xs, ref short ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -5857,7 +5857,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImU16>(const char* label_id, const ImU16* xs, const ImU16* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -5879,7 +5879,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImS32>(const char* label_id, const ImS32* xs, const ImS32* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref int xs, ref int ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -5901,7 +5901,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImU32>(const char* label_id, const ImU32* xs, const ImU32* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -5923,7 +5923,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImS64>(const char* label_id, const ImS64* xs, const ImS64* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref long xs, ref long ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -5945,7 +5945,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<ImU64>(const char* label_id, const ImU64* xs, const ImU64* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -5967,7 +5967,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<float>(const char* label_id, const float* xs, const float* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref float xs, ref float ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -5989,7 +5989,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L859.</summary>
+        /// <summary>Plots a a stairstep graph. The y value is continued constantly to the right from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStairs<double>(const char* label_id, const double* xs, const double* ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         public static void PlotStairs(string label_id, ref double xs, ref double ys, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -6011,7 +6011,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L863.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS8>(const char* label_id, const ImS8* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, sbyte* values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -6025,7 +6025,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L863.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU8>(const char* label_id, const ImU8* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, byte* values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -6039,7 +6039,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L863.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS16>(const char* label_id, const ImS16* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref short values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -6057,7 +6057,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L863.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU16>(const char* label_id, const ImU16* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref ushort values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -6075,7 +6075,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L863.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS32>(const char* label_id, const ImS32* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref int values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -6093,7 +6093,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L863.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU32>(const char* label_id, const ImU32* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref uint values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -6111,7 +6111,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L863.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS64>(const char* label_id, const ImS64* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref long values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -6129,7 +6129,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L863.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU64>(const char* label_id, const ImU64* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref ulong values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -6147,7 +6147,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L863.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<float>(const char* label_id, const float* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref float values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -6165,7 +6165,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L863.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<double>(const char* label_id, const double* values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref double values, int count, double yref = (double)(0), double xscale = (double)(1), double xstart = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -6183,7 +6183,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, sbyte* xs, sbyte* ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -6197,7 +6197,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, byte* xs, byte* ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -6211,7 +6211,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS16>(const char* label_id, const ImS16* xs, const ImS16* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref short xs, ref short ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -6233,7 +6233,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU16>(const char* label_id, const ImU16* xs, const ImU16* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref ushort xs, ref ushort ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -6255,7 +6255,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS32>(const char* label_id, const ImS32* xs, const ImS32* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref int xs, ref int ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -6277,7 +6277,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU32>(const char* label_id, const ImU32* xs, const ImU32* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref uint xs, ref uint ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -6299,7 +6299,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS64>(const char* label_id, const ImS64* xs, const ImS64* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref long xs, ref long ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -6321,7 +6321,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU64>(const char* label_id, const ImU64* xs, const ImU64* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref ulong xs, ref ulong ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -6343,7 +6343,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<float>(const char* label_id, const float* xs, const float* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref float xs, ref float ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -6365,7 +6365,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L864.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<double>(const char* label_id, const double* xs, const double* ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref double xs, ref double ys, int count, double yref = (double)(0), ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -6387,7 +6387,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L871.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys1, const ImS8* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, sbyte* xs, sbyte* ys1, sbyte* ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -6401,7 +6401,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L871.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys1, const ImU8* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, byte* xs, byte* ys1, byte* ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -6415,7 +6415,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L871.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS16>(const char* label_id, const ImS16* xs, const ImS16* ys1, const ImS16* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref short xs, ref short ys1, ref short ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -6441,7 +6441,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L871.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU16>(const char* label_id, const ImU16* xs, const ImU16* ys1, const ImU16* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref ushort xs, ref ushort ys1, ref ushort ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -6467,7 +6467,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L871.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS32>(const char* label_id, const ImS32* xs, const ImS32* ys1, const ImS32* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref int xs, ref int ys1, ref int ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -6493,7 +6493,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L871.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU32>(const char* label_id, const ImU32* xs, const ImU32* ys1, const ImU32* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref uint xs, ref uint ys1, ref uint ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -6519,7 +6519,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L871.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImS64>(const char* label_id, const ImS64* xs, const ImS64* ys1, const ImS64* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref long xs, ref long ys1, ref long ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -6545,7 +6545,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L871.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<ImU64>(const char* label_id, const ImU64* xs, const ImU64* ys1, const ImU64* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref ulong xs, ref ulong ys1, ref ulong ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -6571,7 +6571,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L871.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<float>(const char* label_id, const float* xs, const float* ys1, const float* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref float xs, ref float ys1, ref float ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -6597,7 +6597,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L865.</summary>
+        /// <summary>Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set yref to +/-INFINITY for infinite fill extents.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L871.</summary>
         // DEBUG: template <> IMPLOT_API void PlotShaded<double>(const char* label_id, const double* xs, const double* ys1, const double* ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         public static void PlotShaded(string label_id, ref double xs, ref double ys1, ref double ys2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -6623,7 +6623,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L875.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImS8>(const char* label_id, const ImS8* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, sbyte* values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -6637,7 +6637,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L875.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImU8>(const char* label_id, const ImU8* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, byte* values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -6651,7 +6651,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L875.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImS16>(const char* label_id, const ImS16* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref short values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -6669,7 +6669,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L875.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImU16>(const char* label_id, const ImU16* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref ushort values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -6687,7 +6687,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L875.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImS32>(const char* label_id, const ImS32* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref int values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -6705,7 +6705,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L875.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImU32>(const char* label_id, const ImU32* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref uint values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -6723,7 +6723,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L875.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImS64>(const char* label_id, const ImS64* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref long values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -6741,7 +6741,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L875.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImU64>(const char* label_id, const ImU64* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref ulong values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -6759,7 +6759,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L875.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<float>(const char* label_id, const float* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref float values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -6777,7 +6777,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L869.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L875.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<double>(const char* label_id, const double* values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref double values, int count, double bar_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -6795,7 +6795,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L876.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, sbyte* xs, sbyte* ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -6809,7 +6809,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L876.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, byte* xs, byte* ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -6823,7 +6823,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L876.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImS16>(const char* label_id, const ImS16* xs, const ImS16* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref short xs, ref short ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -6845,7 +6845,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L876.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImU16>(const char* label_id, const ImU16* xs, const ImU16* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref ushort xs, ref ushort ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -6867,7 +6867,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L876.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImS32>(const char* label_id, const ImS32* xs, const ImS32* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref int xs, ref int ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -6889,7 +6889,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L876.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImU32>(const char* label_id, const ImU32* xs, const ImU32* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref uint xs, ref uint ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -6911,7 +6911,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L876.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImS64>(const char* label_id, const ImS64* xs, const ImS64* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref long xs, ref long ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -6933,7 +6933,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L876.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<ImU64>(const char* label_id, const ImU64* xs, const ImU64* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref ulong xs, ref ulong ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -6955,7 +6955,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L876.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<float>(const char* label_id, const float* xs, const float* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref float xs, ref float ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -6977,7 +6977,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L870.</summary>
+        /// <summary>Plots a bar graph. Vertical by default. #bar_size and #shift are in plot units.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L876.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBars<double>(const char* label_id, const double* xs, const double* ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         public static void PlotBars(string label_id, ref double xs, ref double ys, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -6999,7 +6999,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L874.</summary>
+        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L880.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<ImS8>(const char* const label_ids[], const ImS8* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, sbyte* values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
@@ -7013,7 +7013,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L874.</summary>
+        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L880.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<ImU8>(const char* const label_ids[], const ImU8* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, byte* values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
@@ -7027,7 +7027,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L874.</summary>
+        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L880.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<ImS16>(const char* const label_ids[], const ImS16* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, ref short values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
@@ -7045,7 +7045,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L874.</summary>
+        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L880.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<ImU16>(const char* const label_ids[], const ImU16* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, ref ushort values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
@@ -7063,7 +7063,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L874.</summary>
+        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L880.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<ImS32>(const char* const label_ids[], const ImS32* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, ref int values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
@@ -7081,7 +7081,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L874.</summary>
+        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L880.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<ImU32>(const char* const label_ids[], const ImU32* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, ref uint values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
@@ -7099,7 +7099,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L874.</summary>
+        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L880.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<ImS64>(const char* const label_ids[], const ImS64* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, ref long values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
@@ -7117,7 +7117,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L874.</summary>
+        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L880.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<ImU64>(const char* const label_ids[], const ImU64* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, ref ulong values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
@@ -7135,7 +7135,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L874.</summary>
+        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L880.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<float>(const char* const label_ids[], const float* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, ref float values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
@@ -7153,7 +7153,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L874.</summary>
+        /// <summary>Plots a group of bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L880.</summary>
         // DEBUG: template <> IMPLOT_API void PlotBarGroups<double>(const char* const label_ids[], const double* values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         public static void PlotBarGroups(string[] label_ids, ref double values, int item_count, int group_count, double group_size = 0.67000000000000004, double shift = (double)(0), ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)(0))
         {
@@ -7171,7 +7171,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L877.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L883.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, const ImS8* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, sbyte* xs, sbyte* ys, sbyte* err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -7185,7 +7185,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L877.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L883.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, const ImU8* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, byte* xs, byte* ys, byte* err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -7199,7 +7199,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L877.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L883.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImS16>(const char* label_id, const ImS16* xs, const ImS16* ys, const ImS16* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref short xs, ref short ys, ref short err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -7225,7 +7225,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L877.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L883.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImU16>(const char* label_id, const ImU16* xs, const ImU16* ys, const ImU16* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref ushort xs, ref ushort ys, ref ushort err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -7251,7 +7251,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L877.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L883.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImS32>(const char* label_id, const ImS32* xs, const ImS32* ys, const ImS32* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref int xs, ref int ys, ref int err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -7277,7 +7277,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L877.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L883.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImU32>(const char* label_id, const ImU32* xs, const ImU32* ys, const ImU32* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref uint xs, ref uint ys, ref uint err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -7303,7 +7303,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L877.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L883.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImS64>(const char* label_id, const ImS64* xs, const ImS64* ys, const ImS64* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref long xs, ref long ys, ref long err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -7329,7 +7329,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L877.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L883.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImU64>(const char* label_id, const ImU64* xs, const ImU64* ys, const ImU64* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref ulong xs, ref ulong ys, ref ulong err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -7355,7 +7355,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L877.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L883.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<float>(const char* label_id, const float* xs, const float* ys, const float* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref float xs, ref float ys, ref float err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -7381,7 +7381,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L877.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L883.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<double>(const char* label_id, const double* xs, const double* ys, const double* err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref double xs, ref double ys, ref double err, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -7407,7 +7407,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L878.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L884.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, const ImS8* neg, const ImS8* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, sbyte* xs, sbyte* ys, sbyte* neg, sbyte* pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -7421,7 +7421,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L878.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L884.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, const ImU8* neg, const ImU8* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, byte* xs, byte* ys, byte* neg, byte* pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -7435,7 +7435,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L878.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L884.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImS16>(const char* label_id, const ImS16* xs, const ImS16* ys, const ImS16* neg, const ImS16* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref short xs, ref short ys, ref short neg, ref short pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -7465,7 +7465,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L878.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L884.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImU16>(const char* label_id, const ImU16* xs, const ImU16* ys, const ImU16* neg, const ImU16* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref ushort xs, ref ushort ys, ref ushort neg, ref ushort pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -7495,7 +7495,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L878.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L884.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImS32>(const char* label_id, const ImS32* xs, const ImS32* ys, const ImS32* neg, const ImS32* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref int xs, ref int ys, ref int neg, ref int pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -7525,7 +7525,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L878.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L884.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImU32>(const char* label_id, const ImU32* xs, const ImU32* ys, const ImU32* neg, const ImU32* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref uint xs, ref uint ys, ref uint neg, ref uint pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -7555,7 +7555,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L878.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L884.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImS64>(const char* label_id, const ImS64* xs, const ImS64* ys, const ImS64* neg, const ImS64* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref long xs, ref long ys, ref long neg, ref long pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -7585,7 +7585,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L878.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L884.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<ImU64>(const char* label_id, const ImU64* xs, const ImU64* ys, const ImU64* neg, const ImU64* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref ulong xs, ref ulong ys, ref ulong neg, ref ulong pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -7615,7 +7615,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L878.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L884.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<float>(const char* label_id, const float* xs, const float* ys, const float* neg, const float* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref float xs, ref float ys, ref float neg, ref float pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -7645,7 +7645,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L878.</summary>
+        /// <summary>Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L884.</summary>
         // DEBUG: template <> IMPLOT_API void PlotErrorBars<double>(const char* label_id, const double* xs, const double* ys, const double* neg, const double* pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         public static void PlotErrorBars(string label_id, ref double xs, ref double ys, ref double neg, ref double pos, int count, ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -7675,7 +7675,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L881.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L887.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImS8>(const char* label_id, const ImS8* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, sbyte* values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -7689,7 +7689,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L881.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L887.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImU8>(const char* label_id, const ImU8* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, byte* values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -7703,7 +7703,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L881.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L887.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImS16>(const char* label_id, const ImS16* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref short values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -7721,7 +7721,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L881.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L887.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImU16>(const char* label_id, const ImU16* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref ushort values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -7739,7 +7739,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L881.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L887.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImS32>(const char* label_id, const ImS32* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref int values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -7757,7 +7757,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L881.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L887.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImU32>(const char* label_id, const ImU32* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref uint values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -7775,7 +7775,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L881.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L887.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImS64>(const char* label_id, const ImS64* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref long values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -7793,7 +7793,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L881.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L887.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImU64>(const char* label_id, const ImU64* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref ulong values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -7811,7 +7811,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L881.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L887.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<float>(const char* label_id, const float* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref float values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -7829,7 +7829,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L881.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L887.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<double>(const char* label_id, const double* values, int count, double ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref double values, int count, double @ref = 0, double scale = (double)(1), double start = (double)(0), ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -7847,7 +7847,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L882.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, sbyte* xs, sbyte* ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -7861,7 +7861,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L882.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, byte* xs, byte* ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -7875,7 +7875,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L882.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImS16>(const char* label_id, const ImS16* xs, const ImS16* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref short xs, ref short ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -7897,7 +7897,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L882.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImU16>(const char* label_id, const ImU16* xs, const ImU16* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref ushort xs, ref ushort ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -7919,7 +7919,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L882.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImS32>(const char* label_id, const ImS32* xs, const ImS32* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref int xs, ref int ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -7941,7 +7941,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L882.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImU32>(const char* label_id, const ImU32* xs, const ImU32* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref uint xs, ref uint ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -7963,7 +7963,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L882.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImS64>(const char* label_id, const ImS64* xs, const ImS64* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref long xs, ref long ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -7985,7 +7985,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L882.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<ImU64>(const char* label_id, const ImU64* xs, const ImU64* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref ulong xs, ref ulong ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -8007,7 +8007,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L882.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<float>(const char* label_id, const float* xs, const float* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref float xs, ref float ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -8029,7 +8029,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L882.</summary>
+        /// <summary>Plots stems. Vertical by default.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
         // DEBUG: template <> IMPLOT_API void PlotStems<double>(const char* label_id, const double* xs, const double* ys, int count, double ref, ImPlotStemsFlags flags, int offset, int stride)
         public static void PlotStems(string label_id, ref double xs, ref double ys, int count, double @ref = 0, ImPlotStemsFlags flags = (ImPlotStemsFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -8051,7 +8051,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L885.</summary>
+        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
         // DEBUG: template <> IMPLOT_API void PlotInfLines<ImS8>(const char* label_id, const ImS8* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, sbyte* values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -8065,7 +8065,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L885.</summary>
+        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
         // DEBUG: template <> IMPLOT_API void PlotInfLines<ImU8>(const char* label_id, const ImU8* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, byte* values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -8079,7 +8079,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L885.</summary>
+        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
         // DEBUG: template <> IMPLOT_API void PlotInfLines<ImS16>(const char* label_id, const ImS16* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, ref short values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -8097,7 +8097,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L885.</summary>
+        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
         // DEBUG: template <> IMPLOT_API void PlotInfLines<ImU16>(const char* label_id, const ImU16* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, ref ushort values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -8115,7 +8115,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L885.</summary>
+        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
         // DEBUG: template <> IMPLOT_API void PlotInfLines<ImS32>(const char* label_id, const ImS32* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, ref int values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -8133,7 +8133,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L885.</summary>
+        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
         // DEBUG: template <> IMPLOT_API void PlotInfLines<ImU32>(const char* label_id, const ImU32* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, ref uint values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -8151,7 +8151,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L885.</summary>
+        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
         // DEBUG: template <> IMPLOT_API void PlotInfLines<ImS64>(const char* label_id, const ImS64* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, ref long values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -8169,7 +8169,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L885.</summary>
+        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
         // DEBUG: template <> IMPLOT_API void PlotInfLines<ImU64>(const char* label_id, const ImU64* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, ref ulong values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -8187,7 +8187,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L885.</summary>
+        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
         // DEBUG: template <> IMPLOT_API void PlotInfLines<float>(const char* label_id, const float* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, ref float values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -8205,7 +8205,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L885.</summary>
+        /// <summary>Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
         // DEBUG: template <> IMPLOT_API void PlotInfLines<double>(const char* label_id, const double* values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         public static void PlotInfLines(string label_id, ref double values, int count, ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -8223,7 +8223,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
+        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L894.</summary>
         // DEBUG: template <> IMPLOT_API void PlotPieChart<ImS8>(const char* const label_ids[], const ImS8* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, sbyte* values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
@@ -8237,7 +8237,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
+        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L894.</summary>
         // DEBUG: template <> IMPLOT_API void PlotPieChart<ImU8>(const char* const label_ids[], const ImU8* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, byte* values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
@@ -8251,7 +8251,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
+        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L894.</summary>
         // DEBUG: template <> IMPLOT_API void PlotPieChart<ImS16>(const char* const label_ids[], const ImS16* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, ref short values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
@@ -8269,7 +8269,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
+        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L894.</summary>
         // DEBUG: template <> IMPLOT_API void PlotPieChart<ImU16>(const char* const label_ids[], const ImU16* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, ref ushort values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
@@ -8287,7 +8287,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
+        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L894.</summary>
         // DEBUG: template <> IMPLOT_API void PlotPieChart<ImS32>(const char* const label_ids[], const ImS32* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, ref int values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
@@ -8305,7 +8305,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
+        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L894.</summary>
         // DEBUG: template <> IMPLOT_API void PlotPieChart<ImU32>(const char* const label_ids[], const ImU32* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, ref uint values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
@@ -8323,7 +8323,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
+        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L894.</summary>
         // DEBUG: template <> IMPLOT_API void PlotPieChart<ImS64>(const char* const label_ids[], const ImS64* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, ref long values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
@@ -8341,7 +8341,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
+        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L894.</summary>
         // DEBUG: template <> IMPLOT_API void PlotPieChart<ImU64>(const char* const label_ids[], const ImU64* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, ref ulong values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
@@ -8359,7 +8359,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
+        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L894.</summary>
         // DEBUG: template <> IMPLOT_API void PlotPieChart<float>(const char* const label_ids[], const float* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, ref float values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
@@ -8377,7 +8377,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L888.</summary>
+        /// <summary>Plots a pie chart. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L894.</summary>
         // DEBUG: template <> IMPLOT_API void PlotPieChart<double>(const char* const label_ids[], const double* values, int count, double x, double y, double radius, const char* label_fmt, double angle0, ImPlotPieChartFlags flags)
         public static void PlotPieChart(string[] label_ids, ref double values, int count, double x, double y, double radius, string label_fmt = "%.1f", double angle0 = (double)(90), ImPlotPieChartFlags flags = (ImPlotPieChartFlags)(0))
         {
@@ -8395,7 +8395,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS8>(const char* label_id, const ImS8* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, sbyte* values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)(0))
         {
@@ -8413,7 +8413,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU8>(const char* label_id, const ImU8* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, byte* values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)(0))
         {
@@ -8431,7 +8431,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS16>(const char* label_id, const ImS16* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref short values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)(0))
         {
@@ -8453,7 +8453,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU16>(const char* label_id, const ImU16* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref ushort values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)(0))
         {
@@ -8475,7 +8475,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS32>(const char* label_id, const ImS32* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref int values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)(0))
         {
@@ -8497,7 +8497,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU32>(const char* label_id, const ImU32* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref uint values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)(0))
         {
@@ -8519,7 +8519,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS64>(const char* label_id, const ImS64* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref long values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)(0))
         {
@@ -8541,7 +8541,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU64>(const char* label_id, const ImU64* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref ulong values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)(0))
         {
@@ -8563,7 +8563,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<float>(const char* label_id, const float* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref float values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)(0))
         {
@@ -8585,7 +8585,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<double>(const char* label_id, const double* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref double values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)(0))
         {
@@ -8607,7 +8607,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L895.</summary>
+        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L901.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram<ImS8>(const char* label_id, const ImS8* values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         public static double PlotHistogram(string label_id, sbyte* values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8616,7 +8616,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L895.</summary>
+        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L901.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram<ImU8>(const char* label_id, const ImU8* values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         public static double PlotHistogram(string label_id, byte* values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8625,7 +8625,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L895.</summary>
+        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L901.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram<ImS16>(const char* label_id, const ImS16* values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         public static double PlotHistogram(string label_id, ref short values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8638,7 +8638,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L895.</summary>
+        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L901.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram<ImU16>(const char* label_id, const ImU16* values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         public static double PlotHistogram(string label_id, ref ushort values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8651,7 +8651,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L895.</summary>
+        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L901.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram<ImS32>(const char* label_id, const ImS32* values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         public static double PlotHistogram(string label_id, ref int values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8664,7 +8664,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L895.</summary>
+        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L901.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram<ImU32>(const char* label_id, const ImU32* values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         public static double PlotHistogram(string label_id, ref uint values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8677,7 +8677,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L895.</summary>
+        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L901.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram<ImS64>(const char* label_id, const ImS64* values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         public static double PlotHistogram(string label_id, ref long values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8690,7 +8690,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L895.</summary>
+        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L901.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram<ImU64>(const char* label_id, const ImU64* values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         public static double PlotHistogram(string label_id, ref ulong values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8703,7 +8703,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L895.</summary>
+        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L901.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram<float>(const char* label_id, const float* values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         public static double PlotHistogram(string label_id, ref float values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8716,7 +8716,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L895.</summary>
+        /// <summary>Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #range is left unspecified, the min/max of #values will be used as the range.<br/>Otherwise, outlier values outside of the range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L901.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram<double>(const char* label_id, const double* values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         public static double PlotHistogram(string label_id, ref double values, int count, int bins = (int)ImPlotBin.Sturges, double bar_scale = 1.0, ImPlotRange range = new ImPlotRange(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8729,7 +8729,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L899.</summary>
+        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L905.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram2D<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         public static double PlotHistogram2D(string label_id, sbyte* xs, sbyte* ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8738,7 +8738,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L899.</summary>
+        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L905.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram2D<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         public static double PlotHistogram2D(string label_id, byte* xs, byte* ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8747,7 +8747,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L899.</summary>
+        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L905.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram2D<ImS16>(const char* label_id, const ImS16* xs, const ImS16* ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         public static double PlotHistogram2D(string label_id, ref short xs, ref short ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8764,7 +8764,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L899.</summary>
+        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L905.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram2D<ImU16>(const char* label_id, const ImU16* xs, const ImU16* ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         public static double PlotHistogram2D(string label_id, ref ushort xs, ref ushort ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8781,7 +8781,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L899.</summary>
+        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L905.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram2D<ImS32>(const char* label_id, const ImS32* xs, const ImS32* ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         public static double PlotHistogram2D(string label_id, ref int xs, ref int ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8798,7 +8798,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L899.</summary>
+        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L905.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram2D<ImU32>(const char* label_id, const ImU32* xs, const ImU32* ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         public static double PlotHistogram2D(string label_id, ref uint xs, ref uint ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8815,7 +8815,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L899.</summary>
+        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L905.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram2D<ImS64>(const char* label_id, const ImS64* xs, const ImS64* ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         public static double PlotHistogram2D(string label_id, ref long xs, ref long ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8832,7 +8832,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L899.</summary>
+        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L905.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram2D<ImU64>(const char* label_id, const ImU64* xs, const ImU64* ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         public static double PlotHistogram2D(string label_id, ref ulong xs, ref ulong ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8849,7 +8849,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L899.</summary>
+        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L905.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram2D<float>(const char* label_id, const float* xs, const float* ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         public static double PlotHistogram2D(string label_id, ref float xs, ref float ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8866,7 +8866,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L899.</summary>
+        /// <summary>Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #range is left unspecified, the min/max of.<br/>#xs an #ys will be used as the ranges. Otherwise, outlier values outside of range are not binned. The largest bin count or density is returned.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L905.</summary>
         // DEBUG: template <> IMPLOT_API double PlotHistogram2D<double>(const char* label_id, const double* xs, const double* ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         public static double PlotHistogram2D(string label_id, ref double xs, ref double ys, int count, int x_bins = (int)ImPlotBin.Sturges, int y_bins = (int)ImPlotBin.Sturges, ImPlotRect range = new ImPlotRect(), ImPlotHistogramFlags flags = (ImPlotHistogramFlags)(0))
         {
@@ -8883,7 +8883,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L902.</summary>
+        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L908.</summary>
         // DEBUG: template <> IMPLOT_API void PlotDigital<ImS8>(const char* label_id, const ImS8* xs, const ImS8* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, sbyte* xs, sbyte* ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(sbyte))
         {
@@ -8897,7 +8897,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L902.</summary>
+        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L908.</summary>
         // DEBUG: template <> IMPLOT_API void PlotDigital<ImU8>(const char* label_id, const ImU8* xs, const ImU8* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, byte* xs, byte* ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(byte))
         {
@@ -8911,7 +8911,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L902.</summary>
+        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L908.</summary>
         // DEBUG: template <> IMPLOT_API void PlotDigital<ImS16>(const char* label_id, const ImS16* xs, const ImS16* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, ref short xs, ref short ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(short))
         {
@@ -8933,7 +8933,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L902.</summary>
+        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L908.</summary>
         // DEBUG: template <> IMPLOT_API void PlotDigital<ImU16>(const char* label_id, const ImU16* xs, const ImU16* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(ushort))
         {
@@ -8955,7 +8955,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L902.</summary>
+        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L908.</summary>
         // DEBUG: template <> IMPLOT_API void PlotDigital<ImS32>(const char* label_id, const ImS32* xs, const ImS32* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, ref int xs, ref int ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(int))
         {
@@ -8977,7 +8977,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L902.</summary>
+        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L908.</summary>
         // DEBUG: template <> IMPLOT_API void PlotDigital<ImU32>(const char* label_id, const ImU32* xs, const ImU32* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, ref uint xs, ref uint ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(uint))
         {
@@ -8999,7 +8999,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L902.</summary>
+        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L908.</summary>
         // DEBUG: template <> IMPLOT_API void PlotDigital<ImS64>(const char* label_id, const ImS64* xs, const ImS64* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, ref long xs, ref long ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(long))
         {
@@ -9021,7 +9021,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L902.</summary>
+        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L908.</summary>
         // DEBUG: template <> IMPLOT_API void PlotDigital<ImU64>(const char* label_id, const ImU64* xs, const ImU64* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(ulong))
         {
@@ -9043,7 +9043,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L902.</summary>
+        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L908.</summary>
         // DEBUG: template <> IMPLOT_API void PlotDigital<float>(const char* label_id, const float* xs, const float* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, ref float xs, ref float ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(float))
         {
@@ -9065,7 +9065,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L902.</summary>
+        /// <summary>Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L908.</summary>
         // DEBUG: template <> IMPLOT_API void PlotDigital<double>(const char* label_id, const double* xs, const double* ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         public static void PlotDigital(string label_id, ref double xs, ref double ys, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0), int offset = (int)(0), int stride = sizeof(double))
         {
@@ -9087,147 +9087,147 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS8>(const char* label_id, const ImS8* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, sbyte* values, int rows, int cols, double scale_min = (double)(0), double scale_max = (double)(0), string label_fmt = "%.1f")
         {
             PlotHeatmap(label_id, values, rows, cols, scale_min, scale_max, label_fmt, new ImPlotPoint(0, 0), new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS8>(const char* label_id, const ImS8* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, sbyte* values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             PlotHeatmap(label_id, values, rows, cols, scale_min, scale_max, label_fmt, bounds_min, new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU8>(const char* label_id, const ImU8* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, byte* values, int rows, int cols, double scale_min = (double)(0), double scale_max = (double)(0), string label_fmt = "%.1f")
         {
             PlotHeatmap(label_id, values, rows, cols, scale_min, scale_max, label_fmt, new ImPlotPoint(0, 0), new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU8>(const char* label_id, const ImU8* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, byte* values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             PlotHeatmap(label_id, values, rows, cols, scale_min, scale_max, label_fmt, bounds_min, new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS16>(const char* label_id, const ImS16* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref short values, int rows, int cols, double scale_min = (double)(0), double scale_max = (double)(0), string label_fmt = "%.1f")
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, new ImPlotPoint(0, 0), new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS16>(const char* label_id, const ImS16* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref short values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, bounds_min, new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU16>(const char* label_id, const ImU16* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref ushort values, int rows, int cols, double scale_min = (double)(0), double scale_max = (double)(0), string label_fmt = "%.1f")
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, new ImPlotPoint(0, 0), new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU16>(const char* label_id, const ImU16* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref ushort values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, bounds_min, new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS32>(const char* label_id, const ImS32* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref int values, int rows, int cols, double scale_min = (double)(0), double scale_max = (double)(0), string label_fmt = "%.1f")
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, new ImPlotPoint(0, 0), new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS32>(const char* label_id, const ImS32* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref int values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, bounds_min, new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU32>(const char* label_id, const ImU32* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref uint values, int rows, int cols, double scale_min = (double)(0), double scale_max = (double)(0), string label_fmt = "%.1f")
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, new ImPlotPoint(0, 0), new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU32>(const char* label_id, const ImU32* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref uint values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, bounds_min, new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS64>(const char* label_id, const ImS64* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref long values, int rows, int cols, double scale_min = (double)(0), double scale_max = (double)(0), string label_fmt = "%.1f")
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, new ImPlotPoint(0, 0), new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImS64>(const char* label_id, const ImS64* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref long values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, bounds_min, new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU64>(const char* label_id, const ImU64* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref ulong values, int rows, int cols, double scale_min = (double)(0), double scale_max = (double)(0), string label_fmt = "%.1f")
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, new ImPlotPoint(0, 0), new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<ImU64>(const char* label_id, const ImU64* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref ulong values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, bounds_min, new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<float>(const char* label_id, const float* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref float values, int rows, int cols, double scale_min = (double)(0), double scale_max = (double)(0), string label_fmt = "%.1f")
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, new ImPlotPoint(0, 0), new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<float>(const char* label_id, const float* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref float values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, bounds_min, new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<double>(const char* label_id, const double* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref double values, int rows, int cols, double scale_min = (double)(0), double scale_max = (double)(0), string label_fmt = "%.1f")
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, new ImPlotPoint(0, 0), new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L891.</summary>
+        /// <summary>Plots a 2D heatmap chart. Values are expected to be in row-major order by default. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L897.</summary>
         // DEBUG: template <> IMPLOT_API void PlotHeatmap<double>(const char* label_id, const double* values, int rows, int cols, double scale_min, double scale_max, const char* label_fmt, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, ImPlotHeatmapFlags flags)
         public static void PlotHeatmap(string label_id, ref double values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             PlotHeatmap(label_id, ref values, rows, cols, scale_min, scale_max, label_fmt, bounds_min, new ImPlotPoint(1, 1), 0);
         }
 
-        /// <summary>Creates a new ImPlot context. Call this after ImGui::CreateContext.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L592.</summary>
+        /// <summary>Creates a new ImPlot context. Call this after ImGui::CreateContext.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L598.</summary>
         // DEBUG: ImPlotContext* CreateContext()
         public static ImPlotContext CreateContext()
         {
@@ -9236,7 +9236,7 @@ namespace DearImPlot
             return __result0;
         }
 
-        /// <summary>Destroys an ImPlot context. Call this before ImGui::DestroyContext. NULL = destroy current context.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L594.</summary>
+        /// <summary>Destroys an ImPlot context. Call this before ImGui::DestroyContext. NULL = destroy current context.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L600.</summary>
         // DEBUG: void DestroyContext(ImPlotContext* ctx = NULL)
         public static void DestroyContext(ImPlotContext ctx = default)
         {
@@ -9251,7 +9251,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Returns the current ImPlot context. NULL if no context has ben set.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L596.</summary>
+        /// <summary>Returns the current ImPlot context. NULL if no context has ben set.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L602.</summary>
         // DEBUG: ImPlotContext* GetCurrentContext()
         public static ImPlotContext GetCurrentContext()
         {
@@ -9260,7 +9260,7 @@ namespace DearImPlot
             return __result0;
         }
 
-        /// <summary>Sets the current ImPlot context.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L598.</summary>
+        /// <summary>Sets the current ImPlot context.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L604.</summary>
         // DEBUG: void SetCurrentContext(ImPlotContext* ctx)
         public static void SetCurrentContext(ImPlotContext ctx)
         {
@@ -9275,7 +9275,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets the current **ImGui** context. This is ONLY necessary if you are compiling.<br/>ImPlot as a DLL (not recommended) separate from your ImGui compilation. It.<br/>Sets the global variable GImGui, which is not shared across DLL boundaries.<br/>See GImGui documentation in imgui.cpp for more details.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L604.</summary>
+        /// <summary>Sets the current **ImGui** context. This is ONLY necessary if you are compiling.<br/>ImPlot as a DLL (not recommended) separate from your ImGui compilation. It.<br/>Sets the global variable GImGui, which is not shared across DLL boundaries.<br/>See GImGui documentation in imgui.cpp for more details.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L610.</summary>
         // DEBUG: void SetImGuiContext(ImGuiContext* ctx)
         public static void SetImGuiContext(IntPtr ctx)
         {
@@ -9292,7 +9292,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>- #title_id must be unique to the current ImGui ID scope. If you need to avoid ID.<br/>Collisions or don't want to display a title in the plot, use double hashes.<br/>(e.g. "MyPlot##HiddenIdText" or "##NoTitle").<br/>- #size is the **frame** size of the plot widget, not the plot area. The default.<br/>Size of plots (i.e. when ImVec2(0,0)) can be modified in your ImPlotStyle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L626.</summary>
+        /// <summary>- #title_id must be unique to the current ImGui ID scope. If you need to avoid ID.<br/>Collisions or don't want to display a title in the plot, use double hashes.<br/>(e.g. "MyPlot##HiddenIdText" or "##NoTitle").<br/>- #size is the **frame** size of the plot widget, not the plot area. The default.<br/>Size of plots (i.e. when ImVec2(0,0)) can be modified in your ImPlotStyle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L632.</summary>
         // DEBUG: bool BeginPlot(const char* title_id, const ImVec2& size=ImVec2(-1,0), ImPlotFlags flags=0)
         public static bool BeginPlot(string title_id, Vector2 size, ImPlotFlags flags = (ImPlotFlags)(0))
         {
@@ -9304,7 +9304,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Only call EndPlot() if BeginPlot() returns true! Typically called at the end.<br/>Of an if statement conditioned on BeginPlot(). See example above.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L630.</summary>
+        /// <summary>Only call EndPlot() if BeginPlot() returns true! Typically called at the end.<br/>Of an if statement conditioned on BeginPlot(). See example above.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L636.</summary>
         // DEBUG: void EndPlot()
         public static void EndPlot()
         {
@@ -9318,7 +9318,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>- The #title_id parameter of _BeginPlot_ (see above) does NOT have to be.<br/>Unique when called inside of a subplot context. Subplot IDs are hashed.<br/>For your convenience so you don't have call PushID or generate unique title.<br/>Strings. Simply pass an empty string to BeginPlot unless you want to title.<br/>Each subplot.<br/>- The #size parameter of _BeginPlot_ (see above) is ignored when inside of a.<br/>Subplot context. The actual size of the subplot will be based on the.<br/>#size value you pass to _BeginSubplots_ and #row/#col_ratios if provided.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L682.</summary>
+        /// <summary>- The #title_id parameter of _BeginPlot_ (see above) does NOT have to be.<br/>Unique when called inside of a subplot context. Subplot IDs are hashed.<br/>For your convenience so you don't have call PushID or generate unique title.<br/>Strings. Simply pass an empty string to BeginPlot unless you want to title.<br/>Each subplot.<br/>- The #size parameter of _BeginPlot_ (see above) is ignored when inside of a.<br/>Subplot context. The actual size of the subplot will be based on the.<br/>#size value you pass to _BeginSubplots_ and #row/#col_ratios if provided.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L688.</summary>
         // DEBUG: bool BeginSubplots(const char* title_id,
         // DEBUG:                              int rows,
         // DEBUG:                              int cols,
@@ -9344,7 +9344,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Only call EndSubplots() if BeginSubplots() returns true! Typically called at the end.<br/>Of an if statement conditioned on BeginSublots(). See example above.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L692.</summary>
+        /// <summary>Only call EndSubplots() if BeginSubplots() returns true! Typically called at the end.<br/>Of an if statement conditioned on BeginSublots(). See example above.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L698.</summary>
         // DEBUG: void EndSubplots()
         public static void EndSubplots()
         {
@@ -9358,7 +9358,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Enables an axis or sets the label and/or flags for an existing axis. Leave #label = NULL for no label.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L724.</summary>
+        /// <summary>Enables an axis or sets the label and/or flags for an existing axis. Leave #label = NULL for no label.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L730.</summary>
         // DEBUG: void SetupAxis(ImAxis axis, const char* label=NULL, ImPlotAxisFlags flags=0)
         public static void SetupAxis(ImPlotAxis axis, string label = default, ImPlotAxisFlags flags = (ImPlotAxisFlags)(0))
         {
@@ -9372,7 +9372,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets an axis range limits. If ImPlotCond_Always is used, the axes limits will be locked.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L726.</summary>
+        /// <summary>Sets an axis range limits. If ImPlotCond_Always is used, the axes limits will be locked.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L732.</summary>
         // DEBUG: void SetupAxisLimits(ImAxis axis, double v_min, double v_max, ImPlotCond cond = ImPlotCond_Once)
         public static void SetupAxisLimits(ImPlotAxis axis, double v_min, double v_max, ImPlotCond cond = ImPlotCond.Once)
         {
@@ -9386,7 +9386,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Links an axis range limits to external values. Set to NULL for no linkage. The pointer data must remain valid until EndPlot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L728.</summary>
+        /// <summary>Links an axis range limits to external values. Set to NULL for no linkage. The pointer data must remain valid until EndPlot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L734.</summary>
         // DEBUG: void SetupAxisLinks(ImAxis axis, double* link_min, double* link_max)
         public static void SetupAxisLinks(ImPlotAxis axis, ref double link_min, ref double link_max)
         {
@@ -9408,7 +9408,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets the format of numeric axis labels via formater specifier (default="%g"). Formated values will be double (i.e. use %f).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L730.</summary>
+        /// <summary>Sets the format of numeric axis labels via formater specifier (default="%g"). Formated values will be double (i.e. use %f).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L736.</summary>
         // DEBUG: void SetupAxisFormat(ImAxis axis, const char* fmt)
         public static void SetupAxisFormat(ImPlotAxis axis, string fmt)
         {
@@ -9422,7 +9422,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets the format of numeric axis labels via formatter callback. Given #value, write a label into #buff. Optionally pass user data.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L732.</summary>
+        /// <summary>Sets the format of numeric axis labels via formatter callback. Given #value, write a label into #buff. Optionally pass user data.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L738.</summary>
         // DEBUG: void SetupAxisFormat(ImAxis axis, ImPlotFormatter formatter, void* data=NULL)
         public static void SetupAxisFormat(ImPlotAxis axis, ImPlotFormatter formatter, IntPtr data = default)
         {
@@ -9437,7 +9437,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets an axis' ticks and optionally the labels. To keep the default ticks, set #keep_default=true.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L734.</summary>
+        /// <summary>Sets an axis' ticks and optionally the labels. To keep the default ticks, set #keep_default=true.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L740.</summary>
         // DEBUG: void SetupAxisTicks(ImAxis axis, const double* values, int n_ticks, const char* const labels[]=NULL, bool keep_default=false)
         public static void SetupAxisTicks(ImPlotAxis axis, ref double values, int n_ticks, string[] labels = null, bool keep_default = false)
         {
@@ -9455,7 +9455,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets an axis' ticks and optionally the labels for the next plot. To keep the default ticks, set #keep_default=true.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L736.</summary>
+        /// <summary>Sets an axis' ticks and optionally the labels for the next plot. To keep the default ticks, set #keep_default=true.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L742.</summary>
         // DEBUG: void SetupAxisTicks(ImAxis axis, double v_min, double v_max, int n_ticks, const char* const labels[]=NULL, bool keep_default=false)
         public static void SetupAxisTicks(ImPlotAxis axis, double v_min, double v_max, int n_ticks, string[] labels = null, bool keep_default = false)
         {
@@ -9469,7 +9469,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets an axis' scale using built-in options.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L738.</summary>
+        /// <summary>Sets an axis' scale using built-in options.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L744.</summary>
         // DEBUG: void SetupAxisScale(ImAxis axis, ImPlotScale scale)
         public static void SetupAxisScale(ImPlotAxis axis, ImPlotScale scale)
         {
@@ -9483,7 +9483,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets an axis' scale using user supplied forward and inverse transfroms.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L740.</summary>
+        /// <summary>Sets an axis' scale using user supplied forward and inverse transfroms.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L746.</summary>
         // DEBUG: void SetupAxisScale(ImAxis axis, ImPlotTransform forward, ImPlotTransform inverse, void* data=NULL)
         public static void SetupAxisScale(ImPlotAxis axis, ImPlotTransform forward, ImPlotTransform inverse, IntPtr data = default)
         {
@@ -9499,7 +9499,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets an axis' limits constraints.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L742.</summary>
+        /// <summary>Sets an axis' limits constraints.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L748.</summary>
         // DEBUG: void SetupAxisLimitsConstraints(ImAxis axis, double v_min, double v_max)
         public static void SetupAxisLimitsConstraints(ImPlotAxis axis, double v_min, double v_max)
         {
@@ -9513,7 +9513,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets an axis' zoom constraints.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L744.</summary>
+        /// <summary>Sets an axis' zoom constraints.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L750.</summary>
         // DEBUG: void SetupAxisZoomConstraints(ImAxis axis, double z_min, double z_max)
         public static void SetupAxisZoomConstraints(ImPlotAxis axis, double z_min, double z_max)
         {
@@ -9527,7 +9527,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets the label and/or flags for primary X and Y axes (shorthand for two calls to SetupAxis).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L747.</summary>
+        /// <summary>Sets the label and/or flags for primary X and Y axes (shorthand for two calls to SetupAxis).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L753.</summary>
         // DEBUG: void SetupAxes(const char* x_label, const char* y_label, ImPlotAxisFlags x_flags=0, ImPlotAxisFlags y_flags=0)
         public static void SetupAxes(string x_label, string y_label, ImPlotAxisFlags x_flags = (ImPlotAxisFlags)(0), ImPlotAxisFlags y_flags = (ImPlotAxisFlags)(0))
         {
@@ -9541,7 +9541,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets the primary X and Y axes range limits. If ImPlotCond_Always is used, the axes limits will be locked (shorthand for two calls to SetupAxisLimits).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L749.</summary>
+        /// <summary>Sets the primary X and Y axes range limits. If ImPlotCond_Always is used, the axes limits will be locked (shorthand for two calls to SetupAxisLimits).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L755.</summary>
         // DEBUG: void SetupAxesLimits(double x_min, double x_max, double y_min, double y_max, ImPlotCond cond = ImPlotCond_Once)
         public static void SetupAxesLimits(double x_min, double x_max, double y_min, double y_max, ImPlotCond cond = ImPlotCond.Once)
         {
@@ -9555,7 +9555,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets up the plot legend.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L752.</summary>
+        /// <summary>Sets up the plot legend.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L758.</summary>
         // DEBUG: void SetupLegend(ImPlotLocation location, ImPlotLegendFlags flags=0)
         public static void SetupLegend(ImPlotLocation location, ImPlotLegendFlags flags = (ImPlotLegendFlags)(0))
         {
@@ -9569,7 +9569,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Set the location of the current plot's mouse position text (default = South|East).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L754.</summary>
+        /// <summary>Set the location of the current plot's mouse position text (default = South|East).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L760.</summary>
         // DEBUG: void SetupMouseText(ImPlotLocation location, ImPlotMouseTextFlags flags=0)
         public static void SetupMouseText(ImPlotLocation location, ImPlotMouseTextFlags flags = (ImPlotMouseTextFlags)(0))
         {
@@ -9583,7 +9583,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Explicitly finalize plot setup. Once you call this, you cannot make anymore Setup calls for the current plot!<br/>Note that calling this function is OPTIONAL; it will be called by the first subsequent setup-locking API call.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L758.</summary>
+        /// <summary>Explicitly finalize plot setup. Once you call this, you cannot make anymore Setup calls for the current plot!<br/>Note that calling this function is OPTIONAL; it will be called by the first subsequent setup-locking API call.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L764.</summary>
         // DEBUG: void SetupFinish()
         public static void SetupFinish()
         {
@@ -9597,7 +9597,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets an upcoming axis range limits. If ImPlotCond_Always is used, the axes limits will be locked.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L784.</summary>
+        /// <summary>Sets an upcoming axis range limits. If ImPlotCond_Always is used, the axes limits will be locked.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L790.</summary>
         // DEBUG: void SetNextAxisLimits(ImAxis axis, double v_min, double v_max, ImPlotCond cond = ImPlotCond_Once)
         public static void SetNextAxisLimits(ImPlotAxis axis, double v_min, double v_max, ImPlotCond cond = ImPlotCond.Once)
         {
@@ -9611,7 +9611,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Links an upcoming axis range limits to external values. Set to NULL for no linkage. The pointer data must remain valid until EndPlot!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L786.</summary>
+        /// <summary>Links an upcoming axis range limits to external values. Set to NULL for no linkage. The pointer data must remain valid until EndPlot!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L792.</summary>
         // DEBUG: void SetNextAxisLinks(ImAxis axis, double* link_min, double* link_max)
         public static void SetNextAxisLinks(ImPlotAxis axis, ref double link_min, ref double link_max)
         {
@@ -9633,7 +9633,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Set an upcoming axis to auto fit to its data.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L788.</summary>
+        /// <summary>Set an upcoming axis to auto fit to its data.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L794.</summary>
         // DEBUG: void SetNextAxisToFit(ImAxis axis)
         public static void SetNextAxisToFit(ImPlotAxis axis)
         {
@@ -9647,7 +9647,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets the upcoming primary X and Y axes range limits. If ImPlotCond_Always is used, the axes limits will be locked (shorthand for two calls to SetupAxisLimits).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L791.</summary>
+        /// <summary>Sets the upcoming primary X and Y axes range limits. If ImPlotCond_Always is used, the axes limits will be locked (shorthand for two calls to SetupAxisLimits).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L797.</summary>
         // DEBUG: void SetNextAxesLimits(double x_min, double x_max, double y_min, double y_max, ImPlotCond cond = ImPlotCond_Once)
         public static void SetNextAxesLimits(double x_min, double x_max, double y_min, double y_max, ImPlotCond cond = ImPlotCond.Once)
         {
@@ -9661,7 +9661,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Sets all upcoming axes to auto fit to their data.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L793.</summary>
+        /// <summary>Sets all upcoming axes to auto fit to their data.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L799.</summary>
         // DEBUG: void SetNextAxesToFit()
         public static void SetNextAxesToFit()
         {
@@ -9675,7 +9675,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L850.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L856.</summary>
         // DEBUG: void PlotLineG(const char* label_id, ImPlotGetter getter, void* data, int count, ImPlotLineFlags flags=0)
         public static void PlotLineG(string label_id, ImPlotGetter getter, IntPtr data, int count, ImPlotLineFlags flags = (ImPlotLineFlags)(0))
         {
@@ -9690,7 +9690,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L855.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L861.</summary>
         // DEBUG: void PlotScatterG(const char* label_id, ImPlotGetter getter, void* data, int count, ImPlotScatterFlags flags=0)
         public static void PlotScatterG(string label_id, ImPlotGetter getter, IntPtr data, int count, ImPlotScatterFlags flags = (ImPlotScatterFlags)(0))
         {
@@ -9705,7 +9705,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L860.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L866.</summary>
         // DEBUG: void PlotStairsG(const char* label_id, ImPlotGetter getter, void* data, int count, ImPlotStairsFlags flags=0)
         public static void PlotStairsG(string label_id, ImPlotGetter getter, IntPtr data, int count, ImPlotStairsFlags flags = (ImPlotStairsFlags)(0))
         {
@@ -9720,7 +9720,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L866.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L872.</summary>
         // DEBUG: void PlotShadedG(const char* label_id, ImPlotGetter getter1, void* data1, ImPlotGetter getter2, void* data2, int count, ImPlotShadedFlags flags=0)
         public static void PlotShadedG(string label_id, ImPlotGetter getter1, IntPtr data1, ImPlotGetter getter2, IntPtr data2, int count, ImPlotShadedFlags flags = (ImPlotShadedFlags)(0))
         {
@@ -9736,7 +9736,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L871.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L877.</summary>
         // DEBUG: void PlotBarsG(const char* label_id, ImPlotGetter getter, void* data, int count, double bar_size, ImPlotBarsFlags flags=0)
         public static void PlotBarsG(string label_id, ImPlotGetter getter, IntPtr data, int count, double bar_size, ImPlotBarsFlags flags = (ImPlotBarsFlags)(0))
         {
@@ -9751,7 +9751,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L903.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L909.</summary>
         // DEBUG: void PlotDigitalG(const char* label_id, ImPlotGetter getter, void* data, int count, ImPlotDigitalFlags flags=0)
         public static void PlotDigitalG(string label_id, ImPlotGetter getter, IntPtr data, int count, ImPlotDigitalFlags flags = (ImPlotDigitalFlags)(0))
         {
@@ -9766,7 +9766,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L906.</summary>
+        /// <summary>Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L912.</summary>
         // DEBUG: void PlotImage(const char* label_id, ImTextureID user_texture_id, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, const ImVec2& uv0=ImVec2(0,0), const ImVec2& uv1=ImVec2(1,1), const ImVec4& tint_col=ImVec4(1,1,1,1), ImPlotImageFlags flags=0)
         public static void PlotImage(string label_id, IntPtr user_texture_id, ImPlotPoint bounds_min, ImPlotPoint bounds_max, Vector2 uv0, Vector2 uv1, Vector4 tint_col, ImPlotImageFlags flags = (ImPlotImageFlags)(0))
         {
@@ -9796,7 +9796,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a centered text label at point x,y with an optional pixel offset. Text color can be changed with ImPlot::PushStyleColor(ImPlotCol_InlayText, ...).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L909.</summary>
+        /// <summary>Plots a centered text label at point x,y with an optional pixel offset. Text color can be changed with ImPlot::PushStyleColor(ImPlotCol_InlayText, ...).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L915.</summary>
         // DEBUG: void PlotText(const char* text, double x, double y, const ImVec2& pix_offset=ImVec2(0,0), ImPlotTextFlags flags=0)
         public static void PlotText(string text, double x, double y, Vector2 pix_offset, ImPlotTextFlags flags = (ImPlotTextFlags)(0))
         {
@@ -9814,7 +9814,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Plots a dummy item (i.e. adds a legend entry colored by ImPlotCol_Line).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L912.</summary>
+        /// <summary>Plots a dummy item (i.e. adds a legend entry colored by ImPlotCol_Line).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L918.</summary>
         // DEBUG: void PlotDummy(const char* label_id, ImPlotDummyFlags flags=0)
         public static void PlotDummy(string label_id, ImPlotDummyFlags flags = (ImPlotDummyFlags)(0))
         {
@@ -9828,7 +9828,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows a draggable point at x,y. #col defaults to ImGuiCol_Text.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L923.</summary>
+        /// <summary>Shows a draggable point at x,y. #col defaults to ImGuiCol_Text.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L929.</summary>
         // DEBUG: bool DragPoint(int id, double* x, double* y, const ImVec4& col, float size = 4, ImPlotDragToolFlags flags=0)
         public static bool DragPoint(int id, ref double x, ref double y, Vector4 col, float size = (float)(4), ImPlotDragToolFlags flags = (ImPlotDragToolFlags)(0))
         {
@@ -9848,7 +9848,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows a draggable vertical guide line at an x-value. #col defaults to ImGuiCol_Text.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L925.</summary>
+        /// <summary>Shows a draggable vertical guide line at an x-value. #col defaults to ImGuiCol_Text.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L931.</summary>
         // DEBUG: bool DragLineX(int id, double* x, const ImVec4& col, float thickness = 1, ImPlotDragToolFlags flags=0)
         public static bool DragLineX(int id, ref double x, Vector4 col, float thickness = (float)(1), ImPlotDragToolFlags flags = (ImPlotDragToolFlags)(0))
         {
@@ -9864,7 +9864,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows a draggable horizontal guide line at a y-value. #col defaults to ImGuiCol_Text.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L927.</summary>
+        /// <summary>Shows a draggable horizontal guide line at a y-value. #col defaults to ImGuiCol_Text.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L933.</summary>
         // DEBUG: bool DragLineY(int id, double* y, const ImVec4& col, float thickness = 1, ImPlotDragToolFlags flags=0)
         public static bool DragLineY(int id, ref double y, Vector4 col, float thickness = (float)(1), ImPlotDragToolFlags flags = (ImPlotDragToolFlags)(0))
         {
@@ -9880,7 +9880,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows a draggable and resizeable rectangle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L929.</summary>
+        /// <summary>Shows a draggable and resizeable rectangle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L935.</summary>
         // DEBUG: bool DragRect(int id, double* x1, double* y1, double* x2, double* y2, const ImVec4& col, ImPlotDragToolFlags flags=0)
         public static bool DragRect(int id, ref double x1, ref double y1, ref double x2, ref double y2, Vector4 col, ImPlotDragToolFlags flags = (ImPlotDragToolFlags)(0))
         {
@@ -9908,7 +9908,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows an annotation callout at a chosen point. Clamping keeps annotations in the plot area. Annotations are always rendered on top.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L932.</summary>
+        /// <summary>Shows an annotation callout at a chosen point. Clamping keeps annotations in the plot area. Annotations are always rendered on top.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L938.</summary>
         // DEBUG: void Annotation(double x, double y, const ImVec4& col, const ImVec2& pix_offset, bool clamp, bool round = false)
         public static void Annotation(double x, double y, Vector4 col, Vector2 pix_offset, bool clamp, bool round = false)
         {
@@ -9930,7 +9930,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L933.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L939.</summary>
         // DEBUG: void Annotation(double x, double y, const ImVec4& col, const ImVec2& pix_offset, bool clamp, const char* fmt, ...)           IM_FMTARGS(6)
         public static void Annotation(double x, double y, Vector4 col, Vector2 pix_offset, bool clamp, string fmt)
         {
@@ -9952,7 +9952,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L934.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L940.</summary>
         // DEBUG: void AnnotationV(double x, double y, const ImVec4& col, const ImVec2& pix_offset, bool clamp, const char* fmt, va_list args) IM_FMTLIST(6)
         public static void AnnotationV(double x, double y, Vector4 col, Vector2 pix_offset, bool clamp, string fmt, Object args)
         {
@@ -9974,7 +9974,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows a x-axis tag at the specified coordinate value.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L937.</summary>
+        /// <summary>Shows a x-axis tag at the specified coordinate value.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L943.</summary>
         // DEBUG: void TagX(double x, const ImVec4& col, bool round = false)
         public static void TagX(double x, Vector4 col, bool round = false)
         {
@@ -9992,7 +9992,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L938.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L944.</summary>
         // DEBUG: void TagX(double x, const ImVec4& col, const char* fmt, ...)           IM_FMTARGS(3)
         public static void TagX(double x, Vector4 col, string fmt)
         {
@@ -10010,7 +10010,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L939.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L945.</summary>
         // DEBUG: void TagXV(double x, const ImVec4& col, const char* fmt, va_list args) IM_FMTLIST(3)
         public static void TagXV(double x, Vector4 col, string fmt, Object args)
         {
@@ -10028,7 +10028,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows a y-axis tag at the specified coordinate value.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L942.</summary>
+        /// <summary>Shows a y-axis tag at the specified coordinate value.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L948.</summary>
         // DEBUG: void TagY(double y, const ImVec4& col, bool round = false)
         public static void TagY(double y, Vector4 col, bool round = false)
         {
@@ -10046,7 +10046,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L943.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L949.</summary>
         // DEBUG: void TagY(double y, const ImVec4& col, const char* fmt, ...)           IM_FMTARGS(3)
         public static void TagY(double y, Vector4 col, string fmt)
         {
@@ -10064,7 +10064,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L944.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L950.</summary>
         // DEBUG: void TagYV(double y, const ImVec4& col, const char* fmt, va_list args) IM_FMTLIST(3)
         public static void TagYV(double y, Vector4 col, string fmt, Object args)
         {
@@ -10082,7 +10082,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Select which axis/axes will be used for subsequent plot elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L951.</summary>
+        /// <summary>Select which axis/axes will be used for subsequent plot elements.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L957.</summary>
         // DEBUG: void SetAxis(ImAxis axis)
         public static void SetAxis(ImPlotAxis axis)
         {
@@ -10096,7 +10096,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L952.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L958.</summary>
         // DEBUG: void SetAxes(ImAxis x_axis, ImAxis y_axis)
         public static void SetAxes(ImPlotAxis x_axis, ImPlotAxis y_axis)
         {
@@ -10110,7 +10110,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Convert pixels to a position in the current plot's coordinate system. Passing IMPLOT_AUTO uses the current axes.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L955.</summary>
+        /// <summary>Convert pixels to a position in the current plot's coordinate system. Passing IMPLOT_AUTO uses the current axes.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L961.</summary>
         // DEBUG: ImPlotPoint PixelsToPlot(const ImVec2& pix, ImAxis x_axis = IMPLOT_AUTO, ImAxis y_axis = IMPLOT_AUTO)
         public static ImPlotPoint PixelsToPlot(Vector2 pix, ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
@@ -10131,7 +10131,7 @@ namespace DearImPlot
             return ImPlotPoint.__CreateInstance(___ret);
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L956.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L962.</summary>
         // DEBUG: ImPlotPoint PixelsToPlot(float x, float y, ImAxis x_axis = IMPLOT_AUTO, ImAxis y_axis = IMPLOT_AUTO)
         public static ImPlotPoint PixelsToPlot(float x, float y, ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
@@ -10148,7 +10148,7 @@ namespace DearImPlot
             return ImPlotPoint.__CreateInstance(___ret);
         }
 
-        /// <summary>Convert a position in the current plot's coordinate system to pixels. Passing IMPLOT_AUTO uses the current axes.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L959.</summary>
+        /// <summary>Convert a position in the current plot's coordinate system to pixels. Passing IMPLOT_AUTO uses the current axes.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L965.</summary>
         // DEBUG: ImVec2 PlotToPixels(const ImPlotPoint& plt, ImAxis x_axis = IMPLOT_AUTO, ImAxis y_axis = IMPLOT_AUTO)
         public static Vector2 PlotToPixels(ImPlotPoint plt, ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
@@ -10170,7 +10170,7 @@ namespace DearImPlot
             ;
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L960.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L966.</summary>
         // DEBUG: ImVec2 PlotToPixels(double x, double y, ImAxis x_axis = IMPLOT_AUTO, ImAxis y_axis = IMPLOT_AUTO)
         public static Vector2 PlotToPixels(double x, double y, ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
@@ -10190,7 +10190,7 @@ namespace DearImPlot
             ;
         }
 
-        /// <summary>Get the current Plot position (top-left) in pixels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L963.</summary>
+        /// <summary>Get the current Plot position (top-left) in pixels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L969.</summary>
         // DEBUG: ImVec2 GetPlotPos()
         public static Vector2 GetPlotPos()
         {
@@ -10210,7 +10210,7 @@ namespace DearImPlot
             ;
         }
 
-        /// <summary>Get the curent Plot size in pixels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L965.</summary>
+        /// <summary>Get the curent Plot size in pixels.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L971.</summary>
         // DEBUG: ImVec2 GetPlotSize()
         public static Vector2 GetPlotSize()
         {
@@ -10230,7 +10230,7 @@ namespace DearImPlot
             ;
         }
 
-        /// <summary>Returns the mouse position in x,y coordinates of the current plot. Passing IMPLOT_AUTO uses the current axes.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L968.</summary>
+        /// <summary>Returns the mouse position in x,y coordinates of the current plot. Passing IMPLOT_AUTO uses the current axes.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L974.</summary>
         // DEBUG: ImPlotPoint GetPlotMousePos(ImAxis x_axis = IMPLOT_AUTO, ImAxis y_axis = IMPLOT_AUTO)
         public static ImPlotPoint GetPlotMousePos(ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
@@ -10247,7 +10247,7 @@ namespace DearImPlot
             return ImPlotPoint.__CreateInstance(___ret);
         }
 
-        /// <summary>Returns the current plot axis range.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L970.</summary>
+        /// <summary>Returns the current plot axis range.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L976.</summary>
         // DEBUG: ImPlotRect GetPlotLimits(ImAxis x_axis = IMPLOT_AUTO, ImAxis y_axis = IMPLOT_AUTO)
         public static ImPlotRect GetPlotLimits(ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
@@ -10264,7 +10264,7 @@ namespace DearImPlot
             return ImPlotRect.__CreateInstance(___ret);
         }
 
-        /// <summary>Returns true if the plot area in the current plot is hovered.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L973.</summary>
+        /// <summary>Returns true if the plot area in the current plot is hovered.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L979.</summary>
         // DEBUG: bool IsPlotHovered()
         public static bool IsPlotHovered()
         {
@@ -10272,7 +10272,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Returns true if the axis label area in the current plot is hovered.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L975.</summary>
+        /// <summary>Returns true if the axis label area in the current plot is hovered.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L981.</summary>
         // DEBUG: bool IsAxisHovered(ImAxis axis)
         public static bool IsAxisHovered(ImPlotAxis axis)
         {
@@ -10280,7 +10280,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Returns true if the bounding frame of a subplot is hovered.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L977.</summary>
+        /// <summary>Returns true if the bounding frame of a subplot is hovered.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L983.</summary>
         // DEBUG: bool IsSubplotsHovered()
         public static bool IsSubplotsHovered()
         {
@@ -10288,7 +10288,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Returns true if the current plot is being box selected.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L980.</summary>
+        /// <summary>Returns true if the current plot is being box selected.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L986.</summary>
         // DEBUG: bool IsPlotSelected()
         public static bool IsPlotSelected()
         {
@@ -10296,7 +10296,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Returns the current plot box selection bounds. Passing IMPLOT_AUTO uses the current axes.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L982.</summary>
+        /// <summary>Returns the current plot box selection bounds. Passing IMPLOT_AUTO uses the current axes.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L988.</summary>
         // DEBUG: ImPlotRect GetPlotSelection(ImAxis x_axis = IMPLOT_AUTO, ImAxis y_axis = IMPLOT_AUTO)
         public static ImPlotRect GetPlotSelection(ImPlotAxis x_axis = (ImPlotAxis)(-1), ImPlotAxis y_axis = (ImPlotAxis)(-1))
         {
@@ -10313,7 +10313,7 @@ namespace DearImPlot
             return ImPlotRect.__CreateInstance(___ret);
         }
 
-        /// <summary>Cancels a the current plot box selection.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L984.</summary>
+        /// <summary>Cancels a the current plot box selection.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L990.</summary>
         // DEBUG: void CancelPlotSelection()
         public static void CancelPlotSelection()
         {
@@ -10327,7 +10327,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Hides or shows the next plot item (i.e. as if it were toggled from the legend).<br/>Use ImPlotCond_Always if you need to forcefully set this every frame.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L988.</summary>
+        /// <summary>Hides or shows the next plot item (i.e. as if it were toggled from the legend).<br/>Use ImPlotCond_Always if you need to forcefully set this every frame.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L994.</summary>
         // DEBUG: void HideNextItem(bool hidden = true, ImPlotCond cond = ImPlotCond_Once)
         public static void HideNextItem(bool hidden = true, ImPlotCond cond = ImPlotCond.Once)
         {
@@ -10341,7 +10341,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Align axis padding over multiple plots in a single row or column. #group_id must.<br/>Be unique. If this function returns true, EndAlignedPlots() must be called.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L997.</summary>
+        /// <summary>Align axis padding over multiple plots in a single row or column. #group_id must.<br/>Be unique. If this function returns true, EndAlignedPlots() must be called.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1003.</summary>
         // DEBUG: bool BeginAlignedPlots(const char* group_id, bool vertical = true)
         public static bool BeginAlignedPlots(string group_id, bool vertical = true)
         {
@@ -10349,7 +10349,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Only call EndAlignedPlots() if BeginAlignedPlots() returns true!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L999.</summary>
+        /// <summary>Only call EndAlignedPlots() if BeginAlignedPlots() returns true!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1005.</summary>
         // DEBUG: void EndAlignedPlots()
         public static void EndAlignedPlots()
         {
@@ -10363,7 +10363,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Begin a popup for a legend entry.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1006.</summary>
+        /// <summary>Begin a popup for a legend entry.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1012.</summary>
         // DEBUG: bool BeginLegendPopup(const char* label_id, ImGuiMouseButton mouse_button=1)
         public static bool BeginLegendPopup(string label_id, ImGuiMouseButton mouse_button = (ImGuiMouseButton)(1))
         {
@@ -10371,7 +10371,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>End a popup for a legend entry.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1008.</summary>
+        /// <summary>End a popup for a legend entry.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1014.</summary>
         // DEBUG: void EndLegendPopup()
         public static void EndLegendPopup()
         {
@@ -10385,7 +10385,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Returns true if a plot item legend entry is hovered.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1010.</summary>
+        /// <summary>Returns true if a plot item legend entry is hovered.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1016.</summary>
         // DEBUG: bool IsLegendEntryHovered(const char* label_id)
         public static bool IsLegendEntryHovered(string label_id)
         {
@@ -10393,7 +10393,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Turns the current plot's plotting area into a drag and drop target. Don't forget to call EndDragDropTarget!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1017.</summary>
+        /// <summary>Turns the current plot's plotting area into a drag and drop target. Don't forget to call EndDragDropTarget!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1023.</summary>
         // DEBUG: bool BeginDragDropTargetPlot()
         public static bool BeginDragDropTargetPlot()
         {
@@ -10401,7 +10401,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Turns the current plot's X-axis into a drag and drop target. Don't forget to call EndDragDropTarget!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1019.</summary>
+        /// <summary>Turns the current plot's X-axis into a drag and drop target. Don't forget to call EndDragDropTarget!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1025.</summary>
         // DEBUG: bool BeginDragDropTargetAxis(ImAxis axis)
         public static bool BeginDragDropTargetAxis(ImPlotAxis axis)
         {
@@ -10409,7 +10409,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Turns the current plot's legend into a drag and drop target. Don't forget to call EndDragDropTarget!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1021.</summary>
+        /// <summary>Turns the current plot's legend into a drag and drop target. Don't forget to call EndDragDropTarget!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1027.</summary>
         // DEBUG: bool BeginDragDropTargetLegend()
         public static bool BeginDragDropTargetLegend()
         {
@@ -10417,7 +10417,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Ends a drag and drop target (currently just an alias for ImGui::EndDragDropTarget).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1023.</summary>
+        /// <summary>Ends a drag and drop target (currently just an alias for ImGui::EndDragDropTarget).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1029.</summary>
         // DEBUG: void EndDragDropTarget()
         public static void EndDragDropTarget()
         {
@@ -10431,7 +10431,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Turns the current plot's plotting area into a drag and drop source. You must hold Ctrl. Don't forget to call EndDragDropSource!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1029.</summary>
+        /// <summary>Turns the current plot's plotting area into a drag and drop source. You must hold Ctrl. Don't forget to call EndDragDropSource!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1035.</summary>
         // DEBUG: bool BeginDragDropSourcePlot(ImGuiDragDropFlags flags=0)
         public static bool BeginDragDropSourcePlot(ImGuiDragDropFlags flags = (ImGuiDragDropFlags)(0))
         {
@@ -10439,7 +10439,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Turns the current plot's X-axis into a drag and drop source. You must hold Ctrl. Don't forget to call EndDragDropSource!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1031.</summary>
+        /// <summary>Turns the current plot's X-axis into a drag and drop source. You must hold Ctrl. Don't forget to call EndDragDropSource!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1037.</summary>
         // DEBUG: bool BeginDragDropSourceAxis(ImAxis axis, ImGuiDragDropFlags flags=0)
         public static bool BeginDragDropSourceAxis(ImPlotAxis axis, ImGuiDragDropFlags flags = (ImGuiDragDropFlags)(0))
         {
@@ -10447,7 +10447,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Turns an item in the current plot's legend into drag and drop source. Don't forget to call EndDragDropSource!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1033.</summary>
+        /// <summary>Turns an item in the current plot's legend into drag and drop source. Don't forget to call EndDragDropSource!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1039.</summary>
         // DEBUG: bool BeginDragDropSourceItem(const char* label_id, ImGuiDragDropFlags flags=0)
         public static bool BeginDragDropSourceItem(string label_id, ImGuiDragDropFlags flags = (ImGuiDragDropFlags)(0))
         {
@@ -10455,7 +10455,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Ends a drag and drop source (currently just an alias for ImGui::EndDragDropSource).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1035.</summary>
+        /// <summary>Ends a drag and drop source (currently just an alias for ImGui::EndDragDropSource).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1041.</summary>
         // DEBUG: void EndDragDropSource()
         public static void EndDragDropSource()
         {
@@ -10469,7 +10469,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Provides access to plot style structure for permanant modifications to colors, sizes, etc.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1071.</summary>
+        /// <summary>Provides access to plot style structure for permanant modifications to colors, sizes, etc.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1077.</summary>
         // DEBUG: ImPlotStyle& GetStyle()
         public static ImPlotStyle GetStyle()
         {
@@ -10478,7 +10478,7 @@ namespace DearImPlot
             return __result0;
         }
 
-        /// <summary>Style plot colors for current ImGui style (default).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1074.</summary>
+        /// <summary>Style plot colors for current ImGui style (default).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1080.</summary>
         // DEBUG: void StyleColorsAuto(ImPlotStyle* dst = NULL)
         public static void StyleColorsAuto(ImPlotStyle dst = default)
         {
@@ -10493,7 +10493,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Style plot colors for ImGui "Classic".<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1076.</summary>
+        /// <summary>Style plot colors for ImGui "Classic".<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1082.</summary>
         // DEBUG: void StyleColorsClassic(ImPlotStyle* dst = NULL)
         public static void StyleColorsClassic(ImPlotStyle dst = default)
         {
@@ -10508,7 +10508,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Style plot colors for ImGui "Dark".<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1078.</summary>
+        /// <summary>Style plot colors for ImGui "Dark".<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1084.</summary>
         // DEBUG: void StyleColorsDark(ImPlotStyle* dst = NULL)
         public static void StyleColorsDark(ImPlotStyle dst = default)
         {
@@ -10523,7 +10523,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Style plot colors for ImGui "Light".<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1080.</summary>
+        /// <summary>Style plot colors for ImGui "Light".<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1086.</summary>
         // DEBUG: void StyleColorsLight(ImPlotStyle* dst = NULL)
         public static void StyleColorsLight(ImPlotStyle dst = default)
         {
@@ -10538,7 +10538,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Temporarily modify a style color. Don't forget to call PopStyleColor!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1087.</summary>
+        /// <summary>Temporarily modify a style color. Don't forget to call PopStyleColor!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1093.</summary>
         // DEBUG: void PushStyleColor(ImPlotCol idx, ImU32 col)
         public static void PushStyleColor(ImPlotCol idx, uint col)
         {
@@ -10552,7 +10552,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1088.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1094.</summary>
         // DEBUG: void PushStyleColor(ImPlotCol idx, const ImVec4& col)
         public static void PushStyleColor(ImPlotCol idx, Vector4 col)
         {
@@ -10570,7 +10570,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Undo temporary style color modification(s). Undo multiple pushes at once by increasing count.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1090.</summary>
+        /// <summary>Undo temporary style color modification(s). Undo multiple pushes at once by increasing count.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1096.</summary>
         // DEBUG: void PopStyleColor(int count = 1)
         public static void PopStyleColor(int count = (int)(1))
         {
@@ -10584,7 +10584,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Temporarily modify a style variable of float type. Don't forget to call PopStyleVar!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1093.</summary>
+        /// <summary>Temporarily modify a style variable of float type. Don't forget to call PopStyleVar!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1099.</summary>
         // DEBUG: void PushStyleVar(ImPlotStyleVar idx, float val)
         public static void PushStyleVar(ImPlotStyleVar idx, float val)
         {
@@ -10598,7 +10598,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Temporarily modify a style variable of int type. Don't forget to call PopStyleVar!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1095.</summary>
+        /// <summary>Temporarily modify a style variable of int type. Don't forget to call PopStyleVar!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1101.</summary>
         // DEBUG: void PushStyleVar(ImPlotStyleVar idx, int val)
         public static void PushStyleVar(ImPlotStyleVar idx, int val)
         {
@@ -10612,7 +10612,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Temporarily modify a style variable of ImVec2 type. Don't forget to call PopStyleVar!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1097.</summary>
+        /// <summary>Temporarily modify a style variable of ImVec2 type. Don't forget to call PopStyleVar!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1103.</summary>
         // DEBUG: void PushStyleVar(ImPlotStyleVar idx, const ImVec2& val)
         public static void PushStyleVar(ImPlotStyleVar idx, Vector2 val)
         {
@@ -10630,7 +10630,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Undo temporary style variable modification(s). Undo multiple pushes at once by increasing count.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1099.</summary>
+        /// <summary>Undo temporary style variable modification(s). Undo multiple pushes at once by increasing count.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1105.</summary>
         // DEBUG: void PopStyleVar(int count = 1)
         public static void PopStyleVar(int count = (int)(1))
         {
@@ -10644,7 +10644,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Set the line color and weight for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1107.</summary>
+        /// <summary>Set the line color and weight for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1113.</summary>
         // DEBUG: void SetNextLineStyle(const ImVec4& col = IMPLOT_AUTO_COL, float weight = IMPLOT_AUTO)
         public static void SetNextLineStyle(Vector4 col, float weight = (float)(-1))
         {
@@ -10662,7 +10662,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Set the fill color for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1109.</summary>
+        /// <summary>Set the fill color for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1115.</summary>
         // DEBUG: void SetNextFillStyle(const ImVec4& col = IMPLOT_AUTO_COL, float alpha_mod = IMPLOT_AUTO)
         public static void SetNextFillStyle(Vector4 col, float alpha_mod = (float)(-1))
         {
@@ -10680,7 +10680,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Set the marker style for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1111.</summary>
+        /// <summary>Set the marker style for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1117.</summary>
         // DEBUG: void SetNextMarkerStyle(ImPlotMarker marker = IMPLOT_AUTO, float size = IMPLOT_AUTO, const ImVec4& fill = IMPLOT_AUTO_COL, float weight = IMPLOT_AUTO, const ImVec4& outline = IMPLOT_AUTO_COL)
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4 fill, float weight, Vector4 outline)
         {
@@ -10702,7 +10702,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Set the error bar style for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1113.</summary>
+        /// <summary>Set the error bar style for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1119.</summary>
         // DEBUG: void SetNextErrorBarStyle(const ImVec4& col = IMPLOT_AUTO_COL, float size = IMPLOT_AUTO, float weight = IMPLOT_AUTO)
         public static void SetNextErrorBarStyle(Vector4 col, float size = (float)(-1), float weight = (float)(-1))
         {
@@ -10720,7 +10720,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Gets the last item primary color (i.e. its legend icon color).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1116.</summary>
+        /// <summary>Gets the last item primary color (i.e. its legend icon color).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1122.</summary>
         // DEBUG: ImVec4 GetLastItemColor()
         public static Vector4 GetLastItemColor()
         {
@@ -10740,7 +10740,7 @@ namespace DearImPlot
             ;
         }
 
-        /// <summary>Returns the null terminated string name for an ImPlotCol.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1119.</summary>
+        /// <summary>Returns the null terminated string name for an ImPlotCol.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1125.</summary>
         // DEBUG: const char* GetStyleColorName(ImPlotCol idx)
         public static string GetStyleColorName(ImPlotCol idx)
         {
@@ -10748,7 +10748,7 @@ namespace DearImPlot
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
-        /// <summary>Returns the null terminated string name for an ImPlotMarker.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1121.</summary>
+        /// <summary>Returns the null terminated string name for an ImPlotMarker.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1127.</summary>
         // DEBUG: const char* GetMarkerName(ImPlotMarker idx)
         public static string GetMarkerName(ImPlotMarker idx)
         {
@@ -10756,7 +10756,7 @@ namespace DearImPlot
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
-        /// <summary>Add a new colormap. The color data will be copied. The colormap can be used by pushing either the returned index or the.<br/>String name with PushColormap. The colormap name must be unique and the size must be greater than 1. You will receive.<br/>An assert otherwise! By default colormaps are considered to be qualitative (i.e. discrete). If you want to create a.<br/>Continuous colormap, set #qual=false. This will treat the colors you provide as keys, and ImPlot will build a linearly.<br/>Interpolated lookup table. The memory footprint of this table will be exactly ((size-1)*255+1)*4 bytes.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1142.</summary>
+        /// <summary>Add a new colormap. The color data will be copied. The colormap can be used by pushing either the returned index or the.<br/>String name with PushColormap. The colormap name must be unique and the size must be greater than 1. You will receive.<br/>An assert otherwise! By default colormaps are considered to be qualitative (i.e. discrete). If you want to create a.<br/>Continuous colormap, set #qual=false. This will treat the colors you provide as keys, and ImPlot will build a linearly.<br/>Interpolated lookup table. The memory footprint of this table will be exactly ((size-1)*255+1)*4 bytes.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1148.</summary>
         // DEBUG: ImPlotColormap AddColormap(const char* name, const ImVec4* cols, int size, bool qual=true)
         public static ImPlotColormap AddColormap(string name, ref Vector4 cols, int size, bool qual = true)
         {
@@ -10768,7 +10768,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1143.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1149.</summary>
         // DEBUG: ImPlotColormap AddColormap(const char* name, const ImU32*  cols, int size, bool qual=true)
         public static ImPlotColormap AddColormap(string name, ref uint cols, int size, bool qual = true)
         {
@@ -10780,7 +10780,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Returns the number of available colormaps (i.e. the built-in + user-added count).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1146.</summary>
+        /// <summary>Returns the number of available colormaps (i.e. the built-in + user-added count).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1152.</summary>
         // DEBUG: int GetColormapCount()
         public static int GetColormapCount()
         {
@@ -10788,7 +10788,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Returns a null terminated string name for a colormap given an index. Returns NULL if index is invalid.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1148.</summary>
+        /// <summary>Returns a null terminated string name for a colormap given an index. Returns NULL if index is invalid.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1154.</summary>
         // DEBUG: const char* GetColormapName(ImPlotColormap cmap)
         public static string GetColormapName(ImPlotColormap cmap)
         {
@@ -10796,7 +10796,7 @@ namespace DearImPlot
             return CppSharp.Runtime.MarshalUtil.GetString(Encoding.UTF8, ___ret);
         }
 
-        /// <summary>Returns an index number for a colormap given a valid string name. Returns -1 if name is invalid.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1150.</summary>
+        /// <summary>Returns an index number for a colormap given a valid string name. Returns -1 if name is invalid.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1156.</summary>
         // DEBUG: ImPlotColormap GetColormapIndex(const char* name)
         public static ImPlotColormap GetColormapIndex(string name)
         {
@@ -10804,7 +10804,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Temporarily switch to one of the built-in (i.e. ImPlotColormap_XXX) or user-added colormaps (i.e. a return value of AddColormap). Don't forget to call PopColormap!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1153.</summary>
+        /// <summary>Temporarily switch to one of the built-in (i.e. ImPlotColormap_XXX) or user-added colormaps (i.e. a return value of AddColormap). Don't forget to call PopColormap!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1159.</summary>
         // DEBUG: void PushColormap(ImPlotColormap cmap)
         public static void PushColormap(ImPlotColormap cmap)
         {
@@ -10818,7 +10818,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Push a colormap by string name. Use built-in names such as "Default", "Deep", "Jet", etc. or a string you provided to AddColormap. Don't forget to call PopColormap!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1155.</summary>
+        /// <summary>Push a colormap by string name. Use built-in names such as "Default", "Deep", "Jet", etc. or a string you provided to AddColormap. Don't forget to call PopColormap!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1161.</summary>
         // DEBUG: void PushColormap(const char* name)
         public static void PushColormap(string name)
         {
@@ -10832,7 +10832,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Undo temporary colormap modification(s). Undo multiple pushes at once by increasing count.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1157.</summary>
+        /// <summary>Undo temporary colormap modification(s). Undo multiple pushes at once by increasing count.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1163.</summary>
         // DEBUG: void PopColormap(int count = 1)
         public static void PopColormap(int count = (int)(1))
         {
@@ -10846,7 +10846,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Returns the next color from the current colormap and advances the colormap for the current plot.<br/>Can also be used with no return value to skip colors if desired. You need to call this between Begin/EndPlot!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1161.</summary>
+        /// <summary>Returns the next color from the current colormap and advances the colormap for the current plot.<br/>Can also be used with no return value to skip colors if desired. You need to call this between Begin/EndPlot!<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1167.</summary>
         // DEBUG: ImVec4 NextColormapColor()
         public static Vector4 NextColormapColor()
         {
@@ -10866,7 +10866,7 @@ namespace DearImPlot
             ;
         }
 
-        /// <summary>Returns the size of a colormap.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1167.</summary>
+        /// <summary>Returns the size of a colormap.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1173.</summary>
         // DEBUG: int GetColormapSize(ImPlotColormap cmap = IMPLOT_AUTO)
         public static int GetColormapSize(ImPlotColormap cmap = (ImPlotColormap)(-1))
         {
@@ -10874,7 +10874,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Returns a color from a colormap given an index &gt;= 0 (modulo will be performed).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1169.</summary>
+        /// <summary>Returns a color from a colormap given an index &gt;= 0 (modulo will be performed).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1175.</summary>
         // DEBUG: ImVec4 GetColormapColor(int idx, ImPlotColormap cmap = IMPLOT_AUTO)
         public static Vector4 GetColormapColor(int idx, ImPlotColormap cmap = (ImPlotColormap)(-1))
         {
@@ -10894,7 +10894,7 @@ namespace DearImPlot
             ;
         }
 
-        /// <summary>Sample a color from the current colormap given t between 0 and 1.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1171.</summary>
+        /// <summary>Sample a color from the current colormap given t between 0 and 1.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1177.</summary>
         // DEBUG: ImVec4 SampleColormap(float t, ImPlotColormap cmap = IMPLOT_AUTO)
         public static Vector4 SampleColormap(float t, ImPlotColormap cmap = (ImPlotColormap)(-1))
         {
@@ -10914,7 +10914,7 @@ namespace DearImPlot
             ;
         }
 
-        /// <summary>Shows a vertical color scale with linear spaced ticks using the specified color map. Use double hashes to hide label (e.g. "##NoLabel"). If scale_min &gt; scale_max, the scale to color mapping will be reversed.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1174.</summary>
+        /// <summary>Shows a vertical color scale with linear spaced ticks using the specified color map. Use double hashes to hide label (e.g. "##NoLabel"). If scale_min &gt; scale_max, the scale to color mapping will be reversed.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1180.</summary>
         // DEBUG: void ColormapScale(const char* label, double scale_min, double scale_max, const ImVec2& size = ImVec2(0,0), const char* format = "%g", ImPlotColormapScaleFlags flags = 0, ImPlotColormap cmap = IMPLOT_AUTO)
         public static void ColormapScale(string label, double scale_min, double scale_max, Vector2 size, string format = "%g", ImPlotColormapScaleFlags flags = (ImPlotColormapScaleFlags)(0), ImPlotColormap cmap = (ImPlotColormap)(-1))
         {
@@ -10932,7 +10932,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows a horizontal slider with a colormap gradient background. Optionally returns the color sampled at t in [0 1].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1176.</summary>
+        /// <summary>Shows a horizontal slider with a colormap gradient background. Optionally returns the color sampled at t in [0 1].<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1182.</summary>
         // DEBUG: bool ColormapSlider(const char* label, float* t, ImVec4* out = NULL, const char* format = "", ImPlotColormap cmap = IMPLOT_AUTO)
         public static bool ColormapSlider(string label, ref float t, out Vector4 @out, string format = "", ImPlotColormap cmap = (ImPlotColormap)(-1))
         {
@@ -10949,7 +10949,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows a button with a colormap gradient brackground.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1178.</summary>
+        /// <summary>Shows a button with a colormap gradient brackground.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1184.</summary>
         // DEBUG: bool ColormapButton(const char* label, const ImVec2& size = ImVec2(0,0), ImPlotColormap cmap = IMPLOT_AUTO)
         public static bool ColormapButton(string label, Vector2 size, ImPlotColormap cmap = (ImPlotColormap)(-1))
         {
@@ -10961,7 +10961,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>When items in a plot sample their color from a colormap, the color is cached and does not change.<br/>Unless explicitly overriden. Therefore, if you change the colormap after the item has already been plotted,.<br/>Item colors will NOT update. If you need item colors to resample the new colormap, then use this.<br/>Function to bust the cached colors. If #plot_title_id is NULL, then every item in EVERY existing plot.<br/>Will be cache busted. Otherwise only the plot specified by #plot_title_id will be busted. For the.<br/>Latter, this function must be called in the same ImGui ID scope that the plot is in. You should rarely if ever.<br/>Need this function, but it is available for applications that require runtime colormap swaps (e.g. Heatmaps demo).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1187.</summary>
+        /// <summary>When items in a plot sample their color from a colormap, the color is cached and does not change.<br/>Unless explicitly overriden. Therefore, if you change the colormap after the item has already been plotted,.<br/>Item colors will NOT update. If you need item colors to resample the new colormap, then use this.<br/>Function to bust the cached colors. If #plot_title_id is NULL, then every item in EVERY existing plot.<br/>Will be cache busted. Otherwise only the plot specified by #plot_title_id will be busted. For the.<br/>Latter, this function must be called in the same ImGui ID scope that the plot is in. You should rarely if ever.<br/>Need this function, but it is available for applications that require runtime colormap swaps (e.g. Heatmaps demo).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1193.</summary>
         // DEBUG: void BustColorCache(const char* plot_title_id = NULL)
         public static void BustColorCache(string plot_title_id = default)
         {
@@ -10975,7 +10975,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Provides access to input mapping structure for permanant modifications to controls for pan, select, etc.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1194.</summary>
+        /// <summary>Provides access to input mapping structure for permanant modifications to controls for pan, select, etc.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1200.</summary>
         // DEBUG: ImPlotInputMap& GetInputMap()
         public static ImPlotInputMap GetInputMap()
         {
@@ -10984,7 +10984,7 @@ namespace DearImPlot
             return __result0;
         }
 
-        /// <summary>Default input mapping: pan = LMB drag, box select = RMB drag, fit = LMB double click, context menu = RMB click, zoom = scroll.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1197.</summary>
+        /// <summary>Default input mapping: pan = LMB drag, box select = RMB drag, fit = LMB double click, context menu = RMB click, zoom = scroll.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1203.</summary>
         // DEBUG: void MapInputDefault(ImPlotInputMap* dst = NULL)
         public static void MapInputDefault(ImPlotInputMap dst = default)
         {
@@ -11000,7 +11000,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Reverse input mapping: pan = RMB drag, box select = LMB drag, fit = LMB double click, context menu = RMB click, zoom = scroll.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1199.</summary>
+        /// <summary>Reverse input mapping: pan = RMB drag, box select = LMB drag, fit = LMB double click, context menu = RMB click, zoom = scroll.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1205.</summary>
         // DEBUG: void MapInputReverse(ImPlotInputMap* dst = NULL)
         public static void MapInputReverse(ImPlotInputMap dst = default)
         {
@@ -11016,7 +11016,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Render icons similar to those that appear in legends (nifty for data lists).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1206.</summary>
+        /// <summary>Render icons similar to those that appear in legends (nifty for data lists).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1212.</summary>
         // DEBUG: void ItemIcon(const ImVec4& col)
         public static void ItemIcon(Vector4 col)
         {
@@ -11034,7 +11034,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1207.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1213.</summary>
         // DEBUG: void ItemIcon(ImU32 col)
         public static void ItemIcon(uint col)
         {
@@ -11048,7 +11048,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1208.</summary>
+        /// <summary>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1214.</summary>
         // DEBUG: void ColormapIcon(ImPlotColormap cmap)
         public static void ColormapIcon(ImPlotColormap cmap)
         {
@@ -11062,7 +11062,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Get the plot draw list for custom rendering to the current plot area. Call between Begin/EndPlot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1211.</summary>
+        /// <summary>Get the plot draw list for custom rendering to the current plot area. Call between Begin/EndPlot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1217.</summary>
         // DEBUG: ImDrawList* GetPlotDrawList()
         public static ImDrawList GetPlotDrawList()
         {
@@ -11071,7 +11071,7 @@ namespace DearImPlot
             return __result0;
         }
 
-        /// <summary>Push clip rect for rendering to current plot area. The rect can be expanded or contracted by #expand pixels. Call between Begin/EndPlot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1213.</summary>
+        /// <summary>Push clip rect for rendering to current plot area. The rect can be expanded or contracted by #expand pixels. Call between Begin/EndPlot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1219.</summary>
         // DEBUG: void PushPlotClipRect(float expand=0)
         public static void PushPlotClipRect(float expand = (float)(0))
         {
@@ -11085,7 +11085,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Pop plot clip rect. Call between Begin/EndPlot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1215.</summary>
+        /// <summary>Pop plot clip rect. Call between Begin/EndPlot.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1221.</summary>
         // DEBUG: void PopPlotClipRect()
         public static void PopPlotClipRect()
         {
@@ -11099,7 +11099,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows ImPlot style selector dropdown menu.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1218.</summary>
+        /// <summary>Shows ImPlot style selector dropdown menu.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1224.</summary>
         // DEBUG: bool ShowStyleSelector(const char* label)
         public static bool ShowStyleSelector(string label)
         {
@@ -11107,7 +11107,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Shows ImPlot colormap selector dropdown menu.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1220.</summary>
+        /// <summary>Shows ImPlot colormap selector dropdown menu.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1226.</summary>
         // DEBUG: bool ShowColormapSelector(const char* label)
         public static bool ShowColormapSelector(string label)
         {
@@ -11115,7 +11115,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Shows ImPlot input map selector dropdown menu.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1222.</summary>
+        /// <summary>Shows ImPlot input map selector dropdown menu.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1228.</summary>
         // DEBUG: bool ShowInputMapSelector(const char* label)
         public static bool ShowInputMapSelector(string label)
         {
@@ -11123,7 +11123,7 @@ namespace DearImPlot
             return ___ret;
         }
 
-        /// <summary>Shows ImPlot style editor block (not a window).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1224.</summary>
+        /// <summary>Shows ImPlot style editor block (not a window).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1230.</summary>
         // DEBUG: void ShowStyleEditor(ImPlotStyle* ref = NULL)
         public static void ShowStyleEditor(ImPlotStyle @ref = default)
         {
@@ -11138,7 +11138,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Add basic help/info block for end users (not a window).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1226.</summary>
+        /// <summary>Add basic help/info block for end users (not a window).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1232.</summary>
         // DEBUG: void ShowUserGuide()
         public static void ShowUserGuide()
         {
@@ -11152,7 +11152,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows ImPlot metrics/debug information window.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1228.</summary>
+        /// <summary>Shows ImPlot metrics/debug information window.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1234.</summary>
         // DEBUG: void ShowMetricsWindow(bool* p_popen = NULL)
         public static void ShowMetricsWindow(ref bool p_popen)
         {
@@ -11170,7 +11170,7 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>Shows the ImPlot demo window (add implot_demo.cpp to your sources!).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1235.</summary>
+        /// <summary>Shows the ImPlot demo window (add implot_demo.cpp to your sources!).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1241.</summary>
         // DEBUG: void ShowDemoWindow(bool* p_open = NULL)
         public static void ShowDemoWindow(ref bool p_open)
         {
@@ -11188,14 +11188,14 @@ namespace DearImPlot
             }
         }
 
-        /// <summary>- #title_id must be unique to the current ImGui ID scope. If you need to avoid ID.<br/>Collisions or don't want to display a title in the plot, use double hashes.<br/>(e.g. "MyPlot##HiddenIdText" or "##NoTitle").<br/>- #size is the **frame** size of the plot widget, not the plot area. The default.<br/>Size of plots (i.e. when ImVec2(0,0)) can be modified in your ImPlotStyle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L626.</summary>
+        /// <summary>- #title_id must be unique to the current ImGui ID scope. If you need to avoid ID.<br/>Collisions or don't want to display a title in the plot, use double hashes.<br/>(e.g. "MyPlot##HiddenIdText" or "##NoTitle").<br/>- #size is the **frame** size of the plot widget, not the plot area. The default.<br/>Size of plots (i.e. when ImVec2(0,0)) can be modified in your ImPlotStyle.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L632.</summary>
         // DEBUG: bool BeginPlot(const char* title_id, const ImVec2& size=ImVec2(-1,0), ImPlotFlags flags=0)
         public static bool BeginPlot(string title_id)
         {
             return BeginPlot(title_id, new Vector2(-1, 0), 0);
         }
 
-        /// <summary>- The #title_id parameter of _BeginPlot_ (see above) does NOT have to be.<br/>Unique when called inside of a subplot context. Subplot IDs are hashed.<br/>For your convenience so you don't have call PushID or generate unique title.<br/>Strings. Simply pass an empty string to BeginPlot unless you want to title.<br/>Each subplot.<br/>- The #size parameter of _BeginPlot_ (see above) is ignored when inside of a.<br/>Subplot context. The actual size of the subplot will be based on the.<br/>#size value you pass to _BeginSubplots_ and #row/#col_ratios if provided.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L682.</summary>
+        /// <summary>- The #title_id parameter of _BeginPlot_ (see above) does NOT have to be.<br/>Unique when called inside of a subplot context. Subplot IDs are hashed.<br/>For your convenience so you don't have call PushID or generate unique title.<br/>Strings. Simply pass an empty string to BeginPlot unless you want to title.<br/>Each subplot.<br/>- The #size parameter of _BeginPlot_ (see above) is ignored when inside of a.<br/>Subplot context. The actual size of the subplot will be based on the.<br/>#size value you pass to _BeginSubplots_ and #row/#col_ratios if provided.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L688.</summary>
         // DEBUG: bool BeginSubplots(const char* title_id,
         // DEBUG:                              int rows,
         // DEBUG:                              int cols,
@@ -11210,7 +11210,7 @@ namespace DearImPlot
             return BeginSubplots(title_id, rows, cols, size, flags, ref param0, ref param1);
         }
 
-        /// <summary>- The #title_id parameter of _BeginPlot_ (see above) does NOT have to be.<br/>Unique when called inside of a subplot context. Subplot IDs are hashed.<br/>For your convenience so you don't have call PushID or generate unique title.<br/>Strings. Simply pass an empty string to BeginPlot unless you want to title.<br/>Each subplot.<br/>- The #size parameter of _BeginPlot_ (see above) is ignored when inside of a.<br/>Subplot context. The actual size of the subplot will be based on the.<br/>#size value you pass to _BeginSubplots_ and #row/#col_ratios if provided.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L682.</summary>
+        /// <summary>- The #title_id parameter of _BeginPlot_ (see above) does NOT have to be.<br/>Unique when called inside of a subplot context. Subplot IDs are hashed.<br/>For your convenience so you don't have call PushID or generate unique title.<br/>Strings. Simply pass an empty string to BeginPlot unless you want to title.<br/>Each subplot.<br/>- The #size parameter of _BeginPlot_ (see above) is ignored when inside of a.<br/>Subplot context. The actual size of the subplot will be based on the.<br/>#size value you pass to _BeginSubplots_ and #row/#col_ratios if provided.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L688.</summary>
         // DEBUG: bool BeginSubplots(const char* title_id,
         // DEBUG:                              int rows,
         // DEBUG:                              int cols,
@@ -11224,84 +11224,84 @@ namespace DearImPlot
             return BeginSubplots(title_id, rows, cols, size, flags, ref row_ratios, ref param0);
         }
 
-        /// <summary>Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L906.</summary>
+        /// <summary>Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L912.</summary>
         // DEBUG: void PlotImage(const char* label_id, ImTextureID user_texture_id, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, const ImVec2& uv0=ImVec2(0,0), const ImVec2& uv1=ImVec2(1,1), const ImVec4& tint_col=ImVec4(1,1,1,1), ImPlotImageFlags flags=0)
         public static void PlotImage(string label_id, IntPtr user_texture_id, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             PlotImage(label_id, user_texture_id, bounds_min, bounds_max, new Vector2(0, 0), new Vector2(1, 1), new Vector4(1, 1, 1, 1), 0);
         }
 
-        /// <summary>Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L906.</summary>
+        /// <summary>Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L912.</summary>
         // DEBUG: void PlotImage(const char* label_id, ImTextureID user_texture_id, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, const ImVec2& uv0=ImVec2(0,0), const ImVec2& uv1=ImVec2(1,1), const ImVec4& tint_col=ImVec4(1,1,1,1), ImPlotImageFlags flags=0)
         public static void PlotImage(string label_id, IntPtr user_texture_id, ImPlotPoint bounds_min, ImPlotPoint bounds_max, Vector2 uv0)
         {
             PlotImage(label_id, user_texture_id, bounds_min, bounds_max, uv0, new Vector2(1, 1), new Vector4(1, 1, 1, 1), 0);
         }
 
-        /// <summary>Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L906.</summary>
+        /// <summary>Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L912.</summary>
         // DEBUG: void PlotImage(const char* label_id, ImTextureID user_texture_id, const ImPlotPoint& bounds_min, const ImPlotPoint& bounds_max, const ImVec2& uv0=ImVec2(0,0), const ImVec2& uv1=ImVec2(1,1), const ImVec4& tint_col=ImVec4(1,1,1,1), ImPlotImageFlags flags=0)
         public static void PlotImage(string label_id, IntPtr user_texture_id, ImPlotPoint bounds_min, ImPlotPoint bounds_max, Vector2 uv0, Vector2 uv1)
         {
             PlotImage(label_id, user_texture_id, bounds_min, bounds_max, uv0, uv1, new Vector4(1, 1, 1, 1), 0);
         }
 
-        /// <summary>Plots a centered text label at point x,y with an optional pixel offset. Text color can be changed with ImPlot::PushStyleColor(ImPlotCol_InlayText, ...).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L909.</summary>
+        /// <summary>Plots a centered text label at point x,y with an optional pixel offset. Text color can be changed with ImPlot::PushStyleColor(ImPlotCol_InlayText, ...).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L915.</summary>
         // DEBUG: void PlotText(const char* text, double x, double y, const ImVec2& pix_offset=ImVec2(0,0), ImPlotTextFlags flags=0)
         public static void PlotText(string text, double x, double y)
         {
             PlotText(text, x, y, new Vector2(0, 0), 0);
         }
 
-        /// <summary>Set the line color and weight for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1107.</summary>
+        /// <summary>Set the line color and weight for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1113.</summary>
         // DEBUG: void SetNextLineStyle(const ImVec4& col = IMPLOT_AUTO_COL, float weight = IMPLOT_AUTO)
         public static void SetNextLineStyle()
         {
             SetNextLineStyle(new Vector4(0, 0, 0, -1), -1);
         }
 
-        /// <summary>Set the fill color for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1109.</summary>
+        /// <summary>Set the fill color for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1115.</summary>
         // DEBUG: void SetNextFillStyle(const ImVec4& col = IMPLOT_AUTO_COL, float alpha_mod = IMPLOT_AUTO)
         public static void SetNextFillStyle()
         {
             SetNextFillStyle(new Vector4(0, 0, 0, -1), -1);
         }
 
-        /// <summary>Set the marker style for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1111.</summary>
+        /// <summary>Set the marker style for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1117.</summary>
         // DEBUG: void SetNextMarkerStyle(ImPlotMarker marker = IMPLOT_AUTO, float size = IMPLOT_AUTO, const ImVec4& fill = IMPLOT_AUTO_COL, float weight = IMPLOT_AUTO, const ImVec4& outline = IMPLOT_AUTO_COL)
         public static void SetNextMarkerStyle(ImPlotMarker marker = (ImPlotMarker)(-1), float size = (float)(-1))
         {
             SetNextMarkerStyle(marker, size, new Vector4(0, 0, 0, -1), -1, new Vector4(0, 0, 0, -1));
         }
 
-        /// <summary>Set the marker style for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1111.</summary>
+        /// <summary>Set the marker style for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1117.</summary>
         // DEBUG: void SetNextMarkerStyle(ImPlotMarker marker = IMPLOT_AUTO, float size = IMPLOT_AUTO, const ImVec4& fill = IMPLOT_AUTO_COL, float weight = IMPLOT_AUTO, const ImVec4& outline = IMPLOT_AUTO_COL)
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4 fill, float weight = (float)(-1))
         {
             SetNextMarkerStyle(marker, size, fill, weight, new Vector4(0, 0, 0, -1));
         }
 
-        /// <summary>Set the error bar style for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1113.</summary>
+        /// <summary>Set the error bar style for the next item only.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1119.</summary>
         // DEBUG: void SetNextErrorBarStyle(const ImVec4& col = IMPLOT_AUTO_COL, float size = IMPLOT_AUTO, float weight = IMPLOT_AUTO)
         public static void SetNextErrorBarStyle()
         {
             SetNextErrorBarStyle(new Vector4(0, 0, 0, -1), -1, -1);
         }
 
-        /// <summary>Shows a vertical color scale with linear spaced ticks using the specified color map. Use double hashes to hide label (e.g. "##NoLabel"). If scale_min &gt; scale_max, the scale to color mapping will be reversed.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1174.</summary>
+        /// <summary>Shows a vertical color scale with linear spaced ticks using the specified color map. Use double hashes to hide label (e.g. "##NoLabel"). If scale_min &gt; scale_max, the scale to color mapping will be reversed.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1180.</summary>
         // DEBUG: void ColormapScale(const char* label, double scale_min, double scale_max, const ImVec2& size = ImVec2(0,0), const char* format = "%g", ImPlotColormapScaleFlags flags = 0, ImPlotColormap cmap = IMPLOT_AUTO)
         public static void ColormapScale(string label, double scale_min, double scale_max)
         {
             ColormapScale(label, scale_min, scale_max, new Vector2(0, 0), "%g", 0, (ImPlotColormap)(-1));
         }
 
-        /// <summary>Shows a button with a colormap gradient brackground.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1178.</summary>
+        /// <summary>Shows a button with a colormap gradient brackground.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1184.</summary>
         // DEBUG: bool ColormapButton(const char* label, const ImVec2& size = ImVec2(0,0), ImPlotColormap cmap = IMPLOT_AUTO)
         public static bool ColormapButton(string label)
         {
             return ColormapButton(label, new Vector2(0, 0), (ImPlotColormap)(-1));
         }
 
-        /// <summary>Shows ImPlot metrics/debug information window.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1228.</summary>
+        /// <summary>Shows ImPlot metrics/debug information window.<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1234.</summary>
         // DEBUG: void ShowMetricsWindow(bool* p_popen = NULL)
         public static void ShowMetricsWindow()
         {
@@ -11309,7 +11309,7 @@ namespace DearImPlot
             ShowMetricsWindow(ref param0);
         }
 
-        /// <summary>Shows the ImPlot demo window (add implot_demo.cpp to your sources!).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1235.</summary>
+        /// <summary>Shows the ImPlot demo window (add implot_demo.cpp to your sources!).<br/>https://github.com/epezent/implot/blob/15e494b76a78b44ae2c1b76608ff9bc39a661409/implot.h#L1241.</summary>
         // DEBUG: void ShowDemoWindow(bool* p_open = NULL)
         public static void ShowDemoWindow()
         {
