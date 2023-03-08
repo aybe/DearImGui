@@ -1,3 +1,13 @@
+v1.0.2 Mar 8, 2023
+- upgrade to docking branch (KCoen, aybe)
+- upgrade to latest code as of today (aybe)
+- fix failed build (nitro, aybe)
+- general fix-ups/improvements for solution (aybe)
+  - restore initial directory on failed build
+  - use CppSharp from NuGet instead of GitHub
+  - fix missing, renamed solution items
+  - use simpler formatting rules for easier reviews
+
 v1.0.1 Jan 13, 2023
 - Fixed wrong assembly version of 0.17 to 0.14 in DearImPlot
 - Add IMPLOT_AUTO and IMPLOT_AUTO_COL
