@@ -6,10 +6,7 @@ resharper_blank_lines_around_single_line_auto_property = 1
 resharper_blank_lines_before_block_statements = 1
 resharper_braces_for_ifelse = required
 resharper_csharp_blank_lines_around_single_line_invocable = 1
-resharper_csharp_int_align_comments = true
 resharper_csharp_max_line_length = 180
-resharper_int_align_invocations = true
-resharper_int_align_switch_expressions = true
 resharper_place_accessorholder_attribute_on_same_line = false
 resharper_xml_max_line_length = 180
 
