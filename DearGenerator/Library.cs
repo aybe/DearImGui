@@ -209,9 +209,6 @@ public abstract class Library : ILibrary
         Ignore(ctx, "ImVec4", null, IgnoreType.Class); // manual
         Ignore(ctx, "ImVector", null, IgnoreType.Class); // manual
 
-        Ignore(ctx, "ImGuiModFlags_", null, IgnoreType.Enum); // useless
-        Ignore(ctx, "ImGuiNavInput_", null, IgnoreType.Enum); // useless
-
         Ignore(ctx, "ImDrawCmd", "GetTexID", IgnoreType.Method); // manual
         Ignore(ctx, "ImDrawList", "GetClipRectMax", IgnoreType.Method); // manual
         Ignore(ctx, "ImDrawList", "GetClipRectMin", IgnoreType.Method); // manual
