@@ -99,6 +99,14 @@ public sealed class ImEnumPass : ImBaseTranslationUnitPass
             return true;
         }
 
+        // that weird naming convention, not necessarily enum name but can be ImGui instead, handle that case
+
+        if (Regex.Match(item.Name, "^ImGui").Success)
+        {
+            item.Name = Regex.Replace(item.Name, @"^ImGui", string.Empty);
+            return true;
+        }
+
         return base.VisitEnumItemDecl(item);
     }
 }
