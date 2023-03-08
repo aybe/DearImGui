@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
 using CppSharp.AST;
 using JetBrains.Annotations;
 
@@ -80,9 +81,11 @@ public sealed class ImEnumPass : ImBaseTranslationUnitPass
 
             // prefix enumeration name with a 'D' when it starts with a digit, e.g. 1 -> D1
 
-            if (char.IsDigit(item.Name[0]))
+            var match = Regex.Match(item.Name, @"^_(\d+)$");
+
+            if (match.Success)
             {
-                item.Name = $"D{item.Name}";
+                item.Name = $"D{match.Groups[1].Value}";
             }
 
             if (LogRenamedEnumerationItem)
