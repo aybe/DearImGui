@@ -32,10 +32,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D6A88127-EC6F-4E69-8C2C-99D353DE7AD8}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		CHANGELOG = CHANGELOG
+		dearimgui-build-native-debug.cmd = dearimgui-build-native-debug.cmd
+		dearimgui-build.cmd = dearimgui-build.cmd
+		dearimgui-clean.cmd = dearimgui-clean.cmd
+		dearimgui-nuget-deploy-local.cmd = dearimgui-nuget-deploy-local.cmd
 		Directory.build.props = Directory.build.props
 		Directory.packages.targets = Directory.packages.targets
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
