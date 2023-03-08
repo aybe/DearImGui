@@ -1,4 +1,5 @@
 @echo off
+pushd
 
 set COLOR_WARN=[93m
 set COLOR_NORM=[0m
@@ -75,6 +76,7 @@ goto end
 
 :err
 echo %COLOR_WARN%Aborting, last command failed with error code %ERRORLEVEL%%COLOR_NORM%
+popd
 
 :end
 set BUILD_TYPE=
