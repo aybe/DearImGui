@@ -34,21 +34,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="TypeMaps\TypeMapEnum.g.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>TypeMapEnum.tt</DependentUpon>
-	  </Compile>
-	  <Compile Update="TypeMaps\TypeMapEnumImGui.g.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>TypeMapEnumImGui.tt</DependentUpon>
-	  </Compile>
-	  <Compile Update="TypeMaps\TypeMapEnumImPlot.g.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>TypeMapEnumImPlot.tt</DependentUpon>
-	  </Compile>
+		<Compile Update="TypeMaps\TypeMapEnum.g.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>TypeMapEnum.tt</DependentUpon>
+		</Compile>
+		<Compile Update="TypeMaps\TypeMapEnumImGui.g.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>TypeMapEnumImGui.tt</DependentUpon>
+		</Compile>
+		<Compile Update="TypeMaps\TypeMapEnumImPlot.g.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>TypeMapEnumImPlot.tt</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<PropertyGroup>

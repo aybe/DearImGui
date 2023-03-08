@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
+
 #pragma warning disable CS1591
 
 namespace DearImGui;
@@ -111,7 +111,7 @@ public readonly struct ImVector<T>
     #region Nested type: __Internal
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    [SuppressMessage("Style",     "IDE1006:Naming Styles", Justification = "<Pending>")]
+    [SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     internal struct __Internal
     {
 #pragma warning disable CS0649

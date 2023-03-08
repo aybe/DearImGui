@@ -1,5 +1,4 @@
 ﻿using System.Collections.Immutable;
-using System.Text.RegularExpressions;
 using CppSharp;
 using CppSharp.AST;
 using DearGenerator;
@@ -91,7 +90,7 @@ internal sealed class LibraryImPlot : Library
     {
         base.PostprocessIgnores(ctx);
 
-        Ignore(ctx, "ImPlotPoint", "Item",   IgnoreType.Property); // manual
+        Ignore(ctx, "ImPlotPoint", "Item", IgnoreType.Property); // manual
         Ignore(ctx, "ImPlotStyle", "Colors", IgnoreType.Property); // manual
     }
 

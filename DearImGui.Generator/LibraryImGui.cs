@@ -23,6 +23,19 @@ internal sealed class LibraryImGui : Library
 
     private ImmutableSortedSet<string> Namespaces { get; }
 
+    #region Preprocess
+
+    protected override void PreprocessParameters(ASTContext ctx)
+    {
+        base.PreprocessParameters(ctx);
+
+        // apply out/ref to vector parameters
+
+        SetVectorParametersUsage(GetImGuiTranslationUnit(ctx).Declarations.OfType<Namespace>().Single());
+    }
+
+    #endregion
+
     #region Overrides
 
     public override void Setup(Driver driver)
@@ -53,48 +66,35 @@ internal sealed class LibraryImGui : Library
 
     #endregion
 
-    #region Preprocess
-
-    protected override void PreprocessParameters(ASTContext ctx)
-    {
-        base.PreprocessParameters(ctx);
-
-        // apply out/ref to vector parameters
-
-        SetVectorParametersUsage(GetImGuiTranslationUnit(ctx).Declarations.OfType<Namespace>().Single());
-    }
-
-    #endregion
-
     #region Postprocess
 
     protected override void PostprocessIgnores(ASTContext ctx)
     {
         base.PostprocessIgnores(ctx);
 
-        Ignore(ctx, "ImDrawData",            "CmdLists",                IgnoreType.Property); // manual
-        Ignore(ctx, "ImDrawList",            "ClipRectStack",           IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",            "CmdHeader",               IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",            "Data",                    IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",            "FringeScale",             IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",            "IdxWritePtr",             IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",            "OwnerName",               IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",            "Path",                    IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",            "Splitter",                IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",            "TextureIdStack",          IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",            "VtxCurrentIdx",           IgnoreType.Property); // intern
-        Ignore(ctx, "ImDrawList",            "VtxWritePtr",             IgnoreType.Property); // intern
-        Ignore(ctx, "ImFontAtlas",           "IsBuilt",                 IgnoreType.Property); // manual
-        Ignore(ctx, "ImFontAtlas",           "TexUvLines",              IgnoreType.Property); // manual
-        Ignore(ctx, "ImFontAtlasCustomRect", "IsPacked",                IgnoreType.Property); // manual
-        Ignore(ctx, "ImFontConfig",          "Name",                    IgnoreType.Property); // manual
-        Ignore(ctx, "ImFontGlyph",           "Colored",                 IgnoreType.Property); // manual
-        Ignore(ctx, "ImFontGlyph",           "Visible",                 IgnoreType.Property); // manual
-        Ignore(ctx, "ImFontGlyph",           "Codepoint",               IgnoreType.Property); // manual
-        Ignore(ctx, "ImGuiIO",               "MouseClickedPos",         IgnoreType.Property); // manual
-        Ignore(ctx, "ImGuiIO",               "MouseDragMaxDistanceAbs", IgnoreType.Property); // manual
-        
-        Ignore(ctx, "ImGuiStyle",            "Colors",                  IgnoreType.Property); // manual
+        Ignore(ctx, "ImDrawData", "CmdLists", IgnoreType.Property); // manual
+        Ignore(ctx, "ImDrawList", "ClipRectStack", IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList", "CmdHeader", IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList", "Data", IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList", "FringeScale", IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList", "IdxWritePtr", IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList", "OwnerName", IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList", "Path", IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList", "Splitter", IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList", "TextureIdStack", IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList", "VtxCurrentIdx", IgnoreType.Property); // intern
+        Ignore(ctx, "ImDrawList", "VtxWritePtr", IgnoreType.Property); // intern
+        Ignore(ctx, "ImFontAtlas", "IsBuilt", IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontAtlas", "TexUvLines", IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontAtlasCustomRect", "IsPacked", IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontConfig", "Name", IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontGlyph", "Colored", IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontGlyph", "Visible", IgnoreType.Property); // manual
+        Ignore(ctx, "ImFontGlyph", "Codepoint", IgnoreType.Property); // manual
+        Ignore(ctx, "ImGuiIO", "MouseClickedPos", IgnoreType.Property); // manual
+        Ignore(ctx, "ImGuiIO", "MouseDragMaxDistanceAbs", IgnoreType.Property); // manual
+
+        Ignore(ctx, "ImGuiStyle", "Colors", IgnoreType.Property); // manual
 
         Ignore(ctx, "ImNewWrapper", null, IgnoreType.Class); // unused
 

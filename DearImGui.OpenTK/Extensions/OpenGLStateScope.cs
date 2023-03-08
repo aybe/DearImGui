@@ -33,27 +33,27 @@ public readonly struct OpenGLStateScope : IDisposable
 
     public OpenGLStateScope()
     {
-        ActiveTexture      = (TextureUnit)GL.GetInteger(GetPName.ActiveTexture);
+        ActiveTexture = (TextureUnit)GL.GetInteger(GetPName.ActiveTexture);
         ArrayBufferBinding = GL.GetInteger(GetPName.ArrayBufferBinding);
-        Blend              = GL.GetBoolean(GetPName.Blend);
-        BlendDstAlpha      = (BlendingFactorDest)GL.GetInteger(GetPName.BlendDstAlpha);
-        BlendDstRgb        = (BlendingFactorDest)GL.GetInteger(GetPName.BlendDstRgb);
+        Blend = GL.GetBoolean(GetPName.Blend);
+        BlendDstAlpha = (BlendingFactorDest)GL.GetInteger(GetPName.BlendDstAlpha);
+        BlendDstRgb = (BlendingFactorDest)GL.GetInteger(GetPName.BlendDstRgb);
         BlendEquationAlpha = (BlendEquationMode)GL.GetInteger(GetPName.BlendEquationAlpha);
-        BlendEquationRgb   = (BlendEquationMode)GL.GetInteger(GetPName.BlendEquationRgb);
-        BlendSrcAlpha      = (BlendingFactorSrc)GL.GetInteger(GetPName.BlendSrcAlpha);
-        BlendSrcRgb        = (BlendingFactorSrc)GL.GetInteger(GetPName.BlendSrcRgb);
-        CullFace           = GL.GetBoolean(GetPName.CullFace);
-        CurrentProgram     = GL.GetInteger(GetPName.CurrentProgram);
-        DepthTest          = GL.GetBoolean(GetPName.DepthTest);
-        PolygonMode        = GL.GetInteger(GetPName.PolygonMode);
-        PrimitiveRestart   = GL.IsEnabled(EnableCap.PrimitiveRestart);
-        SamplerBinding     = GL.GetInteger(GetPName.SamplerBinding);
-        ScissorBox         = GetVector4i(GetPName.ScissorBox);
-        ScissorTest        = GL.GetBoolean(GetPName.ScissorTest);
-        StencilTest        = GL.GetBoolean(GetPName.StencilTest);
-        TextureBinding2D   = GL.GetInteger(GetPName.TextureBinding2D);
+        BlendEquationRgb = (BlendEquationMode)GL.GetInteger(GetPName.BlendEquationRgb);
+        BlendSrcAlpha = (BlendingFactorSrc)GL.GetInteger(GetPName.BlendSrcAlpha);
+        BlendSrcRgb = (BlendingFactorSrc)GL.GetInteger(GetPName.BlendSrcRgb);
+        CullFace = GL.GetBoolean(GetPName.CullFace);
+        CurrentProgram = GL.GetInteger(GetPName.CurrentProgram);
+        DepthTest = GL.GetBoolean(GetPName.DepthTest);
+        PolygonMode = GL.GetInteger(GetPName.PolygonMode);
+        PrimitiveRestart = GL.IsEnabled(EnableCap.PrimitiveRestart);
+        SamplerBinding = GL.GetInteger(GetPName.SamplerBinding);
+        ScissorBox = GetVector4i(GetPName.ScissorBox);
+        ScissorTest = GL.GetBoolean(GetPName.ScissorTest);
+        StencilTest = GL.GetBoolean(GetPName.StencilTest);
+        TextureBinding2D = GL.GetInteger(GetPName.TextureBinding2D);
         VertexArrayBinding = GL.GetInteger(GetPName.VertexArrayBinding);
-        Viewport           = GetVector4i(GetPName.Viewport);
+        Viewport = GetVector4i(GetPName.Viewport);
     }
 
     #region IDisposable Members

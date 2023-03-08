@@ -26,11 +26,11 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
     private Color4 Color2 = Color4.DeepSkyBlue;
 
+    private bool ShowDockingDemo = true;
+
     private bool ShowImGuiDemo = true;
 
     private bool ShowImPlotDemo = true;
-
-    private bool ShowDockingDemo = true;
 
     public MyGameWindow(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings)
         : base(gameWindowSettings, nativeWindowSettings)
@@ -128,31 +128,57 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
 
     private ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags.None;
 
-    void DrawDockSpaceOptionsBar(ref bool p_open)
+    private void DrawDockSpaceOptionsBar(ref bool p_open)
     {
         ImGui.DockSpaceOverViewport(ImGui.GetMainViewport(), dockspace_flags);
+
         if (ImGui.BeginMainMenuBar())
         {
             if (ImGui.BeginMenu("Options"))
             {
-                if (ImGui.MenuItem("Enable Docking", "IO.ConfigFlags.DockingEnable", ImGui.GetIO().ConfigFlags.HasFlag(ImGuiConfigFlags.DockingEnable))) {
+                if (ImGui.MenuItem("Enable Docking", "IO.ConfigFlags.DockingEnable", ImGui.GetIO().ConfigFlags.HasFlag(ImGuiConfigFlags.DockingEnable)))
+                {
                     ImGui.GetIO().ConfigFlags ^= ImGuiConfigFlags.DockingEnable;
                 }
 
                 ImGui.Separator();
 
                 if (ImGui.MenuItem("Require Shift For Docking", "IO.ConfigDockingWithShift",
-                    ImGui.GetIO().ConfigDockingWithShift)) { ImGui.GetIO().ConfigDockingWithShift = !ImGui.GetIO().ConfigDockingWithShift; }
+                        ImGui.GetIO().ConfigDockingWithShift))
+                {
+                    ImGui.GetIO().ConfigDockingWithShift = !ImGui.GetIO().ConfigDockingWithShift;
+                }
 
                 ImGui.Separator();
 
-                if (ImGui.MenuItem("Flag: NoSplit", "", (dockspace_flags & ImGuiDockNodeFlags.NoSplit) != 0)) {  dockspace_flags ^= ImGuiDockNodeFlags.NoSplit; }
-                if (ImGui.MenuItem("Flag: NoResize", "", (dockspace_flags & ImGuiDockNodeFlags.NoResize) != 0)) { dockspace_flags ^= ImGuiDockNodeFlags.NoResize; }
-                if (ImGui.MenuItem("Flag: NoDockingInCentralNode", "", (dockspace_flags & ImGuiDockNodeFlags.NoDockingInCentralNode) != 0)) { dockspace_flags ^= ImGuiDockNodeFlags.NoDockingInCentralNode; }
-                if (ImGui.MenuItem("Flag: AutoHideTabBar", "", (dockspace_flags & ImGuiDockNodeFlags.AutoHideTabBar) != 0)) { dockspace_flags ^= ImGuiDockNodeFlags.AutoHideTabBar; }
-                if (ImGui.MenuItem("Flag: PassthruCentralNode", "", (dockspace_flags & ImGuiDockNodeFlags.PassthruCentralNode) != 0)) { dockspace_flags ^= ImGuiDockNodeFlags.PassthruCentralNode; }
+                if (ImGui.MenuItem("Flag: NoSplit", "", (dockspace_flags & ImGuiDockNodeFlags.NoSplit) != 0))
+                {
+                    dockspace_flags ^= ImGuiDockNodeFlags.NoSplit;
+                }
+
+                if (ImGui.MenuItem("Flag: NoResize", "", (dockspace_flags & ImGuiDockNodeFlags.NoResize) != 0))
+                {
+                    dockspace_flags ^= ImGuiDockNodeFlags.NoResize;
+                }
+
+                if (ImGui.MenuItem("Flag: NoDockingInCentralNode", "", (dockspace_flags & ImGuiDockNodeFlags.NoDockingInCentralNode) != 0))
+                {
+                    dockspace_flags ^= ImGuiDockNodeFlags.NoDockingInCentralNode;
+                }
+
+                if (ImGui.MenuItem("Flag: AutoHideTabBar", "", (dockspace_flags & ImGuiDockNodeFlags.AutoHideTabBar) != 0))
+                {
+                    dockspace_flags ^= ImGuiDockNodeFlags.AutoHideTabBar;
+                }
+
+                if (ImGui.MenuItem("Flag: PassthruCentralNode", "", (dockspace_flags & ImGuiDockNodeFlags.PassthruCentralNode) != 0))
+                {
+                    dockspace_flags ^= ImGuiDockNodeFlags.PassthruCentralNode;
+                }
+
                 ImGui.EndMenu();
             }
+
             HelpMarker(
                 @"When docking is enabled, you can ALWAYS dock MOST window into another! Try it now!
     
@@ -170,6 +196,7 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
         static void HelpMarker(string desc)
         {
             ImGui.TextDisabled("(?)");
+
             if (ImGui.IsItemHovered())
             {
                 ImGui.BeginTooltip();
@@ -180,8 +207,6 @@ internal sealed class MyGameWindow : GameWindowBaseWithDebugContext
             }
         }
     }
-
-    
 
     #endregion
 

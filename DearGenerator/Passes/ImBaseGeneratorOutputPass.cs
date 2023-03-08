@@ -1,6 +1,5 @@
 ﻿using System.Collections.Immutable;
 using CppSharp;
-using CppSharp.Generators;
 using CppSharp.Generators.CSharp;
 using CppSharp.Passes;
 

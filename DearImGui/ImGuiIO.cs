@@ -63,6 +63,4 @@ partial class ImGuiIO
             }
         }
     }
-
-    
 }

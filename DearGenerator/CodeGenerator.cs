@@ -117,8 +117,8 @@ public abstract class CodeGenerator
         foreach (var (key, val) in Classes)
         {
             input = input.Replace($"class {key}", $"class {val}");
-            input = input.Replace($"{key}()",     $"{val}()");
-            input = input.Replace($"{key}._",     $"{val}._");
+            input = input.Replace($"{key}()", $"{val}()");
+            input = input.Replace($"{key}._", $"{val}._");
         }
     }
 

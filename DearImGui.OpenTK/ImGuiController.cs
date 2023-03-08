@@ -178,6 +178,8 @@ public sealed class ImGuiController : Disposable
 
     private readonly GameWindow Window;
 
+    private ImDrawList[] DrawLists = new ImDrawList[100];
+
     private int IndexBuffer;
 
     private int IndexBufferSize = 2000;
@@ -198,7 +200,7 @@ public sealed class ImGuiController : Disposable
 
     private int VertexBufferSize = 10000;
 
-    private ImDrawList[] DrawLists = new ImDrawList[100];
+    private ImGuiControllerWindowEvents WindowEvents_ = ImGuiControllerWindowEvents.Everything;
 
     public ImGuiController(GameWindow window, string? fontPath = null, float? fontSize = null)
     {
@@ -240,8 +242,6 @@ public sealed class ImGuiController : Disposable
     ///     Gets the imgui context for this instance.
     /// </summary>
     public IntPtr Context { get; }
-
-    private ImGuiControllerWindowEvents WindowEvents_ = ImGuiControllerWindowEvents.Everything;
 
     /// <summary>
     ///     Gets or sets which window events this instance should listen to.
@@ -286,7 +286,7 @@ public sealed class ImGuiController : Disposable
 
         GL.ObjectLabel(ObjectLabelIdentifier.Program, program, label.Length, label);
 
-        var vs = CreateShader(name, ShaderType.VertexShader,   sourceVS);
+        var vs = CreateShader(name, ShaderType.VertexShader, sourceVS);
         var fs = CreateShader(name, ShaderType.FragmentShader, sourceFS);
 
         GL.AttachShader(program, vs);
@@ -353,9 +353,9 @@ public sealed class ImGuiController : Disposable
         {
             fontSize = fontSize switch
             {
-                null    => 10.0f,
+                null => 10.0f,
                 <= 0.0f => throw new ArgumentOutOfRangeException(nameof(fontSize), fontSize, null),
-                _       => fontSize
+                _ => fontSize
             };
 
             if (!File.Exists(fontPath))
@@ -426,9 +426,9 @@ public sealed class ImGuiController : Disposable
         var offset2 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Uv)).ToInt32();
         var offset3 = Marshal.OffsetOf<ImDrawVert>(nameof(ImDrawVert.Col)).ToInt32();
 
-        GL.VertexArrayAttribFormat(VertexArray, 0, 2, VertexAttribType.Float,        false, offset1);
-        GL.VertexArrayAttribFormat(VertexArray, 1, 2, VertexAttribType.Float,        false, offset2);
-        GL.VertexArrayAttribFormat(VertexArray, 2, 4, VertexAttribType.UnsignedByte, true,  offset3);
+        GL.VertexArrayAttribFormat(VertexArray, 0, 2, VertexAttribType.Float, false, offset1);
+        GL.VertexArrayAttribFormat(VertexArray, 1, 2, VertexAttribType.Float, false, offset2);
+        GL.VertexArrayAttribFormat(VertexArray, 2, 4, VertexAttribType.UnsignedByte, true, offset3);
 
         GL.VertexArrayAttribBinding(VertexArray, 0, 0);
         GL.VertexArrayAttribBinding(VertexArray, 1, 0);
@@ -439,7 +439,7 @@ public sealed class ImGuiController : Disposable
     {
         Shader = CreateProgram("ImGui shader", ShaderSourceVS, ShaderSourceFS);
         ShaderProjection = GL.GetUniformLocation(Shader, "Projection");
-        ShaderTexture = GL.GetUniformLocation(Shader,    "Texture");
+        ShaderTexture = GL.GetUniformLocation(Shader, "Texture");
     }
 
     private void OnWindowFocusChanged(FocusedChangedEventArgs e)
@@ -617,11 +617,11 @@ public sealed class ImGuiController : Disposable
 
         var levels = (int)Math.Floor(Math.Log(Math.Max(pw, ph), 2));
 
-        GL.TextureParameter(Texture, TextureParameterName.TextureMaxLevel,  levels - 1);
+        GL.TextureParameter(Texture, TextureParameterName.TextureMaxLevel, levels - 1);
         GL.TextureParameter(Texture, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
         GL.TextureParameter(Texture, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
-        GL.TextureParameter(Texture, TextureParameterName.TextureWrapS,     (int)TextureWrapMode.Repeat);
-        GL.TextureParameter(Texture, TextureParameterName.TextureWrapT,     (int)TextureWrapMode.Repeat);
+        GL.TextureParameter(Texture, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
+        GL.TextureParameter(Texture, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
 
         GL.TextureStorage2D(Texture, levels, SizedInternalFormat.Rgba8, pw, ph);
 
@@ -665,9 +665,9 @@ public sealed class ImGuiController : Disposable
         var alt = modifiers.HasFlags(KeyModifiers.Alt);
         var super = modifiers.HasFlags(KeyModifiers.Super);
 
-        IO.AddKeyEvent(ImGuiKey.ModCtrl,  control);
+        IO.AddKeyEvent(ImGuiKey.ModCtrl, control);
         IO.AddKeyEvent(ImGuiKey.ModShift, shift);
-        IO.AddKeyEvent(ImGuiKey.ModAlt,   alt);
+        IO.AddKeyEvent(ImGuiKey.ModAlt, alt);
         IO.AddKeyEvent(ImGuiKey.ModSuper, super);
     }
 
@@ -738,16 +738,16 @@ public sealed class ImGuiController : Disposable
 
         var resourceId = mouseCursor switch
         {
-            ImGuiMouseCursor.Arrow      => User32.Cursors.IDC_ARROW,
-            ImGuiMouseCursor.TextInput  => User32.Cursors.IDC_IBEAM,
-            ImGuiMouseCursor.ResizeAll  => User32.Cursors.IDC_SIZEALL,
-            ImGuiMouseCursor.ResizeNS   => User32.Cursors.IDC_SIZENS,
-            ImGuiMouseCursor.ResizeEW   => User32.Cursors.IDC_SIZEWE,
+            ImGuiMouseCursor.Arrow => User32.Cursors.IDC_ARROW,
+            ImGuiMouseCursor.TextInput => User32.Cursors.IDC_IBEAM,
+            ImGuiMouseCursor.ResizeAll => User32.Cursors.IDC_SIZEALL,
+            ImGuiMouseCursor.ResizeNS => User32.Cursors.IDC_SIZENS,
+            ImGuiMouseCursor.ResizeEW => User32.Cursors.IDC_SIZEWE,
             ImGuiMouseCursor.ResizeNESW => User32.Cursors.IDC_SIZENESW,
             ImGuiMouseCursor.ResizeNWSE => User32.Cursors.IDC_SIZENWSE,
-            ImGuiMouseCursor.Hand       => User32.Cursors.IDC_HAND,
+            ImGuiMouseCursor.Hand => User32.Cursors.IDC_HAND,
             ImGuiMouseCursor.NotAllowed => User32.Cursors.IDC_NO,
-            _                           => throw new InvalidEnumArgumentException(null, (int)mouseCursor, typeof(ImGuiMouseCursor))
+            _ => throw new InvalidEnumArgumentException(null, (int)mouseCursor, typeof(ImGuiMouseCursor))
         };
 
         using (var hCursor = User32.LoadCursor(IntPtr.Zero, Kernel32.MAKEINTRESOURCE((int)resourceId)))
@@ -862,7 +862,7 @@ public sealed class ImGuiController : Disposable
             }
 
             GL.NamedBufferSubData(VertexBuffer, IntPtr.Zero, vtxBufferSize, vtxBuffer.Data);
-            GL.NamedBufferSubData(IndexBuffer,  IntPtr.Zero, idxBufferSize, idxBuffer.Data);
+            GL.NamedBufferSubData(IndexBuffer, IntPtr.Zero, idxBufferSize, idxBuffer.Data);
 
             for (var j = 0; j < list.CmdBuffer.Size; j++)
             {
